@@ -1,0 +1,977 @@
+{
+ "source": "section-01-lifecycle.html",
+ "blocks": [
+  {
+   "zh": "生命週期方法與各階段詳解",
+   "en": "Life Cycle Approach and Detailed Review of Each Phase"
+  },
+  {
+   "zh": "Learning Objectives  |  學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Explain the four major phases of the computerized system life cycle (Concept, Project, Operation, Retirement) and the activities within each.  ／  說明電腦化系統生命週期的四大階段及各階段核心活動。",
+   "en": "Explain the four major phases of the computerized system life cycle (Concept, Project, Operation, Retirement) and the activities within each."
+  },
+  {
+   "zh": "Distinguish between linear (V-model) and iterative/incremental (Agile) specification and verification approaches, and know when each is appropriate.  ／  區分線性（V-model）與迭代增量（Agile）方法，並能判斷各自的適用情境。",
+   "en": "Distinguish between linear (V-model) and iterative/incremental (Agile) specification and verification approaches, and know when each is appropriate."
+  },
+  {
+   "zh": "Describe the GAMP 5 computerized system validation (CSV) framework and how it achieves GxP compliance without being tied to a fixed documentation set.  ／  描述 GAMP 5 CSV 框架如何在不拘泥於固定文件集的前提下達成 GxP 合規。",
+   "en": "Describe the GAMP 5 computerized system validation (CSV) framework and how it achieves GxP compliance without being tied to a fixed documentation set."
+  },
+  {
+   "zh": "Apply critical thinking to scale verification activities proportionately to risk, complexity, and novelty — not to paperwork volume.  ／  運用批判性思維，依風險、複雜度與新穎性比例調整查驗活動，而非以文件量為標準。",
+   "en": "Apply critical thinking to scale verification activities proportionately to risk, complexity, and novelty — not to paperwork volume."
+  },
+  {
+   "zh": "Map traditional qualification terminology (DQ/IQ/OQ/PQ) to GAMP 5 verification activities and understand why GAMP 5 moves away from this terminology.  ／  將傳統 DQ/IQ/OQ/PQ 術語對應至 GAMP 5 查驗活動，並理解轉變的原因。",
+   "en": "Map traditional qualification terminology (DQ/IQ/OQ/PQ) to GAMP 5 verification activities and understand why GAMP 5 moves away from this terminology."
+  },
+  {
+   "zh": "Identify the key operational processes (change management, periodic review, CAPA, business continuity) that maintain compliance throughout the operation phase.  ／  識別在操作階段維持合規的關鍵運作流程，包括變更管理、定期審查、CAPA 與業務持續計畫。",
+   "en": "Identify the key operational processes (change management, periodic review, CAPA, business continuity) that maintain compliance throughout the operation phase."
+  },
+  {
+   "zh": "Chapter 3: Life Cycle Approach  |  第3章：生命週期方法",
+   "en": "Chapter 3: Life Cycle Approach"
+  },
+  {
+   "zh": "第3章 解析：生命週期思維",
+   "en": "Chapter 3 Commentary: Life Cycle Thinking"
+  },
+  {
+   "zh": "核心觀念：為什麼需要「生命週期方法」？",
+   "en": "Core Concept: Why Do We Need a Life Cycle Approach?"
+  },
+  {
+   "zh": "傳統上，許多藥廠把電腦化系統驗證（CSV）視為「上線前的一次性活動」——做完驗證文件、放行就結束了。GAMP 5 第2版明確反對這種心態。",
+   "en": "Traditionally, many pharmaceutical companies have treated computerized system validation (CSV) as a one-time activity before go-live: finish the validation documents, release the system, and you are done. GAMP 5 Second Edition explicitly rejects this mindset."
+  },
+  {
+   "zh": "生命週期方法（Life Cycle Approach）的核心思想是：<strong>合規不是一個時間點，而是整個系統存在期間的持續狀態</strong>。從最初的概念發想，到系統退役，每個階段都有相應的活動和控制。",
+   "en": "The core idea of the Life Cycle Approach is that <strong>compliance is not a point in time but a continuous state maintained for as long as the system exists</strong>. From the initial concept through to retirement, every phase has corresponding activities and controls."
+  },
+  {
+   "zh": "CDMO 情境類比：新 LIMS 的生命旅程",
+   "en": "CDMO Scenario Analogy: The Life of a New LIMS"
+  },
+  {
+   "zh": "假設你的 CDMO 決定導入一套新的 LIMS（實驗室資訊管理系統）：",
+   "en": "Suppose your CDMO decides to implement a new LIMS (laboratory information management system):"
+  },
+  {
+   "zh": "<strong>概念階段</strong>：業務需求分析、評估是否值得導入、初步 GxP 評估（LIMS 屬於 GxP 系統嗎？答：是的，因為它管理檢測結果）",
+   "en": "<strong>Concept phase</strong>: business needs analysis, assessing whether implementation is worthwhile, and an initial GxP assessment (is a LIMS a GxP system? Yes, because it manages test results)"
+  },
+  {
+   "zh": "<strong>專案階段</strong>：選商、撰寫需求規格書（URS）、設定系統（Category 4）、執行測試、放行上線",
+   "en": "<strong>Project phase</strong>: selecting a supplier, writing the user requirements specification (URS), configuring the system (Category 4), executing testing, and releasing for use"
+  },
+  {
+   "zh": "<strong>操作階段</strong>：日常使用、變更控制（例如新增一個分析方法的工作流程）、定期審查（每年確認系統仍符合法規）",
+   "en": "<strong>Operation phase</strong>: day-to-day use, change control (for example, adding a workflow for a new analytical method), and periodic review (confirming each year that the system still meets regulatory requirements)"
+  },
+  {
+   "zh": "<strong>退役階段</strong>：當更新的 LIMS 取代舊系統時，舊系統的資料要保留多久？如何遷移？",
+   "en": "<strong>Retirement phase</strong>: when a newer LIMS replaces the old system, how long must the old system's data be retained? How will it be migrated?"
+  },
+  {
+   "zh": "重要實務提醒：GxP 評估要提早做",
+   "en": "Practical Reminder: Do the GxP Assessment Early"
+  },
+  {
+   "zh": "GxP 評估必須在<strong>專案階段開始前</strong>完成。這意味著在批准專案預算之前，就要確認這個系統是否受 GMP/GLP/GCP 等法規管轄，以及適用哪些條款。",
+   "en": "The GxP assessment must be completed <strong>before the project phase begins</strong>. This means that before the project budget is approved, you need to confirm whether the system falls under GMP/GLP/GCP or other regulations, and which clauses apply."
+  },
+  {
+   "zh": "若等到系統快上線才做 GxP 評估，往往會遇到需要補做大量文件的困境，甚至導致上線延遲。",
+   "en": "If the GxP assessment is left until the system is about to go live, you often end up having to produce large amounts of documentation retrospectively, and go-live may even be delayed."
+  },
+  {
+   "zh": "3.2 規格說明與查驗方法",
+   "en": "3.2 Specification and Verification Approaches"
+  },
+  {
+   "zh": "線性 vs. 迭代：GAMP 5 的重要進化",
+   "en": "Linear vs. Iterative: An Important Evolution in GAMP 5"
+  },
+  {
+   "zh": "GAMP 5 第1版主要以 <strong>V-model（V型模型）</strong> 為框架——左側從上到下寫規格（URS → FRS → CS → 程式碼），右側由下到上做測試（單元測試 → 整合測試 → OQ → PQ）。",
+   "en": "The first edition of GAMP 5 was framed mainly around the <strong>V-model</strong>: on the left side, specifications are written from top to bottom (URS → FRS → CS → code), and on the right side, testing is performed from bottom to top (unit testing → integration testing → OQ → PQ)."
+  },
+  {
+   "zh": "第2版明確承認：<strong>V-model 只是眾多可接受方法之一</strong>。Agile 方法——短週期迭代、持續交付、隨時調整需求——同樣完全符合 GAMP 5 框架。",
+   "en": "The second edition explicitly acknowledges that the <strong>V-model is only one of many acceptable approaches</strong>. Agile methods, with short iterations, continuous delivery, and requirements that can be adjusted at any time, are equally compatible with the GAMP 5 framework."
+  },
+  {
+   "zh": "關鍵認知：查驗不等於測試",
+   "en": "Key Insight: Verification Is Not the Same as Testing"
+  },
+  {
+   "zh": "「Verification（查驗）」是一個廣義概念，包含：",
+   "en": "\"Verification\" is a broad concept that includes:"
+  },
+  {
+   "zh": "設計審查（Design Review）",
+   "en": "Design review"
+  },
+  {
+   "zh": "程式碼審查（Code Review）",
+   "en": "Code review"
+  },
+  {
+   "zh": "組態設定審查（Configuration Review）",
+   "en": "Configuration review"
+  },
+  {
+   "zh": "各層次的測試執行",
+   "en": "Test execution at each level"
+  },
+  {
+   "zh": "很多工程師習慣把「驗證」等同於「跑測試腳本」，但 GAMP 5 強調：<strong>在測試之前的設計審查本身就是查驗活動的一部分</strong>，甚至可以取代某些測試。",
+   "en": "Many engineers are used to equating \"validation\" with \"running test scripts\", but GAMP 5 stresses that <strong>design review before testing is itself part of verification</strong> and can even replace certain tests."
+  },
+  {
+   "zh": "3.3 CSV 框架解析",
+   "en": "3.3 The CSV Framework Explained"
+  },
+  {
+   "zh": "CSV 框架的核心文件：驗證計畫與報告",
+   "en": "Core Documents of the CSV Framework: Validation Plan and Report"
+  },
+  {
+   "zh": "每個 GxP 電腦化系統都應有：",
+   "en": "Every GxP computerized system should have:"
+  },
+  {
+   "zh": "<strong>Validation Plan（驗證計畫）</strong>：描述「我們打算怎麼驗證」——範圍、方法、責任分工、可接受標準",
+   "en": "<strong>Validation Plan</strong>: describes \"how we intend to validate\" — scope, approach, responsibilities, and acceptance criteria"
+  },
+  {
+   "zh": "<strong>Validation Report（驗證報告）</strong>：記錄「我們實際上做了什麼」——活動摘要、偏差、未解決事項、適用聲明（fitness for intended use statement）",
+   "en": "<strong>Validation Report</strong>: records \"what we actually did\" — summary of activities, deviations, outstanding issues, and the fitness for intended use statement"
+  },
+  {
+   "zh": "這兩份文件是查驗活動的書面骨架，查驗計畫訂好游戲規則，報告確認規則有被遵守。",
+   "en": "These two documents are the written backbone of verification activities: the plan sets the rules of the game, and the report confirms the rules were followed."
+  },
+  {
+   "zh": "進階概念：何時不需要獨立的 CSV？",
+   "en": "Advanced Concept: When Is a Separate CSV Not Needed?"
+  },
+  {
+   "zh": "GAMP 5 提出一個重要例外：當電腦化系統只是更大製程系統中的一個組件（例如整合 QbD 環境），如果整體製程驗證已能涵蓋電腦系統的適用性，就不需要單獨進行 CSV。",
+   "en": "GAMP 5 identifies an important exception: when a computerized system is only one component of a larger process system (for example, an integrated QbD environment), and validation of the overall process already covers the suitability of the computerized system, separate CSV is not required."
+  },
+  {
+   "zh": "<strong>CDMO 情境</strong>：一台凍乾機（Lyophilizer）的 PLC 控制器，如果其關鍵製程參數（CPPs）的控制能力已在製程驗證（PPQ）中充分驗證，那麼對這台 PLC 單獨做 IQ/OQ/PQ 可能是重複且不必要的。這正是 GAMP 5 與 ISPE C&amp;Q 指引（Volume 5）整合思維的體現。",
+   "en": "<strong>CDMO scenario</strong>: for the PLC controller of a lyophilizer, if its ability to control the critical process parameters (CPPs) has already been fully demonstrated in process performance qualification (PPQ), performing separate IQ/OQ/PQ on that PLC may be redundant and unnecessary. This reflects the integrated thinking behind GAMP 5 and the ISPE C&amp;Q Guide (Volume 5)."
+  },
+  {
+   "zh": "3.4 批判性思維的實際應用",
+   "en": "3.4 Practical Application of Critical Thinking"
+  },
+  {
+   "zh": "什麼是「批判性思維」在 GMP 情境中的意義？",
+   "en": "What Does \"Critical Thinking\" Mean in a GMP Context?"
+  },
+  {
+   "zh": "「Critical Thinking」在 GAMP 5 中不是哲學概念，而是一個實際的決策工具：",
+   "en": "In GAMP 5, \"critical thinking\" is not a philosophical concept but a practical decision-making tool:"
+  },
+  {
+   "zh": "分析業務流程在哪裡可能影響病患安全、產品品質或數據完整性",
+   "en": "Analyze where the business process could affect patient safety, product quality, or data integrity"
+  },
+  {
+   "zh": "根據這個分析，判斷需要多嚴格的控制",
+   "en": "Based on that analysis, determine how rigorous the controls need to be"
+  },
+  {
+   "zh": "將控制力度與風險成比例——高風險處嚴格，低風險處精簡",
+   "en": "Make the level of control proportionate to risk: rigorous where risk is high, streamlined where risk is low"
+  },
+  {
+   "zh": "多層保證（Layers of Assurance）的概念",
+   "en": "The Concept of Layers of Assurance"
+  },
+  {
+   "zh": "假設你的 MES 系統有一個功能：記錄無菌灌裝操作的環境監測數據。批判性思維的問法是：",
+   "en": "Suppose your MES has a function that records environmental monitoring data for aseptic filling operations. The critical thinking question is:"
+  },
+  {
+   "zh": "如果 MES 這個功能出錯，還有什麼其他控制層可以接住？（例如：操作員人工確認、QC 實驗室複核、SCADA 系統備份數據）",
+   "en": "If this MES function fails, what other layers of control can catch the error? (For example: manual confirmation by the operator, review by the QC laboratory, backup data in the SCADA system)"
+  },
+  {
+   "zh": "如果這些其他控制層很強，那麼這個 MES 功能的驗證深度就可以相應降低",
+   "en": "If those other layers of control are strong, the depth of validation for this MES function can be reduced accordingly"
+  },
+  {
+   "zh": "如果 MES 是唯一來源（single point of truth），沒有備援，那麼驗證就必須更嚴格",
+   "en": "If the MES is the single point of truth with no backup, validation must be more rigorous"
+  },
+  {
+   "zh": "這就是「多層保證」思維——<strong>不孤立評估系統，而是評估整個業務流程的防護網</strong>。",
+   "en": "This is the \"layers of assurance\" way of thinking: <strong>do not assess the system in isolation, but assess the safety net of the entire business process</strong>."
+  },
+  {
+   "zh": "監管機構的新期待：品質勝於數量",
+   "en": "New Regulatory Expectations: Quality Over Quantity"
+  },
+  {
+   "zh": "GAMP 5 明確寫道：合規程度與文件數量不成正比。這是對藥廠普遍「文件越厚越安全」心態的直接反駁。",
+   "en": "GAMP 5 states clearly that the level of compliance is not proportional to the volume of documentation. This is a direct rebuttal of the common pharmaceutical mindset that \"the thicker the documentation, the safer we are\"."
+  },
+  {
+   "zh": "FDA、EMA 查廠官員現在更傾向於問：",
+   "en": "FDA and EMA inspectors now tend to ask:"
+  },
+  {
+   "zh": "「你為什麼這樣設計驗證方案？」（要看你的風險評估邏輯）",
+   "en": "\"Why did you design the validation approach this way?\" (they want to see your risk assessment logic)"
+  },
+  {
+   "zh": "「這份規格書的這個要求，你是怎麼確認它被滿足的？」（看可追溯性）",
+   "en": "\"How did you confirm that this requirement in the specification was met?\" (they are looking at traceability)"
+  },
+  {
+   "zh": "而不是：「你的 IQ/OQ/PQ 文件在哪裡？」",
+   "en": "rather than: \"Where are your IQ/OQ/PQ documents?\""
+  },
+  {
+   "zh": "Chapter 4: Life Cycle Phases  |  第4章：生命週期各階段詳解",
+   "en": "Chapter 4: Life Cycle Phases"
+  },
+  {
+   "zh": "階段一：概念期",
+   "en": "Phase 1: Concept"
+  },
+  {
+   "zh": "4.1 概念階段解析",
+   "en": "4.1 The Concept Phase Explained"
+  },
+  {
+   "zh": "概念階段的核心任務",
+   "en": "Core Tasks of the Concept Phase"
+  },
+  {
+   "zh": "概念階段是整個生命週期的起點，在這個階段投入的思考品質，直接決定後續專案的順暢度。主要任務包括：",
+   "en": "The concept phase is the starting point of the entire life cycle, and the quality of thinking invested here directly determines how smoothly the subsequent project runs. The main tasks include:"
+  },
+  {
+   "zh": "定義業務需求（不是系統需求）——「我們需要什麼功能」而非「我們要買什麼軟體」",
+   "en": "Define business requirements (not system requirements): \"what functions do we need\" rather than \"what software do we want to buy\""
+  },
+  {
+   "zh": "初步評估可能的解決方案（外購、客製化、SaaS？）",
+   "en": "Make an initial assessment of possible solutions (off-the-shelf, custom-developed, SaaS?)"
+  },
+  {
+   "zh": "進行 GxP 評估：這個系統是否直接或間接影響 GxP 活動？",
+   "en": "Perform a GxP assessment: does this system directly or indirectly affect GxP activities?"
+  },
+  {
+   "zh": "取得管理層承諾與資源支持",
+   "en": "Obtain management commitment and resource support"
+  },
+  {
+   "zh": "CDMO 實例：新 SCADA 系統的概念評估",
+   "en": "CDMO Example: Concept Assessment for a New SCADA System"
+  },
+  {
+   "zh": "CDMO 計畫為新建無菌灌裝線安裝 SCADA 系統。概念階段要做的事：",
+   "en": "A CDMO plans to install a SCADA system for a new aseptic filling line. The concept phase should cover:"
+  },
+  {
+   "zh": "GxP 評估：SCADA 控制灌裝參數（灌裝量、充氮速度、溫度）→ 直接影響產品品質 → <strong>GxP 系統，適用 GMP Annex 11</strong>",
+   "en": "GxP assessment: SCADA controls filling parameters (fill volume, nitrogen purge rate, temperature) → directly affects product quality → <strong>a GxP system, subject to GMP Annex 11</strong>"
+  },
+  {
+   "zh": "評估方案：整合型工控 SCADA vs. 獨立 PLC + HMI？",
+   "en": "Evaluate options: integrated industrial-control SCADA vs. standalone PLC + HMI?"
+  },
+  {
+   "zh": "初步成本效益分析：是否值得進入專案階段？",
+   "en": "Initial cost-benefit analysis: is it worth proceeding to the project phase?"
+  },
+  {
+   "zh": "階段二：專案期",
+   "en": "Phase 2: Project"
+  },
+  {
+   "zh": "4.2 專案階段解析",
+   "en": "4.2 The Project Phase Explained"
+  },
+  {
+   "zh": "專案階段的流程架構",
+   "en": "Process Structure of the Project Phase"
+  },
+  {
+   "zh": "專案階段是系統生命週期中活動最密集的時期，可以理解為四個主要階段的串聯：",
+   "en": "The project phase is the most activity-intensive period of the system life cycle and can be understood as a sequence of four main stages:"
+  },
+  {
+   "zh": "<strong>規劃 → 規格／組態設定 → 查驗 → 報告與放行</strong>",
+   "en": "<strong>Planning → Specification/Configuration → Verification → Reporting and Release</strong>"
+  },
+  {
+   "zh": "這四個階段不是嚴格線性的——規劃期間可能已開始部分規格制定，查驗活動從規格審查就已開始。",
+   "en": "These four stages are not strictly linear: some specification work may already begin during planning, and verification activities begin as early as specification review."
+  },
+  {
+   "zh": "4.2.1 規劃階段：三個決策維度",
+   "en": "4.2.1 Planning: Three Decision Dimensions"
+  },
+  {
+   "zh": "規劃階段最重要的決策是「這個系統的驗證要做到什麼程度」，GAMP 5 要求從三個維度評估：",
+   "en": "The most important decision in planning is \"how far should validation of this system go\". GAMP 5 requires evaluation along three dimensions:"
+  },
+  {
+   "zh": "<strong>風險程度</strong>：系統對病患安全、產品品質、數據完整性的影響有多大？影響越大，驗證越嚴格。",
+   "en": "<strong>Degree of risk</strong>: how much does the system affect patient safety, product quality, and data integrity? The greater the impact, the more rigorous the validation."
+  },
+  {
+   "zh": "<strong>複雜度與新穎性</strong>：是成熟的標準軟體（低新穎性）還是全新客製化開發（高新穎性）？越新穎，越需要嚴格測試。",
+   "en": "<strong>Complexity and novelty</strong>: is it mature standard software (low novelty) or entirely new custom development (high novelty)? The more novel, the more rigorous the testing needed."
+  },
+  {
+   "zh": "<strong>供應商能力</strong>：供應商有沒有通過藥廠稽核？供應商的測試文件能不能被採用？供應商能力越強，受監管公司的工作量越可以降低。",
+   "en": "<strong>Supplier capability</strong>: has the supplier passed a pharmaceutical company audit? Can the supplier's test documentation be leveraged? The stronger the supplier's capability, the more the regulated company's workload can be reduced."
+  },
+  {
+   "zh": "需求的歸屬：用戶社群的責任",
+   "en": "Ownership of Requirements: The Responsibility of the User Community"
+  },
+  {
+   "zh": "GAMP 5 明確指出：需求的制定、維護與控制是<strong>用戶社群（user community）</strong>的責任——也就是實際使用這個系統的業務部門（生產、QC、QA 等），而不是 IT 部門或驗證部門。",
+   "en": "GAMP 5 states clearly that defining, maintaining, and controlling requirements is the responsibility of the <strong>user community</strong>, that is, the business departments that actually use the system (production, QC, QA, etc.), not the IT department or the validation department."
+  },
+  {
+   "zh": "實務提醒：URS（用戶需求規格書）必須由業務端主導撰寫，IT 或供應商只是協助澄清技術可行性。許多 CDMO 的問題在於讓 IT 單獨寫 URS，最後系統做出來不符合 GMP 業務邏輯。",
+   "en": "Practical reminder: the URS (user requirements specification) must be written under the leadership of the business side, with IT or the supplier only helping to clarify technical feasibility. A common problem at many CDMOs is letting IT write the URS alone, so the finished system does not match the GMP business logic."
+  },
+  {
+   "zh": "4.2.2 規格說明、組態設定與程式撰寫",
+   "en": "4.2.2 Specification, Configuration, and Coding"
+  },
+  {
+   "zh": "規格文件的目的：三個用途",
+   "en": "The Purpose of Specification Documents: Three Uses"
+  },
+  {
+   "zh": "規格文件存在的理由不是「監管機構要看」，而是：",
+   "en": "Specification documents exist not because \"regulators want to see them\" but to serve three purposes:"
+  },
+  {
+   "zh": "<strong>開發依據</strong>：讓供應商知道要做什麼",
+   "en": "<strong>Basis for development</strong>: so the supplier knows what to build"
+  },
+  {
+   "zh": "<strong>查驗依據</strong>：讓測試人員知道要確認什麼",
+   "en": "<strong>Basis for verification</strong>: so testers know what to confirm"
+  },
+  {
+   "zh": "<strong>維護依據</strong>：未來變更時，讓人知道原本的設計意圖",
+   "en": "<strong>Basis for maintenance</strong>: so that when changes are made in future, people know the original design intent"
+  },
+  {
+   "zh": "如果規格文件不能服務這三個目的，它就是沒有價值的文件。",
+   "en": "If a specification document cannot serve these three purposes, it is a document without value."
+  },
+  {
+   "zh": "URS → FRS → CS 的實務流程",
+   "en": "Practical Flow of URS → FRS → CS"
+  },
+  {
+   "zh": "以 CDMO 導入 LIMS 為例，規格文件的層次關係：",
+   "en": "Taking a CDMO implementing a LIMS as an example, the hierarchy of specification documents is:"
+  },
+  {
+   "zh": "<strong>URS（用戶需求規格）</strong>：「QC 需要記錄每批原料的效期，並自動在效期前30天發出警告」",
+   "en": "<strong>URS (User Requirements Specification)</strong>: \"QC needs to record the expiry date of each raw material batch and automatically issue a warning 30 days before expiry\""
+  },
+  {
+   "zh": "<strong>FRS（功能需求規格）</strong>：「系統應在效期 - 30 天時觸發警告通知，發送至指定的收件群組」（供應商層級）",
+   "en": "<strong>FRS (Functional Requirements Specification)</strong>: \"The system shall trigger a warning notification at expiry date minus 30 days and send it to a designated recipient group\" (supplier level)"
+  },
+  {
+   "zh": "<strong>CS（組態規格）</strong>：「Alert_Rule_01: Expiry_Date - 30 days, Recipient_Group: QC_Supervisors」（具體設定值）",
+   "en": "<strong>CS (Configuration Specification)</strong>: \"Alert_Rule_01: Expiry_Date - 30 days, Recipient_Group: QC_Supervisors\" (specific settings)"
+  },
+  {
+   "zh": "對於 Category 3 系統（標準產品），通常只需要 URS + 測試記錄，不需要 FRS 和 CS。",
+   "en": "For Category 3 systems (standard products), usually only a URS and test records are needed; an FRS and CS are not required."
+  },
+  {
+   "zh": "版本控制是核心控制措施",
+   "en": "Version Control Is a Core Control Measure"
+  },
+  {
+   "zh": "GAMP 5 特別強調：組態管理與版本控制是<strong>受控組態設定的內在必要條件</strong>。在 GMP 環境中，這意味著：",
+   "en": "GAMP 5 specifically emphasizes that configuration management and version control are <strong>inherent requirements of controlled configuration</strong>. In a GMP environment, this means:"
+  },
+  {
+   "zh": "每一次系統設定的變更都必須有記錄可循",
+   "en": "Every change to system settings must have a traceable record"
+  },
+  {
+   "zh": "在任何時間點都能回溯系統當時的狀態",
+   "en": "It must be possible to reconstruct the state of the system at any point in time"
+  },
+  {
+   "zh": "沒有經過版本控制的系統設定，在查廠時無法證明「受控狀態」",
+   "en": "System settings that are not under version control cannot demonstrate a \"state of control\" during an inspection"
+  },
+  {
+   "zh": "4.2.3 查驗活動解析",
+   "en": "4.2.3 Verification Activities Explained"
+  },
+  {
+   "zh": "查驗貫穿整個專案期",
+   "en": "Verification Runs Throughout the Project Phase"
+  },
+  {
+   "zh": "這是 GAMP 5 一個重要的視角修正：查驗不只是最後的測試執行，而是貫穿專案的持續活動：",
+   "en": "This is an important correction in perspective from GAMP 5: verification is not just the test execution at the end, but a continuous activity throughout the project:"
+  },
+  {
+   "zh": "<strong>規格階段</strong>：設計審查（Design Review）確認規格合理且可實現",
+   "en": "<strong>Specification stage</strong>: design review confirms that the specifications are reasonable and achievable"
+  },
+  {
+   "zh": "<strong>組態設定階段</strong>：組態審查確認設定符合規格",
+   "en": "<strong>Configuration stage</strong>: configuration review confirms that the settings conform to the specifications"
+  },
+  {
+   "zh": "<strong>測試階段</strong>：各層次測試確認功能符合需求",
+   "en": "<strong>Testing stage</strong>: testing at each level confirms that functions meet the requirements"
+  },
+  {
+   "zh": "<strong>放行階段</strong>：驗證報告確認所有查驗活動已完成",
+   "en": "<strong>Release stage</strong>: the validation report confirms that all verification activities have been completed"
+  },
+  {
+   "zh": "測試工具的使用：不需要驗證，但需要評估",
+   "en": "Use of Test Tools: Validation Not Required, but Assessment Is"
+  },
+  {
+   "zh": "很多藥廠不敢使用自動化測試工具（如 Selenium、UFT），因為擔心「這些工具本身要不要驗證」。",
+   "en": "Many pharmaceutical companies are reluctant to use automated test tools (such as Selenium or UFT) because they worry about \"whether these tools themselves need to be validated\"."
+  },
+  {
+   "zh": "GAMP 5 的答案明確：<strong>測試工具不需要驗證（validation is not required）</strong>，但需要：",
+   "en": "The GAMP 5 answer is clear: <strong>test tools do not require validation</strong>, but you do need to:"
+  },
+  {
+   "zh": "記錄評估文件，確認工具適合於預定用途（adequacy assessment）",
+   "en": "Document an assessment confirming that the tool is suitable for its intended use (adequacy assessment)"
+  },
+  {
+   "zh": "在使用中保持受控狀態（controlled in use）",
+   "en": "Keep the tool controlled in use"
+  },
+  {
+   "zh": "這大幅降低了引入自動化測試工具的合規門檻，CDMO 應積極利用。",
+   "en": "This substantially lowers the compliance barrier to introducing automated test tools, and CDMOs should make active use of it."
+  },
+  {
+   "zh": "4.2.4 報告與放行",
+   "en": "4.2.4 Reporting and Release"
+  },
+  {
+   "zh": "驗證報告的必要內容",
+   "en": "Required Content of the Validation Report"
+  },
+  {
+   "zh": "一份完整的 Validation Report（驗證報告）應包含：",
+   "en": "A complete Validation Report should include:"
+  },
+  {
+   "zh": "已執行的查驗活動摘要",
+   "en": "A summary of the verification activities performed"
+  },
+  {
+   "zh": "相對於計畫的偏差（Deviations from plan）",
+   "en": "Deviations from plan"
+  },
+  {
+   "zh": "未解決事項及其矯正行動",
+   "en": "Outstanding issues and their corrective actions"
+  },
+  {
+   "zh": "<strong>適用聲明（Fitness for Intended Use Statement）</strong>——明確聲明系統適合在 GxP 環境中使用",
+   "en": "<strong>Fitness for Intended Use Statement</strong>: an explicit statement that the system is suitable for use in a GxP environment"
+  },
+  {
+   "zh": "移交（Handover）：被忽視的關鍵環節",
+   "en": "Handover: The Overlooked Critical Step"
+  },
+  {
+   "zh": "GAMP 5 特別強調移交管理的重要性。在很多 CDMO 中，系統驗證完成後，專案團隊就解散了，但運維團隊對系統的了解遠不足夠。",
+   "en": "GAMP 5 specifically emphasizes the importance of managing handover. At many CDMOs, once system validation is complete, the project team is disbanded, but the operations and maintenance team's understanding of the system is far from sufficient."
+  },
+  {
+   "zh": "良好的移交應確保：",
+   "en": "A good handover should ensure that:"
+  },
+  {
+   "zh": "運維程序（SOPs）已制定並培訓",
+   "en": "Operating and maintenance procedures (SOPs) have been established and training delivered"
+  },
+  {
+   "zh": "隱性知識（implicit knowledge）已轉移——不只是文件，還有「為什麼這樣設計」的背景理解",
+   "en": "Implicit knowledge has been transferred: not just documents, but also the background understanding of \"why it was designed this way\""
+  },
+  {
+   "zh": "支援服務（如供應商合約、維護計畫）已就位",
+   "en": "Support services (such as supplier contracts and maintenance plans) are in place"
+  },
+  {
+   "zh": "4.2.5 支援流程解析",
+   "en": "4.2.5 Supporting Processes Explained"
+  },
+  {
+   "zh": "可追溯性矩陣（RTM）的實務價值",
+   "en": "The Practical Value of the Traceability Matrix (RTM)"
+  },
+  {
+   "zh": "可追溯性（Traceability）的核心工具是<strong>需求可追溯性矩陣（Requirement Traceability Matrix, RTM）</strong>，它確保：",
+   "en": "The core tool for traceability is the <strong>Requirements Traceability Matrix (RTM)</strong>, which ensures that:"
+  },
+  {
+   "zh": "每個 URS 需求都有對應的規格條款",
+   "en": "Every URS requirement has a corresponding specification clause"
+  },
+  {
+   "zh": "每個規格條款都有對應的測試案例",
+   "en": "Every specification clause has a corresponding test case"
+  },
+  {
+   "zh": "每個測試案例的結果都有記錄",
+   "en": "The result of every test case is recorded"
+  },
+  {
+   "zh": "RTM 在查廠時讓查廠官員可以快速確認：「這個需求，你是怎麼驗證它被滿足的？」",
+   "en": "During an inspection, the RTM lets inspectors quickly confirm: \"How did you verify that this requirement was met?\""
+  },
+  {
+   "zh": "設計審查：什麼情況下需要正式進行？",
+   "en": "Design Review: When Is a Formal One Needed?"
+  },
+  {
+   "zh": "GAMP 5 說設計審查「主要適用於客製化應用和供應商內部產品開發」。轉譯到實務：",
+   "en": "GAMP 5 says design review \"applies mainly to custom applications and to a supplier's internal product development\". Translated into practice:"
+  },
+  {
+   "zh": "<strong>Category 3 標準產品</strong>：通常不需要設計審查，規格審查即可",
+   "en": "<strong>Category 3 standard products</strong>: usually no design review is needed; a specification review is sufficient"
+  },
+  {
+   "zh": "<strong>Category 4 組態設定產品</strong>：對複雜的組態設定可考慮進行組態設計審查",
+   "en": "<strong>Category 4 configured products</strong>: for complex configurations, consider a configuration design review"
+  },
+  {
+   "zh": "<strong>Category 5 客製化應用</strong>：必須進行設計審查，因為沒有現成的產品功能規格可以依賴",
+   "en": "<strong>Category 5 custom applications</strong>: a design review is required, because there is no ready-made product functional specification to rely on"
+  },
+  {
+   "zh": "隱性知識管理：最常被忽視的合規風險",
+   "en": "Implicit Knowledge Management: The Most Often Overlooked Compliance Risk"
+  },
+  {
+   "zh": "GAMP 5 提到「implied knowledge（隱性知識）」——這是指存在於人腦中、未被文件化的系統知識。",
+   "en": "GAMP 5 refers to \"implicit knowledge\", meaning knowledge about the system that exists in people's heads and has not been documented."
+  },
+  {
+   "zh": "典型風險場景：唯一熟悉某 SCADA 系統設定邏輯的工程師離職，而文件中只記錄了「做了什麼」，沒有記錄「為什麼這樣做」。一旦系統出現問題或需要變更，繼任工程師根本不知道設計意圖，容易引入新的錯誤。",
+   "en": "Typical risk scenario: the only engineer familiar with the configuration logic of a SCADA system leaves, and the documentation records only \"what was done\" and not \"why it was done\". When the system has a problem or needs a change, the successor has no idea of the design intent and is likely to introduce new errors."
+  },
+  {
+   "zh": "4.2.6 GAMP 分類實務應用",
+   "en": "4.2.6 Practical Application of GAMP Categories"
+  },
+  {
+   "zh": "分類只是起點，不是終點",
+   "en": "Categorization Is a Starting Point, Not an End Point"
+  },
+  {
+   "zh": "GAMP 5 非常清楚地警告：<strong>不要純粹依賴分類表格來決定驗證活動</strong>（Table-driven approaches should be avoided）。",
+   "en": "GAMP 5 warns very clearly: <strong>do not rely purely on a categorization table to decide validation activities</strong> (table-driven approaches should be avoided)."
+  },
+  {
+   "zh": "分類（Category 3/4/5）只是一個起點，實際的驗證深度還要考慮：",
+   "en": "The category (Category 3/4/5) is only a starting point; the actual depth of validation must also consider:"
+  },
+  {
+   "zh": "這個系統功能對 GxP 的影響有多大？",
+   "en": "How much does this system function affect GxP?"
+  },
+  {
+   "zh": "供應商的品質系統可靠度如何？",
+   "en": "How reliable is the supplier's quality system?"
+  },
+  {
+   "zh": "系統的複雜度和新穎性是什麼水準？",
+   "en": "What is the level of the system's complexity and novelty?"
+  },
+  {
+   "zh": "同樣是 Category 4 系統，一個管理批次記錄的 LIMS 和一個管理員工訓練記錄的系統，驗證深度可以差距很大。",
+   "en": "Even among Category 4 systems, the depth of validation can differ greatly between a LIMS that manages batch records and a system that manages employee training records."
+  },
+  {
+   "zh": "4.2.6.4 術語對應解析",
+   "en": "4.2.6.4 Terminology Mapping Explained"
+  },
+  {
+   "zh": "為什麼 GAMP 5 要放棄 IQ/OQ/PQ 術語？",
+   "en": "Why Does GAMP 5 Move Away from IQ/OQ/PQ Terminology?"
+  },
+  {
+   "zh": "傳統的 IQ/OQ/PQ 術語有幾個根本問題：",
+   "en": "The traditional IQ/OQ/PQ terminology has several fundamental problems:"
+  },
+  {
+   "zh": "<strong>隱含線性假設</strong>：IQ → OQ → PQ 的順序暗示驗證只能按照這個固定順序進行，與 Agile 方法不相容",
+   "en": "<strong>Implied linear assumption</strong>: the IQ → OQ → PQ sequence suggests that validation can only proceed in this fixed order, which is incompatible with Agile methods"
+  },
+  {
+   "zh": "<strong>跨界溝通障礙</strong>：IT 工程師和軟體供應商不理解這些術語，溝通摩擦大",
+   "en": "<strong>Cross-discipline communication barrier</strong>: IT engineers and software suppliers do not understand these terms, which creates communication friction"
+  },
+  {
+   "zh": "<strong>誤導重點</strong>：許多藥廠把重點放在「完成 IQ/OQ/PQ 文件」，而非「確認系統適合用途」",
+   "en": "<strong>Misleading focus</strong>: many pharmaceutical companies concentrate on \"completing the IQ/OQ/PQ documents\" rather than \"confirming the system is fit for its intended use\""
+  },
+  {
+   "zh": "實務轉換：如何在現有 GMP 體系中使用這個觀念？",
+   "en": "Practical Translation: How to Use This Idea Within an Existing GMP System"
+  },
+  {
+   "zh": "很多監管機構和公司的 SOP 仍然使用 IQ/OQ/PQ 術語。GAMP 5 不是要你立刻廢除這些術語，而是要你理解：",
+   "en": "Many regulators and company SOPs still use the IQ/OQ/PQ terminology. GAMP 5 does not ask you to abolish these terms immediately; it asks you to understand that:"
+  },
+  {
+   "zh": "IQ 的本質 = 確認安裝和組態設定正確（不一定需要一份叫做「IQ Protocol」的文件）",
+   "en": "The essence of IQ = confirming that installation and configuration are correct (this does not necessarily require a document called an \"IQ Protocol\")"
+  },
+  {
+   "zh": "OQ 的本質 = 確認系統在規定操作範圍內運行符合規格",
+   "en": "The essence of OQ = confirming that the system operates in accordance with specifications within the defined operating range"
+  },
+  {
+   "zh": "PQ 的本質 = 確認系統在實際業務環境中適合預定用途",
+   "en": "The essence of PQ = confirming that the system is fit for its intended use in the actual business environment"
+  },
+  {
+   "zh": "如果你的公司的 SOP 要求做 IQ/OQ/PQ，可以繼續用這個框架，但在規劃時用 GAMP 5 的批判性思維決定每個部分要做多深。",
+   "en": "If your company's SOP requires IQ/OQ/PQ, you can keep using this framework, but when planning, use GAMP 5 critical thinking to decide how deep each part needs to go."
+  },
+  {
+   "zh": "FAT / SAT 的角色",
+   "en": "The Role of FAT / SAT"
+  },
+  {
+   "zh": "GAMP 5 提到 Factory Acceptance Testing (FAT) 和 Site Acceptance Testing (SAT) 是受監管公司在正式放行前的驗收活動。重點原則：<strong>查驗活動不應不必要地重複</strong>。",
+   "en": "GAMP 5 notes that Factory Acceptance Testing (FAT) and Site Acceptance Testing (SAT) are acceptance activities carried out by the regulated company before formal release. The key principle: <strong>verification activities should not be unnecessarily repeated</strong>."
+  },
+  {
+   "zh": "如果供應商已在工廠做了充分的 FAT，受監管公司到現場後的 SAT 可以聚焦在安裝確認和現場特定條件的測試，而不是把 FAT 的所有測試案例在現場重跑一遍。",
+   "en": "If the supplier has already performed adequate FAT at the factory, the regulated company's SAT on site can focus on installation verification and testing of site-specific conditions, rather than re-running every FAT test case on site."
+  },
+  {
+   "zh": "階段三：操作期",
+   "en": "Phase 3: Operation"
+  },
+  {
+   "zh": "4.3 操作階段解析",
+   "en": "4.3 The Operation Phase Explained"
+  },
+  {
+   "zh": "操作階段：最長且最容易被忽視的階段",
+   "en": "The Operation Phase: The Longest and Most Easily Overlooked Phase"
+  },
+  {
+   "zh": "操作階段通常是整個系統生命週期中持續時間最長的——一個 SCADA 或 LIMS 系統的操作期可長達10-15年。然而在許多藥廠，驗證工作完成後，合規關注度就大幅下降。",
+   "en": "The operation phase is usually the longest part of the system life cycle: a SCADA or LIMS system may remain in operation for 10-15 years. Yet at many pharmaceutical companies, attention to compliance drops sharply once the validation work is finished."
+  },
+  {
+   "zh": "GAMP 5 的立場是：<strong>操作階段的合規維護與初始驗證同等重要</strong>。維持合規的核心機制是有效的操作程序、培訓、變更管理和定期審查。",
+   "en": "The GAMP 5 position is that <strong>maintaining compliance in the operation phase is as important as the initial validation</strong>. The core mechanisms for maintaining compliance are effective operating procedures, training, change management, and periodic review."
+  },
+  {
+   "zh": "CDMO 情境：SCADA 系統的操作階段管理",
+   "en": "CDMO Scenario: Managing the Operation Phase of a SCADA System"
+  },
+  {
+   "zh": "你的 CDMO 已有一套 SCADA 系統控制無菌灌裝線三年了。操作階段的典型事件：",
+   "en": "Your CDMO has had a SCADA system controlling an aseptic filling line for three years. Typical events in the operation phase include:"
+  },
+  {
+   "zh": "<strong>供應商推送軟體更新</strong>（需要走變更控制，評估衝擊）",
+   "en": "<strong>The supplier pushes a software update</strong> (must go through change control, with impact assessment)"
+  },
+  {
+   "zh": "<strong>新增一台灌裝頭</strong>（需要重新評估並驗證相關功能）",
+   "en": "<strong>A filling head is added</strong> (the related functions must be reassessed and validated)"
+  },
+  {
+   "zh": "<strong>電腦崩潰，需要重裝</strong>（備份與還原程序是否驗證過？）",
+   "en": "<strong>A computer crashes and must be reinstalled</strong> (have the backup and restore procedures been validated?)"
+  },
+  {
+   "zh": "<strong>年度定期審查</strong>（確認系統仍符合現行法規要求）",
+   "en": "<strong>Annual periodic review</strong> (confirm that the system still meets current regulatory requirements)"
+  },
+  {
+   "zh": "操作階段的八大流程群組",
+   "en": "The Eight Process Groups of the Operation Phase"
+  },
+  {
+   "zh": "GAMP 5 Table 4.2 列出了操作階段的主要流程群組，每個都有對應的附錄（O1-O13）。這不是說每個系統都要建立所有這些流程，而是根據系統的風險和複雜度選擇適用的項目。",
+   "en": "GAMP 5 Table 4.2 lists the main process groups of the operation phase, each with a corresponding appendix (O1-O13). This does not mean every system must establish all of these processes; rather, you select the applicable ones according to the system's risk and complexity."
+  },
+  {
+   "zh": "4.3 關鍵操作流程解析",
+   "en": "4.3 Key Operational Processes Explained"
+  },
+  {
+   "zh": "Incident vs. Problem：兩個不同的管理流程",
+   "en": "Incident vs. Problem: Two Different Management Processes"
+  },
+  {
+   "zh": "這組概念來自 ITIL（IT 服務管理框架）：",
+   "en": "These concepts come from ITIL (the IT service management framework):"
+  },
+  {
+   "zh": "<strong>Incident Management（事件管理）</strong>：目標是「最快速度恢復服務」。例如 LIMS 突然當機，IT 重啟服務，系統恢復——這是 Incident 管理，重點是速度。",
+   "en": "<strong>Incident Management</strong>: the goal is to \"restore service as quickly as possible\". For example, if the LIMS suddenly goes down and IT restarts the service and the system recovers, that is incident management, and speed is the priority."
+  },
+  {
+   "zh": "<strong>Problem Management（問題管理）</strong>：目標是「找到根因，防止再發」。同一台 LIMS 每個月都當機一次，這是 Problem，需要深入調查根因（資料庫索引效率？記憶體洩漏？）並解決。",
+   "en": "<strong>Problem Management</strong>: the goal is to \"find the root cause and prevent recurrence\". If the same LIMS crashes once every month, that is a Problem, and it requires an in-depth root cause investigation (database index efficiency? memory leak?) and a fix."
+  },
+  {
+   "zh": "在 GMP 環境中，Incident 需要記錄（偏差記錄），Problem 需要 CAPA。兩者要連動。",
+   "en": "In a GMP environment, an Incident needs to be recorded (deviation record) and a Problem needs a CAPA. The two must be linked."
+  },
+  {
+   "zh": "變更控制：與 GMP 設施變更控制的連結",
+   "en": "Change Control: Link to GMP Facility Change Control"
+  },
+  {
+   "zh": "GAMP 5 要求：所有電腦化系統的軟硬體、基礎設施、使用方式的變更，都必須走正式的變更控制流程（change-control process）。",
+   "en": "GAMP 5 requires that all changes to the hardware, software, infrastructure, and manner of use of a computerized system go through a formal change-control process."
+  },
+  {
+   "zh": "這與 GMP 廠房的變更控制 SOP 是同一個邏輯框架。在 CDMO 中，<strong>電腦化系統的變更控制應整合到廠區統一的變更控制體系中</strong>，而非孤立運作。",
+   "en": "This is the same logical framework as the change control SOP for GMP facilities. In a CDMO, <strong>change control for computerized systems should be integrated into the site-wide change control system</strong> rather than operating in isolation."
+  },
+  {
+   "zh": "關鍵要求：變更在實施前必須完成評估、授權、文件記錄、測試和審核。這意味著緊急變更也要有後補記錄機制，不能以「緊急」為由跳過文件要求。",
+   "en": "Key requirement: before a change is implemented, it must be assessed, authorized, documented, tested, and reviewed. This means that emergency changes also need a mechanism for retrospective documentation, and \"urgency\" cannot be used as a reason to skip documentation requirements."
+  },
+  {
+   "zh": "組態項目（Configuration Item）概念",
+   "en": "The Concept of the Configuration Item"
+  },
+  {
+   "zh": "Configuration Item（CI）是系統中在正常操作下不應改變的組件。例如：",
+   "en": "A Configuration Item (CI) is a component of the system that should not change under normal operation. Examples include:"
+  },
+  {
+   "zh": "LIMS 的版本號和安裝包",
+   "en": "The LIMS version number and installation package"
+  },
+  {
+   "zh": "資料庫的 schema 設計",
+   "en": "The database schema design"
+  },
+  {
+   "zh": "系統設定參數檔",
+   "en": "System parameter files"
+  },
+  {
+   "zh": "整合介面的 API 定義",
+   "en": "API definitions of integration interfaces"
+  },
+  {
+   "zh": "任何 CI 的變更都必須通過變更管理流程——不能直接在生產環境手動修改設定，然後事後補記錄。",
+   "en": "Any change to a CI must go through the change management process: you cannot modify settings manually in the production environment and then add the records afterwards."
+  },
+  {
+   "zh": "4.3.5–4.3.8 定期審查、持續運作與安全管理",
+   "en": "4.3.5-4.3.8 Periodic Review, Continuity of Operation, and Security Management"
+  },
+  {
+   "zh": "定期審查的頻率：沒有固定答案",
+   "en": "Frequency of Periodic Review: There Is No Fixed Answer"
+  },
+  {
+   "zh": "GAMP 5 沒有規定「每年一次」或「每兩年一次」，而是要求根據以下因素決定頻率：",
+   "en": "GAMP 5 does not specify \"once a year\" or \"once every two years\"; instead it requires the frequency to be determined based on the following factors:"
+  },
+  {
+   "zh": "系統對患者安全和產品品質的影響程度",
+   "en": "The degree of impact of the system on patient safety and product quality"
+  },
+  {
+   "zh": "系統的操作歷史（有沒有頻繁出現問題？）",
+   "en": "The operating history of the system (are there frequent problems?)"
+  },
+  {
+   "zh": "法規環境是否有變化",
+   "en": "Whether the regulatory environment has changed"
+  },
+  {
+   "zh": "高風險系統（如直接控制無菌製程的 SCADA）可能需要每年審查；低風險的 HR 系統可能三年一次就足夠。",
+   "en": "A high-risk system (such as a SCADA directly controlling an aseptic process) may need annual review, while a low-risk HR system may be adequately reviewed once every three years."
+  },
+  {
+   "zh": "備份與還原：最容易被忽略的 GMP 要求",
+   "en": "Backup and Restore: The Most Easily Overlooked GMP Requirement"
+  },
+  {
+   "zh": "幾乎所有 IT 系統都有備份排程，但在 GMP 環境中，<strong>備份還原程序必須被測試，且測試結果要記錄</strong>。",
+   "en": "Almost every IT system has a backup schedule, but in a GMP environment, <strong>the backup restore procedure must be tested, and the test results must be recorded</strong>."
+  },
+  {
+   "zh": "常見問題：「我們有每天備份，但從來沒有試過從備份還原。」這在 GMP 環境中是不合規的——因為沒有測試過的程序，不能確保它能在緊急情況下正常運作。",
+   "en": "A common problem: \"We back up every day, but we have never tried restoring from a backup.\" This is non-compliant in a GMP environment, because a procedure that has never been tested cannot be relied on to work in an emergency."
+  },
+  {
+   "zh": "BCP 的優先順序邏輯",
+   "en": "The Prioritization Logic of the BCP"
+  },
+  {
+   "zh": "當多個系統同時發生故障時，BCP 需要明確的優先順序。GAMP 5 要求基於<strong>患者風險和業務風險</strong>來排序。",
+   "en": "When multiple systems fail at the same time, the BCP needs a clear order of priority. GAMP 5 requires prioritization based on <strong>patient risk and business risk</strong>."
+  },
+  {
+   "zh": "CDMO 的典型優先順序：",
+   "en": "A typical CDMO order of priority:"
+  },
+  {
+   "zh": "批次記錄系統（直接影響產品放行決策）",
+   "en": "Batch record system (directly affects product release decisions)"
+  },
+  {
+   "zh": "SCADA/製程控制系統（影響生產連續性）",
+   "en": "SCADA/process control system (affects production continuity)"
+  },
+  {
+   "zh": "LIMS（影響放行測試）",
+   "en": "LIMS (affects release testing)"
+  },
+  {
+   "zh": "ERP/採購系統（影響業務，但可短期手動作業）",
+   "en": "ERP/procurement system (affects the business, but can run on manual workarounds for a short time)"
+  },
+  {
+   "zh": "階段四：退役期",
+   "en": "Phase 4: Retirement"
+  },
+  {
+   "zh": "4.4 退役階段解析",
+   "en": "4.4 The Retirement Phase Explained"
+  },
+  {
+   "zh": "退役的三個步驟",
+   "en": "The Three Steps of Retirement"
+  },
+  {
+   "zh": "GAMP 5 將退役拆解為三個概念上不同的步驟：",
+   "en": "GAMP 5 breaks retirement down into three conceptually distinct steps:"
+  },
+  {
+   "zh": "<strong>Withdrawal（撤除）</strong>：停止使用——用戶帳號停用、介面切斷、不再寫入新資料。但系統可能還在線上，供查閱歷史資料。",
+   "en": "<strong>Withdrawal</strong>: ceasing use. User accounts are disabled, interfaces are cut off, and no new data is written. However, the system may remain online so that historical data can be consulted."
+  },
+  {
+   "zh": "<strong>Decommissioning（除役）</strong>：受控地移除系統——從基礎設施中卸除，包含硬體和軟體層面的移除。",
+   "en": "<strong>Decommissioning</strong>: controlled removal of the system from the infrastructure, including removal at both the hardware and software levels."
+  },
+  {
+   "zh": "<strong>Disposal（銷毀）</strong>：永久刪除資料或銷毀硬體。注意：GxP 記錄必須等到記錄保留期限到期後才能銷毀。",
+   "en": "<strong>Disposal</strong>: permanent deletion of data or destruction of hardware. Note: GxP records may only be destroyed after the record retention period has expired."
+  },
+  {
+   "zh": "CDMO 情境：舊 MES 退役",
+   "en": "CDMO Scenario: Retiring an Old MES"
+  },
+  {
+   "zh": "假設你的 CDMO 要用新的 MES 取代已用10年的舊 MES：",
+   "en": "Suppose your CDMO is replacing a 10-year-old MES with a new MES:"
+  },
+  {
+   "zh": "<strong>撤除</strong>：切換至新 MES 後，舊 MES 禁止新批次建立，但保留查閱舊批次記錄的能力",
+   "en": "<strong>Withdrawal</strong>: after switching to the new MES, the old MES is blocked from creating new batches but keeps the ability to look up old batch records"
+  },
+  {
+   "zh": "<strong>資料遷移</strong>：決定哪些歷史批次記錄要遷移到新系統？哪些保留在歸檔系統？遷移的準確性和完整性需要被驗證",
+   "en": "<strong>Data migration</strong>: decide which historical batch records are migrated to the new system and which are kept in an archive system; the accuracy and completeness of the migration must be verified"
+  },
+  {
+   "zh": "<strong>除役</strong>：確認記錄保留期限要求（通常批次記錄保留期為產品有效期 + 1 年或最低 5 年），滿足後才能進行伺服器下線",
+   "en": "<strong>Decommissioning</strong>: confirm the record retention requirements (batch records are typically retained for the product shelf life + 1 year, or a minimum of 5 years), and only then take the servers offline"
+  },
+  {
+   "zh": "<strong>銷毀</strong>：依資料安全要求，確保敏感資料的安全銷毀並留存記錄",
+   "en": "<strong>Disposal</strong>: in line with data security requirements, ensure that sensitive data is securely destroyed and keep a record of it"
+  },
+  {
+   "zh": "資料遷移的三個驗證要求",
+   "en": "Three Verification Requirements for Data Migration"
+  },
+  {
+   "zh": "GAMP 5 要求資料遷移必須是：",
+   "en": "GAMP 5 requires data migration to be:"
+  },
+  {
+   "zh": "<strong>Accurate（準確）</strong>：遷移後的資料與原資料一致",
+   "en": "<strong>Accurate</strong>: the migrated data is consistent with the original data"
+  },
+  {
+   "zh": "<strong>Complete（完整）</strong>：所有應遷移的記錄都已遷移，無遺漏",
+   "en": "<strong>Complete</strong>: all records that should be migrated have been migrated, with nothing missing"
+  },
+  {
+   "zh": "<strong>Verified（已查驗）</strong>：上述兩點需要有文件化的確認活動",
+   "en": "<strong>Verified</strong>: the two points above require documented confirmation activities"
+  },
+  {
+   "zh": "資料遷移是數據完整性（Data Integrity）的重大風險點。一旦資料在遷移中損壞或遺失，且未被發現，可能影響未來的批次回顧、趨勢分析或法規查詢。",
+   "en": "Data migration is a major risk point for data integrity. If data is corrupted or lost during migration and this goes unnoticed, it may affect future batch reviews, trend analyses, or regulatory inquiries."
+  },
+  {
+   "zh": "章節摘要 — 核心要點",
+   "en": "Chapter Summary: Key Points"
+  },
+  {
+   "zh": "<strong>生命週期 = 4個階段：</strong>概念→專案→操作→退役。操作階段通常持續最長，但合規管理要求最易被忽視。",
+   "en": "<strong>Life cycle = 4 phases:</strong> Concept → Project → Operation → Retirement. The operation phase usually lasts the longest, but its compliance requirements are the most easily overlooked."
+  },
+  {
+   "zh": "<strong>查驗方法多元化：</strong>V-model 只是眾多可接受方法之一；Agile 迭代方法在 GAMP 5 框架下完全合規。",
+   "en": "<strong>Diverse verification approaches:</strong> the V-model is only one of many acceptable approaches; iterative Agile methods are fully compliant under the GAMP 5 framework."
+  },
+  {
+   "zh": "<strong>批判性思維貫穿全生命週期：</strong>合規程度與文件數量無關，與控制的針對性和有效性有關。多層保證思維是評估風險的核心工具。",
+   "en": "<strong>Critical thinking runs through the entire life cycle:</strong> the level of compliance has nothing to do with the volume of documentation and everything to do with how targeted and effective the controls are. Layers-of-assurance thinking is the core tool for assessing risk."
+  },
+  {
+   "zh": "<strong>分類（Cat. 3/4/5）是起點，不是終點：</strong>實際驗證深度還要考慮 GxP 影響程度、供應商能力和系統新穎性。",
+   "en": "<strong>Categorization (Cat. 3/4/5) is a starting point, not an end point:</strong> the actual depth of validation must also consider the degree of GxP impact, supplier capability, and system novelty."
+  },
+  {
+   "zh": "<strong>操作階段四大支柱：</strong>變更管理（所有變更走變更控制）、定期審查（依風險決定頻率）、CAPA 整合、業務持續計畫（BCP + DR + 備份還原測試）。",
+   "en": "<strong>Four pillars of the operation phase:</strong> change management (all changes go through change control), periodic review (frequency determined by risk), CAPA integration, and business continuity planning (BCP + DR + backup restore testing)."
+  },
+  {
+   "zh": "<strong>退役不是簡單地關機：</strong>需要規劃記錄保留期、資料遷移驗證、安全銷毀，並留存退役活動的文件證據。",
+   "en": "<strong>Retirement is not simply switching off the machine:</strong> it requires planning for record retention periods, verification of data migration, and secure destruction, with documented evidence of the retirement activities."
+  }
+ ]
+}

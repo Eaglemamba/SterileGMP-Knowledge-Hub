@@ -1,0 +1,765 @@
+{
+ "source": "section-03b-m3-m4-qrm-categories.html",
+ "blocks": [
+  {
+   "zh": "科學化品質風險管理與軟體分類",
+   "en": "Science-Based Quality Risk Management and Software Categories"
+  },
+  {
+   "zh": "Learning Objectives  |  學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Explain the five-step QRM process from ICH Q9 as applied to computerized systems, including scope, roles, and scalability.  <em>（解釋ICH Q9五步驟QRM流程如何應用於電腦化系統）</em>",
+   "en": "Explain the five-step QRM process from ICH Q9 as applied to computerized systems, including scope, roles, and scalability.  <em>(How the five-step ICH Q9 QRM process applies to computerized systems)</em>"
+  },
+  {
+   "zh": "Distinguish the three levels of risk assessment — initial, functional, and change-control — and describe when each is required.  <em>（區分初始、功能性與變更控制三層次風險評估）</em>",
+   "en": "Distinguish the three levels of risk assessment — initial, functional, and change-control — and describe when each is required.  <em>(Initial, functional, and change-control risk assessments)</em>"
+  },
+  {
+   "zh": "Apply the GAMP risk assessment method (Severity × Likelihood → Risk Class; Risk Class × Detectability → Risk Priority) to pharma examples.  <em>（應用GAMP風險評估矩陣至製藥實例）</em>",
+   "en": "Apply the GAMP risk assessment method (Severity × Likelihood → Risk Class; Risk Class × Detectability → Risk Priority) to pharma examples.  <em>(Applying the GAMP risk assessment matrix to pharmaceutical examples)</em>"
+  },
+  {
+   "zh": "Correctly assign GAMP software categories 1, 3, 4, and 5 to real computerized systems, and explain why accurate categorization prevents over- or under-validation.  <em>（正確分配GAMP軟體類別，並說明為何準確分類能避免過度或不足驗證）</em>",
+   "en": "Correctly assign GAMP software categories 1, 3, 4, and 5 to real computerized systems, and explain why accurate categorization prevents over- or under-validation.  <em>(Accurate categorization avoids over- or under-validation)</em>"
+  },
+  {
+   "zh": "Describe the hardware category framework (Category 1 standard vs. Category 2 custom) and its documentation implications.  <em>（描述硬體類別框架及其文件要求）</em>",
+   "en": "Describe the hardware category framework (Category 1 standard vs. Category 2 custom) and its documentation implications.  <em>(The hardware category framework and its documentation requirements)</em>"
+  },
+  {
+   "zh": "Construct a risk register concept for a CDMO computerized system and explain how it drives test planning and periodic review.  <em>（建立CDMO電腦化系統的風險登記冊概念，說明如何驅動測試計畫與定期審查）</em>",
+   "en": "Construct a risk register concept for a CDMO computerized system and explain how it drives test planning and periodic review.  <em>(Building a risk register for a CDMO computerized system to drive test planning and periodic review)</em>"
+  },
+  {
+   "zh": "<strong>Appendix M3 — Science-Based Quality Risk Management Appendix M3 — 科學基礎品質風險管理</strong>",
+   "en": "<strong>Appendix M3 — Science-Based Quality Risk Management</strong>"
+  },
+  {
+   "zh": "中文解說：QRM 的本質與使用場景",
+   "en": "Commentary: The Nature of QRM and When to Use It"
+  },
+  {
+   "zh": "QRM 是什麼？",
+   "en": "What is QRM?"
+  },
+  {
+   "zh": "<span class=\"key-term\">品質風險管理（QRM）</span> 是一套系統性的方法，核心在於「評估、控制、溝通、審查」四個動作，對象是會影響病患安全、產品品質與數據完整性的風險。",
+   "en": "<span class=\"key-term\">Quality risk management (QRM)</span> is a systematic approach built on four activities: assess, control, communicate, and review. It addresses risks that could affect patient safety, product quality, and data integrity."
+  },
+  {
+   "zh": "在 GAMP 5 第二版中，QRM 不是一個獨立工具，而是整個電腦化系統生命週期的基礎架構。",
+   "en": "In GAMP 5 Second Edition, QRM is not a standalone tool. It is the foundation of the entire computerized system life cycle."
+  },
+  {
+   "zh": "類比：飛行前安全檢查",
+   "en": "Analogy: The pre-flight safety check"
+  },
+  {
+   "zh": "想像每次飛機起飛前的機師檢查清單——不是所有項目都同等重要，駕駛艙儀表盤比餐盤托架要嚴格得多。QRM 就是在問：「哪些系統功能相當於發動機啟動，哪些只是機艙燈？」",
+   "en": "Think of the pilot's checklist before every takeoff. Not every item matters equally: the cockpit instruments are checked far more rigorously than the meal-tray latches. QRM asks the same question: \"Which system functions are the equivalent of starting the engine, and which are just the cabin lights?\""
+  },
+  {
+   "zh": "第二版新增重點：雲端風險外移",
+   "en": "New in the Second Edition: Risk transfer to the cloud"
+  },
+  {
+   "zh": "當一家 CDMO 使用 AWS/Azure 上的 SaaS LIMS 時，部分風險管理責任已移轉給供應商。但監管機構的立場清楚：<strong>責任不能外包</strong>，只有作業可以外包。因此供應商評估與持續監控成為核心 QRM 活動。",
+   "en": "When a CDMO uses a SaaS LIMS hosted on AWS/Azure, part of the risk management work moves to the supplier. But the regulators' position is clear: <strong>accountability cannot be outsourced</strong>; only activities can. Supplier assessment and ongoing monitoring therefore become core QRM activities."
+  },
+  {
+   "zh": "QRM 的七大效益（製藥現場觀點）",
+   "en": "Seven benefits of QRM (a shop-floor view)"
+  },
+  {
+   "zh": "<strong>省錢：</strong>低風險功能不需要高強度測試，節省驗證成本",
+   "en": "<strong>Saves money:</strong> Low-risk functions do not need intensive testing, which reduces validation cost"
+  },
+  {
+   "zh": "<strong>合規：</strong>有文件支撐的風險決策，稽查員更容易接受",
+   "en": "<strong>Compliance:</strong> Documented risk decisions are easier for inspectors to accept"
+  },
+  {
+   "zh": "<strong>預防：</strong>及早識別風險比事後糾正便宜 10 倍以上",
+   "en": "<strong>Prevention:</strong> Identifying risks early costs far less (often more than 10 times less) than correcting them afterwards"
+  },
+  {
+   "zh": "<strong>可辯護：</strong>決策有依據，不是「我們一直都這樣做」",
+   "en": "<strong>Defensible:</strong> Decisions have a rationale; the answer is not \"we have always done it this way\""
+  },
+  {
+   "zh": "中文解說：誰在 QRM 中扮演哪個角色？",
+   "en": "Commentary: Who Plays Which Role in QRM?"
+  },
+  {
+   "zh": "常見誤區",
+   "en": "Common pitfall"
+  },
+  {
+   "zh": "很多公司讓 IT 單獨主導 QRM，但 <strong>IT 不等於系統擁有者</strong>。業務流程擁有者（生產或品質部門主管）才是最終負責人。IT 是支援者，不是決策者。",
+   "en": "Many companies let IT lead QRM alone, but <strong>IT is not the system owner</strong>. The business process owner (the head of production or quality) is ultimately accountable. IT is a supporter, not the decision-maker."
+  },
+  {
+   "zh": "類比：建築工程的責任鏈",
+   "en": "Analogy: The chain of responsibility in construction"
+  },
+  {
+   "zh": "蓋廠房時，建商（供應商）知道材料特性，但業主（Process Owner）決定建什麼、為何建。QA 則像建築師事務所，確保設計符合建築法規。三方缺一不可。",
+   "en": "When a plant is built, the contractor (supplier) knows the materials, but the owner (Process Owner) decides what to build and why. QA is like the architect's office, making sure the design meets building regulations. All three parties are indispensable."
+  },
+  {
+   "zh": "<strong>11.5 Guidance — QRM Process in Detail 11.5 指引 — QRM 流程詳述</strong>",
+   "en": "<strong>11.5 Guidance — QRM Process in Detail</strong>"
+  },
+  {
+   "zh": "中文解說：業務流程驅動風險評估",
+   "en": "Commentary: The Business Process Drives the Risk Assessment"
+  },
+  {
+   "zh": "五步驟 QRM 流程（ICH Q9 架構）",
+   "en": "The five-step QRM process (ICH Q9 framework)"
+  },
+  {
+   "zh": "<strong>Step 1：</strong>初始風險評估 — GxP 範圍確定、系統影響評定",
+   "en": "<strong>Step 1:</strong> Initial risk assessment — determine GxP scope and system impact"
+  },
+  {
+   "zh": "<strong>Step 2：</strong>識別功能風險 — 哪些功能會影響品質",
+   "en": "<strong>Step 2:</strong> Identify functions and their risks — which functions can affect quality"
+  },
+  {
+   "zh": "<strong>Step 3：</strong>功能風險評估 — 嚴重性 × 可能性 × 可偵測性",
+   "en": "<strong>Step 3:</strong> Functional risk assessment — severity × likelihood × detectability"
+  },
+  {
+   "zh": "<strong>Step 4：</strong>風險控制 — 設計或程序控制",
+   "en": "<strong>Step 4:</strong> Risk control — design or procedural controls"
+  },
+  {
+   "zh": "<strong>Step 5：</strong>持續監控與審查 — 生命週期全程",
+   "en": "<strong>Step 5:</strong> Ongoing monitoring and review — throughout the life cycle"
+  },
+  {
+   "zh": "風險容忍度的現實意義",
+   "en": "What risk tolerance means in practice"
+  },
+  {
+   "zh": "同樣是 LIMS 系統，若用於放行生命維持藥物的品管，風險容忍度極低；若用於追蹤辦公室文具庫存，同樣的功能失效完全可以容忍。<strong>系統本身不決定風險高低，業務流程才是關鍵。</strong>",
+   "en": "Take the same LIMS: if it is used for QC release of a life-sustaining drug, risk tolerance is extremely low; if it is used to track office stationery stock, the same functional failure is entirely tolerable. <strong>The system itself does not determine the level of risk; the business process does.</strong>"
+  },
+  {
+   "zh": "CDMO 無菌充填現場舉例",
+   "en": "Example from a CDMO sterile filling site"
+  },
+  {
+   "zh": "同一家公司的兩套系統：",
+   "en": "Two systems at the same company:"
+  },
+  {
+   "zh": "<strong>高風險：</strong>控制無菌腔室壓差的 DCS — 失效直接影響滅菌保證，可能造成產品污染",
+   "en": "<strong>High risk:</strong> The DCS controlling differential pressure in the aseptic chamber — failure directly affects sterility assurance and may contaminate the product"
+  },
+  {
+   "zh": "<strong>低風險：</strong>追蹤員工培訓記錄的 LMS — 失效影響合規記錄，不直接危及病患",
+   "en": "<strong>Low risk:</strong> The LMS tracking employee training records — failure affects compliance records but does not directly endanger patients"
+  },
+  {
+   "zh": "對 DCS 的驗證要求遠高於 LMS，即使兩者都是 Category 4 系統。",
+   "en": "The validation requirements for the DCS are far higher than for the LMS, even though both are Category 4 systems."
+  },
+  {
+   "zh": "中文解說：生命週期各階段的風險管理",
+   "en": "Commentary: Risk Management at Each Life Cycle Stage"
+  },
+  {
+   "zh": "類比：蓋房子前先測地質",
+   "en": "Analogy: Test the ground before building"
+  },
+  {
+   "zh": "初始風險評估就像蓋房子前的地質調查——越早做越好，能影響設計決策。如果等到施工完成才發現地基不穩，代價將高出十倍。同理，初始風險評估應在需求規格制定之前或同步進行，而非事後補做。",
+   "en": "The initial risk assessment is like the geological survey before construction: the earlier it is done, the more it can influence design decisions. Discovering unstable foundations after the building is finished costs ten times more. Likewise, the initial risk assessment should be done before, or at the same time as, the requirements specification, not added retrospectively."
+  },
+  {
+   "zh": "EU Annex 11 的關鍵要求",
+   "en": "Key requirement of EU Annex 11"
+  },
+  {
+   "zh": "電腦化系統取代人工操作時，<strong>不得讓整體風險升高</strong>。這個要求常被忽略的一個面向是：人工操作中偶然存在的品質控制（例如操作員目視察覺異常），電腦化後可能消失，必須用其他控制措施補回。",
+   "en": "When a computerized system replaces a manual operation, <strong>there should be no increase in the overall risk</strong>. An often overlooked aspect is that quality controls that existed incidentally in the manual operation (for example, an operator noticing an abnormality by eye) may disappear after computerization and must be replaced by other controls."
+  },
+  {
+   "zh": "CDMO 實踐：無菌充填線自動化 QRM",
+   "en": "CDMO practice: QRM for automating a sterile filling line"
+  },
+  {
+   "zh": "假設要將手動記錄腔室壓差改為 DCS 自動採集：",
+   "en": "Suppose manual recording of chamber differential pressure is to be replaced by automatic DCS data collection:"
+  },
+  {
+   "zh": "<strong>初始評估：</strong>確認此為 GxP 系統，對無菌性有高影響",
+   "en": "<strong>Initial assessment:</strong> Confirm this is a GxP system with high impact on sterility"
+  },
+  {
+   "zh": "<strong>功能評估：</strong>FMEA 識別「感測器漂移」「通訊中斷」等失效模式",
+   "en": "<strong>Functional assessment:</strong> FMEA identifies failure modes such as \"sensor drift\" and \"communication loss\""
+  },
+  {
+   "zh": "<strong>測試計畫：</strong>重點測試警報邏輯、感測器校驗，輕點測試 UI 外觀",
+   "en": "<strong>Test plan:</strong> Focus testing on alarm logic and sensor calibration; test the UI appearance lightly"
+  },
+  {
+   "zh": "<strong>持續監控：</strong>納入年度驗證狀態審查",
+   "en": "<strong>Ongoing monitoring:</strong> Include in the annual validation status review"
+  },
+  {
+   "zh": "中文解說：GAMP 風險評估矩陣",
+   "en": "Commentary: The GAMP Risk Assessment Matrix"
+  },
+  {
+   "zh": "類比：汽車安全評分",
+   "en": "Analogy: Car safety rating"
+  },
+  {
+   "zh": "嚴重性 = 碰撞後車廂潰縮程度<br/>\n            可能性 = 車型在該路段發生碰撞的機率<br/>\n            可偵測性 = 是否有防碰撞警示系統<br/><br/>\n            三者組合決定這款車的整體安全風險優先級。",
+   "en": "Severity = how badly the passenger compartment collapses in a crash<br/>\n            Likelihood = the probability that this model is involved in a crash on a given stretch of road<br/>\n            Detectability = whether a collision-avoidance warning system is fitted<br/><br/>\n            Together, the three determine the overall safety risk priority of the car."
+  },
+  {
+   "zh": "重要提醒：語境決定一切",
+   "en": "Important reminder: Context is everything"
+  },
+  {
+   "zh": "「高」「中」「低」的定義在每個專案都必須重新協商。無菌充填廠的「低嚴重性」，可能等同於一般倉儲系統的「高嚴重性」。每個風險評估文件必須記錄這些定義。",
+   "en": "The definitions of \"high,\" \"medium,\" and \"low\" must be renegotiated for every project. \"Low severity\" in a sterile filling plant may be equivalent to \"high severity\" in a general warehouse system. Every risk assessment document must record these definitions."
+  },
+  {
+   "zh": "兩步驟評估法拆解",
+   "en": "The two-step assessment method"
+  },
+  {
+   "zh": "<strong>第一步：確定 Risk Class</strong>",
+   "en": "<strong>Step 1: Determine the Risk Class</strong>"
+  },
+  {
+   "zh": "<strong>第二步：Risk Class × 可偵測性 → Risk Priority</strong>",
+   "en": "<strong>Step 2: Risk Class × Detectability → Risk Priority</strong>"
+  },
+  {
+   "zh": "若 Risk Class 高且偵測困難（低偵測性）→ 最高風險優先級，需要強力控制措施。",
+   "en": "If the Risk Class is high and detection is difficult (low detectability), the result is the highest Risk Priority and strong controls are required."
+  },
+  {
+   "zh": "中文解說：控制措施的層次",
+   "en": "Commentary: Levels of Control Measures"
+  },
+  {
+   "zh": "控制措施的三個層次（由強到弱）",
+   "en": "Three levels of control measures (strongest to weakest)"
+  },
+  {
+   "zh": "<strong>消除風險：</strong>重新設計流程或系統，讓危害不可能發生（最佳）",
+   "en": "<strong>Eliminate the risk:</strong> Redesign the process or system so the hazard cannot occur (best)"
+  },
+  {
+   "zh": "<strong>降低可能性：</strong>加強驗證、用成熟技術、冗餘設計",
+   "en": "<strong>Reduce likelihood:</strong> Strengthen verification, use proven technology, build in redundancy"
+  },
+  {
+   "zh": "<strong>提高可偵測性：</strong>警報、下游檢測、QC 放行測試",
+   "en": "<strong>Increase detectability:</strong> Alarms, downstream inspection, QC release testing"
+  },
+  {
+   "zh": "類比：瑞士起司模型",
+   "en": "Analogy: The Swiss cheese model"
+  },
+  {
+   "zh": "每一層控制措施都像一片有洞的起司，沒有任何單一控制是完美的。但多層疊加後，失效路徑要穿透所有層的洞才能造成傷害——這就是深度防禦的概念，也是 QRM 的核心哲學。",
+   "en": "Each layer of control is like a slice of cheese with holes; no single control is perfect. But when several layers are stacked, a failure path has to pass through the holes in every layer to cause harm. This is the concept of defense in depth, and it is the core philosophy of QRM."
+  },
+  {
+   "zh": "殘餘風險的實務處理",
+   "en": "Handling residual risk in practice"
+  },
+  {
+   "zh": "驗證結束後，殘餘風險不會自動消失。對於 CDMO，常見的殘餘風險接受方式包括：",
+   "en": "Residual risk does not disappear automatically once validation is finished. Common ways a CDMO accepts residual risk include:"
+  },
+  {
+   "zh": "寫入年度產品審查（APR）的監控計畫",
+   "en": "Writing it into the monitoring plan of the Annual Product Review (APR)"
+  },
+  {
+   "zh": "在 SOP 中明定操作員複核步驟",
+   "en": "Specifying an operator verification step in the SOP"
+  },
+  {
+   "zh": "在風險登記冊中標記並設定重新評估日期",
+   "en": "Flagging it in the risk register and setting a re-assessment date"
+  },
+  {
+   "zh": "中文解說：風險登記冊與外包管理",
+   "en": "Commentary: Risk Register and Outsourcing Management"
+  },
+  {
+   "zh": "風險登記冊（Risk Register）是什麼？",
+   "en": "What is a risk register?"
+  },
+  {
+   "zh": "風險登記冊是一份動態文件，記錄：",
+   "en": "A risk register is a living document that records:"
+  },
+  {
+   "zh": "已識別的風險（危害 + 失效模式）",
+   "en": "Identified risks (hazard + failure mode)"
+  },
+  {
+   "zh": "每個風險的評級（嚴重性、可能性、可偵測性）",
+   "en": "The rating of each risk (severity, likelihood, detectability)"
+  },
+  {
+   "zh": "採取的控制措施",
+   "en": "Controls applied"
+  },
+  {
+   "zh": "殘餘風險狀態",
+   "en": "Residual risk status"
+  },
+  {
+   "zh": "責任人與複審日期",
+   "en": "Owner and review date"
+  },
+  {
+   "zh": "它不只是一份驗證文件，而是系統整個生命週期的風險追蹤工具。",
+   "en": "It is not just a validation document but a risk-tracking tool for the whole life of the system."
+  },
+  {
+   "zh": "雲端/SaaS 系統的 QRM 挑戰",
+   "en": "QRM challenges for cloud/SaaS systems"
+  },
+  {
+   "zh": "若 CDMO 使用 AWS 上的雲端 LIMS：",
+   "en": "If a CDMO uses a cloud LIMS on AWS:"
+  },
+  {
+   "zh": "雲端基礎設施的可用性風險 → 需要 AWS 提供 SLA 和 SOC 報告",
+   "en": "Availability risk of the cloud infrastructure → require AWS to provide an SLA and SOC reports"
+  },
+  {
+   "zh": "數據備份與恢復 → 必須合約規定 + 定期測試",
+   "en": "Data backup and recovery → must be specified in the contract and tested regularly"
+  },
+  {
+   "zh": "存取控制 → 跨地域的使用者管理要求更嚴格",
+   "en": "Access control → user management across geographies demands stricter requirements"
+  },
+  {
+   "zh": "<strong>記住：監管機構不接受「這是供應商的問題」作為回應。</strong>",
+   "en": "<strong>Remember: regulators do not accept \"it is the supplier's problem\" as a response.</strong>"
+  },
+  {
+   "zh": "中文解說：常見風險評估工具比較",
+   "en": "Commentary: Comparing Common Risk Assessment Tools"
+  },
+  {
+   "zh": "FMEA 驅動測試計畫的實務流程",
+   "en": "How FMEA drives the test plan in practice"
+  },
+  {
+   "zh": "列出系統所有 GxP 功能（來自 URS/FS）",
+   "en": "List all GxP functions of the system (from the URS/FS)"
+  },
+  {
+   "zh": "對每個功能識別失效模式（What can go wrong?）",
+   "en": "Identify failure modes for each function (What can go wrong?)"
+  },
+  {
+   "zh": "評分：S（嚴重性）× O（可能性）× D（偵測性）= RPN",
+   "en": "Score: S (severity) × O (occurrence/likelihood) × D (detectability) = RPN"
+  },
+  {
+   "zh": "高 RPN 功能 → 轉化為測試案例（IQ/OQ/PQ）",
+   "en": "High-RPN functions → convert into test cases (IQ/OQ/PQ)"
+  },
+  {
+   "zh": "低 RPN 功能 → 較簡單的核查或文件審查即可",
+   "en": "Low-RPN functions → simpler verification or document review is sufficient"
+  },
+  {
+   "zh": "這個流程直接回答稽查員的問題：「你的測試案例是怎麼決定的？」",
+   "en": "This process directly answers the inspector's question: \"How did you decide on your test cases?\""
+  },
+  {
+   "zh": "中文解說：中高影響功能評估的差異",
+   "en": "Commentary: Assessing Medium- vs High-Impact Functions"
+  },
+  {
+   "zh": "為什麼要區分通用與具體危害？",
+   "en": "Why distinguish generic from specific hazards?"
+  },
+  {
+   "zh": "對於<strong>中等影響</strong>的功能，我們只需要識別大方向的失效類型，這樣效率高、夠用。但對於<strong>高影響</strong>的功能，必須深入每一個具體失效情境，才能設計出針對性的測試案例。",
+   "en": "For <strong>medium-impact</strong> functions, we only need to identify broad failure types; this is efficient and sufficient. For <strong>high-impact</strong> functions, we must go into every specific failure scenario in order to design targeted test cases."
+  },
+  {
+   "zh": "這就是為什麼無菌充填線的充填功能（高影響）需要特別列出「停電 &lt;30 分鐘」和「停電 &gt;30 分鐘」兩個不同情境，而不只是籠統的「電力問題」。",
+   "en": "This is why the filling function of a sterile filling line (high impact) needs two separate scenarios, \"power loss &lt;30 minutes\" and \"power loss &gt;30 minutes,\" rather than a vague \"power problem.\""
+  },
+  {
+   "zh": "類比：飛機 vs 廉價航空的安全檢查",
+   "en": "Analogy: Safety checks on a jumbo jet vs a budget carrier's cabin systems"
+  },
+  {
+   "zh": "對於客艙娛樂系統（低/中影響）：「螢幕故障」的一般性評估就夠了。<br/>\n            對於飛行控制系統（高影響）：必須列出每一種具體的感測器失效、軟體錯誤、備援切換情境，並逐一測試。<br/>\n            製藥系統的邏輯完全相同。",
+   "en": "For the in-flight entertainment system (low/medium impact): a general assessment of \"screen failure\" is enough.<br/>\n            For the flight control system (high impact): every specific sensor failure, software error, and redundancy switchover scenario must be listed and tested one by one.<br/>\n            The logic for pharmaceutical systems is exactly the same."
+  },
+  {
+   "zh": "CDMO 無菌充填線應用",
+   "en": "Application to a CDMO sterile filling line"
+  },
+  {
+   "zh": "以液體充填線為例，在 CDMO 無菌環境中：",
+   "en": "Taking a liquid filling line in a CDMO aseptic environment as an example:"
+  },
+  {
+   "zh": "停電情境下 UPS 維持時間必須根據最長的充填週期設定",
+   "en": "UPS hold-up time during a power loss must be set according to the longest filling cycle"
+  },
+  {
+   "zh": "「停電 &gt;30 分鐘」情境的後果不只是充填不准確，還可能造成腔室失壓、污染風險",
+   "en": "The consequence of a \"power loss &gt;30 minutes\" scenario is not just inaccurate filling; it may also cause loss of chamber pressure and a contamination risk"
+  },
+  {
+   "zh": "這些具體情境必須在 OQ 測試中被逐一模擬驗證",
+   "en": "These specific scenarios must be simulated and verified one by one in OQ testing"
+  },
+  {
+   "zh": "<strong>Appendix M4 — Categories of Software and Hardware Appendix M4 — 軟體與硬體分類</strong>",
+   "en": "<strong>Appendix M4 — Categories of Software and Hardware</strong>"
+  },
+  {
+   "zh": "中文解說：為什麼分類很重要？",
+   "en": "Commentary: Why Does Categorization Matter?"
+  },
+  {
+   "zh": "GAMP 軟體分類的核心邏輯",
+   "en": "The core logic of GAMP software categories"
+  },
+  {
+   "zh": "分類系統的設計前提是：<strong>複雜度越高 → 殘餘缺陷的可能性越高 → 需要更嚴格的驗證。</strong>",
+   "en": "The classification system is designed on the premise that <strong>greater complexity → greater likelihood of residual defects → more rigorous validation is needed.</strong>"
+  },
+  {
+   "zh": "類別不是用來簡化決策的標籤，而是一種結構化的思考框架，幫助團隊快速評估：「這個系統需要多深入的供應商審核？多完整的測試文件？」",
+   "en": "Categories are not labels to simplify decisions but a structured way of thinking that helps the team quickly assess: \"How deep a supplier audit does this system need? How complete should the test documentation be?\""
+  },
+  {
+   "zh": "第二版的重要更新：類別是連續譜，不是方格",
+   "en": "Important update in the Second Edition: Categories are a continuum, not boxes"
+  },
+  {
+   "zh": "第一版有時被誤用為「貼標籤就好」。第二版明確強調：大多數系統是<strong>多類別混合體</strong>。例如一套商業 LIMS（主體 Cat 4），但其中的自訂批次報告模組是 Cat 5，底層 Oracle 資料庫是 Cat 1。<br/>\n            每個組件都需要對應的生命週期處理方式。",
+   "en": "The first edition was sometimes misused as \"just attach a label.\" The second edition stresses that most systems are <strong>hybrids of several categories</strong>. For example, a commercial LIMS (mainly Cat 4) may contain a custom batch report module that is Cat 5, with an underlying Oracle database that is Cat 1.<br/>\n            Each component needs the life cycle approach that corresponds to its category."
+  },
+  {
+   "zh": "錯誤分類的代價",
+   "en": "The cost of misclassification"
+  },
+  {
+   "zh": "<strong>分類過低（應該是 Cat 4 但說是 Cat 3）：</strong>驗證不足 → 稽查發現 → 483 觀察項",
+   "en": "<strong>Classified too low (should be Cat 4 but called Cat 3):</strong> Insufficient validation → inspection finding → Form 483 observation"
+  },
+  {
+   "zh": "<strong>分類過高（應該是 Cat 3 但說是 Cat 5）：</strong>驗證過度 → 浪費資源 → 影響上市時程",
+   "en": "<strong>Classified too high (should be Cat 3 but called Cat 5):</strong> Over-validation → wasted resources → delayed launch timeline"
+  },
+  {
+   "zh": "兩種錯誤都有代價，正確分類是效率與合規的基礎。",
+   "en": "Both errors have a cost; correct classification is the basis of both efficiency and compliance."
+  },
+  {
+   "zh": "中文解說：如何用分類資訊做決策",
+   "en": "Commentary: Using Category Information to Make Decisions"
+  },
+  {
+   "zh": "類比：天平 vs 色譜數據系統（CDS）都是 Cat 4？",
+   "en": "Analogy: A balance and a chromatography data system (CDS) are both Cat 4?"
+  },
+  {
+   "zh": "GAMP 文件明確指出這個例子：兩者都常被標示為 Cat 4，但一個是簡單的可配置輸出，另一個是複雜的資料採集與計算平台。<strong>分類相同，驗證深度截然不同。</strong>這正是為什麼 GxP 影響評估必須與分類結合使用。",
+   "en": "The GAMP guide points out this very example: both are often labeled Cat 4, yet one is a simple configurable output and the other is a complex data acquisition and calculation platform. <strong>Same category, very different depth of validation.</strong> This is exactly why the GxP impact assessment must be used together with categorization."
+  },
+  {
+   "zh": "中文解說：Category 1 — 基礎設施軟體",
+   "en": "Commentary: Category 1 — Infrastructure Software"
+  },
+  {
+   "zh": "Cat 1 的典型例子",
+   "en": "Typical examples of Cat 1"
+  },
+  {
+   "zh": "<strong>作業系統：</strong>Windows Server、Linux（RHEL）",
+   "en": "<strong>Operating systems:</strong> Windows Server, Linux (RHEL)"
+  },
+  {
+   "zh": "<strong>資料庫引擎：</strong>Oracle Database、MS SQL Server",
+   "en": "<strong>Database engines:</strong> Oracle Database, MS SQL Server"
+  },
+  {
+   "zh": "<strong>中介軟體：</strong>訊息佇列（MQ）、API 閘道",
+   "en": "<strong>Middleware:</strong> Message queues (MQ), API gateways"
+  },
+  {
+   "zh": "<strong>網路基礎設施：</strong>防火牆、VPN、AD（Active Directory）",
+   "en": "<strong>Network infrastructure:</strong> Firewalls, VPN, AD (Active Directory)"
+  },
+  {
+   "zh": "<strong>安全工具：</strong>防毒軟體、密碼管理系統",
+   "en": "<strong>Security tools:</strong> Antivirus software, password management systems"
+  },
+  {
+   "zh": "<strong>SDLC 工具：</strong>需求管理工具（如 JIRA）、測試管理工具（如 Xray）",
+   "en": "<strong>SDLC tools:</strong> Requirements management tools (e.g., JIRA), test management tools (e.g., Xray)"
+  },
+  {
+   "zh": "Cat 1 不需要功能驗證，但需要什麼？",
+   "en": "Cat 1 needs no functional validation, but what does it need?"
+  },
+  {
+   "zh": "安裝確認（IQ）：確認版本號、安裝程序符合核准的程序",
+   "en": "Installation qualification (IQ): confirm that version numbers and the installation procedure conform to the approved procedure"
+  },
+  {
+   "zh": "變更控制：每次版本升級都要走 GxP 評估流程",
+   "en": "Change control: every version upgrade must go through the GxP assessment process"
+  },
+  {
+   "zh": "高影響工具（如密碼管理系統）需額外風險評估",
+   "en": "High-impact tools (such as password management systems) need an additional risk assessment"
+  },
+  {
+   "zh": "常見錯誤：把 Cat 1 理解為「免驗證」。正確理解是「免功能驗證，但仍需安裝確認與變更控制」。",
+   "en": "Common mistake: treating Cat 1 as \"no validation required.\" The correct understanding is \"no functional validation, but installation qualification and change control are still required.\""
+  },
+  {
+   "zh": "類比：廚房的電力系統",
+   "en": "Analogy: The electrical system of a kitchen"
+  },
+  {
+   "zh": "電力系統本身（Cat 1）不是廚房裡的廚具，但廚具必須在可靠電力下才能正常運作。你不會測試電力能否做出完美的舒芙蕾，但你一定要確認電力系統正確安裝、接地良好、過載保護正常。",
+   "en": "The electrical system itself (Cat 1) is not a piece of kitchen equipment, but the equipment can only work properly on reliable power. You would not test whether the electricity can make a perfect souffle, but you must confirm that the electrical system is correctly installed, properly grounded, and has working overload protection."
+  },
+  {
+   "zh": "中文解說：Category 3 — 標準系統組件",
+   "en": "Commentary: Category 3 — Non-Configured Products"
+  },
+  {
+   "zh": "Cat 3 的特徵：可以設定參數，但不能重新配置業務流程",
+   "en": "Features of Cat 3: Parameters can be set, but business processes cannot be reconfigured"
+  },
+  {
+   "zh": "典型例子（CDMO 場景）：",
+   "en": "Typical examples (CDMO scenarios):"
+  },
+  {
+   "zh": "簡單條碼掃描器固件（設定讀取格式，但不能改變邏輯）",
+   "en": "A simple barcode scanner firmware (read format can be set, but the logic cannot be changed)"
+  },
+  {
+   "zh": "天平（設定小數位數、校正係數，但功能固定）",
+   "en": "Balances (decimal places and calibration factors can be set, but the functions are fixed)"
+  },
+  {
+   "zh": "pH 計控制器（設定緩衝液參數）",
+   "en": "pH meter controllers (buffer parameters can be set)"
+  },
+  {
+   "zh": "某些儀器的資料擷取固件（如 Karl Fischer 水分測定儀）",
+   "en": "Data acquisition firmware of some instruments (such as a Karl Fischer moisture titrator)"
+  },
+  {
+   "zh": "標準報表工具（只能選報表格式，不能改計算邏輯）",
+   "en": "Standard reporting tools (only the report format can be selected; the calculation logic cannot be changed)"
+  },
+  {
+   "zh": "Cat 3 的「校驗很重要」意義",
+   "en": "Why \"calibration matters\" for Cat 3"
+  },
+  {
+   "zh": "當軟體與硬體緊密結合時（例如天平的 ADC 轉換固件與機械秤盤），校驗就是驗證軟硬體整合功能的主要手段。<br/>\n            這也是為什麼 OQ 有時可以被定期校驗計畫所取代的法規依據。",
+   "en": "When software is tightly coupled with hardware (for example, a balance's ADC firmware and its mechanical weighing pan), calibration is the main means of verifying the integrated software and hardware function.<br/>\n            This is also the regulatory basis on which OQ can sometimes be replaced by a periodic calibration program."
+  },
+  {
+   "zh": "Cat 3 vs Cat 4 的邊界在哪？",
+   "en": "Where is the boundary between Cat 3 and Cat 4?"
+  },
+  {
+   "zh": "關鍵問題是：<strong>使用者能否重新配置業務流程或工作流程？</strong><br/>\n            如果答案是否（只能設參數）→ Cat 3<br/>\n            如果答案是是（可以建立自訂工作流程）→ Cat 4",
+   "en": "The key question is: <strong>Can the user reconfigure the business process or workflow?</strong><br/>\n            If no (only parameters can be set) → Cat 3<br/>\n            If yes (custom workflows can be built) → Cat 4"
+  },
+  {
+   "zh": "中文解說：Category 4 — 可配置商業系統",
+   "en": "Commentary: Category 4 — Configured Products"
+  },
+  {
+   "zh": "類比：積木玩具 vs 樂高",
+   "en": "Analogy: Ordinary building blocks vs LEGO"
+  },
+  {
+   "zh": "Cat 3 像普通積木——形狀固定，只能改顏色。Cat 4 像樂高——可以用相同的零件組裝成千百種不同的結構。你的配置決定了系統的行為，所以<strong>配置本身就是驗證的對象</strong>。",
+   "en": "Cat 3 is like ordinary blocks: the shapes are fixed and you can only change the color. Cat 4 is like LEGO: the same parts can be assembled into thousands of different structures. Your configuration determines the system's behavior, so <strong>the configuration itself is the object of validation</strong>."
+  },
+  {
+   "zh": "Cat 4 陷阱：自訂腳本 = Cat 5",
+   "en": "The Cat 4 trap: Custom scripts = Cat 5"
+  },
+  {
+   "zh": "很多 LIMS 或 ERP 系統允許使用者編寫 macro、腳本或客製化報告。這些腳本雖然跑在 Cat 4 平台上，但其本身必須以 Cat 5 的標準來管理（設計規格 + 程式碼審查 + 單元測試）。這是常見的合規漏洞。",
+   "en": "Many LIMS or ERP systems allow users to write macros, scripts, or custom reports. Although these scripts run on a Cat 4 platform, they must themselves be managed to Cat 5 standards (design specification + code review + unit testing). This is a common compliance gap."
+  },
+  {
+   "zh": "中文解說：Category 5 與完整類別比較",
+   "en": "Commentary: Category 5 and the Full Category Comparison"
+  },
+  {
+   "zh": "Cat 5 的典型例子（CDMO 場景）",
+   "en": "Typical examples of Cat 5 (CDMO scenarios)"
+  },
+  {
+   "zh": "<strong>客製無菌充填線控制軟體：</strong>依充填線特定配置客製化開發的 PLC 邏輯",
+   "en": "<strong>Custom sterile filling line control software:</strong> PLC logic developed specifically for the configuration of a particular filling line"
+  },
+  {
+   "zh": "<strong>客製批次處置系統：</strong>公司自行開發的批次放行決策系統",
+   "en": "<strong>Custom batch disposition system:</strong> A batch release decision system developed in-house"
+  },
+  {
+   "zh": "<strong>系統整合介面：</strong>LIMS 與 MES 之間的客製化資料交換程式",
+   "en": "<strong>System integration interfaces:</strong> Custom data exchange programs between LIMS and MES"
+  },
+  {
+   "zh": "<strong>客製計算電子表格：</strong>含有 VBA 巨集的 Excel 溶液配製計算表",
+   "en": "<strong>Custom calculation spreadsheets:</strong> Excel solution preparation worksheets containing VBA macros"
+  },
+  {
+   "zh": "<strong>客製 API 連接器：</strong>連接 ERP 與倉庫管理系統的自開發 middleware",
+   "en": "<strong>Custom API connectors:</strong> In-house middleware connecting ERP and warehouse management systems"
+  },
+  {
+   "zh": "Cat 5 為什麼風險最高？",
+   "en": "Why does Cat 5 carry the highest risk?"
+  },
+  {
+   "zh": "Cat 5 的核心問題是<strong>缺乏歷史數據</strong>：",
+   "en": "The core problem with Cat 5 is the <strong>lack of historical data</strong>:"
+  },
+  {
+   "zh": "Cat 1/3/4：有成千上萬的用戶，已知的缺陷已被修補，可信賴的版本歷史",
+   "en": "Cat 1/3/4: thousands of users, known defects already fixed, a trustworthy version history"
+  },
+  {
+   "zh": "Cat 5：第一個版本，第一批使用者，計算邏輯錯誤可能潛伏數月甚至數年",
+   "en": "Cat 5: first version, first users, and calculation logic errors can lie dormant for months or even years"
+  },
+  {
+   "zh": "這就是為什麼 Cat 5 需要程式碼審查、編碼標準、單元測試——這些工具的目的是在系統「上線」前找出這些未知缺陷。",
+   "en": "This is why Cat 5 requires code review, coding standards, and unit testing: the purpose of these tools is to find such unknown defects before the system goes live."
+  },
+  {
+   "zh": "類比：買房 vs 自建房",
+   "en": "Analogy: Buying a house vs building your own"
+  },
+  {
+   "zh": "Cat 3 像買成屋（格局固定，只能換燈泡）。Cat 4 像買預售屋客變（格局可調整，但結構是建商蓋的）。Cat 5 像自建房（你決定一切，但你也要對所有結構問題負責）。自建房的安全驗證責任完全在業主，不能說「我的包商應該沒問題」。",
+   "en": "Cat 3 is like buying a finished home (fixed layout; you can only change the light bulbs). Cat 4 is like buying a pre-sale unit with customization options (the layout can be adjusted, but the structure was built by the developer). Cat 5 is like building your own house (you decide everything, but you are also responsible for every structural problem). For a self-built house, the responsibility for safety verification lies entirely with the owner; you cannot say \"my contractor should be fine.\""
+  },
+  {
+   "zh": "中文解說：硬體類別與驗證意涵",
+   "en": "Commentary: Hardware Categories and Validation Implications"
+  },
+  {
+   "zh": "硬體類別 1（標準硬體）典型例子",
+   "en": "Typical examples of Hardware Category 1 (standard hardware)"
+  },
+  {
+   "zh": "商業伺服器（Dell、HP）",
+   "en": "Commercial servers (Dell, HP)"
+  },
+  {
+   "zh": "網路交換器、路由器",
+   "en": "Network switches and routers"
+  },
+  {
+   "zh": "標準 PLC 硬體模組（如 Siemens S7 系列）",
+   "en": "Standard PLC hardware modules (such as the Siemens S7 series)"
+  },
+  {
+   "zh": "商業感測器（溫度、壓力、流量計）",
+   "en": "Commercial sensors (temperature, pressure, flow meters)"
+  },
+  {
+   "zh": "標準 HMI 面板",
+   "en": "Standard HMI panels"
+  },
+  {
+   "zh": "UPS 電源系統",
+   "en": "UPS power systems"
+  },
+  {
+   "zh": "對這些設備的要求相對簡單：記錄清楚、安裝確認、納入變更控制。",
+   "en": "The requirements for such equipment are relatively simple: clear records, installation verification, and inclusion in change control."
+  },
+  {
+   "zh": "硬體類別 2（客製硬體）典型例子",
+   "en": "Typical examples of Hardware Category 2 (custom hardware)"
+  },
+  {
+   "zh": "無菌充填線的客製夾持機構（客製機械設計）",
+   "en": "Custom clamping mechanisms for sterile filling lines (custom mechanical design)"
+  },
+  {
+   "zh": "客製取樣裝置",
+   "en": "Custom sampling devices"
+  },
+  {
+   "zh": "公司自行設計的感測器整合模組",
+   "en": "Sensor integration modules designed in-house"
+  },
+  {
+   "zh": "客製 I/O 介面卡",
+   "en": "Custom I/O interface cards"
+  },
+  {
+   "zh": "客製硬體因為沒有「市場使用歷史」，需要設計規格文件（DS）和接受測試（Acceptance Testing），類似 Cat 5 軟體的邏輯。",
+   "en": "Because custom hardware has no \"market usage history,\" it requires design specification documents (DS) and acceptance testing, following the same logic as Cat 5 software."
+  },
+  {
+   "zh": "硬體類別的實務意義",
+   "en": "Practical meaning of hardware categories"
+  },
+  {
+   "zh": "硬體類別的核心目的是：決定需要多少<strong>供應商審計</strong>與<strong>安裝文件</strong>。",
+   "en": "The core purpose of the hardware categories is to determine how much <strong>supplier auditing</strong> and <strong>installation documentation</strong> is needed."
+  },
+  {
+   "zh": "標準硬體（Cat 1）：供應商審計通常不需要，文件從資料表取得即可",
+   "en": "Standard hardware (Cat 1): a supplier audit is usually not required; documentation can be taken from the data sheet"
+  },
+  {
+   "zh": "客製硬體（Cat 2）：大多數情況下需要進行供應商實地審計",
+   "en": "Custom hardware (Cat 2): in most cases an on-site supplier audit is required"
+  },
+  {
+   "zh": "在 CDMO 場景中，大多數硬體屬於 Cat 1，只有高度客製化的設備整合模組才會進入 Cat 2。",
+   "en": "In a CDMO setting, most hardware falls under Cat 1; only highly customized equipment integration modules fall under Cat 2."
+  },
+  {
+   "zh": "Section Summary  |  本節重點摘要",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Appendix M4 Key Takeaways  |  軟體類別核心要點",
+   "en": "Appendix M4 Key Takeaways"
+  }
+ ]
+}

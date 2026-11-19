@@ -1,0 +1,837 @@
+{
+ "source": "section-06b-d10-d11-blockchain-ai.html",
+ "blocks": [
+  {
+   "zh": "區塊鏈與人工智慧／機器學習",
+   "en": "Blockchain and Artificial Intelligence / Machine Learning"
+  },
+  {
+   "zh": "Learning Objectives  |  學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Appendix D10 — Distributed Ledger Systems (Blockchain)  |  分散式帳本系統（區塊鏈）",
+   "en": "Appendix D10 — Distributed Ledger Systems (Blockchain)"
+  },
+  {
+   "zh": "解說：什麼是區塊鏈？為何製藥業要關注？",
+   "en": "Commentary: What Is Blockchain, and Why Should Pharma Care?"
+  },
+  {
+   "zh": "一個簡單的比喻",
+   "en": "A Simple Analogy"
+  },
+  {
+   "zh": "把區塊鏈想像成一本由數百人同時持有的「共用分類帳」。每一筆交易都被寫入所有人的帳本，並且蓋上加密印章。要竄改其中一筆記錄，你必須同時修改全部持有者的帳本，這在計算上幾乎不可能。這就是「不可篡改性（Immutability）」的核心。",
+   "en": "Think of a blockchain as a \"shared ledger\" held simultaneously by hundreds of participants. Every transaction is written into everyone's copy and sealed with a cryptographic stamp. To tamper with one entry, you would have to alter every holder's ledger at the same time, which is computationally almost impossible. This is the core of \"immutability.\""
+  },
+  {
+   "zh": "製藥供應鏈的實際意義：DSCSA 合規",
+   "en": "What It Means for the Pharma Supply Chain: DSCSA Compliance"
+  },
+  {
+   "zh": "美國 <strong>藥品供應鏈安全法（DSCSA, Drug Supply Chain Security Act）</strong> 要求製藥商對每一個銷售單元進行序列化追蹤。傳統做法是各自維護自己的資料庫，驗證時需要跨系統比對。",
+   "en": "The US <strong>Drug Supply Chain Security Act (DSCSA)</strong> requires manufacturers to serialize and trace every saleable unit. The traditional approach is for each party to maintain its own database, so verification means reconciling data across systems."
+  },
+  {
+   "zh": "區塊鏈解決方案的優勢：整個供應鏈（製造商 → 批發商 → 藥局）共用同一個不可竄改的記錄，任何一方都可以即時驗證藥品真偽，無需信任單一中央機構。",
+   "en": "The advantage of a blockchain solution: the entire supply chain (manufacturer → wholesaler → pharmacy) shares one tamper-proof record, and any party can verify product authenticity in real time without having to trust a single central authority."
+  },
+  {
+   "zh": "Smart Contract（智能合約）在製藥中的應用",
+   "en": "Smart Contracts in Pharma"
+  },
+  {
+   "zh": "智能合約是部署在區塊鏈上的自動化程式碼，當預設條件觸發時自動執行。例如：",
+   "en": "A smart contract is automated code deployed on a blockchain that executes by itself when predefined conditions are triggered. For example:"
+  },
+  {
+   "zh": "當 GS1 序列號成功驗證後，自動發出放行記錄",
+   "en": "When a GS1 serial number is successfully verified, a release record is issued automatically"
+  },
+  {
+   "zh": "當監管機構發出召回訊號，自動標記相關批次庫存",
+   "en": "When a regulator issues a recall signal, the affected batch inventory is flagged automatically"
+  },
+  {
+   "zh": "當原料到達指定溫度記錄超標，自動阻止該批次進入下一步",
+   "en": "When the temperature record for an incoming raw material exceeds its limit, that batch is automatically blocked from moving to the next step"
+  },
+  {
+   "zh": "GAMP 5 要求：智能合約的程式邏輯必須納入整體系統的 SDLC，進行代碼審查（code review）與測試，就如同任何 GxP 關鍵軟體一樣。",
+   "en": "GAMP 5 requirement: the program logic of a smart contract must be brought into the overall system SDLC and subjected to code review and testing, just like any other GxP-critical software."
+  },
+  {
+   "zh": "GxP 重點提醒：區塊鏈不等於審計追蹤",
+   "en": "GxP Reminder: Blockchain Is Not an Audit Trail"
+  },
+  {
+   "zh": "常見誤解：區塊鏈的「不可篡改性」是否意味著它可以自動取代傳統的 GxP 審計追蹤（Audit Trail）？",
+   "en": "Common misconception: does the \"immutability\" of a blockchain mean it can automatically replace a conventional GxP audit trail?"
+  },
+  {
+   "zh": "<strong>答案：不完全是。</strong>區塊鏈確保「一旦寫入的記錄不被修改」，但它無法保證「一開始寫入的資料就是正確的」。如果一個操作員登入後輸入了錯誤數據，這個錯誤數據會被永久且不可撤銷地記錄下來。",
+   "en": "<strong>Answer: not entirely.</strong> A blockchain ensures that a record, once written, is not modified, but it cannot guarantee that the data was correct when first written. If an operator logs in and enters wrong data, that wrong data is recorded permanently and irreversibly."
+  },
+  {
+   "zh": "因此，輸入控制（Input Controls）、人員認證、來源系統的資料品質仍然是驗證的核心。監管機構對於「區塊鏈紀錄是否符合 21 CFR Part 11 或 EU Annex 11」的立場目前仍在演進中。",
+   "en": "Input controls, personnel authentication and the data quality of the source systems therefore remain central to validation. The regulators' position on whether blockchain records comply with 21 CFR Part 11 or EU Annex 11 is still evolving."
+  },
+  {
+   "zh": "解說：製藥區塊鏈應用與 GxP 控制",
+   "en": "Commentary: Pharma Blockchain Applications and GxP Controls"
+  },
+  {
+   "zh": "為什麼要用哈希（Hash）？",
+   "en": "Why Use a Hash?"
+  },
+  {
+   "zh": "哈希是一種「數位指紋」算法：相同的資料永遠產生相同的哈希值，但只要資料改變一個字母，哈希值就會完全不同。",
+   "en": "A hash is a \"digital fingerprint\" algorithm: identical data always produces the same hash value, but changing even one letter produces a completely different one."
+  },
+  {
+   "zh": "在製藥應用中，當你把批次記錄的哈希值寫入區塊鏈，日後你可以重新計算文件的哈希值並與鏈上記錄比對——如果相符，就證明文件自寫入以來從未被修改。這是一種非常有力的<strong>數據完整性（Data Integrity）</strong>驗證機制。",
+   "en": "In a pharma application, if you write the hash of a batch record to the blockchain, you can later recalculate the hash of the document and compare it with the on-chain entry. If they match, that proves the document has not been modified since it was written. This is a very powerful verification mechanism for <strong>data integrity</strong>."
+  },
+  {
+   "zh": "CDMO 實際場景：原料可追溯性",
+   "en": "CDMO Scenario: Raw Material Traceability"
+  },
+  {
+   "zh": "作為 CDMO，我們同時接受多個客戶委託，每批原料都有自己的 CoA、供應商記錄、檢驗結果。傳統做法是紙本或各自的 ERP 記錄，客戶審計時要調閱大量文件。",
+   "en": "As a CDMO, we work for multiple clients at once, and every raw material batch has its own CoA, supplier records and test results. The traditional approach relies on paper or separate ERP records, so a client audit means pulling a large volume of documents."
+  },
+  {
+   "zh": "區塊鏈解決方案：為每批關鍵原料建立鏈上記錄，含哈希化的 CoA、放行狀態、入庫時間戳。客戶可通過 API 即時查驗，不需要進廠審計——這對 EU GMP Annex 11 下的遠程審計尤其有價值。",
+   "en": "The blockchain solution: create an on-chain record for each batch of critical raw material, including the hashed CoA, release status and receipt timestamp. Clients can check it in real time through an API without visiting the site, which is especially valuable for remote audits under EU GMP Annex 11."
+  },
+  {
+   "zh": "四大控制類別的現實意義",
+   "en": "What the Four Control Categories Mean in Practice"
+  },
+  {
+   "zh": "<strong>輸入控制</strong>：最薄弱的環節。區塊鏈只能保護「已寫入的資料」，無法保護「寫入行為本身」。系統設計必須確保觸發寫入的來源系統（MES、LIMS）本身就是受控的。",
+   "en": "<strong>Input controls</strong>: the weakest link. A blockchain can only protect data that has already been written; it cannot protect the act of writing. The system design must ensure that the source systems that trigger writes (MES, LIMS) are themselves controlled."
+  },
+  {
+   "zh": "<strong>輸出控制</strong>：查詢結果的完整性同樣重要。必須能夠偵測是否有交易記錄被跳過或遺漏——建立可重複執行的查詢機制是關鍵。",
+   "en": "<strong>Output controls</strong>: the integrity of query results matters just as much. It must be possible to detect whether any transaction record has been skipped or omitted, and a repeatable query mechanism is key."
+  },
+  {
+   "zh": "<strong>存取控制</strong>：區塊鏈地址（錢包）就是身份識別。私鑰（Private Key）的保管等同於電子簽章憑證的保管，必須有正式的金鑰管理程序（Key Management Procedure）。",
+   "en": "<strong>Access controls</strong>: a blockchain address (wallet) is the identity. Custody of the private key is equivalent to custody of an electronic signature credential and requires a formal key management procedure."
+  },
+  {
+   "zh": "Blockchain-as-a-Service（BaaS）的供應商評估",
+   "en": "Supplier Assessment for Blockchain-as-a-Service (BaaS)"
+  },
+  {
+   "zh": "許多製藥公司不會自行維運區塊鏈節點，而是使用 Microsoft Azure、AWS、Oracle 等的 BaaS 服務。GAMP 5 要求依照 Appendix M2 進行供應商評估，並額外確認：",
+   "en": "Many pharma companies do not operate blockchain nodes themselves but use BaaS offerings from Microsoft Azure, AWS, Oracle and others. GAMP 5 requires a supplier assessment in line with Appendix M2, and additionally confirmation of the following:"
+  },
+  {
+   "zh": "節點的新增/移除流程是否受控？",
+   "en": "Is the process for adding and removing nodes controlled?"
+  },
+  {
+   "zh": "BaaS 供應商是否同時提供鏈下存儲？其資料控制是否符合 ALCOA+？",
+   "en": "Does the BaaS supplier also provide off-chain storage, and do its data controls meet ALCOA+?"
+  },
+  {
+   "zh": "私鑰的所有權與保管責任如何界定？",
+   "en": "How are ownership of, and responsibility for custody of, the private keys defined?"
+  },
+  {
+   "zh": "解說：區塊鏈系統的驗證生命週期",
+   "en": "Commentary: The Validation Lifecycle of a Blockchain System"
+  },
+  {
+   "zh": "游泳道圖（Swim-Lane Diagram）的價值",
+   "en": "The Value of a Swim-Lane Diagram"
+  },
+  {
+   "zh": "想像一個製藥供應鏈區塊鏈專案：涉及 MES（批次記錄）、LIMS（檢驗結果）、WMS（倉庫管理）、ERP（採購訂單），以及客戶端的 SAP 系統。",
+   "en": "Imagine a pharma supply chain blockchain project involving MES (batch records), LIMS (test results), WMS (warehouse management), ERP (purchase orders) and the client's SAP system."
+  },
+  {
+   "zh": "如果只是逐一驗證每個系統，很容易遺漏「系統與系統之間的 API 介面」——而這些介面恰恰是資料錯誤最容易發生的地方。游泳道圖強制你把整個生態系統畫出來，確保沒有任何介面點被忽略。",
+   "en": "If you validate each system one by one, it is easy to miss the API interfaces between systems, and those interfaces are exactly where data errors are most likely to occur. A swim-lane diagram forces you to draw the whole ecosystem so that no interface point is overlooked."
+  },
+  {
+   "zh": "「Source of Origin」vs「Source of Truth」的區別",
+   "en": "\"Source of Origin\" vs \"Source of Truth\""
+  },
+  {
+   "zh": "這個區分在 GxP 驗證中非常重要：",
+   "en": "This distinction is very important in GxP validation:"
+  },
+  {
+   "zh": "<strong>Source of Origin（來源系統）</strong>：數據首次被創建的地方，例如天平打印秤重記錄、溫度計記錄的環境數據。GxP 要求在來源系統即進行控制（ALCOA+）。",
+   "en": "<strong>Source of Origin</strong>: where the data is first created, for example a balance printing a weighing record or a thermometer logging environmental data. GxP requires controls (ALCOA+) at the source of origin itself."
+  },
+  {
+   "zh": "<strong>Source of Truth（真相來源）</strong>：被各方認可為「當前正確狀態」的系統。區塊鏈的優勢在於它可以成為跨企業的共同 Source of Truth，無需信任任何單一方。",
+   "en": "<strong>Source of Truth</strong>: the system that all parties accept as the \"current correct state.\" The strength of a blockchain is that it can serve as a common cross-enterprise Source of Truth without anyone having to trust a single party."
+  },
+  {
+   "zh": "兩者必須保持同步——若 LIMS 中的 OOS 結果更新後，對應的鏈上哈希也需要更新。",
+   "en": "The two must stay in sync: if an OOS result in LIMS is updated, the corresponding on-chain hash must be updated as well."
+  },
+  {
+   "zh": "退役（Retirement）的監管挑戰",
+   "en": "Regulatory Challenges of Retirement"
+  },
+  {
+   "zh": "製藥行業的記錄保存要求往往長達 10–30 年（取決於產品類型）。區塊鏈的記錄保存面臨特殊挑戰：",
+   "en": "Record retention requirements in the pharmaceutical industry often run 10–30 years, depending on product type. Retaining blockchain records poses particular challenges:"
+  },
+  {
+   "zh": "加密算法可能在未來被破解（量子計算的威脅）——「加密敏捷性（Cryptographic Agility）」是指在設計時就保留切換算法的能力",
+   "en": "Cryptographic algorithms may be broken in the future (the threat of quantum computing); \"cryptographic agility\" means retaining, by design, the ability to switch algorithms"
+  },
+  {
+   "zh": "如果網絡停止運作，必須有方案確保記錄仍然可訪問和可驗證",
+   "en": "If the network ceases to operate, there must be a plan to keep the records accessible and verifiable"
+  },
+  {
+   "zh": "實際上，製藥區塊鏈的長期數據保存案例仍然不夠充足，GAMP 5 承認這是一個待解決的問題",
+   "en": "In practice, there are still too few cases of long-term data retention on pharma blockchains, and GAMP 5 acknowledges this as an open issue"
+  },
+  {
+   "zh": "公共區塊鏈的加密貨幣風險",
+   "en": "Cryptocurrency Risk on Public Blockchains"
+  },
+  {
+   "zh": "使用以太坊等公共網絡時，每筆交易都需要支付「Gas 費用」（以加密貨幣計價）。這對 GxP 系統帶來獨特風險：",
+   "en": "On public networks such as Ethereum, every transaction requires payment of a \"gas fee\" (denominated in cryptocurrency). This creates unique risks for a GxP system:"
+  },
+  {
+   "zh": "若交易費用賬戶餘額不足，GxP 記錄可能無法被寫入",
+   "en": "If the fee account balance is insufficient, a GxP record may not be able to be written"
+  },
+  {
+   "zh": "加密貨幣的價值波動可能帶來財務和會計合規問題",
+   "en": "Cryptocurrency price volatility can create financial and accounting compliance issues"
+  },
+  {
+   "zh": "Layer 2 解決方案可降低費用，但引入額外的技術複雜性，需獨立評估",
+   "en": "Layer 2 solutions can reduce fees but add technical complexity and need to be assessed separately"
+  },
+  {
+   "zh": "這也是許多製藥公司傾向使用私有鏈（Hyperledger Fabric、Corda）的原因——沒有交易費用，同時具備更強的隱私控制。",
+   "en": "This is also why many pharma companies prefer private chains (Hyperledger Fabric, Corda), which have no transaction fees and offer stronger privacy controls."
+  },
+  {
+   "zh": "解說：技術成熟度評估與監管現狀",
+   "en": "Commentary: Technology Maturity Assessment and the Regulatory Landscape"
+  },
+  {
+   "zh": "為什麼「成熟度評估」對 GxP 系統特別重要？",
+   "en": "Why Is a \"Maturity Assessment\" Especially Important for GxP Systems?"
+  },
+  {
+   "zh": "一般 IT 系統如果使用了不成熟的技術，最壞結果是系統崩潰、重新部署。但在 GxP 環境中，使用不成熟的區塊鏈平台的後果可能是：",
+   "en": "For a typical IT system, the worst outcome of using an immature technology is a crash and redeployment. In a GxP environment, using an immature blockchain platform could result in:"
+  },
+  {
+   "zh": "批次放行記錄無法被稽查機構接受",
+   "en": "Batch release records not being accepted by inspectors"
+  },
+  {
+   "zh": "FDA 483 觀察事項或警告信",
+   "en": "FDA Form 483 observations or warning letters"
+  },
+  {
+   "zh": "批次記錄完整性受質疑，導致產品召回",
+   "en": "Questions about batch record integrity leading to product recalls"
+  },
+  {
+   "zh": "因此，選平台的邏輯與選擇 MES 或 LIMS 供應商類似——要看 QMS、看用戶社群、看更新歷史。",
+   "en": "Selecting a platform is therefore similar to selecting an MES or LIMS supplier: look at its QMS, its user community and its update history."
+  },
+  {
+   "zh": "「驗證焦點轉向資料品質」的含義",
+   "en": "What \"Validation Focus Shifts to Data Quality\" Means"
+  },
+  {
+   "zh": "傳統 GxP 驗證的一大重點是「資料完整性（Data Integrity）」——確保記錄不被竄改。",
+   "en": "A major focus of traditional GxP validation is data integrity, that is, making sure records are not tampered with."
+  },
+  {
+   "zh": "區塊鏈的不可篡改性從底層技術上解決了這個問題，因此驗證重心可以轉移到「資料品質（Data Quality）」——確保一開始寫入的資料就是準確、完整、及時的。這是一個思維上的重要轉變。",
+   "en": "The immutability of a blockchain addresses this at the level of the underlying technology, so the validation focus can shift to data quality: making sure the data written in the first place is accurate, complete and timely. This is an important change in mindset."
+  },
+  {
+   "zh": "實際應用：驗證測試可以減少對「修改偵測」的測試，增加對「來源系統準確性」和「介面傳輸完整性」的測試。",
+   "en": "In practice: validation testing can reduce testing of \"modification detection\" and increase testing of \"source system accuracy\" and \"interface transmission integrity.\""
+  },
+  {
+   "zh": "監管空白現狀（截至 GAMP 5 第二版出版）",
+   "en": "The Regulatory Gap (as of Publication of GAMP 5 Second Edition)"
+  },
+  {
+   "zh": "目前沒有任何主要監管機構（FDA、EMA、PMDA）發布專門針對 GxP 區塊鏈系統的指南。",
+   "en": "No major regulator (FDA, EMA, PMDA) has currently issued guidance specifically for GxP blockchain systems."
+  },
+  {
+   "zh": "現行做法：",
+   "en": "Current practice:"
+  },
+  {
+   "zh": "FDA 21 CFR Part 11 / EU Annex 11 仍是基準——但這些法規均寫於區塊鏈技術出現之前",
+   "en": "FDA 21 CFR Part 11 / EU Annex 11 remain the baseline, although both were written before blockchain technology emerged"
+  },
+  {
+   "zh": "ISPE GAMP Community of Practice 是目前最活躍的行業共識建立平台",
+   "en": "The ISPE GAMP Community of Practice is currently the most active platform for building industry consensus"
+  },
+  {
+   "zh": "各公司採用保守的「超合規」驗證策略，同時等待監管明確",
+   "en": "Companies adopt a conservative \"over-compliant\" validation strategy while waiting for regulatory clarity"
+  },
+  {
+   "zh": "對 CDMO 的建議：在客戶合約中明確界定區塊鏈記錄的責任歸屬，並在 Quality Agreement 中規定雙方的記錄保存義務。",
+   "en": "Recommendation for CDMOs: clearly define responsibility for blockchain records in client contracts, and specify both parties' record retention obligations in the Quality Agreement."
+  },
+  {
+   "zh": "Appendix D11 — Artificial Intelligence and Machine Learning (AI/ML)  |  人工智慧與機器學習",
+   "en": "Appendix D11 — Artificial Intelligence and Machine Learning (AI/ML)"
+  },
+  {
+   "zh": "解說：AI/ML 的類型與 GxP 挑戰概覽",
+   "en": "Commentary: Types of AI/ML and an Overview of GxP Challenges"
+  },
+  {
+   "zh": "為什麼 AI/ML 的驗證比傳統軟體更難？",
+   "en": "Why Is AI/ML Harder to Validate Than Conventional Software?"
+  },
+  {
+   "zh": "傳統軟體的邏輯是固定的：你給它 X，它永遠輸出 Y。驗證就是確認這個對應關係在所有條件下都正確。",
+   "en": "The logic of conventional software is fixed: give it X and it always outputs Y. Validation confirms that this mapping is correct under all conditions."
+  },
+  {
+   "zh": "AI/ML 模型的邏輯是從數據中「學習」出來的，而且某些模型（動態模型）會持續學習——意思是你今天驗證過的模型，明天可能已經不一樣了。這就是 GxP 驗證面臨的根本性挑戰。",
+   "en": "The logic of an AI/ML model is \"learned\" from data, and some models (dynamic models) keep learning, which means a model you validated today may be different tomorrow. This is the fundamental challenge GxP validation faces."
+  },
+  {
+   "zh": "四種模型類型的 CDMO 應用場景",
+   "en": "CDMO Use Cases for the Four Model Types"
+  },
+  {
+   "zh": "<strong>分類（Classification）</strong>：自動視覺檢查（AVI）系統——用於無菌充填的安瓿外觀檢查，AI 判斷是否有顆粒、破裂、填充量異常。這是目前製藥行業 AI 應用最成熟的領域之一。",
+   "en": "<strong>Classification</strong>: automated visual inspection (AVI) systems, for example appearance inspection of ampoules from sterile filling, where the AI judges whether there are particles, cracks or abnormal fill volumes. This is one of the most mature areas of AI use in the pharmaceutical industry today."
+  },
+  {
+   "zh": "<strong>異常偵測（Outlier Detection）</strong>：環境監測異常偵測——在 ISO 5 潔淨室中，若 EM 數據的趨勢異常（雖未超標），AI 可以提前預警潛在污染風險。",
+   "en": "<strong>Outlier detection</strong>: anomaly detection for environmental monitoring. In an ISO 5 cleanroom, if the EM data trend is abnormal (even though no limit has been exceeded), AI can give early warning of a potential contamination risk."
+  },
+  {
+   "zh": "<strong>預測（Forecasting）</strong>：充填機預測性維護——分析灌裝機的震動、溫度、壓力歷史數據，預測關鍵零件（如蠕動泵、灌裝針）的更換時機，減少計畫外停機。",
+   "en": "<strong>Forecasting</strong>: predictive maintenance for filling machines. By analyzing historical vibration, temperature and pressure data from the filler, it predicts when critical parts (such as peristaltic pumps and filling needles) should be replaced, reducing unplanned downtime."
+  },
+  {
+   "zh": "<strong>聚類（Clustering）</strong>：製程參數分群——將歷史批次依據製程特徵分群，識別哪些批次組合對應最佳產品品質。",
+   "en": "<strong>Clustering</strong>: grouping process parameters. Historical batches are grouped by process characteristics to identify which combinations correspond to the best product quality."
+  },
+  {
+   "zh": "靜態 vs 動態：選擇的 GxP 含義",
+   "en": "Static vs Dynamic: The GxP Implications of the Choice"
+  },
+  {
+   "zh": "對於 GxP 關鍵決策（例如批次放行、異常判定），靜態模型通常是更可取的選擇：",
+   "en": "For GxP-critical decisions (for example batch release or deviation determination), a static model is generally the preferable choice:"
+  },
+  {
+   "zh": "驗證狀態清楚：版本 1.0 經過正式驗證，變更後必須重新評估",
+   "en": "Clear validation status: version 1.0 is formally validated, and any change requires re-evaluation"
+  },
+  {
+   "zh": "符合 FDA/EU 現有對「已驗證軟體」的預期",
+   "en": "Consistent with the FDA/EU's existing expectations for \"validated software\""
+  },
+  {
+   "zh": "動態模型適用於非 GxP 關鍵的輔助分析，或有足夠強健的持續監控機制：",
+   "en": "Dynamic models suit non-GxP-critical supporting analysis, or cases with sufficiently robust continuous monitoring:"
+  },
+  {
+   "zh": "必須定義可接受的性能參數範圍（容許限度）",
+   "en": "Acceptable performance parameter ranges (tolerance limits) must be defined"
+  },
+  {
+   "zh": "超出限度時必須自動觸發人工審查",
+   "en": "Exceeding the limits must automatically trigger human review"
+  },
+  {
+   "zh": "每次模型更新都應視為一次「受控變更」",
+   "en": "Every model update should be treated as a \"controlled change\""
+  },
+  {
+   "zh": "解說：AI/ML 生命週期——概念階段",
+   "en": "Commentary: The AI/ML Lifecycle — Concept Phase"
+  },
+  {
+   "zh": "GIGO：垃圾進，垃圾出",
+   "en": "GIGO: Garbage In, Garbage Out"
+  },
+  {
+   "zh": "這是 AI/ML 領域最重要的格言：<strong>Garbage In, Garbage Out（GIGO）</strong>。",
+   "en": "This is the most important maxim in AI/ML: <strong>Garbage In, Garbage Out (GIGO)</strong>."
+  },
+  {
+   "zh": "你可以擁有世界上最先進的深度學習算法，但如果訓練數據本身有偏差或錯誤，模型輸出的結論同樣是錯誤的。更糟糕的是，模型會以高度「自信」的方式呈現這些錯誤結論。",
+   "en": "You can have the most advanced deep learning algorithm in the world, but if the training data itself is biased or wrong, the conclusions the model produces will be wrong too. Worse, the model presents those wrong conclusions with a high degree of \"confidence.\""
+  },
+  {
+   "zh": "在製藥 GxP 環境中，GIGO 的後果尤為嚴重：訓練數據如果系統性地遺漏了某種罕見的缺陷，視覺檢查 AI 就永遠不會識別這種缺陷——而整個生產團隊卻完全不知道這個盲點的存在。",
+   "en": "In a pharma GxP environment, the consequences of GIGO are especially serious: if the training data systematically omits a rare defect, the visual inspection AI will never recognize that defect, and the production team will have no idea the blind spot exists."
+  },
+  {
+   "zh": "五大設計原則的 GxP 意義",
+   "en": "What the Five Design Principles Mean for GxP"
+  },
+  {
+   "zh": "<strong>可解釋性（Interpretability）</strong>：FDA 21 CFR Part 211 和 EU GMP 均要求能夠理解和解釋品質決策的依據。如果一個 AI 做出了拒絕批次的決定但無法解釋原因，在 GxP 環境中這是不可接受的。",
+   "en": "<strong>Interpretability</strong>: FDA 21 CFR Part 211 and EU GMP both require that the basis for quality decisions can be understood and explained. If an AI rejects a batch but cannot explain why, that is unacceptable in a GxP environment."
+  },
+  {
+   "zh": "<strong>可重現性（Reproducibility）</strong>：對相同輸入，模型必須始終產生相同（或統計一致的）輸出。這與 GMP 的「一致性」原則直接對應。",
+   "en": "<strong>Reproducibility</strong>: for the same input, the model must always produce the same (or statistically consistent) output. This maps directly onto the GMP principle of consistency."
+  },
+  {
+   "zh": "<strong>責任（Liability）</strong>：AI 做出了錯誤決定，誰負責？在 GxP 環境中，答案必須是明確的人——AI 是輔助工具，最終責任歸屬於被授權的人員。",
+   "en": "<strong>Liability</strong>: if the AI makes a wrong decision, who is responsible? In a GxP environment the answer must be a named person: AI is a support tool, and final responsibility rests with authorized personnel."
+  },
+  {
+   "zh": "數據集分割（Dataset Partitioning）的關鍵",
+   "en": "The Key to Dataset Partitioning"
+  },
+  {
+   "zh": "為什麼要把數據分成三份（訓練、驗證、測試）？",
+   "en": "Why split the data into three parts (training, validation, test)?"
+  },
+  {
+   "zh": "<strong>訓練集（Training Set）</strong>：模型從這部分數據中學習規律。可以多次使用。",
+   "en": "<strong>Training set</strong>: the data the model learns patterns from. It can be used many times."
+  },
+  {
+   "zh": "<strong>驗證集（Validation Set）</strong>：用於在訓練過程中調整超參數，評估模型是否過度擬合訓練數據。",
+   "en": "<strong>Validation set</strong>: used during training to tune hyperparameters and to assess whether the model is overfitting the training data."
+  },
+  {
+   "zh": "<strong>測試集（Test Set）</strong>：完全隔離，只在最後一次用於最終性能確認（相當於 UAT）。絕對不能用於任何訓練或調參活動。",
+   "en": "<strong>Test set</strong>: kept completely isolated and used only once, at the end, for final performance confirmation (equivalent to UAT). It must never be used in any training or tuning activity."
+  },
+  {
+   "zh": "如果測試集數據「洩漏」到訓練過程，模型會表現出虛假的高準確率——而在真實生產環境中表現糟糕。這是 AI 驗證中最常見的陷阱之一。",
+   "en": "If test set data \"leaks\" into the training process, the model will show falsely high accuracy and then perform poorly in real production. This is one of the most common pitfalls in AI validation."
+  },
+  {
+   "zh": "CDMO 數據挑戰：數據孤島問題",
+   "en": "The CDMO Data Challenge: Data Silos"
+  },
+  {
+   "zh": "大多數製藥 CDMO 的歷史數據存在孤島問題：MES 的批次記錄、LIMS 的檢驗數據、設備 PLC 的製程數據、QA 系統的偏差記錄——各自存在不同系統，格式不一，難以整合。",
+   "en": "Most pharma CDMOs have a data silo problem: batch records in MES, test data in LIMS, process data in equipment PLCs and deviation records in the QA system all sit in different systems, in different formats, and are hard to integrate."
+  },
+  {
+   "zh": "在啟動 AI/ML 項目之前，必須先評估數據整合的可行性和成本，否則概念階段的假設在項目階段將面臨嚴重挑戰。",
+   "en": "Before starting an AI/ML project, the feasibility and cost of data integration must be assessed first; otherwise the assumptions made in the concept phase will face serious challenges in the project phase."
+  },
+  {
+   "zh": "解說：模型開發的關鍵概念",
+   "en": "Commentary: Key Concepts in Model Development"
+  },
+  {
+   "zh": "超參數（Hyperparameters）是什麼？",
+   "en": "What Are Hyperparameters?"
+  },
+  {
+   "zh": "機器學習中有兩類「數字」：",
+   "en": "Machine learning has two kinds of \"numbers\":"
+  },
+  {
+   "zh": "<strong>模型參數（Parameters）</strong>：模型在訓練過程中自動學習的內部值（如神經網絡的權重）——你不直接設定，模型自己調整。",
+   "en": "<strong>Model parameters</strong>: internal values the model learns automatically during training (such as the weights of a neural network). You do not set them directly; the model adjusts them itself."
+  },
+  {
+   "zh": "<strong>超參數（Hyperparameters）</strong>：你在訓練前設定的「控制旋鈕」——如學習率、樹的深度、隱藏層數量。這些值決定了「模型如何學習」，而非「模型學到了什麼」。",
+   "en": "<strong>Hyperparameters</strong>: the \"control knobs\" you set before training, such as the learning rate, tree depth or number of hidden layers. They determine how the model learns, not what it has learned."
+  },
+  {
+   "zh": "超參數優化是 AI/ML 開發中最耗時的工作之一，需要反覆試驗不同的組合，找到使模型在驗證集上表現最佳的設定。",
+   "en": "Hyperparameter optimization is one of the most time-consuming tasks in AI/ML development, requiring repeated trials of different combinations to find the setting that gives the best model performance on the validation set."
+  },
+  {
+   "zh": "「模組化」設計與 GxP 的關係",
+   "en": "The Relationship Between \"Modular\" Design and GxP"
+  },
+  {
+   "zh": "GAMP 5 要求「推理模組（Inference Module）」必須與訓練代碼分離。為什麼這對 GxP 很重要？",
+   "en": "GAMP 5 requires that the inference module be separated from the training code. Why does this matter for GxP?"
+  },
+  {
+   "zh": "類比：就像製藥製造中，我們把「生產配方」和「工藝開發記錄」分開管理。生產版本是固定且受控的；開發版本可以迭代修改。",
+   "en": "Analogy: in pharmaceutical manufacturing, we manage the \"production recipe\" separately from the \"process development records.\" The production version is fixed and controlled; the development version can be modified iteratively."
+  },
+  {
+   "zh": "在 AI 中，推理模組是「固定且受控的生產版本」；訓練代碼是「可以繼續優化的開發工具」。驗證只需覆蓋推理模組的確定性行為，而非整個訓練基礎設施。",
+   "en": "In AI, the inference module is the \"fixed, controlled production version,\" while the training code is the \"development tool that can keep being optimized.\" Validation only needs to cover the deterministic behavior of the inference module, not the whole training infrastructure."
+  },
+  {
+   "zh": "UAT 中的 Test Set：類似於製藥的「製程確認批次」",
+   "en": "The Test Set in UAT: Like a \"Process Confirmation Batch\" in Pharma"
+  },
+  {
+   "zh": "Test Set 在 AI/ML 驗證中的角色，類似於製藥製程驗證中的 Process Performance Qualification（PPQ）批次：",
+   "en": "The role of the test set in AI/ML validation is similar to that of Process Performance Qualification (PPQ) batches in pharmaceutical process validation:"
+  },
+  {
+   "zh": "整個開發過程中完全封存，從不參與訓練或超參數調整",
+   "en": "It is completely sealed off throughout development and never takes part in training or hyperparameter tuning"
+  },
+  {
+   "zh": "只在最終確認階段使用一次，作為「在全新數據上的獨立性能驗證」",
+   "en": "It is used only once, at final confirmation, as an \"independent performance verification on entirely new data\""
+  },
+  {
+   "zh": "如果 test set 性能不達標，不能只是「調整模型繼續試」——需要回到設計根本原因分析",
+   "en": "If test set performance falls short, you cannot simply \"adjust the model and try again\"; you need to go back to the design and perform a root cause analysis"
+  },
+  {
+   "zh": "視覺評估 vs 純數字指標",
+   "en": "Visual Assessment vs Numerical Metrics Alone"
+  },
+  {
+   "zh": "GAMP 5 特別強調：不要只依賴準確率、召回率等數字指標，視覺定性評估往往更有洞察力。",
+   "en": "GAMP 5 specifically stresses: do not rely only on numerical metrics such as accuracy and recall, because qualitative visual assessment often gives better insight."
+  },
+  {
+   "zh": "製藥 AI 場景舉例：一個視覺檢查 AI 整體準確率達到 99%，但對某種特定缺陷類型（例如微小氣泡）的漏檢率達到 40%——單看整體指標完全看不出這個問題。只有對錯誤案例進行逐一的視覺審查，才能發現這個系統性盲點。",
+   "en": "A pharma AI example: a visual inspection AI reaches 99% overall accuracy, but its miss rate for one specific defect type (for example micro-bubbles) is 40%. The overall metric gives no hint of this problem. Only a case-by-case visual review of the errors can reveal this systematic blind spot."
+  },
+  {
+   "zh": "解說：運維階段——模型漂移與治理",
+   "en": "Commentary: The Operations Phase — Model Drift and Governance"
+  },
+  {
+   "zh": "模型漂移（Model Drift）：AI 最隱性的風險",
+   "en": "Model Drift: AI's Most Hidden Risk"
+  },
+  {
+   "zh": "<strong>模型漂移</strong>是指 AI 模型的預測性能隨時間逐漸下降的現象，通常發生在以下情況：",
+   "en": "<strong>Model drift</strong> is the gradual decline of an AI model's predictive performance over time, which usually occurs in the following situations:"
+  },
+  {
+   "zh": "<strong>數據漂移（Data Drift）</strong>：生產環境的輸入數據特性發生了變化（例如：換了一台新的充填機，其震動特徵與訓練數據不同）",
+   "en": "<strong>Data drift</strong>: the characteristics of the input data in the production environment change (for example, a new filling machine is installed and its vibration signature differs from the training data)"
+  },
+  {
+   "zh": "<strong>概念漂移（Concept Drift）</strong>：「正確答案」的定義發生了變化（例如：外觀可接受標準更新，但模型仍使用舊標準）",
+   "en": "<strong>Concept drift</strong>: the definition of the \"correct answer\" changes (for example, the visual acceptance criteria are updated but the model still uses the old criteria)"
+  },
+  {
+   "zh": "<strong>過度擬合退化</strong>：模型過於適應歷史特定數據，在新數據上表現下降",
+   "en": "<strong>Overfitting degradation</strong>: the model is too closely fitted to specific historical data and its performance on new data declines"
+  },
+  {
+   "zh": "危險之處在於漂移是緩慢的、難以察覺的。如果沒有持續的性能監控，你可能幾個月後才發現模型已經失效——而在此期間的所有決策都已基於一個不可靠的模型。",
+   "en": "The danger is that drift is slow and hard to notice. Without continuous performance monitoring, you may only discover months later that the model has failed, and every decision made in the meantime was based on an unreliable model."
+  },
+  {
+   "zh": "類比：製程驗證中的「持續製程確認（CPV）」",
+   "en": "Analogy: Continued Process Verification (CPV) in Process Validation"
+  },
+  {
+   "zh": "製藥製程驗證有三個階段：設計（PPD）、確認（PPQ）、持續確認（CPV）。CPV 的核心就是持續監控製程數據，確認製程狀態保持在驗證的範圍內。",
+   "en": "Pharmaceutical process validation has three stages: process design (PPD), process qualification (PPQ) and continued process verification (CPV). The core of CPV is continuous monitoring of process data to confirm that the process remains within its validated state."
+  },
+  {
+   "zh": "AI/ML 模型的「持續性能監控」正是同樣的邏輯：驗證不是一次性活動，而是貫穿整個產品生命週期。每次監控觸發的模型更新都需要遵循變更控制程序，就像製程參數變更一樣。",
+   "en": "\"Continuous performance monitoring\" of an AI/ML model follows exactly the same logic: validation is not a one-time activity but runs through the whole product lifecycle. Every model update triggered by monitoring must follow the change control procedure, just like a process parameter change."
+  },
+  {
+   "zh": "定義「可接受性能參數（Tolerance Limits）」的挑戰",
+   "en": "The Challenge of Defining Acceptable Performance Parameters (Tolerance Limits)"
+  },
+  {
+   "zh": "對靜態軟體，驗證標準是明確的（結果必須等於預期值）。對 AI/ML 模型，需要定義：",
+   "en": "For static software, the validation criterion is clear (the result must equal the expected value). For an AI/ML model, you need to define:"
+  },
+  {
+   "zh": "哪些 KPI 用於監控？（準確率、精確率、召回率、F1 分數……）",
+   "en": "Which KPIs are used for monitoring? (accuracy, precision, recall, F1 score, and so on)"
+  },
+  {
+   "zh": "可接受的性能下限是多少？",
+   "en": "What is the lower limit of acceptable performance?"
+  },
+  {
+   "zh": "超出限度時的反應程序是什麼？（警告、自動切換為人工審查、強制重新訓練）",
+   "en": "What is the response procedure when limits are exceeded? (alert, automatic switch to human review, mandatory retraining)"
+  },
+  {
+   "zh": "多久進行一次定期審查？（基於時間間隔，還是基於數據量累積？）",
+   "en": "How often is periodic review performed? (at time intervals, or based on accumulated data volume?)"
+  },
+  {
+   "zh": "這些標準必須在驗證方案中預先定義，而非事後設定——這是 GxP 合規的基本要求。",
+   "en": "These criteria must be defined in advance in the validation plan, not after the fact; this is a basic requirement of GxP compliance."
+  },
+  {
+   "zh": "解說：支撐流程——數據治理、風險管理、變更控制",
+   "en": "Commentary: Supporting Processes — Data Governance, Risk Management, Change Control"
+  },
+  {
+   "zh": "AI/ML 風險評估：比傳統系統多了哪些維度？",
+   "en": "AI/ML Risk Assessment: What Dimensions Are Added Over Conventional Systems?"
+  },
+  {
+   "zh": "傳統 GAMP 5 風險評估問：「如果系統失效，對患者安全、產品品質、數據完整性的影響是什麼？」",
+   "en": "A traditional GAMP 5 risk assessment asks: \"If the system fails, what is the impact on patient safety, product quality and data integrity?\""
+  },
+  {
+   "zh": "AI/ML 必須額外問：",
+   "en": "AI/ML must additionally ask:"
+  },
+  {
+   "zh": "訓練數據是否代表了所有重要的使用場景？（覆蓋率風險）",
+   "en": "Does the training data represent all important use scenarios? (coverage risk)"
+  },
+  {
+   "zh": "模型是否對特定子群體（特定產品類型、特定設備）有系統性偏差？（偏差風險）",
+   "en": "Does the model have systematic bias toward particular subgroups (specific product types, specific equipment)? (bias risk)"
+  },
+  {
+   "zh": "模型的決策過程是否透明？稽查員能否理解某個決定的依據？（黑盒風險）",
+   "en": "Is the model's decision process transparent? Can an auditor understand the basis for a decision? (black-box risk)"
+  },
+  {
+   "zh": "如果模型在生產中突然失效，後備程序是什麼？（業務連續性風險）",
+   "en": "If the model suddenly fails in production, what is the fallback procedure? (business continuity risk)"
+  },
+  {
+   "zh": "數據治理：AI 的 GMP 原料管理",
+   "en": "Data Governance: GMP Material Management for AI"
+  },
+  {
+   "zh": "製藥生產有嚴格的原料管理：CoA 確認、供應商資格、入庫檢驗、儲存條件。每批原料的品質直接影響最終產品。",
+   "en": "Pharmaceutical production has strict material management: CoA confirmation, supplier qualification, incoming inspection and storage conditions. The quality of every batch of material directly affects the final product."
+  },
+  {
+   "zh": "AI 訓練數據就是模型的「原料」。數據治理就是 AI 的「原料管理」：",
+   "en": "AI training data is the model's \"raw material.\" Data governance is the \"material management\" of AI:"
+  },
+  {
+   "zh": "數據來源驗證（相當於供應商資格）",
+   "en": "Data source verification (equivalent to supplier qualification)"
+  },
+  {
+   "zh": "數據品質確認（相當於入庫檢驗）",
+   "en": "Data quality confirmation (equivalent to incoming inspection)"
+  },
+  {
+   "zh": "數據版本控制（相當於批次記錄）",
+   "en": "Data version control (equivalent to batch records)"
+  },
+  {
+   "zh": "標注品質管理（相當於製程控制）",
+   "en": "Labeling quality management (equivalent to in-process control)"
+  },
+  {
+   "zh": "沒有 GMP 原料管理的製藥廠是不合規的；沒有數據治理的 AI/ML 開發同樣無法通過 GxP 驗證。",
+   "en": "A pharmaceutical plant without GMP material management is non-compliant; AI/ML development without data governance likewise cannot pass GxP validation."
+  },
+  {
+   "zh": "「Human in the Loop（人在迴路中）」的 GxP 要求",
+   "en": "GxP Requirements for \"Human in the Loop\""
+  },
+  {
+   "zh": "這是 GxP AI/ML 部署中最重要的原則之一。對於 GxP 關鍵決策（批次放行、OOS 判定、偏差分類），AI 可以提供輔助分析和建議，但最終決策必須由具有資質的人員做出並簽署。",
+   "en": "This is one of the most important principles in deploying GxP AI/ML. For GxP-critical decisions (batch release, OOS determination, deviation classification), AI can provide supporting analysis and recommendations, but the final decision must be made and signed by a qualified person."
+  },
+  {
+   "zh": "這不僅是現行監管立場的要求，更是一個深層的品質原則：",
+   "en": "This is not only required by the current regulatory position; it is also a deeper quality principle:"
+  },
+  {
+   "zh": "AI 模型可能有我們尚未發現的盲點",
+   "en": "AI models may have blind spots we have not yet discovered"
+  },
+  {
+   "zh": "異常情況可能超出模型的訓練邊界",
+   "en": "Abnormal situations may fall outside the model's training boundaries"
+  },
+  {
+   "zh": "監管責任無法轉移給算法",
+   "en": "Regulatory accountability cannot be transferred to an algorithm"
+  },
+  {
+   "zh": "CDMO 實踐建議：在 SOP 中明確界定「AI 輔助」與「AI 決策」的邊界，確保所有 GxP 決策都有有資質人員的電子簽章背書。",
+   "en": "CDMO practice recommendation: clearly define the boundary between \"AI-assisted\" and \"AI-decided\" in SOPs, and ensure that every GxP decision is backed by the electronic signature of a qualified person."
+  },
+  {
+   "zh": "AI 變更管理的複雜性：什麼算「重大變更」？",
+   "en": "The Complexity of AI Change Management: What Counts as a \"Major Change\"?"
+  },
+  {
+   "zh": "傳統軟體變更管理相對清晰：代碼修改就觸發變更流程。但 AI/ML 的「變更」定義更複雜：",
+   "en": "Change management for conventional software is relatively clear: a code modification triggers the change process. But what counts as a \"change\" in AI/ML is more complex:"
+  },
+  {
+   "zh": "加入新訓練數據後模型自動更新——算變更嗎？",
+   "en": "The model updates itself automatically after new training data is added: is that a change?"
+  },
+  {
+   "zh": "超參數微調後模型性能提升 0.5%——需要重新驗證嗎？",
+   "en": "After fine-tuning hyperparameters, model performance improves by 0.5%: is revalidation needed?"
+  },
+  {
+   "zh": "輸入數據的分布發生了漂移——模型本身沒改變，但有效性已改變",
+   "en": "The distribution of the input data has drifted: the model itself has not changed, but its validity has"
+  },
+  {
+   "zh": "GAMP 5 的建議：在驗證文件中預先定義「重大變更」的觸發條件（例如性能變化超過 X%），以及不同類型變更的審批路徑，避免事後爭議。",
+   "en": "GAMP 5 recommends defining in advance, in the validation documents, the trigger conditions for a \"major change\" (for example, a performance change of more than X%) and the approval path for each type of change, to avoid disputes after the fact."
+  },
+  {
+   "zh": "解說：監管展望與 CDMO 戰略定位",
+   "en": "Commentary: Regulatory Outlook and CDMO Strategic Positioning"
+  },
+  {
+   "zh": "FDA GMLP 指導原則：製藥製造的適用性",
+   "en": "FDA GMLP Guiding Principles: Applicability to Pharmaceutical Manufacturing"
+  },
+  {
+   "zh": "GAMP 5 引用的 FDA/Health Canada/MHRA 聯合 GMLP 指導原則原本是針對醫療設備軟體（SaMD）制定的，但其原則直接適用於製藥製造 AI：",
+   "en": "The joint FDA/Health Canada/MHRA GMLP guiding principles cited in GAMP 5 were originally developed for medical device software (SaMD), but their principles apply directly to AI in pharmaceutical manufacturing:"
+  },
+  {
+   "zh": "多學科團隊（數據科學家 + 製程工程師 + QA）",
+   "en": "Multidisciplinary teams (data scientists + process engineers + QA)"
+  },
+  {
+   "zh": "良好的軟件工程實踐（版本控制、代碼審查、測試文件）",
+   "en": "Good software engineering practices (version control, code review, test documentation)"
+  },
+  {
+   "zh": "透明的性能評估方法",
+   "en": "Transparent performance evaluation methods"
+  },
+  {
+   "zh": "部署後持續監控和問題回報機制",
+   "en": "Post-deployment continuous monitoring and issue reporting mechanisms"
+  },
+  {
+   "zh": "對 CDMO QA 的實際意義：AI 系統的驗證主協議（VP）和驗證總結報告（VSR）中應明確引用 GMLP 相關原則作為指導框架。",
+   "en": "What this means for CDMO QA: the validation plan (VP) and validation summary report (VSR) for an AI system should explicitly reference the relevant GMLP principles as a guiding framework."
+  },
+  {
+   "zh": "「持續學習」的監管困境：一個思想實驗",
+   "en": "The Regulatory Dilemma of \"Continuous Learning\": A Thought Experiment"
+  },
+  {
+   "zh": "假設你在 2026 年 1 月對一個視覺檢查 AI 完成了完整的驗證。到 2026 年 6 月，該模型已經從 50,000 個新的生產數據點中學習了——它的準確率從 97% 提升到了 99%。",
+   "en": "Suppose you completed full validation of a visual inspection AI in January 2026. By June 2026 the model has learned from 50,000 new production data points, and its accuracy has risen from 97% to 99%."
+  },
+  {
+   "zh": "問題：你需要重新驗證嗎？性能提升了，但模型的「DNA」已完全不同。",
+   "en": "The question: do you need to revalidate? Performance has improved, but the model's \"DNA\" is now completely different."
+  },
+  {
+   "zh": "目前的監管立場傾向於：是的，需要觸發變更評估和重新驗證——即使性能改善了。原因是：沒有人能完全確定性能改善不是以犧牲某些邊緣情況的性能為代價。",
+   "en": "The current regulatory position leans toward yes: a change assessment and revalidation should be triggered, even though performance has improved. The reason is that no one can be fully certain the improvement has not come at the expense of performance in some edge cases."
+  },
+  {
+   "zh": "白鴉（White Raven）案例：CDMO AI 競爭情報啟示",
+   "en": "The White Raven Case: Competitive Intelligence on CDMO AI"
+  },
+  {
+   "zh": "歐洲競爭對手 White Raven CDMO 已開始在其 SA25 充填機上部署 AI 解決方案。這代表行業前沿正在快速移動。",
+   "en": "The European competitor White Raven CDMO has begun deploying AI solutions on its SA25 filling machines. This shows the industry frontier is moving fast."
+  },
+  {
+   "zh": "關鍵問題：他們如何解決 GxP 驗證問題？可能的路徑：",
+   "en": "The key question: how are they solving the GxP validation problem? Possible paths:"
+  },
+  {
+   "zh": "使用靜態 AI 模型（定期訓練更新，每次作為受控變更）——監管風險最低",
+   "en": "Using static AI models (periodically retrained and updated, each update handled as a controlled change), which carries the lowest regulatory risk"
+  },
+  {
+   "zh": "AI 作為「輔助建議系統」而非決策系統——人員仍然做最終決定",
+   "en": "Using AI as an \"advisory recommendation system\" rather than a decision system, with personnel still making the final decision"
+  },
+  {
+   "zh": "先在非 GxP 關鍵應用（預測性維護）上積累驗證經驗",
+   "en": "Building validation experience first on non-GxP-critical applications (predictive maintenance)"
+  },
+  {
+   "zh": "這也應該是我們 CDMO AI 路線圖的策略起點：從預測性維護和非 GxP 關鍵監測開始，逐步積累驗證能力，再擴展到 GxP 關鍵應用。",
+   "en": "This should also be the starting strategy for our CDMO AI roadmap: begin with predictive maintenance and non-GxP-critical monitoring, build validation capability step by step, then expand to GxP-critical applications."
+  },
+  {
+   "zh": "CDMO AI/ML 實施路線圖建議",
+   "en": "Recommended CDMO AI/ML Implementation Roadmap"
+  },
+  {
+   "zh": "<strong>Phase 1（現在可以開始）：非 GxP 關鍵應用</strong>",
+   "en": "<strong>Phase 1 (can start now): non-GxP-critical applications</strong>"
+  },
+  {
+   "zh": "充填機預測性維護（Predictive Maintenance）",
+   "en": "Predictive maintenance for filling machines"
+  },
+  {
+   "zh": "冷凍乾燥製程參數優化輔助工具",
+   "en": "Decision-support tool for freeze-drying process parameter optimization"
+  },
+  {
+   "zh": "EM 趨勢分析異常偵測（警示，非決策）",
+   "en": "Anomaly detection in EM trend analysis (alerts, not decisions)"
+  },
+  {
+   "zh": "<strong>Phase 2（12-18 個月後）：輔助性 GxP 應用</strong>",
+   "en": "<strong>Phase 2 (after 12-18 months): supporting GxP applications</strong>"
+  },
+  {
+   "zh": "AI 輔助批次記錄審查（提高人工審查效率）",
+   "en": "AI-assisted batch record review (improving the efficiency of human review)"
+  },
+  {
+   "zh": "偏差初步分類輔助",
+   "en": "Support for preliminary deviation classification"
+  },
+  {
+   "zh": "<strong>Phase 3（長期）：GxP 關鍵應用</strong>",
+   "en": "<strong>Phase 3 (long term): GxP-critical applications</strong>"
+  },
+  {
+   "zh": "自動視覺檢查（需完整 GMLP 符合性驗證）",
+   "en": "Automated visual inspection (requires full GMLP conformance validation)"
+  },
+  {
+   "zh": "即時製程分析技術（PAT）AI 模型",
+   "en": "Real-time process analytical technology (PAT) AI models"
+  },
+  {
+   "zh": "Section Summary  |  本章重點總結",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Appendix D10 — Blockchain (區塊鏈) Key Takeaways",
+   "en": "Appendix D10 — Blockchain Key Takeaways"
+  },
+  {
+   "zh": "新興技術共同主題：概念階段的決定性作用",
+   "en": "A Common Theme for Emerging Technologies: The Decisive Role of the Concept Phase"
+  },
+  {
+   "zh": "區塊鏈和 AI/ML 的共同教訓：<strong>概念階段的決策品質決定了整個系統的可驗證性</strong>。倉促進入開發的結果往往是：到了驗證階段才發現根本性的架構問題，代價極高。",
+   "en": "The shared lesson of blockchain and AI/ML: <strong>the quality of decisions made in the concept phase determines the validatability of the whole system</strong>. Rushing into development often means fundamental architectural problems are discovered only at the validation stage, at very high cost."
+  },
+  {
+   "zh": "核心心法：不要問「這個 AI/區塊鏈技術能做什麼」，而是問「這個技術能否以符合 GxP 的方式被驗證和維護」。技術可行性和法規可行性必須同時評估。",
+   "en": "The core mindset: do not ask \"what can this AI/blockchain technology do?\" but \"can this technology be validated and maintained in a GxP-compliant way?\" Technical feasibility and regulatory feasibility must be assessed together."
+  }
+ ]
+}

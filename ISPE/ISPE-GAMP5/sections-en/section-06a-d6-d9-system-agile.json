@@ -1,0 +1,641 @@
+{
+ "source": "section-06a-d6-d9-system-agile.html",
+ "blocks": [
+  {
+   "zh": "系統描述、資料遷移、敏捷開發與軟體工具",
+   "en": "System Descriptions, Data Migration, Agile Development and Software Tools"
+  },
+  {
+   "zh": "Learning Objectives — 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Explain the purpose and required content of a System Description under EU GMP Annex 11 and its role as a regulatory-facing document. ／解釋系統描述的目的、必要內容及其作為法規面向文件的角色。",
+   "en": "Explain the purpose and required content of a System Description under EU GMP Annex 11 and its role as a regulatory-facing document."
+  },
+  {
+   "zh": "Identify the key risk categories and quality management controls required for compliant data migration in a GxP environment. ／辨識GxP環境中合規資料遷移所需的主要風險類別與品質管理控制措施。",
+   "en": "Identify the key risk categories and quality management controls required for compliant data migration in a GxP environment."
+  },
+  {
+   "zh": "Describe the data migration plan structure, including data mapping, verification strategies, rollback planning, and reporting requirements. ／描述資料遷移計畫的架構，包括資料映射、驗證策略、回滾計畫與報告要求。",
+   "en": "Describe the data migration plan structure, including data mapping, verification strategies, rollback planning, and reporting requirements."
+  },
+  {
+   "zh": "Explain how Agile/Scrum methodology can be implemented in a GxP regulated environment while maintaining compliance and quality. ／說明Agile/Scrum方法論如何在GxP法規環境中實施，同時維持合規與品質。",
+   "en": "Explain how Agile/Scrum methodology can be implemented in a GxP regulated environment while maintaining compliance and quality."
+  },
+  {
+   "zh": "Apply the Agile quality concepts (Definition of Done, sprint testing, DevOps/CI/CD) within a CDMO computer validation context. ／在CDMO電腦驗證情境中應用Agile品質概念。",
+   "en": "Apply the Agile quality concepts (Definition of Done, sprint testing, DevOps/CI/CD) within a CDMO computer validation context."
+  },
+  {
+   "zh": "Determine the appropriate level of control for software tools (GAMP Category 1) versus GxP-regulated business applications, and apply risk-based management accordingly. ／判斷軟體工具（GAMP第1類）與GxP法規業務應用程式的適當控制等級，並據此應用風險基礎管理。",
+   "en": "Determine the appropriate level of control for software tools (GAMP Category 1) versus GxP-regulated business applications, and apply risk-based management accordingly."
+  },
+  {
+   "zh": "Appendix D6 — System Descriptions / 系統描述",
+   "en": "Appendix D6 — System Descriptions"
+  },
+  {
+   "zh": "D6 中文解析：系統描述",
+   "en": "D6 Commentary: System Descriptions"
+  },
+  {
+   "zh": "比喻：系統描述是GxP系統的「護照」",
+   "en": "Analogy: the system description is the \"passport\" of a GxP system"
+  },
+  {
+   "zh": "就像護照一樣，系統描述必須在系統「出關」（上線投入GxP使用）之前就備齊。它用非技術語言說明這個系統是誰、做什麼、跟誰連線、誰能進入。",
+   "en": "Like a passport, the system description must be in place before the system \"crosses the border\" (goes live for GxP use). In non-technical language, it states who the system is, what it does, what it connects to, and who can access it."
+  },
+  {
+   "zh": "法規查核官員（稽核員）第一眼看的往往就是這份文件——他們想快速理解這個系統的「邊界在哪裡」、「管到哪些資料」。護照沒更新，就是問題所在。",
+   "en": "This is often the first document a regulatory inspector (or auditor) looks at, because they want to quickly understand where the system's boundaries lie and which data it governs. An outdated passport is exactly where the problems start."
+  },
+  {
+   "zh": "EU GMP Annex 11 的明確要求",
+   "en": "Explicit requirements of EU GMP Annex 11"
+  },
+  {
+   "zh": "Annex 11 明文規定「關鍵系統」必須有up-to-date的系統描述，涵蓋：",
+   "en": "Annex 11 states explicitly that a critical system must have an up-to-date system description covering:"
+  },
+  {
+   "zh": "實體與邏輯架構（Physical &amp; Logical arrangements）",
+   "en": "Physical and logical arrangements"
+  },
+  {
+   "zh": "資料流與介面（Data flows &amp; interfaces）",
+   "en": "Data flows and interfaces"
+  },
+  {
+   "zh": "硬體/軟體先決條件（Prerequisites）",
+   "en": "Hardware/software prerequisites"
+  },
+  {
+   "zh": "安全措施（Security measures）",
+   "en": "Security measures"
+  },
+  {
+   "zh": "這不只是「最好有」，而是法規硬性要求。很多公司在稽核時才發現系統描述已過期三年，這是常見的483觀察項來源。",
+   "en": "This is not merely \"nice to have\"; it is a hard regulatory requirement. Many companies only discover during an audit that their system description is three years out of date, which is a common source of Form 483 observations."
+  },
+  {
+   "zh": "CDMO實務要點：什麼時候需要獨立的系統描述？",
+   "en": "CDMO practice: when is a standalone system description needed?"
+  },
+  {
+   "zh": "GAMP 5說複雜系統（如ERP、MES）才需要獨立文件；簡單系統可以把描述放進URS或其他規格文件中。",
+   "en": "GAMP 5 says that only complex systems (such as ERP and MES) need a standalone document; for simple systems, the description can be included in the URS or other specification documents."
+  },
+  {
+   "zh": "在CDMO環境，以下系統通常需要獨立的系統描述：",
+   "en": "In a CDMO environment, the following systems typically need a standalone system description:"
+  },
+  {
+   "zh": "EBR/eBatch系統",
+   "en": "EBR/eBatch systems"
+  },
+  {
+   "zh": "跨廠區共用的ERP模組",
+   "en": "ERP modules shared across sites"
+  },
+  {
+   "zh": "SCADA或獨立HMI通常可以將系統描述整合進IQ/OQ文件。",
+   "en": "For SCADA or a standalone HMI, the system description can usually be incorporated into the IQ/OQ documents."
+  },
+  {
+   "zh": "稽核現場重點：邊界定義",
+   "en": "Audit focus: boundary definition"
+  },
+  {
+   "zh": "稽核員在查電腦化系統時，最重要的問題之一是：「這個系統的邊界在哪裡？」系統描述必須清楚回答：",
+   "en": "When auditors review a computerized system, one of the most important questions is: \"Where are the boundaries of this system?\" The system description must answer this clearly:"
+  },
+  {
+   "zh": "哪些資料在系統內部管理",
+   "en": "Which data are managed inside the system"
+  },
+  {
+   "zh": "哪些介面連到外部系統",
+   "en": "Which interfaces connect to external systems"
+  },
+  {
+   "zh": "誰負責哪個部分（系統擁有者 vs 供應商）",
+   "en": "Who is responsible for which part (system owner vs. supplier)"
+  },
+  {
+   "zh": "邊界不清楚 = 責任不清楚 = 稽核風險。",
+   "en": "Unclear boundaries = unclear responsibilities = audit risk."
+  },
+  {
+   "zh": "Change Control + Periodic Review 的重要性",
+   "en": "The importance of change control and periodic review"
+  },
+  {
+   "zh": "系統描述必須受到變更管制並定期審查。常見的失效模式：系統已升版（例如從v8升到v9），但系統描述還停在舊版架構。這在稽核中會被認定為「documented system不符合實際運作狀態」。",
+   "en": "The system description must be under change control and reviewed periodically. A common failure mode is that the system has been upgraded (for example from v8 to v9) while the system description still reflects the old architecture. In an audit this is treated as \"the documented system does not match the actual operating state.\""
+  },
+  {
+   "zh": "建議：每次系統重大變更（infrastructure change、interface增減）必須觸發系統描述審查。",
+   "en": "Recommendation: every major system change (infrastructure change, addition or removal of an interface) should trigger a review of the system description."
+  },
+  {
+   "zh": "系統描述 vs. 其他驗證文件",
+   "en": "System description vs. other validation documents"
+  },
+  {
+   "zh": "系統描述是「門面文件」——它不重複其他規格的細節，但提供整合性的概覽。",
+   "en": "The system description is a \"front-door document\": it does not repeat the details of other specifications, but provides an integrated overview."
+  },
+  {
+   "zh": "Appendix D7 — Data Migration / 資料遷移",
+   "en": "Appendix D7 — Data Migration"
+  },
+  {
+   "zh": "D7 中文解析：資料遷移",
+   "en": "D7 Commentary: Data Migration"
+  },
+  {
+   "zh": "比喻：資料遷移是「搬家」，不只是「搬箱子」",
+   "en": "Analogy: data migration is \"moving house\", not just \"moving boxes\""
+  },
+  {
+   "zh": "很多人以為資料遷移就是把資料庫的資料複製過去。但GAMP 5提醒我們：搬家時不只要搬家具（資料），還要確保：",
+   "en": "Many people think data migration simply means copying data from one database to another. GAMP 5 reminds us that when moving house you must move not only the furniture (the data) but also make sure that:"
+  },
+  {
+   "zh": "家具到了新家還能用（可用性）",
+   "en": "The furniture still works in the new home (usability)"
+  },
+  {
+   "zh": "鑰匙、門禁也要跟著設定好（metadata、存取權限）",
+   "en": "The keys and access controls are set up too (metadata, access permissions)"
+  },
+  {
+   "zh": "搬家過程有完整紀錄（稽核軌跡）",
+   "en": "The move is fully documented (audit trail)"
+  },
+  {
+   "zh": "搬錯了能搬回來（rollback strategy）",
+   "en": "If something is moved wrongly, it can be moved back (rollback strategy)"
+  },
+  {
+   "zh": "CDMO最常踩的坑：從紙本或舊LIMS遷移到新系統",
+   "en": "The most common CDMO pitfall: migrating from paper or a legacy LIMS to a new system"
+  },
+  {
+   "zh": "CDMO環境中最常見的資料遷移場景是：更換LIMS（舊系統 → 新系統），或將紙本批次記錄數位化後匯入EBR系統。",
+   "en": "The most common data migration scenarios in a CDMO are replacing a LIMS (old system to new system) or digitizing paper batch records and importing them into an EBR system."
+  },
+  {
+   "zh": "這種情況特別棘手，因為：",
+   "en": "These situations are particularly tricky because:"
+  },
+  {
+   "zh": "舊系統的「資料可靠性」難以確認（有沒有audit trail？）",
+   "en": "The data reliability of the legacy system is hard to confirm (is there an audit trail?)"
+  },
+  {
+   "zh": "紙本資料沒有audit trail，遷移後要怎麼交代稽核軌跡的起始點",
+   "en": "Paper data have no audit trail, so you must decide how to account for the starting point of the audit trail after migration"
+  },
+  {
+   "zh": "資料格式不統一（例如舊系統用文字儲存數值，新系統需要數字型別）",
+   "en": "Data formats are inconsistent (for example, the old system stores numeric values as text while the new system requires a numeric data type)"
+  },
+  {
+   "zh": "業主覺得「copy-paste就好」，低估了驗證工作量",
+   "en": "The business owner thinks \"copy-paste is enough\" and underestimates the validation effort"
+  },
+  {
+   "zh": "三環境架構：Source → Staging → Target",
+   "en": "Three-environment architecture: Source → Staging → Target"
+  },
+  {
+   "zh": "GAMP 5明確建議使用staging area（暫存環境）作為中間緩衝：",
+   "en": "GAMP 5 explicitly recommends using a staging area as an intermediate buffer:"
+  },
+  {
+   "zh": "<strong>Source system</strong>：原始資料，在整個遷移期間不得有無關的系統變更",
+   "en": "<strong>Source system</strong>: the original data; no unrelated system changes are permitted throughout the migration"
+  },
+  {
+   "zh": "<strong>Staging area</strong>：資料清理、格式轉換、規則應用的工作區",
+   "en": "<strong>Staging area</strong>: the working area for data cleansing, format conversion and rule application"
+  },
+  {
+   "zh": "<strong>Target system</strong>：最終生產環境，只有驗證通過的資料才進入",
+   "en": "<strong>Target system</strong>: the final production environment; only verified data may enter"
+  },
+  {
+   "zh": "三個環境都要在configuration management控制下。Rollback計畫要在遷移開始前就準備好。",
+   "en": "All three environments must be under configuration management. The rollback plan must be prepared before the migration begins."
+  },
+  {
+   "zh": "驗證策略：測試環境 vs 正式環境",
+   "en": "Verification strategy: test environment vs. production environment"
+  },
+  {
+   "zh": "<strong>測試環境驗證</strong>：先用少量資料（例如100筆）在test環境跑一次完整遷移流程，並進行100%比對驗證。目的是確認工具和流程可行，取得evidence before go-live。",
+   "en": "<strong>Test environment verification</strong>: first run a complete migration in the test environment with a small data set (for example 100 records) and perform a 100% comparison. The aim is to confirm that the tools and process work and to obtain evidence before go-live."
+  },
+  {
+   "zh": "<strong>正式環境驗證</strong>：資料量龐大，通常需要自動化工具進行100%比對（或統計抽樣加checksum）。自動化驗證工具本身的適用性也需要評估。",
+   "en": "<strong>Production environment verification</strong>: data volumes are large, so automated tools are usually needed for a 100% comparison (or statistical sampling plus checksum). The suitability of the automated verification tool itself must also be assessed."
+  },
+  {
+   "zh": "Checksum驗證的原理：計算來源資料的記錄數量與特定欄位的加總值，遷移後再次計算，兩個值相符才代表沒有漏筆或資料損失。",
+   "en": "How checksum verification works: calculate the number of source records and the sum of specific fields, then calculate them again after migration; only if the two values match can you conclude that no records were omitted and no data were lost."
+  },
+  {
+   "zh": "稽核軌跡的棘手問題",
+   "en": "The thorny issue of audit trails"
+  },
+  {
+   "zh": "如果舊系統沒有audit trail，資料遷移到有audit trail的新系統後，稽核員會問：「這些記錄在遷移之前誰改過？」",
+   "en": "If the legacy system has no audit trail, then once the data are migrated to a new system with an audit trail, the auditor will ask: \"Who changed these records before the migration?\""
+  },
+  {
+   "zh": "GAMP 5的建議：在遷移計畫中明確記載「遷移前的稽核軌跡不存在」，並在每筆遷移記錄中標記migration date作為audit trail的起始點。若能在遷移過程中產生computer-generated log，更佳。",
+   "en": "GAMP 5 recommendation: state explicitly in the migration plan that \"no audit trail exists before migration\", and mark each migrated record with the migration date as the starting point of the audit trail. If a computer-generated log can be produced during the migration, even better."
+  },
+  {
+   "zh": "CDMO資料遷移計畫的最低清單",
+   "en": "Minimum checklist for a CDMO data migration plan"
+  },
+  {
+   "zh": "遷移範疇與系統描述",
+   "en": "Migration scope and system description"
+  },
+  {
+   "zh": "風險評估（source data reliability + tool risk）",
+   "en": "Risk assessment (source data reliability + tool risk)"
+  },
+  {
+   "zh": "Data mapping table（含轉換規則）",
+   "en": "Data mapping table (including transformation rules)"
+  },
+  {
+   "zh": "三環境架構說明（source / staging / target）",
+   "en": "Description of the three-environment architecture (source / staging / target)"
+  },
+  {
+   "zh": "驗證策略（test run + production run）",
+   "en": "Verification strategy (test run + production run)"
+  },
+  {
+   "zh": "Cutover計畫（誰負責通知使用者、系統停機窗口）",
+   "en": "Cutover plan (who notifies users, system downtime window)"
+  },
+  {
+   "zh": "Rollback計畫（何時觸發、如何恢復）",
+   "en": "Rollback plan (when it is triggered, how to restore)"
+  },
+  {
+   "zh": "遷移報告範本（成功/失敗判準）",
+   "en": "Migration report template (success/failure criteria)"
+  },
+  {
+   "zh": "QA批准（流程擁有者、系統擁有者、QA、SME）",
+   "en": "QA approval (process owner, system owner, QA, SME)"
+  },
+  {
+   "zh": "資料映射表（Data Mapping Table）：必備交付物",
+   "en": "Data Mapping Table: a required deliverable"
+  },
+  {
+   "zh": "即使使用自動化遷移工具，也必須建立data mapping table，說明：",
+   "en": "Even when an automated migration tool is used, a data mapping table must be created that describes:"
+  },
+  {
+   "zh": "這份表格要放進遷移計畫，並獲得QA批准。",
+   "en": "This table must be included in the migration plan and approved by QA."
+  },
+  {
+   "zh": "Appendix D8 — Agile Software Development / 敏捷軟體開發",
+   "en": "Appendix D8 — Agile Software Development"
+  },
+  {
+   "zh": "D8 中文解析：敏捷軟體開發",
+   "en": "D8 Commentary: Agile Software Development"
+  },
+  {
+   "zh": "核心張力：Agile的速度 vs GxP的文件要求",
+   "en": "The core tension: Agile speed vs. GxP documentation requirements"
+  },
+  {
+   "zh": "Agile宣言說「Working software over comprehensive documentation」，但GxP說「沒有文件就等於沒發生」。這難道是根本矛盾嗎？",
+   "en": "The Agile Manifesto says \"Working software over comprehensive documentation\", but GxP says \"if it isn't documented, it didn't happen.\" Is this a fundamental contradiction?"
+  },
+  {
+   "zh": "GAMP 5的回答是：<strong>No</strong>。關鍵在於「文件的形式可以改變」——工具裡的backlog記錄、test run的audit trail、sprint report，這些都是合法的GxP evidence。重點是可追溯性和完整性，而不是紙本或PDF的數量。",
+   "en": "GAMP 5's answer is <strong>No</strong>. The key is that the form of the documentation can change: backlog records in a tool, the audit trail of a test run and sprint reports are all legitimate GxP evidence. What matters is traceability and completeness, not the number of paper documents or PDFs."
+  },
+  {
+   "zh": "CDMO如何落地：Sprint文件策略",
+   "en": "How a CDMO puts it into practice: sprint documentation strategy"
+  },
+  {
+   "zh": "在CDMO的電腦驗證專案（例如新LIMS、MES）中採用Agile，建議的文件策略：",
+   "en": "When using Agile in a CDMO computer validation project (for example a new LIMS or MES), the recommended documentation strategy is:"
+  },
+  {
+   "zh": "<strong>Sprint Planning</strong>：產出backlog item list（含GxP影響評估）→ 等同於傳統的功能規格片段",
+   "en": "<strong>Sprint Planning</strong>: produces a backlog item list (including GxP impact assessment) → equivalent to fragments of a traditional functional specification"
+  },
+  {
+   "zh": "<strong>Sprint Execution</strong>：在工具中記錄user story完成狀態、test results、defect resolution",
+   "en": "<strong>Sprint Execution</strong>: record user story completion status, test results and defect resolution in the tool"
+  },
+  {
+   "zh": "<strong>Sprint Review</strong>：產出sprint summary report（誰測了什麼、通過/失敗、未解決的問題）→ 等同於測試記錄",
+   "en": "<strong>Sprint Review</strong>: produces a sprint summary report (who tested what, pass/fail, unresolved issues) → equivalent to test records"
+  },
+  {
+   "zh": "<strong>Sprint Retrospective</strong>：流程改善記錄 → 持續品質改善的evidence",
+   "en": "<strong>Sprint Retrospective</strong>: process improvement records → evidence of continuous quality improvement"
+  },
+  {
+   "zh": "<strong>Release</strong>：所有sprint的cumulative backlog + DoD verification = 驗證總結報告的基礎",
+   "en": "<strong>Release</strong>: the cumulative backlog of all sprints + DoD verification = the basis of the validation summary report"
+  },
+  {
+   "zh": "Definition of Done (DoD) 與 GxP合規",
+   "en": "Definition of Done (DoD) and GxP compliance"
+  },
+  {
+   "zh": "DoD是Agile中最重要的品質控制機制。在GxP系統中，DoD應包含：",
+   "en": "The DoD is the most important quality control mechanism in Agile. In a GxP system, the DoD should include:"
+  },
+  {
+   "zh": "功能已開發完成（code complete）",
+   "en": "Functionality developed (code complete)"
+  },
+  {
+   "zh": "單元測試通過（unit test pass rate &gt; X%）",
+   "en": "Unit tests passed (unit test pass rate &gt; X%)"
+  },
+  {
+   "zh": "Regression testing通過（不影響之前sprint的功能）",
+   "en": "Regression testing passed (earlier sprints' functionality is not affected)"
+  },
+  {
+   "zh": "GxP影響評估已完成（如有資料完整性影響，已記錄）",
+   "en": "GxP impact assessment completed (any data integrity impact recorded)"
+  },
+  {
+   "zh": "Defect已close或risk-accepted（附justification）",
+   "en": "Defects closed or risk-accepted (with justification)"
+  },
+  {
+   "zh": "User acceptance已確認（業主簽核或工具狀態記錄）",
+   "en": "User acceptance confirmed (business owner sign-off or tool status record)"
+  },
+  {
+   "zh": "一個未通過DoD的user story不能計為「完成」，也不能進入下一個sprint作為基礎。",
+   "en": "A user story that has not met the DoD cannot be counted as \"done\" and cannot serve as a foundation for the next sprint."
+  },
+  {
+   "zh": "INVEST標準：寫好User Story的關鍵",
+   "en": "INVEST criteria: the key to writing good user stories"
+  },
+  {
+   "zh": "如果user story寫得不好（太大、太模糊、無法測試），整個Agile流程都會出問題。INVEST是一個自我檢查框架：",
+   "en": "If user stories are poorly written (too large, too vague, untestable), the whole Agile process runs into trouble. INVEST is a self-check framework:"
+  },
+  {
+   "zh": "<strong>I (Independent)</strong>：這個story可以獨立開發，不依賴未完成的其他story",
+   "en": "<strong>I (Independent)</strong>: the story can be developed independently, without depending on other unfinished stories"
+  },
+  {
+   "zh": "<strong>N (Negotiable)</strong>：細節可以討論，不是不可更改的契約",
+   "en": "<strong>N (Negotiable)</strong>: details can be discussed; it is not an unchangeable contract"
+  },
+  {
+   "zh": "<strong>V (Valuable)</strong>：對使用者或業務有明確價值",
+   "en": "<strong>V (Valuable)</strong>: it delivers clear value to users or the business"
+  },
+  {
+   "zh": "<strong>E (Estimable)</strong>：團隊能夠估算開發工作量",
+   "en": "<strong>E (Estimable)</strong>: the team can estimate the development effort"
+  },
+  {
+   "zh": "<strong>S (Small)</strong>：一個sprint內可完成（通常1-3天開發量）",
+   "en": "<strong>S (Small)</strong>: it can be completed within one sprint (usually 1-3 days of development)"
+  },
+  {
+   "zh": "<strong>T (Testable)</strong>：有清楚的acceptance criteria，知道怎麼測試",
+   "en": "<strong>T (Testable)</strong>: it has clear acceptance criteria, so it is known how to test it"
+  },
+  {
+   "zh": "電子簽名的誤解：Agile中的approval不等於21 CFR Part 11",
+   "en": "A misconception about electronic signatures: approval in Agile is not 21 CFR Part 11"
+  },
+  {
+   "zh": "很多GxP從業者看到Agile工具的「approve」按鈕就緊張：這需要符合21 CFR Part 11嗎？",
+   "en": "Many GxP practitioners get nervous when they see the \"approve\" button in an Agile tool: does this need to comply with 21 CFR Part 11?"
+  },
+  {
+   "zh": "GAMP 5明確回答：<strong>不需要</strong>（除非是SaMD或醫療器材嵌入軟體）。軟體生命週期文件（user story approval、sprint sign-off）的「批准」不等於法規上需要具法律效力的電子簽名。工具的audit trail（誰、何時、做了什麼）就足夠作為acceptance evidence。",
+   "en": "GAMP 5 answers explicitly: <strong>no</strong> (unless it is SaMD or software embedded in a medical device). \"Approval\" of software life cycle documents (user story approval, sprint sign-off) does not amount to a legally binding electronic signature under the regulations. The tool's audit trail (who, when, what) is sufficient as acceptance evidence."
+  },
+  {
+   "zh": "DevOps + CI/CD 在GxP環境的適用性",
+   "en": "Applicability of DevOps + CI/CD in a GxP environment"
+  },
+  {
+   "zh": "DevOps將開發與維運整合到同一個團隊，CI/CD實現自動化測試和部署。這在GxP環境聽起來很可怕（「系統每天都在變？」），但實際上可行的前提是：",
+   "en": "DevOps integrates development and operations into one team, and CI/CD automates testing and deployment. In a GxP environment this sounds frightening (\"the system changes every day?\"), but it is feasible provided that:"
+  },
+  {
+   "zh": "每次change都有risk assessment（高風險GxP功能需要更嚴格的評估）",
+   "en": "Every change has a risk assessment (high-risk GxP functions require a more rigorous assessment)"
+  },
+  {
+   "zh": "CI pipeline包含自動化regression testing",
+   "en": "The CI pipeline includes automated regression testing"
+  },
+  {
+   "zh": "部署需要DoD + change control gate",
+   "en": "Deployment requires a DoD + change control gate"
+  },
+  {
+   "zh": "Compliance accountability在DevOps團隊內部，不是外部的人在審批",
+   "en": "Compliance accountability sits within the DevOps team, not with external approvers"
+  },
+  {
+   "zh": "在CDMO中，這種模式適合SaaS-based系統（如cloud LIMS）的持續更新管理。",
+   "en": "In a CDMO, this model suits the continuous update management of SaaS-based systems (such as a cloud LIMS)."
+  },
+  {
+   "zh": "Scrum在GxP環境的角色對應",
+   "en": "Mapping Scrum roles in a GxP environment"
+  },
+  {
+   "zh": "注意：QA在Agile環境中的角色是「嵌入式夥伴」，不是最後的守門員。這需要QA思維轉型。",
+   "en": "Note: in an Agile environment, QA's role is that of an \"embedded partner\", not the final gatekeeper. This requires a change in QA mindset."
+  },
+  {
+   "zh": "Appendix D9 — Software Tools / 軟體工具",
+   "en": "Appendix D9 — Software Tools"
+  },
+  {
+   "zh": "D9 中文解析：軟體工具",
+   "en": "D9 Commentary: Software Tools"
+  },
+  {
+   "zh": "關鍵問題：Excel macro需要驗證嗎？",
+   "en": "Key question: do Excel macros need to be validated?"
+  },
+  {
+   "zh": "這是CDMO環境中最常遇到的問題之一。答案取決於Excel的用途：",
+   "en": "This is one of the questions most often encountered in a CDMO environment. The answer depends on what Excel is used for:"
+  },
+  {
+   "zh": "<strong>用Excel執行GxP計算（例如OOS計算、環境監控趨勢分析）</strong>：Excel本身是工具（Category 1），但這個特定的macro/workbook是在執行GxP業務流程 → 需要CSV（Computerized System Validation）",
+   "en": "<strong>Using Excel to perform GxP calculations (for example OOS calculations, environmental monitoring trend analysis)</strong>: Excel itself is a tool (Category 1), but this specific macro/workbook executes a GxP business process → CSV (computerized system validation) is required"
+  },
+  {
+   "zh": "<strong>用Excel管理驗證測試的test scripts（不含GxP記錄）</strong>：這是開發工具用途 → 不需要validation，但需要基本risk assessment + change control",
+   "en": "<strong>Using Excel to manage test scripts for validation testing (containing no GxP records)</strong>: this is a development tool use → no validation is needed, but basic risk assessment + change control is required"
+  },
+  {
+   "zh": "<strong>用Excel自動生成validation protocol的模板</strong>：生命週期工具 → Category 1，不需要validation",
+   "en": "<strong>Using Excel to automatically generate validation protocol templates</strong>: a life cycle tool → Category 1, no validation needed"
+  },
+  {
+   "zh": "關鍵判斷標準：工具輸出的記錄是不是直接支援product life cycle的GxP記錄？",
+   "en": "Key criterion: do the records output by the tool directly support GxP records of the product life cycle?"
+  },
+  {
+   "zh": "EU GMP Annex 11的工具要求",
+   "en": "EU GMP Annex 11 requirements for tools"
+  },
+  {
+   "zh": "Annex 11明確要求：automated testing tools和test environments必須有documented adequacy assessment。這不等於要validation，但必須有書面評估說明這個工具夠不夠好、是否適合其用途。",
+   "en": "Annex 11 explicitly requires that automated testing tools and test environments have a documented adequacy assessment. This does not mean validation, but there must be a written assessment stating whether the tool is good enough and suitable for its purpose."
+  },
+  {
+   "zh": "實務上的最低要求：",
+   "en": "Minimum practical requirements:"
+  },
+  {
+   "zh": "工具識別與用途描述",
+   "en": "Tool identification and description of purpose"
+  },
+  {
+   "zh": "Adequacy assessment（SME判斷：工具是否適合intended use）",
+   "en": "Adequacy assessment (SME judgment: is the tool suitable for its intended use)"
+  },
+  {
+   "zh": "使用者訓練記錄",
+   "en": "User training records"
+  },
+  {
+   "zh": "基本access control",
+   "en": "Basic access control"
+  },
+  {
+   "zh": "納入CMDB（配置管理資料庫）",
+   "en": "Inclusion in the CMDB (configuration management database)"
+  },
+  {
+   "zh": "工具風險評估的關鍵考量",
+   "en": "Key considerations in tool risk assessment"
+  },
+  {
+   "zh": "GAMP 5提供了九個風險評估考量點。在CDMO環境，最重要的是：",
+   "en": "GAMP 5 provides nine considerations for risk assessment. In a CDMO environment, the most important are:"
+  },
+  {
+   "zh": "<strong>工具儲存的記錄性質</strong>：如果工具存有test results或system requirements，這些記錄雖非GxP records，但支援validated status → 需要integrity controls",
+   "en": "<strong>Nature of the records stored in the tool</strong>: if the tool holds test results or system requirements, these records, although not GxP records, support the validated status → integrity controls are needed"
+  },
+  {
+   "zh": "<strong>雲端工具的資料保留</strong>：如果工具是SaaS（例如雲端Jira、GitHub Enterprise），須確保記錄在retention period內可取用",
+   "en": "<strong>Data retention for cloud tools</strong>: if the tool is SaaS (for example cloud Jira or GitHub Enterprise), ensure that records remain accessible throughout the retention period"
+  },
+  {
+   "zh": "<strong>工具失效的影響</strong>：若工具當機，是否影響已上線的GxP系統？（例如監控工具失效可能影響環境監控的警報）",
+   "en": "<strong>Impact of tool failure</strong>: if the tool goes down, does it affect GxP systems already in operation? (For example, failure of a monitoring tool may affect environmental monitoring alarms)"
+  },
+  {
+   "zh": "<strong>資安風險</strong>：開源工具的下載來源是否可信？工具是否可能引入惡意軟體？",
+   "en": "<strong>Security risk</strong>: is the download source of an open-source tool trustworthy? Could the tool introduce malware?"
+  },
+  {
+   "zh": "「工具記錄不要複製進GxP文件」的重要原則",
+   "en": "The important principle: \"do not copy tool records into GxP documents\""
+  },
+  {
+   "zh": "很多驗證工程師習慣把Jira/TestRail的測試結果截圖後貼進Word文件再上傳到文件管理系統。GAMP 5說：<strong>這樣做沒有品質效益，而且有風險</strong>——工具裡的記錄和文件裡的截圖可能不同步（工具裡的defect已close，但文件還沒更新）。",
+   "en": "Many validation engineers are used to taking screenshots of Jira/TestRail test results, pasting them into Word documents and uploading them to the document management system. GAMP 5 says: <strong>this has no quality benefit and carries risk</strong>, because the records in the tool and the screenshots in the document can fall out of sync (the defect is closed in the tool but the document has not been updated)."
+  },
+  {
+   "zh": "更好的做法：在驗證報告中引用工具的report（例如：「詳細測試結果見TestRail Report #TR-2026-042」），並確保稽核前能展示工具的原始記錄。",
+   "en": "A better approach: reference the tool's report in the validation report (for example: \"see TestRail Report #TR-2026-042 for detailed test results\"), and make sure the original records in the tool can be shown before an audit."
+  },
+  {
+   "zh": "稽核應對：檢查官要求看工具記錄",
+   "en": "Audit response: when the inspector asks to see tool records"
+  },
+  {
+   "zh": "GAMP 5提醒：法規檢查官可能要求看工具裡的記錄（例如system requirements、test results）。CDMO需要事先準備：",
+   "en": "GAMP 5 reminds us that regulatory inspectors may ask to see records in tools (for example system requirements, test results). A CDMO needs to prepare in advance:"
+  },
+  {
+   "zh": "知道哪些工具存有哪些系統的life cycle記錄",
+   "en": "Know which tools hold life cycle records for which systems"
+  },
+  {
+   "zh": "能夠快速從工具中產生特定系統的GxP功能測試結果報告",
+   "en": "Be able to quickly generate from the tool a report of the GxP functional test results for a specific system"
+  },
+  {
+   "zh": "如果工具是第三方SaaS，確認在audit期間能取得資料存取權",
+   "en": "If the tool is third-party SaaS, confirm that data access will be available during the audit"
+  },
+  {
+   "zh": "工具的access log能顯示誰在何時存取了哪些記錄",
+   "en": "The tool's access log can show who accessed which records and when"
+  },
+  {
+   "zh": "不要等稽核當天才發現「那個tool的管理員已離職，帳號停用了」。",
+   "en": "Do not wait until the day of the audit to discover that \"the administrator of that tool has left and the account was disabled.\""
+  },
+  {
+   "zh": "工具生命週期管理：被忽視的維護義務",
+   "en": "Tool life cycle management: the overlooked maintenance obligation"
+  },
+  {
+   "zh": "工具需要有designated owner（不是IT全負責，也不是驗證團隊全負責，要有明確的single point of contact）。工具的退役計畫同樣重要：",
+   "en": "A tool needs a designated owner (not IT alone, not the validation team alone, but a clear single point of contact). A retirement plan for the tool is equally important:"
+  },
+  {
+   "zh": "工具退役前，確認其中儲存的記錄已轉移或存檔",
+   "en": "Before retiring a tool, confirm that the records stored in it have been transferred or archived"
+  },
+  {
+   "zh": "確保記錄在regulatory retention period內（通常10年以上）仍可讀取",
+   "en": "Ensure records remain readable throughout the regulatory retention period (usually 10 years or more)"
+  },
+  {
+   "zh": "版本升級需要change control + 確認不影響既有記錄",
+   "en": "Version upgrades require change control + confirmation that existing records are not affected"
+  },
+  {
+   "zh": "Cloud-based工具特別要注意：vendor若停止服務，你的test records在哪裡？",
+   "en": "Special attention for cloud-based tools: if the vendor stops providing the service, where are your test records?"
+  },
+  {
+   "zh": "Section Summary — 本節總結",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "核心思維：GxP合規不在於文件數量，而在於可追溯性、完整性、以及整個生命週期中維持受控狀態（state of control）。Agile和現代工具鏈恰恰能夠以更有效率的方式實現這些目標——前提是要有正確的mindset和適當的治理機制。",
+   "en": "Core principle: GxP compliance is not about the volume of documentation, but about traceability, completeness, and maintaining a state of control throughout the life cycle. Agile and modern toolchains can achieve these goals more efficiently, provided there is the right mindset and appropriate governance."
+  }
+ ]
+}

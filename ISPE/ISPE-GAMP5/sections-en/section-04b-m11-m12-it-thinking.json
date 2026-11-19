@@ -1,0 +1,829 @@
+{
+ "source": "section-04b-m11-m12-it-thinking.html",
+ "blocks": [
+  {
+   "zh": "IT基礎架構與批判性思維",
+   "en": "IT Infrastructure and Critical Thinking"
+  },
+  {
+   "zh": "Learning Objectives — 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Explain why EU Annex 11 distinguishes between <strong>application validation</strong> and <strong>IT infrastructure qualification</strong>, and why infrastructure software is classified as GAMP Category 1. — 說明為何EU Annex 11區分應用程式驗證與IT基礎架構確認，以及基礎架構軟體為何歸類為GAMP第1類。",
+   "en": "Explain why EU Annex 11 distinguishes between <strong>application validation</strong> and <strong>IT infrastructure qualification</strong>, and why infrastructure software is classified as GAMP Category 1."
+  },
+  {
+   "zh": "Describe the \"one qualification, many implementations\" model for standard infrastructure components and how Infrastructure as Code (IaC) supports it. — 描述標準基礎架構元件的「一次確認，多次部署」模型，以及IaC如何支持此模型。",
+   "en": "Describe the \"one qualification, many implementations\" model for standard infrastructure components and how Infrastructure as Code (IaC) supports it."
+  },
+  {
+   "zh": "Differentiate the responsibilities and validation obligations for IaaS, PaaS, and SaaS cloud deployments in a GxP context. — 區分IaaS、PaaS、SaaS三種雲端部署模式在GxP環境下的責任與驗證義務。",
+   "en": "Differentiate the responsibilities and validation obligations for IaaS, PaaS, and SaaS cloud deployments in a GxP context."
+  },
+  {
+   "zh": "Define the role of an IT Quality (ITQ) function and where QA involvement in IT infrastructure is warranted versus unnecessary. — 定義IT品質職能（ITQ）的角色，並識別QA介入IT基礎架構的適當邊界。",
+   "en": "Define the role of an IT Quality (ITQ) function and where QA involvement in IT infrastructure is warranted versus unnecessary."
+  },
+  {
+   "zh": "Apply critical thinking principles to avoid both over-validation and under-validation of computerized systems throughout the system life cycle. — 應用批判性思維原則，在整個系統生命週期中避免過度驗證與不足驗證。",
+   "en": "Apply critical thinking principles to avoid both over-validation and under-validation of computerized systems throughout the system life cycle."
+  },
+  {
+   "zh": "Assess an organization's critical thinking maturity using the five-level capability model in Table 20.1. — 運用表20.1的五級能力模型評估組織批判性思維成熟度。",
+   "en": "Assess an organization's critical thinking maturity using the five-level capability model in Table 20.1."
+  },
+  {
+   "zh": "<strong>Appendix M11: IT Infrastructure — Introduction &amp; Principles Appendix M11: IT 基礎設施 — 簡介與原則</strong>",
+   "en": "<strong>Appendix M11: IT Infrastructure — Introduction &amp; Principles</strong>"
+  },
+  {
+   "zh": "中文解析 — 基礎架構基本原則",
+   "en": "Commentary: Basic Principles of Infrastructure"
+  },
+  {
+   "zh": "核心概念：驗證 vs. 確認",
+   "en": "Core Concept: Validation vs. Qualification"
+  },
+  {
+   "zh": "EU Annex 11最重要的一句話：<strong>應用程式需要驗證（Validation）；IT基礎架構需要確認（Qualification）</strong>。",
+   "en": "The single most important sentence in EU Annex 11 on this topic: <strong>applications require validation; IT infrastructure requires qualification</strong>."
+  },
+  {
+   "zh": "這不只是文字遊戲。兩者的差異反映了根本的邏輯：",
+   "en": "This is not just a play on words. The difference reflects a fundamental logic:"
+  },
+  {
+   "zh": "應用程式（如eDMS、ERP）：公司根據自身需求設定，需證明「符合預定用途」",
+   "en": "Applications (e.g., eDMS, ERP): the company configures them to its own needs and must demonstrate that they are \"fit for intended use\""
+  },
+  {
+   "zh": "基礎架構（如伺服器、網路交換器）：廠商製造的標準品，公司只是「配置並維持受控狀態」",
+   "en": "Infrastructure (e.g., servers, network switches): standard products made by vendors; the company only \"configures them and keeps them in a controlled state\""
+  },
+  {
+   "zh": "類比：廠房設備 vs. 支撐設施",
+   "en": "Analogy: Production Equipment vs. Supporting Utilities"
+  },
+  {
+   "zh": "想像一座製藥廠：",
+   "en": "Picture a pharmaceutical plant:"
+  },
+  {
+   "zh": "無菌灌裝機（應用程式）：需要完整IQ/OQ/PQ，因為它直接影響產品品質",
+   "en": "Sterile filling machine (application): needs full IQ/OQ/PQ because it directly affects product quality"
+  },
+  {
+   "zh": "廠房電力系統（IT基礎架構）：需要確認電力穩定可靠，但不需要像灌裝機一樣詳細驗證每一個功能",
+   "en": "Plant electrical system (IT infrastructure): you must confirm that power is stable and reliable, but you do not verify every single function in the detail applied to the filling machine"
+  },
+  {
+   "zh": "同理，SQL Server資料庫引擎是基礎架構（Category 1），而跑在其上的LIMS系統才是需要驗證的應用程式。",
+   "en": "In the same way, the SQL Server database engine is infrastructure (Category 1), while the LIMS running on top of it is the application that needs validation."
+  },
+  {
+   "zh": "GAMP Category 1 的意義",
+   "en": "What GAMP Category 1 Means"
+  },
+  {
+   "zh": "基礎架構軟體（OS、資料庫引擎、網路韌體）歸類為<strong>GAMP第1類：基礎架構軟體</strong>。",
+   "en": "Infrastructure software (OS, database engines, network firmware) is classified as <strong>GAMP Category 1: Infrastructure Software</strong>."
+  },
+  {
+   "zh": "實務含義：",
+   "en": "Practical implications:"
+  },
+  {
+   "zh": "不需要編寫URS（使用者需求規格）",
+   "en": "No URS (user requirements specification) needs to be written"
+  },
+  {
+   "zh": "不需要完整的功能測試協議",
+   "en": "No full functional test protocol is needed"
+  },
+  {
+   "zh": "重點是：安裝確認（正確版本？正確配置？）+ 維持受控狀態",
+   "en": "The focus is installation verification (correct version? correct configuration?) plus maintaining the controlled state"
+  },
+  {
+   "zh": "常見錯誤：把Windows Server或Oracle Database當作Category 3/4應用程式來驗證，浪費大量資源。",
+   "en": "Common mistake: treating Windows Server or Oracle Database as a Category 3/4 application and validating it as such, which wastes a great deal of resources."
+  },
+  {
+   "zh": "「一次確認，多次部署」",
+   "en": "\"One Qualification, Many Implementations\""
+  },
+  {
+   "zh": "這是基礎架構管理的核心效率原則。一旦「標準配置模板」被驗證為可接受，後續每台按同樣模板部署的伺服器只需要確認「是否確實按模板部署」即可，不需要重複完整確認流程。",
+   "en": "This is the core efficiency principle of infrastructure management. Once a \"standard configuration template\" has been qualified as acceptable, each subsequent server deployed from the same template only needs to be checked to confirm that it was in fact deployed according to the template; the full qualification process does not need to be repeated."
+  },
+  {
+   "zh": "<strong>IaC（基礎架構即程式碼）</strong>將這個概念推向自動化：配置腳本受版本控制管理，部署過程可自動產生記錄，實現「review-by-exception（例外審查）」。",
+   "en": "<strong>IaC (Infrastructure as Code)</strong> takes this concept further into automation: configuration scripts are kept under version control, and the deployment process can generate records automatically, enabling \"review by exception\"."
+  },
+  {
+   "zh": "對CDMO的提醒",
+   "en": "A Reminder for CDMOs"
+  },
+  {
+   "zh": "在CDMO環境，IT基礎架構往往由IT部門管理，QA人員對伺服器架構不熟悉，容易陷入兩個極端：",
+   "en": "In a CDMO, IT infrastructure is usually managed by the IT department, and QA staff are often unfamiliar with server architecture, so it is easy to fall into one of two extremes:"
+  },
+  {
+   "zh": "過度介入：要求IT對每個修補程式都走完整變更控制流程",
+   "en": "Over-involvement: requiring IT to put every patch through a full change control process"
+  },
+  {
+   "zh": "完全不介入：讓IT自行決定，QA毫無監督",
+   "en": "No involvement at all: letting IT decide everything with no QA oversight"
+  },
+  {
+   "zh": "正確做法：建立IT Quality（ITQ）職能，作為IT與QA之間的橋梁（見Section 19.4）。",
+   "en": "The right approach: establish an IT Quality (ITQ) function to act as the bridge between IT and QA (see Section 19.4)."
+  },
+  {
+   "zh": "<strong>M11: Risk Management, Quality Role &amp; IT Processes M11: 風險管理、品質角色與 IT 流程</strong>",
+   "en": "<strong>M11: Risk Management, Quality Role &amp; IT Processes</strong>"
+  },
+  {
+   "zh": "中文解析 — 風險管理與品保角色",
+   "en": "Commentary: Risk Management and the Role of Quality Assurance"
+  },
+  {
+   "zh": "QA在IT基礎架構的正確角色",
+   "en": "The Right Role for QA in IT Infrastructure"
+  },
+  {
+   "zh": "這一節給很多製藥QA人員一個重要訊息：<strong>品保不需要審批每一個IT基礎架構變更</strong>。",
+   "en": "This section gives pharmaceutical QA staff an important message: <strong>QA does not need to approve every IT infrastructure change</strong>."
+  },
+  {
+   "zh": "應該介入的情況（高風險）：",
+   "en": "Situations where QA should be involved (high risk):"
+  },
+  {
+   "zh": "更換多個GxP應用程式共用的資料庫引擎",
+   "en": "Replacing a database engine shared by multiple GxP applications"
+  },
+  {
+   "zh": "重大作業系統版本升級",
+   "en": "Major operating system version upgrades"
+  },
+  {
+   "zh": "影響GxP應用程式可用性的網路架構變更",
+   "en": "Network architecture changes that affect the availability of GxP applications"
+  },
+  {
+   "zh": "不需要介入的情況（低風險）：",
+   "en": "Situations where QA involvement is not needed (low risk):"
+  },
+  {
+   "zh": "病毒碼更新",
+   "en": "Antivirus signature updates"
+  },
+  {
+   "zh": "微碼（microcode）修補",
+   "en": "Microcode patches"
+  },
+  {
+   "zh": "增加儲存空間",
+   "en": "Adding storage capacity"
+  },
+  {
+   "zh": "例行網路設備更換（同規格）",
+   "en": "Routine like-for-like replacement of network equipment (same specification)"
+  },
+  {
+   "zh": "IT Quality（ITQ）職能 — 為何重要",
+   "en": "The IT Quality (ITQ) Function: Why It Matters"
+  },
+  {
+   "zh": "在大型CDMO，建議設立ITQ角色（可以是IT部門內的人員兼任），負責：",
+   "en": "In a large CDMO, it is advisable to establish an ITQ role (which can be filled by someone within the IT department as an additional duty), responsible for:"
+  },
+  {
+   "zh": "監督IT流程是否支持受控狀態",
+   "en": "Overseeing whether IT processes support the controlled state"
+  },
+  {
+   "zh": "了解GxP期望，判斷何時需要QA介入",
+   "en": "Understanding GxP expectations and judging when QA involvement is needed"
+  },
+  {
+   "zh": "與QA合作制定IT品質框架",
+   "en": "Working with QA to develop the IT quality framework"
+  },
+  {
+   "zh": "沒有ITQ的常見問題：IT做了影響GxP系統的重大變更，QA事後才知道。",
+   "en": "A typical problem without an ITQ: IT makes a major change affecting a GxP system, and QA only finds out afterwards."
+  },
+  {
+   "zh": "RPO vs. RTO — 實際案例",
+   "en": "RPO vs. RTO: A Practical Example"
+  },
+  {
+   "zh": "假設你有一套雲端MES（製造執行系統）：",
+   "en": "Suppose you have a cloud-based MES (manufacturing execution system):"
+  },
+  {
+   "zh": "<strong>RPO = 4小時</strong>：意思是系統崩潰後，最多接受損失4小時的資料（備份每4小時執行一次）",
+   "en": "<strong>RPO = 4 hours</strong>: after a system crash, you accept losing at most 4 hours of data (backups run every 4 hours)"
+  },
+  {
+   "zh": "<strong>RTO = 2小時</strong>：意思是系統崩潰後，必須在2小時內恢復運作",
+   "en": "<strong>RTO = 2 hours</strong>: after a system crash, operation must be restored within 2 hours"
+  },
+  {
+   "zh": "這兩個數字必須由<strong>業務主管（Business Owner）</strong>定義並認可，不能只由IT自行決定。如果生產線停工損失巨大，RTO可能需要設為30分鐘。",
+   "en": "These two figures must be defined and approved by the <strong>Business Owner</strong>; they cannot be decided by IT alone. If a production line stoppage would be very costly, the RTO may need to be set at 30 minutes."
+  },
+  {
+   "zh": "重點：<strong>定期測試備份可回復性</strong>，不能只設定備份任務就假設它能用。",
+   "en": "Key point: <strong>test the recoverability of backups regularly</strong>. Do not simply set up a backup job and assume it works."
+  },
+  {
+   "zh": "IT變更控制 vs. GxP變更控制",
+   "en": "IT Change Control vs. GxP Change Control"
+  },
+  {
+   "zh": "很多公司的問題：把IT基礎架構變更強行套用到GxP應用程式的變更控制流程中，造成效率極低。",
+   "en": "A common problem in many companies: IT infrastructure changes are forced into the change control process designed for GxP applications, which is highly inefficient."
+  },
+  {
+   "zh": "GAMP 5建議的做法：",
+   "en": "The approach recommended by GAMP 5:"
+  },
+  {
+   "zh": "基礎架構變更由<strong>IT流程層</strong>管理（ITIL標準變更清單）",
+   "en": "Infrastructure changes are managed at the <strong>IT process level</strong> (ITIL standard change list)"
+  },
+  {
+   "zh": "GxP應用程式變更由<strong>產品生命週期管理流程</strong>管理",
+   "en": "GxP application changes are managed under the <strong>product life cycle management process</strong>"
+  },
+  {
+   "zh": "建立「標準變更清單」：IT可自行執行、無需額外審批的預核准變更",
+   "en": "Establish a \"standard change list\": pre-approved changes that IT can carry out on its own without additional approval"
+  },
+  {
+   "zh": "災難復原的優先順序問題",
+   "en": "The Disaster Recovery Priority Question"
+  },
+  {
+   "zh": "這是容易引起爭議的議題：當IT系統全面崩潰時，製藥GxP系統優先恢復嗎？",
+   "en": "This is a topic that easily causes debate: when IT systems fail across the board, are pharmaceutical GxP systems restored first?"
+  },
+  {
+   "zh": "GAMP 5的回答：<strong>不一定</strong>。企業層級的優先順序可能讓財務系統（ERP）排在製造系統之前，因為沒有ERP企業可能無法運作。",
+   "en": "GAMP 5 answers: <strong>not necessarily</strong>. At the enterprise level, priorities may rank the financial system (ERP) ahead of manufacturing systems, because without ERP the business may be unable to operate."
+  },
+  {
+   "zh": "QA需要在BCP計畫中了解並接受這個優先順序，並確保公共衛生影響（如藥品短缺）已被納入考量。",
+   "en": "QA needs to understand and accept this priority order in the BCP (business continuity plan), and make sure that public health impact (such as drug shortages) has been taken into account."
+  },
+  {
+   "zh": "<strong>M11: Cloud Infrastructure M11: 雲端基礎設施</strong>",
+   "en": "<strong>M11: Cloud Infrastructure</strong>"
+  },
+  {
+   "zh": "中文解析 — 雲端基礎架構",
+   "en": "Commentary: Cloud Infrastructure"
+  },
+  {
+   "zh": "實際案例：驗證雲端eDMS（Veeva Vault QualityDocs）",
+   "en": "Practical Example: Validating a Cloud eDMS (Veeva Vault QualityDocs)"
+  },
+  {
+   "zh": "這是SaaS模式。你的驗證策略應該是：",
+   "en": "This is a SaaS model. Your validation strategy should be:"
+  },
+  {
+   "zh": "<strong>供應商評估</strong>：確認Veeva有SOC 2 Type 2認證、ISO 27001，審查其資料中心安全措施",
+   "en": "<strong>Supplier assessment</strong>: confirm that Veeva holds SOC 2 Type 2 and ISO 27001 certifications, and review its data center security measures"
+  },
+  {
+   "zh": "<strong>合約確認</strong>：SLA中明確RPO、RTO；資料所在地（Data Residency）符合法規；供應商變更通知機制",
+   "en": "<strong>Contract confirmation</strong>: the SLA must state RPO and RTO explicitly; data residency must comply with regulations; a supplier change notification mechanism must be in place"
+  },
+  {
+   "zh": "<strong>IQ</strong>：確認SaaS環境配置符合我方需求（不是安裝伺服器，而是確認租戶配置）",
+   "en": "<strong>IQ</strong>: confirm that the SaaS environment configuration meets your requirements (this is not about installing servers, but about verifying the tenant configuration)"
+  },
+  {
+   "zh": "<strong>OQ</strong>：測試配置的功能（工作流程、存取控制、電子簽章）是否如預期運作",
+   "en": "<strong>OQ</strong>: test that the configured functions (workflows, access control, electronic signatures) operate as expected"
+  },
+  {
+   "zh": "<strong>不需要</strong>：測試Veeva底層資料庫引擎、伺服器OS版本",
+   "en": "<strong>Not needed</strong>: testing Veeva's underlying database engine or server OS version"
+  },
+  {
+   "zh": "誰來確認雲端服務？IT還是QA？",
+   "en": "Who Qualifies the Cloud Service: IT or QA?"
+  },
+  {
+   "zh": "GAMP 5的建議：<strong>IT + QA協作，但角色分工明確</strong>。",
+   "en": "GAMP 5 recommendation: <strong>IT and QA collaborate, with clearly divided roles</strong>."
+  },
+  {
+   "zh": "<strong>IT</strong>：評估供應商技術能力（安全性、可靠性、認證）；管理SLA；執行技術層面的確認測試",
+   "en": "<strong>IT</strong>: assesses the supplier's technical capability (security, reliability, certifications); manages the SLA; performs technical qualification testing"
+  },
+  {
+   "zh": "<strong>QA</strong>：審查供應商評估結果；批准驗證計畫與報告；確保GxP資料完整性要求被納入合約",
+   "en": "<strong>QA</strong>: reviews the supplier assessment results; approves the validation plan and report; ensures that GxP data integrity requirements are included in the contract"
+  },
+  {
+   "zh": "<strong>ITQ</strong>（如有）：協調IT與QA之間的溝通，確保兩方理解彼此的期望",
+   "en": "<strong>ITQ</strong> (if present): coordinates communication between IT and QA and makes sure each side understands the other's expectations"
+  },
+  {
+   "zh": "關鍵原則：<strong>監管責任無法外包</strong>。即使Veeva的資料中心在愛爾蘭，你的GxP資料完整性仍是你的責任。",
+   "en": "Key principle: <strong>regulatory accountability cannot be outsourced</strong>. Even if Veeva's data center is in Ireland, your GxP data integrity remains your responsibility."
+  },
+  {
+   "zh": "雲端GxP的核心問題清單",
+   "en": "Core Question List for Cloud GxP"
+  },
+  {
+   "zh": "資料加密金鑰由誰持有？供應商還是我方？",
+   "en": "Who holds the data encryption keys: the supplier or us?"
+  },
+  {
+   "zh": "供應商staff有權存取我的GxP資料嗎？",
+   "en": "Do supplier staff have access to my GxP data?"
+  },
+  {
+   "zh": "系統崩潰後，供應商保證幾小時內恢復（RTO）？",
+   "en": "After a system crash, within how many hours does the supplier guarantee recovery (RTO)?"
+  },
+  {
+   "zh": "供應商有哪些第三方認證（SOC 2 Type 2？ISO 27001？）？",
+   "en": "Which third-party certifications does the supplier hold (SOC 2 Type 2? ISO 27001?)?"
+  },
+  {
+   "zh": "供應商升級SaaS版本時，我有機會拒絕或延遲嗎？",
+   "en": "When the supplier upgrades the SaaS version, do I have the opportunity to refuse or defer it?"
+  },
+  {
+   "zh": "退出條款：如果我要離開這個供應商，我的資料如何遷出？格式是否可讀？",
+   "en": "Exit clause: if I want to leave this supplier, how will my data be migrated out, and is the format readable?"
+  },
+  {
+   "zh": "<strong>Appendix M12: Critical Thinking — Introduction &amp; Scope Appendix M12: 批判性思維 — 簡介與範圍</strong>",
+   "en": "<strong>Appendix M12: Critical Thinking — Introduction &amp; Scope</strong>"
+  },
+  {
+   "zh": "中文解析 — 批判性思維的本質",
+   "en": "Commentary: The Essence of Critical Thinking"
+  },
+  {
+   "zh": "什麼是「批判性思維」在GAMP 5的語境中？",
+   "en": "What Does \"Critical Thinking\" Mean in the GAMP 5 Context?"
+  },
+  {
+   "zh": "GAMP 5的批判性思維核心原則可以用一句話概括：",
+   "en": "The core principle of critical thinking in GAMP 5 can be summed up in one sentence:"
+  },
+  {
+   "zh": "「將相稱的工作量投入到最重要的地方」<br/>Apply proportionate effort where it matters most.",
+   "en": "\"Put proportionate effort where it matters most\"<br/>Apply proportionate effort where it matters most."
+  },
+  {
+   "zh": "這不是說「少做一點」，而是說「聰明地做」：",
+   "en": "This does not mean \"do less\"; it means \"work smart\":"
+  },
+  {
+   "zh": "高風險功能 → 嚴格測試、完整文件",
+   "en": "High-risk functions → rigorous testing, complete documentation"
+  },
+  {
+   "zh": "低風險功能 → 簡化測試、輕量文件",
+   "en": "Low-risk functions → simplified testing, lightweight documentation"
+  },
+  {
+   "zh": "COTS標準功能 → 善用供應商測試結果，不重複驗證",
+   "en": "Standard COTS functions → make good use of supplier test results; do not re-validate"
+  },
+  {
+   "zh": "客製化配置 → 完整記錄，因為這是你獨有的",
+   "en": "Custom configuration → document fully, because it is unique to you"
+  },
+  {
+   "zh": "現實中的反例：缺乏批判性思維",
+   "en": "Real-World Counter-Examples: A Lack of Critical Thinking"
+  },
+  {
+   "zh": "<strong>案例A：過度驗證</strong><br/>\n            一個公司驗證SAP ERP系統，針對SAP標準的計算邏輯（如庫存計算公式）做完整OQ測試，每個計算步驟都有截圖。問題：SAP已有自己的單元測試套件，這個計算邏輯無法被我方修改。重複測試完全沒有附加價值。",
+   "en": "<strong>Case A: Over-validation</strong><br/>\n            A company validating an SAP ERP system ran a full OQ on SAP's standard calculation logic (such as inventory calculation formulas), with a screenshot for every calculation step. The problem: SAP already has its own unit test suite, and this calculation logic cannot be modified by the company. The repeated testing added no value at all."
+  },
+  {
+   "zh": "<strong>案例B：不足驗證</strong><br/>\n            同一家公司，針對他們高度客製化的工作流程（Workflow），因為「是標準COTS系統」就沒有充分測試。這個工作流程決定批次紀錄是否被批准，直接影響數據完整性，卻沒有足夠測試覆蓋。",
+   "en": "<strong>Case B: Under-validation</strong><br/>\n            The same company did not test its heavily customized workflow adequately because it was \"a standard COTS system\". This workflow determines whether batch records are approved and directly affects data integrity, yet it had insufficient test coverage."
+  },
+  {
+   "zh": "批判性思維防止的常見CSV錯誤",
+   "en": "Common CSV Mistakes That Critical Thinking Prevents"
+  },
+  {
+   "zh": "過度測試COTS功能（這些功能由供應商維護，無法被更改）",
+   "en": "Over-testing COTS functions (which are maintained by the supplier and cannot be changed by you)"
+  },
+  {
+   "zh": "客製化配置記錄不足（這才是你獨有的風險所在）",
+   "en": "Insufficient documentation of custom configuration (which is where your unique risk lies)"
+  },
+  {
+   "zh": "對同一功能測試兩次（供應商已測試，你又重複）",
+   "en": "Testing the same function twice (the supplier has tested it and you repeat it)"
+  },
+  {
+   "zh": "對所有資料都設定稽核追蹤，不論是否為GxP關鍵資料",
+   "en": "Enabling audit trails on all data, whether or not it is GxP-critical"
+  },
+  {
+   "zh": "使用千篇一律的測試模板，不考慮系統風險差異",
+   "en": "Using one-size-fits-all test templates without considering differences in system risk"
+  },
+  {
+   "zh": "QMS必須支持批判性思維",
+   "en": "The QMS Must Support Critical Thinking"
+  },
+  {
+   "zh": "一個重要洞見：如果你的SOP和驗證政策要求每個系統都按照同樣的模板格式來做，那麼批判性思維就無從發揮。",
+   "en": "An important insight: if your SOPs and validation policy require every system to follow the same template format, there is no room for critical thinking."
+  },
+  {
+   "zh": "真正的風險基礎方法要求：模板是<strong>思考的起點</strong>，不是<strong>機械填寫的表格</strong>。每個系統都應該根據其獨特的風險狀況來決定需要什麼程度的驗證工作。",
+   "en": "A truly risk-based approach requires that the template be a <strong>starting point for thinking</strong>, not a <strong>form to be filled in mechanically</strong>. Each system should determine the level of validation effort needed according to its own unique risk profile."
+  },
+  {
+   "zh": "<strong>M12: Applying Critical Thinking — Planning, Risk, Requirements &amp; Supplier M12: 批判性思維應用 — 規劃、風險、需求與供應商</strong>",
+   "en": "<strong>M12: Applying Critical Thinking — Planning, Risk, Requirements &amp; Supplier</strong>"
+  },
+  {
+   "zh": "中文解析 — 批判性思維的應用領域",
+   "en": "Commentary: Areas Where Critical Thinking Applies"
+  },
+  {
+   "zh": "系統分類（Categorization）的批判性思維",
+   "en": "Critical Thinking in System Categorization"
+  },
+  {
+   "zh": "常見問題：公司有一套「系統分類表格」，填完就決定類別，沒有人真正思考「這個系統的哪些部分最有風險」。",
+   "en": "A common problem: the company has a \"system categorization form\", and once it is filled in the category is settled, with nobody really thinking about \"which parts of this system carry the most risk\"."
+  },
+  {
+   "zh": "批判性思維問法：",
+   "en": "Critical thinking asks:"
+  },
+  {
+   "zh": "這個系統處理哪些GxP關鍵資料？",
+   "en": "Which GxP-critical data does this system handle?"
+  },
+  {
+   "zh": "系統的哪些功能是COTS標準功能，哪些是我方自定義的？",
+   "en": "Which functions of the system are standard COTS functions, and which did we customize?"
+  },
+  {
+   "zh": "供應商的開發和測試能力如何？（能槓桿多少？）",
+   "en": "How capable is the supplier in development and testing? (How much can be leveraged?)"
+  },
+  {
+   "zh": "同類系統在業界有哪些驗證先例可以參考？",
+   "en": "What validation precedents exist in the industry for similar systems?"
+  },
+  {
+   "zh": "風險評估的層級思維",
+   "en": "Hierarchical Thinking in Risk Assessment"
+  },
+  {
+   "zh": "GAMP 5提出了「主要功能 → 次要功能」的層級風險評估方法：",
+   "en": "GAMP 5 proposes a hierarchical risk assessment approach, from \"primary function\" to \"subsidiary function\":"
+  },
+  {
+   "zh": "舉例：稽核追蹤功能",
+   "en": "Example: the audit trail function"
+  },
+  {
+   "zh": "主要功能：記錄GxP關鍵資料的變更 → <strong>高風險</strong>，需要嚴格測試",
+   "en": "Primary function: recording changes to GxP-critical data → <strong>high risk</strong>, requires rigorous testing"
+  },
+  {
+   "zh": "次要功能A：顯示時間戳記格式 → 風險不高於主要功能（仍需測試，但可簡化）",
+   "en": "Subsidiary function A: displaying the timestamp format → risk no higher than the primary function (still needs testing, but can be simplified)"
+  },
+  {
+   "zh": "次要功能B：稽核日誌的顯示排序 → 低風險，可做簡單確認",
+   "en": "Subsidiary function B: display sort order of the audit log → low risk, a simple check is sufficient"
+  },
+  {
+   "zh": "關鍵原則：<strong>次要功能的風險永遠不會高於上層主要功能</strong>。如果主要功能是低風險，就沒必要對每個次要功能做詳細評估。",
+   "en": "Key principle: <strong>the risk of a subsidiary function is never higher than that of the primary function above it</strong>. If the primary function is low risk, there is no need to assess each subsidiary function in detail."
+  },
+  {
+   "zh": "實際案例：要求書（Requirements）的批判性思維",
+   "en": "Practical Example: Critical Thinking in Requirements"
+  },
+  {
+   "zh": "錯誤做法：在系統URS中把所有可能相關的法規條文都列進去（21 CFR Part 11全文、EU Annex 11全文...），不管對不對。",
+   "en": "Wrong approach: listing every possibly relevant regulatory clause in the system URS (the full text of 21 CFR Part 11, the full text of EU Annex 11, and so on), whether or not it applies."
+  },
+  {
+   "zh": "正確做法：",
+   "en": "Right approach:"
+  },
+  {
+   "zh": "先確定系統是否涉及電子簽章（才需要Part 11 §11.100-11.200）",
+   "en": "First determine whether the system involves electronic signatures (only then do Part 11 §11.100-11.200 apply)"
+  },
+  {
+   "zh": "確定系統是否儲存GxP原始資料（才需要稽核追蹤）",
+   "en": "Determine whether the system stores GxP source data (only then is an audit trail needed)"
+  },
+  {
+   "zh": "確定稽核追蹤需要記錄什麼（用戶操作、系統管理、還是兩者都要？）",
+   "en": "Determine what the audit trail needs to record (user actions, system administration, or both?)"
+  },
+  {
+   "zh": "需求應該是「可測試的」，不是法規條文的複製貼上",
+   "en": "Requirements should be \"testable\"; they should not be copy-and-paste of regulatory text"
+  },
+  {
+   "zh": "善用供應商驗證成果（Leverage）",
+   "en": "Leveraging Supplier Validation Work"
+  },
+  {
+   "zh": "這是避免重複驗證的關鍵策略。以SQL Server資料庫為例：",
+   "en": "This is the key strategy for avoiding duplicate validation. Take the SQL Server database as an example:"
+  },
+  {
+   "zh": "Microsoft有完整的開發測試記錄",
+   "en": "Microsoft has complete development and test records"
+  },
+  {
+   "zh": "SQL Server是GAMP Category 1（基礎架構軟體）",
+   "en": "SQL Server is GAMP Category 1 (infrastructure software)"
+  },
+  {
+   "zh": "你需要做的：確認版本、確認配置符合你的GxP應用程式需求、確認安全性設定",
+   "en": "What you need to do: confirm the version, confirm that the configuration meets the needs of your GxP application, and confirm the security settings"
+  },
+  {
+   "zh": "你<strong>不需要</strong>做的：測試SQL Server的查詢引擎準確性、測試JOIN操作的正確性",
+   "en": "What you <strong>do not need</strong> to do: test the accuracy of the SQL Server query engine or the correctness of JOIN operations"
+  },
+  {
+   "zh": "對於COTS應用程式（如Veeva、SAP）：",
+   "en": "For COTS applications (such as Veeva and SAP):"
+  },
+  {
+   "zh": "要求供應商提供測試摘要報告（Test Summary Report）",
+   "en": "Ask the supplier to provide a Test Summary Report"
+  },
+  {
+   "zh": "評估供應商的測試覆蓋率和品質",
+   "en": "Evaluate the supplier's test coverage and quality"
+  },
+  {
+   "zh": "你的測試應聚焦於：你的配置是否正確、你的業務流程是否如預期運作",
+   "en": "Your testing should focus on: whether your configuration is correct and whether your business processes work as expected"
+  },
+  {
+   "zh": "不需要重複測試供應商已完整測試的標準功能",
+   "en": "There is no need to re-test standard functions that the supplier has already tested thoroughly"
+  },
+  {
+   "zh": "<strong>M12: Critical Thinking Applied to Testing, Build &amp; Operations M12: 批判性思維應用於測試、建置與營運</strong>",
+   "en": "<strong>M12: Critical Thinking Applied to Testing, Build &amp; Operations</strong>"
+  },
+  {
+   "zh": "中文解析 — 測試策略與運維批判性思維",
+   "en": "Commentary: Critical Thinking in Test Strategy and Operations"
+  },
+  {
+   "zh": "這是提升測試效率的重要技巧：",
+   "en": "This is an important technique for making testing more efficient:"
+  },
+  {
+   "zh": "<strong>Proving Step（證明步驟）</strong>：直接驗證某個GxP要求已被滿足的測試步驟 → 需要擷取截圖或記錄結果",
+   "en": "<strong>Proving Step</strong>: a test step that directly verifies that a GxP requirement has been met → screenshots or recorded results are needed"
+  },
+  {
+   "zh": "<strong>Non-Proving Step（非證明步驟）</strong>：為了設定測試環境而執行的準備步驟 → 不需要擷取截圖",
+   "en": "<strong>Non-Proving Step</strong>: a preparatory step performed to set up the test environment → no screenshot is needed"
+  },
+  {
+   "zh": "舉例：測試電子簽章功能",
+   "en": "Example: testing the electronic signature function"
+  },
+  {
+   "zh": "登入系統（非證明步驟）→ 不需截圖",
+   "en": "Log in to the system (non-proving step) → no screenshot needed"
+  },
+  {
+   "zh": "導航到批次紀錄審批頁面（非證明步驟）→ 不需截圖",
+   "en": "Navigate to the batch record approval page (non-proving step) → no screenshot needed"
+  },
+  {
+   "zh": "按下「電子簽章」按鈕並完成簽章（<strong>證明步驟</strong>）→ <strong>需要截圖</strong>",
+   "en": "Click the \"electronic signature\" button and complete the signing (<strong>proving step</strong>) → <strong>screenshot required</strong>"
+  },
+  {
+   "zh": "確認簽章記錄出現在稽核追蹤中（<strong>證明步驟</strong>）→ <strong>需要截圖</strong>",
+   "en": "Confirm that the signature record appears in the audit trail (<strong>proving step</strong>) → <strong>screenshot required</strong>"
+  },
+  {
+   "zh": "這樣可以大幅減少無意義的「流程截圖」，讓測試報告更加聚焦。",
+   "en": "This greatly reduces pointless \"process screenshots\" and keeps the test report more focused."
+  },
+  {
+   "zh": "關於「擁抱變更」而非逃避",
+   "en": "Embracing Change Rather Than Avoiding It"
+  },
+  {
+   "zh": "批判性思維改變了對系統更新的心態：",
+   "en": "Critical thinking changes the mindset toward system updates:"
+  },
+  {
+   "zh": "傳統CSV心態：「系統已驗證通過，任何變更都是風險，能不升級就不升級。」",
+   "en": "Traditional CSV mindset: \"The system has passed validation, so any change is a risk; if we can avoid upgrading, we do.\""
+  },
+  {
+   "zh": "批判性思維心態：「跑在不支援的OS上本身就是一個風險（安全漏洞）。保持系統更新是維護驗證狀態的一部分。」",
+   "en": "Critical thinking mindset: \"Running on an unsupported OS is itself a risk (security vulnerabilities). Keeping systems up to date is part of maintaining the validated state.\""
+  },
+  {
+   "zh": "GAMP 5明確說：監管機構期望GxP系統不應跑在廢棄或不受支援的作業系統上。所以「不升級」不是比較安全的選項。",
+   "en": "GAMP 5 states clearly: regulators expect that GxP systems should not run on obsolete or unsupported operating systems. So \"not upgrading\" is not the safer option."
+  },
+  {
+   "zh": "發現缺陷時的批判性思維",
+   "en": "Critical Thinking When Defects Are Found"
+  },
+  {
+   "zh": "運維過程中發現defect時，錯誤反應是：「全部重新測試一遍！」",
+   "en": "When a defect is found during operation, the wrong reaction is: \"Re-test everything!\""
+  },
+  {
+   "zh": "批判性思維的回應：",
+   "en": "The critical thinking response:"
+  },
+  {
+   "zh": "分析這個缺陷的實際影響範圍（是否影響GxP關鍵功能？）",
+   "en": "Analyze the actual scope of impact of the defect (does it affect GxP-critical functions?)"
+  },
+  {
+   "zh": "評估escape rate：已逃脫到生產環境的缺陷比例是否符合預期？",
+   "en": "Evaluate the escape rate: is the proportion of defects that have escaped into production in line with expectations?"
+  },
+  {
+   "zh": "如果高風險功能有不可接受的缺陷逃脫率，才需要重新評估測試策略",
+   "en": "Only if high-risk functions show an unacceptable defect escape rate does the test strategy need to be re-evaluated"
+  },
+  {
+   "zh": "局部修正 + 針對性回歸測試，不是「全部重做」",
+   "en": "Local correction plus targeted regression testing, not \"redo everything\""
+  },
+  {
+   "zh": "測試深度（Test Depth）的判斷",
+   "en": "Judging Test Depth"
+  },
+  {
+   "zh": "GAMP 5建議根據兩個維度決定測試深度：",
+   "en": "GAMP 5 recommends deciding test depth based on two dimensions:"
+  },
+  {
+   "zh": "<strong>M12: Periodic Review, Retirement, Inspection Readiness &amp; Organizational Maturity M12: 定期審查、退役、稽查準備與組織成熟度</strong>",
+   "en": "<strong>M12: Periodic Review, Retirement, Inspection Readiness &amp; Organizational Maturity</strong>"
+  },
+  {
+   "zh": "中文解析 — 定期審查、退役與組織成熟度",
+   "en": "Commentary: Periodic Review, Retirement and Organizational Maturity"
+  },
+  {
+   "zh": "系統退役的資料完整性陷阱",
+   "en": "Data Integrity Traps in System Retirement"
+  },
+  {
+   "zh": "系統退役時常見的合規風險：",
+   "en": "Common compliance risks at system retirement:"
+  },
+  {
+   "zh": "舊系統被關閉，但稽核追蹤記錄無法在新系統中查看",
+   "en": "The old system is shut down, but its audit trail records cannot be viewed in the new system"
+  },
+  {
+   "zh": "資料格式遷移後，原始計算的可追溯性丟失",
+   "en": "After data format migration, the traceability of the original calculations is lost"
+  },
+  {
+   "zh": "保留期結束前刪除了應保存的數據",
+   "en": "Data that should have been retained is deleted before the end of the retention period"
+  },
+  {
+   "zh": "保留期已過但數據因為「沒人確認」而繼續佔用昂貴儲存資源",
+   "en": "Data past its retention period continues to occupy expensive storage because \"nobody confirmed\" it could be deleted"
+  },
+  {
+   "zh": "批判性思維問法：「10年後，稽查員要查這批數據，能查到嗎？能讀懂嗎？」",
+   "en": "Critical thinking asks: \"Ten years from now, if an inspector wants to look at this batch data, can it be found? Can it be read and understood?\""
+  },
+  {
+   "zh": "稽查準備的批判性思維",
+   "en": "Critical Thinking for Inspection Readiness"
+  },
+  {
+   "zh": "GAMP 5的重要提醒：<strong>不要在你的驗證文件中存放供應商文件的副本</strong>。",
+   "en": "An important GAMP 5 reminder: <strong>do not keep copies of supplier documents in your validation documentation</strong>."
+  },
+  {
+   "zh": "你的驗證文件中記錄「如何評估了供應商」以及「評估結論」",
+   "en": "Your validation documentation records \"how the supplier was assessed\" and \"the conclusion of the assessment\""
+  },
+  {
+   "zh": "供應商的詳細測試記錄留在供應商的QMS中",
+   "en": "The supplier's detailed test records stay in the supplier's QMS"
+  },
+  {
+   "zh": "合約中確保稽查時有權存取供應商文件",
+   "en": "Ensure in the contract that you have the right to access supplier documents during inspections"
+  },
+  {
+   "zh": "持有副本的問題：供應商更新了文件，你的副本成為過時版本，反而增加合規風險。",
+   "en": "The problem with holding copies: when the supplier updates the document, your copy becomes an outdated version, which actually increases compliance risk."
+  },
+  {
+   "zh": "組織批判性思維成熟度自評",
+   "en": "Self-Assessment of Organizational Critical Thinking Maturity"
+  },
+  {
+   "zh": "對照Table 20.1，CDMO組織常見的現實狀況：",
+   "en": "Compared with Table 20.1, the typical situation in CDMO organizations is:"
+  },
+  {
+   "zh": "大多數製藥公司目前處於<strong>Level 2-3</strong>：有些人懂，但執行不一致",
+   "en": "Most pharmaceutical companies are currently at <strong>Level 2-3</strong>: some people understand it, but execution is inconsistent"
+  },
+  {
+   "zh": "CSV驗證仍大量依賴「填表格」而不是「思考風險」",
+   "en": "CSV validation still relies heavily on \"filling in forms\" rather than \"thinking about risk\""
+  },
+  {
+   "zh": "Level 4-5的組織特徵：驗證文件因系統而異，每個系統都有清晰的風險決策記錄",
+   "en": "Characteristics of Level 4-5 organizations: validation documentation differs from system to system, and every system has a clear record of risk decisions"
+  },
+  {
+   "zh": "如何推進到Level 4：",
+   "en": "How to move up to Level 4:"
+  },
+  {
+   "zh": "修改驗證政策，明確允許並鼓勵批判性思維",
+   "en": "Revise the validation policy to explicitly allow and encourage critical thinking"
+  },
+  {
+   "zh": "對CSV審查人員進行培訓：審查的重點是「決策是否有理據」，不是「格式是否符合模板」",
+   "en": "Train CSV reviewers: the focus of review is \"is the decision justified\", not \"does the format match the template\""
+  },
+  {
+   "zh": "建立正向激勵：當驗證人員做出有理據的簡化決策，給予認可而非質疑",
+   "en": "Create positive incentives: when validation staff make justified simplification decisions, give recognition rather than challenge"
+  },
+  {
+   "zh": "定期審查頻率的決策邏輯",
+   "en": "Decision Logic for Periodic Review Frequency"
+  },
+  {
+   "zh": "批判性思維應用於定期審查頻率的決定：",
+   "en": "Applying critical thinking to deciding periodic review frequency:"
+  },
+  {
+   "zh": "Section Summary — 章節總結",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>Infrastructure vs. Application (M11)</strong>: EU Annex 11 draws a clear line — applications are validated, infrastructure is qualified. Infrastructure software (OS, database engines) is GAMP Category 1. The \"one qualification, many implementations\" model and Infrastructure as Code (IaC) enable efficient, controlled infrastructure management. — EU Annex 11明確區分：應用程式需要驗證，基礎架構需要確認。基礎架構軟體屬於GAMP第1類，「一次確認，多次部署」模型透過IaC實現高效合規管理。",
+   "en": "<strong>Infrastructure vs. Application (M11)</strong>: EU Annex 11 draws a clear line — applications are validated, infrastructure is qualified. Infrastructure software (OS, database engines) is GAMP Category 1. The \"one qualification, many implementations\" model and Infrastructure as Code (IaC) enable efficient, controlled infrastructure management."
+  },
+  {
+   "zh": "<strong>Cloud in GxP (M11)</strong>: SaaS, PaaS, and IaaS have different validation scopes. Cloud suppliers are not GxP regulated, but the regulated company's accountability cannot be delegated. Supplier evaluation, contractual SLAs, and key data integrity considerations (RPO, RTO, encryption, certifications) are mandatory. — 三種雲端模式有不同的驗證範圍；監管責任無法外包；供應商評估、SLA合約、RPO/RTO是必要條件。",
+   "en": "<strong>Cloud in GxP (M11)</strong>: SaaS, PaaS, and IaaS have different validation scopes. Cloud suppliers are not GxP regulated, but the regulated company's accountability cannot be delegated. Supplier evaluation, contractual SLAs, and key data integrity considerations (RPO, RTO, encryption, certifications) are mandatory."
+  },
+  {
+   "zh": "<strong>Quality Role in IT (M11)</strong>: Heavy QA involvement in IT infrastructure is unwarranted. An IT Quality (ITQ) function serves as the bridge between IT and QA, defining when quality involvement is needed. Procedurally defined responsibilities prevent both over-involvement and under-oversight. — QA不需要深度介入基礎架構，ITQ職能充當IT與QA之間的橋梁，程序化定義介入邊界。",
+   "en": "<strong>Quality Role in IT (M11)</strong>: Heavy QA involvement in IT infrastructure is unwarranted. An IT Quality (ITQ) function serves as the bridge between IT and QA, defining when quality involvement is needed. Procedurally defined responsibilities prevent both over-involvement and under-oversight."
+  },
+  {
+   "zh": "<strong>Critical Thinking Principle (M12)</strong>: Apply proportionate effort where it matters most. Rigid templates and tick-box methods impede critical thinking. The QMS itself must permit and encourage proportionate approaches rather than requiring uniform documentation regardless of risk. — 批判性思維核心：相稱的工作量投入到最重要的地方；QMS政策必須支持而非阻礙批判性思維。",
+   "en": "<strong>Critical Thinking Principle (M12)</strong>: Apply proportionate effort where it matters most. Rigid templates and tick-box methods impede critical thinking. The QMS itself must permit and encourage proportionate approaches rather than requiring uniform documentation regardless of risk."
+  },
+  {
+   "zh": "<strong>Key CSV Applications (M12)</strong>: Avoid over-testing COTS standard functions (leverage supplier testing); ensure custom configurations are adequately documented; differentiate proving steps from non-proving steps in test execution; apply risk hierarchy to avoid redundant subsidiary function assessment. — 避免重複驗證COTS功能；充分記錄客製化配置；區分證明步驟與非證明步驟；利用風險層級避免冗餘評估。",
+   "en": "<strong>Key CSV Applications (M12)</strong>: Avoid over-testing COTS standard functions (leverage supplier testing); ensure custom configurations are adequately documented; differentiate proving steps from non-proving steps in test execution; apply risk hierarchy to avoid redundant subsidiary function assessment."
+  },
+  {
+   "zh": "<strong>Organizational Maturity (M12)</strong>: Critical thinking capability follows a 5-level maturity model. Most organizations sit at Level 2–3. Reaching Level 4–5 requires policy changes that explicitly permit proportionate approaches, training reviewers to evaluate rationale rather than format, and cultural support for risk-based decisions. — 批判性思維有五級成熟度模型；多數組織處於第2-3級；提升成熟度需要政策、培訓、文化三管齊下。",
+   "en": "<strong>Organizational Maturity (M12)</strong>: Critical thinking capability follows a 5-level maturity model. Most organizations sit at Level 2–3. Reaching Level 4–5 requires policy changes that explicitly permit proportionate approaches, training reviewers to evaluate rationale rather than format, and cultural support for risk-based decisions."
+  }
+ ]
+}
