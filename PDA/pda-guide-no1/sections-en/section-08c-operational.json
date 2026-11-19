@@ -1,0 +1,477 @@
+{
+ "source": "section-08c-operational.html",
+ "blocks": [
+  {
+   "zh": "元件導入方式：即用型 vs. 現場前處理的決策框架",
+   "en": "Component Introduction: Decision Framework for Ready-to-Use vs. On-Site Preparation"
+  },
+  {
+   "zh": "決策優先順序 — Decision Hierarchy",
+   "en": "Decision Hierarchy"
+  },
+  {
+   "zh": "#1 無菌保證 Sterility Assurance",
+   "en": "#1 Sterility Assurance"
+  },
+  {
+   "zh": "#2 產品CQAs Patient Safety",
+   "en": "#2 Product CQAs / Patient Safety"
+  },
+  {
+   "zh": "#3 商業彈性 Business &amp; Flexibility",
+   "en": "#3 Business &amp; Flexibility"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解大批量與小批量生產對元件處理方式選擇的影響",
+   "en": "Understand how large-batch and small-batch production influence the choice of component processing approach"
+  },
+  {
+   "zh": "掌握 RTU（即用型）元件的各種引入機制（NTT、氫過氧化物、E-Beam）",
+   "en": "Master the various introduction mechanisms for RTU (ready-to-use) components (NTT, hydrogen peroxide, E-Beam)"
+  },
+  {
+   "zh": "比較現場前處理與 RTU 的優缺點（污染控制、加工速率、驗證、微粒風險）",
+   "en": "Compare the advantages and disadvantages of on-site preparation and RTU (contamination control, processing rate, validation, particulate risk)"
+  },
+  {
+   "zh": "了解嵌套式元件（nested components）的特殊處理考量",
+   "en": "Understand the special handling considerations for nested components"
+  },
+  {
+   "zh": "本節涵蓋範圍 Section 9.0 — 9.1.1.7",
+   "en": "Scope of This Section: Section 9.0 — 9.1.1.7"
+  },
+  {
+   "zh": "元件與填充供料處理概論",
+   "en": "Overview of Component and Filling Supply Processing"
+  },
+  {
+   "zh": "中文解析 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心三原則：元件導入的設計思維",
+   "en": "Three Core Principles: Design Thinking for Component Introduction"
+  },
+  {
+   "zh": "PDA 在本節揭示元件處理的三個核心原則，順序即反映優先等級：",
+   "en": "In this section PDA sets out three core principles of component processing; their order reflects their priority:"
+  },
+  {
+   "zh": "<strong>最小化固有干預（Inherent Interventions）</strong>：每次人工干預都是引入污染的機會。設計系統時應先問「能否自動化或消除此步驟？」",
+   "en": "<strong>Minimize inherent interventions</strong>: every manual intervention is an opportunity to introduce contamination. When designing a system, first ask: \"Can this step be automated or eliminated?\""
+  },
+  {
+   "zh": "<strong>保護填充操作免受微粒/微生物污染</strong>：可存活微粒（viable particulate）= 微生物；總微粒（total particulate）= 所有粒子。兩者均須管控。",
+   "en": "<strong>Protect filling operations from particulate/microbial contamination</strong>: viable particulate = microorganisms; total particulate = all particles. Both must be controlled."
+  },
+  {
+   "zh": "<strong>維持單向氣流（Unidirectional Airflow）</strong>：RABS/Isolator 內的 ISO 5 環境依靠穩定的單向層流，元件引入路徑必須不干擾氣流。",
+   "en": "<strong>Maintain unidirectional airflow</strong>: the ISO 5 environment inside a RABS/isolator depends on stable unidirectional laminar flow, and the component introduction path must not disrupt that airflow."
+  },
+  {
+   "zh": "比喻：外科手術室的無菌場域",
+   "en": "Analogy: The Sterile Field in a Surgical Theatre"
+  },
+  {
+   "zh": "想像開刀房的無菌台——每一件手術器械進入無菌場域都要有「不破壞無菌屏障」的方式（拆包裝、遞送技術）。無菌填充線的元件導入邏輯完全相同：進入前必須確認乾淨，進入時必須不帶入汙染。",
+   "en": "Think of the sterile table in an operating room: every surgical instrument entering the sterile field must be brought in in a way that does not breach the sterile barrier (unwrapping, passing techniques). The component introduction logic of an aseptic filling line is exactly the same: cleanliness must be confirmed before entry, and no contamination may be carried in during entry."
+  },
+  {
+   "zh": "矽化（Siliconization）是什麼？",
+   "en": "What Is Siliconization?"
+  },
+  {
+   "zh": "針筒（syringe barrel）內壁需塗覆矽油，以確保活塞推力均勻、藥液滑順推出。這是預處理（pretreatment）的典型例子——若元件未矽化，直接使用會影響劑量準確性，衝擊 CQA #2（產品品質）。",
+   "en": "The inner wall of a syringe barrel must be coated with silicone oil so that the plunger moves evenly and the drug solution is expelled smoothly. This is a typical example of pretreatment: if a component is not siliconized and is used as is, dose accuracy is affected, which impacts CQA #2 (product quality)."
+  },
+  {
+   "zh": "思考題",
+   "en": "Discussion Question"
+  },
+  {
+   "zh": "為什麼「最小化干預」被列為首要考量，而不是「成本最低」？結合決策優先順序 (#1 無菌保證) 回答。",
+   "en": "Why is \"minimizing interventions\" the first consideration rather than \"lowest cost\"? Answer with reference to the decision hierarchy (#1 Sterility Assurance)."
+  },
+  {
+   "zh": "即用型（RTU/RTS）與現場前處理的選擇框架",
+   "en": "Framework for Choosing Between Ready-to-Use (RTU/RTS) and On-Site Preparation"
+  },
+  {
+   "zh": "RTU vs. RTS vs. On-Site — 三種模式定義",
+   "en": "RTU vs. RTS vs. On-Site — Definitions of the Three Models"
+  },
+  {
+   "zh": "<strong>RTU（Ready-To-Use，即用型）</strong>：由供應商完成清洗、矽化、滅菌，以雙層包裝密封出貨，工廠直接引入無菌區使用。",
+   "en": "<strong>RTU (Ready-To-Use)</strong>: the supplier performs washing, siliconization and sterilization and ships the components sealed in double-layer packaging; the site introduces them directly into the aseptic area for use."
+  },
+  {
+   "zh": "<strong>RTS（Ready-To-Sterilize，備滅菌型）</strong>：供應商完成清洗但未滅菌，工廠需在現場進行去熱原（depyrogenation）後使用。",
+   "en": "<strong>RTS (Ready-To-Sterilize)</strong>: the supplier performs washing but not sterilization; the site must carry out depyrogenation on site before use."
+  },
+  {
+   "zh": "<strong>On-Site / In-Line（現場前處理）</strong>：元件以原始（未處理）狀態進廠，工廠自行清洗、去熱原、矽化。",
+   "en": "<strong>On-Site / In-Line (on-site preparation)</strong>: components arrive at the site in their raw (unprocessed) state, and the site performs washing, depyrogenation and siliconization itself."
+  },
+  {
+   "zh": "選擇框架：三個關鍵變數",
+   "en": "Selection Framework: Three Key Variables"
+  },
+  {
+   "zh": "選擇方式 = f(批量大小, 可用加工時間, 處理複雜度)\n\n批量大    → On-Site 往往更具經濟性\n批量小    → RTU 避免設備投資攤提不足\n複雜元件  → RTU 轉移驗證挑戰 vs. On-Site 製程控制挑戰\n時間緊迫  → RTU 交期確定性較高",
+   "en": "Choice of approach = f(batch size, available processing time, processing complexity)\n\nLarge batch    → On-Site is often more economical\nSmall batch    → RTU avoids under-amortized equipment investment\nComplex components → RTU shifts the validation challenge vs. On-Site faces process control challenges\nTight timeline → RTU gives greater delivery certainty"
+  },
+  {
+   "zh": "RTU 的隱形風險：運輸完整性",
+   "en": "The Hidden Risk of RTU: Transport Integrity"
+  },
+  {
+   "zh": "RTU 元件由供應商滅菌後以雙層袋包裝出貨。<strong>運輸過程中的任何包裝破損都會讓已滅菌元件失效</strong>（無菌保證 #1 失敗）。因此 RTU 採購合約必須明確規範：運輸條件、包裝完整性驗收標準、破損處理 SOP。",
+   "en": "RTU components are sterilized by the supplier and shipped in double bags. <strong>Any packaging breach during transport invalidates the sterilized components</strong> (a failure of Sterility Assurance #1). The RTU purchasing agreement must therefore clearly specify transport conditions, acceptance criteria for packaging integrity, and the SOP for handling damage."
+  },
+  {
+   "zh": "大批量生產的元件處理策略",
+   "en": "Component Processing Strategy for Large-Batch Production"
+  },
+  {
+   "zh": "大批量生產的邏輯：攤提設備成本",
+   "en": "The Logic of Large Batches: Amortizing Equipment Cost"
+  },
+  {
+   "zh": "大批量生產（例如每批 100,000 支以上的 vial）時，自建玻璃清洗機（glass washer）＋去熱原隧道（depyrogenation tunnel）的固定成本可以被大量元件攤提，每支 vial 的處理成本遠低於向供應商購買 RTU 版本的溢價。",
+   "en": "In large-batch production (for example, more than 100,000 vials per batch), the fixed costs of an in-house glass washer plus depyrogenation tunnel can be spread over a large number of components, so the processing cost per vial is far below the premium paid for the RTU version from a supplier."
+  },
+  {
+   "zh": "然而 RTU/RTS 的普及（尤其是常見規格如 2R、6R、10R vial）已大幅壓縮兩者價差，使得損益平衡點（break-even point）上移。",
+   "en": "However, the widespread availability of RTU/RTS (especially for common formats such as 2R, 6R and 10R vials) has greatly narrowed the price gap between the two, pushing the break-even point upward."
+  },
+  {
+   "zh": "完整損益平衡分析的要素",
+   "en": "Elements of a Complete Break-Even Analysis"
+  },
+  {
+   "zh": "On-Site 總成本 =\n  人力成本（fully absorbed labor）\n  + 廠房設施分攤（facility costs）\n  + 設備生命週期成本（equipment lifecycle）\n  + 能源消耗（energy — 去熱原隧道耗電量高）\n  + 不良品損耗（reject costs — 玻璃破損、粒子）\n  + 驗證/再驗證成本（validation）\n\nRTU 總成本 =\n  元件採購單價 × 批量\n  + 物流 &amp; 倉儲成本\n  + 供應商稽核成本（SA verification）",
+   "en": "On-Site total cost =\n  labor cost (fully absorbed labor)\n  + facility costs (facility allocation)\n  + equipment lifecycle cost\n  + energy (depyrogenation tunnels consume a lot of power)\n  + reject costs (glass breakage, particles)\n  + validation/revalidation costs\n\nRTU total cost =\n  component unit price × batch size\n  + logistics &amp; warehousing costs\n  + supplier audit costs (SA verification)"
+  },
+  {
+   "zh": "真正的損益平衡必須比較上述<strong>完整吸收成本（fully absorbed cost）</strong>，而非僅比較元件單價。",
+   "en": "A true break-even comparison must use the <strong>fully absorbed cost</strong> described above, not just the unit price of the component."
+  },
+  {
+   "zh": "CDMO 應用場景",
+   "en": "CDMO Application Scenario"
+  },
+  {
+   "zh": "作為 CDMO，同一條填充線可能本週生產客戶 A 的大批量 vial（適合 On-Site），下週換線生產客戶 B 的小批量 syringe（適合 RTU）。這就是為什麼 CDMO 的設備佈局必須保留兩種模式的彈性，而非固定選擇一種。",
+   "en": "As a CDMO, the same filling line may produce a large batch of vials for Client A this week (suited to On-Site) and, after changeover next week, a small batch of syringes for Client B (suited to RTU). This is why a CDMO's equipment layout must retain the flexibility to support both models rather than commit to just one."
+  },
+  {
+   "zh": "特殊元件：複雜前處理、組裝或方向性需求",
+   "en": "Special Components: Complex Pretreatment, Assembly or Orientation Requirements"
+  },
+  {
+   "zh": "嵌套式包裝（Nested Tubs/Nests）— 為什麼是業界標準？",
+   "en": "Nested Packaging (Nested Tubs/Nests) — Why Is It the Industry Standard?"
+  },
+  {
+   "zh": "預填充針筒（Pre-filled Syringe, PFS）、卡匣（cartridge）在填充時需要精確的方向定位（開口朝上、鍼頭朝下等）。嵌套式設計（每支針筒固定在塑膠巢格內，多個巢格堆疊於圓形托盤）可以：",
+   "en": "Pre-filled syringes (PFS) and cartridges require precise orientation during filling (opening up, needle down, and so on). A nested design (each syringe held in a plastic nest cell, with multiple nests stacked in a tub) can:"
+  },
+  {
+   "zh": "確保每支容器方向一致，機器無需額外定向步驟",
+   "en": "Ensure every container has the same orientation, so the machine needs no extra orienting step"
+  },
+  {
+   "zh": "消除容器間碰撞 → 減少玻璃破損（chips）、刮痕（scuffing）",
+   "en": "Eliminate container-to-container contact, reducing glass breakage (chips) and scuffing"
+  },
+  {
+   "zh": "減少因玻璃碎屑產生的微粒，直接保護 CQA #2",
+   "en": "Reduce particulates generated by glass fragments, directly protecting CQA #2"
+  },
+  {
+   "zh": "比喻：雞蛋盒的設計邏輯",
+   "en": "Analogy: The Design Logic of an Egg Carton"
+  },
+  {
+   "zh": "雞蛋盒讓每顆蛋固定在獨立隔間，防止運輸中的碰撞破損。嵌套式容器（nested containers）的原理完全相同——只不過它保護的是藥品容器，而破損的代價是微粒污染或無菌失敗，後果遠比雞蛋破掉嚴重。",
+   "en": "An egg carton holds each egg in its own compartment and prevents breakage from collisions in transit. Nested containers work on exactly the same principle, except that they protect pharmaceutical containers, and the cost of breakage is particulate contamination or sterility failure, with consequences far more serious than a broken egg."
+  },
+  {
+   "zh": "開蓋作業（Delidding）的微粒風險",
+   "en": "Particulate Risk of Delidding"
+  },
+  {
+   "zh": "嵌套托盤進入無菌區前，外層蓋板需被移除（delidding）。這個機械動作會產生微粒。<strong>因此 delidding station 必須設置在填充機上游、且與填充點保持足夠距離或隔離</strong>，避免微粒飄移至填充區。這是無菌保證 #1 的直接實踐。",
+   "en": "Before a nested tub enters the aseptic area, its outer lid must be removed (delidding). This mechanical action generates particles. <strong>The delidding station must therefore be located upstream of the filling machine and kept at a sufficient distance from the filling point, or isolated from it</strong>, to prevent particles from drifting into the filling zone. This is a direct application of Sterility Assurance #1."
+  },
+  {
+   "zh": "若針筒採用嵌套式 RTU 包裝，delidding 站應設在 Isolator 內還是外？引入點（introduction point）的設計如何影響 contamination control strategy（CCS）？",
+   "en": "If syringes are supplied in nested RTU packaging, should the delidding station be inside or outside the isolator? How does the design of the introduction point affect the contamination control strategy (CCS)?"
+  },
+  {
+   "zh": "小批量生產的元件處理策略",
+   "en": "Component Processing Strategy for Small-Batch Production"
+  },
+  {
+   "zh": "小批量的經濟邏輯：避免設備閒置",
+   "en": "The Economic Logic of Small Batches: Avoiding Idle Equipment"
+  },
+  {
+   "zh": "小批量（如臨床試驗用藥，500–5,000 支）時，自建玻璃清洗線的設備成本與 OQ/PQ 驗證成本無法攤提，RTU vial 雖單價較高，但整體 TCO（Total Cost of Ownership）反而更低。",
+   "en": "For small batches (for example, clinical trial material, 500–5,000 units), the equipment cost and OQ/PQ validation cost of an in-house glass washing line cannot be amortized; although RTU vials have a higher unit price, the total cost of ownership (TCO) is actually lower."
+  },
+  {
+   "zh": "複雜元件如 PFS（預填充針筒套件）即使批量小，因為需要 gamma 滅菌，在現場無法自行執行，必然走 RTU 路線。",
+   "en": "Complex components such as PFS (pre-filled syringe kits), even in small batches, require gamma sterilization, which cannot be performed on site, so they inevitably follow the RTU route."
+  },
+  {
+   "zh": "比喻：外送 vs. 自煮",
+   "en": "Analogy: Takeout vs. Cooking at Home"
+  },
+  {
+   "zh": "只煮一人份的晚餐（小批量）——叫外送（RTU）比自己買菜、洗碗（on-site）更划算。但若是辦桌 100 人（大批量），自己準備才有規模效益。元件處理的決策邏輯與此完全一致。",
+   "en": "For a dinner for one (small batch), ordering takeout (RTU) is more economical than buying groceries and washing dishes yourself (on-site). But for a banquet of 100 people (large batch), preparing it yourself gives economies of scale. The decision logic for component processing is exactly the same."
+  },
+  {
+   "zh": "CDMO 應用：Phase I/II 臨床批次",
+   "en": "CDMO Application: Phase I/II Clinical Batches"
+  },
+  {
+   "zh": "CDMO 接受客戶的 Phase I 臨床批次時，幾乎不可能自建去熱原隧道只為幾千支 vial 服務。此時 RTU vial 是標準選擇，且需要在技術協議（Technical Agreement）中明確規定供應商的無菌保證（Sterility Assurance Level, SAL）要求及批次放行文件。",
+   "en": "When a CDMO accepts a client's Phase I clinical batch, it is almost impossible to justify building a depyrogenation tunnel just for a few thousand vials. RTU vials are the standard choice here, and the Technical Agreement must clearly specify the supplier's Sterility Assurance Level (SAL) requirements and batch release documentation."
+  },
+  {
+   "zh": "備滅菌型容器的特殊注意事項",
+   "en": "Special Considerations for Ready-to-Sterilize Containers"
+  },
+  {
+   "zh": "RTS 的引入點設計",
+   "en": "Introduction Point Design for RTS"
+  },
+  {
+   "zh": "RTS 容器在去熱原（depyrogenation）之前引入，此時容器尚未滅菌，引入點（loading section）必須：",
+   "en": "RTS containers are introduced before depyrogenation, when they are not yet sterile, so the introduction point (loading section) must:"
+  },
+  {
+   "zh": "設置在無菌核心區之外，以免未處理容器污染已建立的無菌環境",
+   "en": "Be located outside the aseptic core area so that unprocessed containers do not contaminate the established aseptic environment"
+  },
+  {
+   "zh": "具備防微粒設計（如局部 ISO 7 或 ISO 8 環境）",
+   "en": "Have a particulate-protective design (such as a local ISO 7 or ISO 8 environment)"
+  },
+  {
+   "zh": "容器從 loading 到進入隧道的輸送路徑必須有汙染控制措施",
+   "en": "Have contamination control measures along the conveying path from loading to the tunnel"
+  },
+  {
+   "zh": "烤箱滅菌（Oven Sterilization）的淘汰趨勢",
+   "en": "The Phase-Out of Oven Sterilization"
+  },
+  {
+   "zh": "傳統批次式烤箱（batch oven）需要人工裝載和卸載操作，這些手動步驟是重大污染風險。業界趨勢是改用連續式去熱原隧道（depyrogenation tunnel），消除人工介入，直接符合<strong>「最小化干預」</strong>的首要原則（無菌保證 #1）。這說明即使是成熟技術，當它衝突於首要決策原則時，也應被淘汰。",
+   "en": "Traditional batch ovens require manual loading and unloading, and these manual steps are a significant contamination risk. The industry trend is to switch to continuous depyrogenation tunnels, which eliminate manual intervention and directly satisfy the first principle of <strong>\"minimizing interventions\"</strong> (Sterility Assurance #1). This shows that even a mature technology should be phased out when it conflicts with the primary decision principle."
+  },
+  {
+   "zh": "若 RTS loading section 發生微粒污染事件，污染路徑可能從何而來？需要哪些工程控制（engineering controls）來防範？",
+   "en": "If a particulate contamination event occurs in the RTS loading section, where might the contamination pathway originate? What engineering controls are needed to prevent it?"
+  },
+  {
+   "zh": "環烯烴共聚物與塑膠容器的特殊考量",
+   "en": "Special Considerations for Cyclic Olefin Copolymer and Plastic Containers"
+  },
+  {
+   "zh": "COC（環烯烴共聚物）— 為什麼必走 RTU？",
+   "en": "COC (Cyclic Olefin Copolymer) — Why Must It Go the RTU Route?"
+  },
+  {
+   "zh": "COC（Cyclic Olefin Copolymer，環烯烴共聚物）是近年常用的高透明塑膠容器材質（如 Daikyo CZ vial、Crystal Zenith syringe）。它無法耐受去熱原隧道的高溫（300°C+），因此：",
+   "en": "COC (Cyclic Olefin Copolymer) is a highly transparent plastic container material commonly used in recent years (for example, Daikyo CZ vials and Crystal Zenith syringes). It cannot withstand the high temperature of a depyrogenation tunnel (300°C+), so:"
+  },
+  {
+   "zh": "滅菌必須用 gamma 輻射或環氧乙烷（EtO），由外部專業供應商執行",
+   "en": "Sterilization must use gamma irradiation or ethylene oxide (EtO), performed by an external specialist supplier"
+  },
+  {
+   "zh": "工廠無法自行前處理 → <strong>只能選擇 RTU</strong>",
+   "en": "The site cannot pretreat the containers itself → <strong>RTU is the only option</strong>"
+  },
+  {
+   "zh": "COC 表面易刮傷 → 嵌套式包裝不僅保護方向性，更保護表面完整性（影響 CQA：外觀、相容性）",
+   "en": "COC surfaces scratch easily → nested packaging protects not only orientation but also surface integrity (affecting CQAs: appearance, compatibility)"
+  },
+  {
+   "zh": "比喻：LCD 螢幕 vs. 鋼化玻璃",
+   "en": "Analogy: LCD Screen vs. Tempered Glass"
+  },
+  {
+   "zh": "COC 就像 LCD 螢幕面板——功能優異但不耐刮。你不會把它和其他零件散裝在一個箱子裡搖晃運輸。嵌套包裝就是那個保護泡棉——每個面板都有自己的固定位置，互不接觸。",
+   "en": "COC is like an LCD display panel: excellent performance but not scratch resistant. You would not ship it loose in a box with other parts. Nested packaging is that protective foam: each panel has its own fixed position and no panels touch one another."
+  },
+  {
+   "zh": "EtO vs. Gamma — 供應商滅菌方式的選擇影響",
+   "en": "EtO vs. Gamma — Impact of the Supplier's Choice of Sterilization Method"
+  },
+  {
+   "zh": "EtO（環氧乙烷）滅菌後有殘留問題，需要充分脫氣（degassing）。Gamma 輻射滅菌無殘留但可能引起某些塑膠變色或降解。選擇滅菌方式時需與容器供應商共同確認相容性，並納入供應商品質協議（Quality Agreement）。這關係到 CQA #2（容器完整性、相容性）。",
+   "en": "EtO (ethylene oxide) sterilization leaves residues and requires adequate degassing. Gamma irradiation leaves no residue but may cause discoloration or degradation in some plastics. The choice of sterilization method must be confirmed together with the container supplier for compatibility and included in the supplier Quality Agreement. This relates to CQA #2 (container integrity, compatibility)."
+  },
+  {
+   "zh": "RTU 元件的無菌轉移機制",
+   "en": "Aseptic Transfer Mechanisms for RTU Components"
+  },
+  {
+   "zh": "三種 RTU 無菌轉移機制詳解",
+   "en": "The Three RTU Aseptic Transfer Mechanisms Explained"
+  },
+  {
+   "zh": "<strong>1. NTT（No-Touch Transfer，無觸碰轉移）</strong>",
+   "en": "<strong>1. NTT (No-Touch Transfer)</strong>"
+  },
+  {
+   "zh": "利用自動或半自動設備逐層剝除外袋（outer bag）和內袋（inner bag），將嵌套托盤（tub）直接引入 RABS/Isolator。全程無人手觸碰無菌表面，是目前最受監管機構認可的引入方式。",
+   "en": "Automated or semi-automated equipment peels off the outer bag and inner bag layer by layer and introduces the nested tub directly into the RABS/isolator. No human hand touches the sterile surface at any point, and this is currently the introduction method most widely accepted by regulators."
+  },
+  {
+   "zh": "<strong>2. 生物去汙（Biodecontamination）轉移</strong>",
+   "en": "<strong>2. Biodecontamination Transfer</strong>"
+  },
+  {
+   "zh": "容器包裝外表面通過自動去汙通道，以下列方式殺滅表面微生物：",
+   "en": "The outer surface of the container packaging passes through an automated decontamination tunnel, where surface microorganisms are killed by the following methods:"
+  },
+  {
+   "zh": "<strong>H₂O₂（過氧化氫蒸氣，VHP）</strong>：接觸時間較長，有氧化殘留風險",
+   "en": "<strong>H₂O₂ (hydrogen peroxide vapor, VHP)</strong>: longer contact time, with a risk of oxidative residue"
+  },
+  {
+   "zh": "<strong>E-Beam（電子束）</strong>：速度快，無殘留，但設備初始資本高",
+   "en": "<strong>E-Beam (electron beam)</strong>: fast and leaves no residue, but the initial equipment capital cost is high"
+  },
+  {
+   "zh": "UV / Pulsed Light：輔助技術，通常結合其他方式",
+   "en": "UV / Pulsed Light: supplementary technologies, usually combined with other methods"
+  },
+  {
+   "zh": "供應商以 beta-port 袋或專用轉移隔離器出貨，工廠透過 alpha-beta 接口將容器無縫轉入生產隔離器，全程零大氣接觸。適用於最高無菌等級要求的場景。",
+   "en": "The supplier ships in beta-port bags or a dedicated transfer isolator, and the site transfers the containers seamlessly into the production isolator through an alpha-beta port, with zero atmospheric exposure throughout. This is suitable for scenarios with the highest sterility requirements."
+  },
+  {
+   "zh": "比喻：太空站的艙門對接系統",
+   "en": "Analogy: The Docking Hatch System of a Space Station"
+  },
+  {
+   "zh": "Alpha-Beta port 就像太空站的對接艙口——兩端分別連接「外部世界的容器」和「已建立無菌環境的艙內」，開門時兩側同時維持密封，物品在轉移過程中從未暴露於外部環境。這是物理屏障最徹底的轉移方式。",
+   "en": "An alpha-beta port is like a space station docking hatch: its two ends connect the \"containers from the outside world\" with the \"interior of the established sterile environment\", and both sides remain sealed when the door opens, so items are never exposed to the outside environment during transfer. This is the most thorough physical-barrier method of transfer."
+  },
+  {
+   "zh": "CDMO 應用：引入方式對 CCS 的影響",
+   "en": "CDMO Application: Impact of the Introduction Method on the CCS"
+  },
+  {
+   "zh": "選擇 NTT vs. H₂O₂ vs. E-Beam 不只是設備選型，更直接定義了 Contamination Control Strategy（CCS）文件的引入點章節。監管機構在 PAI（Pre-Approval Inspection）時會追問：「你的引入機制如何確保 6-log 以上的生物負載降低？」必須有對應的驗證數據（qualification data）支撐。",
+   "en": "Choosing between NTT, H₂O₂ and E-Beam is not just equipment selection; it directly defines the introduction point section of the Contamination Control Strategy (CCS) document. During a Pre-Approval Inspection (PAI), regulators will ask: \"How does your introduction mechanism ensure a bioburden reduction of more than 6 logs?\" Corresponding qualification data must support the answer."
+  },
+  {
+   "zh": "各種引入方式的優劣比較",
+   "en": "Comparing the Advantages and Disadvantages of Each Introduction Method"
+  },
+  {
+   "zh": "如何解讀比較表",
+   "en": "How to Read the Comparison Table"
+  },
+  {
+   "zh": "PDA 以六個維度比較四種方案。在閱讀時，始終以決策優先順序過濾：",
+   "en": "PDA compares four options across six dimensions. When reading, always filter through the decision hierarchy:"
+  },
+  {
+   "zh": "<strong>#1 無菌保證</strong>：看「污染控制」與「微粒風險」兩欄",
+   "en": "<strong>#1 Sterility Assurance</strong>: look at the \"contamination control\" and \"particulate risk\" columns"
+  },
+  {
+   "zh": "<strong>#2 產品 CQAs</strong>：看「殘留風險」欄（殘留物影響產品品質）",
+   "en": "<strong>#2 Product CQAs</strong>: look at the \"residue risk\" column (residues affect product quality)"
+  },
+  {
+   "zh": "<strong>#3 商業彈性</strong>：最後才看「成本」與「加工速率」欄",
+   "en": "<strong>#3 Business Flexibility</strong>: look at the \"cost\" and \"processing rate\" columns last"
+  },
+  {
+   "zh": "殘留物風險 — 為什麼是 CQA #2 問題？",
+   "en": "Residue Risk — Why Is It a CQA #2 Issue?"
+  },
+  {
+   "zh": "H₂O₂（過氧化氫）殘留在容器內會與藥品中的蛋白質、胺基酸發生氧化反應，導致藥物降解（degradation）或效價下降（potency loss）。E-Beam 產生的自由基或臭氧同樣可能影響藥品穩定性。",
+   "en": "H₂O₂ (hydrogen peroxide) left inside a container can react oxidatively with proteins and amino acids in the drug product, causing degradation or potency loss. Free radicals or ozone generated by E-Beam can likewise affect drug stability."
+  },
+  {
+   "zh": "因此採用這兩種方式時，<strong>必須進行容器殘留物測試（residual testing）並訂定可接受限度（acceptance criteria）</strong>，這直接關係到 CQA #2（患者安全）。",
+   "en": "When either of these methods is used, <strong>container residual testing must be performed and acceptance criteria established</strong>, which relates directly to CQA #2 (patient safety)."
+  },
+  {
+   "zh": "選擇矩陣：依優先順序快速判斷",
+   "en": "Selection Matrix: Quick Decisions by Priority"
+  },
+  {
+   "zh": "Step 1 — 無菌保證 (#1)\n  問：哪種方式最能排除微生物引入風險？\n  → 全部 RTU 優於 On-Site（NTT 無 biodecontamination 殘留）\n\nStep 2 — 產品 CQAs (#2)\n  問：殘留物是否影響藥品穩定性？\n  → 若是生物製劑（蛋白質）：避免 H₂O₂\n  → 若是小分子：H₂O₂ 和 E-Beam 通常可接受（需測試）\n\nStep 3 — 商業彈性 (#3)\n  問：批量、速率、資本預算？\n  → 大批量高速：E-Beam 或 On-Site（多隧道）\n  → 小批量：NTT RTU（降低驗證負擔）\n  → 資本受限：H₂O₂（資本低於 E-Beam）",
+   "en": "Step 1 — Sterility Assurance (#1)\n  Ask: which method best eliminates the risk of introducing microorganisms?\n  → All RTU options are better than On-Site (NTT leaves no biodecontamination residue)\n\nStep 2 — Product CQAs (#2)\n  Ask: could residues affect drug product stability?\n  → For biologics (proteins): avoid H₂O₂\n  → For small molecules: H₂O₂ and E-Beam are usually acceptable (testing required)\n\nStep 3 — Business Flexibility (#3)\n  Ask: batch size, rate, capital budget?\n  → Large batch, high speed: E-Beam or On-Site (multiple tunnels)\n  → Small batch: NTT RTU (lower validation burden)\n  → Capital constrained: H₂O₂ (lower capital than E-Beam)"
+  },
+  {
+   "zh": "CDMO 應用：技術評估工具",
+   "en": "CDMO Application: A Technical Assessment Tool"
+  },
+  {
+   "zh": "當客戶詢問「你們的填充線用什麼方式引入元件？」，正確回答不是列舉設備名稱，而是能解釋：（1）為什麼選這個方式（決策依據）、（2）如何確保 SA（驗證文件）、（3）殘留物測試結果（CQA 保護）。這三點構成監管機構期望看到的完整 CCS 論述。",
+   "en": "When a client asks, \"How does your filling line introduce components?\", the right answer is not to list equipment names but to explain (1) why this method was chosen (the decision rationale), (2) how SA is ensured (validation documentation), and (3) the residue testing results (CQA protection). These three points make up the complete CCS argument that regulators expect to see."
+  },
+  {
+   "zh": "Section 8C 總結 — Key Takeaways",
+   "en": "Section 8C Summary — Key Takeaways"
+  },
+  {
+   "zh": "核心決策邏輯",
+   "en": "Core Decision Logic"
+  },
+  {
+   "zh": "批量大小是 RTU vs. On-Site 的首要篩選變數，但完整損益平衡須含驗證、設備生命週期成本",
+   "en": "Batch size is the primary screening variable for RTU vs. On-Site, but a complete break-even analysis must include validation and equipment lifecycle costs"
+  },
+  {
+   "zh": "複雜元件（PFS）和 COC 容器幾乎必然走 RTU 路線，不論批量大小",
+   "en": "Complex components (PFS) and COC containers almost inevitably take the RTU route, regardless of batch size"
+  },
+  {
+   "zh": "烤箱滅菌因人工介入風險而逐步被淘汰，隧道式去熱原是主流",
+   "en": "Oven sterilization is being phased out because of the risk of manual intervention; tunnel depyrogenation is the mainstream"
+  },
+  {
+   "zh": "RTU 引入機制中，NTT 驗證最簡單；H₂O₂/E-Beam 需處理殘留物相容性",
+   "en": "Among RTU introduction mechanisms, NTT is the simplest to validate; H₂O₂/E-Beam require handling of residue compatibility"
+  },
+  {
+   "zh": "決策優先順序應用",
+   "en": "Applying the Decision Hierarchy"
+  },
+  {
+   "zh": "<strong>#1 無菌保證：</strong>RTU 消除 glass-to-glass 微粒；NTT 消除 biodecontamination 殘留——選擇取決於哪個風險在你的製程中更難控制",
+   "en": "<strong>#1 Sterility Assurance:</strong> RTU eliminates glass-to-glass particulates; NTT eliminates biodecontamination residues. The choice depends on which risk is harder to control in your process"
+  },
+  {
+   "zh": "<strong>#2 產品 CQAs：</strong>生物製劑避免 H₂O⁮ 殘留；殘留測試必須完整",
+   "en": "<strong>#2 Product CQAs:</strong> avoid H₂O₂ residues for biologics; residue testing must be thorough"
+  },
+  {
+   "zh": "<strong>#3 商業彈性：</strong>CDMO 的多品種多批量特性要求保留多種引入方式的彈性，而非固定單一選擇",
+   "en": "<strong>#3 Business Flexibility:</strong> a CDMO's high-mix, multi-batch-size profile requires retaining the flexibility of multiple introduction methods rather than fixing on a single choice"
+  },
+  {
+   "zh": "PDA Manufacturing Technology Guide No. 1 | Section 8C | p147–p152 | 製作日期：2026-03-15",
+   "en": "PDA Manufacturing Technology Guide No. 1 | Section 8C | p147–p152 | Produced: 2026-03-15"
+  }
+ ]
+}

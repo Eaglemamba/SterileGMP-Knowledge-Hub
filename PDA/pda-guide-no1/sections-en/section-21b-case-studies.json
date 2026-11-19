@@ -1,0 +1,253 @@
+{
+ "source": "section-21b-case-studies.html",
+ "blocks": [
+  {
+   "zh": "第21B節：無菌充填系統設計案例研究（下篇）— Case 2 完整分析",
+   "en": "Section 21B: Aseptic Filling System Design Case Studies (Part 2) - Full Analysis of Case 2"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解多容器／多規格／多產品充填線的需求如何轉化為設備設計規格",
+   "en": "Understand how the requirements of a multi-container / multi-volume / multi-product filling line are translated into equipment design specifications"
+  },
+  {
+   "zh": "掌握批次大小、生產節拍（Campaign）與充填技術耐久性之間的關聯",
+   "en": "Grasp the relationship between batch size, campaign length and the durability of the filling technology"
+  },
+  {
+   "zh": "能夠使用能力比較矩陣（Capability Comparison Matrix）評選最適合的充填技術",
+   "en": "Be able to use a Capability Comparison Matrix to select the most suitable filling technology"
+  },
+  {
+   "zh": "建立產線效率（Line Efficiency）、設施效率（Facility Efficiency）與年產量目標的計算思維",
+   "en": "Build a calculation mindset for line efficiency, facility efficiency and annual output targets"
+  },
+  {
+   "zh": "<strong>21.2.4 Case 2: Requirements for Multi-container / Multi-volume / Multi-product Filling 21.2.4 案例二：多容器／多容量／多產品充填需求</strong>",
+   "en": "<strong>21.2.4 Case 2: Requirements for Multi-container / Multi-volume / Multi-product Filling</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Change Parts（換型零件）:</strong> 充填線上因容器規格不同而需更換的機械元件，包含送瓶螺桿（feed screws）、星輪（star wheels）、步進梁（walking beams）等。每換一種規格，就需要一套對應的 change parts。",
+   "en": "<strong>Change Parts:</strong> Mechanical components on the filling line that must be exchanged when the container format changes, including feed screws, star wheels and walking beams. Each container format requires its own set of change parts."
+  },
+  {
+   "zh": "<strong>IL / R / H 玻璃瓶分類:</strong> IL = 模製輸液瓶（Infusion bottle, molded glass），R = 管製小瓶（tubing vial），H = 管製注射瓶。三種瓶型的重量、直徑公差、頸肩尺寸均不同，若混用則需重新驗證 change parts。",
+   "en": "<strong>IL / R / H glass classification:</strong> IL = molded glass infusion bottle, R = tubing vial, H = tubing injection bottle. The three types differ in weight, diameter tolerance and neck/shoulder dimensions, so mixing them requires the change parts to be revalidated."
+  },
+  {
+   "zh": "<strong>Line Footprint（產線佔地）:</strong> 整條產線的物理空間需求。本案例因使用 bulk 容器（需洗瓶機 + 除熱原隧道），footprint 遠大於使用 RTU 預洗容器的產線。",
+   "en": "<strong>Line Footprint:</strong> The physical space required by the whole line. In this case, bulk containers are used (requiring a washer plus a depyrogenation tunnel), so the footprint is much larger than that of a line using RTU pre-washed containers."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像一家餐廳同時服務 50mL 的濃縮湯品與 500mL 的大碗料理 — 廚房的鍋具、分裝設備、托盤尺寸全部不同。若餐廳一開始沒設計好「換鍋系統」，之後每次換菜單就要大改廚房。本案例中的 change parts 設計，就是預先為所有菜單尺寸準備好對應的廚具。",
+   "en": "Imagine a restaurant serving both 50 mL concentrated soups and 500 mL large bowls: the pots, portioning equipment and tray sizes are all different. If the restaurant did not design a \"pot-changing system\" at the outset, every menu change would mean a major kitchen rebuild. The change parts design in this case is the equivalent of preparing matching cookware for every menu size in advance."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>決策層級提醒：</strong>填充技術彈性是「業務靈活性」需求（第三優先），但若未在初期設計中納入，日後新增填充技術可能需要重新驗證整條充填線 — 代價遠高於預先規劃。<br/>因此：<strong>在設計鎖定前，務必確認未來5年的產品管線是否需要不同的充填技術。</strong>",
+   "en": "<strong>Reminder on the decision hierarchy:</strong> Filling technology flexibility is a \"business flexibility\" requirement (third priority), but if it is not built into the initial design, adding a new filling technology later may require revalidation of the entire filling line, at a cost far higher than planning ahead.<br/>Therefore: <strong>before the design is locked, confirm whether the product pipeline for the next 5 years will need different filling technologies.</strong>"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若日後新增 tubing vial (R型)，哪些 change parts 需要重新設計？為什麼 molded glass 和 tubing glass 的公差差異會影響充填線速？",
+   "en": "If a tubing vial (R type) is added later, which change parts must be redesigned? Why would the tolerance difference between molded glass and tubing glass affect filling line speed?"
+  },
+  {
+   "zh": "本案例選擇 bulk 洗瓶而非 RTU，對設施 footprint 和驗證工作量各有何影響？",
+   "en": "This case chose bulk container washing rather than RTU. What are the respective impacts on facility footprint and validation workload?"
+  },
+  {
+   "zh": "<strong>21.2.5 Case 2: Anticipated Batch Sizes and Operating Practices 21.2.5 案例二：預期批量與操作規範</strong>",
+   "en": "<strong>21.2.5 Case 2: Anticipated Batch Sizes and Operating Practices</strong>"
+  },
+  {
+   "zh": "<strong>Campaign Strategy（生產節拍策略）:</strong> 將多批次連續填充，批次間只做小幅換型，而非每次完整 changeover。優點是大幅縮短停機時間；代價是無菌風險累積更長，因此傾向選用隔離器（Isolator）而非 RABS。",
+   "en": "<strong>Campaign Strategy:</strong> Multiple batches are filled consecutively, with only a minor changeover between batches rather than a full changeover each time. The advantage is a substantial reduction in downtime; the cost is a longer accumulation of aseptic risk, which is why an isolator is preferred over RABS."
+  },
+  {
+   "zh": "<strong>Rate-Limiting Step（速率限制步驟）:</strong> 本案例的除熱原隧道（depyrogenation tunnel）是瓶頸 — 即使增加充填頭數量，整體線速也無法提升，因為隧道的輸送速度才是關鍵限制。這是典型的「木桶效應」。",
+   "en": "<strong>Rate-Limiting Step:</strong> In this case the depyrogenation tunnel is the bottleneck. Even if the number of filling heads is increased, overall line speed cannot improve, because the tunnel conveyor speed is the key limit. This is the classic \"weakest stave of the barrel\" effect."
+  },
+  {
+   "zh": "效率計算框架 Efficiency Calculation",
+   "en": "Efficiency Calculation Framework"
+  },
+  {
+   "zh": "年可用工時 = 365天 × 16hr/天 × (5/7天/週)\n           ≈ 4,160 小時/年\n\n扣除停機 (Facility Efficiency 75%):\n可用生產時間 ≈ 4,160 × 0.75 = 3,120 小時\n\n線效率 85% → 實際充填時間 ≈ 3,120 × 0.85\n           ≈ 2,652 小時/年\n\nyield 98% → 有效產出 = 充填量 × 0.98\n\n實務啟示：每提升1%線效率，\n相當於多出約26小時有效充填時間/年。",
+   "en": "Available hours per year = 365 days × 16 hr/day × (5/7 days/week)\n           ≈ 4,160 hours/year\n\nLess downtime (Facility Efficiency 75%):\nAvailable production time ≈ 4,160 × 0.75 = 3,120 hours\n\nLine efficiency 85% → actual filling time ≈ 3,120 × 0.85\n           ≈ 2,652 hours/year\n\nYield 98% → effective output = filled quantity × 0.98\n\nPractical takeaway: every 1% improvement in line efficiency\nis equivalent to about 26 additional hours of effective filling time per year."
+  },
+  {
+   "zh": "<strong>Campaign 期間 EM 管理是關鍵：</strong>每批結束時需完成 EM 樣本，但 EM 材料必須在充填線啟動前備妥於隔離器/RABS 內部，或透過 RTP 傳入。這是操作計劃的細節，卻是 APS 設計的重要組成部分。",
+   "en": "<strong>EM management during a campaign is critical:</strong> EM samples must be completed at the end of each batch, but the EM materials must be staged inside the isolator/RABS before the filling line starts up, or transferred in via RTP. This is a detail of the operating plan, yet it is an important part of the APS design."
+  },
+  {
+   "zh": "<strong>Filling Path 策略決定 4 小時換批是否可行：</strong>若使用 CIP/SIP，需確認 CIP/SIP 週期時間 &lt; 4 小時（含所有文件和完整性測試）；若不可行，應在設計初期改用一次性流路（single-use pathway）。",
+   "en": "<strong>The filling path strategy determines whether a 4-hour batch changeover is feasible:</strong> If CIP/SIP is used, confirm that the CIP/SIP cycle time is &lt; 4 hours (including all documentation and integrity testing); if this is not feasible, a single-use pathway should be adopted early in the design."
+  },
+  {
+   "zh": "<strong>21.2.6 Case 2: Comparison of Requirements to Filling System Capabilities 21.2.6 案例二：需求與充填系統能力比較</strong>",
+   "en": "<strong>21.2.6 Case 2: Comparison of Requirements to Filling System Capabilities</strong>"
+  },
+  {
+   "zh": "<strong>能力比較矩陣的使用邏輯：</strong>這張矩陣不是要找「完美的技術」，而是系統性地淘汰不符合條件的選項。本案例中：",
+   "en": "<strong>How to use the capability comparison matrix:</strong> The matrix is not meant to find the \"perfect technology\"; it is a systematic way to eliminate options that do not meet the requirements. In this case:"
+  },
+  {
+   "zh": "<strong>RPP 被淘汰</strong> — 大體積（250–500 mL）下泵尺寸受限，且對蛋白質的剪切風險不可接受",
+   "en": "<strong>RPP is eliminated</strong> - at large volumes (250-500 mL) pump size is limited, and the shear risk to the protein is unacceptable"
+  },
+  {
+   "zh": "<strong>DP 被淘汰</strong> — 同樣受大體積限制",
+   "en": "<strong>DP is eliminated</strong> - likewise limited by the large volume"
+  },
+  {
+   "zh": "<strong>PP vs TP</strong> — 勝負在 SU 偏好 vs CIP/SIP 偏好，由商業決策定奪",
+   "en": "<strong>PP vs TP</strong> - the outcome depends on a preference for SU versus a preference for CIP/SIP, which is settled by a business decision"
+  },
+  {
+   "zh": "決策層級：無菌保證優先 &gt; 產品 CQA（剪切敏感）&gt; 商業靈活性（SU 成本）",
+   "en": "Decision hierarchy: sterility assurance &gt; product CQAs (shear sensitivity) &gt; business flexibility (SU cost)"
+  },
+  {
+   "zh": "這張矩陣就像在餐廳選廚具：你有四種料理設備（PP/RPP/TP/DP），但菜單（蛋白質大體積充填）對廚具有明確要求。不是每種廚具都能做大鍋料理，也不是每種都對食材夠溫和。矩陣幫你逐項打分數，最終兩款廚具並列第一，最後的抉擇取決於你的廚房清潔策略（洗碗機 vs 拋棄式容器）。",
+   "en": "The matrix is like choosing cookware for a restaurant: you have four kinds of cooking equipment (PP/RPP/TP/DP), but the menu (large-volume protein filling) places clear requirements on the cookware. Not every piece of cookware can handle a large batch, and not every one is gentle enough for the ingredients. The matrix scores them item by item, and in the end two options tie for first place; the final choice depends on your kitchen cleaning strategy (dishwasher vs disposable containers)."
+  },
+  {
+   "zh": "<strong>PP vs TP 的最終決策因素：</strong>",
+   "en": "<strong>Deciding factors for PP vs TP:</strong>"
+  },
+  {
+   "zh": "若產品起泡嚴重 + 偏好 SU → <strong>選 PP</strong>（但需計算 SU 成本 × 年批次數）",
+   "en": "If the product foams heavily and SU is preferred → <strong>choose PP</strong> (but calculate SU cost × number of batches per year)"
+  },
+  {
+   "zh": "若 changeover 時間緊（4小時批次間隔）且 CIP/SIP 可在時間內完成 → <strong>選 TP</strong>",
+   "en": "If the changeover time is tight (4-hour interval between batches) and CIP/SIP can be completed within that time → <strong>choose TP</strong>"
+  },
+  {
+   "zh": "若 campaign 橫跨 5 天且磨耗是風險 → PP 的軟管磨耗需要更嚴格的監測計劃",
+   "en": "If the campaign spans 5 days and wear is a risk → the tubing wear of PP requires a more rigorous monitoring plan"
+  },
+  {
+   "zh": "這是本指南最核心的示範：<strong>沒有唯一正確答案，只有基於數據的最佳選擇。</strong>",
+   "en": "This is the central lesson of the guide: <strong>there is no single correct answer, only the best choice based on data.</strong>"
+  },
+  {
+   "zh": "若你是 CDMO 的技術轉移工程師，客戶的原料藥批次成本極高（每批 $2M），100% IPC 對 PP 的意義是什麼？選 PP 還是 TP 時，這個因素如何影響決策？",
+   "en": "If you are a technology transfer engineer at a CDMO and the client's drug substance batch cost is extremely high ($2M per batch), what does 100% IPC mean for PP? How does this factor influence the choice between PP and TP?"
+  },
+  {
+   "zh": "若 campaign 長達 5 天，PP 的軟管磨耗如何在 APS 中體現？應如何設計監測計劃？",
+   "en": "If a campaign lasts as long as 5 days, how is PP tubing wear reflected in the APS? How should the monitoring plan be designed?"
+  },
+  {
+   "zh": "<strong>21.2.7 Case 2: Other Design Elements for Consideration 21.2.7 案例二：其他待考量設計要素</strong>",
+   "en": "<strong>21.2.7 Case 2: Other Design Elements for Consideration</strong>"
+  },
+  {
+   "zh": "本節是 Case 2 的收尾，提醒讀者：充填技術選型完成後，仍有一系列「週邊設計決策」需要完成，包含操作員介面、零組件供應、過濾器位置與完整性測試，以及廠務設施。",
+   "en": "This section closes out Case 2 and reminds readers that once the filling technology has been selected, a series of \"peripheral design decisions\" still remain, including the operator interface, component supply, filter locations and integrity testing, and utilities."
+  },
+  {
+   "zh": "這些決策雖然不直接決定充填技術，但會影響：設備佔地、CAPEX、操作風險，以及最終的 URS（使用需求規格書）內容。建議在充填技術確定後，立即啟動這些週邊設計的討論。",
+   "en": "Although these decisions do not directly determine the filling technology, they affect equipment footprint, CAPEX, operating risk and, ultimately, the content of the URS (User Requirements Specification). It is advisable to start discussing these peripheral designs immediately after the filling technology is confirmed."
+  },
+  {
+   "zh": "<strong>設計決策的優先順序：</strong>",
+   "en": "<strong>Priority order of design decisions:</strong>"
+  },
+  {
+   "zh": "<strong>充填技術選型</strong> — 本 Case Study 的核心（21.2.1–21.2.6）",
+   "en": "<strong>Filling technology selection</strong> - the core of this case study (21.2.1-21.2.6)"
+  },
+  {
+   "zh": "<strong>週邊系統設計</strong> — 本節所列（操作員介面、組件供應、過濾、廠務）",
+   "en": "<strong>Peripheral system design</strong> - covered in this section (operator interface, component supply, filtration, utilities)"
+  },
+  {
+   "zh": "<strong>空間佈局與成本估算</strong> — 基於前兩項完成後進行",
+   "en": "<strong>Space layout and cost estimation</strong> - carried out after the first two are complete"
+  },
+  {
+   "zh": "以上流程確保最重要的決策（無菌保證 &gt; CQA）先定，再逐層往下設計，避免因佈局或成本倒逼技術選型。",
+   "en": "This sequence ensures that the most important decisions (sterility assurance &gt; CQAs) are made first and the design then proceeds layer by layer, avoiding a situation where layout or cost forces the technology selection."
+  },
+  {
+   "zh": "<strong>22.0 Relevant Vendor and Supplier Resources (Back Matter) 22.0 相關供應商與廠商資源（書末附錄）</strong>",
+   "en": "<strong>22.0 Relevant Vendor and Supplier Resources (Back Matter)</strong>"
+  },
+  {
+   "zh": "<strong>廠商資源章節的性質：</strong>第22節是付費廣告（paid advertisements）收錄於 PDA 技術指南末尾，PDA 明確聲明「不代表認可或偏好」。對讀者而言，這一節的實際價值是：了解當前市場上有哪些主要設備供應商，以及它們各自強調的技術方向。",
+   "en": "<strong>Nature of the vendor resources section:</strong> Section 22 consists of paid advertisements included at the end of the PDA technical guide, and PDA explicitly states that it does \"not represent endorsement or preference.\" For the reader, the practical value of this section is to learn which major equipment suppliers are on the market today and which technology directions each emphasizes."
+  },
+  {
+   "zh": "值得注意的是，這四家廠商（Bausch+Ströbel、groninger、IMA、OPTIMA）均是歐洲主流無菌充填設備製造商，反映了歐洲在高端藥機領域的主導地位。",
+   "en": "It is worth noting that these four vendors (Bausch+Ströbel, groninger, IMA, OPTIMA) are all leading European manufacturers of aseptic filling equipment, reflecting Europe's dominance in high-end pharmaceutical machinery."
+  },
+  {
+   "zh": "重點提示 Key Notes — 技術趨勢觀察",
+   "en": "Key Notes - Technology Trend Observations"
+  },
+  {
+   "zh": "<strong>GENEX（Bausch+Ströbel）的核心命題：</strong>\"Gloveless Aseptic Production\" — 無手套無菌生產。手套口（glove port）歷來是 RABS/Isolator 最大的污染風險點之一（參見 EU GMP Annex 1 干預管理要求）。機器人自動化取代手動干預，是下一代無菌充填線的核心趨勢。",
+   "en": "<strong>The core proposition of GENEX (Bausch+Ströbel):</strong> \"Gloveless Aseptic Production.\" The glove port has traditionally been one of the greatest contamination risk points in RABS/isolators (see the intervention management requirements of EU GMP Annex 1). Replacing manual interventions with robotic automation is the core trend for the next generation of aseptic filling lines."
+  },
+  {
+   "zh": "<strong>IMA Detecta 的「Single Rejection」概念：</strong>傳統視覺系統在偵測缺陷後，可能拒絕整個批次或多個單位；Single Rejection 代表機器人精確只排除單一缺陷單位，大幅提升良率。這呼應本指南第5節中 100% IPC 對高價值產品的重要性。",
+   "en": "<strong>The \"Single Rejection\" concept of IMA Detecta:</strong> After a conventional vision system detects a defect, it may reject an entire batch or multiple units; Single Rejection means the robot precisely removes only the single defective unit, greatly improving yield. This echoes the importance of 100% IPC for high-value products discussed in Section 5 of this guide."
+  },
+  {
+   "zh": "這些廠商廣告就像汽車雜誌末尾的廠商名錄 — 不是評測，但能讓你快速掌握市場格局。當你未來要寫 RFQ（詢價單）或 URS（使用需求規格書）時，這些廠商名稱就是你的第一輪「詢盤清單」。",
+   "en": "These vendor advertisements are like the vendor directory at the back of a car magazine: not a review, but a quick way to grasp the market landscape. When you later write an RFQ (request for quotation) or URS (User Requirements Specification), these vendor names are your first-round inquiry list."
+  },
+  {
+   "zh": "本節重點回顧 Section 21B Summary",
+   "en": "Section 21B Summary"
+  },
+  {
+   "zh": "<strong>多容器/多規格設計（21.2.4）：</strong>設計初期必須鎖定所有容器規格、change parts 清單、以及未來是否可能新增不同玻璃瓶型（IL/R/H），否則後期增加任何新規格都需要重新驗證。",
+   "en": "<strong>Multi-container/multi-format design (21.2.4):</strong> At the start of the design, all container formats, the change parts list, and the possibility of adding different glass types (IL/R/H) in future must be locked down; otherwise any new format added later will require revalidation."
+  },
+  {
+   "zh": "<strong>批次參數與生產節拍（21.2.5）：</strong>除熱原隧道是大瓶型的速率限制瓶頸；campaign 策略傾向使用隔離器；批次間 4 小時 changeover 必須涵蓋所有任務（CIP/SIP、完整性測試、EM 清點、文件）。",
+   "en": "<strong>Batch parameters and campaign (21.2.5):</strong> The depyrogenation tunnel is the rate-limiting bottleneck for large containers; the campaign strategy favors the use of isolators; the 4-hour changeover between batches must cover all tasks (CIP/SIP, integrity testing, EM reconciliation, documentation)."
+  },
+  {
+   "zh": "<strong>效率三層結構：</strong>Line Efficiency（85%目標）× Facility Efficiency（70-80%）× Yield（98%），三者共同決定年實際產出 — 每個百分點都需要顯著投入才能改善。",
+   "en": "<strong>Three-layer efficiency structure:</strong> Line Efficiency (85% target) × Facility Efficiency (70-80%) × Yield (98%) together determine actual annual output; every percentage point requires significant investment to improve."
+  },
+  {
+   "zh": "<strong>技術選型結論（21.2.6）：</strong>RPP 與 DP 因大體積/蛋白質剪切問題被排除；PP 與 TP 並列最優，最終選擇取決於 SU 偏好（PP）或 CIP/SIP 偏好（TP），由 campaign 换批時間與 SU 成本共同決定。",
+   "en": "<strong>Technology selection conclusion (21.2.6):</strong> RPP and DP are excluded because of large volume/protein shear issues; PP and TP tie as the best options, and the final choice depends on a preference for SU (PP) or for CIP/SIP (TP), determined jointly by the campaign changeover time and SU cost."
+  },
+  {
+   "zh": "<strong>決策層級永遠成立：</strong>Sterility Assurance &gt; Product CQAs &gt; Business Flexibility — 本案例中，campaign 驅動隔離器選型（SA優先），剪切敏感性排除 RPP（CQA優先），SU vs CIP/SIP 是最後才考慮的商業決策。",
+   "en": "<strong>The decision hierarchy always holds:</strong> Sterility Assurance &gt; Product CQAs &gt; Business Flexibility. In this case, the campaign drives the isolator selection (sterility assurance first), shear sensitivity excludes RPP (CQA first), and SU vs CIP/SIP is the commercial decision considered last."
+  }
+ ]
+}

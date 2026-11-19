@@ -1,0 +1,729 @@
+{
+ "source": "section-12-batch-setup.html",
+ "blocks": [
+  {
+   "zh": "丟棄策略與批次結束操作：從嵌套元件到填充尾聲的品質控制",
+   "en": "Discard Strategy and End-of-Batch Operations: Quality Control from Nested Components to the End of Fill"
+  },
+  {
+   "zh": "本章決策優先序 Decision Hierarchy",
+   "en": "Decision Hierarchy"
+  },
+  {
+   "zh": "<div class=\"dh-num\">1</div>Sterility Assurance 無菌保證 — 每一個丟棄決策的最高原則",
+   "en": "<div class=\"dh-num\">1</div>Sterility Assurance: the overriding principle behind every discard decision"
+  },
+  {
+   "zh": "<div class=\"dh-num\">2</div>Product CQAs 產品關鍵品質屬性 — 均勻性、含量、相容性",
+   "en": "<div class=\"dh-num\">2</div>Product CQAs: uniformity, assay and compatibility"
+  },
+  {
+   "zh": "<div class=\"dh-num\">3</div>Business &amp; Flexibility 商業彈性 — 最小化廢棄量、提升效率",
+   "en": "<div class=\"dh-num\">3</div>Business &amp; Flexibility: minimize waste and improve efficiency"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解嵌套容器（nested components）填充時的丟棄決策：單支 vs. 整盤",
+   "en": "Understand discard decisions when filling nested components: a single unit vs. the whole tub"
+  },
+  {
+   "zh": "掌握批次尾段（end of fill）常見填充失準原因及處置程序",
+   "en": "Know the common causes of fill inaccuracy at the end of a batch (end of fill) and how to handle them"
+  },
+  {
+   "zh": "比較四種液體充填技術在各類丟棄事件中的相對風險",
+   "en": "Compare the relative risk of the four liquid filling technologies across the different types of discard event"
+  },
+  {
+   "zh": "了解無菌填充單元操作結束時的完整作業程序（EM、盤點、殘液、危害品 WIP、線路清場、文件）",
+   "en": "Understand the complete end-of-operation procedure for aseptic filling (EM, reconciliation, residual liquid, hazardous-product WIP, line clearance, documentation)"
+  },
+  {
+   "zh": "本節內容索引",
+   "en": "Contents of This Section"
+  },
+  {
+   "zh": "批次尾段填充失準的原因與丟棄策略",
+   "en": "Causes of Fill Inaccuracy at the End of a Batch and Discard Strategy"
+  },
+  {
+   "zh": "中文解析 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心概念：批次尾段為何容易失準？",
+   "en": "Core Concept: Why Is the End of a Batch Prone to Inaccuracy?"
+  },
+  {
+   "zh": "<strong>填充尾段（end of fill）</strong>是整個批次最脆弱的時段。三大失準原因：",
+   "en": "<strong>End of fill</strong> is the most vulnerable period of the whole batch. There are three main causes of inaccuracy:"
+  },
+  {
+   "zh": "<strong>液位不足</strong>：manifold（分配歧管）或中間容器液位過低，泵浦抽不到足夠液體",
+   "en": "<strong>Insufficient liquid level</strong>: the level in the manifold or intermediate vessel is too low, so the pump cannot draw enough liquid"
+  },
+  {
+   "zh": "<strong>泡沫/空氣夾帶</strong>：最後批量液體通過過濾器時，氣泡混入填充路徑",
+   "en": "<strong>Foaming/air entrainment</strong>: as the last of the liquid passes through the filter, air bubbles enter the filling path"
+  },
+  {
+   "zh": "<strong>均勻性喪失</strong>：懸浮劑（suspension）在液量極少時，循環攪拌不足，粒子沉降，導致含量不均",
+   "en": "<strong>Loss of uniformity</strong>: at very low volumes, circulation and mixing of a suspension are inadequate, particles settle, and content becomes non-uniform"
+  },
+  {
+   "zh": "生活比喻：倒洗手乳到最後",
+   "en": "Everyday Analogy: The Last of the Hand Soap"
+  },
+  {
+   "zh": "就像瓶裝洗手乳快用完時，壓一次出來的量忽多忽少，有時還夾帶空氣。填充機遇到的問題完全相同——液量不足時，計量精度就會失控。",
+   "en": "When a bottle of hand soap is nearly empty, each press delivers a different amount, and sometimes air comes out with it. A filling machine faces exactly the same problem: when there is not enough liquid, dosing accuracy is lost."
+  },
+  {
+   "zh": "關鍵提示：高價值產品要「分段關機」",
+   "en": "Key Point: For high-value products, shut down in stages"
+  },
+  {
+   "zh": "對於高價值產品（如生物製劑、稀有原料藥），不是一次性全線停機，而是<strong>逐一關閉各條填充路徑</strong>（progressive shutdown），讓每一支幫浦盡量使用完剩餘液量，最大化產品回收率。這是 Priority 3（商業彈性），但前提是不違反 Priority 1 的無菌保證。",
+   "en": "For high-value products (such as biologics or rare APIs), do not stop the whole line at once. Instead, <strong>close the filling paths one by one</strong> (progressive shutdown) so that each pump uses up as much of the remaining liquid as possible and product recovery is maximized. This serves Priority 3 (business flexibility), but only on condition that it does not compromise Priority 1, sterility assurance."
+  },
+  {
+   "zh": "CDMO 應用思考",
+   "en": "CDMO Application Questions"
+  },
+  {
+   "zh": "你的 SOP 是否明確規範了「批次尾段」的觸發條件（low-level alarm 的設定值）？對懸浮劑（如胰島素晶體製劑）的尾段處理是否有獨立程序？End-of-fill 的驗證是否納入製程驗證範疇？",
+   "en": "Does your SOP clearly define the trigger conditions for end of fill (the low-level alarm set point)? Is there a separate procedure for the end of fill of suspensions (such as insulin crystal formulations)? Is end-of-fill included within the scope of process validation?"
+  },
+  {
+   "zh": "嵌套容器的丟棄決策：單支 vs. 整盤",
+   "en": "Discard Decisions for Nested Components: a Single Unit vs. the Whole Tub"
+  },
+  {
+   "zh": "核心概念：嵌套容器（Nested Components）的丟棄兩難",
+   "en": "Core Concept: The Discard Dilemma for Nested Components"
+  },
+  {
+   "zh": "<strong>Nested syringes in tubs</strong>（嵌套注射器裝盤）是預填式注射器的主流包裝形式。一個 tub 通常容納數十支注射器，共用同一層無菌屏障（tub lid）。當某一根填充針（filling needle）出現劑量失控時，問題來了：",
+   "en": "<strong>Nested syringes in tubs</strong> are the dominant packaging format for prefilled syringes. A tub usually holds several dozen syringes that share one sterile barrier (the tub lid). When one filling needle starts to dose out of control, the question arises:"
+  },
+  {
+   "zh": "<strong>方案 A — 僅棄失效支</strong>：精準、省料，但需機器人驗證或雙人確認（four-eyes principle），文件複雜度高",
+   "en": "<strong>Option A: discard only the affected units</strong>. Precise and saves product, but requires robotic verification or a second-person check (four-eyes principle), and the documentation is more complex"
+  },
+  {
+   "zh": "<strong>方案 B — 棄整盤</strong>：保守，成本高，但品質系統負擔最小，文件清晰",
+   "en": "<strong>Option B: discard the whole tub</strong>. Conservative and costly, but places the least burden on the quality system and the documentation is clear"
+  },
+  {
+   "zh": "在 Priority 1（無菌保證）下，方案 B 是最安全的預設選擇。",
+   "en": "Under Priority 1 (sterility assurance), Option B is the safest default choice."
+  },
+  {
+   "zh": "生活比喻：雞蛋盒中的壞蛋",
+   "en": "Everyday Analogy: A Bad Egg in the Carton"
+  },
+  {
+   "zh": "一盒12顆蛋，其中一顆懷疑有裂縫。你可以：(A) 仔細逐顆確認，只丟那一顆；或 (B) 整盒退掉。在製藥的世界裡，（A）需要機器人或雙人驗證，文件量驚人；（B）雖然浪費，但最不容易出錯。",
+   "en": "A carton holds 12 eggs and you suspect one of them is cracked. You can: (A) check each egg carefully and throw away only that one; or (B) return the whole carton. In pharmaceutical manufacturing, (A) requires robotic or two-person verification and a huge amount of documentation; (B) is wasteful but the least error-prone."
+  },
+  {
+   "zh": "關鍵提示：並非所有設備都支援單站關閉",
+   "en": "Key Point: Not all equipment supports single-station shutdown"
+  },
+  {
+   "zh": "部分嵌套填充設備在設計上<strong>無法獨立停用單一填充站</strong>，一旦某站故障，只能全線重置。這代表整盤丟棄的情況比想像中更常見。選購設備時應評估此功能；驗證方案必須覆蓋「單站停用」的處理程序。",
+   "en": "Some nested filling equipment is designed so that <strong>a single filling station cannot be taken out of service independently</strong>; once one station fails, the only option is to reset the whole line. This means that discarding a whole tub is more common than you might expect. This capability should be assessed when selecting equipment, and the validation program must cover the procedure for handling a \"single-station shutdown\"."
+  },
+  {
+   "zh": "思考問題",
+   "en": "Questions to Consider"
+  },
+  {
+   "zh": "若你的產品是昂貴的單株抗體（mAb），以嵌套 PFS 形式灌裝，第 3 站填充針出現重量偏低警示。在決定棄單支或棄整盤之前，你需要確認哪些資訊？（提示：設備能力、追溯能力、品質系統要求）",
+   "en": "Suppose your product is an expensive monoclonal antibody (mAb) filled in nested PFS, and the filling needle at station 3 triggers a low-weight alarm. Before deciding whether to discard a single unit or the whole tub, what information do you need to confirm? (Hint: equipment capability, traceability, quality system requirements)"
+  },
+  {
+   "zh": "常見丟棄事件與各液體充填技術之相對風險比較",
+   "en": "Common Discard Events and Relative Risk Comparison by Liquid Filling Technology"
+  },
+  {
+   "zh": "<strong>PP</strong> — Peristaltic Pump (蠕動泵浦)",
+   "en": "<strong>PP</strong> — Peristaltic Pump"
+  },
+  {
+   "zh": "<strong>RPP</strong> — Rotary Piston Pump (旋轉活塞泵浦)",
+   "en": "<strong>RPP</strong> — Rotary Piston Pump"
+  },
+  {
+   "zh": "<strong>TP</strong> — Time Pressure (時間壓力系統)",
+   "en": "<strong>TP</strong> — Time Pressure"
+  },
+  {
+   "zh": "<strong>DP</strong> — Diaphragm Pump (隔膜泵浦)",
+   "en": "<strong>DP</strong> — Diaphragm Pump"
+  },
+  {
+   "zh": "閱讀此表的方式",
+   "en": "How to Read This Table"
+  },
+  {
+   "zh": "每一列代表一類丟棄風險場景；每一欄代表一種填充技術。風險等級以顏色標示：<span class=\"risk-high\">高風險</span> <span class=\"risk-med\">中風險</span> <span class=\"risk-low\">低風險</span> <span class=\"risk-var\">視設計而定</span>。",
+   "en": "Each row represents one type of discard risk scenario; each column represents one filling technology. Risk levels are color-coded: <span class=\"risk-high\">High risk</span> <span class=\"risk-med\">Medium risk</span> <span class=\"risk-low\">Low risk</span> <span class=\"risk-var\">Design-dependent</span>."
+  },
+  {
+   "zh": "重點是：<strong>沒有任何一種技術在所有面向都是低風險的</strong>。選型時必須針對你的產品特性（懸浮劑？高氧敏感？長接觸路徑？）進行風險矩陣分析。",
+   "en": "The key point: <strong>no single technology is low risk in every respect</strong>. When selecting a technology, you must carry out a risk matrix analysis against your product characteristics (suspension? high oxygen sensitivity? long product-contact path?)."
+  },
+  {
+   "zh": "風險矩陣決策框架",
+   "en": "Risk Matrix Decision Framework"
+  },
+  {
+   "zh": "丟棄風險評估 = f(技術類型, 物料相容性, 管路長度, 是否有反饋機制)\n\n關鍵原則：\n  - 管路越短 → 風險越低（適用氧化、吸附、均勻性）\n  - 有反饋機制 → 劑量控制風險降低\n  - 介入在隔離器外 → 無菌丟棄風險降低",
+   "en": "Discard risk assessment = f(technology type, material compatibility, tubing length, presence of a feedback mechanism)\n\nKey principles:\n  - Shorter tubing → lower risk (applies to oxidation, adsorption, uniformity)\n  - Feedback mechanism present → lower dose control risk\n  - Intervention outside the isolator → lower sterility discard risk"
+  },
+  {
+   "zh": "表格總結：PP 風險最高、RPP 介入風險最高",
+   "en": "Table Summary: PP has the highest overall risk; RPP has the highest intervention risk"
+  },
+  {
+   "zh": "<strong>蠕動泵浦（PP）</strong>在吸附、氧化、懸浮均勻性三項均是高風險，因管路長度是最大弱點。<strong>旋轉活塞泵浦（RPP）</strong>在介入操作上風險最高，因介入點通常在填充隔離器內部。<strong>縮短接觸路徑</strong>是所有技術降低風險的共通法則。",
+   "en": "The <strong>peristaltic pump (PP)</strong> is high risk for adsorption, oxidation and suspension uniformity, because tubing length is its greatest weakness. The <strong>rotary piston pump (RPP)</strong> carries the highest risk for interventions, because the intervention point is usually inside the filling isolator. <strong>Shortening the product-contact path</strong> is the common rule for reducing risk with every technology."
+  },
+  {
+   "zh": "其他操作中的丟棄情況：感測器與拒絕站",
+   "en": "Discards in Other Operations: Sensors and Reject Stations"
+  },
+  {
+   "zh": "<span class=\"key-term\">Raised stopper/plunger placement detection</span> — 推塞/活塞位置異常偵測",
+   "en": "<span class=\"key-term\">Raised stopper/plunger placement detection</span>"
+  },
+  {
+   "zh": "<span class=\"key-term\">Missing stopper/plunger</span> — 缺塞/缺活塞",
+   "en": "<span class=\"key-term\">Missing stopper/plunger</span>"
+  },
+  {
+   "zh": "<span class=\"key-term\">Fallen components</span> — 元件落地",
+   "en": "<span class=\"key-term\">Fallen components</span>"
+  },
+  {
+   "zh": "<span class=\"key-term\">Bad crimp seals/closures</span> (at capper) — 壓蓋異常",
+   "en": "<span class=\"key-term\">Bad crimp seals/closures</span> (at capper)"
+  },
+  {
+   "zh": "核心概念：非填充機本身造成的廢棄",
+   "en": "Core Concept: Rejects Not Caused by the Filler Itself"
+  },
+  {
+   "zh": "本節討論的拒絕（rejection）不是劑量問題，而是<strong>容器/封閉系統完整性</strong>問題。任何一項缺失都可能危害無菌保證（Priority 1）或患者安全（Priority 2）：",
+   "en": "The rejections discussed in this section are not dosing problems but <strong>container/closure integrity</strong> problems. Any one of these defects can compromise sterility assurance (Priority 1) or patient safety (Priority 2):"
+  },
+  {
+   "zh": "推塞位置偏高 → 可能漏液、污染",
+   "en": "Stopper raised too high → possible leakage and contamination"
+  },
+  {
+   "zh": "缺推塞 → 無菌屏障失效",
+   "en": "Missing stopper → sterile barrier failure"
+  },
+  {
+   "zh": "元件落地 → 污染風險，需追溯",
+   "en": "Fallen component → contamination risk; traceability needed"
+  },
+  {
+   "zh": "壓蓋不良 → 封閉完整性失敗",
+   "en": "Poor crimp → closure integrity failure"
+  },
+  {
+   "zh": "關鍵提示：感測器必須納入驗證",
+   "en": "Key Point: Sensors must be included in validation"
+  },
+  {
+   "zh": "這些感測器與拒絕站必須在<strong>設備確效（qualification）</strong>中進行測試，包括：感測靈敏度確認、拒絕位置的物理驗證、與批次記錄的整合。如果感測器本身在確效時未通過測試，則所有依賴該感測器的拒絕決策都存在合規風險。",
+   "en": "These sensors and reject stations must be tested during <strong>equipment qualification</strong>, including confirmation of sensor sensitivity, physical verification of the reject position, and integration with the batch record. If a sensor itself fails qualification testing, every reject decision that relies on it carries compliance risk."
+  },
+  {
+   "zh": "你的填充線上，「元件落地」的 SOP 是否清楚定義了追溯範圍？落地事件發生後，需要追溯多少支前後的容器？是否有自動標記機制，還是依賴人工判斷？",
+   "en": "On your filling line, does the SOP for \"fallen components\" clearly define the traceback scope? When a component falls, how many containers before and after must be traced? Is there an automatic marking mechanism, or does it rely on manual judgment?"
+  },
+  {
+   "zh": "無菌填充單元操作結束的整體考量",
+   "en": "Overall Considerations at the End of the Aseptic Filling Unit Operation"
+  },
+  {
+   "zh": "核心概念：單批次 vs. 連續批次（Campaign）的差異",
+   "en": "Core Concept: Single Batch vs. Continuous Batches (Campaign)"
+  },
+  {
+   "zh": "批次結束的操作強度，取決於生產模式：",
+   "en": "The intensity of end-of-batch operations depends on the production mode:"
+  },
+  {
+   "zh": "<strong>單批次生產</strong>：批次結束後，全線拆卸清洗、滅菌，下一批從零開始。操作最徹底，但時間成本最高。",
+   "en": "<strong>Single-batch production</strong>: after the batch, the whole line is disassembled, cleaned and sterilized, and the next batch starts from zero. This is the most thorough approach but has the highest time cost."
+  },
+  {
+   "zh": "<strong>連續批次（Campaign）</strong>：同一產品連續生產多批，批次間介入最小化，主要處理取樣、廢棄物、文件，不需全線拆解。風險管理聚焦於交叉污染防止。",
+   "en": "<strong>Continuous batches (campaign)</strong>: the same product is produced in several consecutive batches, with minimal intervention between batches, mainly handling samples, waste and documentation, without full line disassembly. Risk management focuses on preventing cross-contamination."
+  },
+  {
+   "zh": "生活比喻：餐廳打烊 vs. 翻桌",
+   "en": "Everyday Analogy: Closing a Restaurant vs. Turning a Table"
+  },
+  {
+   "zh": "單批次生產像餐廳打烊：洗碗、清場、備料全部重來。Campaign 生產像快速翻桌：清掉餐盤、補充食材，新客人馬上入座。兩者對清潔深度的要求完全不同。",
+   "en": "Single-batch production is like closing a restaurant for the night: dishes are washed, the area is cleared and prep starts all over again. Campaign production is like turning a table quickly: clear the plates, restock, and the next guests sit down right away. The two call for completely different depths of cleaning."
+  },
+  {
+   "zh": "批次結束作業八步驟（順序關鍵）",
+   "en": "The Eight End-of-Batch Steps (the order is critical)"
+  },
+  {
+   "zh": "步驟順序（不可任意調換）：\n  1. 完成環境監控（EM）採樣\n  2. 處理未用完的容器與封蓋\n  3. 收集並標記批次樣品\n  4. 處理殘餘產品\n  5. 危害品 WIP（如適用）\n  6. 線路清場（Line Clearance）\n  7. 關閉文件（對帳、核實）\n  8. 審閱設備批次報告與稽核軌跡",
+   "en": "Sequence of steps (must not be rearranged):\n  1. Complete environmental monitoring (EM) sampling\n  2. Handle unused containers and closures\n  3. Collect and label batch samples\n  4. Handle residual product\n  5. Hazardous-product WIP (if applicable)\n  6. Line clearance\n  7. Close out documentation (reconciliation, verification)\n  8. Review equipment batch reports and audit trails"
+  },
+  {
+   "zh": "批次結束時的環境監控完成程序",
+   "en": "Completing Environmental Monitoring at the End of the Batch"
+  },
+  {
+   "zh": "核心概念：EM 的終點界定",
+   "en": "Core Concept: Defining the End Point of EM"
+  },
+  {
+   "zh": "EM 的採樣時間點常被誤解。正確定義：",
+   "en": "EM sampling time points are often misunderstood. The correct definition is:"
+  },
+  {
+   "zh": "<strong>空氣粒子 + 活菌採樣</strong>：必須延續到<strong>所有容器完全封閉並離開填充線</strong>為止",
+   "en": "<strong>Air particle + viable air sampling</strong>: must continue until <strong>all containers are fully closed and have left the filling line</strong>"
+  },
+  {
+   "zh": "<strong>表面採樣</strong>：應在重大拆卸前完成，特別是填充針和給料碗",
+   "en": "<strong>Surface sampling</strong>: should be completed before major disassembly, especially of the filling needles and feed bowl"
+  },
+  {
+   "zh": "<strong>Campaign 生產</strong>：EM 必須延伸到批次切換作業（changeover）期間，不可中斷",
+   "en": "<strong>Campaign production</strong>: EM must extend through the changeover and must not be interrupted"
+  },
+  {
+   "zh": "關鍵提示：EM 採樣順序必須事先規劃於 SOP",
+   "en": "Key Point: The EM sampling sequence must be planned in advance in the SOP"
+  },
+  {
+   "zh": "有些填充線設計上，在採樣給料碗（feed bowl）之前，必須先移除部分推塞。這產生一個矛盾：移除推塞本身就是一個干擾步驟。解決方案是：<strong>在 SOP 中預先規劃每條填充線專屬的 EM 採樣順序</strong>，確保不因採樣而污染待測表面，也不讓拆解動作覆蓋微生物證據。",
+   "en": "On some filling lines, certain stoppers must be removed before the feed bowl can be sampled. This creates a conflict: removing the stoppers is itself an intervention. The solution is to <strong>plan in advance, in the SOP, an EM sampling sequence specific to each filling line</strong>, so that sampling does not contaminate the surfaces to be tested and disassembly does not overwrite microbiological evidence."
+  },
+  {
+   "zh": "你的填充線 SOP 中，是否針對每條線（Line A、B、C...）各自制定了獨立的 EM 採樣順序圖？如果目前是共用一份通用 SOP，這是一個需要改進的合規風險點。",
+   "en": "Does the SOP for your filling lines define a separate EM sampling sequence diagram for each line (Line A, B, C...)? If a single generic SOP is currently shared, this is a compliance risk that needs to be improved."
+  },
+  {
+   "zh": "批次結束時未用完容器與封閉元件的處理",
+   "en": "Handling Unused Containers and Closure Components at the End of the Batch"
+  },
+  {
+   "zh": "核心概念：未使用容器的清除邏輯",
+   "en": "Core Concept: The Logic of Clearing Unused Containers"
+  },
+  {
+   "zh": "批次結束後，填充線上的空容器必須全數清除，防止混批（mix-up）。主要方式：",
+   "en": "After the batch, all empty containers on the filling line must be removed to prevent mix-up. The main methods are:"
+  },
+  {
+   "zh": "<strong>空瓶/空針</strong>：通過輸送帶送至線尾集中清除",
+   "en": "<strong>Empty vials/syringes</strong>: conveyed to the end of the line and removed together"
+  },
+  {
+   "zh": "<strong>推塞、壓蓋等小元件</strong>：從分選機（sorter）和料斗（hopper）移除，可能需要真空清除器",
+   "en": "<strong>Small components such as stoppers and caps</strong>: removed from the sorter and hopper, which may require a vacuum cleaner"
+  },
+  {
+   "zh": "所有操作必須與 EM 採樣順序協調，不能破壞已採樣表面。",
+   "en": "All activities must be coordinated with the EM sampling sequence and must not disturb surfaces that have already been sampled."
+  },
+  {
+   "zh": "關鍵提示：序列化（Serialization）與空容器的衝突",
+   "en": "Key Point: Conflict between serialization and empty containers"
+  },
+  {
+   "zh": "若序列化（賦予唯一序號）是在<strong>填充點</strong>進行，則線路清場時空容器經過時，必須確保序列化系統已正常關機，否則空容器會被賦予序號，流入追溯系統，造成後續嚴重的帳目混亂。序列化系統的關機程序本身必須納入 SOP 並經過驗證。",
+   "en": "If serialization (assigning unique serial numbers) takes place at the <strong>point of fill</strong>, you must make sure the serialization system has been properly shut down when empty containers pass through during line clearance. Otherwise the empty containers will be assigned serial numbers and enter the traceability system, causing serious reconciliation confusion later. The shutdown procedure for the serialization system must itself be included in an SOP and validated."
+  },
+  {
+   "zh": "批次樣品的收集、標記與遞送",
+   "en": "Collecting, Labeling and Delivering Batch Samples"
+  },
+  {
+   "zh": "核心概念：樣品管理是帳務閉環的一部分",
+   "en": "Core Concept: Sample management is part of closing the accounting loop"
+  },
+  {
+   "zh": "批次樣品不只是「留樣」，更是批次<strong>物料平衡（reconciliation）</strong>的一部分。批次記錄中必須記錄：取樣支數、標記是否正確、是否有溫度/光照敏感樣品需特殊保存，以及樣品遞交至實驗室的時間與紀錄。任何未能對帳的樣品都可能導致批次審查問題。",
+   "en": "Batch samples are not just \"retention samples\"; they are part of batch <strong>reconciliation</strong>. The batch record must document the number of samples taken, whether they are correctly labeled, whether any temperature- or light-sensitive samples need special storage, and the time and record of delivery to the laboratory. Any sample that cannot be reconciled can lead to problems at batch review."
+  },
+  {
+   "zh": "生活比喻：銀行點鈔",
+   "en": "Everyday Analogy: The Bank Cash Count"
+  },
+  {
+   "zh": "就像銀行每日結帳前的點鈔程序——每一張鈔票（每一支樣品）都必須有去向，不能有不明損失。批次樣品遞交實驗室就是這個「點鈔」動作。",
+   "en": "It is like the bank cash count before the daily close: every banknote (every sample) must be accounted for, with no unexplained loss. Delivering batch samples to the laboratory is this \"cash count\" step."
+  },
+  {
+   "zh": "殘餘產品的處理與產率計算",
+   "en": "Handling Residual Product and Yield Calculation"
+  },
+  {
+   "zh": "核心概念：殘液是物料平衡的合法損耗",
+   "en": "Core Concept: Residual liquid is a legitimate loss in the material balance"
+  },
+  {
+   "zh": "每批填充結束後，以下位置必然殘留產品：",
+   "en": "After every fill, product inevitably remains in the following locations:"
+  },
+  {
+   "zh": "bulk vessel（原料容器）底部",
+   "en": "the bottom of the bulk vessel"
+  },
+  {
+   "zh": "轉移管路（transfer lines）",
+   "en": "transfer lines"
+  },
+  {
+   "zh": "過濾裝置",
+   "en": "filtration assemblies"
+  },
+  {
+   "zh": "填充機頭",
+   "en": "the filling machine head"
+  },
+  {
+   "zh": "這些殘留是工程限制，不可避免，但必須有<strong>系統性的計算方法</strong>記錄在批次記錄中，作為收率（yield）計算依據。殘液過多可能是工程或操作問題的信號。",
+   "en": "This residue is an engineering limitation and cannot be avoided, but it must be recorded in the batch record using a <strong>systematic calculation method</strong> as the basis for yield calculation. Excessive residual liquid can be a signal of an engineering or operational problem."
+  },
+  {
+   "zh": "生活比喻：洗髮精瓶底",
+   "en": "Everyday Analogy: The Bottom of the Shampoo Bottle"
+  },
+  {
+   "zh": "洗髮精倒完還有一點點留在瓶底，加水稀釋再用是常識。製藥的「殘液」是同樣的物理限制，不同之處在於必須精確記錄、計算，並根據產品特性決定是回收、廢棄，還是進行無害化處理。",
+   "en": "When the shampoo is almost gone, a little remains at the bottom, and adding water to use it up is common sense. Residual liquid in pharmaceutical manufacturing is the same physical limitation. The difference is that it must be recorded and calculated precisely, and, depending on product characteristics, a decision made on whether to recover it, discard it, or render it harmless."
+  },
+  {
+   "zh": "關鍵提示：毒性/高活性產品需特殊廢棄程序",
+   "en": "Key Point: Toxic/highly potent products require special disposal procedures"
+  },
+  {
+   "zh": "對於高毒性或高活性產品（如細胞毒素、OEB 4/5 級化合物），殘液和沖洗液必須導入<strong>廢棄物處理系統</strong>（化學滅活或熱處理），不可直接排放。這些程序必須有專屬 SOP 並納入員工職業暴露保護計劃。",
+   "en": "For highly toxic or highly potent products (such as cytotoxics or OEB 4/5 compounds), residual liquid and rinse liquid must be directed to a <strong>waste treatment system</strong> (chemical inactivation or heat treatment) and must not be discharged directly. These procedures must have dedicated SOPs and be incorporated into the occupational exposure protection program."
+  },
+  {
+   "zh": "你目前批次記錄中，殘液的計算方式是固定常數（固定損耗比例）還是每批實際測量？哪種方式對批次審查的說服力更強？若批次間殘液量突然增加，代表什麼工程信號？",
+   "en": "In your current batch records, is the residual liquid calculated as a fixed constant (a fixed loss percentage) or measured for each batch? Which approach is more convincing at batch review? If residual liquid suddenly increases between batches, what engineering signal does that represent?"
+  },
+  {
+   "zh": "高活性或危害品填充的結束程序：WIP 與去污",
+   "en": "End-of-Operation Procedures for Highly Potent or Hazardous Product Filling: WIP and Decontamination"
+  },
+  {
+   "zh": "核心概念：WIP（就地清洗）是開門前的強制步驟",
+   "en": "Core Concept: WIP (wash-in-place) is a mandatory step before opening the door"
+  },
+  {
+   "zh": "<strong>Wash-in-Place（WIP，就地清洗）</strong>是危害品填充隔離器在批次結束後、開門前的必要步驟。目的是降低操作員暴露風險。WIP 的四大功能：",
+   "en": "<strong>Wash-in-Place (WIP)</strong> is a required step for hazardous-product filling isolators after the batch and before the door is opened. Its purpose is to reduce operator exposure risk. WIP has four main functions:"
+  },
+  {
+   "zh": "沉降氣溶膠與粉塵",
+   "en": "Settle aerosols and dust"
+  },
+  {
+   "zh": "稀釋活性成分濃度",
+   "en": "Dilute the concentration of the active ingredient"
+  },
+  {
+   "zh": "將活性成分沖入廢水處理系統",
+   "en": "Flush the active ingredient into the wastewater treatment system"
+  },
+  {
+   "zh": "化學或熱滅活（視活性成分特性）",
+   "en": "Chemical or thermal inactivation (depending on the characteristics of the active ingredient)"
+  },
+  {
+   "zh": "關鍵提示：HEPA 過濾器不能淋濕",
+   "en": "Key Point: HEPA filters must not get wet"
+  },
+  {
+   "zh": "WIP 噴灑範圍是從 HEPA 過濾器<strong>下方</strong>到回風口。HEPA 濾紙一旦被水浸濕，結構受損，過濾效率大幅下降，且難以乾燥。噴球（spray ball）的設計和安裝位置必須確保水霧不會接觸 HEPA 過濾器。這個細節必須在設備驗收時確認。",
+   "en": "The WIP spray range runs from <strong>below</strong> the HEPA filter to the return air grille. Once HEPA filter media is wetted, its structure is damaged, filtration efficiency drops sharply, and it is difficult to dry. The design and installation position of the spray ball must ensure that the spray does not reach the HEPA filter. This detail must be confirmed at equipment acceptance."
+  },
+  {
+   "zh": "VPHP vs. 液態 WIP：生物危害品去污比較",
+   "en": "VPHP vs. Liquid WIP: Comparison of Biohazard Decontamination"
+  },
+  {
+   "zh": "生物安全等級（BSL）材料的去污方案：\n\n液態 WIP：\n  優點 — 快速、成本低、設備普及\n  適用 — 化學藥物、可液態滅活的生物材料\n  限制 — 對孢子或強耐性微生物效果不足\n\nVPHP（汽化過氧化氫）：\n  優點 — 穿透力強、無殘留（分解為水和氧）\n  適用 — BSL-rated 生物材料、廣譜滅活\n  限制 — 周期時間較長、需 VPHP 發生器設備",
+   "en": "Decontamination options for biosafety level (BSL) materials:\n\nLiquid WIP:\n  Advantages: fast, low cost, widely available equipment\n  Applicable to: chemical drugs, biological materials that can be inactivated in liquid\n  Limitations: insufficient effect on spores or highly resistant microorganisms\n\nVPHP (vaporized hydrogen peroxide):\n  Advantages: strong penetration, no residue (breaks down into water and oxygen)\n  Applicable to: BSL-rated biological materials, broad-spectrum inactivation\n  Limitations: longer cycle time, requires a VPHP generator"
+  },
+  {
+   "zh": "若未來你們承接 ADC（抗體藥物複合體）或細胞毒素類高活性產品，你的填充隔離器是否已配備 WIP 系統？噴球覆蓋率有無驗證？廢水去向是否符合環保法規？嵌套容器的去巢（denest）作業有無獨立 SOP？",
+   "en": "If you take on ADCs (antibody-drug conjugates) or highly potent cytotoxic products in the future, is your filling isolator already equipped with a WIP system? Has spray ball coverage been validated? Does the wastewater destination meet environmental regulations? Is there a separate SOP for denesting nested containers?"
+  },
+  {
+   "zh": "線路清場：防混批的關鍵管控措施",
+   "en": "Line Clearance: the Key Control Against Mix-ups"
+  },
+  {
+   "zh": "核心概念：線路清場（Line Clearance）的三大目的",
+   "en": "Core Concept: The three purposes of line clearance"
+  },
+  {
+   "zh": "Line Clearance 不只是「打掃」，是一個<strong>帳目稽核動作</strong>，確保：",
+   "en": "Line clearance is not just \"cleaning up\"; it is an <strong>accountability check</strong> that ensures:"
+  },
+  {
+   "zh": "不同批次的物料不會混在一起（防混批 = Priority 2 患者安全）",
+   "en": "Materials from different batches are not mixed together (preventing mix-ups = Priority 2, patient safety)"
+  },
+  {
+   "zh": "所有取樣已完整回收，未遺留在線上",
+   "en": "All samples have been fully recovered and none has been left on the line"
+  },
+  {
+   "zh": "所有拒絕品（rejects）已計入，無法流入合格品庫存",
+   "en": "All rejects have been accounted for and cannot flow into saleable stock"
+  },
+  {
+   "zh": "生活比喻：學校考試收卷",
+   "en": "Everyday Analogy: Collecting Exam Papers at School"
+  },
+  {
+   "zh": "監考老師收卷時，不只是把卷子堆起來，還要確認每個座位都交了卷（對應：所有容器都被清場）、沒有試卷混入其他班（對應：防混批），收完後助教再確認一次（對應：QA 獨立雙重確認）。",
+   "en": "When an invigilator collects exam papers, they do not just stack the papers. They confirm that every seat has handed in a paper (equivalent to all containers being cleared), that no papers have been mixed into another class (equivalent to mix-up prevention), and after collection an assistant checks again (equivalent to independent double verification by QA)."
+  },
+  {
+   "zh": "關鍵提示：兩階段清場 + QA 雙重確認",
+   "en": "Key Point: Two-stage clearance + QA double verification"
+  },
+  {
+   "zh": "標準做法是<strong>兩輪確認</strong>：",
+   "en": "The standard practice is <strong>two rounds of verification</strong>:"
+  },
+  {
+   "zh": "<strong>操作員初步清場</strong>：確保物料全數清除",
+   "en": "<strong>Preliminary clearance by the operator</strong>: ensures all material has been removed"
+  },
+  {
+   "zh": "<strong>QA 獨立複查</strong>：正式線路清場確認，需記錄在批次記錄",
+   "en": "<strong>Independent QA re-check</strong>: the formal line clearance verification, which must be recorded in the batch record"
+  },
+  {
+   "zh": "若只有一輪（操作員自己確認），在法規層面是不足夠的。QA 的參與和獨立性是關鍵。",
+   "en": "A single round (the operator checking their own work) is insufficient from a regulatory standpoint. QA involvement and independence are key."
+  },
+  {
+   "zh": "批次文件結案：物料平衡與 ERP 系統應用",
+   "en": "Closing Out Batch Documentation: Reconciliation and the Use of ERP Systems"
+  },
+  {
+   "zh": "核心概念：物料平衡（Reconciliation）的項目清單",
+   "en": "Core Concept: Checklist of reconciliation items"
+  },
+  {
+   "zh": "批次記錄結案必須對以下所有項目進行帳目平衡：",
+   "en": "Closing out the batch record requires reconciliation of all of the following items:"
+  },
+  {
+   "zh": "投入原料與包材使用量",
+   "en": "Raw materials and packaging materials issued and used"
+  },
+  {
+   "zh": "拒絕品（rejects）與線路損耗（line losses）",
+   "en": "Rejects and line losses"
+  },
+  {
+   "zh": "取樣數量",
+   "en": "Number of samples taken"
+  },
+  {
+   "zh": "標籤使用量（含報廢量）",
+   "en": "Label usage (including destroyed labels)"
+  },
+  {
+   "zh": "包裝材料",
+   "en": "Packaging materials"
+  },
+  {
+   "zh": "完成品（finished goods）數量",
+   "en": "Quantity of finished goods"
+  },
+  {
+   "zh": "投入量 = 完成品 + 拒絕品 + 取樣 + 殘留 + 線路損耗。任何超出可接受範圍的偏差都需調查。",
+   "en": "Input = finished goods + rejects + samples + residue + line losses. Any deviation outside the acceptable range must be investigated."
+  },
+  {
+   "zh": "收率計算公式",
+   "en": "Yield Calculation Formula"
+  },
+  {
+   "zh": "批次收率（Batch Yield）：\n\n  理論收率 = 投料量 / 單位容量\n\n  實際收率（%）= (完成品數量 / 理論收率) × 100%\n\n  物料平衡：\n  投料 = 合格品 + 樣品 + 拒絕品 + 殘液 + 線路損耗\n\n  可接受收率範圍：需在產品主批記錄中預設上下限\n  超出範圍 → 必須啟動偏差調查（Deviation Investigation）",
+   "en": "Batch Yield:\n\n  Theoretical yield = quantity charged / unit volume\n\n  Actual yield (%) = (quantity of finished goods / theoretical yield) × 100%\n\n  Material balance:\n  Quantity charged = acceptable units + samples + rejects + residual liquid + line losses\n\n  Acceptable yield range: upper and lower limits must be predefined in the master batch record\n  Outside the range → a deviation investigation must be initiated"
+  },
+  {
+   "zh": "關鍵提示：ERP 不能取代批次記錄的法規功能",
+   "en": "Key Point: ERP cannot replace the regulatory function of the batch record"
+  },
+  {
+   "zh": "ERP 系統（如 SAP）可以協助庫存管理和業務優化，但從 GMP 法規角度，<strong>批次記錄（Batch Record）是法規要求的主文件</strong>，ERP 只是輔助工具。若公司選擇以 ERP 作為主要記錄工具，必須確保其符合 21 CFR Part 11（電子記錄/電子簽章）的要求。",
+   "en": "An ERP system (such as SAP) can support inventory management and business optimization, but from a GMP regulatory perspective, <strong>the batch record is the primary document required by regulation</strong> and ERP is only a supporting tool. If a company chooses to use ERP as its primary recording tool, it must ensure compliance with 21 CFR Part 11 (electronic records/electronic signatures)."
+  },
+  {
+   "zh": "設備批次報告與稽核軌跡的審閱",
+   "en": "Reviewing Equipment Batch Reports and Audit Trails"
+  },
+  {
+   "zh": "Lyophilizers (凍乾機)",
+   "en": "Lyophilizers"
+  },
+  {
+   "zh": "核心概念：批次記錄審閱的設備清單",
+   "en": "Core Concept: Equipment checklist for batch record review"
+  },
+  {
+   "zh": "一個完整無菌填充批次的記錄審閱，涵蓋從容器處理到最終包裝的<strong>全鏈設備</strong>：",
+   "en": "Batch record review for a complete aseptic filling batch covers the <strong>entire chain of equipment</strong>, from container handling through to final packaging:"
+  },
+  {
+   "zh": "洗瓶機、去熱原隧道、滅菌鍋、乾熱烘箱",
+   "en": "Vial washer, depyrogenation tunnel, autoclave, dry heat oven"
+  },
+  {
+   "zh": "CIP（就地清洗）/ SIP（就地滅菌）系統",
+   "en": "CIP (clean-in-place) / SIP (sterilize-in-place) systems"
+  },
+  {
+   "zh": "生物去污系統（H₂O₂）",
+   "en": "Biodecontamination system (H₂O₂)"
+  },
+  {
+   "zh": "填充機、凍乾機、壓蓋機、外瓶清洗機、末端滅菌機",
+   "en": "Filler, lyophilizer, capper, vial exterior washer, terminal sterilizer"
+  },
+  {
+   "zh": "包裝設備（含序列化系統）",
+   "en": "Packaging equipment (including serialization system)"
+  },
+  {
+   "zh": "關鍵提示：警報 + 警報確認 = 稽核軌跡核心",
+   "en": "Key Point: Alarms + alarm acknowledgment = the core of the audit trail"
+  },
+  {
+   "zh": "現代法規稽查（FDA、EMA）已高度重視<strong>稽核軌跡（Audit Trail）</strong>中的警報記錄。審閱重點不只是製程參數是否在範圍內，更要確認：",
+   "en": "Modern regulatory inspections (FDA, EMA) place heavy emphasis on alarm records in the <strong>audit trail</strong>. The review focus is not only whether process parameters are within range, but also whether:"
+  },
+  {
+   "zh": "警報是否被適當確認（acknowledged）？",
+   "en": "Alarms were appropriately acknowledged"
+  },
+  {
+   "zh": "有無不當的參數修改？",
+   "en": "Any inappropriate parameter changes were made"
+  },
+  {
+   "zh": "所有操作人員是否有資格並獲授權？",
+   "en": "All operators were qualified and authorized"
+  },
+  {
+   "zh": "若稽核軌跡顯示未授權的參數調整，即使最終產品看似合格，批次放行仍可能面臨嚴重挑戰。",
+   "en": "If the audit trail shows unauthorized parameter adjustments, batch release can face serious challenge even if the final product appears to conform."
+  },
+  {
+   "zh": "稽核軌跡審閱重點框架",
+   "en": "Audit Trail Review Framework"
+  },
+  {
+   "zh": "稽核軌跡（Audit Trail）應確認三件事：\n\n  1. 完整性（Integrity）\n     - 所有製程步驟均有記錄？\n     - 沒有數據刪除或空白？\n\n  2. 合規性（Compliance）\n     - 參數均在規格範圍內？\n     - 警報均有適當確認和處置？\n\n  3. 授權（Authorization）\n     - 每位操作人員的 user ID 均有授權記錄？\n     - 沒有未授權的數據修改？\n\n  → 任一項不符合 = 潛在偏差，需要調查",
+   "en": "An audit trail review should confirm three things:\n\n  1. Integrity\n     - Are all process steps recorded?\n     - Are there no data deletions or gaps?\n\n  2. Compliance\n     - Are all parameters within specification?\n     - Were all alarms appropriately acknowledged and dispositioned?\n\n  3. Authorization\n     - Does each operator user ID have an authorization record?\n     - Are there no unauthorized data changes?\n\n  → Any item not met = potential deviation requiring investigation"
+  },
+  {
+   "zh": "你目前的批次審閱流程中，是否有獨立的稽核軌跡審閱步驟？填充機的電子批次記錄（eBR）是否符合 21 CFR Part 11？QA 在審閱警報確認記錄時，是否有明確的可接受標準（哪些警報可以確認後繼續，哪些必須啟動偏差）？",
+   "en": "In your current batch review process, is there a separate audit trail review step? Does the filler electronic batch record (eBR) comply with 21 CFR Part 11? When QA reviews alarm acknowledgment records, are there clear acceptance criteria (which alarms can be acknowledged and production continued, and which must trigger a deviation)?"
+  },
+  {
+   "zh": "本章重點總結 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "丟棄策略要點（Sections 12.5–12.7）",
+   "en": "Discard Strategy Key Points (Sections 12.5-12.7)"
+  },
+  {
+   "zh": "批次尾段的三大失準原因：液位不足、氣泡夾帶、懸浮均勻性喪失",
+   "en": "Three main causes of inaccuracy at the end of a batch: insufficient liquid level, air bubble entrainment, loss of suspension uniformity"
+  },
+  {
+   "zh": "嵌套容器丟棄兩選項：棄單支（需機器人/雙人驗證）vs. 棄整盤（保守但簡單）",
+   "en": "Two options for discarding nested containers: discard single units (requires robotic/two-person verification) vs. discard the whole tub (conservative but simple)"
+  },
+  {
+   "zh": "四種填充技術的風險側重不同：PP 管路長 = 吸附/氧化高風險；RPP 介入在隔離器內 = 無菌風險高",
+   "en": "The four filling technologies have different risk emphases: PP long tubing = high adsorption/oxidation risk; RPP intervention inside the isolator = high sterility risk"
+  },
+  {
+   "zh": "縮短接觸路徑是所有技術降低風險的共通法則",
+   "en": "Shortening the product-contact path is the common rule for reducing risk with every technology"
+  },
+  {
+   "zh": "感測器與拒絕站必須納入設備確效測試",
+   "en": "Sensors and reject stations must be included in equipment qualification testing"
+  },
+  {
+   "zh": "批次結束作業要點（Sections 13.0–13.8）",
+   "en": "End-of-Batch Operations Key Points (Sections 13.0-13.8)"
+  },
+  {
+   "zh": "八步驟有嚴格順序，EM 採樣必須最優先且不可因拆解而受干擾",
+   "en": "The eight steps have a strict order; EM sampling comes first and must not be disturbed by disassembly"
+  },
+  {
+   "zh": "序列化系統關機程序必須確保空容器不被賦號",
+   "en": "The serialization system shutdown procedure must ensure empty containers are not assigned serial numbers"
+  },
+  {
+   "zh": "殘液計算方法必須記錄在批次記錄中以支持物料平衡",
+   "en": "The residual liquid calculation method must be recorded in the batch record to support the material balance"
+  },
+  {
+   "zh": "危害品 WIP 是開門前強制步驟；HEPA 過濾器不能淋濕",
+   "en": "Hazardous-product WIP is a mandatory step before opening the door; HEPA filters must not get wet"
+  },
+  {
+   "zh": "線路清場需兩輪：操作員初步 + QA 獨立複查",
+   "en": "Line clearance requires two rounds: preliminary by the operator + independent QA re-check"
+  },
+  {
+   "zh": "稽核軌跡審閱重點：警報確認記錄 + 未授權操作排除",
+   "en": "Audit trail review focus: alarm acknowledgment records + exclusion of unauthorized operations"
+  },
+  {
+   "zh": "決策優先序再確認 Decision Hierarchy Reinforcement",
+   "en": "Decision Hierarchy Reinforcement"
+  },
+  {
+   "zh": "<strong>1. 無菌保證</strong> — 每一個丟棄決策的底線；EM 不可中斷",
+   "en": "<strong>1. Sterility assurance</strong>: the bottom line for every discard decision; EM must not be interrupted"
+  },
+  {
+   "zh": "<strong>2. 產品 CQAs</strong> — 均勻性、含量、浸出物均影響患者安全",
+   "en": "<strong>2. Product CQAs</strong>: uniformity, assay and leachables all affect patient safety"
+  },
+  {
+   "zh": "<strong>3. 商業彈性</strong> — 高價值產品分段關機、Campaign 生產最小化介入",
+   "en": "<strong>3. Business flexibility</strong>: staged shutdown for high-value products; minimal intervention in campaign production"
+  }
+ ]
+}

@@ -1,0 +1,593 @@
+{
+ "source": "section-02a1-filling-pp.html",
+ "blocks": [
+  {
+   "zh": "蠕動泵技術：設計原理、配置與設定",
+   "en": "Peristaltic Pump Technology: Design Principles, Configuration and Setup"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解蠕動泵 (Peristaltic Pump, PP) 的核心運作原理：旋轉擠壓、伺服馬達控制、以及封閉流體路徑的設計邏輯",
+   "en": "Understand the core operating principle of the peristaltic pump (PP): rotary squeezing, servo motor control, and the design logic of a closed fluid path"
+  },
+  {
+   "zh": "區分單管式 (single-tube) 與雙管式 (double-tube) PP 的設計差異，並能說明各自在脈動控制與連接件數量上的取捨",
+   "en": "Distinguish the design differences between single-tube and double-tube PPs, and explain the trade-offs each makes between pulsation control and the number of connectors"
+  },
+  {
+   "zh": "掌握軟管選擇的三區段概念（上游、滾輪內、下游），以及磨損導致劑量漂移的機制，從而理解為何 PP 強烈建議採用 100% IPC 製程中管控",
+   "en": "Grasp the three-zone concept of tubing selection (upstream, within the rollers, downstream) and the mechanism by which wear causes dose drift, and so understand why 100% IPC control is strongly recommended for PPs"
+  },
+  {
+   "zh": "了解 PP 系統定位的設計考量：中間容器高度、氣泡風險、以及 PP 置於隔離器外的重大優勢與限制",
+   "en": "Understand the design considerations for PP system positioning: intermediate vessel height, bubble risk, and the major advantages and limitations of placing the PP outside the isolator"
+  },
+  {
+   "zh": "從 CDMO 業務視角理解 PP 作為生物製劑與一次性使用 (SU) 系統首選充填泵的戰略意義",
+   "en": "Understand, from a CDMO business perspective, the strategic significance of the PP as the filling pump of choice for biologics and single-use (SU) systems"
+  },
+  {
+   "zh": "本節內容導覽",
+   "en": "In This Section"
+  },
+  {
+   "zh": "<a href=\"#sec-2-1-overview\">2.1 PP 總覽</a>\n<a href=\"#sec-2-1-1\">2.1.1 設計配置</a>\n<a href=\"#sec-2-1-2\">2.1.2 系統設定</a>\n<a href=\"#sec-2-1-3\">2.1.3 系統定位</a>\n<a href=\"#sec-summary\">本節重點回顧</a>",
+   "en": "<a href=\"#sec-2-1-overview\">2.1 PP Overview</a>\n<a href=\"#sec-2-1-1\">2.1.1 Design Configurations</a>\n<a href=\"#sec-2-1-2\">2.1.2 System Setup</a>\n<a href=\"#sec-2-1-3\">2.1.3 System Positioning</a>\n<a href=\"#sec-summary\">Section Summary</a>"
+  },
+  {
+   "zh": "2.1 Aseptic Filling Technologies: Peristaltic Pumps — 蠕動泵無菌充填技術總覽",
+   "en": "2.1 Aseptic Filling Technologies: Peristaltic Pumps"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：蠕動泵的運作原理",
+   "en": "Core Concept: How a Peristaltic Pump Works"
+  },
+  {
+   "zh": "<strong>Peristaltic Pump, PP（蠕動泵）</strong>的名字來自生物學中「蠕動」(peristalsis) 的概念——就像腸道肌肉推送食物一樣，PP 利用旋轉的滾輪依序擠壓矽膠軟管，將液體從一端推送到另一端。",
+   "en": "<strong>Peristaltic Pump (PP)</strong> takes its name from the biological concept of peristalsis. Just as intestinal muscles push food along, a PP uses rotating rollers to squeeze a silicone tube in sequence, pushing liquid from one end to the other."
+  },
+  {
+   "zh": "幾個核心術語：",
+   "en": "Some key terms:"
+  },
+  {
+   "zh": "<strong>Servo motor（伺服馬達）</strong>：精密控制轉速與角度的馬達，充填量 = 旋轉角度，因此角度控制精度直接決定充填精度",
+   "en": "<strong>Servo motor</strong>: a motor that precisely controls speed and angle. Fill volume = angle of rotation, so the precision of angle control directly determines filling accuracy"
+  },
+  {
+   "zh": "<strong>Occlusion-bed distance（遮斷床距離）</strong>：滾輪與背板之間的間距。間距太小 → 軟管磨損快；間距太大 → 液體回漏，影響精度",
+   "en": "<strong>Occlusion-bed distance</strong>: the gap between the rollers and the backing plate. Too small a gap means faster tubing wear; too large a gap lets liquid leak back, affecting accuracy"
+  },
+  {
+   "zh": "<strong>Closed system（封閉系統）</strong>：產品僅接觸軟管與充填針，不接觸任何泵的金屬機械元件",
+   "en": "<strong>Closed system</strong>: the product contacts only the tubing and the filling needle, and no metal mechanical part of the pump"
+  },
+  {
+   "zh": "比喻說明：按摩師傅的手",
+   "en": "Analogy: A Masseur's Hands"
+  },
+  {
+   "zh": "想像一位按摩師傅用手指沿著一條裝滿水的軟管，從頭到尾依序向下按壓——每次按壓都把水往前推一點，同時後方形成負壓，自動吸入更多水。",
+   "en": "Imagine a masseur pressing with their fingers along a water-filled tube from start to finish. Each press pushes the water forward a little, while negative pressure forms behind it and draws in more water automatically."
+  },
+  {
+   "zh": "PP 的滾輪就是那雙「手指」，背板就是工作台，矽膠管就是那條軟管。伺服馬達控制這雙手轉多少圈，就決定推送多少毫升的液體。",
+   "en": "The PP rollers are those \"fingers\", the backing plate is the table, and the silicone tube is the hose. How many turns the servo motor makes determines how many milliliters of liquid are delivered."
+  },
+  {
+   "zh": "關鍵差異：真正的按摩師傅按久了手會累，軟管也一樣——反覆擠壓會造成材料疲勞（tubing wear），這就是 PP 最大的管理挑戰。",
+   "en": "Key difference: a real masseur's hands tire after a long session, and so does the tubing. Repeated squeezing causes material fatigue (tubing wear), which is the biggest management challenge of the PP."
+  },
+  {
+   "zh": "為什麼 PP 可以放在隔離器「外面」？這對 SA 有什麼意義？",
+   "en": "Why can the PP be placed \"outside\" the isolator? What does this mean for sterility assurance (SA)?"
+  },
+  {
+   "zh": "這是 PP 最重要的工程優勢之一。由於產品只接觸封閉的軟管內側，泵的機械本體（馬達、滾輪、背板）不需要在無菌區域內。因此，整個泵機構可以安裝在隔離器（Isolator）或 RABS 的外部。",
+   "en": "This is one of the PP's most important engineering advantages. Because the product contacts only the inside of the closed tubing, the mechanical body of the pump (motor, rollers, backing plate) does not need to be in the sterile area. The whole pump mechanism can therefore be installed outside the isolator or RABS."
+  },
+  {
+   "zh": "<strong>好處</strong>：降低隔離器內部的機械複雜度 → 減少粒子產生源 → 簡化 IQ/OQ/PQ 驗證範圍 → 機械維修不需要破壞無菌邊界。",
+   "en": "<strong>Benefits</strong>: less mechanical complexity inside the isolator → fewer particle generation sources → a simpler IQ/OQ/PQ scope → mechanical maintenance without breaching the sterile boundary."
+  },
+  {
+   "zh": "<strong>例外</strong>：ADC（Antibody Drug Conjugate，抗體藥物偶聯物）等高毒性產品，若軟管發生洩漏，毒性物質外漏至隔離器外會造成操作員暴露風險。這種情況下，可能選擇將泵放在隔離器內，以保持洩漏物在受控區域內。",
+   "en": "<strong>Exception</strong>: for highly potent products such as ADCs (antibody-drug conjugates), if the tubing leaks, toxic material escaping outside the isolator creates an operator exposure risk. In this case, the pump may be placed inside the isolator to keep any leakage within the controlled area."
+  },
+  {
+   "zh": "黏度門檻：60 mPa-s 是關鍵分水嶺",
+   "en": "Viscosity Threshold: 60 mPa-s Is the Key Dividing Line"
+  },
+  {
+   "zh": "PP 適合低黏度產品（&lt; 60 mPa-s，約等於 60 倍水的黏度）。超過這個範圍，滾輪擠壓效率下降，充填精度惡化，同時對高剪切力敏感的生物製劑（如蛋白質）也可能在通過泵時發生結構損傷。",
+   "en": "The PP suits low-viscosity products (&lt; 60 mPa-s, roughly 60 times the viscosity of water). Beyond this range, roller squeezing efficiency drops and filling accuracy deteriorates. Shear-sensitive biologics (such as proteins) may also suffer structural damage as they pass through the pump."
+  },
+  {
+   "zh": "相比之下，RPP（旋轉活塞泵）在黏度更高的場景下往往更合適——但 RPP 不能放在 SU 流體路徑中（因為活塞需要清洗驗證）。這正是 PP + SU 組合在生物製劑領域主導地位的根本原因。",
+   "en": "By comparison, the RPP (rotary piston pump) is often more suitable at higher viscosities, but an RPP cannot be used in an SU fluid path (because the piston requires cleaning validation). This is the fundamental reason the PP + SU combination dominates in the biologics field."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 PP 的充填量是由「旋轉角度（degrees of rotation）」決定，而不是由時間決定？這與時間壓力充填（Time Pressure, TP）有何根本差異？",
+   "en": "Why is the PP's fill volume determined by \"degrees of rotation\" rather than by time? How does this differ fundamentally from time-pressure (TP) filling?"
+  },
+  {
+   "zh": "如果你是一個 CDMO 的製程工程師，客戶的生物製劑黏度為 45 mPa-s，需要一次性使用系統，你會推薦 PP 還是 RPP？說明你的理由。",
+   "en": "Suppose you are a process engineer at a CDMO, and the client's biologic has a viscosity of 45 mPa-s and requires a single-use system. Would you recommend a PP or an RPP? Explain your reasoning."
+  },
+  {
+   "zh": "Occlusion-bed distance 設定過緊（太小）和過鬆（太大）分別會帶來什麼問題？",
+   "en": "What problems arise when the occlusion-bed distance is set too tight (too small) and too loose (too large), respectively?"
+  },
+  {
+   "zh": "2.1.1 Peristaltic Pump Design Configurations — 蠕動泵設計配置",
+   "en": "2.1.1 Peristaltic Pump Design Configurations"
+  },
+  {
+   "zh": "比喻說明：脈動就像心跳",
+   "en": "Analogy: Pulsation Is Like a Heartbeat"
+  },
+  {
+   "zh": "想像你的心臟每次跳動，血管就感受到一次壓力波。PP 的滾輪每次「離開」一段管路，管子就因彈性回縮而產生一個壓力脈衝——這就是「pulsation（脈動）」。",
+   "en": "Imagine that each time your heart beats, your blood vessels feel a pressure wave. Each time a PP roller \"leaves\" a section of tubing, the tube rebounds elastically and produces a pressure pulse. This is \"pulsation\"."
+  },
+  {
+   "zh": "<strong>雙管式的設計巧思</strong>：上方滾輪組與下方滾輪組的位置「錯開」設計——當上方的滾輪是「最大擠壓」時，下方的滾輪正好在「最小擠壓」位置，兩者的壓力波相互抵消，整體流量就趨於平穩，就像雙心室同時但交替打出更平穩的血流。",
+   "en": "<strong>The clever design of the double-tube configuration</strong>: the upper and lower roller sets are positioned out of phase. When the upper roller is at \"maximum squeeze\", the lower roller is at \"minimum squeeze\", so the two pressure waves cancel each other and the overall flow becomes steadier, like two ventricles beating together but alternately to give a smoother blood flow."
+  },
+  {
+   "zh": "額外增加滾輪數量（最多 6 個）也有同樣效果——滾輪越多，每個脈衝越小，合計流量就越平穩，就像多台小心臟協同工作代替一顆大心臟。",
+   "en": "Adding more rollers (up to 6) has the same effect. The more rollers, the smaller each pulse and the steadier the combined flow, like several small hearts working together in place of one big heart."
+  },
+  {
+   "zh": "重點提示：脈動對下游設備的衝擊",
+   "en": "Key Point: The Impact of Pulsation on Downstream Equipment"
+  },
+  {
+   "zh": "脈動不只影響充填精度，還可能對<strong>滅菌過濾器（sterilizing filter）</strong>造成壓力衝擊。每次脈衝等於對濾膜施加一次正壓—負壓循環，長期下來可能加速濾膜疲勞，甚至影響完整性測試（integrity test）結果。",
+   "en": "Pulsation affects not only filling accuracy but can also put pressure shocks on the <strong>sterilizing filter</strong>. Each pulse applies one positive-negative pressure cycle to the membrane, which over time may accelerate membrane fatigue and even affect integrity test results."
+  },
+  {
+   "zh": "這就是為什麼在過濾器與 PP 之間通常需要設置一個<strong>無菌中間容器（sterile intermediate vessel）</strong>——它扮演緩衝器的角色，吸收脈動，保護濾膜，同時也作為充填量的穩壓源頭。",
+   "en": "This is why a <strong>sterile intermediate vessel</strong> is usually needed between the filter and the PP. It acts as a buffer that absorbs pulsation and protects the membrane, and also serves as a stable-pressure source for the fill volume."
+  },
+  {
+   "zh": "例外情況：填充速度極慢、精度要求不高的場合（如實驗室小批次），才可能省略中間容器。在商業規模生產中幾乎不建議省略。",
+   "en": "Exception: the intermediate vessel may be omitted only where filling speed is very slow and accuracy requirements are low (such as small laboratory batches). Omitting it is almost never recommended in commercial-scale production."
+  },
+  {
+   "zh": "CDMO 視角：連接件是「必要之惡」嗎？",
+   "en": "CDMO Perspective: Are Connectors a \"Necessary Evil\"?"
+  },
+  {
+   "zh": "長批次生產（如流感疫苗的 3 週連續生產）對軟管磨損要求非常嚴苛。在這種場合，泵輪內部的軟管需要採用特殊<strong>耐磨材質</strong>，下游的軟管則需要採用<strong>較硬材質</strong>來防止脈動引起的軸向膨脹（axial pulsation expansion）——兩種不同規格的軟管需要用連接件（connector）接合。",
+   "en": "Long-campaign production (such as 3 weeks of continuous influenza vaccine production) places very demanding requirements on tubing wear. In this case, the tubing within the pump rollers must use a special <strong>wear-resistant material</strong>, while the downstream tubing must use a <strong>stiffer material</strong> to prevent axial pulsation expansion. Two tubing specifications therefore have to be joined with a connector."
+  },
+  {
+   "zh": "每增加一個連接件，就是增加一個潛在的無菌性風險點。因此，在設計流體路徑時，必須明確說明每個連接件的必要性，並在無菌製程模擬（APS）中驗證這些連接點不會成為污染漏洞。",
+   "en": "Every additional connector is an additional potential sterility risk point. When designing the fluid path, the necessity of each connector must therefore be clearly justified, and the aseptic process simulation (APS) must verify that these connection points do not become contamination weak spots."
+  },
+  {
+   "zh": "<strong>設計決策原則</strong>：最少必要連接件 → 每個連接件都有功能性理由 → 每個連接件都要在驗證文件中有記錄。",
+   "en": "<strong>Design decision principle</strong>: the minimum necessary number of connectors → each connector has a functional justification → each connector is documented in the validation documents."
+  },
+  {
+   "zh": "如果你的 CDMO 客戶要求極短批次（500 mL），且充填精度要求非常高（±1%），你會推薦單管式還是雙管式 PP？理由為何？",
+   "en": "If your CDMO client requests a very short batch (500 mL) with very high filling accuracy requirements (±1%), would you recommend a single-tube or double-tube PP? Why?"
+  },
+  {
+   "zh": "單管式 PP 最少可以有 0 個連接件——這在哪些情況下是真正可行的？在哪些情況下不得不增加連接件？",
+   "en": "A single-tube PP can have as few as 0 connectors. In which situations is this truly feasible, and in which situations must connectors be added?"
+  },
+  {
+   "zh": "滾輪數量從 2 個增加到 6 個，脈動改善了，但設備清洗和軟管安裝的複雜度如何變化？這代表什麼品質管理上的取捨？",
+   "en": "When the number of rollers increases from 2 to 6, pulsation improves, but how do the complexity of equipment cleaning and tubing installation change? What quality management trade-off does this represent?"
+  },
+  {
+   "zh": "核心概念：單管 vs. 雙管 PP 的設計邏輯",
+   "en": "Core Concept: Design Logic of Single-Tube vs. Double-Tube PPs"
+  },
+  {
+   "zh": "PP 有兩種基本配置，選擇哪一種，本質上是在「簡潔性」與「脈動控制」之間做取捨：",
+   "en": "There are two basic PP configurations, and choosing between them is essentially a trade-off between \"simplicity\" and \"pulsation control\":"
+  },
+  {
+   "zh": "2.1.2 Peristaltic Pump Setup — 蠕動泵系統設定",
+   "en": "2.1.2 Peristaltic Pump Setup"
+  },
+  {
+   "zh": "比喻說明：橡皮筋老化",
+   "en": "Analogy: An Aging Rubber Band"
+  },
+  {
+   "zh": "想像你把一條橡皮筋反覆對折再鬆開，幾千次之後，橡皮筋會變軟、失去彈性，對折的地方會出現細紋，最終可能裂開。",
+   "en": "Imagine folding a rubber band in half and releasing it over and over. After a few thousand times, the band becomes soft and loses its elasticity, fine cracks appear at the fold, and it may eventually break."
+  },
+  {
+   "zh": "PP 軟管的磨損機制完全相同。每次滾輪壓過，就是一次「對折再鬆開」。幾萬次充填後：",
+   "en": "The wear mechanism of PP tubing is exactly the same. Each roller pass is one \"fold and release\". After tens of thousands of fills:"
+  },
+  {
+   "zh": "<strong>外部磨損</strong>：接觸滾輪的外壁出現裂紋、脫層 → 橡膠粉末可能污染生產環境",
+   "en": "<strong>External wear</strong>: cracks and delamination appear on the outer wall in contact with the rollers → rubber particles may contaminate the production environment"
+  },
+  {
+   "zh": "<strong>內部磨損</strong>（更危險）：如果加速/減速過快，管內壁摩擦剪切 → 細小矽膠粒子直接進入產品 → 注射用產品不可接受",
+   "en": "<strong>Internal wear</strong> (more dangerous): if acceleration/deceleration is too rapid, friction and shear on the inner wall → tiny silicone particles enter the product directly → unacceptable for injectable products"
+  },
+  {
+   "zh": "這就是為什麼每條軟管都必須驗證使用壽命（最大充填次數），不能「用到壞掉」。",
+   "en": "This is why the service life (maximum number of fills) of every tube must be validated. Tubing cannot be \"used until it fails\"."
+  },
+  {
+   "zh": "劑量漂移的修正機制",
+   "en": "Dose Drift Correction Mechanism"
+  },
+  {
+   "zh": "PP 的核心問題：軟管隨磨損逐漸「變形」，原本壓縮一次推出 1.05 mL 的管路，隨著管壁軟化，同樣壓縮可能只推出 1.02 mL 或 1.07 mL。這就是「dose drift（劑量漂移）」。",
+   "en": "The core problem of the PP: the tubing gradually \"deforms\" with wear. A tube that delivered 1.05 mL per compression may, as the tube wall softens, deliver only 1.02 mL or 1.07 mL for the same compression. This is \"dose drift\"."
+  },
+  {
+   "zh": "修正機制示意：\n\n填充量 = 基準體積 × 修正係數(t)\n\n修正係數(t) = f(即時稱重資料)\n             = 統計模型持續更新\n\n例：若連續 100 個樣品的平均值\n    由 1.000 mL 漂移到 0.995 mL\n    → 系統自動將轉速補償 +0.5%\n    → 恢復目標充填量\n\n這個即時反饋迴路，\n就是為什麼 100% IPC 稱重\n對 PP 系統至關重要。",
+   "en": "Correction mechanism (schematic):\n\nFill volume = baseline volume × correction factor(t)\n\ncorrection factor(t) = f(real-time weighing data)\n             = continuously updated statistical model\n\nExample: if the mean of 100 consecutive samples\n    drifts from 1.000 mL to 0.995 mL\n    → the system automatically compensates speed by +0.5%\n    → target fill volume restored\n\nThis real-time feedback loop\nis why 100% IPC weighing\nis essential for PP systems."
+  },
+  {
+   "zh": "相較之下，RPP（旋轉活塞泵）因為是固定排量（活塞位移），沒有磨損引起的體積變化，劑量穩定性更好，因此 RPP 不需要同等頻率的 IPC 修正。",
+   "en": "By contrast, the RPP (rotary piston pump) has a fixed displacement (piston stroke) and no wear-induced volume change, so its dose stability is better and an RPP does not need IPC correction at the same frequency."
+  },
+  {
+   "zh": "重點提示：為何 PP 強烈建議 100% IPC 稱重？",
+   "en": "Key Point: Why Is 100% IPC Weighing Strongly Recommended for the PP?"
+  },
+  {
+   "zh": "PP 是四種充填技術中，唯一因為主要耗材（軟管）本身的物理劣化而導致系統性劑量漂移的泵型。這不是偶發性誤差，而是<strong>可預期的系統性趨勢</strong>。",
+   "en": "Among the four filling technologies, the PP is the only pump type in which the physical degradation of its main consumable (the tubing) causes systematic dose drift. This is not a random error but a <strong>predictable systematic trend</strong>."
+  },
+  {
+   "zh": "法規視角：EU GMP Annex 1 (2023) 明確要求製造商建立適當的 IPC 系統以確保充填量在規格範圍內。使用統計 IPC（抽樣稱重）固然可以接受，但對於 PP 系統，由於漂移是連續的，100% IPC（每個容器都稱重）是最能即時捕捉漂移並修正的方式。",
+   "en": "Regulatory perspective: EU GMP Annex 1 (2023) explicitly requires manufacturers to establish an appropriate IPC system to ensure fill volumes stay within specification. Statistical IPC (sampled weighing) is acceptable, but for a PP system, because drift is continuous, 100% IPC (weighing every container) is the best way to catch and correct drift in real time."
+  },
+  {
+   "zh": "<strong>商業影響</strong>：100% IPC 設備投資較高（需要高速精密天平），但可以顯著降低批次失敗率和返工成本。對於高價值生物製劑（如 mAb），這筆投資的 ROI 通常在一個批次內就能回收。",
+   "en": "<strong>Commercial impact</strong>: 100% IPC requires a higher equipment investment (high-speed precision balances), but it can significantly reduce batch failure rates and rework costs. For high-value biologics (such as mAbs), the ROI on this investment can usually be recovered within one batch."
+  },
+  {
+   "zh": "重點提示：軟管的四大選擇標準（逐項解讀）",
+   "en": "Key Point: The Four Tubing Selection Criteria (Item by Item)"
+  },
+  {
+   "zh": "<strong>功能性（Functionality）</strong>：滾輪區段需要高彈性，下游需要低彈性——相互矛盾，因此不同區段用不同材質",
+   "en": "<strong>Functionality</strong>: the roller section needs high elasticity while the downstream section needs low elasticity. These conflict, so different sections use different materials"
+  },
+  {
+   "zh": "<strong>產品相容性（Product reactivity）</strong>：矽膠可能吸附某些小分子 API 或防腐劑（如 polysorbate 80），導致劑量偏低 → 需要預先做 extractables &amp; leachables 研究",
+   "en": "<strong>Product reactivity</strong>: silicone may adsorb certain small-molecule APIs or preservatives (such as polysorbate 80), leading to low dose → extractables &amp; leachables studies must be done beforehand"
+  },
+  {
+   "zh": "<strong>滅菌方法（Sterilization method）</strong>：伽瑪照射會讓矽膠產生自由基，改變硬度和彈性 → 照射劑量需要在「殺菌有效」與「材料不損壞」之間平衡",
+   "en": "<strong>Sterilization method</strong>: gamma irradiation generates free radicals in silicone, changing its hardness and elasticity → the irradiation dose must balance \"effective sterilization\" against \"no damage to the material\""
+  },
+  {
+   "zh": "<strong>長期性能（Performance over time）</strong>：需要驗證最大使用次數，超過限制就換管，不容妥協",
+   "en": "<strong>Performance over time</strong>: the maximum number of uses must be validated, and the tube must be replaced once the limit is exceeded, with no compromise"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>場景</strong>：你的 CDMO 正在接一個新型 mRNA 疫苗客戶，每批次充填 500,000 支注射劑，批次時間約 8 小時，使用一次性使用系統。",
+   "en": "<strong>Scenario</strong>: your CDMO is taking on a new mRNA vaccine client, with 500,000 injection vials filled per batch, a batch time of about 8 hours, and a single-use system."
+  },
+  {
+   "zh": "<strong>軟管壽命計算考量</strong>：",
+   "en": "<strong>Tubing life calculation considerations</strong>:"
+  },
+  {
+   "zh": "500,000 充填次數 → 遠超過一般矽膠管 50,000–100,000 次的典型壽命 → 需要中途換管",
+   "en": "500,000 fills → far exceeds the typical life of 50,000–100,000 fills for ordinary silicone tubing → tubing must be changed mid-batch"
+  },
+  {
+   "zh": "換管 = 無菌連接操作 = 污染風險點 → 需要在驗證中包含換管程序的無菌性確認",
+   "en": "Tubing change = aseptic connection operation = contamination risk point → the validation must include sterility confirmation of the tubing change procedure"
+  },
+  {
+   "zh": "mRNA 對剪切力極度敏感 → 特別關注泵加速/減速曲線設定，避免觸發內部磨損粒子",
+   "en": "mRNA is extremely shear-sensitive → pay special attention to the pump acceleration/deceleration profile settings to avoid generating internal wear particles"
+  },
+  {
+   "zh": "100% IPC 是必須的 → 換管前後充填量可能有短暫波動，需要修正演算法快速響應",
+   "en": "100% IPC is mandatory → fill volume may fluctuate briefly before and after a tubing change, so the correction algorithm needs to respond quickly"
+  },
+  {
+   "zh": "如果下游軟管的硬度不足（太軟），會導致什麼具體的充填缺陷？從物理機制解釋。",
+   "en": "If the downstream tubing is not stiff enough (too soft), what specific filling defects result? Explain from the physical mechanism."
+  },
+  {
+   "zh": "Y 型連接件的內徑如果比軟管內徑小 10%，會對充填精度和產品完整性產生什麼影響？",
+   "en": "If the inner diameter of a Y-connector is 10% smaller than the tubing inner diameter, what effect will this have on filling accuracy and product integrity?"
+  },
+  {
+   "zh": "某產品含有 5% 乙醇（一種有機溶劑），你在選擇滾輪區段的軟管材質時，需要特別評估哪些風險？",
+   "en": "A product contains 5% ethanol (an organic solvent). What risks need special evaluation when selecting the tubing material for the roller section?"
+  },
+  {
+   "zh": "為什麼「高泵加速/減速」會加速內部磨損而非只是外部磨損？請從力學角度解釋。",
+   "en": "Why does \"high pump acceleration/deceleration\" accelerate internal wear and not just external wear? Explain from a mechanical perspective."
+  },
+  {
+   "zh": "核心概念：三區段軟管選擇邏輯",
+   "en": "Core Concept: The Three-Zone Tubing Selection Logic"
+  },
+  {
+   "zh": "PP 的流體路徑分三段，每段扮演不同角色，因此對軟管的要求完全不同：",
+   "en": "The PP fluid path has three sections, each playing a different role, so the tubing requirements for each are completely different:"
+  },
+  {
+   "zh": "重點：下游軟管若太軟，在脈動壓力下會像氣球一樣膨脹，每次膨脹都多吐出一點液體 → 充填量偏高，且形成「滴液（dripping）」問題。",
+   "en": "Key point: if the downstream tubing is too soft, it will balloon like a balloon under pulsation pressure, and each expansion discharges a little extra liquid → fill volume runs high, and \"dripping\" problems arise."
+  },
+  {
+   "zh": "2.1.3 Peristaltic Pump System Positioning — 蠕動泵系統定位",
+   "en": "2.1.3 Peristaltic Pump System Positioning"
+  },
+  {
+   "zh": "核心概念：重力 vs. 泵吸力的平衡",
+   "en": "Core Concept: The Balance Between Gravity and Pump Suction"
+  },
+  {
+   "zh": "PP 透過滾輪擠壓產生的負壓（吸力）將液體從上游拉入。但是，這個負壓的能力是有限的——它必須克服：",
+   "en": "The PP draws liquid in from upstream through the negative pressure (suction) produced by roller squeezing. But this negative pressure capacity is limited, and it must overcome:"
+  },
+  {
+   "zh": "管路阻力（管長、管徑、彎折）",
+   "en": "Tubing resistance (length, diameter, bends)"
+  },
+  {
+   "zh": "液柱高度差（若容器低於充填針）",
+   "en": "Liquid column height difference (if the vessel is below the filling needle)"
+  },
+  {
+   "zh": "液體自身重力",
+   "en": "The weight of the liquid itself"
+  },
+  {
+   "zh": "當上述阻力超過泵的吸力能力時，系統就無法完全填滿管路 → 氣泡進入 → 充填量不足或充填空針。",
+   "en": "When these resistances exceed the pump's suction capacity, the system cannot fully fill the tubing → bubbles enter → underfilling or empty-needle fills."
+  },
+  {
+   "zh": "<strong>設計原則</strong>：中間容器（intermediate vessel）的液面應盡可能高於或平齊充填針的位置，讓重力輔助而非阻礙流體輸送。",
+   "en": "<strong>Design principle</strong>: the liquid level of the intermediate vessel should be as high as possible, at or above the position of the filling needle, so that gravity assists rather than hinders fluid transfer."
+  },
+  {
+   "zh": "比喻說明：爬山的水管",
+   "en": "Analogy: A Hose Going Uphill"
+  },
+  {
+   "zh": "想像你用一條軟管從山腳的水桶，把水抽到山頂的噴嘴。如果水桶在山腳（比噴嘴低很多），泵必須非常用力才能把水「抬」上去。一旦泵力不夠或管路有一點點漏氣，管子裡就會出現氣泡斷流。",
+   "en": "Imagine using a hose to pump water from a bucket at the foot of a hill to a nozzle at the top. If the bucket is at the foot (much lower than the nozzle), the pump must work very hard to \"lift\" the water up. Once the pump power is insufficient or the tubing has even a small air leak, bubbles appear in the tube and the flow breaks."
+  },
+  {
+   "zh": "反之，如果水桶放在山頂（比噴嘴高），重力自然幫助水往下流，泵只需要控制流速，不需要費力對抗重力。",
+   "en": "Conversely, if the bucket is at the top (higher than the nozzle), gravity naturally helps the water flow down, and the pump only needs to control the flow rate without fighting gravity."
+  },
+  {
+   "zh": "PP 系統的中間容器定位就是這個道理。在隔離器設計時，通常將中間容器盡量抬高，甚至放置在隔離器頂部，以利用重力輔助充填。",
+   "en": "The positioning of the PP intermediate vessel follows the same principle. In isolator design, the intermediate vessel is usually raised as high as possible, even placed on top of the isolator, so that gravity assists filling."
+  },
+  {
+   "zh": "重點提示：PP 放在隔離器外的距離管理挑戰",
+   "en": "Key Point: The Distance Management Challenge of Placing the PP Outside the Isolator"
+  },
+  {
+   "zh": "PP 的最大優勢之一就是可以放在隔離器或 RABS 外部——但這帶來一個新問題：充填針到泵的距離更遠了。",
+   "en": "One of the PP's biggest advantages is that it can be placed outside the isolator or RABS, but this raises a new problem: the filling needle is now farther from the pump."
+  },
+  {
+   "zh": "距離越遠，意味著：",
+   "en": "The greater the distance, the more it means:"
+  },
+  {
+   "zh": "下游軟管越長 → 脈動在管路中衰減，也可能放大",
+   "en": "Longer downstream tubing → pulsation is attenuated along the tubing, but may also be amplified"
+  },
+  {
+   "zh": "管路容積越大 → 批次開始/結束的棄液量增加（priming discard）",
+   "en": "Larger tubing volume → more product discarded at batch start/end (priming discard)"
+  },
+  {
+   "zh": "液柱落差的設計更複雜 → 需要精確計算管路中每一段的流體靜力學",
+   "en": "More complex liquid column height design → the hydrostatics of each segment of tubing must be calculated precisely"
+  },
+  {
+   "zh": "因此，PP 雖然可以放在隔離器外，但在設計階段必須明確計算管路長度、高度落差，並以充填驗證（filling validation）確認在極端條件下（如低液位、高黏度端）仍不產生氣泡。",
+   "en": "Therefore, although the PP can be placed outside the isolator, tubing length and height differences must be explicitly calculated at the design stage, and filling validation must confirm that no bubbles form under extreme conditions (such as low liquid level or the high-viscosity end)."
+  },
+  {
+   "zh": "CDMO 視角：Priming（引液排氣）的商業成本",
+   "en": "CDMO Perspective: The Commercial Cost of Priming"
+  },
+  {
+   "zh": "批次開始前，整個流體路徑（從中間容器到充填針）充滿的是空氣，必須用產品「沖洗」出去 — 這個過程叫做 priming（引液排氣）。",
+   "en": "Before the batch starts, the entire fluid path (from the intermediate vessel to the filling needle) is filled with air and must be \"flushed\" out with product. This process is called priming."
+  },
+  {
+   "zh": "被沖洗出去的那部分產品需要<strong>廢棄（discard）</strong>，不能充入容器販售。",
+   "en": "The product flushed out must be <strong>discarded</strong> and cannot be filled into containers for sale."
+  },
+  {
+   "zh": "<strong>商業影響</strong>：",
+   "en": "<strong>Commercial impact</strong>:"
+  },
+  {
+   "zh": "管路越長 → priming 廢液量越多 → 成本越高（對高價生物製劑影響顯著）",
+   "en": "Longer tubing → more priming discard → higher cost (a significant impact for high-value biologics)"
+  },
+  {
+   "zh": "批次開始和結束各有一次 discard → 每批次的有效產出率（yield）會降低",
+   "en": "There is one discard at batch start and one at batch end → the effective yield per batch is reduced"
+  },
+  {
+   "zh": "設計優化：縮短管路長度、使用最小內徑容許的管路 → 降低 priming 廢液量",
+   "en": "Design optimization: shorten the tubing length and use the smallest permissible inner diameter → reduce priming discard volume"
+  },
+  {
+   "zh": "Section 12.2 有更詳細的 priming discard 管理指引，包括如何在不影響無菌性的前提下最小化廢液量。",
+   "en": "Section 12.2 gives more detailed guidance on managing priming discard, including how to minimize discard without compromising sterility."
+  },
+  {
+   "zh": "Priming 廢液量估算",
+   "en": "Estimating Priming Discard Volume"
+  },
+  {
+   "zh": "Priming 廢液量（近似值）：\n\nV_discard ≈ π × (d/2)² × L\n\n其中：\n  d = 軟管內徑（cm）\n  L = 管路總長度（cm）\n\n例：\n  內徑 8 mm (0.8 cm)、管長 200 cm\n  V = π × (0.4)² × 200 ≈ 100 mL\n\n若充填量為 1 mL/瓶：\n  → 100 mL ÷ 1 mL = 相當於 100 支的廢棄量\n  → 若產品成本 $5,000/mL，則一次引液 = $500,000 廢棄\n\n這說明為什麼對高價值藥品，\n管路設計的精簡非常重要。",
+   "en": "Priming discard volume (approximation):\n\nV_discard ≈ π × (d/2)² × L\n\nwhere:\n  d = tubing inner diameter (cm)\n  L = total tubing length (cm)\n\nExample:\n  inner diameter 8 mm (0.8 cm), tubing length 200 cm\n  V = π × (0.4)² × 200 ≈ 100 mL\n\nIf the fill volume is 1 mL/vial:\n  → 100 mL ÷ 1 mL = equivalent to 100 vials discarded\n  → if product cost is $5,000/mL, one priming = $500,000 discarded\n\nThis shows why a lean tubing design\nis so important for high-value drugs."
+  },
+  {
+   "zh": "一個 PP 系統，中間容器放置比充填針低 30 cm，可能發生什麼問題？你會如何在設計中解決這個問題？",
+   "en": "In a PP system, the intermediate vessel is placed 30 cm below the filling needle. What problems may occur, and how would you solve them in the design?"
+  },
+  {
+   "zh": "如果 PP 必須放置在隔離器外部（距離充填針 1.5 公尺），而產品是一個高價值的 mAb（每毫升 $3,000），你在設計管路時，最優先考慮什麼因素來降低廢液成本？",
+   "en": "If the PP must be placed outside the isolator (1.5 meters from the filling needle) and the product is a high-value mAb ($3,000 per milliliter), what is your top priority when designing the tubing to reduce discard cost?"
+  },
+  {
+   "zh": "Priming 的目的是「排空氣體」，但 priming 過程本身也有污染風險（產品流動、管路接觸）。如何在 APS（無菌製程模擬）中驗證 priming 程序的無菌性？",
+   "en": "The purpose of priming is to \"purge gas\", but the priming process itself also carries contamination risk (product flow, tubing contact). How would you verify the sterility of the priming procedure in an APS (aseptic process simulation)?"
+  },
+  {
+   "zh": "附錄：PP 產品適用性參考表（源自 doc p26–p27）",
+   "en": "Appendix: PP Product Suitability Reference Table (from the source document, p26–p27)"
+  },
+  {
+   "zh": "原文內容 Original Text — Product Suitability",
+   "en": "Original Text — Product Suitability"
+  },
+  {
+   "zh": "核心概念：PP 不是萬能充填泵",
+   "en": "Core Concept: The PP Is Not a Universal Filling Pump"
+  },
+  {
+   "zh": "從上面的適用性表格可以看出，PP 的主要限制在於：",
+   "en": "As the suitability table above shows, the main limitations of the PP are:"
+  },
+  {
+   "zh": "<strong>溶劑類產品</strong>：有機溶劑（乙醇、DMSO）可能溶脹或使矽膠硬化，破壞軟管結構 → PP 不理想",
+   "en": "<strong>Solvent-based products</strong>: organic solvents (ethanol, DMSO) can swell or harden silicone and damage the tubing structure → the PP is not ideal"
+  },
+  {
+   "zh": "<strong>長批次活動</strong>（如 3 週流感疫苗生產）：軟管需要頻繁更換 → 操作成本高、無菌風險累積",
+   "en": "<strong>Long campaigns</strong> (such as 3-week influenza vaccine production): tubing needs frequent replacement → high operating cost and accumulating sterility risk"
+  },
+  {
+   "zh": "<strong>LVP（大容量注射劑）</strong>：充填量大 → 每批所需轉速多 → 軟管壽命消耗快 → 可能需要批次中換管",
+   "en": "<strong>LVP (large-volume parenterals)</strong>: large fill volumes → more pump revolutions per batch → tubing life is consumed quickly → tubing may need to be changed mid-batch"
+  },
+  {
+   "zh": "重點提示：ADC 的特殊考量",
+   "en": "Key Point: Special Considerations for ADCs"
+  },
+  {
+   "zh": "ADC（抗體藥物偶聯物）是目前最熱門的腫瘤藥物平台，毒性極高（相當於強力化療藥物連接抗體）。PP 在 SU 系統中非常適合 ADC，但「是否放在隔離器外」需要特別評估。",
+   "en": "ADCs (antibody-drug conjugates) are currently the hottest oncology drug platform and are extremely toxic (essentially a potent chemotherapy drug attached to an antibody). The PP is very well suited to ADCs in SU systems, but \"whether to place it outside the isolator\" needs special evaluation."
+  },
+  {
+   "zh": "一般 PP 的優勢（泵在隔離器外）在 ADC 場合反而可能需要重新考量：若軟管發生洩漏，隔離器外的環境沒有密封保護，高毒性物質外洩可能危及操作員。",
+   "en": "The usual PP advantage (pump outside the isolator) may actually need to be reconsidered for ADCs: if the tubing leaks, the environment outside the isolator has no sealed protection, and leakage of highly toxic material could endanger operators."
+  },
+  {
+   "zh": "這是為什麼安全評估（safety assessment）在 ADC 充填線設計中必須先於工程決策——「無菌保證優先」，但毒素控制同樣是第一優先級的安全考量。",
+   "en": "This is why the safety assessment must come before engineering decisions in the design of an ADC filling line. \"Sterility assurance comes first\", but toxin containment is an equally top-priority safety consideration."
+  },
+  {
+   "zh": "CDMO 業務視角：PP + SU 是生物製劑市場的黃金組合",
+   "en": "CDMO Business Perspective: PP + SU Is the Golden Combination in the Biologics Market"
+  },
+  {
+   "zh": "從市場趨勢看，生物製劑（mAb、基因療法、mRNA 疫苗）正以每年 10%+ 的速度增長，這些產品幾乎都具備以下特徵：",
+   "en": "From a market trend perspective, biologics (mAbs, gene therapies, mRNA vaccines) are growing at 10%+ per year, and these products almost all share the following characteristics:"
+  },
+  {
+   "zh": "低黏度（多在 1–10 mPa-s）→ PP 技術適合",
+   "en": "Low viscosity (mostly 1–10 mPa-s) → PP technology is suitable"
+  },
+  {
+   "zh": "高剪切敏感性 → RPP 有顧慮，PP 剪切力低",
+   "en": "High shear sensitivity → the RPP raises concerns, while the PP has low shear"
+  },
+  {
+   "zh": "高價值、小批次 → 一次性使用 (SU) 經濟效益高（省去 CIP/SIP 時間）",
+   "en": "High value, small batches → the economics of single-use (SU) are favorable (no CIP/SIP time)"
+  },
+  {
+   "zh": "嚴格無菌要求 → 封閉系統 PP 完全相容 SU 流體路徑",
+   "en": "Strict sterility requirements → the closed PP system is fully compatible with SU fluid paths"
+  },
+  {
+   "zh": "<strong>結論</strong>：對任何希望承接生物製劑業務的 CDMO，掌握 PP + SU 系統的驗證與操作能力，是基本的技術門票。White Raven 等歐洲 CDMO 已在這個方向先行投資 AI 輔助充填管理——這是差距所在，也是追趕方向。",
+   "en": "<strong>Conclusion</strong>: for any CDMO that wants to take on biologics business, mastering the validation and operation of PP + SU systems is the basic technical entry ticket. European CDMOs such as White Raven have already invested ahead of others in AI-assisted filling management. That is the gap, and also the direction in which to catch up."
+  },
+  {
+   "zh": "綜合練習 Synthesis Questions",
+   "en": "Synthesis Questions"
+  },
+  {
+   "zh": "一個客戶帶來一個含 15% DMSO 的小分子 API 溶液需要充填，你會建議使用 PP 還是其他技術？說明你的評估框架。",
+   "en": "A client brings a small-molecule API solution containing 15% DMSO to be filled. Would you recommend a PP or another technology? Explain your evaluation framework."
+  },
+  {
+   "zh": "對比 PP 和 RPP 在「100% IPC 的必要性」上，從技術原理解釋為何 PP 比 RPP 更需要高頻率的稱重管控。",
+   "en": "Comparing the PP and the RPP on the \"necessity of 100% IPC\", explain from the technical principles why the PP needs high-frequency weighing control more than the RPP does."
+  },
+  {
+   "zh": "假設你的 CDMO 正在評估一條可以兼容 PP 和 RPP 的多功能充填線，從資本投資、操作彈性和客戶組合三個維度，分析這個決策的商業邏輯。",
+   "en": "Suppose your CDMO is evaluating a multi-purpose filling line that can accommodate both PP and RPP. Analyze the business logic of this decision along three dimensions: capital investment, operational flexibility and customer portfolio."
+  },
+  {
+   "zh": "本節重點回顧 Section 2.1 Summary",
+   "en": "Section 2.1 Summary"
+  },
+  {
+   "zh": "<strong>PP 運作原理</strong>：旋轉滾輪擠壓矽膠管，正排量驅動，充填量由旋轉角度控制，封閉系統讓產品只接觸軟管與充填針。",
+   "en": "<strong>How the PP works</strong>: rotating rollers squeeze the silicone tube, giving positive displacement; fill volume is controlled by rotation angle, and the closed system means the product contacts only the tubing and the filling needle."
+  },
+  {
+   "zh": "<strong>Occlusion-bed distance</strong>：滾輪與背板間距，過緊加速磨損，過鬆導致回漏——每種軟管規格都有最佳設定值，需要驗證。",
+   "en": "<strong>Occlusion-bed distance</strong>: the gap between rollers and backing plate. Too tight accelerates wear and too loose causes backflow. Each tubing specification has an optimal setting that must be validated."
+  },
+  {
+   "zh": "<strong>單管 vs. 雙管</strong>：單管簡潔（少連接點、低污染風險），雙管藉由上下滾輪相位錯開有效抑制脈動；兩者各有適用場景，核心取捨是「流路簡潔性」vs.「充填精度穩定性」。",
+   "en": "<strong>Single-tube vs. double-tube</strong>: single-tube is simple (fewer connection points, lower contamination risk), while double-tube suppresses pulsation effectively by offsetting the phase of the upper and lower rollers. Each has its own use cases, and the core trade-off is \"flow path simplicity\" vs. \"filling accuracy stability\"."
+  },
+  {
+   "zh": "<strong>三段軟管選擇</strong>：上游相容性為主；滾輪內高彈性耐磨；下游高硬度防脈動膨脹。四大選擇標準：功能性、產品相容性、滅菌方法、長期性能。",
+   "en": "<strong>Three-zone tubing selection</strong>: upstream is mainly about compatibility; within the rollers, high elasticity and wear resistance; downstream, high stiffness to prevent pulsation expansion. The four selection criteria are functionality, product reactivity, sterilization method and performance over time."
+  },
+  {
+   "zh": "<strong>軟管磨損 → 劑量漂移 → 100% IPC</strong>：PP 獨有的系統性漂移機制，修正演算法依賴即時稱重反饋，因此強烈建議 100% IPC 稱重（相較於 RPP 的劑量穩定性，PP 在 IPC 管理上的要求更高）。",
+   "en": "<strong>Tubing wear → dose drift → 100% IPC</strong>: a systematic drift mechanism unique to the PP. The correction algorithm depends on real-time weighing feedback, so 100% IPC weighing is strongly recommended (compared with the dose stability of the RPP, the PP places higher demands on IPC management)."
+  },
+  {
+   "zh": "<strong>系統定位</strong>：中間容器高度必須高於或齊平充填針，避免氣泡；PP 可放在隔離器外（優勢），但帶來管路距離增加、priming 廢液量、流體靜力學設計等挑戰。",
+   "en": "<strong>System positioning</strong>: the intermediate vessel must be at or above the filling needle to avoid bubbles; the PP can be placed outside the isolator (an advantage), but this brings challenges of longer tubing, priming discard volume and hydrostatic design."
+  },
+  {
+   "zh": "<strong>CDMO 戰略定位</strong>：PP + SU 是現代生物製劑充填的主流配置，低黏度、高相容性、低清洗負擔使其成為 mAb、mRNA、基因療法等高增長產品的首選；ADC 場合需額外考量毒性洩漏風險來決定泵的位置。",
+   "en": "<strong>CDMO strategic positioning</strong>: PP + SU is the mainstream configuration for modern biologics filling. Low viscosity, high compatibility and low cleaning burden make it the first choice for high-growth products such as mAbs, mRNA and gene therapies; for ADCs, the risk of toxic leakage must additionally be considered when deciding pump location."
+  }
+ ]
+}

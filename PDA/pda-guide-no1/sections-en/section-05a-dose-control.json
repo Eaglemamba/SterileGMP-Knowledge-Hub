@@ -1,0 +1,445 @@
+{
+ "source": "section-05a-dose-control.html",
+ "blocks": [
+  {
+   "zh": "劑量管控系統：設計原則與風險效益分析",
+   "en": "Dose Control Systems: Design Principles and Risk-Benefit Analysis"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解劑量管控系統（Dose Control System）在無菌充填中的核心地位，以及與 CQA 的直接關聯",
+   "en": "Understand the central role of the dose control system in aseptic filling and its direct link to CQAs"
+  },
+  {
+   "zh": "比較 100% 重量檢測（100% Weight Check）與間歇性統計抽樣（Intermittent Statistical Weight Check）的優缺點，並掌握適用情境",
+   "en": "Compare 100% weight checks with intermittent statistical weight checks, including their advantages, disadvantages and appropriate use cases"
+  },
+  {
+   "zh": "掌握重力式劑量管控（Gravimetric Dose Control）的四大不確定性來源：Container Holdup、Scale Bias、sMU、sFill",
+   "en": "Master the four sources of uncertainty in gravimetric dose control: container holdup, scale bias, sMU and sFill"
+  },
+  {
+   "zh": "理解 k 因子（k-factor）系統如何將不確定性轉化為填充機的調整限與拒絕限設定",
+   "en": "Understand how the k-factor system converts uncertainty into the adjustment limits and reject limits of the filling machine"
+  },
+  {
+   "zh": "<strong>5.0 Designs for Dose Control Systems 5.0 劑量管制系統設計</strong>",
+   "en": "<strong>5.0 Designs for Dose Control Systems</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>劑量管控（Dose Control）</strong>是充填製程的核心 CQA（關鍵品質屬性）之一。每個容器所填入的藥量必須精確，這直接影響病患收到的實際治療劑量。",
+   "en": "<strong>Dose control</strong> is one of the core CQAs (critical quality attributes) of the filling process. The amount of drug product filled into each container must be accurate, because it directly determines the therapeutic dose the patient actually receives."
+  },
+  {
+   "zh": "兩種主要容器類型有不同的管控挑戰：",
+   "en": "The two main container types present different dose control challenges:"
+  },
+  {
+   "zh": "<strong>SU 容器</strong>（一次性使用，如預充填注射器）：整支注射，填充量即為給藥量",
+   "en": "<strong>Single-use (SU) containers</strong> (e.g., prefilled syringes): the whole content is injected, so the fill volume is the administered dose"
+  },
+  {
+   "zh": "<strong>多用途容器</strong>（如多劑量瓶、卡匣）：每次取用量不固定，填充總量需保護每一次用藥",
+   "en": "<strong>Multi-use containers</strong> (e.g., multi-dose vials, cartridges): the amount withdrawn each time varies, so the total fill must cover every dose taken"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像咖啡師泡一杯 espresso：客人點了雙份（double shot），要的是剛好 60ml，多或少都影響口感與咖啡因含量。充填機面對的是同樣的任務，只是精度要求更嚴格——通常在 ±2% 以內，而且每一支都要準確，不能靠「平均起來差不多」交差。",
+   "en": "Imagine a barista pulling an espresso: the customer orders a double shot and wants exactly 60 mL, because too much or too little changes the taste and caffeine content. A filling machine faces the same task with an even stricter accuracy requirement, typically within ±2%, and every single unit must be accurate. \"It averages out about right\" is not acceptable."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "USP &lt;697&gt; 等藥典方法是<strong>離線破壞性測試（off-line destructive）</strong>，不能替代製程中管控（IPC）。本節只討論<strong>線上（on-line）</strong>管控方法。這個區分在查核時常被稽查員考核，要牢記。",
+   "en": "Pharmacopoeial methods such as USP &lt;697&gt; are <strong>off-line destructive</strong> tests and cannot replace in-process control (IPC). This section discusses only <strong>on-line</strong> control methods. Auditors often probe this distinction during inspections, so keep it firmly in mind."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為何單支預充填注射器（PFS）對填充精度的要求，比多劑量瓶更嚴格？",
+   "en": "Why is the filling accuracy requirement for a single prefilled syringe (PFS) stricter than for a multi-dose vial?"
+  },
+  {
+   "zh": "USP &lt;697&gt; 屬於 IPC 嗎？為什麼不能用它取代線上重量管控？",
+   "en": "Is USP &lt;697&gt; an IPC? Why can it not replace on-line weight control?"
+  },
+  {
+   "zh": "<strong>5.1 Dose Control Systems Risks and Benefits 5.1 劑量管制系統風險與效益</strong>",
+   "en": "<strong>5.1 Dose Control Systems Risks and Benefits</strong>"
+  },
+  {
+   "zh": "<strong>Quarantine Buffer（隔離緩衝區）</strong>是間歇抽樣系統的必要配套。當最後一次合格量測到下一次量測之間發生問題，所有這段期間充填的容器都必須被追蹤並保留，直到確認合格才能放行。",
+   "en": "A <strong>quarantine buffer</strong> is a necessary companion to an intermittent sampling system. If a problem occurs between the last passing measurement and the next measurement, every container filled during that period must be tracked and held until it is confirmed acceptable for release."
+  },
+  {
+   "zh": "這個概念在 Nest 充填線上特別重要：每個 Nest（巢盤）包含多個容器，系統必須能精確對應每個 Nest 的填充結果。",
+   "en": "This concept is especially important on nest filling lines: each nest holds multiple containers, and the system must be able to map the fill result precisely to each nest."
+  },
+  {
+   "zh": "Quarantine buffer 就像機場的安檢等候區（airport security holding area）：每個旅客（容器）在通過安檢（重量驗證）之前，都必須被追蹤在等候區內。若發現某個時間點的問題，整個等候區的旅客都要重新審查，不能放行。間隔時間越長，等候區越大，管理成本越高。",
+   "en": "A quarantine buffer works like an airport security holding area: every traveler (container) must be tracked in the holding area until cleared by security (weight verification). If a problem is found at a given point in time, everyone in the holding area must be re-examined and cannot be released. The longer the interval, the larger the holding area and the higher the management cost."
+  },
+  {
+   "zh": "ICH Q9(R1) 要求劑量管控方法的選擇必須有正式的<strong>品質風險管理（QRM）</strong>文件支撐。選擇間歇抽樣而非 100% 檢測，必須有充分的科學和風險理由，不能只以速度或成本為由。稽查時這個決策的文件紀錄是高頻稽查點。",
+   "en": "ICH Q9(R1) requires that the choice of dose control method be supported by formal <strong>quality risk management (QRM)</strong> documentation. Choosing intermittent sampling over 100% checking requires sound scientific and risk-based justification, not speed or cost alone. The documented rationale for this decision is a frequent inspection focus."
+  },
+  {
+   "zh": "你的廠區使用 Nest 充填線，採間歇抽樣。若抽樣率 1%、每 Nest 100 支注射器，需要隔離多少 Nests？",
+   "en": "Your site uses a nest filling line with intermittent sampling. If the sampling rate is 1% and each nest holds 100 syringes, how many nests need to be quarantined?"
+  },
+  {
+   "zh": "離線 IPC 的兩個主要缺點是什麼？為何特別不適合無菌充填環境？",
+   "en": "What are the two main drawbacks of off-line IPC? Why is it especially unsuitable for an aseptic filling environment?"
+  },
+  {
+   "zh": "<strong>5.1.1 Benefits of Intermittent Weight Checks 5.1.1 間歇重量檢查之效益</strong>",
+   "en": "<strong>5.1.1 Benefits of Intermittent Weight Checks</strong>"
+  },
+  {
+   "zh": "<strong>RTU（Ready-to-Use，即用型）</strong>包材通常以 Nest 形式提供，如整盤注射器或西林瓶。間歇抽樣不需要將容器從 Nest 取出（denesting），可直接在 Nest 內完成充填與量測，維持容器排列不變，減少機械操作風險。",
+   "en": "<strong>RTU (ready-to-use)</strong> components are usually supplied in nests, such as a full tray of syringes or vials. Intermittent sampling does not require containers to be removed from the nest (denesting). Filling and measurement can be completed directly in the nest, keeping the container arrangement unchanged and reducing the risk from mechanical handling."
+  },
+  {
+   "zh": "想像餐廳用同一個托盤上菜，廚師只需抽查其中幾道菜的份量，而不用把每道菜都從盤子拿出來秤重。這樣出菜速度快，但若某道菜有問題，整桌可能都需要重新確認。",
+   "en": "Imagine a restaurant serving dishes on a shared tray: the chef only needs to spot-check the portion of a few dishes, without taking every dish off the tray to weigh it. Service is fast, but if one dish has a problem, the whole table may need to be rechecked."
+  },
+  {
+   "zh": "間歇抽樣的「速度優勢」是有代價的：你的<strong>填充目標值必須設得更保守</strong>（偏離下限更遠），以補償未被檢測容器的不確定性。這意味著更多的 overfill，即每支容器多填一些，以防未被抽到的容器低於下限。高單價產品（如 mAb、基因療法）的 overfill 成本相當可觀。",
+   "en": "The \"speed advantage\" of intermittent sampling comes at a cost: your <strong>fill target must be set more conservatively</strong> (further from the lower limit) to compensate for the uncertainty of the unchecked containers. This means more overfill, i.e., each container is filled a little extra so that unsampled containers do not fall below the lower limit. For high-value products (e.g., mAbs, gene therapies), the overfill cost is considerable."
+  },
+  {
+   "zh": "<strong>5.1.2 Constraints of Intermittent Weight Checks 5.1.2 間歇重量檢查之限制</strong>",
+   "en": "<strong>5.1.2 Constraints of Intermittent Weight Checks</strong>"
+  },
+  {
+   "zh": "<strong>間歇抽樣的三大風險</strong>環環相扣：",
+   "en": "<strong>The three risks of intermittent sampling</strong> are interlinked:"
+  },
+  {
+   "zh": "<strong>偵測盲區</strong>：抽樣點之間發生的問題（如氣泡、泵浦漂移）無法即時發現",
+   "en": "<strong>Detection blind spot</strong>: problems that occur between sampling points (e.g., air bubbles, pump drift) cannot be detected immediately"
+  },
+  {
+   "zh": "<strong>隔離成本</strong>：需要足夠的實體緩衝空間和自動化追蹤系統，設備成本和線體長度都增加",
+   "en": "<strong>Quarantine cost</strong>: sufficient physical buffer space and an automated tracking system are required, increasing equipment cost and line length"
+  },
+  {
+   "zh": "<strong>量測偏差補償</strong>：Tare 和 Gross 不一定用同一個秤，兩個秤之間的 Bias 必須納入填充視窗計算，壓縮可用的操作範圍",
+   "en": "<strong>Compensation for measurement bias</strong>: tare and gross weights are not necessarily taken on the same scale, so the bias between the two scales must be included in the fill window calculation, which narrows the usable operating range"
+  },
+  {
+   "zh": "公式與計算 Formula — 隔離 Nest 數量估算",
+   "en": "Formula and Calculation: Estimating the Number of Quarantined Nests"
+  },
+  {
+   "zh": "範例設定：\n  填充站數：10 站\n  IPC 抽樣率：1%（每 100 容器抽 1 個）\n  每個 Nest 容器數：100 支\n  每次抽取：10 個 Nests 中各取 1 排（1×10 支）\n\n所需隔離 Nests 數 = 抽樣間隔期間通過的 Nests 數\n  = 1/1% = 100 容器間隔 ÷ 10 站 = 10 Nests\n\n結論：系統需保留 10 個 Nests 在隔離緩衝區，\n等待後續量測結果才能放行或拒絕。",
+   "en": "Example setup:\n  Number of filling stations: 10\n  IPC sampling rate: 1% (1 container per 100)\n  Containers per nest: 100\n  Each draw: 1 row from each of 10 nests (1×10 units)\n\nNumber of nests to quarantine = number of nests passing during the sampling interval\n  = 1/1% = 100-container interval ÷ 10 stations = 10 nests\n\nConclusion: the system must hold 10 nests in the quarantine buffer\nwhile waiting for the subsequent measurement result before release or rejection."
+  },
+  {
+   "zh": "若抽樣率從 1% 提高到 5%，隔離 Nests 數量如何變化？對線速有何影響？",
+   "en": "If the sampling rate increases from 1% to 5%, how does the number of quarantined nests change? What is the effect on line speed?"
+  },
+  {
+   "zh": "Scale bias 如何影響填充下限的設定？為何「偏差越大，可用操作視窗越小」？",
+   "en": "How does scale bias affect the setting of the lower fill limit? Why does a larger bias leave a smaller usable operating window?"
+  },
+  {
+   "zh": "<strong>5.1.3 Benefits of 100% Weight Checks 5.1.3 百分之百重量檢查之效益</strong>",
+   "en": "<strong>5.1.3 Benefits of 100% Weight Checks</strong>"
+  },
+  {
+   "zh": "<strong>100% 重量管控的三個填充操作模式</strong>是此系統最大的彈性優勢：",
+   "en": "<strong>The three filling operation modes of 100% weight control</strong> are the greatest flexibility advantage of this system:"
+  },
+  {
+   "zh": "<strong>Dose-in（導入充填）</strong>：批次開始時的引液操作，確保管路無氣泡、流量穩定才開始正式充填。這個步驟「浪費」少量藥液，但確保後續每支都準確。",
+   "en": "<strong>Dose-in</strong>: the priming operation at the start of a batch, ensuring the tubing is free of air bubbles and the flow is stable before formal filling begins. This step \"wastes\" a small amount of product but ensures that every subsequent unit is accurate."
+  },
+  {
+   "zh": "<strong>Re-dosing（補充充填）</strong>：對個別未達標容器追加補充，補救輕微不足，提高良品率。但<strong>必須納入 APS（無菌製程模擬）</strong>驗證，因為多一次插針動作即多一次暴露風險。",
+   "en": "<strong>Re-dosing</strong>: topping up individual containers that fall short, correcting a slight underfill and improving yield. However, it <strong>must be included in the APS (aseptic process simulation)</strong>, because each additional needle intervention is an additional exposure risk."
+  },
+  {
+   "zh": "<strong>Dose-out（耗盡充填）</strong>：批次結束時，將管路殘留藥液盡量充填至容器，減少浪費。懸浮液（Suspension）不適用，因此時混勻可能不足。",
+   "en": "<strong>Dose-out</strong>: at the end of the batch, filling as much of the residual product in the tubing as possible into containers to reduce waste. It is not suitable for suspensions, because mixing may be inadequate at that point."
+  },
+  {
+   "zh": "100% 檢重就像「每台車都有倒車雷達」——每次停車（充填）系統都即時回饋距離（重量），駕駛（充填機控制器）立即修正，不需要等待事後統計分析。而間歇抽樣則像「靠目測停車距離」，技術好的師傅可以停好，但無法保證每次都準確，也無法即時修正。",
+   "en": "100% weight checking is like \"every car having a reversing radar\": each time the car parks (fills), the system gives real-time feedback on the distance (weight) and the driver (the filling machine controller) corrects immediately, with no need to wait for after-the-fact statistical analysis. Intermittent sampling is like \"parking by eye\": a skilled driver can park well, but there is no guarantee of accuracy every time and no real-time correction."
+  },
+  {
+   "zh": "<strong>兩步充填（Two-step Filling）</strong>是高價值產品的關鍵技術：第一步填 80–95%，第二步精確補至目標值。這讓填充目標可以設在幾乎緊貼下限，大幅減少 overfill。對於每毫升藥液價值數萬美元的基因療法、mAb 等產品，overfill 的節省直接影響批次 COGS（製造成本）。",
+   "en": "<strong>Two-step filling</strong> is a key technique for high-value products: the first step fills 80–95%, and the second step tops up precisely to the target. This allows the fill target to be set almost right at the lower limit, greatly reducing overfill. For products such as gene therapies and mAbs, where each milliliter can be worth tens of thousands of US dollars, overfill savings directly affect the batch COGS (cost of goods sold)."
+  },
+  {
+   "zh": "Mass flowmeter 雖能承受 CIP/SIP，但<strong>清潔驗證困難</strong>，且不適合小體積充填，因此重力式（gravimetric）已成為主流。",
+   "en": "Although mass flowmeters can withstand CIP/SIP, <strong>cleaning validation is difficult</strong> and they are unsuitable for small fill volumes, so gravimetric filling has become the mainstream approach."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "CDMO 承接高價值生物製劑（如 CAR-T 細胞療法配套注射液）時，選擇 100% 重量管控 + 兩步充填的組合，可以將目標值設在下限上方僅 2–3% 處，而非間歇抽樣需要的 8–10% 保守偏移量。以每批次 5,000 支計算，每支節省 0.1ml 藥液，5000 × 0.1ml × 藥液單價，即使單價 USD 1,000/ml，節省也達 USD 500,000/批。這個計算方式在 business case 提報中非常有說服力。",
+   "en": "When a CDMO takes on high-value biologics (e.g., ancillary injectable solutions for CAR-T cell therapy), choosing 100% weight control combined with two-step filling allows the target to be set only 2–3% above the lower limit, rather than the 8–10% conservative offset that intermittent sampling requires. For a batch of 5,000 units, saving 0.1 mL of product per unit gives 5,000 × 0.1 mL × unit price; even at USD 1,000/mL, the saving is USD 500,000 per batch. This calculation is very persuasive in a business case presentation."
+  },
+  {
+   "zh": "<strong>5.1.4 Constraints of 100% Weight Checks 5.1.4 百分之百重量檢查之限制</strong>",
+   "en": "<strong>5.1.4 Constraints of 100% Weight Checks</strong>"
+  },
+  {
+   "zh": "<strong>100% 管控的代價</strong>主要在設備複雜度和操作風險：",
+   "en": "<strong>The cost of 100% control</strong> lies mainly in equipment complexity and operational risk:"
+  },
+  {
+   "zh": "<strong>速度限制</strong>：每個容器都需要在秤台上停留足夠時間讀取穩定數值，這是物理限制，無法與高速線的需求完全相容",
+   "en": "<strong>Speed limitation</strong>: each container must dwell on the scale long enough to obtain a stable reading. This is a physical limit and cannot fully meet the demands of a high-speed line"
+  },
+  {
+   "zh": "<strong>Denesting 需求</strong>：RTU Nest 包材需要先將容器逐一取出再稱重充填，增加機械操作步驟和相應的微粒與污染風險",
+   "en": "<strong>Denesting requirement</strong>: RTU nested components require containers to be removed one by one before weighing and filling, adding mechanical handling steps and the associated particulate and contamination risks"
+  },
+  {
+   "zh": "<strong>額外暴露時間</strong>：容器在 Tare 秤 → 充填 → Gross 秤的移動過程中，暴露在環境中的時間比直接充填更長，設計時需評估對無菌保證的影響",
+   "en": "<strong>Additional exposure time</strong>: while moving from the tare scale to filling to the gross scale, containers are exposed to the environment longer than with direct filling, and the impact on sterility assurance must be evaluated at the design stage"
+  },
+  {
+   "zh": "<strong>決策階層的實際應用</strong>：100% 管控因為 denesting 增加操作步驟，可能增加暴露時間（影響無菌保證）。這時候決策順序就很重要：",
+   "en": "<strong>Practical application of the decision hierarchy</strong>: because denesting adds operating steps, 100% control may increase exposure time (affecting sterility assurance). The order of decision-making then becomes important:"
+  },
+  {
+   "zh": "無菌保證 Sterility Assurance — 優先",
+   "en": "Sterility assurance: top priority"
+  },
+  {
+   "zh": "劑量準確性 CQA — 次優先",
+   "en": "Dose accuracy (CQA): second priority"
+  },
+  {
+   "zh": "速度與產量 Business — 末位",
+   "en": "Speed and throughput (business): last priority"
+  },
+  {
+   "zh": "若 denesting 操作無法確保暴露風險可接受，<strong>無菌保證的優先級高於劑量精度的優先級</strong>，必須重新考慮系統設計或採用間歇抽樣。",
+   "en": "If the denesting operation cannot ensure that the exposure risk is acceptable, <strong>sterility assurance takes priority over dose accuracy</strong>, and the system design must be reconsidered or intermittent sampling adopted."
+  },
+  {
+   "zh": "100% 檢重系統的「速度限制」如何影響每批次產能？對 CDMO 的排程和客戶承諾有何影響？",
+   "en": "How does the \"speed limitation\" of a 100% weight check system affect batch capacity? What are the implications for a CDMO's scheduling and customer commitments?"
+  },
+  {
+   "zh": "若客戶要求高速充填（&gt;300 vials/min）且使用 RTU Nest 包材，你會建議 100% 還是間歇抽樣？理由為何？",
+   "en": "If a customer requires high-speed filling (&gt;300 vials/min) and uses RTU nested components, would you recommend 100% or intermittent checking? Why?"
+  },
+  {
+   "zh": "Locating pins（定位銷）解決了什麼問題？它屬於哪個層面的管控措施？",
+   "en": "What problem do locating pins solve? At which level of control do they operate?"
+  },
+  {
+   "zh": "<strong>5.2 Dose Control System Design Options — Statistical Overview 5.2 劑量管制系統設計選項 — 統計概述</strong>",
+   "en": "<strong>5.2 Dose Control System Design Options: Statistical Overview</strong>"
+  },
+  {
+   "zh": "<strong>統計劑量管控的核心邏輯</strong>：因為不是每支容器都被量測，填充目標必須「偏保守」——設在遠離下限的位置，確保即使最差的未測容器也不會跌破下限。這個「保守偏移量」的大小，取決於系統的填充變異（σFill）和抽樣設計。",
+   "en": "<strong>The core logic of statistical dose control</strong>: because not every container is measured, the fill target must be \"conservative\", set far enough from the lower limit that even the worst unmeasured container does not fall below it. The size of this \"conservative offset\" depends on the fill variability of the system (σFill) and the sampling design."
+  },
+  {
+   "zh": "<strong>兩種主要劑量量測方法</strong>：",
+   "en": "<strong>Two main dose measurement methods</strong>:"
+  },
+  {
+   "zh": "<strong>重力式（Gravimetric）</strong>：用秤量測重量，計算淨重。主流方法，精度高，適用大多數液體充填",
+   "en": "<strong>Gravimetric</strong>: weighing on a scale and calculating net weight. This is the mainstream method, with high accuracy, and is suitable for most liquid filling"
+  },
+  {
+   "zh": "<strong>體積式（Volumetric）</strong>：計算物理限位點（如雷射偵測卡匣液位），適用特殊容器幾何形狀",
+   "en": "<strong>Volumetric</strong>: counting physical limit points (e.g., laser detection of the liquid level in a cartridge), suitable for special container geometries"
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>圖 5.2-1（正常狀況）</strong>：顯示 Nest 充填線在所有劑量都在管制限內時的操作流程。每隔固定 Nest 數抽取一排進行重量量測，量測通過後，這一批 Nests 才能放行繼續後續製程。",
+   "en": "<strong>Figure 5.2-1 (normal condition)</strong>: shows the operating flow of a nest filling line when all doses are within the control limits. One row is drawn for weight measurement every fixed number of nests, and only after the measurement passes can this group of nests be released to continue downstream processing."
+  },
+  {
+   "zh": "<strong>圖 5.2-2（異常狀況）</strong>：顯示某次量測超出拒絕限時的處理程序。系統回到「製程中」狀態重新調整，且從上次合格量測到此次不合格量測之間的所有容器，依拒絕策略決定是否全部報廢，或只報廢對應充填站的容器。",
+   "en": "<strong>Figure 5.2-2 (abnormal condition)</strong>: shows the handling procedure when a measurement exceeds the reject limit. The system returns to the \"in-process\" state for readjustment, and all containers between the last passing measurement and this failing measurement are either all rejected or only those from the corresponding filling station are rejected, depending on the rejection strategy."
+  },
+  {
+   "zh": "這兩張圖的核心訊息：<strong>shift-register（移位暫存器）追蹤系統</strong>的精確性決定了報廢範圍的大小，系統越精確，不必要的報廢越少。",
+   "en": "The core message of these two figures: the accuracy of the <strong>shift-register tracking system</strong> determines the scope of rejection. The more accurate the system, the less unnecessary rejection."
+  },
+  {
+   "zh": "統計劑量管控的「報廢處理」為何是最大缺點？對 CDMO 的批次良率有何衝擊？",
+   "en": "Why is the \"reject handling\" of statistical dose control its biggest drawback? What is the impact on a CDMO's batch yield?"
+  },
+  {
+   "zh": "在 Vial 充填線（非 Nest）上，為何報廢範圍往往比 Nest 充填線更大？",
+   "en": "Why is the rejection scope often larger on a vial filling line (non-nest) than on a nest filling line?"
+  },
+  {
+   "zh": "<strong>5.2.1 Method 1: Gravimetric Dose Control Process &amp; 5.2.1.1 Considerations 5.2.1 方法一：重量法劑量管制製程與 5.2.1.1 考量事項</strong>",
+   "en": "<strong>5.2.1 Method 1: Gravimetric Dose Control Process &amp; 5.2.1.1 Considerations</strong>"
+  },
+  {
+   "zh": "<strong>重力式劑量管控的四大不確定性來源</strong>——每一項都必須在設計充填視窗時量化納入：",
+   "en": "<strong>The four sources of uncertainty in gravimetric dose control</strong>: each must be quantified and included when designing the fill window:"
+  },
+  {
+   "zh": "<strong>Container Holdup（容器殘留量）</strong>：藥液填入後，仍有一部分因容器幾何形狀（如注射器柱塞空間）無法被病患抽出。標籤聲稱量（Label Claim）是必須<em>可送達</em>的最低量，所以填充量必須 = Label Claim + Holdup",
+   "en": "<strong>Container holdup</strong>: after filling, part of the liquid still cannot be withdrawn by the patient because of the container geometry (e.g., the plunger space in a syringe). The label claim is the minimum amount that must be <em>deliverable</em>, so the fill amount must equal label claim + holdup"
+  },
+  {
+   "zh": "<strong>Scale Bias（秤台偏差）</strong>：Tare 秤和 Gross 秤的系統性誤差之差值。即使每台秤個別校正合格，兩台之間仍可能有固定偏差，需要 Guard-banding（保護帶）補償",
+   "en": "<strong>Scale bias</strong>: the difference between the systematic errors of the tare scale and the gross scale. Even if each scale is individually calibrated and within tolerance, a fixed bias may remain between the two and must be compensated with a guard band"
+  },
+  {
+   "zh": "<strong>sMU（Scale Measurement Uncertainty，秤台量測不確定度）</strong>：秤台在特定量測範圍內的隨機誤差，以標準差表示，透過 k₁ 因子納入拒絕限計算",
+   "en": "<strong>sMU (scale measurement uncertainty)</strong>: the random error of the scale within a given measurement range, expressed as a standard deviation and included in the reject limit calculation through the k₁ factor"
+  },
+  {
+   "zh": "<strong>sFill（充填標準差）</strong>：充填製程本身的批次內變異，以標準差表示，透過 k₂、k₃、k₄ 因子控制目標值位置和調整觸發點",
+   "en": "<strong>sFill (fill standard deviation)</strong>: the within-batch variability of the filling process itself, expressed as a standard deviation, which controls the target position and adjustment trigger points through the k₂, k₃ and k₄ factors"
+  },
+  {
+   "zh": "想像你在烘焙，要求每個蛋糕剛好 500g：",
+   "en": "Imagine you are baking and every cake must weigh exactly 500 g:"
+  },
+  {
+   "zh": "<strong>Container Holdup</strong> = 烤模本身會吸油，所以必須多放一點麵糊",
+   "en": "<strong>Container holdup</strong> = the baking tin absorbs some oil, so you must add a little more batter"
+  },
+  {
+   "zh": "<strong>Scale Bias</strong> = 廚房秤和出廠秤之間的固定差異，需要校正補償",
+   "en": "<strong>Scale bias</strong> = the fixed difference between your kitchen scale and the factory scale, which needs a correction"
+  },
+  {
+   "zh": "<strong>sMU</strong> = 廚房秤每次量測的誤差範圍（±2g），要在安全範圍內操作",
+   "en": "<strong>sMU</strong> = the error range of each reading on the kitchen scale (±2 g), so you must operate within a safe margin"
+  },
+  {
+   "zh": "<strong>sFill</strong> = 每次倒麵糊的手抖程度，有時多有時少，這個變異決定了你需要預留多少「安全邊距」",
+   "en": "<strong>sFill</strong> = how shaky your hand is when pouring the batter, sometimes more and sometimes less. This variability determines how much \"safety margin\" you need to reserve"
+  },
+  {
+   "zh": "充填機設計的核心就是把這四個誤差來源同時管控，確保每支注射器送到病患手中的藥量都在規格內。",
+   "en": "The core of filling machine design is to control all four sources of error at the same time, ensuring that the dose of every syringe delivered to the patient is within specification."
+  },
+  {
+   "zh": "公式與計算 Formula — Guard-band 概念",
+   "en": "Formula and Calculation: Guard-band Concept"
+  },
+  {
+   "zh": "填充下限設定邏輯（概念式）：\n\n最低填充量（Label Claim）\n+ Container Holdup（容器殘留補償）\n+ Guard-band for Scale Bias（秤台偏差保護帶）\n+ k₁ × sMU（量測不確定度保護）\n+ k₂ × sFill（充填變異保護）\n= 填充機下拒絕限（Lower Reject Limit）\n\n填充目標（Target）\n= Lower Reject Limit + k₂ × sFill\n\n[實際 k 因子的計算見 Section 5.2.1-1 圖表]\n\n結論：每增加一個誤差來源，填充下限就向上移動，\n意味著每支容器必須多填更多藥液（overfill 增加）。",
+   "en": "Logic for setting the lower fill limit (conceptual):\n\nMinimum fill amount (label claim)\n+ Container holdup (holdup compensation)\n+ Guard band for scale bias\n+ k₁ × sMU (measurement uncertainty protection)\n+ k₂ × sFill (fill variability protection)\n= Lower reject limit of the filling machine\n\nFill target (Target)\n= Lower reject limit + k₂ × sFill\n\n[See the Section 5.2.1-1 figure for the actual k-factor calculation]\n\nConclusion: each additional error source moves the lower fill limit upward,\nmeaning every container must be filled with more product (more overfill)."
+  },
+  {
+   "zh": "<strong>秤台校正（Scale Calibration）</strong>是 GMP 關鍵操作，最少要在<strong>批次前後各做一次</strong>。長批次生產中還需要定期歸零（tare/zero），防止溫度漂移等因素造成累積誤差。若機台不具備自動歸零功能，需要提高手動校正頻率——這會直接影響生產效率，設計評估時必須考量。",
+   "en": "<strong>Scale calibration</strong> is a critical GMP operation and should be performed <strong>at least once before and once after each batch</strong>. In long batches, periodic zeroing (tare/zero) is also needed to prevent accumulated error from factors such as temperature drift. If the machine has no automatic zeroing function, the manual calibration frequency must increase, which directly affects production efficiency and must be considered during design evaluation."
+  },
+  {
+   "zh": "<strong>Figure 5.2.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p121-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: K Factors and Standard Deviation Explanation (doc p106–p107) Figure 5.2.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p121-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: K 因子與標準差說明（文件第 106–107 頁）</strong>",
+   "en": "<strong>Figure 5.2.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p121-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: K Factors and Standard Deviation Explanation <a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p121-1.png\" target=\"_blank\" title=\"View in Gallery\">(doc p106–p107)</a></strong>"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts — k 因子系統詳解",
+   "en": "Key Concepts: The k-Factor System Explained"
+  },
+  {
+   "zh": "k 因子系統是一套<strong>風險與成本的平衡工具</strong>，每個因子控制一個不同的失效模式：",
+   "en": "The k-factor system is a <strong>tool for balancing risk and cost</strong>, and each factor controls a different failure mode:"
+  },
+  {
+   "zh": "<strong>k₁</strong>：保護秤台量測誤差（sMU + Bias）。k₁ 越大，拒絕限離規格限越遠，誤判的風險越低，但操作視窗越窄",
+   "en": "<strong>k₁</strong>: protects against scale measurement error (sMU + bias). The larger k₁ is, the further the reject limit sits from the specification limit and the lower the risk of misjudgment, but the narrower the operating window"
+  },
+  {
+   "zh": "<strong>k₂</strong>：保護充填目標不落入下拒絕限。k₂ 越大，目標值越高，報廢率越低，但 overfill 越多（成本越高）",
+   "en": "<strong>k₂</strong>: protects the fill target from falling into the lower reject limit. The larger k₂ is, the higher the target and the lower the rejection rate, but the greater the overfill (and the higher the cost)"
+  },
+  {
+   "zh": "<strong>k₃</strong>：保護充填目標不超過上拒絕限。若上下限差距大，k₃ 可大於 k₂，讓目標值靠近下限以減少 overfill",
+   "en": "<strong>k₃</strong>: protects the fill target from exceeding the upper reject limit. If the gap between the upper and lower limits is large, k₃ can be larger than k₂, letting the target sit closer to the lower limit to reduce overfill"
+  },
+  {
+   "zh": "<strong>k₄</strong>：控制調整觸發點的靈敏度。k₄ 太小 = 頻繁調整 = 速度慢；k₄ 太大 = 允許漂移過大 = 良率風險增加",
+   "en": "<strong>k₄</strong>: controls the sensitivity of the adjustment trigger point. If k₄ is too small, adjustments are frequent and the line is slow; if k₄ is too large, excessive drift is tolerated and the yield risk rises"
+  },
+  {
+   "zh": "公式與計算 Formula — k 因子的商業意義",
+   "en": "Formula and Calculation: The Business Meaning of the k Factors"
+  },
+  {
+   "zh": "k 因子與 overfill 的關係：\n\n目標值（Target）相對下限的偏移量\n= k₂ × σFill + k₁ × (σMU + bias) + Holdup\n\n若 σFill 大（製程變異大）：\n  → k₂ 需要更大 → 目標值更高 → overfill 更多\n\n若 σMU 大（秤台精度差）：\n  → k₁ 需要更大 → 操作視窗更窄 → 更多容器被拒絕\n\n關鍵洞察：投資精度更高的秤台（降低 σMU），\n可以減少整體 overfill，對高單價產品回報顯著。\n\n範例試算：\n  藥液單價 = USD 10,000/ml\n  每支因 k 因子導致 overfill = 0.05ml\n  批次量 = 10,000 支\n  每批 overfill 成本 = 0.05 × 10,000 × 10,000 = USD 5,000,000\n  → 改善製程精度（降低 σFill）的 ROI 極高",
+   "en": "Relationship between k factors and overfill:\n\nOffset of the target above the lower limit\n= k₂ × σFill + k₁ × (σMU + bias) + Holdup\n\nIf σFill is large (high process variability):\n  → k₂ must be larger → higher target → more overfill\n\nIf σMU is large (poor scale accuracy):\n  → k₁ must be larger → narrower operating window → more containers rejected\n\nKey insight: investing in a more accurate scale (lower σMU)\ncan reduce overall overfill, with a significant return for high-value products.\n\nWorked example:\n  Product unit price = USD 10,000/mL\n  Overfill per unit due to k factors = 0.05 mL\n  Batch size = 10,000 units\n  Overfill cost per batch = 0.05 × 10,000 × 10,000 = USD 5,000,000\n  → The ROI of improving process accuracy (lowering σFill) is extremely high"
+  },
+  {
+   "zh": "<strong>k₄ 的設計對自動化 vs. 手動調整的影響</strong>：若充填機依靠操作員手動調整，k₄ 設得太小會導致頻繁操作員介入，增加人為錯誤風險（違反無菌保證原則）。自動化充填機可設更小的 k₄，達到更緊密的目標控制而不增加人工介入。這是選擇自動化設備的重要技術理由之一，CDMO 在設備評估時應將此納入 TCO（總擁有成本）計算。",
+   "en": "<strong>Impact of k₄ design on automated vs. manual adjustment</strong>: if the filling machine relies on manual operator adjustment, setting k₄ too small leads to frequent operator interventions and increases the risk of human error (contrary to the principles of sterility assurance). An automated filling machine can use a smaller k₄ to achieve tighter target control without adding manual intervention. This is one of the important technical reasons for choosing automated equipment, and a CDMO should include it in the TCO (total cost of ownership) calculation during equipment evaluation."
+  },
+  {
+   "zh": "若你的充填製程 σFill 從 0.05ml 改善到 0.02ml，k₂ 維持不變，填充目標值會如何移動？對批次 overfill 量有何影響？",
+   "en": "If your filling process σFill improves from 0.05 mL to 0.02 mL with k₂ unchanged, how will the fill target move? What is the effect on batch overfill?"
+  },
+  {
+   "zh": "k₄ 太大（如 k₄ = 5）意味著什麼？對充填品質的長期影響是什麼？",
+   "en": "What does it mean if k₄ is too large (e.g., k₄ = 5)? What is the long-term effect on filling quality?"
+  },
+  {
+   "zh": "為何高單價生物製劑（如基因療法）更需要精確的 k 因子設計？請從商業角度計算說明。",
+   "en": "Why do high-value biologics (e.g., gene therapies) need more precise k-factor design? Explain with a calculation from a business perspective."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary (5.0–5.1.4 + 5.2 intro + 5.2.1)",
+   "en": "Section Summary (5.0–5.1.4 + 5.2 intro + 5.2.1)"
+  },
+  {
+   "zh": "<strong>劑量管控是 CQA</strong>：每個容器的填充量直接決定病患收到的治療劑量，是無菌充填中最關鍵的品質屬性之一",
+   "en": "<strong>Dose control is a CQA</strong>: the fill amount of each container directly determines the therapeutic dose the patient receives and is one of the most critical quality attributes in aseptic filling"
+  },
+  {
+   "zh": "<strong>100% vs. 間歇抽樣</strong>：100% 管控精度高、可無隔離緩衝、可 Re-dose/Dose-out，但速度受限且需 Denesting；間歇抽樣速度快、適合 RTU Nest，但需隔離緩衝且必須更保守的 overfill 設定",
+   "en": "<strong>100% vs. intermittent sampling</strong>: 100% control offers high accuracy, needs no quarantine buffer and allows re-dosing and dose-out, but is speed-limited and requires denesting; intermittent sampling is fast and suits RTU nests, but needs a quarantine buffer and a more conservative overfill setting"
+  },
+  {
+   "zh": "<strong>Dose-in / Re-dosing / Dose-out</strong>：100% 管控系統獨有的三種操作模式，分別對應批次啟動、不足補充、批次結束，最大化高價值藥液的回收率",
+   "en": "<strong>Dose-in / re-dosing / dose-out</strong>: three operating modes unique to 100% control systems, corresponding to batch start-up, topping up underfilled containers and batch end respectively, maximizing recovery of high-value product"
+  },
+  {
+   "zh": "<strong>四大不確定性來源</strong>：重力式劑量管控必須量化 Container Holdup、Scale Bias、sMU、sFill，並通過 Guard-banding 和 k 因子系統轉化為填充機操作限",
+   "en": "<strong>Four sources of uncertainty</strong>: gravimetric dose control must quantify container holdup, scale bias, sMU and sFill, and convert them into filling machine operating limits through guard-banding and the k-factor system"
+  },
+  {
+   "zh": "<strong>k 因子的商業本質</strong>：k₁–k₄ 每個都是風險（報廢率）與成本（overfill）的平衡點，改善製程精度（降低 σFill 和 σMU）直接轉化為每批可觀的藥液節省",
+   "en": "<strong>The business essence of k factors</strong>: each of k₁–k₄ is a balance point between risk (rejection rate) and cost (overfill); improving process accuracy (lowering σFill and σMU) translates directly into substantial product savings per batch"
+  },
+  {
+   "zh": "<strong>決策階層的實踐</strong>：即使 100% 管控的商業優勢明顯，若 Denesting 操作增加無法接受的無菌暴露風險，無菌保證的優先級必須居首位",
+   "en": "<strong>Putting the decision hierarchy into practice</strong>: even where the business advantages of 100% control are clear, if denesting introduces an unacceptable sterility exposure risk, sterility assurance must take first priority"
+  }
+ ]
+}

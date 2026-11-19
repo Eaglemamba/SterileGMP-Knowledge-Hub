@@ -1,0 +1,593 @@
+{
+ "source": "section-02c-filling-tp-dp.html",
+ "blocks": [
+  {
+   "zh": "第2C節：液體充填技術 — 時間壓力充填、滾動膜片泵 與 針頭設計",
+   "en": "Section 2C: Liquid Filling Technologies - Time Pressure Filling, Rolling Diaphragm Pump and Needle Design"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Time Pressure (TP，時間壓力充填) 的操作原理：如何以壓力+時間控制充填量，以及其 CIP/SIP 優勢與溫度補償的必要性",
+   "en": "Understand the operating principle of Time Pressure (TP) filling: how fill volume is controlled by pressure and time, its CIP/SIP advantages, and why temperature compensation is necessary"
+  },
+  {
+   "zh": "掌握 Rolling Diaphragm Pump (DP，滾動膜片泵) 的獨特封閉式設計，理解膜片如何隔離機械部件與無菌液體路徑",
+   "en": "Master the unique closed design of the Rolling Diaphragm Pump (DP), and understand how the diaphragm isolates mechanical parts from the sterile liquid path"
+  },
+  {
+   "zh": "比較 TP 與 DP 在黏度、剪切力、SU 選項、維護複雜度與 TCO 上的差異，並能應用於 CDMO 設備選型",
+   "en": "Compare TP and DP in terms of viscosity, shear, SU options, maintenance complexity and TCO, and apply the comparison to CDMO equipment selection"
+  },
+  {
+   "zh": "識別各種填充針頭設計（開放式、封套式、閉合式）的適用產品特性與 SA 考量，並理解針頭安裝對無菌保證的影響",
+   "en": "Identify the filling needle designs (open, jacketed, closing) and the product characteristics and SA considerations each suits, and understand how needle installation affects sterility assurance"
+  },
+  {
+   "zh": "在 TP / DP / 針頭選擇中持續強化決策層級：無菌保證 &gt; 產品 CQAs &gt; 商業彈性",
+   "en": "Keep reinforcing the decision hierarchy in TP / DP / needle selection: sterility assurance &gt; product CQAs &gt; commercial flexibility"
+  },
+  {
+   "zh": "本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "2.3 Aseptic Filling Technologies: Time Pressure (時間壓力充填)",
+   "en": "2.3 Aseptic Filling Technologies: Time Pressure"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Time Pressure (時間壓力充填):</strong> 不使用機械泵推動液體，而是對儲藥容器施加微小正壓，再以 <strong>pinch valve（夾管閥）</strong> 開關精確控制流出時間，以時間 × 壓力 = 充填體積的方式達到劑量控制。",
+   "en": "<strong>Time Pressure:</strong> Instead of pushing the liquid with a mechanical pump, a slight positive pressure is applied to the product vessel and a <strong>pinch valve</strong> opens and closes to control the flow time precisely; dose is controlled by time × pressure = fill volume."
+  },
+  {
+   "zh": "<strong>Orifice plate（孔徑板）:</strong> 高壓系統中在液體路徑上設置的限流孔，透過精確的孔徑確保流量一致性，是 TP 高精度的核心元件之一。",
+   "en": "<strong>Orifice plate:</strong> In high-pressure systems, a flow-restricting orifice placed in the liquid path. Its precise bore ensures consistent flow rate and is one of the core components behind TP accuracy."
+  },
+  {
+   "zh": "<strong>PLC（可程式邏輯控制器）:</strong> TP 系統的「大腦」。因充填量受溫度和壓力影響，PLC 即時感測兩者並動態調整充填時間，補償任何偏差。",
+   "en": "<strong>PLC (programmable logic controller):</strong> The \"brain\" of the TP system. Because fill volume is affected by temperature and pressure, the PLC senses both in real time and adjusts the fill time dynamically to compensate for any deviation."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "TP 充填就像用水塔供水的咖啡機：水塔保持固定水壓，你按下出水按鈕（開啟 pinch valve）並計時，固定時間後關閉即得到固定量的咖啡。高壓系統加了孔徑板就像在出水口裝了精密噴嘴，使流量更一致；低壓系統則像拿下噴嘴後以較慢速度出水。",
+   "en": "TP filling is like a coffee machine fed by a water tower: the tower holds a constant water pressure, you press the dispense button (open the pinch valve) and time it, and closing after a fixed time gives a fixed amount of coffee. A high-pressure system with an orifice plate is like fitting a precision nozzle at the outlet so the flow is more consistent; a low-pressure system is like removing the nozzle and letting the water out more slowly."
+  },
+  {
+   "zh": "PLC 是那個知道「今天天氣冷水密度稍高、昨天熱一點」而自動調整出水時間的智慧控制模組。",
+   "en": "The PLC is the smart control module that knows \"the water is a bit denser on a cold day than on yesterday's warmer one\" and adjusts the dispense time automatically."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "TP 系統最大的弱點是對<strong>溫度波動敏感</strong>——長時間充填或中途停機都可能因溫度漂移影響精度。這也是 PLC 溫度補償曲線（temperature compensation curve）必須在產品評估階段確立的原因。",
+   "en": "The biggest weakness of a TP system is its <strong>sensitivity to temperature fluctuation</strong>: long fill runs or mid-run stoppages can cause temperature drift that affects accuracy. This is why the PLC temperature compensation curve must be established during the product assessment stage."
+  },
+  {
+   "zh": "TP 是四種充填技術中 <strong>CIP/SIP 最容易整合</strong>的系統，也是唯一可設計成幾乎全封閉的系統（無產品與機械件直接接觸）。這對無菌保證至關重要。",
+   "en": "Of the four filling technologies, TP is the one that <strong>integrates CIP/SIP most easily</strong>, and the only one that can be designed as an almost fully closed system (no direct contact between product and mechanical parts). This is critical for sterility assurance."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "TP 系統為何需要 PLC 即時計算，而不能僅靠固定時間控制充填？",
+   "en": "Why does a TP system need real-time PLC calculation instead of controlling fill volume with a fixed time alone?"
+  },
+  {
+   "zh": "高壓 TP 與低壓 TP 各適用什麼產品特性？選擇時如何決定？",
+   "en": "What product characteristics suit high-pressure TP and low-pressure TP respectively? How do you decide between them?"
+  },
+  {
+   "zh": "<strong>2.3.1 Time Pressure Design Configuration, Setup, and Positioning 2.3.1 時間壓力充填設計配置、安裝與定位</strong>",
+   "en": "<strong>2.3.1 Time Pressure Design Configuration, Setup, and Positioning</strong>"
+  },
+  {
+   "zh": "<strong>Intermediate vessel（中間容器）:</strong> 介於主批次容器（bulk vessel）與充填針頭之間的緩衝容器。TP 系統中它承受正壓，並透過 manifold（歧管）分配液體至各充填站。不一定每個 TP 系統都需要中間容器。",
+   "en": "<strong>Intermediate vessel:</strong> A buffer vessel between the bulk vessel and the filling needles. In a TP system it is held under positive pressure and distributes liquid to the filling stations through a manifold. Not every TP system needs an intermediate vessel."
+  },
+  {
+   "zh": "<strong>Pinch valve 在屏障內外的定位:</strong> 雖然 pinch valve 可在屏障外（降低無菌區複雜度），但洩漏風險使屏障內安裝更有 SA 優勢——這是「無菌保證 &gt; 操作便利性」的典型應用。",
+   "en": "<strong>Pinch valve position inside or outside the barrier:</strong> Although the pinch valve can be outside the barrier (reducing complexity in the aseptic area), the leakage risk makes installation inside the barrier better for SA. This is a classic application of \"sterility assurance &gt; operating convenience\"."
+  },
+  {
+   "zh": "TP 系統的另一個優勢是<strong>系統彈性</strong>：只需更換孔徑板、管路和針頭（換件很少），即可覆蓋很廣的充填體積範圍，相對 RPP 需要整組更換泵。這對 CDMO 多品種生產非常有價值。",
+   "en": "Another advantage of TP systems is <strong>system flexibility</strong>: simply changing the orifice plate, tubing and needles (few change parts) covers a very wide range of fill volumes, whereas an RPP requires replacing the whole pump set. This is very valuable for multi-product CDMO production."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "CDMO 場景：如果你的客戶要求在同一條線上充填 0.5 mL 到 50 mL 的不同配方，TP 系統只需換不同孔徑板和針頭即可覆蓋整個範圍，而 RPP 可能需要更換整組泵頭。TP 的換規格成本（changeover cost）遠低於 RPP。",
+   "en": "CDMO scenario: if your customer needs 0.5 mL to 50 mL of different formulations filled on the same line, a TP system only needs a different orifice plate and needles to cover the whole range, while an RPP may need the whole set of pump heads replaced. The changeover cost of TP is much lower than that of RPP."
+  },
+  {
+   "zh": "<strong>2.3.2 Time Pressure Advantages and Disadvantages 2.3.2 時間壓力充填優缺點</strong>",
+   "en": "<strong>2.3.2 Time Pressure Advantages and Disadvantages</strong>"
+  },
+  {
+   "zh": "<strong>Suck back（回吸功能）:</strong> 充填結束時針頭迅速負壓回收末端液滴，防止滴液。TP 系統的回吸能力有限（透過快速關閉 pinch valve 模擬），且快速關閉會加速管路老化，是 TP 的固有限制。",
+   "en": "<strong>Suck back:</strong> At the end of filling, the needle quickly draws back the liquid droplet at its tip to prevent dripping. TP suck back capability is limited (simulated by closing the pinch valve rapidly), and rapid closing accelerates tubing aging; this is an inherent limitation of TP."
+  },
+  {
+   "zh": "<strong>SU 不適合 TP 的原因:</strong> TP 系統的儲壓容器（intermediate vessel）需承受正壓，使用一次性耐壓袋成本很高，且結構較複雜。PP 和 DP 才是 SU 的主要選項。",
+   "en": "<strong>Why SU is not suited to TP:</strong> The pressure vessel (intermediate vessel) of a TP system must withstand positive pressure; single-use pressure-rated bags are costly and structurally more complex. PP and DP are the main SU options."
+  },
+  {
+   "zh": "<strong>TP 的核心限制：低黏度 only。</strong> 高黏度產品流動阻力大，依賴壓力和時間的 TP 系統無法精準控制。此類產品應優先考慮 RPP 或 DP。",
+   "en": "<strong>The core limitation of TP: low viscosity only.</strong> High-viscosity products have high flow resistance, and a TP system that relies on pressure and time cannot control them accurately. Such products should be considered first for RPP or DP."
+  },
+  {
+   "zh": "Pinch valve 管路（silicone tubing）的磨損週期必須經過<strong>風險評估並驗證</strong>，建立明確的更換時程，否則顆粒污染（particulate contamination）風險累積。",
+   "en": "The wear cycle of the pinch valve tubing (silicone tubing) must be <strong>risk assessed and validated</strong>, with a clear replacement schedule established; otherwise the risk of particulate contamination accumulates."
+  },
+  {
+   "zh": "公式與概念 Conceptual Formula",
+   "en": "Conceptual Formula"
+  },
+  {
+   "zh": "充填量 ≈ 壓力 × 時間 × 孔徑係數\n（Volume ∝ Pressure × Time × Orifice factor）\n\nPLC 補償邏輯：\n  測量實際溫度 T 和壓力 P\n  計算修正後的開閥時間 t_adj\n  使充填量 = 目標體積",
+   "en": "Fill volume ≈ pressure × time × orifice factor\n(Volume ∝ Pressure × Time × Orifice factor)\n\nPLC compensation logic:\n  Measure actual temperature T and pressure P\n  Calculate the corrected valve opening time t_adj\n  So that fill volume = target volume"
+  },
+  {
+   "zh": "為什麼 TP 系統通常不適合 SUS（Single-Use System）？",
+   "en": "Why are TP systems generally not suitable for SUS (Single-Use Systems)?"
+  },
+  {
+   "zh": "如果充填線在充填過程中發生溫度上升（例如房間空調故障），TP 系統會如何響應？如果沒有 PLC 補償，結果會是什麼？",
+   "en": "If the temperature rises during filling (for example, an air-conditioning failure in the room), how will the TP system respond? What would the result be without PLC compensation?"
+  },
+  {
+   "zh": "<strong>2.3.3 Time Pressure Sterility Assurance: Microbial and Total Particles 2.3.3 時間壓力充填無菌保證：微生物與微粒總量</strong>",
+   "en": "<strong>2.3.3 Time Pressure Sterility Assurance: Microbial and Total Particles</strong>"
+  },
+  {
+   "zh": "<strong>Wear profile（磨損曲線）:</strong> 透過實際使用數據（充填次數、清洗次數）建立的管路壽命評估曲線。必須在驗證階段確立，並訂立強制更換週期，以防止 particulate generation（顆粒產生）。",
+   "en": "<strong>Wear profile:</strong> A tubing life assessment curve built from actual usage data (number of fills, number of cleanings). It must be established during validation, with a mandatory replacement interval set to prevent particulate generation."
+  },
+  {
+   "zh": "<strong>封閉系統（closed system）的雙面性:</strong> TP 是相對封閉的系統，正常操作下無菌保證良好；但一旦管路破損，洩漏本身就是污染風險，且破損前系統無警示。",
+   "en": "<strong>The two-sided nature of a closed system:</strong> TP is a relatively closed system, and sterility assurance is good under normal operation; but once the tubing fails, the leak itself is a contamination risk, and the system gives no warning before the failure."
+  },
+  {
+   "zh": "<strong>SA 決策要點：</strong>高毒性/高活性（potent/toxic）產品使用 TP 時，pinch valve 必須置於隔離器（isolator）或 RABS 屏障<strong>內部</strong>，以防洩漏時危害操作人員或污染環境——這是監管要求，不是選項。",
+   "en": "<strong>SA decision point:</strong> When TP is used for potent/toxic products, the pinch valve must be placed <strong>inside</strong> the isolator or RABS barrier, to avoid harming operators or contaminating the environment in the event of a leak. This is a regulatory expectation, not an option."
+  },
+  {
+   "zh": "定期目視檢查管路是 TP 系統的強制 SOP 項目，應以<strong>風險評估</strong>確定檢查頻率，並記錄於 GDocP 文件中。",
+   "en": "Regular visual inspection of the tubing is a mandatory SOP item for TP systems; the inspection frequency should be determined by <strong>risk assessment</strong> and recorded in GDocP documentation."
+  },
+  {
+   "zh": "CDMO 場景：當客戶帶來高活性藥物（HPAPI）充填委託時，你的 TP 系統設計評估第一個問題應該是：「pinch valve 在隔離器內還是外？」若在外，需要在合約簽署前評估是否需要設備改造，這直接影響報價和交期。無菌保證永遠是第一優先。",
+   "en": "CDMO scenario: when a customer brings a highly potent drug (HPAPI) filling project, the first question in your TP system design assessment should be: \"Is the pinch valve inside or outside the isolator?\" If outside, you need to assess whether equipment modification is required before the contract is signed, as this directly affects the quotation and lead time. Sterility assurance always comes first."
+  },
+  {
+   "zh": "<strong>2.3.4 Time Pressure Efficiency and Impact on Risk 2.3.4 時間壓力充填效率與風險影響</strong>",
+   "en": "<strong>2.3.4 Time Pressure Efficiency and Impact on Risk</strong>"
+  },
+  {
+   "zh": "<strong>空氣泡（air bubbles）是 TP 精度的隱形殺手：</strong>正壓系統可能將微量空氣帶入管路，空泡通過充填針時導致短充（underfill）。這是 TP 即使精度高也<strong>仍需要定期 IPC（統計式重量檢測）</strong>的根本原因。",
+   "en": "<strong>Air bubbles are the hidden killer of TP accuracy:</strong> A positive-pressure system may carry trace air into the tubing, and a bubble passing through the filling needle causes an underfill. This is the fundamental reason why, even with high accuracy, TP <strong>still requires periodic IPC (statistical weight checks)</strong>."
+  },
+  {
+   "zh": "長時間充填或生產中斷後的<strong>溫度恢復期</strong>是 TP 精度的高風險窗口，應在製程設計中以 SOP 管控（例如中斷後必須等待溫度穩定並做 IPC 確認）。",
+   "en": "The <strong>temperature recovery period</strong> after long fill runs or production interruptions is a high-risk window for TP accuracy, and should be controlled by SOP in the process design (for example, after an interruption, wait for the temperature to stabilize and confirm with an IPC)."
+  },
+  {
+   "zh": "<strong>IPC 頻率的風險評估：</strong>TP 系統的 IPC 頻率應根據「產品的流動特性（viscosity、surface tension）」和「歷史充填數據」制定，並記錄合理化依據（rationale）。過於頻繁增加成本，過於稀疏增加漏充風險——這是 QRM（品質風險管理）的典型應用。",
+   "en": "<strong>Risk assessment of IPC frequency:</strong> The IPC frequency of a TP system should be set according to the product's flow characteristics (viscosity, surface tension) and historical filling data, with the rationale documented. Too frequent increases cost; too sparse increases the risk of missed underfills. This is a typical application of QRM (quality risk management)."
+  },
+  {
+   "zh": "為何在 TP 系統中使用正壓（overpressure）反而可能加劇空氣泡問題？如何在系統設計上降低此風險？",
+   "en": "Why might using positive pressure (overpressure) in a TP system actually aggravate the air bubble problem? How can the system design reduce this risk?"
+  },
+  {
+   "zh": "TP 系統的 IPC 頻率應如何確定？影響決策的關鍵因素有哪些？",
+   "en": "How should the IPC frequency of a TP system be determined? What are the key factors affecting the decision?"
+  },
+  {
+   "zh": "<strong>2.3.5 Time Pressure Costs: Initial and Lifecycle 2.3.5 時間壓力充填成本：初始與生命週期</strong>",
+   "en": "<strong>2.3.5 Time Pressure Costs: Initial and Lifecycle</strong>"
+  },
+  {
+   "zh": "公式與計算 TCO Framework",
+   "en": "Formula and Calculation: TCO Framework"
+  },
+  {
+   "zh": "TP 系統 TCO =\n  初始資本成本（設備 + CIP/SIP）\n  + 驗證成本（清潔驗證、SIP 驗證）\n  + 年度運營成本（管路消耗品、校驗）\n  + CIP/SIP 停機成本（每次週期時間 × 批次機會成本）\n  + 換規格時間（orifice + needle 更換）\n  + 人員培訓成本\n\nvs. PP + SUS：\n  低初始成本 + 高持續性耗材成本（每批）\n\n結論：高產量/多批次 → TP CIP/SIP 更划算",
+   "en": "TP system TCO =\n  Initial capital cost (equipment + CIP/SIP)\n  + Validation cost (cleaning validation, SIP validation)\n  + Annual operating cost (tubing consumables, calibration)\n  + CIP/SIP downtime cost (cycle time per run × batch opportunity cost)\n  + Changeover time (orifice + needle replacement)\n  + Personnel training cost\n\nvs. PP + SUS:\n  Low initial cost + high ongoing consumable cost (per batch)\n\nConclusion: for high volume / many batches, TP CIP/SIP is more economical"
+  },
+  {
+   "zh": "TP 的<strong>換型成本（changeover cost）極低</strong>——僅需更換孔徑板、管路和針頭，通常幾十分鐘內完成。這對 CDMO 多品種少批量生產是重要優勢，可縮短設備佔用時間，提高產線利用率。",
+   "en": "The <strong>changeover cost of TP is very low</strong>: only the orifice plate, tubing and needles need replacing, usually completed within a few tens of minutes. This is an important advantage for multi-product, small-batch CDMO production, as it shortens equipment occupation time and raises line utilization."
+  },
+  {
+   "zh": "注意 <strong>biodecontamination 與 CIP/SIP 無法同時進行</strong>的問題：在隔離器環境中，兩個週期必須先後執行，這會顯著增加批次間的周轉時間（turnaround time），必須納入生產計劃。",
+   "en": "Note that <strong>biodecontamination and CIP/SIP cannot be carried out at the same time</strong>: in an isolator environment the two cycles must run one after the other, which significantly increases batch-to-batch turnaround time and must be built into the production plan."
+  },
+  {
+   "zh": "<strong>2.3.6–2.3.10 TP System Complexity, Maintenance, SU, CIP/SIP &amp; Benefits/Risks 2.3.6–2.3.10 時間壓力（TP）系統複雜度、維護保養、拋棄式（SU）、CIP/SIP 及效益與風險</strong>",
+   "en": "<strong>2.3.6–2.3.10 TP System Complexity, Maintenance, SU, CIP/SIP &amp; Benefits/Risks</strong>"
+  },
+  {
+   "zh": "<strong>溫度補償曲線（temperature compensation curve）:</strong> 針對每個產品、在不同溫度下預先測試充填量並建立校正係數曲線。這是 TP 系統在技術轉移（tech transfer）時的關鍵交付物之一，必須在產品評估階段完成。",
+   "en": "<strong>Temperature compensation curve:</strong> For each product, fill volumes are tested in advance at different temperatures and a correction factor curve is built. This is one of the key deliverables of a TP system at tech transfer and must be completed during the product assessment stage."
+  },
+  {
+   "zh": "<strong>孔徑堵塞（orifice obstruction）:</strong> 更換矽膠管後，切割端若未對齊可能造成孔徑部分堵塞。這個微小的細節會讓整個 CIP/SIP 週期變成無效——因為洗滌液無法充分流過，監控傳感器又設在出口側（無法區分是哪個孔徑堵塞）。需要在換管後加入額外的確認步驟。",
+   "en": "<strong>Orifice obstruction:</strong> After silicone tubing is replaced, a cut end that is not aligned may partially block the orifice. This small detail can make an entire CIP/SIP cycle ineffective, because the cleaning fluid cannot flow through adequately and the monitoring sensor is on the outlet side (so it cannot tell which orifice is blocked). An additional verification step is needed after tubing replacement."
+  },
+  {
+   "zh": "TP 系統的<strong>維護簡單性</strong>是其最大商業優勢之一：唯一的運動部件是 pinch valve。壓力容器的 gasket 和 pressure relief valve 也需定期更換，但這些都是標準耗材，成本低且可預測。",
+   "en": "The <strong>maintenance simplicity</strong> of TP systems is one of their biggest commercial advantages: the only moving part is the pinch valve. The gasket and pressure relief valve of the pressure vessel also need regular replacement, but these are standard consumables, low in cost and predictable."
+  },
+  {
+   "zh": "對於需要<strong>主動冷卻</strong>的低溫充填產品（如蛋白質生物製劑），TP 液體路徑中任何未冷卻的外露段都可能造成局部溫升，影響充填精度——這是系統設計時必須考量的 CPP。",
+   "en": "For low-temperature filling products that need <strong>active cooling</strong> (such as protein biologics), any uncooled exposed section of the TP liquid path can cause a local temperature rise and affect fill accuracy. This is a CPP that must be considered in system design."
+  },
+  {
+   "zh": "為何 TP 系統是四種充填技術中 CIP/SIP「最容易整合」的？其結構特性的哪一點使其優於 RPP？",
+   "en": "Why is the TP system the one that integrates CIP/SIP \"most easily\" of the four filling technologies? Which structural feature makes it superior to RPP?"
+  },
+  {
+   "zh": "如果你要在 CDMO 新建一條 TP 充填線，你會要求 OEM 提供哪些預防性維護計劃（preventive maintenance plan）？至少列出3個關鍵項目。",
+   "en": "If you were building a new TP filling line at a CDMO, what preventive maintenance plan would you ask the OEM to provide? List at least 3 key items."
+  },
+  {
+   "zh": "2.4 Aseptic Filling Technologies: Rolling Diaphragm Pump (滾動膜片泵)",
+   "en": "2.4 Aseptic Filling Technologies: Rolling Diaphragm Pump"
+  },
+  {
+   "zh": "<strong>Positive displacement pump（正排量泵）:</strong> 每個行程推出固定體積的液體，與流量壓力相對無關，劑量精度高。DP 透過活塞推動滾動膜片排出精確體積，屬於此類別。",
+   "en": "<strong>Positive displacement pump:</strong> Delivers a fixed volume of liquid per stroke, relatively independent of flow pressure, giving high dosing accuracy. The DP pushes a rolling diaphragm with a piston to deliver a precise volume, and belongs to this category."
+  },
+  {
+   "zh": "<strong>Rolling diaphragm（滾動膜片）:</strong> DP 的核心創新。膜片像手套翻轉般滾動，完全隔離活塞機械部件與液體接觸面，使液體路徑沒有金屬摩擦，顆粒風險極低，同時維持系統封閉性。",
+   "en": "<strong>Rolling diaphragm:</strong> The core innovation of the DP. The diaphragm rolls like a glove being turned inside out, fully isolating the piston mechanics from the liquid-contact surface, so there is no metal friction in the liquid path, particulate risk is very low, and the system stays closed."
+  },
+  {
+   "zh": "<strong>Pinch valve 的角色:</strong> DP 以 pinch valve 控制進液和排液方向（與 RPP 不同，RPP 靠活塞位置切換進出口）。這使 DP 結構更簡單，清潔更容易。",
+   "en": "<strong>Role of the pinch valve:</strong> The DP uses pinch valves to control inlet and outlet flow direction (unlike the RPP, which switches inlet and outlet by piston position). This makes the DP structurally simpler and easier to clean."
+  },
+  {
+   "zh": "想像擠牙膏：你的手（活塞）推動牙膏（液體），牙膏管（滾動膜片）完全隔離你的手與牙膏內容物。你的手再髒，牙膏也是乾淨的。DP 就是這樣的設計理念——機械力透過膜片傳遞，但機械部件永不接觸產品。",
+   "en": "Think of squeezing toothpaste: your hand (the piston) pushes the toothpaste (the liquid), and the tube (the rolling diaphragm) fully isolates your hand from the contents. However dirty your hand is, the toothpaste stays clean. This is the design philosophy of the DP: mechanical force is transmitted through the diaphragm, but the mechanical parts never touch the product."
+  },
+  {
+   "zh": "相比之下，RPP 就像把活塞直接插進液體中攪拌——雖然精度高，但有摩擦顆粒和剪切力的隱憂。",
+   "en": "By contrast, an RPP is like pushing a piston straight into the liquid to stir it: accurate, but with concerns about friction particles and shear."
+  },
+  {
+   "zh": "DP 的<strong>最核心 SA 優勢</strong>：完全封閉的液體路徑（closed fluid path），機械摩擦顆粒無法進入產品，是四種充填技術中顆粒風險最低的正排量系統。這對注射劑的顆粒物（particulate matter）合規至關重要。",
+   "en": "The <strong>core SA advantage</strong> of the DP: a fully closed fluid path, so mechanical friction particles cannot enter the product. It is the positive displacement system with the lowest particulate risk of the four filling technologies. This is critical for compliance with particulate matter requirements for injectables."
+  },
+  {
+   "zh": "<strong>2.4.1 Rolling Diaphragm Pump Design Configuration 2.4.1 滾動隔膜泵設計配置</strong>",
+   "en": "<strong>2.4.1 Rolling Diaphragm Pump Design Configuration</strong>"
+  },
+  {
+   "zh": "<strong>真空控制（vacuum control）的雙重功能:</strong>",
+   "en": "<strong>The dual function of vacuum control:</strong>"
+  },
+  {
+   "zh": "<strong>功能1：</strong>控制活塞回程（suction 階段），真空將活塞拉回，而非機械推拉，使重複精度極高。",
+   "en": "<strong>Function 1:</strong> It controls the piston return stroke (suction phase); vacuum pulls the piston back rather than a mechanical push-pull, giving very high repeatability."
+  },
+  {
+   "zh": "<strong>功能2：</strong>在膜片兩側維持適當的差壓，防止膜片位移或皺摺（wrinkling），確保膜片始終緊貼活塞。",
+   "en": "<strong>Function 2:</strong> It maintains a suitable differential pressure across the diaphragm to prevent diaphragm displacement or wrinkling, ensuring the diaphragm stays in close contact with the piston."
+  },
+  {
+   "zh": "這兩個功能合一，解釋了為何 DP <strong>離開真空供應就不能操作</strong>——沒有真空，膜片失去定位，充填精度立刻受損，甚至導致膜片損壞。",
+   "en": "These two functions together explain why the DP <strong>cannot be operated without a vacuum supply</strong>: without vacuum, the diaphragm loses its positioning, fill accuracy is immediately compromised, and the diaphragm may even be damaged."
+  },
+  {
+   "zh": "<strong>關鍵操作警告：</strong>DP 在安裝完成但<strong>尚未連接真空</strong>的狀態下（例如從準備區搬運到充填線途中），若活塞意外移動，膜片會發生皺摺（wrinkle），導致衝程不一致和充填精度下降。",
+   "en": "<strong>Key operating warning:</strong> If the piston moves accidentally while the DP is installed but <strong>not yet connected to vacuum</strong> (for example, while being carried from the preparation area to the filling line), the diaphragm will wrinkle, leading to inconsistent stroke and reduced fill accuracy."
+  },
+  {
+   "zh": "這意味著培訓和 SOP 必須明確規定：DP 搬運期間的活塞保護措施，以及安裝後連接真空前的確認步驟。",
+   "en": "This means training and SOPs must explicitly specify the piston protection measures during DP transport, and the verification step after installation and before connecting vacuum."
+  },
+  {
+   "zh": "為何 DP 在沒有真空連接的情況下不能移動活塞？真空在 DP 中同時扮演哪兩個角色？",
+   "en": "Why must the piston of a DP not be moved without a vacuum connection? What two roles does vacuum play in a DP?"
+  },
+  {
+   "zh": "DP 與 RPP 在控制吸液/排液方向的機制上有何根本差異？",
+   "en": "What is the fundamental difference between the DP and the RPP in the mechanism that controls the suction/discharge direction?"
+  },
+  {
+   "zh": "<strong>2.4.2 Rolling Diaphragm Pump Setup and System Positioning 2.4.2 滾動隔膜泵安裝與系統定位</strong>",
+   "en": "<strong>2.4.2 Rolling Diaphragm Pump Setup and System Positioning</strong>"
+  },
+  {
+   "zh": "<strong>泵在屏障外安裝的 SA 邏輯：</strong>DP 液體路徑完全封閉（closed fluid path），機械部件在膜片外側，因此泵體可以安裝在隔離器<strong>外部</strong>，僅讓充填針頭和最末端的液體路徑留在無菌區內。這是 DP 相對於 RPP 的重要 SA 優勢——機械部件外置減少了無菌區的複雜度和干擾源。",
+   "en": "<strong>The SA logic of installing the pump outside the barrier:</strong> The DP liquid path is fully closed (closed fluid path) and the mechanical parts are on the outer side of the diaphragm, so the pump body can be installed <strong>outside</strong> the isolator, leaving only the filling needles and the last section of the liquid path in the aseptic area. This is an important SA advantage of the DP over the RPP: moving mechanical parts outside reduces complexity and sources of disturbance in the aseptic area."
+  },
+  {
+   "zh": "CDMO 設計考量：將 DP 泵體安裝在隔離器外部可以顯著降低無菌區的維護複雜度（pump service 不需要進入無菌區），同時不影響 SA（因為液體路徑封閉）。這也使得泵的定期維護和 PM（預防性維護）更容易執行，降低操作人員進入無菌區的需求，符合 EU GMP Annex 1 的人員干預最小化精神。",
+   "en": "CDMO design consideration: installing the DP pump body outside the isolator significantly reduces maintenance complexity in the aseptic area (pump servicing does not require entering the aseptic area) without affecting SA (because the liquid path is closed). It also makes routine pump maintenance and PM (preventive maintenance) easier to perform and reduces the need for operators to enter the aseptic area, in line with the spirit of minimizing personnel interventions in EU GMP Annex 1."
+  },
+  {
+   "zh": "<strong>2.4.3 Rolling Diaphragm Pump Advantages and Disadvantages 2.4.3 滾動隔膜泵優缺點</strong>",
+   "en": "<strong>2.4.3 Rolling Diaphragm Pump Advantages and Disadvantages</strong>"
+  },
+  {
+   "zh": "<strong>DP 的溫度不敏感性 vs TP 的溫度敏感性：</strong>DP 作為正排量系統，每個行程推出固定物理體積，不受液體溫度影響（密度微小變化的影響可忽略）。這與 TP 形成鮮明對比——TP 的流量直接受溫度影響，必須 PLC 即時補償。對長時間充填或有溫度波動風險的產品，DP 精度更穩定。",
+   "en": "<strong>Temperature insensitivity of the DP vs temperature sensitivity of TP:</strong> As a positive displacement system, the DP delivers a fixed physical volume per stroke, unaffected by liquid temperature (the effect of small density changes is negligible). This contrasts sharply with TP, whose flow is directly affected by temperature and must be compensated by the PLC in real time. For long fill runs or products with a risk of temperature fluctuation, DP accuracy is more stable."
+  },
+  {
+   "zh": "<strong>10倍充填範圍（10-fold range）:</strong> 每個 DP 泵的行程可調，通常可覆蓋目標體積的 1/10 到 10 倍。超出此範圍需更換不同尺寸的泵，不像 TP 僅需更換孔徑板。",
+   "en": "<strong>10-fold range:</strong> The stroke of each DP pump is adjustable, usually covering 1/10 to 10 times the target volume. Beyond this range a pump of a different size is needed, unlike TP, where only the orifice plate needs replacing."
+  },
+  {
+   "zh": "DP 的<strong>SU 可行性是其對比 RPP 的重要差異點</strong>：部分廠商提供 SU DP，整個液體路徑（從連接器到充填針頭）預先組裝、預滅菌，大幅降低無菌安裝的複雜度和培訓需求。這使 DP 成為少數同時支援傳統 CIP/SIP 和 SU 兩種策略的正排量泵技術。",
+   "en": "<strong>SU feasibility is an important difference of the DP versus the RPP:</strong> some vendors offer an SU DP in which the whole liquid path (from connector to filling needle) is pre-assembled and pre-sterilized, greatly reducing the complexity of aseptic installation and the training needed. This makes the DP one of the few positive displacement pump technologies that support both the traditional CIP/SIP and SU strategies."
+  },
+  {
+   "zh": "為何 DP 的充填精度對溫度變化「高度不敏感」，而 TP 卻相反？從物理原理解釋。",
+   "en": "Why is the fill accuracy of the DP \"highly insensitive\" to temperature change while TP is the opposite? Explain from the physical principle."
+  },
+  {
+   "zh": "當客戶要求充填 1 mL 到 20 mL 的多個規格時，DP 系統的更換程序與 TP 系統有何不同？各有什麼優缺點？",
+   "en": "When a customer requires several formats from 1 mL to 20 mL, how does the changeover procedure of a DP system differ from that of a TP system? What are the advantages and disadvantages of each?"
+  },
+  {
+   "zh": "<strong>2.4.4 Rolling Diaphragm Pump Sterility Assurance: Microbial and Total Particles 2.4.4 滾動隔膜泵無菌保證：微生物與微粒總量</strong>",
+   "en": "<strong>2.4.4 Rolling Diaphragm Pump Sterility Assurance: Microbial and Total Particles</strong>"
+  },
+  {
+   "zh": "<strong>負壓作為被動保護屏障：</strong>DP 系統在真空下運行，一旦膜片或管路微小破損，外界空氣可能被吸入（而非液體洩漏到外面）。這實際上降低了產品污染環境的風險，但同時引入了外界空氣（攜帶微生物和顆粒）進入液體路徑的風險——因此需要 moisture sensor 監測。",
+   "en": "<strong>Negative pressure as a passive protective barrier:</strong> A DP system runs under vacuum, so if the diaphragm or tubing is slightly damaged, outside air may be drawn in (rather than liquid leaking out). This actually reduces the risk of the product contaminating the environment, but introduces the risk of outside air (carrying microorganisms and particles) entering the liquid path, so a moisture sensor is needed for monitoring."
+  },
+  {
+   "zh": "<strong>Moisture sensor（濕度感測器）在真空管路上：</strong>膜片破損時，液體會進入真空管路，moisture sensor 偵測到此變化並即時報警。這是 DP 系統 SA 監控的最佳實踐（best practice）。",
+   "en": "<strong>Moisture sensor on the vacuum line:</strong> When the diaphragm ruptures, liquid enters the vacuum line, and the moisture sensor detects this change and alarms immediately. This is the best practice for SA monitoring of DP systems."
+  },
+  {
+   "zh": "<strong>膜片壽命管理是 SA 的關鍵：</strong>膜片是消耗品（wear-part），必須追蹤使用週期數（use-cycles），並在達到廠商建議上限前強制更換。這不是選項，是 SA 要求。建議建立電子批次記錄（eBR）中的膜片週期計數器，並設定自動警示。",
+   "en": "<strong>Diaphragm life management is key to SA:</strong> The diaphragm is a wear part; its use-cycles must be tracked and it must be replaced before the vendor's recommended limit is reached. This is not optional but an SA requirement. It is recommended to set up a diaphragm cycle counter in the electronic batch record (eBR) with automatic alerts."
+  },
+  {
+   "zh": "對高毒性/高活性產品：泵體應安裝在<strong>密封容器或圍護設施內</strong>，即使有 moisture sensor，膜片破損時產品接觸外界仍需要控制——這是操作人員保護（OEB/OEL）合規要求。",
+   "en": "For highly toxic/potent products: the pump body should be installed <strong>in a sealed container or containment enclosure</strong>; even with a moisture sensor, product contact with the outside environment on diaphragm failure still needs to be controlled. This is an operator protection (OEB/OEL) compliance requirement."
+  },
+  {
+   "zh": "DP 系統在真空狀態下運行，若膜片破損，風險的方向是什麼（液體洩漏到外？還是外界污染進入液體）？兩種情況各有什麼後果？",
+   "en": "A DP system runs under vacuum; if the diaphragm fails, in which direction does the risk run (liquid leaking out, or outside contamination entering the liquid)? What are the consequences of each case?"
+  },
+  {
+   "zh": "如何在 SOP 中設計膜片壽命管理程序？包括哪些關鍵追蹤要素？",
+   "en": "How would you design a diaphragm life management procedure in an SOP? What key tracking elements should it include?"
+  },
+  {
+   "zh": "<strong>2.4.5 Rolling Diaphragm Pump Efficiency and Impact on Risk 2.4.5 滾動隔膜泵效率與風險影響</strong>",
+   "en": "<strong>2.4.5 Rolling Diaphragm Pump Efficiency and Impact on Risk</strong>"
+  },
+  {
+   "zh": "<strong>「最高風險發生在生產外，不在生產中」:</strong> DP 系統在正式充填期間風險極低（封閉系統，無需人員干預）。但<strong>無菌組裝（aseptic assembly）</strong>——即將消毒後的各部件在潔淨環境中連接的步驟——是整個製程中的最高風險點。CIP/SIP 或 SU 設計正是為了消除或減少這個高風險步驟。",
+   "en": "<strong>\"The highest risk occurs outside production, not during it\":</strong> During actual filling, the risk of a DP system is very low (closed system, no personnel intervention needed). But <strong>aseptic assembly</strong>, the step of connecting the sterilized components in a clean environment, is the highest-risk point in the whole process. CIP/SIP or SU designs exist precisely to eliminate or reduce this high-risk step."
+  },
+  {
+   "zh": "DP 選擇統計式 IPC 而非 100% IPC 的依據：正排量泵每行程充填量高度一致，批次間漂移極小，統計抽樣足以保證劑量合規。但即使如此，IPC 仍是必要的——即使系統精度高，設備故障、空泡等異常情況仍需通過 IPC 檢測。",
+   "en": "The rationale for choosing statistical IPC rather than 100% IPC for the DP: a positive displacement pump delivers a highly consistent volume per stroke with minimal batch-to-batch drift, so statistical sampling is sufficient to ensure dose compliance. Even so, IPC is still necessary: even with a highly accurate system, abnormalities such as equipment failure and air bubbles still need to be detected by IPC."
+  },
+  {
+   "zh": "<strong>2.4.6 Rolling Diaphragm Pump Costs: Initial and Lifecycle 2.4.6 滾動隔膜泵成本：初始與生命週期</strong>",
+   "en": "<strong>2.4.6 Rolling Diaphragm Pump Costs: Initial and Lifecycle</strong>"
+  },
+  {
+   "zh": "公式與計算 TCO Comparison Framework",
+   "en": "Formula and Calculation: TCO Comparison Framework"
+  },
+  {
+   "zh": "DP 可重用 + CIP/SIP TCO：\n  高初始成本（泵體 + CIP/SIP 基礎設施）\n  + 驗證成本（清潔 + SIP 驗證）\n  + 低耗材成本（只有管路、膜片、密封件）\n  + CIP/SIP 週期停機成本\n  → 高批量時最划算\n\nDP SU TCO：\n  低初始成本（無 CIP/SIP 基礎設施）\n  + 高持續耗材成本（每批整組液體路徑）\n  + 低停機成本（換套即用）\n  → 低批量 / 高靈活度需求時更有優勢\n\n決策觸發點：年批次數量是關鍵變數\n通常 &gt;50批/年 → CIP/SIP 更划算\n&lt;20批/年 → SU 可能更經濟",
+   "en": "Reusable DP + CIP/SIP TCO:\n  High initial cost (pump body + CIP/SIP infrastructure)\n  + Validation cost (cleaning + SIP validation)\n  + Low consumable cost (only tubing, diaphragms, seals)\n  + CIP/SIP cycle downtime cost\n  → Most economical at high batch volumes\n\nDP SU TCO:\n  Low initial cost (no CIP/SIP infrastructure)\n  + High ongoing consumable cost (whole liquid path per batch)\n  + Low downtime cost (swap the set and run)\n  → Advantageous for low batch volumes / high flexibility needs\n\nDecision trigger: annual batch number is the key variable\nTypically &gt;50 batches/year → CIP/SIP more economical\n&lt;20 batches/year → SU may be more economical"
+  },
+  {
+   "zh": "對 CDMO 而言，DP SU 系統的優勢在於<strong>換品種速度快</strong>（dispose and replace）、清潔驗證工作量大幅降低，對小批量多品種的 CDMO 商業模式非常有吸引力。但每批耗材成本必須明確告知客戶並納入報價模型。",
+   "en": "For a CDMO, the advantage of a DP SU system is <strong>fast product changeover</strong> (dispose and replace) and a greatly reduced cleaning validation workload, which is very attractive for the small-batch, multi-product CDMO business model. However, the per-batch consumable cost must be clearly communicated to the customer and built into the quotation model."
+  },
+  {
+   "zh": "<strong>2.4.7–2.4.11 DP Complexity, Maintenance, SU, CIP/SIP &amp; Benefits/Risks 2.4.7–2.4.11 滾動隔膜泵（DP）複雜度、維護保養、拋棄式（SU）、CIP/SIP 及效益與風險</strong>",
+   "en": "<strong>2.4.7–2.4.11 DP Complexity, Maintenance, SU, CIP/SIP &amp; Benefits/Risks</strong>"
+  },
+  {
+   "zh": "<strong>水平安裝（horizontal orientation）的重要性：</strong>DP 正常使用時垂直安裝，但 CIP/SIP 設計要求水平安裝，以確保清洗液和蒸汽能完全排出（drainage）。這個看似微小的工程設計決策影響整個清潔驗證的可行性——設計初期就必須確認。",
+   "en": "<strong>The importance of horizontal orientation:</strong> A DP is normally installed vertically in use, but a CIP/SIP design requires horizontal installation to ensure cleaning fluid and steam drain completely (drainage). This seemingly minor engineering decision affects the feasibility of the entire cleaning validation, so it must be confirmed at the start of the design."
+  },
+  {
+   "zh": "<strong>三種配置策略的決策矩陣：</strong>",
+   "en": "<strong>Decision matrix for the three configuration strategies:</strong>"
+  },
+  {
+   "zh": "離線清洗再安裝（舊方式）：驗證最繁複，SA 風險最高，適合小型/早期場所",
+   "en": "Offline cleaning then installation (old approach): most burdensome validation, highest SA risk; suitable for small/early-stage sites"
+  },
+  {
+   "zh": "CIP/SIP 可重用（推薦標準）：高初始成本，但 SA 最優、長期 TCO 最低",
+   "en": "Reusable CIP/SIP (recommended standard): high initial cost, but best SA and lowest long-term TCO"
+  },
+  {
+   "zh": "SU 預滅菌（新趨勢）：耗材成本高，但換型最快，適合 CDMO 小批量多品種",
+   "en": "Pre-sterilized SU (new trend): high consumable cost, but fastest changeover; suitable for small-batch, multi-product CDMOs"
+  },
+  {
+   "zh": "監管趨勢：EU GMP Annex 1 明確鼓勵 CIP/SIP 或 SU，不鼓勵傳統離線無菌組裝。",
+   "en": "Regulatory trend: EU GMP Annex 1 explicitly encourages CIP/SIP or SU and discourages traditional offline aseptic assembly."
+  },
+  {
+   "zh": "<strong>Compression fitting vs. barbed fitting：</strong>兩種管路連接方式。Compression fitting（壓縮接頭）密封性更好，適合 CIP/SIP 高壓環境；barbed fitting（倒鉤接頭）安裝更快但密封等級較低。CIP/SIP DP 的設計標準應明確規定使用哪種方式，並作為設備規範（URS/DQ）的一部分。",
+   "en": "<strong>Compression fitting vs. barbed fitting:</strong> Two ways of connecting tubing. A compression fitting seals better and suits the high-pressure CIP/SIP environment; a barbed fitting installs faster but has a lower sealing grade. The design standard for a CIP/SIP DP should specify which to use, as part of the equipment specification (URS/DQ)."
+  },
+  {
+   "zh": "CDMO 新線設計建議：若未來客戶組合以生物製劑（低黏度、剪切敏感）為主，DP 的低剪切特性和 SU 選項使其成為優先考慮。如果預期批次量大、品種少，投資 CIP/SIP DP 的 TCO 最佳；如果客戶多元、批量小，SU DP 的靈活度和換型效率更有競爭力。",
+   "en": "Recommendation for a new CDMO line design: if the future customer portfolio is mainly biologics (low viscosity, shear sensitive), the low shear and SU option of the DP make it the first choice. If large batches and few products are expected, investing in a CIP/SIP DP gives the best TCO; if customers are diverse and batches small, the flexibility and changeover efficiency of an SU DP are more competitive."
+  },
+  {
+   "zh": "為什麼 DP CIP/SIP 版本需要水平安裝而非垂直？這個改變對無菌區的氣流設計有什麼影響？",
+   "en": "Why does the CIP/SIP version of the DP need horizontal rather than vertical installation? What effect does this change have on the airflow design of the aseptic area?"
+  },
+  {
+   "zh": "一個 CDMO 正在評估是否要投資 DP CIP/SIP 系統（vs 繼續使用 DP SU 系統），請列出 TCO 計算時需要納入的至少 5 個關鍵成本項目。",
+   "en": "A CDMO is evaluating whether to invest in a DP CIP/SIP system (vs continuing with a DP SU system). List at least 5 key cost items that should be included in the TCO calculation."
+  },
+  {
+   "zh": "3.0 Filling Needle Designs (充填針頭設計)",
+   "en": "3.0 Filling Needle Designs"
+  },
+  {
+   "zh": "<strong>First air（第一道空氣）:</strong> 從 HEPA 過濾器直接吹出、尚未接觸任何表面的潔淨空氣流。關鍵操作（如充填針頭-瓶口區域）必須始終暴露在第一道空氣覆蓋下，任何遮擋（如針頭固定架過大）都會干擾此保護。針頭固定架的最小化設計正是基於此原則。",
+   "en": "<strong>First air:</strong> The clean airflow coming straight from the HEPA filter before it has touched any surface. Critical operations (such as the filling needle-container opening area) must always be exposed to first air coverage, and any obstruction (such as an oversized needle holder) interferes with this protection. Minimizing the needle holder design is based on exactly this principle."
+  },
+  {
+   "zh": "<strong>Filling curve（充填曲線）:</strong> 描述充填針頭的運動與液體流量隨時間的同步關係——包括針頭插入速度、液體開始流出的時機、加速、減速、停止和回吸（liquid retraction）的精確時序。不同配方（表面張力、黏度不同）需要不同的充填曲線。",
+   "en": "<strong>Filling curve:</strong> Describes the synchronization of filling needle movement and liquid flow over time, including the precise timing of needle insertion speed, when liquid starts to flow, acceleration, deceleration, stop and liquid retraction. Different formulations (with different surface tension and viscosity) need different filling curves."
+  },
+  {
+   "zh": "<strong>Meniscus（彎月面）:</strong> 液體在容器中因表面張力形成的弧形液面。充填時針頭與彎月面的距離是避免飛濺（splash）的關鍵——針頭太高液體飛濺，太低可能浸入產品。",
+   "en": "<strong>Meniscus:</strong> The curved liquid surface formed in a container by surface tension. During filling, the distance between the needle and the meniscus is key to avoiding splash: too high and the liquid splashes, too low and the needle may dip into the product."
+  },
+  {
+   "zh": "選擇充填針頭就像選擇咖啡拉花的奶泡嘴：倒奶泡時（即充填）要考慮「奶的黏度（viscosity）」「杯子大小（container）」「倒的角度和速度（filling curve）」。不同的拉花嘴（needle type）讓你能控制奶泡的落點和速度——粗嘴快但可能飛濺，細嘴慢而精準。",
+   "en": "Choosing a filling needle is like choosing a milk-frothing nozzle for latte art: when pouring the foam (i.e. filling) you have to consider the milk viscosity, the cup size (container), and the pouring angle and speed (filling curve). Different nozzles (needle types) let you control where and how fast the foam lands: a wide nozzle is fast but may splash, a fine nozzle is slow but precise."
+  },
+  {
+   "zh": "<strong>SA 視角下的針頭安裝：</strong>針頭必須用<strong>滅菌過的工具（如滅菌鑷子 forceps）或自動化設備</strong>安裝，避免裸手接觸，這是無菌操作的基本要求。針頭安裝是典型的高風險操作干預（intervention），應納入 APS（無菌製程模擬）的評估範圍。",
+   "en": "<strong>Needle installation from an SA perspective:</strong> Needles must be installed with <strong>sterilized tools (such as sterile forceps) or automated equipment</strong>, avoiding bare-hand contact; this is a basic requirement of aseptic operation. Needle installation is a typical high-risk intervention and should be included in the scope of the APS (aseptic process simulation) assessment."
+  },
+  {
+   "zh": "柔性管（flexible tubing）在針頭連接處的<strong>長度最小化原則</strong>不僅是機械穩定性問題，更是 SA 問題——管路運動可能產生顆粒，而顆粒在 HEPA 氣流中可能沉降到開口容器中。",
+   "en": "The <strong>principle of minimizing the length</strong> of flexible tubing at the needle connection is not only a matter of mechanical stability but also of SA: tubing movement can generate particles, and particles may settle into open containers in the HEPA airflow."
+  },
+  {
+   "zh": "<strong>3.0 Filling Needle Design Types — Table 3.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p77-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 3.0 充填針設計類型 — Table 3.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p77-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>",
+   "en": "<strong>3.0 Filling Needle Design Types — <a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p77-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Table 3.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p77-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "核心概念解析 — 針頭選型邏輯 Key Concepts",
+   "en": "Key Concepts: Needle Selection Logic"
+  },
+  {
+   "zh": "針頭選型的核心驅動因素是<strong>產品特性</strong>（遵循決策層級第2層：Product CQAs），具體分析：",
+   "en": "The core driver of needle selection is <strong>product characteristics</strong> (decision hierarchy level 2: Product CQAs). In detail:"
+  },
+  {
+   "zh": "<strong>低表面張力產品（易滴液）:</strong> → Basket、Slotted 或 Crimped 針頭（增加出口表面張力，阻止液滴脫落）",
+   "en": "<strong>Low surface tension products (prone to dripping):</strong> → Basket, Slotted or Crimped needles (increase surface tension at the outlet to stop droplets detaching)"
+  },
+  {
+   "zh": "<strong>高黏度產品:</strong> → Closing needle（主動截斷液流）",
+   "en": "<strong>High viscosity products:</strong> → Closing needle (actively cuts off the liquid flow)"
+  },
+  {
+   "zh": "<strong>需要充氣保護的氧敏感產品（如蛋白質生物製劑）:</strong> → Jacketed gassing needle（同時充填 + 惰性氣體覆蓋）",
+   "en": "<strong>Oxygen-sensitive products requiring gas protection (such as protein biologics):</strong> → Jacketed gassing needle (fill + inert gas blanketing at the same time)"
+  },
+  {
+   "zh": "<strong>高速充填 / 大容量:</strong> → Cut/Fluted needle（增大出口截面積，降低衝擊速度）",
+   "en": "<strong>High-speed filling / large volume:</strong> → Cut/Fluted needle (larger outlet cross-section, lower impact velocity)"
+  },
+  {
+   "zh": "<strong>SU 系統:</strong> → Cylindrical 或 Single-Use 針頭（結構簡單、易滅菌）",
+   "en": "<strong>SU systems:</strong> → Cylindrical or Single-Use needles (simple structure, easy to sterilize)"
+  },
+  {
+   "zh": "<strong>Jacketed needle 的 CIP/SIP 限制是重要的 SA 考量：</strong>封套式針頭無法用標準 CIP/SIP，每次批次必須拆解清洗，增加了無菌組裝的複雜度和 SA 風險。如果產品需要氧保護，必須在設備選型時就規劃此驗證工作量。",
+   "en": "<strong>The CIP/SIP limitation of the jacketed needle is an important SA consideration:</strong> Jacketed needles cannot be cleaned with standard CIP/SIP and must be disassembled and cleaned for every batch, increasing the complexity and SA risk of aseptic assembly. If the product needs oxygen protection, this validation workload must be planned at equipment selection."
+  },
+  {
+   "zh": "<strong>Closing needle 在無菌操作中罕見的原因：</strong>氣動閥加中央柱塞的複雜幾何結構使 CIP/SIP 驗證極為困難——很難證明蒸汽能到達所有死角（dead leg）。SA 優先原則下，複雜 CIP/SIP 驗證失敗的風險不可接受，因此無菌充填很少使用 closing needle。",
+   "en": "<strong>Why the closing needle is rare in aseptic operations:</strong> The complex geometry of a pneumatic valve with a central plunger makes CIP/SIP validation extremely difficult: it is hard to demonstrate that steam reaches every dead leg. Under the SA-first principle, the risk of failing a complex CIP/SIP validation is unacceptable, so closing needles are seldom used in aseptic filling."
+  },
+  {
+   "zh": "<strong>「Fail open（默認開啟）」的設計智慧：</strong>Closing needle 在無氣壓時默認開啟，確保 CIP/SIP 時清洗液能自由流過，而非卡在關閉狀態造成清潔盲點。這是以 SA 為優先的工程設計思維。",
+   "en": "<strong>The design wisdom of \"fail open\":</strong> The closing needle defaults to open when there is no air pressure, ensuring cleaning fluid can flow freely during CIP/SIP rather than being stuck in a closed state and creating a cleaning blind spot. This is engineering design thinking that puts SA first."
+  },
+  {
+   "zh": "針頭設計就像調酒師選擇倒酒方式：",
+   "en": "Needle design is like a bartender choosing how to pour:"
+  },
+  {
+   "zh": "Cylindrical → 直接從瓶口倒（最簡單，適合大多數酒）",
+   "en": "Cylindrical → pour straight from the bottle mouth (simplest, suits most drinks)"
+  },
+  {
+   "zh": "Basket/Slotted → 用分叉酒嘴（防止珍貴蒸餾酒滴落）",
+   "en": "Basket/Slotted → use a forked spout (prevents drips of precious spirits)"
+  },
+  {
+   "zh": "Crimped → 用細嘴壺精確控制細流（適合高度數低表面張力的烈酒）",
+   "en": "Crimped → use a fine-spout pitcher for precise thin streams (suits high-proof, low surface tension spirits)"
+  },
+  {
+   "zh": "Cut/Fluted → 用斜切嘴讓液體沿杯壁滑落（高速且衝擊小）",
+   "en": "Cut/Fluted → use a bevel-cut spout so the liquid slides down the glass wall (fast with low impact)"
+  },
+  {
+   "zh": "Jacketed → 雙層管：內層倒酒，外層同時充入 N₂ 保護（氧敏感的高端葡萄酒）",
+   "en": "Jacketed → double-walled tube: the inner tube pours the wine while the outer tube simultaneously fills N₂ for protection (oxygen-sensitive premium wine)"
+  },
+  {
+   "zh": "Closing → 精密開關閥（超高黏度蜂蜜或糖漿）",
+   "en": "Closing → precision shut-off valve (extremely viscous honey or syrup)"
+  },
+  {
+   "zh": "一個客戶的配方是低表面張力的蛋白質溶液（容易起泡且易滴液），同時對氧氣敏感，應選擇哪種針頭設計？理由是什麼？可能的 SA 挑戰是什麼？",
+   "en": "A customer's formulation is a low surface tension protein solution (prone to foaming and dripping) that is also oxygen sensitive. Which needle design should be chosen? What is the rationale? What SA challenges are possible?"
+  },
+  {
+   "zh": "為什麼 Closing needle 在無菌充填中如此少見？從 CIP/SIP 驗證角度解釋這個設計的根本挑戰。",
+   "en": "Why is the closing needle so rare in aseptic filling? Explain the fundamental challenge of this design from the CIP/SIP validation perspective."
+  },
+  {
+   "zh": "在 First air 覆蓋和 SA 的視角下，針頭固定架（needle holder）的設計有哪些重要原則？",
+   "en": "From the perspective of first air coverage and SA, what are the important principles for the design of the needle holder?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>Time Pressure (TP):</strong> 以壓力+時間控制充填，最適合 CIP/SIP，設備最簡（唯一動件：pinch valve）；缺點是對溫度敏感（需 PLC 即時補償）、不適合高黏度和 SU，且 suck back 能力有限。Wide range 靠換孔徑板而非換泵，是 CDMO 多品種換型的優選。",
+   "en": "<strong>Time Pressure (TP):</strong> Controls filling by pressure and time; best suited to CIP/SIP, with the simplest equipment (the only moving part is the pinch valve). Disadvantages: temperature sensitivity (needs real-time PLC compensation), unsuitability for high viscosity and SU, and limited suck back capability. Its wide range is achieved by changing the orifice plate rather than the pump, making it the preferred option for CDMO multi-product changeover."
+  },
+  {
+   "zh": "<strong>Rolling Diaphragm Pump (DP):</strong> 滾動膜片完全隔離機械部件與液體路徑，是封閉系統中顆粒風險最低的正排量泵；精度對溫度不敏感，對生物製劑（剪切敏感）友好。三種配置（離線/CIP/SIP/SU）提供最大靈活性；核心風險：膜片是消耗品，必須追蹤使用週期；真空供應中斷即不可運行。",
+   "en": "<strong>Rolling Diaphragm Pump (DP):</strong> The rolling diaphragm fully isolates the mechanical parts from the liquid path, making it the positive displacement pump with the lowest particulate risk among closed systems; its accuracy is insensitive to temperature and it is friendly to shear-sensitive biologics. The three configurations (offline / CIP/SIP / SU) give maximum flexibility. Core risks: the diaphragm is a consumable whose use-cycles must be tracked, and the pump cannot run if the vacuum supply is interrupted."
+  },
+  {
+   "zh": "<strong>決策層級強化：</strong>針頭安裝方式（forceps/自動化）、pinch valve 的屏障內外位置、DP 泵體的安裝位置——每一個設計決策都優先考慮無菌保證（SA），其次是產品 CQAs，最後才是操作便利性。",
+   "en": "<strong>Reinforcing the decision hierarchy:</strong> The needle installation method (forceps/automation), the position of the pinch valve inside or outside the barrier, and the location of the DP pump body: every design decision puts sterility assurance (SA) first, product CQAs second, and operating convenience last."
+  },
+  {
+   "zh": "<strong>針頭設計對應產品特性：</strong>低表面張力 → Basket/Slotted/Crimped；高黏度 → Closing；O₂敏感 → Jacketed；高速大容量 → Cut/Fluted；SU系統 → Cylindrical。針頭幾何複雜度與 CIP/SIP 驗證難度正相關——設計越複雜，SA 驗證工作量越大。",
+   "en": "<strong>Needle design by product characteristic:</strong> low surface tension → Basket/Slotted/Crimped; high viscosity → Closing; O₂ sensitive → Jacketed; high speed and large volume → Cut/Fluted; SU systems → Cylindrical. Needle geometric complexity correlates positively with the difficulty of CIP/SIP validation: the more complex the design, the greater the SA validation workload."
+  },
+  {
+   "zh": "<strong>TCO 視角：</strong>TP 和 DP 的耗材成本（管路、膜片、孔徑板）低於 PP 的 SU 耗材；但 CIP/SIP 的基礎設施成本和停機時間必須納入 TCO 計算，並與 SU 策略對比，在決策前完成用戶協議框架下的評估。",
+   "en": "<strong>TCO perspective:</strong> The consumable costs of TP and DP (tubing, diaphragms, orifice plates) are lower than the SU consumables of PP; but the infrastructure cost and downtime of CIP/SIP must be included in the TCO calculation and compared with the SU strategy, with the assessment completed under the user requirements framework before the decision is made."
+  }
+ ]
+}

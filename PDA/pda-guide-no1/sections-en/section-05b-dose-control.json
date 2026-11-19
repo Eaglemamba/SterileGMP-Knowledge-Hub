@@ -1,0 +1,405 @@
+{
+ "source": "section-05b-dose-control.html",
+ "blocks": [
+  {
+   "zh": "劑量控制：容積充填、外部影響因素與製程能力指標",
+   "en": "Dose Control: Volumetric Filling, External Influences and Process Capability Indices"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解容積充填法 (Volumetric Filling) 的工作原理與雷射感應器的劑量控制機制",
+   "en": "Understand how volumetric filling works and how laser sensors control the dose"
+  },
+  {
+   "zh": "掌握不同充填泵系統（RPP、DP、PP、TP）在自動劑量修正上的策略差異",
+   "en": "Understand the differences in automatic dose correction strategies across filling pump systems (RPP, DP, PP, TP)"
+  },
+  {
+   "zh": "識別影響稱重系統準確性的三大類外部與機器因素，以及對應的設計補償措施",
+   "en": "Identify the three categories of external and machine-related factors that affect weighing system accuracy, and the corresponding design compensations"
+  },
+  {
+   "zh": "理解 IPC 生產限度、稱重誤差類型，以及如何正確定義不拒絕真正合格品的上下限",
+   "en": "Understand IPC production limits and weighing error types, and how to define upper and lower limits that do not reject truly conforming units"
+  },
+  {
+   "zh": "掌握製程能力指標 C<sub>pk</sub> 的計算原理與工業標準，並能詮釋每百萬充填單位的不良率含義",
+   "en": "Understand the calculation and industry standards for the process capability index C<sub>pk</sub>, and interpret what the defect rate per million fills means"
+  },
+  {
+   "zh": "<strong>5.2.2 Method 2: Volumetric Filling Process 5.2.2 方法二：容積法充填製程</strong>",
+   "en": "<strong>5.2.2 Method 2: Volumetric Filling Process</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>容積充填法 (Volumetric Filling)：</strong>不以重量作為充填控制依據，改用容器幾何形狀、活塞位置與殘留氣泡大小來判斷充填是否足夠。優點是速度快、設備簡單；缺點是精度依賴容器幾何的一致性。",
+   "en": "<strong>Volumetric filling:</strong> Fill control is based not on weight but on container geometry, plunger position and the size of the residual air bubble to judge whether the fill is sufficient. The advantages are speed and simple equipment; the drawback is that accuracy depends on the consistency of the container geometry."
+  },
+  {
+   "zh": "<strong>雷射感應器充填終點：</strong>雷射光在容器頸部空白時被折射無法到達感測器；當液體填滿頸部後，雷射穿透，觸發「停止充填」指令。這是一種光學回饋（optical feedback）控制機制。",
+   "en": "<strong>Laser sensor fill endpoint:</strong> While the container neck is empty, the laser beam is refracted and does not reach the sensor; once liquid fills the neck, the laser passes through and triggers the \"stop filling\" command. This is an optical feedback control mechanism."
+  },
+  {
+   "zh": "<strong>殘留氣泡 (Residual Air Bubble / Air Gap)：</strong>特別在卡匣（cartridge）充填中，需在充填後保留適量氣泡，以確保活塞推壓時不超壓、產品體積正確。氣泡大小需由受訓操作員判斷。",
+   "en": "<strong>Residual air bubble (air gap):</strong> Particularly in cartridge filling, an appropriate air bubble must remain after filling so that the plunger is not over-pressurized during insertion and the product volume is correct. The bubble size must be judged by a trained operator."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你用量杯量咖啡豆而不是秤重——你是靠「杯子形狀+填到某個刻度」來控制份量，而不是靠磅秤。這就是容積充填的邏輯：容器的幾何形狀本身就是「量具」。",
+   "en": "Imagine measuring coffee beans with a measuring cup instead of weighing them. You control the portion by \"the shape of the cup plus filling to a certain mark\" rather than by a scale. That is the logic of volumetric filling: the geometry of the container itself is the \"measuring instrument\"."
+  },
+  {
+   "zh": "雷射偵測終點就像電梯的光幕感應門——光束通了，代表門可以關了（充填可以停了）。",
+   "en": "Laser endpoint detection works like the light curtain on an elevator door. When the beam gets through, the door can close (filling can stop)."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>自動修正 vs. 手動修正的選擇邏輯：</strong>這是一個重要的設計哲學分叉點：",
+   "en": "<strong>Choosing between automatic and manual correction:</strong> This is an important fork in design philosophy:"
+  },
+  {
+   "zh": "<strong>RPP / DP（穩定系統）</strong>：劑量輸出穩定不漂移，自動修正反而可能因「共同原因變異」（common-cause variability）而過度修正，導致充填重量振盪。建議：手動調整。",
+   "en": "<strong>RPP / DP (stable systems):</strong> The dose output is stable and does not drift. Automatic correction may overcorrect in response to common-cause variability and cause the fill weight to oscillate. Recommendation: manual adjustment."
+  },
+  {
+   "zh": "<strong>PP（蠕動泵）</strong>：管路隨時間受壓變形，效率下降，劑量會隨批次進行而漂移。需要自動修正，並採用時間加權平均避免過度反應。",
+   "en": "<strong>PP (peristaltic pump):</strong> The tubing deforms under compression over time and its efficiency declines, so the dose drifts as the batch proceeds. Automatic correction is needed, using a time-weighted average to avoid overreaction."
+  },
+  {
+   "zh": "<strong>TP（時間壓力）</strong>：壓力源持續變化（隨容器排空或注入而改變），必須即時計算pinch valve開關時機，自動修正是標準配備。",
+   "en": "<strong>TP (time-pressure):</strong> The pressure source changes continuously (as the vessel empties or is topped up), so the pinch valve opening and closing times must be calculated in real time. Automatic correction is standard."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在CDMO接受新客戶卡匣充填案時，驗證方案必須涵蓋容器幾何量測（長度、內徑、活塞安裝高度的批間一致性）。若容器供應商更換批次或供應商，需重新評估容積充填精度。此外，雷射感測器站位校正必須列入每批次或定期的校正計畫中。",
+   "en": "When a CDMO accepts a new client project for cartridge filling, the validation protocol must cover container geometry measurements (length, inner diameter, and batch-to-batch consistency of plunger installation height). If the container supplier changes batch or supplier, the accuracy of volumetric filling must be re-evaluated. In addition, calibration of the laser sensor station must be included in the per-batch or periodic calibration program."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼容積充填特別適合「不設最大充填重量限制」的容器？若用於有重量上限的注射瓶，會有什麼風險？",
+   "en": "Why is volumetric filling particularly suited to containers with no maximum fill weight limit? What risks arise if it is used for injection vials that do have a weight limit?"
+  },
+  {
+   "zh": "一家CDMO同時操作RPP和PP充填線。它們的劑量修正邏輯為何不同？若工程師把PP的設定錯誤套用到RPP上，會發生什麼事？",
+   "en": "A CDMO operates both RPP and PP filling lines. Why does the dose correction logic differ between them? What would happen if an engineer mistakenly applied the PP settings to the RPP?"
+  },
+  {
+   "zh": "TP充填的壓力為什麼「持續在變化」？這對pinch valve控制有什麼挑戰？",
+   "en": "Why does the pressure in TP filling \"change continuously\"? What challenges does this create for pinch valve control?"
+  },
+  {
+   "zh": "<strong>5.3 External and Internal Influences on Dose Control Systems 5.3 劑量管制系統之外部與內部影響因素</strong>",
+   "en": "<strong>5.3 External and Internal Influences on Dose Control Systems</strong>"
+  },
+  {
+   "zh": "<strong>三大類稱重誤差來源：</strong>",
+   "en": "<strong>Three categories of weighing error sources:</strong>"
+  },
+  {
+   "zh": "<strong>統計性 (Statistical)：</strong>隨機出現、呈常態分佈的誤差——每次量測結果都略有不同。典型例子：氣流擾動、震動、靜電、稱量沉降時間不足。可透過更長的沉降時間或更多次量測來統計平均。",
+   "en": "<strong>Statistical:</strong> Random errors that follow a normal distribution, so each measurement differs slightly. Typical examples: airflow disturbance, vibration, static electricity, insufficient settling time. They can be averaged out statistically with longer settling times or more measurements."
+  },
+  {
+   "zh": "<strong>恆定性 (Constant)：</strong>每次量測都偏移同樣方向的系統誤差——如感測器出廠偏移值（load-cell offset）、恆定氣流造成的固定浮力。這類誤差可透過校正補償。",
+   "en": "<strong>Constant:</strong> Systematic errors that shift every measurement in the same direction, such as the load-cell offset from the factory or the fixed buoyancy effect caused by constant airflow. These errors can be compensated by calibration."
+  },
+  {
+   "zh": "<strong>機器與產品相關性：</strong>由充填線設計、產品特性（例如起泡）、操作方式（自動vs手動校正）等所引起的誤差。需透過良好的設計與製程驗證來最小化。",
+   "en": "<strong>Machine- and product-related:</strong> Errors caused by filling line design, product characteristics (for example foaming) and mode of operation (automatic vs. manual calibration). They must be minimized through good design and process validation."
+  },
+  {
+   "zh": "<strong>破壞性取樣 (Destructive Sampling)：</strong>從線上抽取充填後的容器，在離線實驗室天平上確認實際充填重量，作為IPC讀值的交叉驗證。",
+   "en": "<strong>Destructive sampling:</strong> Filled containers are taken from the line and their actual fill weight is confirmed on an offline laboratory balance, as a cross-check of the IPC readings."
+  },
+  {
+   "zh": "想像你在市場用一個老式磅秤賣水果。統計誤差就像風吹過來磅秤微微晃動（每次結果不同）；恆定誤差就像磅秤本身被磁鐵吸著偏向一邊（每次都低估）；機器相關誤差就像你把蘋果放上秤的速度太快，秤還在抖動就讀值了。",
+   "en": "Imagine selling fruit at a market with an old-style scale. Statistical error is like a breeze making the scale wobble slightly (the result differs each time); constant error is like the scale being pulled to one side by a magnet (it always under-reads); machine-related error is like placing the apple on the scale too quickly and reading it while it is still shaking."
+  },
+  {
+   "zh": "Grade A無塵室的單向氣流（unidirectional airflow）是無菌保證的核心，但它的風速與方向卻會干擾精密天平——這就是無菌充填環境的矛盾：保護微生物的措施，同時也是稱重精度的敵人。",
+   "en": "The unidirectional airflow of a grade A cleanroom is central to sterility assurance, yet its velocity and direction disturb precision balances. This is the paradox of the aseptic filling environment: the measure that protects against microorganisms is also the enemy of weighing accuracy."
+  },
+  {
+   "zh": "<strong>靜電是容易被忽視的誤差來源：</strong>注射瓶從乾熱去熱原質隧道（dry heat depyrogenation tunnel）出來後，高溫冷卻過程中可能累積靜電荷，影響天平讀值。這在高速生產線上是需要刻意設計消除的問題（例如離子化空氣）。",
+   "en": "<strong>Static electricity is an easily overlooked error source:</strong> Vials leaving the dry heat depyrogenation tunnel can accumulate static charge as they cool from high temperature, affecting the balance reading. On a high-speed line this must be deliberately designed out (for example with ionized air)."
+  },
+  {
+   "zh": "<strong>「時間沉降」(Time-settling) 的取捨：</strong>讓瓶子在天平上靜置更久，讀值更準確，但這直接降低充填線速度（UPH）。在設計IPC時，需要在精度與速度之間明確取捨並記錄風險評估。",
+   "en": "<strong>The trade-off of time-settling:</strong> Letting the vial rest longer on the balance gives a more accurate reading, but directly reduces filling line speed (UPH). When designing the IPC, the trade-off between accuracy and speed must be made explicitly and the risk assessment documented."
+  },
+  {
+   "zh": "<strong>充填量越小，稱重越難：</strong>對於1 mL以下的小劑量製劑，稱重誤差的相對影響更大。這正是這類產品需要特別嚴格的IPC設計和驗證的原因。",
+   "en": "<strong>The smaller the fill, the harder the weighing:</strong> For small-dose products below 1 mL, weighing error has a larger relative effect. This is exactly why such products need an especially rigorous IPC design and validation."
+  },
+  {
+   "zh": "在CDMO進行充填線資格確認（IQ/OQ/PQ）時，建議針對上述三類誤差來源分別執行測試：\n            (1) 統計性：在不同氣流條件、不同震動狀態下量測同一標準砝碼的分佈；\n            (2) 恆定性：比較IPC天平讀值與實驗室天平讀值的系統性偏移；\n            (3) 機器/產品相關：測試不同充填速度、不同容器類型下的劑量準確性。\n            這三類測試結果決定了IPC上下限的設定寬度。",
+   "en": "When performing qualification (IQ/OQ/PQ) of a filling line at a CDMO, it is advisable to test each of the three error source categories separately:\n            (1) Statistical: measure the distribution of the same reference weight under different airflow conditions and vibration states;\n            (2) Constant: compare the IPC balance readings with the laboratory balance readings for systematic offset;\n            (3) Machine/product-related: test dose accuracy at different filling speeds and with different container types.\n            The results of these three tests determine how wide the IPC upper and lower limits should be set."
+  },
+  {
+   "zh": "Grade A區域的單向氣流為何對稱重準確性造成干擾？這與它保護無菌的功能如何平衡？",
+   "en": "Why does the unidirectional airflow in a grade A zone interfere with weighing accuracy? How is this balanced against its function of protecting sterility?"
+  },
+  {
+   "zh": "「統計性誤差」和「恆定性誤差」在管理策略上有何本質不同？各需要什麼工具來處理？",
+   "en": "What is the essential difference in management strategy between \"statistical error\" and \"constant error\"? What tools are needed to deal with each?"
+  },
+  {
+   "zh": "一個起泡性產品（foamy product）會如何影響充填線的稱重系統？你會建議什麼設計對策？",
+   "en": "How would a foamy product affect the weighing system of a filling line? What design countermeasures would you recommend?"
+  },
+  {
+   "zh": "<strong>5.3.1 In-Process Control Production Limits and Weighing Accuracy 5.3.1 製程中管制生產限度與稱量精確度</strong>",
+   "en": "<strong>5.3.1 In-Process Control Production Limits and Weighing Accuracy</strong>"
+  },
+  {
+   "zh": "<strong>IPC天平讀值 ≠ 實際充填重量：</strong>這是本節最關鍵的認知。線上IPC天平受到氣流、震動、靜電等干擾，其讀值分佈比實驗室天平更寬、更偏移。絕對不能把IPC讀值直接等同於「真實充填重量」。",
+   "en": "<strong>The IPC balance reading is not the actual fill weight:</strong> This is the most critical insight of this section. The in-line IPC balance is affected by airflow, vibration, static electricity and similar disturbances, so its reading distribution is wider and more shifted than that of a laboratory balance. IPC readings must never be treated as equal to the \"true fill weight\"."
+  },
+  {
+   "zh": "<strong>兩種稱重誤差的疊加：</strong>",
+   "en": "<strong>Superposition of two weighing errors:</strong>"
+  },
+  {
+   "zh": "<strong>統計誤差 (σ)：</strong>隨機正態分佈，以標準差描述。多次稱同一重量，結果呈鐘形分佈。",
+   "en": "<strong>Statistical error (σ):</strong> Random and normally distributed, described by the standard deviation. Weighing the same mass many times gives a bell-shaped distribution."
+  },
+  {
+   "zh": "<strong>恆定誤差：</strong>系統性偏移，整個曲線向左或向右移動。不同天平感測器有不同的offset。",
+   "en": "<strong>Constant error:</strong> A systematic offset that moves the whole curve to the left or right. Different balance sensors have different offsets."
+  },
+  {
+   "zh": "<strong>IPC上下限的設定邏輯：</strong>應依據「最寬的IPC鐘形曲線」來設定生產限度，確保落在IPC限度內的讀值，其真實重量也一定在規格內。換句話說：IPC限度要夠寬，才不會誤殺真正合格的產品。",
+   "en": "<strong>Logic for setting IPC limits:</strong> Production limits should be based on the \"widest IPC bell curve\", so that any reading within the IPC limits is guaranteed to correspond to a true weight within specification. In other words, the IPC limits must be wide enough so that truly conforming product is not wrongly rejected."
+  },
+  {
+   "zh": "想像你在一個嘈雜、有風的環境用普通磅秤量西瓜，旁邊實驗室用精密天平量同一個西瓜。普通磅秤可能顯示10.2 kg（其實是10.0 kg），但如果你的「合格標準」是依精密天平的10.0 kg ± 0.1 kg設定的，那普通磅秤的讀值10.2 kg就會「錯誤判退」這個實際上完全合格的西瓜。",
+   "en": "Imagine weighing a watermelon with an ordinary scale in a noisy, windy environment, while a laboratory next door weighs the same watermelon on a precision balance. The ordinary scale may show 10.2 kg (when it is actually 10.0 kg), but if your \"acceptance standard\" was set from the precision balance at 10.0 kg ± 0.1 kg, the reading of 10.2 kg would \"wrongly reject\" a watermelon that is in fact perfectly acceptable."
+  },
+  {
+   "zh": "這就是IPC限度設定過緊的危險——你不是在管控品質，你是在製造假廢品（false rejects），浪費昂貴的藥品和資源。",
+   "en": "This is the danger of setting IPC limits too tight: you are not controlling quality, you are manufacturing false rejects, wasting expensive drug product and resources."
+  },
+  {
+   "zh": "<strong>假拒絕（False Reject）的業務影響：</strong>在CDMO環境中，假拒絕不只是良率問題，更是客戶滿意度和合規問題。如果IPC限度設定過緊，大量合格單位被錯誤丟棄，客戶不僅損失昂貴原料，還需要調查偏差。更糟的是，如果調查不出根本原因（因為其實是設定問題），就會在品質系統中留下未解決的偏差記錄。",
+   "en": "<strong>Business impact of false rejects:</strong> In a CDMO setting, false rejects are not just a yield problem but also a client satisfaction and compliance problem. If IPC limits are too tight, large numbers of conforming units are wrongly discarded; the client loses expensive material and a deviation must be investigated. Worse, if the investigation cannot find a root cause (because it is really a limit-setting problem), an unresolved deviation record is left in the quality system."
+  },
+  {
+   "zh": "<strong>淨重是準確性的基準：</strong>注意原文特別強調「稱重準確性永遠指淨重（net weight）」，而非分別對空瓶（tare）和滿瓶（gross）各自評估。這意味著tare和gross的誤差疊加在一起，共同影響淨重的精度。",
+   "en": "<strong>Net weight is the basis of accuracy:</strong> Note that the source text stresses that \"weighing accuracy always refers to net weight\", rather than evaluating the empty vial (tare) and the filled vial (gross) separately. This means the tare and gross errors add up and together affect the precision of the net weight."
+  },
+  {
+   "zh": "<strong>不同IPC站位的恆定誤差可能方向相反：</strong>多站位充填線上，各個稱重感測器的恆定偏移（offset）方向不同（有些偏高、有些偏低），這使得整體的複合分佈曲線更寬。這正是要對最寬曲線設定限度的原因。",
+   "en": "<strong>Constant errors at different IPC stations may run in opposite directions:</strong> On a multi-station filling line, the constant offset of each weighing sensor differs in direction (some read high, some low), which widens the overall combined distribution curve. This is exactly why the limits must be set against the widest curve."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "淨重稱重準確性 = 統計誤差 (σ) + 恆定誤差\n\n設 IPC 讀值範圍 = [IPC_min, IPC_max]\n\n正確方法：\n  IPC_min = 真實可接受最低重量 - (統計σ + 最大恆定偏移)\n  IPC_max = 真實可接受最高重量 + (統計σ + 最大恆定偏移)\n\n錯誤方法（常見錯誤）：\n  直接把實驗室天平的規格上下限\n  套用為 IPC 生產限度\n  → 後果：假拒絕大量合格品\n\n實例（原文）：\n  實際重量（lab balance）= 1.001 g → 合格 ✓\n  IPC 讀值（weigh cell）  = 1.005 g → 若限度設太緊則誤判拒絕 ✗",
+   "en": "Net weighing accuracy = statistical error (σ) + constant error\n\nLet the IPC reading range = [IPC_min, IPC_max]\n\nCorrect method:\n  IPC_min = true minimum acceptable weight - (statistical σ + maximum constant offset)\n  IPC_max = true maximum acceptable weight + (statistical σ + maximum constant offset)\n\nIncorrect method (common mistake):\n  Directly applying the specification limits of the\n  laboratory balance as the IPC production limits\n  → Consequence: large numbers of conforming units falsely rejected\n\nExample (from the source text):\n  Actual weight (lab balance) = 1.001 g → acceptable ✓\n  IPC reading (weigh cell)    = 1.005 g → wrongly rejected if the limit is set too tight ✗"
+  },
+  {
+   "zh": "為什麼實驗室天平的鐘形曲線比IPC天平更窄？請從誤差來源角度解釋。",
+   "en": "Why is the bell curve of a laboratory balance narrower than that of an IPC balance? Explain from the perspective of error sources."
+  },
+  {
+   "zh": "如果一條充填線有8個稱重站，每個站的恆定偏移方向和大小各不相同，這對設定統一的IPC上下限有什麼挑戰？",
+   "en": "If a filling line has 8 weighing stations, and the direction and size of the constant offset differ at each station, what challenge does this pose for setting uniform IPC upper and lower limits?"
+  },
+  {
+   "zh": "假設你是CDMO品質工程師，客戶要求你把IPC限度收緊到「更接近規格限度」，你會如何用數據說服客戶這樣做反而有風險？",
+   "en": "Suppose you are a CDMO quality engineer and the client asks you to tighten the IPC limits to be \"closer to the specification limits\". How would you use data to persuade the client that doing so is actually risky?"
+  },
+  {
+   "zh": "<strong>5.3.2 In-Process Control Production Limits in Relation to Process Capability Index 5.3.2 製程中管制生產限度與製程能力指數之關係</strong>",
+   "en": "<strong>5.3.2 In-Process Control Production Limits in Relation to Process Capability Index</strong>"
+  },
+  {
+   "zh": "<strong>製程能力指標 C<sub>pk</sub> (Process Capability Index)：</strong>衡量一個製程在規格上下限（LSL/USL）內穩定運行的能力。C<sub>pk</sub>越高，代表製程中心越靠近規格中間，且變異越小。",
+   "en": "<strong>Process capability index C<sub>pk</sub>:</strong> Measures the ability of a process to run stably within the specification limits (LSL/USL). The higher the C<sub>pk</sub>, the closer the process center is to the middle of the specification and the smaller the variation."
+  },
+  {
+   "zh": "<strong>公式解讀：</strong>C<sub>pk</sub> = min(x̄ − LSL, USL − x̄) / 3σ，取「平均值距較近規格邊界的距離」除以「3個標準差」。這確保了製程從最不利的一側計算能力，是保守且合理的。",
+   "en": "<strong>Reading the formula:</strong> C<sub>pk</sub> = min(x̄ − LSL, USL − x̄) / 3σ, i.e. the distance from the mean to the nearer specification limit divided by 3 standard deviations. This calculates capability from the least favorable side of the process, which is conservative and reasonable."
+  },
+  {
+   "zh": "<strong>工業標準 C<sub>pk</sub> 1.0~1.33：</strong>",
+   "en": "<strong>Industry standard C<sub>pk</sub> of 1.0 to 1.33:</strong>"
+  },
+  {
+   "zh": "C<sub>pk</sub> = 1.00 → 每百萬充填2,699個超出限度（±3σ）",
+   "en": "C<sub>pk</sub> = 1.00 → 2,699 out-of-limit units per million fills (±3σ)"
+  },
+  {
+   "zh": "C<sub>pk</sub> = 1.33 → 每百萬充填66個超出限度（±4σ）",
+   "en": "C<sub>pk</sub> = 1.33 → 66 out-of-limit units per million fills (±4σ)"
+  },
+  {
+   "zh": "C<sub>pk</sub> ≥ 1.67 → 每百萬0個（±5σ，接近Six Sigma水準）",
+   "en": "C<sub>pk</sub> ≥ 1.67 → 0 per million (±5σ, close to Six Sigma level)"
+  },
+  {
+   "zh": "<strong>反比關係：</strong>C<sub>pk</sub>與σ（標準差）成反比。σ越小（製程越精準），C<sub>pk</sub>越高，可將規格設得更緊。",
+   "en": "<strong>Inverse relationship:</strong> C<sub>pk</sub> is inversely proportional to σ (standard deviation). The smaller the σ (the more precise the process), the higher the C<sub>pk</sub> and the tighter the specification can be set."
+  },
+  {
+   "zh": "C<sub>pk</sub>就像射箭比賽的「神射手指標」：LSL和USL是靶的邊界，σ是射手每次落點的散佈範圍，x̄是平均落點。",
+   "en": "C<sub>pk</sub> is like the \"marksman index\" in an archery contest: LSL and USL are the edges of the target, σ is the spread of the archer's shots, and x̄ is the average landing point."
+  },
+  {
+   "zh": "C<sub>pk</sub> = 1.0代表：射手的平均落點正好在靶心，但散佈範圍大到邊界——每1000箭中大約有2-3支飛出靶外。C<sub>pk</sub> = 1.33代表更精準的射手，每百萬次只有66次出界。",
+   "en": "A C<sub>pk</sub> = 1.0 means the archer's average landing point is exactly on the bullseye, but the spread is as wide as the target edges, so roughly 2 to 3 arrows in every 1,000 fly off the target. A C<sub>pk</sub> = 1.33 is a more precise archer, with only 66 misses per million shots."
+  },
+  {
+   "zh": "充填線的「神射手水準」決定了OEM設備的競爭力——C<sub>pk</sub>越高，客戶可以用更緊的規格（更嚴格的劑量容差），這在高價值生物藥中尤其重要。",
+   "en": "The \"marksman level\" of a filling line determines the competitiveness of the OEM equipment. The higher the C<sub>pk</sub>, the tighter the specification (stricter dose tolerance) the client can use, which is especially important for high-value biologics."
+  },
+  {
+   "zh": "製程能力指標公式：\n\n        min( x̄ - LSL,  USL - x̄ )\nCpk =  ───────────────────────────\n                  3σ\n\n範例計算：\n  目標充填重量：5.00 mL（密度1.0 g/mL → 5.00 g）\n  規格：4.75 g ~ 5.25 g\n  LSL = 4.75 g, USL = 5.25 g\n  實測 x̄ = 5.02 g, σ = 0.03 g\n\n  min(5.02 - 4.75, 5.25 - 5.02) = min(0.27, 0.23) = 0.23\n  Cpk = 0.23 / (3 × 0.03) = 0.23 / 0.09 ≈ 2.56\n\n  → 超過6σ水準，每百萬幾乎無超規品！\n\n工業標準對照：\n  Cpk 1.00 = 2,699 ppm  → 一般可接受最低標準\n  Cpk 1.33 = 66 ppm     → 業界標準\n  Cpk 1.67 = 0 ppm      → Six Sigma等級",
+   "en": "Process capability index formula:\n\n        min( x̄ - LSL,  USL - x̄ )\nCpk =  ───────────────────────────\n                  3σ\n\nWorked example:\n  Target fill weight: 5.00 mL (density 1.0 g/mL → 5.00 g)\n  Specification: 4.75 g ~ 5.25 g\n  LSL = 4.75 g, USL = 5.25 g\n  Measured x̄ = 5.02 g, σ = 0.03 g\n\n  min(5.02 - 4.75, 5.25 - 5.02) = min(0.27, 0.23) = 0.23\n  Cpk = 0.23 / (3 × 0.03) = 0.23 / 0.09 ≈ 2.56\n\n  → Above the 6σ level, with almost no out-of-specification units per million!\n\nIndustry standard reference:\n  Cpk 1.00 = 2,699 ppm  → generally the minimum acceptable standard\n  Cpk 1.33 = 66 ppm     → industry standard\n  Cpk 1.67 = 0 ppm      → Six Sigma level"
+  },
+  {
+   "zh": "<strong>C<sub>pk</sub>是設備驗收的量化工具：</strong>在設備採購規格（URS）中，可要求OEM提供C<sub>pk</sub>保證值。例如：「充填準確度要求：在5 mL充填目標下，C<sub>pk</sub> ≥ 1.33。」這將定性要求轉化為可驗證的量化指標。",
+   "en": "<strong>C<sub>pk</sub> is a quantitative tool for equipment acceptance:</strong> In the equipment purchase specification (URS), the OEM can be required to provide a guaranteed C<sub>pk</sub> value. For example: \"Fill accuracy requirement: C<sub>pk</sub> ≥ 1.33 at a 5 mL fill target.\" This turns a qualitative requirement into a verifiable quantitative metric."
+  },
+  {
+   "zh": "<strong>C<sub>pk</sub>適用於穩定製程：</strong>原文特別強調「stable process（穩定製程）」。若製程存在趨勢漂移（如PP管路老化），即使瞬時σ小，累計的漂移也會使實際不良率遠超C<sub>pk</sub>預測。這也是為什麼PP需要自動劑量修正的根本原因。",
+   "en": "<strong>C<sub>pk</sub> applies to stable processes:</strong> The source text specifically stresses a \"stable process\". If the process has a trending drift (such as PP tubing aging), even a small instantaneous σ will allow the accumulated drift to push the actual defect rate far above what C<sub>pk</sub> predicts. This is the fundamental reason why PP needs automatic dose correction."
+  },
+  {
+   "zh": "<strong>決策層級提示：</strong>設備C<sub>pk</sub>能力是「商業與彈性」層面的選擇，但它直接影響能否達到產品CQA中的劑量準確性要求，從而影響患者安全——決策層級在此垂直貫通。",
+   "en": "<strong>Decision hierarchy note:</strong> Equipment C<sub>pk</sub> capability is a choice at the \"business and flexibility\" level, but it directly affects whether the dose accuracy requirement in the product CQAs can be met, and therefore patient safety. The decision hierarchy runs vertically through this point."
+  },
+  {
+   "zh": "在CDMO評估充填設備採購時，C<sub>pk</sub>是關鍵採購指標之一。建議在URS中明確要求：\n            (1) 在特定充填體積範圍下（如0.5 mL, 1 mL, 5 mL, 10 mL）分別提供C<sub>pk</sub>承諾值；\n            (2) 提供OQ/PQ驗收測試中的實測C<sub>pk</sub>數據；\n            (3) 對高價值生物藥（如基因治療），考慮要求C<sub>pk</sub> ≥ 1.50甚至更高，因單位成本可能高達數萬美元，假廢品代價極高。",
+   "en": "When a CDMO evaluates filling equipment for purchase, C<sub>pk</sub> is one of the key purchasing metrics. It is advisable to state clearly in the URS:\n            (1) C<sub>pk</sub> commitment values at specific fill volumes (for example 0.5 mL, 1 mL, 5 mL, 10 mL);\n            (2) Measured C<sub>pk</sub> data from the OQ/PQ acceptance tests;\n            (3) For high-value biologics (such as gene therapy), consider requiring C<sub>pk</sub> ≥ 1.50 or even higher, because the unit cost can reach tens of thousands of dollars and the cost of false rejects is extremely high."
+  },
+  {
+   "zh": "若一台充填機在驗收測試中達到C<sub>pk</sub> = 1.40，但在實際生產中使用PP充填且未啟用自動修正，C<sub>pk</sub>可能如何變化？為什麼？",
+   "en": "A filling machine achieves C<sub>pk</sub> = 1.40 in acceptance testing, but in actual production it is used with PP filling and automatic correction is not enabled. How might the C<sub>pk</sub> change, and why?"
+  },
+  {
+   "zh": "客戶要求劑量規格為目標值 ± 2%，而設備供應商說可達C<sub>pk</sub> = 1.33。請計算：每百萬支中預計有多少支超出規格？這個數字對一個年產量500萬支的CDMO意味著什麼？",
+   "en": "The client requires a dose specification of target ± 2%, and the equipment supplier says a C<sub>pk</sub> = 1.33 can be achieved. Calculate: how many units per million are expected to be out of specification? What does this number mean for a CDMO producing 5 million units a year?"
+  },
+  {
+   "zh": "C<sub>pk</sub>公式中使用「min」函數的意義是什麼？如果製程平均值嚴重偏向USL一側，C<sub>pk</sub>如何反映這個風險？",
+   "en": "What is the significance of the \"min\" function in the C<sub>pk</sub> formula? If the process mean is strongly shifted toward the USL side, how does C<sub>pk</sub> reflect this risk?"
+  },
+  {
+   "zh": "<strong>6.0 Special Considerations for Advanced Container–Closure Design and Implementation (Transition — doc p114) 6.0 先進容器封蓋設計與實施之特殊考量（過渡 — 文件第 114 頁）</strong>",
+   "en": "<strong>6.0 Special Considerations for Advanced Container–Closure Design and Implementation (Transition — doc p114)</strong>"
+  },
+  {
+   "zh": "<strong>進階容器密封系統 (Advanced Container-Closure Systems)：</strong>傳統注射劑容器（玻璃瓶+橡皮塞+鋁蓋）已無法滿足現代生物藥、基因治療和患者便利性的需求。進階系統涵蓋多腔室、自動失能（防重複使用）、無矽油等創新設計。",
+   "en": "<strong>Advanced container-closure systems:</strong> Traditional injectable containers (glass vial + rubber stopper + aluminum cap) can no longer meet the needs of modern biologics, gene therapy and patient convenience. Advanced systems include innovative designs such as multi-chamber, auto-disable (to prevent reuse) and silicone-free."
+  },
+  {
+   "zh": "<strong>關鍵設計驅動力：</strong>",
+   "en": "<strong>Key design drivers:</strong>"
+  },
+  {
+   "zh": "<strong>SA（無菌保證）提升：</strong>針刺隔膜充填（needle-through-septum）在全封閉系統中充填，最大化無菌屏障。",
+   "en": "<strong>Improved SA (sterility assurance):</strong> Needle-through-septum filling in a fully closed system maximizes the sterile barrier."
+  },
+  {
+   "zh": "<strong>矽油問題 (Silicone Issue)：</strong>傳統注射器使用矽油潤滑活塞，但矽油滴入藥液可引起蛋白質聚集（protein agglomeration）——無矽油注射器應運而生。",
+   "en": "<strong>Silicone issue:</strong> Traditional syringes use silicone oil to lubricate the plunger, but silicone droplets in the drug solution can cause protein agglomeration, which led to the development of silicone-free syringes."
+  },
+  {
+   "zh": "<strong>可提取體積損失 (Extractable Volume Waste)：</strong>減少死體積，對昂貴生物藥尤其重要。",
+   "en": "<strong>Extractable volume waste:</strong> Reducing dead volume is especially important for expensive biologics."
+  },
+  {
+   "zh": "傳統注射瓶就像餐廳用的普通餐具——功能完整但通用。進階容器密封系統就像米其林餐廳為特定菜品客製化的餐具——形狀、材質、密封方式都為特定需求優化，但設計複雜度和供應商協調難度也大幅提升。",
+   "en": "A traditional injection vial is like ordinary tableware in a restaurant: fully functional but generic. An advanced container-closure system is like tableware that a Michelin-star restaurant customizes for a particular dish: the shape, material and sealing method are all optimized for a specific need, but the design complexity and the difficulty of supplier coordination also rise sharply."
+  },
+  {
+   "zh": "這也是為什麼Section 6.0一開頭就強調「儘早讓供應商參與」——客製化容器不能在充填線設計完成後才想到。就像你不能等廚房蓋好了才決定要用多大的鍋。",
+   "en": "This is also why Section 6.0 opens by stressing \"engage suppliers early\": a customized container cannot be considered after the filling line design is finished. It is like not being able to decide how big a pot to use after the kitchen has already been built."
+  },
+  {
+   "zh": "<strong>「儘早介入」原則（Early Engagement）：</strong>進階容器/密封系統必須在設備選型和充填線設計的早期階段就讓供應商參與。容器幾何影響充填針設計、IPC設定、關蓋設備選型。若在設備採購後才換容器，可能需要全面重新驗證。",
+   "en": "<strong>The \"early engagement\" principle:</strong> Advanced containers/closure systems must involve the supplier at the early stage of equipment selection and filling line design. Container geometry affects filling needle design, IPC settings and capping equipment selection. If the container is changed after the equipment is purchased, full revalidation may be needed."
+  },
+  {
+   "zh": "<strong>決策層級（Decision Hierarchy）提示：</strong>進階容器的設計目標中，「增強SA（無菌保證）」排在最前——這符合決策層級的第一優先。患者安全（CQA，如劑量準確性、避免蛋白質聚集）排在第二。便利性和商業考量（如防重複使用、減少廢棄物）排在最後。",
+   "en": "<strong>Decision hierarchy note:</strong> Among the design goals for advanced containers, \"enhanced SA (sterility assurance)\" is listed first, in line with the first priority of the decision hierarchy. Patient safety (CQAs such as dose accuracy and avoiding protein agglomeration) comes second. Convenience and commercial considerations (such as reuse prevention and waste reduction) come last."
+  },
+  {
+   "zh": "<strong>Section 6是過渡橋樑：</strong>Section 5的劑量控制討論至此結束，Section 6開始進入容器密封系統的深入討論（繼續至Section 7：關閉系統設計）。容器-充填-密封這三者是不可分割的系統工程。",
+   "en": "<strong>Section 6 is a transition bridge:</strong> The discussion of dose control in Section 5 ends here, and Section 6 begins the in-depth discussion of container-closure systems (continuing through Section 7: closed system design). Container, filling and closure form an inseparable system engineering effort."
+  },
+  {
+   "zh": "對CDMO業務發展團隊的啟示：當客戶帶著進階容器系統的新案詢問可行性時，第一個問題應是「你的容器供應商能提供哪些設備相容性數據？」而不是立刻報價。進階容器往往需要：\n            (1) 特殊充填針頭設計（如針刺隔膜充填）；\n            (2) 修改或客製化的關蓋設備；\n            (3) 重新設計IPC系統（如多腔室需要多步驟充填驗證）；\n            (4) 更長的設備驗收和製程驗證周期。\n            這些都需要在技術可行性評估中明確，才能準確報價和排程。",
+   "en": "Implications for CDMO business development teams: when a client brings a new project with an advanced container system and asks about feasibility, the first question should be \"What equipment compatibility data can your container supplier provide?\" rather than quoting immediately. Advanced containers often require:\n            (1) Special filling needle designs (such as needle-through-septum filling);\n            (2) Modified or customized capping equipment;\n            (3) A redesigned IPC system (for example, multi-chamber containers need multi-step fill verification);\n            (4) Longer equipment acceptance and process validation timelines.\n            These must all be made explicit in the technical feasibility assessment so that quotations and schedules are accurate."
+  },
+  {
+   "zh": "「無矽油注射器」解決了什麼CQA問題？這個問題對哪一類藥品（小分子 vs. 生物藥）影響更大？為什麼？",
+   "en": "What CQA problem do \"silicone-free syringes\" solve? Which type of drug (small molecule vs. biologic) is affected more by this problem, and why?"
+  },
+  {
+   "zh": "針刺隔膜充填（needle-through-septum filling）如何強化無菌保證？與傳統開口充填相比，它解決了哪個關鍵的污染風險窗口？",
+   "en": "How does needle-through-septum filling strengthen sterility assurance? Compared with conventional open filling, which critical contamination risk window does it address?"
+  },
+  {
+   "zh": "如果一個客戶要求使用多腔室卡匣，請列出至少3個你需要在早期設備設計階段就確認的技術問題。",
+   "en": "If a client requires a multi-chamber cartridge, list at least 3 technical questions you would need to confirm at the early equipment design stage."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary (5B: doc p108-p114)",
+   "en": "Section Summary (5B: doc p108-p114)"
+  },
+  {
+   "zh": "<strong>容積充填（5.2.2）：</strong>以容器幾何+雷射感測器控制終點，不用天平稱重。精度依賴容器尺寸一致性，適合無最大充填重量限制的容器（如多劑卡匣）。",
+   "en": "<strong>Volumetric filling (5.2.2):</strong> The endpoint is controlled by container geometry plus a laser sensor, without balance weighing. Accuracy depends on consistent container dimensions, and the method suits containers with no maximum fill weight limit (such as multi-dose cartridges)."
+  },
+  {
+   "zh": "<strong>劑量修正哲學（5.2.2.2）：</strong>穩定泵（RPP/DP）用手動修正，PP用自動時間加權修正，TP必須自動即時修正——對應各泵系統的本質特性差異。",
+   "en": "<strong>Dose correction philosophy (5.2.2.2):</strong> Stable pumps (RPP/DP) use manual correction, PP uses automatic time-weighted correction, and TP requires automatic real-time correction, reflecting the inherent characteristics of each pump system."
+  },
+  {
+   "zh": "<strong>三大稱重誤差類型（5.3）：</strong>統計性（氣流/震動/靜電等隨機誤差）、恆定性（感測器偏移等系統誤差）、機器/產品相關誤差。Grade A氣流既保護無菌，也是稱重精度的挑戰。",
+   "en": "<strong>Three weighing error types (5.3):</strong> Statistical (random errors from airflow, vibration, static electricity, etc.), constant (systematic errors such as sensor offset), and machine/product-related errors. Grade A airflow both protects sterility and challenges weighing accuracy."
+  },
+  {
+   "zh": "<strong>IPC限度設定核心原則（5.3.1）：</strong>IPC讀值 ≠ 實際重量。IPC上下限應依據「最寬IPC鐘形曲線」設定，避免因IPC天平固有誤差而誤判拒絕實際合格品（false rejects）。",
+   "en": "<strong>Core principle for setting IPC limits (5.3.1):</strong> The IPC reading is not the actual weight. IPC upper and lower limits should be set against the \"widest IPC bell curve\", to avoid false rejects of actually conforming units caused by the inherent error of the IPC balance."
+  },
+  {
+   "zh": "<strong>製程能力指標 C<sub>pk</sub>（5.3.2）：</strong>C<sub>pk</sub> 1.0~1.33為業界標準（±3σ~±4σ）。C<sub>pk</sub> = 1.33時，每百萬充填僅66個超規。C<sub>pk</sub>是設備採購規格（URS）的關鍵量化指標。",
+   "en": "<strong>Process capability index C<sub>pk</sub> (5.3.2):</strong> A C<sub>pk</sub> of 1.0 to 1.33 is the industry standard (±3σ to ±4σ). At C<sub>pk</sub> = 1.33, only 66 units per million fills are out of specification. C<sub>pk</sub> is a key quantitative metric in the equipment purchase specification (URS)."
+  },
+  {
+   "zh": "<strong>進階容器密封系統（6.0過渡）：</strong>多腔室、無矽油、針刺隔膜充填等創新容器需在設備設計早期讓供應商參與。決策優先順序永遠是：無菌保證 &gt; 產品CQA &gt; 商業靈活性。",
+   "en": "<strong>Advanced container-closure systems (6.0 transition):</strong> Innovative containers such as multi-chamber, silicone-free and needle-through-septum filling require supplier involvement early in equipment design. The order of decision priority is always: sterility assurance &gt; product CQAs &gt; commercial flexibility."
+  }
+ ]
+}

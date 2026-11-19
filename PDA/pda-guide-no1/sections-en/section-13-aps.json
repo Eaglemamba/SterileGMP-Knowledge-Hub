@@ -1,0 +1,409 @@
+{
+ "source": "section-13-aps.html",
+ "blocks": [
+  {
+   "zh": "無菌製程模擬（培養基灌充）— 充填系統與環境整合設計",
+   "en": "Aseptic Process Simulation (Media Fill): Integrating the Filling System with the Environment"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解屏障系統（Barrier System）在無菌充填中的核心角色：將操作人員與產品完全分離",
+   "en": "Understand the core role of the barrier system in aseptic filling: complete separation of operators from the product"
+  },
+  {
+   "zh": "區分 Isolator（隔離器）、cRABS（密閉限制進出屏障系統）、oRABS（開放限制進出屏障系統）三類系統的設計原理與管控等級",
+   "en": "Distinguish the design principles and level of control of the three system types: isolator, cRABS (closed restricted access barrier system) and oRABS (open restricted access barrier system)"
+  },
+  {
+   "zh": "掌握 Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 比較表中各屬性的監管意義與 CDMO 選型考量",
+   "en": "Master the comparison table in Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> and the regulatory significance of each attribute, along with CDMO selection considerations"
+  },
+  {
+   "zh": "應用決策層次：無菌保證 &gt; 產品 CQA &gt; 商業靈活性，評估屏障選型的風險與效益",
+   "en": "Apply the decision hierarchy of sterility assurance > product CQA > commercial flexibility to weigh the risks and benefits of barrier selection"
+  },
+  {
+   "zh": "了解無菌製程模擬（APS）在各屏障類型中的要求差異",
+   "en": "Understand how aseptic process simulation (APS) requirements differ across barrier types"
+  },
+  {
+   "zh": "<strong>14.0 Filling System and Environmental Considerations — Overview 14.0 充填系統與環境考量 — 概述</strong>",
+   "en": "<strong>14.0 Filling System and Environmental Considerations — Overview</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Barrier（屏障）:</strong> 將 Grade A 無菌充填區域與外部環境（含操作人員）物理隔離的結構。這是現代無菌充填的基礎設計原則。",
+   "en": "<strong>Barrier:</strong> A structure that physically separates the Grade A aseptic filling area from the external environment (including operators). It is the foundational design principle of modern aseptic filling."
+  },
+  {
+   "zh": "<strong>Legacy System（舊式系統）:</strong> 指未設置屏障、操作人員直接在開放潔淨室中作業的傳統設計。監管機構明確將此視為需要改善的過時系統。",
+   "en": "<strong>Legacy System:</strong> A traditional design with no barrier, in which operators work directly in an open cleanroom. Regulators explicitly regard it as an outdated system that needs to be improved."
+  },
+  {
+   "zh": "<strong>Grade A（A級）:</strong> 無菌操作的最高潔淨等級，要求非活性微粒 ≥0.5μm ≤3,520 顆/m³（靜態），活性微粒幾乎不允許存在。",
+   "en": "<strong>Grade A:</strong> The highest cleanliness grade for aseptic operations. It requires non-viable particles ≥0.5 µm ≤3,520 particles/m³ (at rest) and practically no viable particles."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像手術室裡的外科手術：外科醫師不能直接用裸手接觸患者的開放傷口，必須戴手套、穿無菌手術衣，並在嚴格消毒的環境中操作。",
+   "en": "Think of a surgical operation in an operating room: the surgeon cannot touch the patient's open wound with bare hands, but must wear gloves and a sterile gown and work in a strictly disinfected environment."
+  },
+  {
+   "zh": "無菌充填的屏障系統就像手術室的「隔離措施」——人員永遠在屏障外操作，產品在屏障內被保護，兩者之間的物理隔離是無菌保證的第一道防線。",
+   "en": "The barrier system in aseptic filling is like the \"isolation measures\" of an operating room: people always work outside the barrier and the product is protected inside it, and this physical separation is the first line of defense for sterility assurance."
+  },
+  {
+   "zh": "舊式潔淨室（Legacy System）就像「沒有手術服的手術室」——規則嚴格，但人員近身接觸的風險依然存在，監管機構已明確要求升級。",
+   "en": "A legacy cleanroom is like an \"operating room without surgical gowns\": the rules are strict, but the risk of close personnel contact remains, and regulators have clearly called for upgrades."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>監管明確立場：</strong>「大多數監管機構」將無屏障的傳統潔淨室定位為 legacy system（過時系統），需要升級。這不只是建議，而是帶有監管壓力的明確方向。",
+   "en": "<strong>Clear regulatory position:</strong> \"Most regulatory authorities\" classify cleanrooms without barriers as legacy systems that need to be upgraded. This is not just a recommendation but a clear direction backed by regulatory pressure."
+  },
+  {
+   "zh": "<strong>升級期間的策略：</strong>在完成屏障技術升級之前，應與監管機構協商風險評估與緩解措施，不能無限期拖延升級計畫。",
+   "en": "<strong>Strategy during the interim:</strong> Until the barrier technology upgrade is completed, risk assessments and mitigation measures should be discussed with the regulators; the upgrade plan cannot be postponed indefinitely."
+  },
+  {
+   "zh": "<strong>決策層次提醒：</strong>無菌保證（Sterility Assurance）永遠排第一。屏障系統的存在本身就是為了優先保護無菌性，而非操作方便性。",
+   "en": "<strong>Reminder on the decision hierarchy:</strong> Sterility assurance always comes first. The barrier system exists to prioritize protection of sterility, not operator convenience."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "您所在的設施目前使用哪種屏障系統？如果還在使用傳統潔淨室（無屏障），下一步的升級路徑是什麼？",
+   "en": "Which barrier system does your facility currently use? If it still uses a conventional cleanroom (no barrier), what is the next step in the upgrade path?"
+  },
+  {
+   "zh": "為什麼監管機構要特別強調「人員與充填過程的分離」？哪些污染風險是屏障系統能有效控制的？",
+   "en": "Why do regulators place particular emphasis on \"separating personnel from the filling process\"? Which contamination risks can a barrier system effectively control?"
+  },
+  {
+   "zh": "PDA TR34 和 EU GMP Annex 1 對於屏障系統的要求有哪些核心交集？",
+   "en": "What are the core overlaps between the requirements of PDA TR34 and EU GMP Annex 1 for barrier systems?"
+  },
+  {
+   "zh": "<strong>14.1 Types of Barrier Systems for Aseptic Operations 14.1 無菌製程屏障系統類型</strong>",
+   "en": "<strong>14.1 Types of Barrier Systems for Aseptic Operations</strong>"
+  },
+  {
+   "zh": "<strong>Isolator（隔離器）:</strong> 能承受自動化生物去污（Automated Biodecontamination）循環的密閉屏障，通常使用氣相過氧化氫（VHP）滅菌。門只在批次開始設置和結束時打開，期間完全封閉。",
+   "en": "<strong>Isolator:</strong> A closed barrier that can withstand automated biodecontamination cycles, usually using vaporized hydrogen peroxide (VHP). Doors are opened only at the start of setup and at the end of the batch, and remain fully closed in between."
+  },
+  {
+   "zh": "<strong>RABS（限制進出屏障系統）:</strong> 剛性壁面圍封，主要以液態消毒劑/殺芽孢劑消毒表面。密閉性不如 Isolator，任何開門動作均構成干預事件（Intervention）。",
+   "en": "<strong>RABS (restricted access barrier system):</strong> A rigid-wall enclosure whose surfaces are disinfected mainly with liquid disinfectants/sporicides. It is less tightly closed than an isolator, and any door opening constitutes an intervention."
+  },
+  {
+   "zh": "<strong>Glove Port（手套口）:</strong> 固定在屏障壁上的手套-袖套組合，讓操作人員在不破壞屏障完整性的前提下進行屏障內操作。",
+   "en": "<strong>Glove Port:</strong> A glove-sleeve assembly fixed to the barrier wall that lets operators work inside the barrier without breaching its integrity."
+  },
+  {
+   "zh": "<strong>RTP（快速傳遞口）:</strong> 允許物料（零件、監測設備、耗材）在不暴露 Grade A 環境的情況下進出屏障的專用傳遞裝置。",
+   "en": "<strong>RTP (rapid transfer port):</strong> A dedicated transfer device that allows materials (parts, monitoring equipment, consumables) to enter and leave the barrier without exposing the Grade A environment."
+  },
+  {
+   "zh": "<strong>Biodecontamination（生物去污）:</strong> 使用化學試劑（如 VHP）對封閉空間進行滅菌級別的微生物去除，與一般消毒（disinfection）不同，達到的微生物滅殺水平更高。",
+   "en": "<strong>Biodecontamination:</strong> Removal of microorganisms from an enclosed space at a sterilization level using chemical agents (such as VHP). Unlike ordinary disinfection, it achieves a higher level of microbial kill."
+  },
+  {
+   "zh": "<strong>Isolator vs. RABS = 太空站 vs. 無塵室手術帳篷</strong>",
+   "en": "<strong>Isolator vs. RABS = Space Station vs. Cleanroom Surgical Tent</strong>"
+  },
+  {
+   "zh": "<strong>Isolator</strong> 像太空站：完全密封、自給自足的環境，人員透過固定手套口操作，進出物料必須經過氣閘（Airlock）。啟動前用 VHP 徹底滅菌，一旦投入使用就不開門。安全性最高，但建置成本最貴。",
+   "en": "<strong>An isolator</strong> is like a space station: a fully sealed, self-contained environment in which people work through fixed glove ports, and materials must pass through an airlock. It is thoroughly sterilized with VHP before start-up and, once in use, its doors are not opened. It offers the highest assurance but is the most expensive to build."
+  },
+  {
+   "zh": "<strong>RABS</strong> 像無塵室裡的外科手術帳篷：提供物理屏障和向下氣流保護，但帳篷本身並非完全密封。每次開門都是風險事件，需要單向氣流覆蓋保護，SOP 必須極度詳細。",
+   "en": "<strong>A RABS</strong> is like a surgical tent inside a cleanroom: it provides a physical barrier and downward airflow protection, but the tent itself is not completely sealed. Every door opening is a risk event that needs unidirectional airflow coverage, and the SOPs must be extremely detailed."
+  },
+  {
+   "zh": "結論：Isolator 是「主動防禦」，RABS 是「被動防禦加強版」。監管趨勢明確偏好 Isolator。",
+   "en": "In short: an isolator is \"active defense\" and a RABS is \"enhanced passive defense\". The regulatory trend clearly favors isolators."
+  },
+  {
+   "zh": "<strong>RABS 開門 = 干預事件：</strong>這是關鍵監管觀念。RABS 一旦完成消毒，任何開門動作（包含設置階段）都必須被記錄為干預，並受到嚴格 SOP 管控。這直接影響 APS（無菌製程模擬）設計——APS 中必須模擬所有預期的干預類型。",
+   "en": "<strong>Opening a RABS door = an intervention:</strong> This is a key regulatory concept. Once a RABS has been disinfected, any door opening (including during the setup phase) must be recorded as an intervention and controlled by strict SOPs. This directly affects APS (aseptic process simulation) design: the APS must simulate all anticipated types of intervention."
+  },
+  {
+   "zh": "<strong>設計即預防：</strong>文件強調應在設計階段就最小化 RABS 開門干預的次數和類型。這是工程預防勝於事後補救的體現——把干預風險設計出去，而不是靠 SOP 補救。",
+   "en": "<strong>Prevention by design:</strong> The document stresses minimizing the number and types of RABS door-opening interventions at the design stage. This reflects the principle that engineering prevention beats after-the-fact remediation: design the intervention risk out rather than compensate for it with SOPs."
+  },
+  {
+   "zh": "<strong>單向氣流保護：</strong>RABS 開門時，必須有頂部單向氣流（Unidirectional Airflow, UDF）覆蓋開門區域。這是保護 Grade A 環境的最後一道防線。",
+   "en": "<strong>Unidirectional airflow protection:</strong> When a RABS door is opened, overhead unidirectional airflow (UDF) must cover the opening area. This is the last line of defense for the Grade A environment."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 選型考量：</strong>當客戶要求更高無菌保證水平（如 RNA 疫苗、高敏感生物製品），Isolator 是唯一選擇；對於小批次多產品切換（如臨床早期階段），cRABS 提供較好的清潔靈活性；oRABS 則通常是舊有設施的升級過渡選項。",
+   "en": "<strong>CDMO selection considerations:</strong> When a client requires a higher level of sterility assurance (such as RNA vaccines or highly sensitive biologics), an isolator is the only choice. For small batches with frequent product changeovers (such as early clinical phases), a cRABS offers better cleaning flexibility. An oRABS is usually an upgrade transition option for older facilities."
+  },
+  {
+   "zh": "<strong>APS 設計連結：</strong>屏障類型直接決定 APS 的模擬範圍。使用 RABS 時，APS 必須包含所有預期的開門干預場景。使用 Isolator 時，APS 重點在於 VHP 生物去污驗證和手套口完整性。",
+   "en": "<strong>Link to APS design:</strong> The barrier type directly determines the scope of the APS. With a RABS, the APS must include all anticipated door-opening intervention scenarios. With an isolator, the APS focuses on VHP biodecontamination validation and glove port integrity."
+  },
+  {
+   "zh": "<strong>歐盟 GMP Annex 1 (2022) 立場：</strong>明確偏好 Isolator，並要求使用 RABS 或傳統潔淨室的廠商提供充分的風險評估理由。",
+   "en": "<strong>EU GMP Annex 1 (2022) position:</strong> It clearly prefers isolators and requires manufacturers using a RABS or a conventional cleanroom to provide an adequate risk-assessment justification."
+  },
+  {
+   "zh": "Isolator 和 RABS 在生物去污方法上的根本差異是什麼？各自對 APS 設計有什麼影響？",
+   "en": "What is the fundamental difference between isolators and RABS in biodecontamination methods? How does each affect APS design?"
+  },
+  {
+   "zh": "為什麼 RABS 中的開門動作必須被視為干預事件？若不記錄，會有什麼監管風險？",
+   "en": "Why must door openings in a RABS be treated as interventions? What regulatory risks arise if they are not recorded?"
+  },
+  {
+   "zh": "一家 CDMO 同時承接臨床一期和商業化批次，應如何選擇屏障技術？請說明你的決策邏輯。",
+   "en": "A CDMO takes on both Phase 1 clinical and commercial batches. How should it choose its barrier technology? Explain your decision logic."
+  },
+  {
+   "zh": "<strong>14.2 Design Considerations for the Integration of the Filling System with the Environment 14.2 充填系統與環境整合之設計考量</strong>",
+   "en": "<strong>14.2 Design Considerations for the Integration of the Filling System with the Environment</strong>"
+  },
+  {
+   "zh": "<strong>oRABS（開放型 RABS）:</strong> 空氣循環回到潔淨室低牆回風，屏障本身對設備和潔淨室均非密封。需要 Grade B 背景環境。是傳統潔淨室升級的最常見第一步。",
+   "en": "<strong>oRABS (open RABS):</strong> Air is recirculated back to the cleanroom through low-level wall returns, and the barrier is not sealed from either the equipment or the cleanroom. It needs a Grade B background environment. It is the most common first step in upgrading a conventional cleanroom."
+  },
+  {
+   "zh": "<strong>cRABS（密閉型 RABS）:</strong> 正壓系統，內建 HEPA 過濾風機和低位回風，氣流在屏障內循環而非流向潔淨室。密閉性優於 oRABS，亦需 Grade B 背景環境。適合高活性產品（OEB 高）處理。",
+   "en": "<strong>cRABS (closed RABS):</strong> A positive-pressure system with built-in HEPA-filtered fans and low-level returns, in which air circulates within the barrier instead of flowing into the cleanroom. It is more tightly closed than an oRABS and also needs a Grade B background environment. It is suitable for handling highly potent products (high OEB)."
+  },
+  {
+   "zh": "<strong>Airflow Visualization Study（氣流可視化研究/煙霧研究）:</strong> 使用煙霧粒子驗證屏障內氣流是否真正為單向流、有無渦流或逆流。是設備確效（Equipment Qualification）的必要項目。",
+   "en": "<strong>Airflow Visualization Study (smoke study):</strong> Uses smoke particles to verify whether the airflow inside the barrier is truly unidirectional, with no eddies or reverse flow. It is a required part of equipment qualification."
+  },
+  {
+   "zh": "<strong>CFD（計算流體動力學）:</strong> 在設計階段用電腦模擬氣流行為，預測潛在問題，比物理煙霧測試更早介入，節省後期修改成本。",
+   "en": "<strong>CFD (computational fluid dynamics):</strong> Computer simulation of airflow behavior at the design stage to predict potential problems. It intervenes earlier than physical smoke testing and saves later modification costs."
+  },
+  {
+   "zh": "<strong>CCS（污染控制策略）:</strong> EU GMP Annex 1 要求的整體污染控制框架，明確定義各屏障類型所需的管控措施和環境監測要求。",
+   "en": "<strong>CCS (contamination control strategy):</strong> The overall contamination control framework required by EU GMP Annex 1, which defines the controls and environmental monitoring requirements for each barrier type."
+  },
+  {
+   "zh": "<strong>oRABS vs. cRABS = 開頂帳篷 vs. 密封充氣帳篷</strong>",
+   "en": "<strong>oRABS vs. cRABS = Open-Top Tent vs. Sealed Inflatable Tent</strong>"
+  },
+  {
+   "zh": "<strong>oRABS</strong> 像一個四面有牆但頂部有開口的帳篷——空氣從頂部 HEPA 進入，流過工作區後從低牆開口流回潔淨室。如果外部環境（Grade B 潔淨室）有問題，理論上會影響到屏障內部。",
+   "en": "<strong>An oRABS</strong> is like a tent with walls on four sides but an opening at the top: air enters through the HEPA filters above, flows across the work area and returns to the cleanroom through the low wall openings. If the external environment (the Grade B cleanroom) has a problem, it could in theory affect the inside of the barrier."
+  },
+  {
+   "zh": "<strong>cRABS</strong> 像一個全密封的充氣帳篷，有自己的內部氣循環系統——空氣在帳篷內循環，不依賴外部潔淨室氣流。但帳篷本身不像 Isolator 那樣能承受 VHP 生物去污（除非特殊設計）。",
+   "en": "<strong>A cRABS</strong> is like a fully sealed inflatable tent with its own internal air circulation: air recirculates inside the tent and does not depend on airflow from the external cleanroom. However, unlike an isolator, the tent itself cannot withstand VHP biodecontamination (unless specially designed)."
+  },
+  {
+   "zh": "<strong>Smoke Study</strong> = 在帳篷內點燃一支煙，看煙霧是否按設計方向流動，有沒有打轉或逆流。",
+   "en": "<strong>A smoke study</strong> = lighting a stick of smoke inside the tent to see whether it flows in the designed direction and whether it swirls or flows backward."
+  },
+  {
+   "zh": "<strong>背景環境要求關鍵差異：</strong>Isolator 的背景環境可以低至 Grade C（開放型）或 Grade D（密閉型）；RABS（無論 open 或 closed）則必須在 Grade B 環境中操作。這直接影響潔淨室的建置和運行成本。",
+   "en": "<strong>Key difference in background environment requirements:</strong> The background of an isolator can be as low as Grade C (open type) or Grade D (closed type), whereas a RABS (open or closed) must operate in a Grade B environment. This directly affects the construction and operating cost of the cleanroom."
+  },
+  {
+   "zh": "<strong>高活性產品（Potent Products）注意：</strong>cRABS 特別適合高活性產品充填，因為正壓密閉系統能提供操作人員防護。但仍需評估廢氣處理（Exhaust Filtration）——Isolator 可完全密封廢氣，RABS 通常無法。",
+   "en": "<strong>Note on potent products:</strong> A cRABS is particularly suitable for filling potent products because the positive-pressure closed system can provide operator protection. Exhaust filtration must still be evaluated: an isolator can contain its exhaust completely, whereas a RABS usually cannot."
+  },
+  {
+   "zh": "<strong>設計轉移機制是核心挑戰：</strong>無論選哪種屏障，物料的進出（零件、無菌流體管路、容器密封件、耗材）都需要嚴格設計的轉移機制。這是屏障完整性最容易被破壞的環節。",
+   "en": "<strong>Transfer mechanisms are the core design challenge:</strong> Whichever barrier is chosen, the movement of materials in and out (parts, sterile fluid pathways, container closures, consumables) requires carefully designed transfer mechanisms. This is where barrier integrity is most easily compromised."
+  },
+  {
+   "zh": "<strong>CCS 必須涵蓋屏障內外：</strong>CCS 不只管屏障內的 Grade A 環境，還必須涵蓋背景環境（Grade B/C/D）的監測和控制。屏障內外的控制是一個完整體系。",
+   "en": "<strong>The CCS must cover both inside and outside the barrier:</strong> The CCS does not govern only the Grade A environment inside the barrier; it must also cover the monitoring and control of the background environment (Grade B/C/D). Controls inside and outside the barrier form one complete system."
+  },
+  {
+   "zh": "設計評估框架 Design Decision Framework",
+   "en": "Design Decision Framework"
+  },
+  {
+   "zh": "選型決策矩陣：\n\n          Isolator     cRABS        oRABS\n背景環境   Grade C/D   Grade B      Grade B\n生物去污   VHP (自動)  視設計而定   液態消毒劑\n操作人員防護  最高      高           中\n建置成本   最高        中           最低\n換批靈活性  低          中           高\nAPS 複雜度  中          高           最高\n法規偏好度  最優        次之         最低\n\n決策原則：\n1. 無菌保證要求高 → Isolator\n2. 高活性產品 → cRABS 或 Isolator\n3. 多品項小批次 → 評估 cRABS 清潔靈活性\n4. 舊設施升級過渡 → oRABS 作為起步",
+   "en": "Selection decision matrix:\n\n          Isolator     cRABS        oRABS\nBackground  Grade C/D   Grade B      Grade B\nBiodecon.   VHP (auto)  Design-dependent   Liquid disinfectant\nOperator protection  Highest      High           Medium\nBuild cost   Highest        Medium           Lowest\nChangeover flexibility  Low          Medium           High\nAPS complexity  Medium          High           Highest\nRegulatory preference  Best        Next           Lowest\n\nDecision principles:\n1. High sterility assurance requirement → isolator\n2. Highly potent products → cRABS or isolator\n3. Many products in small batches → evaluate cRABS cleaning flexibility\n4. Upgrading an older facility → oRABS as a starting point"
+  },
+  {
+   "zh": "oRABS 和 cRABS 在氣流設計上的根本差異是什麼？各自對背景環境的要求為何相同？",
+   "en": "What is the fundamental difference between oRABS and cRABS in airflow design? Why do both have the same background environment requirement?"
+  },
+  {
+   "zh": "為什麼設計階段要先做 CFD 模擬，再做 Smoke Study？兩者能互相替代嗎？",
+   "en": "Why should CFD simulation be done before the smoke study at the design stage? Can one replace the other?"
+  },
+  {
+   "zh": "一個使用 oRABS 的設施，其 CCS 應如何確保背景環境（Grade B）的污染控制足夠支撐屏障完整性？",
+   "en": "For a facility using an oRABS, how should the CCS ensure that contamination control of the background environment (Grade B) is sufficient to support barrier integrity?"
+  },
+  {
+   "zh": "<strong>Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison of Control and Design Elements for Isolators and Restricted Access Barrier Systems Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: 隔離器與限制進出屏障系統（RABS）管制及設計要素比較</strong>",
+   "en": "<strong>Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison of Control and Design Elements for Isolators and Restricted Access Barrier Systems (RABS)<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts — 表格解讀",
+   "en": "Key Concepts: Reading the Table"
+  },
+  {
+   "zh": "Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 是本章最核心的參考工具，涵蓋五大類屬性比較：",
+   "en": "Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> is the most important reference tool in this chapter and compares five categories of attributes:"
+  },
+  {
+   "zh": "<strong>屏障設計意圖（Barrier Design Intent）:</strong> 三類系統均可保護產品；只有 Isolator 和 cRABS 能同時提供操作人員防護（containment），oRABS 無法。",
+   "en": "<strong>Barrier Design Intent:</strong> All three system types protect the product; only isolators and cRABS can also provide operator protection (containment), whereas an oRABS cannot."
+  },
+  {
+   "zh": "<strong>管控要素（Control Elements）:</strong> Isolator 對溫濕度、壓差的獨立控制能力最強；oRABS 幾乎無法獨立於背景環境控制。",
+   "en": "<strong>Control Elements:</strong> Isolators have the strongest ability to control temperature, humidity and differential pressure independently; an oRABS can hardly control them independently of the background environment."
+  },
+  {
+   "zh": "<strong>確效要求（Qualification Elements）:</strong> APS 為三類系統共同強制要求；氣流可視化研究均必須包含開門場景，但 oRABS 需模擬最多情境（設置、干預、恢復）。",
+   "en": "<strong>Qualification Elements:</strong> APS is mandatory for all three system types. Airflow visualization studies must in every case include door-opening scenarios, but an oRABS requires the most scenarios to be simulated (setup, interventions, recovery)."
+  },
+  {
+   "zh": "<strong>維護週期測試（Maintenance/Periodic Testing）:</strong> 手套口完整性測試為三類系統均要求；腔體氣密性（Leak Test）僅 Isolator 強制要求，cRABS 視設計而定，oRABS 不適用。",
+   "en": "<strong>Maintenance/Periodic Testing:</strong> Glove port integrity testing is required for all three system types; the enclosure leak test is mandatory only for isolators, depends on the design for a cRABS, and is not applicable to an oRABS."
+  },
+  {
+   "zh": "<strong>設計要素（Design Elements）:</strong> Isolator 的材料選擇、管路穿越設計、廢氣過濾均為最嚴格要求。",
+   "en": "<strong>Design Elements:</strong> For isolators, material selection, piping penetration design and exhaust filtration are all subject to the strictest requirements."
+  },
+  {
+   "zh": "重點提示 Key Notes — 表格中的關鍵差異",
+   "en": "Key Notes: Key Differences in the Table"
+  },
+  {
+   "zh": "<strong>背景環境等級差異決定潔淨室建置成本：</strong>",
+   "en": "<strong>Differences in background grade drive cleanroom construction cost:</strong>"
+  },
+  {
+   "zh": "Isolator（密閉型）：背景只需 Grade D → 潔淨室建置成本最低",
+   "en": "Isolator (closed): background needs only Grade D → lowest cleanroom construction cost"
+  },
+  {
+   "zh": "Isolator（開放型）：背景需 Grade C",
+   "en": "Isolator (open): background needs Grade C"
+  },
+  {
+   "zh": "RABS（無論 open 或 closed）：背景必須 Grade B → 潔淨室成本最高",
+   "en": "RABS (open or closed): background must be Grade B → highest cleanroom cost"
+  },
+  {
+   "zh": "這意味著：雖然 Isolator 設備本身最貴，但因背景環境要求低，整體 TCO（總擁有成本）在長期高產量生產中可能反而最低。",
+   "en": "This means that although the isolator equipment itself is the most expensive, its lower background requirement can make its overall TCO (total cost of ownership) the lowest in long-term, high-volume production."
+  },
+  {
+   "zh": "<strong>廢氣過濾（Exhaust Filtration）的操作人員安全意涵：</strong>Isolator 強制要求廢氣過濾，適合高活性（OEB 4/5）產品。oRABS 完全無法提供，cRABS 依設計而定。這是高危產品充填選型的決定性因素。",
+   "en": "<strong>Operator safety implications of exhaust filtration:</strong> Exhaust filtration is mandatory for isolators, making them suitable for highly potent (OEB 4/5) products. An oRABS cannot provide it at all, and for a cRABS it depends on the design. This is the decisive factor in selecting a system for filling hazardous products."
+  },
+  {
+   "zh": "<strong>管路穿越等級設計（Piping Transiting Grades）：</strong>Isolator 因背景環境為 Grade C，從 Grade A 穿越到 Grade C 的管路設計「Critical」；RABS 因背景為 Grade B，穿越等差較小，設計挑戰相對低。",
+   "en": "<strong>Piping Transiting Grades:</strong> Because the isolator background is Grade C, the design of piping passing from Grade A to Grade C is \"Critical\"; with a RABS the background is Grade B, so the difference in grades crossed is smaller and the design challenge is relatively lower."
+  },
+  {
+   "zh": "APS 要求比較 APS Requirements by Barrier Type",
+   "en": "APS Requirements by Barrier Type"
+  },
+  {
+   "zh": "Isolator APS 重點：\n  - 模擬 VHP 生物去污後首批充填\n  - 手套口操作場景（介入）\n  - 開門設置恢復場景\n  - 批次間/活動（campaign）間的連續模擬\n\ncRABS APS 重點：\n  - 所有預期開門干預場景\n  - 消毒位置（Disinfection Position）覆蓋驗證\n  - 氣相生物去污後的設備移動（Jog Feature）\n\noRABS APS 重點：\n  - 設置、所有干預、恢復三大類場景\n  - 最多的開門干預模擬數量\n  - 每次干預後的環境恢復驗證\n  - 潔淨室（Grade B）的狀態確認\n\n共同要求：\n  - APS = Yes（三類皆強制）\n  - 手套口完整性測試 = Yes（三類皆要求）\n  - 氣流可視化研究 = Yes（三類皆要求）",
+   "en": "Isolator APS focus:\n  - Simulate the first fill after VHP biodecontamination\n  - Glove port operation scenarios (interventions)\n  - Door-opening setup and recovery scenarios\n  - Continuous simulation between batches/campaigns\n\ncRABS APS focus:\n  - All anticipated door-opening intervention scenarios\n  - Verification of Disinfection Position coverage\n  - Equipment movement after gas-phase biodecontamination (Jog Feature)\n\noRABS APS focus:\n  - Three categories of scenarios: setup, all interventions, recovery\n  - The largest number of simulated door-opening interventions\n  - Verification of environmental recovery after each intervention\n  - Confirmation of the status of the cleanroom (Grade B)\n\nCommon requirements:\n  - APS = Yes (mandatory for all three types)\n  - Glove port integrity test = Yes (required for all three types)\n  - Airflow visualization study = Yes (required for all three types)"
+  },
+  {
+   "zh": "<strong>CDMO 採購新充填線時的屏障選型流程：</strong>",
+   "en": "<strong>Barrier selection process when a CDMO procures a new filling line:</strong>"
+  },
+  {
+   "zh": "<strong>確認產品組合：</strong>是否包含高活性/毒性產品？→ 若是，需 Isolator 或 cRABS（exhaust filtration）",
+   "en": "<strong>Confirm the product portfolio:</strong> Does it include highly potent/toxic products? If so, an isolator or cRABS (with exhaust filtration) is needed."
+  },
+  {
+   "zh": "<strong>確認批次模式：</strong>單一長期商業化？→ Isolator TCO 最優。多品項小批次？→ cRABS 清潔靈活性更高。",
+   "en": "<strong>Confirm the batch pattern:</strong> Single long-term commercial product? An isolator gives the best TCO. Many products in small batches? A cRABS offers greater cleaning flexibility."
+  },
+  {
+   "zh": "<strong>評估現有潔淨室等級：</strong>現有 Grade B 背景 → RABS 可立即適配；需新建 → Isolator 背景要求較低可節省建設成本。",
+   "en": "<strong>Assess the existing cleanroom grade:</strong> If a Grade B background already exists, a RABS can be fitted immediately; if a new build is needed, the lower background requirement of an isolator can save construction cost."
+  },
+  {
+   "zh": "<strong>評估監管市場：</strong>目標市場包含歐盟 → Annex 1 偏好 Isolator，需有充分 RABS 使用理由。",
+   "en": "<strong>Assess the regulatory markets:</strong> If the target markets include the EU, Annex 1 prefers isolators and a sound justification for using a RABS is needed."
+  },
+  {
+   "zh": "<strong>APS 規劃：</strong>選定屏障後，規劃 APS 涵蓋的干預清單，確保所有高風險操作均被模擬驗證。",
+   "en": "<strong>APS planning:</strong> After the barrier is selected, plan the list of interventions the APS will cover, ensuring that all high-risk operations are simulated and validated."
+  },
+  {
+   "zh": "從 Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中，找出三個在 Isolator 和 oRABS 之間差異最大的屬性，並解釋為什麼這些差異對無菌保證（Sterility Assurance）最為關鍵。",
+   "en": "From Table 14.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p206-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, identify the three attributes with the greatest difference between an isolator and an oRABS, and explain why these differences matter most for sterility assurance."
+  },
+  {
+   "zh": "為什麼 oRABS 不能提供操作人員防護（Containment）？這對充填高活性細胞毒性藥物（如某些抗腫瘤藥）的 CDMO 意味著什麼？",
+   "en": "Why can an oRABS not provide operator protection (containment)? What does this mean for a CDMO filling highly potent cytotoxic drugs (such as certain anticancer drugs)?"
+  },
+  {
+   "zh": "「Jog Feature（點動功能）」在 cRABS 和 oRABS 的消毒過程中有何作用？如果沒有此功能，會產生什麼消毒死角風險？",
+   "en": "What role does the \"Jog Feature\" play in the disinfection of cRABS and oRABS? Without it, what dead-spot risks would arise in disinfection?"
+  },
+  {
+   "zh": "Isolator 的腔體氣密性測試（Leak Test）在生物去污前進行的意義是什麼？若洩漏，VHP 去污是否仍然有效？",
+   "en": "What is the significance of performing the isolator enclosure leak test before biodecontamination? If there is a leak, is VHP decontamination still effective?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>屏障是無菌充填的基礎：</strong>物理隔離人員與產品是現代無菌製造的核心要求，監管機構已明確要求所有無屏障舊式系統（Legacy System）必須升級。",
+   "en": "<strong>Barriers are the foundation of aseptic filling:</strong> Physically separating personnel from the product is a core requirement of modern aseptic manufacturing, and regulators have clearly required that all legacy systems without barriers be upgraded."
+  },
+  {
+   "zh": "<strong>三類屏障的技術層次：</strong>Isolator（隔離器）&gt; cRABS（密閉型 RABS）&gt; oRABS（開放型 RABS），無菌保證等級依次遞減，但靈活性和初始成本依次遞增。",
+   "en": "<strong>Technology tiers of the three barrier types:</strong> Isolator &gt; cRABS (closed RABS) &gt; oRABS (open RABS). The level of sterility assurance decreases in that order, while flexibility and initial cost increase in that order."
+  },
+  {
+   "zh": "<strong>背景環境要求決定整體 TCO：</strong>Isolator（密閉型）背景只需 Grade D，長期看潔淨室運行成本最低；RABS 系統背景必須 Grade B，潔淨室要求最嚴格。",
+   "en": "<strong>Background environment requirements drive overall TCO:</strong> The isolator (closed) background needs only Grade D, giving the lowest long-term cleanroom operating cost; a RABS background must be Grade B, the strictest cleanroom requirement."
+  },
+  {
+   "zh": "<strong>RABS 中每次開門 = 干預事件：</strong>必須有 SOP 管控、氣流保護、記錄文件，並在 APS 中模擬。這是 RABS 操作管理最核心的挑戰。",
+   "en": "<strong>Every door opening in a RABS = an intervention:</strong> It must be controlled by SOPs, protected by airflow, documented, and simulated in the APS. This is the central challenge of RABS operational management."
+  },
+  {
+   "zh": "<strong>APS 為三類屏障系統共同強制要求：</strong>但模擬範疇因屏障類型而異，oRABS 需涵蓋最多開門干預場景，Isolator 重點在生物去污驗證和手套口完整性。",
+   "en": "<strong>APS is mandatory for all three barrier types:</strong> The scope of simulation varies by barrier type: an oRABS must cover the most door-opening intervention scenarios, while an isolator focuses on biodecontamination validation and glove port integrity."
+  },
+  {
+   "zh": "<strong>CCS 必須整體規劃：</strong>污染控制策略（CCS）需同時涵蓋屏障內（Grade A）和背景環境，兩者是相互依存的整體控制系統。",
+   "en": "<strong>The CCS must be planned as a whole:</strong> The contamination control strategy (CCS) must cover both the inside of the barrier (Grade A) and the background environment, which together form an interdependent control system."
+  },
+  {
+   "zh": "<strong>決策層次始終適用：</strong>無菌保證 &gt; 產品 CQA &gt; 商業靈活性。屏障系統選型和 APS 設計的每一個決策，都必須以無菌保證為最優先考量。",
+   "en": "<strong>The decision hierarchy always applies:</strong> Sterility assurance &gt; product CQA &gt; commercial flexibility. Every decision on barrier selection and APS design must give sterility assurance the highest priority."
+  }
+ ]
+}

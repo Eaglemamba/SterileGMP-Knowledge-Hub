@@ -1,0 +1,833 @@
+{
+ "source": "section-01b-design.html",
+ "blocks": [
+  {
+   "zh": "設計要素：產能模型、分批生產策略與未來彈性規劃",
+   "en": "Design Elements: Capacity Model, Campaigning Strategy and Future-Proofing"
+  },
+  {
+   "zh": "1. Sterility Assurance (無菌保證) — 永遠第一優先",
+   "en": "1. Sterility Assurance (SA) — Always the First Priority"
+  },
+  {
+   "zh": "2. Product CQAs (產品關鍵品質屬性) — 病患安全",
+   "en": "2. Product CQAs (Critical Quality Attributes) — Patient Safety"
+  },
+  {
+   "zh": "3. Business &amp; Flexibility (商業與彈性) — 營運需求",
+   "en": "3. Business &amp; Flexibility — Operational Needs"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解產能模型的各項輸入參數（停機率、換線時間、良率、效率），並能設定充填速度目標",
+   "en": "Understand the input parameters of the capacity model (shutdown allowances, changeover time, yield, efficiency) and be able to set a filling speed target"
+  },
+  {
+   "zh": "掌握分批生產（Campaigning）的 SA 風險來源與對應的控制策略",
+   "en": "Understand the SA risk sources of campaigning and the corresponding control strategies"
+  },
+  {
+   "zh": "比較四種液體充填技術在不同容器和產品類型的適用性",
+   "en": "Compare the suitability of the four liquid filling technologies for different containers and product types"
+  },
+  {
+   "zh": "了解未來彈性規劃在充填線設計中的商業考量與風險對齊原則",
+   "en": "Understand the business considerations and risk-alignment principle behind future-proofing in filling line design"
+  },
+  {
+   "zh": "本章內容索引",
+   "en": "Chapter Index"
+  },
+  {
+   "zh": "<a href=\"#sec-1-4\">1.4 充填速度與產能模型</a>\n<a href=\"#sec-1-4-1\">1.4.1 停機率計算</a>\n<a href=\"#sec-1-4-2\">1.4.2 分批生產策略</a>\n<a href=\"#sec-1-5\">1.5 分批生產的 SA 要求</a>\n<a href=\"#sec-1-6\">1.6 未來彈性規劃</a>\n<a href=\"#sec-2-0\">2.0 充填技術概覽</a>\n<a href=\"#table-2-0-1\">Table 2.0-1 技術比較</a>\n<a href=\"#table-2-0-2\">Table 2.0-2 容器適用性</a>\n<a href=\"#table-2-0-3\">Table 2.0-3 產品類型比較</a>",
+   "en": "<a href=\"#sec-1-4\">1.4 Filling Speed and Capacity Model</a>\n<a href=\"#sec-1-4-1\">1.4.1 Shutdown Allowance Calculation</a>\n<a href=\"#sec-1-4-2\">1.4.2 Campaign Strategy</a>\n<a href=\"#sec-1-5\">1.5 SA Requirements for Campaigning</a>\n<a href=\"#sec-1-6\">1.6 Future-Proofing</a>\n<a href=\"#sec-2-0\">2.0 Filling Technology Overview</a>\n<a href=\"#table-2-0-1\">Table 2.0-1 Technology Comparison</a>\n<a href=\"#table-2-0-2\">Table 2.0-2 Container Suitability</a>\n<a href=\"#table-2-0-3\">Table 2.0-3 Product Type Comparison</a>"
+  },
+  {
+   "zh": "充填速度與產量驅動設備選型與設計",
+   "en": "Filling Speed and Throughput Drive Equipment Selection and Design"
+  },
+  {
+   "zh": "<strong>1.4.1 Capacity Model Inputs — Shutdown Allowances &amp; Core Factors 1.4.1 產能模型輸入 — 停機允許量與核心因素</strong>",
+   "en": "<strong>1.4.1 Capacity Model Inputs — Shutdown Allowances &amp; Core Factors</strong>"
+  },
+  {
+   "zh": "中文解析 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "產能模型的八大輸入參數",
+   "en": "The Eight Input Parameters of the Capacity Model"
+  },
+  {
+   "zh": "在設定充填速度目標之前，必須先建立完整的產能模型 (Capacity Model)。這八個參數構成模型的核心輸入：",
+   "en": "Before setting a filling speed target, a complete capacity model must be established. These eight parameters form the core inputs of the model:"
+  },
+  {
+   "zh": "<strong>停機率 (Shutdown Allowances)</strong>：APS 模擬、PM 保養、法規審查等非生產時間，通常每年扣除 30–60 天",
+   "en": "<strong>Shutdown Allowances</strong>: non-production time such as APS runs, PM and regulatory inspections, typically 30–60 days deducted per year"
+  },
+  {
+   "zh": "<strong>分批策略 (Campaign Strategy)</strong>：連續生產多批次 vs. 單批模式，影響換線成本與 SA 風險",
+   "en": "<strong>Campaign Strategy</strong>: running multiple consecutive batches vs. single-batch mode; affects changeover cost and SA risk"
+  },
+  {
+   "zh": "<strong>換線時間 (Changeover Time)</strong>：從上一批「最後一個合格容器」到下一批「第一個合格容器」所需時間",
+   "en": "<strong>Changeover Time</strong>: the time from the \"last good container\" of the previous batch to the \"first good container\" of the next batch"
+  },
+  {
+   "zh": "<strong>良率 (% Yield)</strong>：可接受的廢棄品比例，影響原料消耗與成本",
+   "en": "<strong>% Yield</strong>: the acceptable proportion of rejects; affects raw material consumption and cost"
+  },
+  {
+   "zh": "<strong>線效率 (% Line Efficiency)</strong>：充填運行時的實際效率，含短暫停機損耗",
+   "en": "<strong>% Line Efficiency</strong>: actual efficiency during filling, including losses from short stoppages"
+  },
+  {
+   "zh": "<strong>設施效率 (% Facility Efficiency)</strong>：全年可用工時中實際運作的比例",
+   "en": "<strong>% Facility Efficiency</strong>: the proportion of available annual working hours during which the facility actually operates"
+  },
+  {
+   "zh": "<strong>產能彈性 (Capacity Flexibility)</strong>：預留成長空間，初期低利用率以利後續調整",
+   "en": "<strong>Capacity Flexibility</strong>: headroom reserved for growth; low utilization at the start makes later adjustments easier"
+  },
+  {
+   "zh": "<strong>設施適用性 (Facility Suitability)</strong>：現有廠房的潔淨室等級、公用設施是否支持所選充填線",
+   "en": "<strong>Facility Suitability</strong>: whether the existing building's cleanroom grades and utilities can support the selected filling line"
+  },
+  {
+   "zh": "產能模型計算邏輯",
+   "en": "Capacity Model Calculation Logic"
+  },
+  {
+   "zh": "年有效工時 = 365天 × 24hr × % Facility Efficiency\n          − Shutdown Days\n實際充填時間 = 年有效工時 × % Line Efficiency\n年產出容器數 = 充填速度 (容器/hr)\n             × 實際充填時間\n             × % Yield",
+   "en": "Annual effective hours = 365 days × 24 hr × % Facility Efficiency\n          − Shutdown Days\nActual filling time = Annual effective hours × % Line Efficiency\nAnnual container output = Filling speed (containers/hr)\n             × Actual filling time\n             × % Yield"
+  },
+  {
+   "zh": "只有在確定這八個參數後，才能反推所需的充填速度目標。例如，年需 500 萬支、良率 98%、線效率 85%、設施效率 70%，可計算出對應的充填速度（容器/小時）。",
+   "en": "Only after these eight parameters are fixed can the required filling speed target be worked out backwards. For example, with an annual demand of 5 million units, 98% yield, 85% line efficiency and 70% facility efficiency, the corresponding filling speed (containers/hour) can be calculated."
+  },
+  {
+   "zh": "生活比喻：餐廳排座率",
+   "en": "Analogy: Restaurant Seat Utilization"
+  },
+  {
+   "zh": "把充填線想成餐廳的廚房：",
+   "en": "Think of the filling line as a restaurant kitchen:"
+  },
+  {
+   "zh": "停機率 = 廚房每年的休息日 + 設備清洗日",
+   "en": "Shutdown allowances = the kitchen's days off each year plus equipment cleaning days"
+  },
+  {
+   "zh": "換線時間 = 更換菜單（產品）時重新備料的時間",
+   "en": "Changeover time = the time to re-prepare ingredients when the menu (product) changes"
+  },
+  {
+   "zh": "線效率 = 廚師實際烹飪時間 vs. 等待備料時間的比例",
+   "en": "Line efficiency = the ratio of the chef's actual cooking time to time spent waiting for ingredients"
+  },
+  {
+   "zh": "設施效率 = 餐廳全年實際開門天數佔 365 天的比例",
+   "en": "Facility efficiency = the proportion of the 365 days the restaurant is actually open"
+  },
+  {
+   "zh": "不建立完整的「餐廳排程模型」，就無法知道需要幾個廚師（充填速度）才能達成業績目標（年產量）。",
+   "en": "Without a complete \"restaurant scheduling model,\" you cannot know how many chefs (filling speed) you need to meet the sales target (annual output)."
+  },
+  {
+   "zh": "CDMO 應用情境",
+   "en": "CDMO Application Scenario"
+  },
+  {
+   "zh": "David 的 CDMO 接到一個新客戶訂單：年需 200 萬支 2mL 凍乾粉針。在設定充填速度 RFQ 之前，必須確認：",
+   "en": "David's CDMO receives an order from a new customer: 2 million units of 2 mL lyophilized powder vials per year. Before issuing the filling speed RFQ, the following must be confirmed:"
+  },
+  {
+   "zh": "APS 每季一次，每次停線 2 天 → 年停機 8 天",
+   "en": "APS once per quarter, with 2 days of line downtime each time → 8 days of shutdown per year"
+  },
+  {
+   "zh": "產品為孤兒藥，換線清潔驗證嚴格 → 換線時間 16 小時",
+   "en": "The product is an orphan drug with strict changeover cleaning validation → 16 hours of changeover time"
+  },
+  {
+   "zh": "現有線效率約 78%，設施效率 65%",
+   "en": "Current line efficiency is about 78% and facility efficiency 65%"
+  },
+  {
+   "zh": "代入模型後，若所需充填速度超過現有設備上限，則需考慮增班或升級設備。<strong>決策順序：SA 保證 → 產品品質 → 商業產能</strong>。",
+   "en": "After plugging these into the model, if the required filling speed exceeds the limit of the existing equipment, adding shifts or upgrading the equipment must be considered. <strong>Decision order: SA assurance → product quality → commercial capacity</strong>."
+  },
+  {
+   "zh": "<strong>1.4.2 Campaign Strategy Overview 1.4.2 批次生產策略概述</strong>",
+   "en": "<strong>1.4.2 Campaign Strategy Overview</strong>"
+  },
+  {
+   "zh": "換線時間的精確定義",
+   "en": "Precise Definition of Changeover Time"
+  },
+  {
+   "zh": "換線時間 (Changeover Time) 的起算點與終點極為重要：",
+   "en": "The start and end points of changeover time (Changeover Time) are critical:"
+  },
+  {
+   "zh": "<strong>起算點</strong>：當前批次的最後一個「合格容器 (last good container)」充填完成",
+   "en": "<strong>Start point</strong>: filling of the last good container of the current batch is completed"
+  },
+  {
+   "zh": "<strong>終點</strong>：下一批次的第一個「合格容器 (first good container)」通過品質檢驗",
+   "en": "<strong>End point</strong>: the first good container of the next batch passes quality inspection"
+  },
+  {
+   "zh": "這個定義涵蓋了拆線、清潔、安裝、除菌、PUPSIT、APS（如需）等所有活動，是容量模型中最難預測的變量之一。",
+   "en": "This definition covers all activities including line teardown, cleaning, setup, sterilization, PUPSIT and APS (if required), and is one of the hardest variables to predict in the capacity model."
+  },
+  {
+   "zh": "SA 決策優先順序提醒",
+   "en": "Reminder of SA Decision Priority"
+  },
+  {
+   "zh": "在考量產能彈性 (Capacity Flexibility) 時，必須謹記決策層級：",
+   "en": "When considering Capacity Flexibility, the decision hierarchy must be kept in mind:"
+  },
+  {
+   "zh": "選擇「更快的充填線」是商業決策（第 3 優先）",
+   "en": "Choosing a \"faster filling line\" is a business decision (priority 3)"
+  },
+  {
+   "zh": "但更快的線速可能縮短操作員反應時間，增加介入頻率 → 影響 SA（第 1 優先）",
+   "en": "But a faster line speed may shorten operator reaction time and increase intervention frequency → affecting SA (priority 1)"
+  },
+  {
+   "zh": "因此，提升速度必須同步評估 SA 風險，不能單純以產能為考量",
+   "en": "Therefore, any speed increase must be assessed together with SA risk and cannot be judged on capacity alone"
+  },
+  {
+   "zh": "理解測驗",
+   "en": "Comprehension Check"
+  },
+  {
+   "zh": "思考以下情境：一條充填線年線效率從 80% 提升至 90%，但換線時間從 8 小時縮短至 4 小時（透過快速換模技術）。這兩項改善對年產量各有多少影響？哪項改善對 SA 風險的影響更大？為什麼？",
+   "en": "Consider this scenario: a filling line's annual line efficiency rises from 80% to 90%, while changeover time is cut from 8 hours to 4 hours (through quick-changeover technology). How much does each improvement affect annual output? Which improvement has the greater impact on SA risk, and why?"
+  },
+  {
+   "zh": "驅動設備選型與設計的分批生產 SA 要求",
+   "en": "SA Requirements for Campaigning Drive Equipment Selection and Design"
+  },
+  {
+   "zh": "1.5.1 Campaigning 定義與適用情境",
+   "en": "1.5.1 Definition and Applicable Scenarios of Campaigning"
+  },
+  {
+   "zh": "Campaigning（分批連續生產）定義",
+   "en": "Definition of Campaigning (Consecutive Batch Production)"
+  },
+  {
+   "zh": "<strong>Campaigning</strong>（分批生產 / 連續批次生產）是指在不完全拆線重裝的情況下，在同一充填線上連續生產多個批次的策略。",
+   "en": "<strong>Campaigning</strong> (consecutive batch production) is a strategy of producing multiple batches in succession on the same filling line without a full teardown and reassembly."
+  },
+  {
+   "zh": "常見的 Campaigning 場景：",
+   "en": "Common campaigning scenarios:"
+  },
+  {
+   "zh": "同一產品，相同或不同充填量（如 1mL、2mL、5mL 系列）",
+   "en": "The same product with the same or different fill volumes (e.g., 1 mL, 2 mL, 5 mL series)"
+  },
+  {
+   "zh": "同一產品，不同主容器（如先充填 2mL 玻璃瓶，再充填 1mL 注射器）",
+   "en": "The same product in different primary containers (e.g., filling 2 mL glass vials first, then 1 mL syringes)"
+  },
+  {
+   "zh": "不同配方，使用相同容器，但<strong>必須</strong>完全更換液路 (fluid pathway)，並有嚴格的交叉污染控制策略",
+   "en": "Different formulations using the same container, but the fluid pathway <strong>must</strong> be fully replaced and a strict cross-contamination control strategy applied"
+  },
+  {
+   "zh": "<strong>核心目標</strong>：減少介入次數、穩定線況、提升成本與產能利用率。",
+   "en": "<strong>Core objectives</strong>: fewer interventions, a more stable line, and better cost and capacity utilization."
+  },
+  {
+   "zh": "比喻：飛機的過站 vs. 大修",
+   "en": "Analogy: Aircraft Turnaround vs. Heavy Maintenance"
+  },
+  {
+   "zh": "Campaigning 就像飛機的「過站快速周轉 (quick turnaround)」：",
+   "en": "Campaigning is like an aircraft \"quick turnaround\":"
+  },
+  {
+   "zh": "<strong>批次模式 (Batch mode)</strong> = 每次飛完都做全面 C 檢 → 安全但耗時",
+   "en": "<strong>Batch mode</strong> = a full C-check after every flight → safe but time-consuming"
+  },
+  {
+   "zh": "<strong>Campaigning</strong> = 到站後補油、換乘客就繼續飛 → 效率高，但飛行員（操作員）的疲勞管理和機況監控必須更嚴格",
+   "en": "<strong>Campaigning</strong> = refuel and change passengers on arrival, then fly again → efficient, but pilot (operator) fatigue management and aircraft condition monitoring must be stricter"
+  },
+  {
+   "zh": "隔離器 (Isolator) 就像全密封機艙，即使引擎不停也能做部分維護；RABS 像半開放機棚，維護時必須更謹慎，且維護時間不能太長。",
+   "en": "An isolator is like a fully sealed cabin: some maintenance can be done even while the engines keep running. RABS is like a semi-open hangar: maintenance must be done more carefully, and the maintenance time cannot be too long."
+  },
+  {
+   "zh": "SA 第一優先：Isolator vs. RABS 的關鍵差異",
+   "en": "SA First Priority: Key Differences Between Isolator and RABS"
+  },
+  {
+   "zh": "在 Campaigning 決策中，屏障技術的選擇直接影響 SA 風險：",
+   "en": "In campaigning decisions, the choice of barrier technology directly affects SA risk:"
+  },
+  {
+   "zh": "<strong>Isolator（隔離器）</strong>：全封閉、可進行 VHP 生物去污 → 適合長時間 Campaign，可不開艙換件",
+   "en": "<strong>Isolator</strong>: fully enclosed and capable of VHP biodecontamination → suited to long campaigns, with parts changed without opening the enclosure"
+  },
+  {
+   "zh": "<strong>RABS（限制進出屏障系統）</strong>：相對「開放」性質 → Campaign 時間通常較 Isolator 短，SA 風險隨時間遞增",
+   "en": "<strong>RABS (Restricted Access Barrier System)</strong>: relatively \"open\" by nature → campaign duration is usually shorter than with an isolator, and SA risk rises over time"
+  },
+  {
+   "zh": "隨著快速換模技術與快速除菌（快速 VHP 循環）普及，Campaign 帶來的時間優勢已縮小，<strong>是否 Campaign 的決策應回歸 SA 風險評估，而非單純考量時間節省</strong>。",
+   "en": "As quick-changeover technology and rapid decontamination (fast VHP cycles) become widespread, the time advantage of campaigning has narrowed. <strong>The decision whether to campaign should return to SA risk assessment rather than simply considering time savings</strong>."
+  },
+  {
+   "zh": "1.5.2 影響 SA 風險的變數",
+   "en": "1.5.2 Variables Affecting SA Risk"
+  },
+  {
+   "zh": "六大 SA 風險變數解析",
+   "en": "The Six SA Risk Variables"
+  },
+  {
+   "zh": "在決定 Campaigning 策略時，必須系統性評估以下六個 SA 風險維度：",
+   "en": "When deciding on a campaigning strategy, the following six SA risk dimensions must be evaluated systematically:"
+  },
+  {
+   "zh": "<strong>屏障技術</strong>：Isolator &gt; cRABS &gt; oRABS，封閉程度越高，Campaign 時間可越長",
+   "en": "<strong>Barrier technology</strong>: isolator &gt; cRABS &gt; oRABS; the higher the degree of enclosure, the longer the campaign can be"
+  },
+  {
+   "zh": "<strong>加工時間長度</strong>：操作時間越長 → 介入次數累積越多 → SA 風險線性增加；非例行介入 (non-routine interventions) 風險尤高",
+   "en": "<strong>Length of processing time</strong>: the longer the operation, the more interventions accumulate → SA risk increases linearly; non-routine interventions carry especially high risk"
+  },
+  {
+   "zh": "<strong>消毒/除菌頻率</strong>：VHP 生物去污頻率不足，微生物負荷在 Campaign 期間累積",
+   "en": "<strong>Disinfection/decontamination frequency</strong>: if VHP biodecontamination is not frequent enough, the microbial load accumulates during the campaign"
+  },
+  {
+   "zh": "<strong>廢棄物累積</strong>：碎玻璃、包裝廢料、液體濺灑等在長時間 Campaign 後堆積，成為污染源",
+   "en": "<strong>Waste accumulation</strong>: broken glass, packaging waste, liquid spills and the like build up over a long campaign and become contamination sources"
+  },
+  {
+   "zh": "<strong>除菌過濾器使用時間</strong>：過濾器持續使用時間與完整性有關，超過驗證時限即為 SA 風險",
+   "en": "<strong>Sterilizing filter use time</strong>: the duration of continuous filter use is linked to integrity; exceeding the validated time limit is an SA risk"
+  },
+  {
+   "zh": "<strong>換線複雜度</strong>：介入步驟越多、換線越複雜，每次操作引入污染的機率越高",
+   "en": "<strong>Changeover complexity</strong>: the more intervention steps and the more complex the changeover, the higher the probability of introducing contamination with each operation"
+  },
+  {
+   "zh": "核心原則：風險效益分析不可省略",
+   "en": "Core Principle: Risk-Benefit Analysis Cannot Be Skipped"
+  },
+  {
+   "zh": "PDA Guide 明確指出：<strong>無論選擇何種操作模式（Campaign 或 Batch），控制措施都必須設計成能有效降低 SA 風險</strong>。",
+   "en": "The PDA Guide states clearly: <strong>regardless of the operating mode chosen (campaign or batch), the control measures must be designed to effectively reduce SA risk</strong>."
+  },
+  {
+   "zh": "這意味著：不能以「我們用的是 Isolator 所以比較安全」作為跳過風險評估的理由。每一個 Campaign 策略都需要有書面的風險效益分析 (risk-benefit analysis) 支撐。",
+   "en": "This means that \"we use an isolator so it is safer\" cannot be used as a reason to skip risk assessment. Every campaign strategy must be supported by a documented risk-benefit analysis."
+  },
+  {
+   "zh": "<strong>SA 永遠是第一優先</strong> — 即使產能壓力巨大，也不能以商業利益為由規避 SA 風險評估。",
+   "en": "<strong>SA is always the first priority</strong> — even under heavy capacity pressure, commercial interests cannot be used as a reason to avoid SA risk assessment."
+  },
+  {
+   "zh": "1.5.3 Campaign SA 風險控制措施",
+   "en": "1.5.3 Campaign SA Risk Control Measures"
+  },
+  {
+   "zh": "四大 Campaign SA 控制措施",
+   "en": "Four Key Campaign SA Control Measures"
+  },
+  {
+   "zh": "針對長時間批次連續生產的 SA 風險，Guide 提出四項具體控制措施：",
+   "en": "To address the SA risk of long consecutive-batch production, the Guide proposes four specific control measures:"
+  },
+  {
+   "zh": "<strong>CIP/SIP（就地清洗/就地滅菌）</strong>：在批次間對液路進行部分或全部 CIP/SIP，或直接更換液路元件。適用於高風險產品或配方切換。",
+   "en": "<strong>CIP/SIP (clean-in-place/sterilize-in-place)</strong>: partial or full CIP/SIP of the fluid pathway between batches, or direct replacement of fluid pathway components. Applicable to high-risk products or formulation changes."
+  },
+  {
+   "zh": "<strong>生物去污 (Biodecontamination)</strong>：在批次間對全部或高風險區域進行 VHP（汽化過氧化氫）或其他生物去污處理，重置環境微生物負荷。",
+   "en": "<strong>Biodecontamination</strong>: VHP (vaporized hydrogen peroxide) or other biodecontamination of all or high-risk areas between batches, resetting the environmental bioburden."
+  },
+  {
+   "zh": "<strong>手套完整性測試 (Glove Integrity Testing)</strong>：在 Campaign 期間定期（不間斷地）測試隔離器手套完整性，防止手套微穿孔導致環境污染。",
+   "en": "<strong>Glove Integrity Testing</strong>: regular (uninterrupted) testing of isolator glove integrity during the campaign, to prevent glove pinholes from causing environmental contamination."
+  },
+  {
+   "zh": "<strong>每批 PUPSIT</strong>：每個批次均使用新的無菌過濾器，並提交新的使用前除菌後完整性測試 (PUPSIT) 結果，確保過濾除菌可靠性。",
+   "en": "<strong>PUPSIT for every batch</strong>: a new sterilizing filter is used for every batch, and a new pre-use post-sterilization integrity test (PUPSIT) result is submitted, ensuring the reliability of sterile filtration."
+  },
+  {
+   "zh": "APS 驗證設計：Piggy-Back 概念",
+   "en": "APS Validation Design: The Piggy-Back Concept"
+  },
+  {
+   "zh": "Campaign APS 驗證結構：\n\n[APS Run 1] → [Batch 1] → [Batch 2] → ... → [Batch N] → [APS Run 2]\n    |                                                          |\n  Campaign 開始                                        Campaign 結束\n  （最嚴苛條件：                                   （最嚴苛條件：\n   最大介入次數）                                  最長加工時間、\n                                                   最多廢棄物累積）",
+   "en": "Campaign APS validation structure:\n\n[APS Run 1] → [Batch 1] → [Batch 2] → ... → [Batch N] → [APS Run 2]\n    |                                                          |\n  Campaign start                                        Campaign end\n  (worst-case condition:                          (worst-case conditions:\n   maximum number of                               longest processing time,\n   interventions)                                  most waste accumulation)"
+  },
+  {
+   "zh": "<strong>Piggy-Back APS</strong>：首尾各一次 APS 模擬，夾住整個 Campaign 的生產批次，驗證從 Campaign 開始到結束的完整 SA 保護能力。",
+   "en": "<strong>Piggy-Back APS</strong>: one APS simulation at the start and one at the end, bracketing all production batches of the campaign, to verify the full SA protection capability from the beginning to the end of the campaign."
+  },
+  {
+   "zh": "APS 必須挑戰 Campaign 的最差條件：最長去污間隔、最多例行介入次數。",
+   "en": "The APS must challenge the worst-case conditions of the campaign: the longest decontamination interval and the greatest number of routine interventions."
+  },
+  {
+   "zh": "CDMO 應用：Campaign 決策清單",
+   "en": "CDMO Application: Campaign Decision Checklist"
+  },
+  {
+   "zh": "在 CDMO 環境中，每次評估 Campaigning 可行性時，應確認：",
+   "en": "In a CDMO environment, whenever the feasibility of campaigning is assessed, the following should be confirmed:"
+  },
+  {
+   "zh": "屏障技術為 Isolator（首選）還是 RABS？若為 RABS，Campaign 時間上限為何？",
+   "en": "Is the barrier technology an isolator (preferred) or RABS? If RABS, what is the upper limit of campaign duration?"
+  },
+  {
+   "zh": "每批次間是否執行 CIP/SIP 或液路更換？",
+   "en": "Are CIP/SIP or fluid pathway replacement performed between batches?"
+  },
+  {
+   "zh": "生物去污頻率是否已驗證為足夠？（最長間隔已在 APS 中挑戰？）",
+   "en": "Has the biodecontamination frequency been validated as sufficient? (Has the longest interval been challenged in the APS?)"
+  },
+  {
+   "zh": "手套完整性測試頻率是否寫入批次記錄？",
+   "en": "Is the glove integrity testing frequency written into the batch record?"
+  },
+  {
+   "zh": "每批 PUPSIT 結果是否獨立記錄？",
+   "en": "Are the PUPSIT results for each batch recorded independently?"
+  },
+  {
+   "zh": "Campaign APS 是否採用 Piggy-Back 設計？",
+   "en": "Does the campaign APS use a Piggy-Back design?"
+  },
+  {
+   "zh": "<strong>重要：若任一項無法滿足，應優先修正，而非降低控制標準。SA 優先於商業考量。</strong>",
+   "en": "<strong>Important: if any item cannot be met, fix it first rather than lowering the control standard. SA takes priority over commercial considerations.</strong>"
+  },
+  {
+   "zh": "為什麼 Campaigning 在 Isolator 中比在 RABS 中更常見且 Campaign 時間更長？請從 SA 風險的角度解釋，並說明快速 VHP 技術的普及如何改變了 Campaigning 的策略價值。",
+   "en": "Why is campaigning more common in isolators than in RABS, and why can campaigns run longer there? Explain from the SA risk perspective, and describe how the spread of fast VHP technology has changed the strategic value of campaigning."
+  },
+  {
+   "zh": "驅動設備選型與設計的未來彈性規劃要求",
+   "en": "Future-Proofing Requirements Drive Equipment Selection and Design"
+  },
+  {
+   "zh": "Future-Proofing（未來彈性規劃）的核心張力",
+   "en": "The Core Tension of Future-Proofing"
+  },
+  {
+   "zh": "<strong>Future-Proofing</strong>（未來彈性規劃）是指在設計充填線時，提前納入未來可能需要的功能或彈性，以延長設備的使用壽命與適應性。",
+   "en": "<strong>Future-Proofing</strong> means building into the filling line design, in advance, functions or flexibility that may be needed in the future, in order to extend the equipment's service life and adaptability."
+  },
+  {
+   "zh": "這裡存在一個典型的商業張力：",
+   "en": "A typical business tension exists here:"
+  },
+  {
+   "zh": "<strong>工程師/技術團隊</strong>：希望預留最大彈性 → 傾向多功能、模組化設計 → 增加初期投資",
+   "en": "<strong>Engineers/technical team</strong>: want maximum flexibility reserved → favor multi-function, modular designs → higher initial investment"
+  },
+  {
+   "zh": "<strong>專案經理/財務團隊</strong>：希望控制成本與時程 → 傾向精簡設計 → 降低初期投資但可能限制未來選項",
+   "en": "<strong>Project managers/finance team</strong>: want to control cost and timeline → favor a lean design → lower initial investment but possibly limited future options"
+  },
+  {
+   "zh": "PDA Guide 的建議：透過深入理解「最可能的未來產品組合」來找到平衡點，而非無限制地追求彈性。",
+   "en": "The PDA Guide's recommendation: find the balance by understanding the \"most likely future product mix\" in depth, rather than pursuing flexibility without limit."
+  },
+  {
+   "zh": "風險對齊：Future-Proofing 的 SA 維度",
+   "en": "Risk Alignment: The SA Dimension of Future-Proofing"
+  },
+  {
+   "zh": "未來彈性規劃不只是商業決策，也包含 GMP 合規風險的前瞻規劃：",
+   "en": "Future-proofing is not just a business decision; it also involves forward planning for GMP compliance risk:"
+  },
+  {
+   "zh": "<strong>屏障保護升級</strong>：法規趨勢要求更高等級的屏障（如從 RABS 升至 Isolator）",
+   "en": "<strong>Upgrading barrier protection</strong>: regulatory trends call for higher-grade barriers (e.g., moving from RABS to isolator)"
+  },
+  {
+   "zh": "<strong>生物去污普及</strong>：VHP/其他生物去污技術成為標準，設計時需預留空間與接口",
+   "en": "<strong>Wider use of biodecontamination</strong>: VHP and other biodecontamination technologies are becoming standard, so space and interfaces must be reserved in the design"
+  },
+  {
+   "zh": "<strong>自動化/機器人</strong>：符合 First Air 原則的自動化介入系統，可降低人員操作帶來的 SA 風險",
+   "en": "<strong>Automation/robotics</strong>: automated intervention systems consistent with the First Air principle can reduce the SA risk from human operations"
+  },
+  {
+   "zh": "<strong>First Air 原則</strong>：確保無菌充填區域的第一股氣流（從 HEPA 過濾器出來的）直接流經產品暴露區，不被人員或設備阻擋，維持最佳環境保護。",
+   "en": "<strong>First Air principle</strong>: ensures that the first air (coming directly from the HEPA filter) flows straight over the product-exposed area without being blocked by personnel or equipment, maintaining optimal environmental protection in the aseptic filling area."
+  },
+  {
+   "zh": "比喻：蓋房子時的管線預埋",
+   "en": "Analogy: Pre-Laying Conduits When Building a House"
+  },
+  {
+   "zh": "Future-Proofing 就像蓋房子時決定是否預埋電管、水管：",
+   "en": "Future-proofing is like deciding whether to pre-lay electrical and water conduits when building a house:"
+  },
+  {
+   "zh": "現在多花 5% 預埋管線 → 未來安裝新設備只需穿線，省 80% 成本",
+   "en": "Spend 5% more now on pre-laid conduits → installing new equipment later only needs wire pulling, saving 80% of the cost"
+  },
+  {
+   "zh": "現在省略 → 未來裝設時需敲牆，成本是當初的 5-10 倍",
+   "en": "Skip it now → retrofitting later requires breaking into walls, at 5-10 times the original cost"
+  },
+  {
+   "zh": "充填線的 Future-Proofing 類比：預留 VHP 接口、機器人介入空間、擴充產能的公用設施容量 — 這些「管線預埋」在設計階段成本低，後期改造成本極高。",
+   "en": "The filling line analogy: reserving VHP connections, space for robotic intervention and utility capacity for capacity expansion — these \"pre-laid conduits\" are cheap at the design stage but extremely expensive to retrofit later."
+  },
+  {
+   "zh": "CDMO 策略應用",
+   "en": "CDMO Strategy Application"
+  },
+  {
+   "zh": "在 CDMO 環境中，Future-Proofing 的難點在於客戶產品組合的不確定性。建議的策略：",
+   "en": "In a CDMO environment, the difficulty of future-proofing lies in the uncertainty of the customer product mix. The recommended strategy:"
+  },
+  {
+   "zh": "分析現有客戶管線：未來 5 年最可能的容器類型（vial/syringe/cartridge）和產品類型（protein/suspension/high-viscosity）",
+   "en": "Analyze the existing customer pipeline: the most likely container types (vial/syringe/cartridge) and product types (protein/suspension/high-viscosity) over the next 5 years"
+  },
+  {
+   "zh": "設計模組化充填頭，可在不大幅改動主機架的情況下切換充填技術",
+   "en": "Design modular filling heads that can switch filling technology without major changes to the main machine frame"
+  },
+  {
+   "zh": "預留 VHP 發生器安裝空間與接口（即使初期不購置）",
+   "en": "Reserve installation space and interfaces for a VHP generator (even if it is not purchased initially)"
+  },
+  {
+   "zh": "評估機器人介入系統的空間需求，並在 RABS/Isolator 設計時保留",
+   "en": "Evaluate the space requirements of robotic intervention systems and reserve them in the RABS/isolator design"
+  },
+  {
+   "zh": "<strong>關鍵原則：Future-Proofing 的投資必須與 SA 合規要求趨勢對齊，而非單純追求商業彈性。</strong>",
+   "en": "<strong>Key principle: future-proofing investment must align with the trend of SA compliance requirements, rather than simply pursuing commercial flexibility.</strong>"
+  },
+  {
+   "zh": "無菌充填技術概覽",
+   "en": "Aseptic Filling Technology Overview"
+  },
+  {
+   "zh": "2.0 Introduction — 四種主要充填技術",
+   "en": "2.0 Introduction — The Four Major Filling Technologies"
+  },
+  {
+   "zh": "四大無菌充填技術簡介",
+   "en": "Overview of the Four Aseptic Filling Technologies"
+  },
+  {
+   "zh": "液體無菌充填的技術選擇直接影響產品品質（CQAs）與 SA 風險，是設計決策中的核心。四種主流技術各有其適用範圍：",
+   "en": "The choice of liquid aseptic filling technology directly affects product quality (CQAs) and SA risk, and is central to design decisions. The four mainstream technologies each have their own scope of application:"
+  },
+  {
+   "zh": "<strong>蠕動泵 (Peristaltic Pump, PP)</strong>：透過壓擠軟管產生流動，適合一次性流路 (single-use)，但對溶劑類產品相容性差",
+   "en": "<strong>Peristaltic Pump (PP)</strong>: generates flow by squeezing a tube; suited to single-use fluid pathways, but has poor compatibility with solvent-based products"
+  },
+  {
+   "zh": "<strong>旋轉活塞泵 (Rotary Piston Pump, RPP)</strong>：機械容積式充填，精度高、適合高黏度產品，但不適合長鏈蛋白質（剪切力問題）",
+   "en": "<strong>Rotary Piston Pump (RPP)</strong>: mechanical positive-displacement filling with high accuracy, suited to high-viscosity products, but not suitable for long-chain proteins (shear force issue)"
+  },
+  {
+   "zh": "<strong>時壓充填 (Time Pressure Filler, TP)</strong>：以壓力和時間控制充填量，無移動部件接觸產品，但不支援一次性流路，且對溫度敏感產品（如需冷鏈）有限制",
+   "en": "<strong>Time Pressure Filler (TP)</strong>: controls fill volume by pressure and time, with no moving parts contacting the product, but does not support single-use fluid pathways and has limitations for temperature-sensitive products (e.g., those needing a cold chain)"
+  },
+  {
+   "zh": "<strong>滾動隔膜泵 (Rolling Diaphragm Pump, DP)</strong>：以隔膜隔離產品與驅動機構，適合中黏度範圍，部分供應商提供一次性版本",
+   "en": "<strong>Rolling Diaphragm Pump (DP)</strong>: a diaphragm isolates the product from the drive mechanism; suited to the medium-viscosity range, and some suppliers offer a single-use version"
+  },
+  {
+   "zh": "選型決策的三個維度",
+   "en": "Three Dimensions of Selection Decisions"
+  },
+  {
+   "zh": "選擇充填技術時，必須同時考慮三個維度，且順序反映決策層級：",
+   "en": "When selecting a filling technology, three dimensions must be considered together, and their order reflects the decision hierarchy:"
+  },
+  {
+   "zh": "<strong>第一：產品特性與容器類型</strong>（CQAs — 患者安全） — 蛋白質的剪切敏感性、黏度範圍、產品與泵材料的相容性",
+   "en": "<strong>First: product characteristics and container type</strong> (CQAs — patient safety) — shear sensitivity of the protein, viscosity range, compatibility of the product with pump materials"
+  },
+  {
+   "zh": "<strong>第二：SA 合規要求</strong>（無菌保證） — 是否支援 CIP/SIP？是否支援 Campaign？是否可裝設於 RABS 外側？",
+   "en": "<strong>Second: SA compliance requirements</strong> (sterility assurance) — is CIP/SIP supported? Is campaigning supported? Can it be installed outside the RABS?"
+  },
+  {
+   "zh": "<strong>第三：商業目標</strong>（業務需求） — 一次性流路降低交叉污染風險和換線成本、充填範圍是否覆蓋未來產品",
+   "en": "<strong>Third: business objectives</strong> (operational needs) — single-use fluid pathways reduce cross-contamination risk and changeover cost; does the fill range cover future products?"
+  },
+  {
+   "zh": "<strong>Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison of Attributes of Four Major Filling Technologies Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: 四種主要充填技術屬性比較</strong>",
+   "en": "<strong>Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison of Attributes of Four Major Filling Technologies<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 關鍵差異解析",
+   "en": "Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Key Differences"
+  },
+  {
+   "zh": "四種技術在充填精度上相近（均為 Very accurate），關鍵差異體現在：",
+   "en": "The four technologies are similar in filling accuracy (all \"Very accurate\"); the key differences lie in:"
+  },
+  {
+   "zh": "<strong>一次性流路 (SU)</strong>：PP 最佳，TP 目前不支援 → 影響交叉污染控制策略",
+   "en": "<strong>Single-use (SU) fluid pathway</strong>: PP is best, while TP currently does not support it → affects the cross-contamination control strategy"
+  },
+  {
+   "zh": "<strong>Campaign 相容性</strong>：PP 受限於軟管磨損 (hose wear)，長時間 Campaign 需監控軟管壽命並定期更換",
+   "en": "<strong>Campaign compatibility</strong>: PP is limited by hose wear; long campaigns require monitoring hose life and regular replacement"
+  },
+  {
+   "zh": "<strong>黏度範圍</strong>：RPP 遠高於其他三種（300,000 mPa·s），是高黏度產品（如眼用凝膠、懸浮劑）的唯一選項",
+   "en": "<strong>Viscosity range</strong>: RPP is far higher than the other three (300,000 mPa·s) and is the only option for high-viscosity products (e.g., ophthalmic gels, suspensions)"
+  },
+  {
+   "zh": "<strong>RABS 外部安裝</strong>：RPP 無法裝設於 RABS 外部（因為機械結構複雜），這影響 First Air 合規設計",
+   "en": "<strong>Installation outside RABS</strong>: RPP cannot be installed outside the RABS (because of its complex mechanical structure), which affects First Air compliant design"
+  },
+  {
+   "zh": "SA 關鍵點：RABS 外部安裝的意義",
+   "en": "SA Key Point: The Significance of Installation Outside the RABS"
+  },
+  {
+   "zh": "「Installation Outside RABS」是 SA 設計的重要考量：",
+   "en": "\"Installation Outside RABS\" is an important SA design consideration:"
+  },
+  {
+   "zh": "充填泵裝設於 RABS <strong>外部</strong> → 驅動機構在環境控制區外，只有液路進入無菌區 → 減少無菌區內的機械複雜性 → <strong>降低 SA 風險</strong>",
+   "en": "Filling pump installed <strong>outside</strong> the RABS → drive mechanism sits outside the controlled environment, with only the fluid pathway entering the aseptic area → less mechanical complexity inside the aseptic area → <strong>lower SA risk</strong>"
+  },
+  {
+   "zh": "RPP 必須裝設於 RABS <strong>內部</strong> → 增加無菌區內的機械干擾 → 可能需要更頻繁的介入 → <strong>需額外 SA 控制措施</strong>",
+   "en": "RPP must be installed <strong>inside</strong> the RABS → more mechanical disturbance in the aseptic area → possibly more frequent interventions → <strong>additional SA control measures needed</strong>"
+  },
+  {
+   "zh": "這是 SA 優先考量影響技術選型的典型例子。",
+   "en": "This is a typical example of SA priority influencing technology selection."
+  },
+  {
+   "zh": "Campaign 中 PP 軟管壽命管理",
+   "en": "Managing PP Hose Life During Campaigns"
+  },
+  {
+   "zh": "軟管磨損風險評估：\n\n監控指標：\n- 充填量偏差趨勢（Control Chart）\n- 軟管使用時數（vs. 驗證壽命上限）\n- 目視檢查（龜裂、變形）\n\nCampaign 中 PP 的建議做法：\n- 訂定最大連續使用時數限制\n- 每 N 批次強制更換軟管\n- 更換後執行充填精度驗證\n- 記錄於批次記錄以供追溯",
+   "en": "Hose wear risk assessment:\n\nMonitoring indicators:\n- Fill volume deviation trend (control chart)\n- Hose usage hours (vs. validated life limit)\n- Visual inspection (cracks, deformation)\n\nRecommended practice for PP in campaigns:\n- Set a maximum continuous usage time limit\n- Mandatory hose replacement every N batches\n- Perform fill accuracy verification after replacement\n- Record in the batch record for traceability"
+  },
+  {
+   "zh": "<strong>Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Containers Used with Each Technology Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: 各技術適用之容器</strong>",
+   "en": "<strong>Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Containers Used with Each Technology<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解析：容器相容性",
+   "en": "Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Analysis: Container Compatibility"
+  },
+  {
+   "zh": "四種技術在容器相容性上差異不大，均能支援所有六種主流容器類型。關鍵差異點：",
+   "en": "The four technologies differ little in container compatibility; all support all six mainstream container types. The key points of difference:"
+  },
+  {
+   "zh": "<strong>Cartridge（卡匣）</strong>：TP 是首選技術。卡匣充填需要精確的壓力控制，TP 的時間-壓力機制特別適合卡匣的窄口徑充填，不易產生氣泡或液體殘留。",
+   "en": "<strong>Cartridge</strong>: TP is the preferred technology. Cartridge filling requires precise pressure control, and the time-pressure mechanism of TP is particularly well suited to the narrow bore of cartridges, with less risk of air bubbles or liquid residue."
+  },
+  {
+   "zh": "<strong>CDMO 的彈性考量</strong>：由於四種技術均能支援各類容器，容器類型通常不是技術選型的決定性因素，而是產品特性（黏度、蛋白質敏感性）才是關鍵。",
+   "en": "<strong>CDMO flexibility considerations</strong>: since all four technologies support the various container types, container type is usually not the deciding factor in technology selection; product characteristics (viscosity, protein sensitivity) are the key."
+  },
+  {
+   "zh": "CDMO 應用：多容器平台策略",
+   "en": "CDMO Application: Multi-Container Platform Strategy"
+  },
+  {
+   "zh": "對於 CDMO 而言，能夠在同一充填線上靈活切換容器類型是核心競爭力。從 Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 可知，四種技術均有廣泛的容器相容性，因此 CDMO 的技術選型策略應重點考量：",
+   "en": "For a CDMO, being able to switch flexibly between container types on the same filling line is a core competitive strength. As Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> shows, all four technologies have broad container compatibility, so a CDMO's technology selection strategy should focus on:"
+  },
+  {
+   "zh": "客戶管線中最多的產品類型（蛋白質 → 排除 RPP；高黏度 → 選 RPP）",
+   "en": "The most common product types in the customer pipeline (proteins → exclude RPP; high viscosity → choose RPP)"
+  },
+  {
+   "zh": "是否需要一次性流路以避免交叉污染風險（PP 為首選）",
+   "en": "Whether a single-use fluid pathway is needed to avoid cross-contamination risk (PP is preferred)"
+  },
+  {
+   "zh": "未來 Campaign 需求（PP 軟管磨損問題）",
+   "en": "Future campaign needs (PP hose wear issue)"
+  },
+  {
+   "zh": "<strong>Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison Based Upon Common Product Types Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: 基於常見產品類型之比較</strong>",
+   "en": "<strong>Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: Comparison Based Upon Common Product Types<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 解析：產品類型決定技術選擇",
+   "en": "Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Analysis: Product Type Determines Technology Choice"
+  },
+  {
+   "zh": "產品類型是技術選型中影響最大的 CQA 因素（第 2 優先）：",
+   "en": "Product type is the CQA factor with the greatest influence on technology selection (priority 2):"
+  },
+  {
+   "zh": "<strong>蛋白質 (Proteins)</strong>：RPP <strong>不適用</strong>，因旋轉活塞產生的剪切力 (shear force) 會破壞蛋白質結構（如 mAb、酶），影響生物活性 → 直接危害患者安全",
+   "en": "<strong>Proteins</strong>: RPP is <strong>not suitable</strong>, because the shear force generated by the rotary piston can damage protein structure (e.g., mAbs, enzymes) and affect biological activity → a direct hazard to patient safety"
+  },
+  {
+   "zh": "<strong>懸浮劑 (Suspensions)</strong>：PP 受黏度上限限制（60 mPa·s）；DP 有部分限制（需確認懸浮顆粒大小與隔膜間隙相容性）；RPP 和 TP 適用",
+   "en": "<strong>Suspensions</strong>: PP is limited by its viscosity ceiling (60 mPa·s); DP has some limitations (suspended particle size must be checked for compatibility with the diaphragm gap); RPP and TP are suitable"
+  },
+  {
+   "zh": "<strong>高黏度 (High-Viscosity)</strong>：<strong>僅 RPP 適用</strong>（上限 300,000 mPa·s），如眼用凝膠、高濃度抗體製劑",
+   "en": "<strong>High-Viscosity</strong>: <strong>only RPP is suitable</strong> (upper limit 300,000 mPa·s), e.g., ophthalmic gels and high-concentration antibody formulations"
+  },
+  {
+   "zh": "<strong>低黏度 &amp; SVP</strong>：四種技術均適用，選型回歸 SA 設計（SU 需求、Campaign 需求、RABS 外部安裝）",
+   "en": "<strong>Low viscosity &amp; SVP</strong>: all four technologies are suitable; selection returns to SA design (SU needs, campaign needs, installation outside the RABS)"
+  },
+  {
+   "zh": "RPP 的剪切力問題 — SA 與 CQA 的交叉影響",
+   "en": "RPP Shear Force Issue — The Intersection of SA and CQA"
+  },
+  {
+   "zh": "RPP 不適用於長鏈蛋白質的原因，體現了 CQA 優先性的核心：",
+   "en": "The reason RPP is unsuitable for long-chain proteins illustrates the core of CQA priority:"
+  },
+  {
+   "zh": "旋轉活塞在接縫處產生高剪切力 → 蛋白質分子高階結構 (secondary/tertiary structure) 破壞 → 聚集 (aggregation) 或降解 (degradation)",
+   "en": "The rotary piston generates high shear force at the seams → damage to the higher-order structure (secondary/tertiary structure) of protein molecules → aggregation or degradation"
+  },
+  {
+   "zh": "蛋白質聚集體可能引發免疫原性 (immunogenicity) → 直接危害患者安全",
+   "en": "Protein aggregates may trigger immunogenicity → a direct hazard to patient safety"
+  },
+  {
+   "zh": "這是一個 CQA（蛋白質完整性）高於商業便利性（RPP 操作簡單）的典型決策",
+   "en": "This is a typical decision in which a CQA (protein integrity) outranks commercial convenience (RPP is simple to operate)"
+  },
+  {
+   "zh": "<strong>決策原則重申：CQAs（患者安全）&gt; 業務便利性</strong>。",
+   "en": "<strong>Decision principle restated: CQAs (patient safety) &gt; business convenience</strong>."
+  },
+  {
+   "zh": "客戶提供一個產品規格：高濃度 mAb（150 mg/mL），黏度 45 mPa·s，充填至預充填注射器，年需求 300 萬支。請根據 Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>、2.0-2、2.0-3 的資訊，分析哪種充填技術最適合，並說明你的理由。哪種技術絕對排除？為什麼？",
+   "en": "A customer provides a product specification: a high-concentration mAb (150 mg/mL) with a viscosity of 45 mPa·s, filled into prefilled syringes, with an annual demand of 3 million units. Based on the information in Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, 2.0-2 and 2.0-3, analyze which filling technology is most suitable and explain your reasoning. Which technology is definitely excluded, and why?"
+  },
+  {
+   "zh": "CDMO 充填技術選型速查",
+   "en": "CDMO Quick Reference for Filling Technology Selection"
+  },
+  {
+   "zh": "基於三個表格，建立 CDMO 快速選型思路：",
+   "en": "Based on the three tables, a quick selection approach for a CDMO:"
+  },
+  {
+   "zh": "<strong>Step 1</strong>：確認產品類型 → 蛋白質？高黏度？懸浮劑？(Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)",
+   "en": "<strong>Step 1</strong>: Confirm the product type → protein? high viscosity? suspension? (Table 2.0-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p39-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)"
+  },
+  {
+   "zh": "<strong>Step 2</strong>：確認是否需要一次性流路（SU）以控制交叉污染 → PP 首選 (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)",
+   "en": "<strong>Step 2</strong>: Confirm whether a single-use fluid pathway (SU) is needed to control cross-contamination → PP preferred (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)"
+  },
+  {
+   "zh": "<strong>Step 3</strong>：確認是否規劃 Campaigning → PP 軟管壽命評估；RPP/TP/DP 均相容 (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)",
+   "en": "<strong>Step 3</strong>: Confirm whether campaigning is planned → PP hose life assessment; RPP/TP/DP are all compatible (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)"
+  },
+  {
+   "zh": "<strong>Step 4</strong>：確認容器類型 → 四種技術均廣泛相容 (Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)",
+   "en": "<strong>Step 4</strong>: Confirm the container type → all four technologies are broadly compatible (Table 2.0-2<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p38-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)"
+  },
+  {
+   "zh": "<strong>Step 5</strong>：確認充填量範圍 → RPP/DP 範圍最廣 (0.1–250 mL) (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)",
+   "en": "<strong>Step 5</strong>: Confirm the fill volume range → RPP/DP have the widest range (0.1–250 mL) (Table 2.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=tbl-p35-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>)"
+  },
+  {
+   "zh": "排除不適用技術後，剩餘技術再依 SA 風險（RABS 外部安裝、CIP/SIP 能力）做最終選擇。",
+   "en": "After excluding the unsuitable technologies, make the final choice among the remaining ones based on SA risk (installation outside the RABS, CIP/SIP capability)."
+  },
+  {
+   "zh": "Section 1B Summary — 本章重點總結",
+   "en": "Section 1B Summary — Key Takeaways"
+  },
+  {
+   "zh": "核心概念回顧",
+   "en": "Review of Core Concepts"
+  },
+  {
+   "zh": "產能模型需整合八個輸入參數，才能科學設定充填速度目標，不能單憑直覺",
+   "en": "The capacity model must integrate eight input parameters to set the filling speed target scientifically, not by intuition"
+  },
+  {
+   "zh": "Campaigning 在 Isolator 中效果最佳，RABS 中時間較短；快速 VHP 技術降低了 Campaign 的時間優勢",
+   "en": "Campaigning works best in isolators and has shorter duration in RABS; fast VHP technology has reduced the time advantage of campaigning"
+  },
+  {
+   "zh": "Campaign SA 控制四支柱：CIP/SIP、批次間生物去污、手套完整性測試、每批 PUPSIT",
+   "en": "The four pillars of campaign SA control: CIP/SIP, biodecontamination between batches, glove integrity testing, PUPSIT for every batch"
+  },
+  {
+   "zh": "Future-Proofing 必須與 GMP 合規趨勢（更高屏障、更多自動化）對齊，而非僅追求商業彈性",
+   "en": "Future-proofing must align with GMP compliance trends (higher-grade barriers, more automation), not just commercial flexibility"
+  },
+  {
+   "zh": "四種充填技術在充填精度上相近，關鍵差異在黏度範圍、SU 支援、Campaign 相容性和蛋白質相容性",
+   "en": "The four filling technologies are similar in filling accuracy; the key differences are viscosity range, SU support, campaign compatibility and protein compatibility"
+  },
+  {
+   "zh": "決策層級強化",
+   "en": "Reinforcing the Decision Hierarchy"
+  },
+  {
+   "zh": "<strong style=\"color:#fc8181;\">1. 無菌保證 (SA)</strong> — 永遠第一",
+   "en": "<strong style=\"color:#fc8181;\">1. Sterility Assurance (SA)</strong> — Always first"
+  },
+  {
+   "zh": "RPP 對蛋白質的剪切風險排除其適用性",
+   "en": "The shear risk of RPP to proteins excludes its suitability"
+  },
+  {
+   "zh": "Campaign 時間受屏障技術等級制約",
+   "en": "Campaign duration is constrained by the grade of barrier technology"
+  },
+  {
+   "zh": "APS 必須驗證 Campaign 的最差條件",
+   "en": "The APS must verify the worst-case conditions of the campaign"
+  },
+  {
+   "zh": "<strong style=\"color:#fbd38d;\">2. 產品 CQAs</strong> — 患者安全",
+   "en": "<strong style=\"color:#fbd38d;\">2. Product CQAs</strong> — Patient safety"
+  },
+  {
+   "zh": "黏度、蛋白質結構、懸浮均勻性決定技術選型",
+   "en": "Viscosity, protein structure and suspension uniformity determine technology selection"
+  },
+  {
+   "zh": "蛋白質聚集體風險 &gt; 操作便利性",
+   "en": "Protein aggregate risk &gt; operating convenience"
+  },
+  {
+   "zh": "<strong style=\"color:#9ae6b4;\">3. 商業與彈性</strong> — 最後考量",
+   "en": "<strong style=\"color:#9ae6b4;\">3. Business &amp; Flexibility</strong> — Last consideration"
+  },
+  {
+   "zh": "產能模型、Future-Proofing、Campaign 效率均在 SA 和 CQA 滿足後才最佳化",
+   "en": "The capacity model, future-proofing and campaign efficiency are optimized only after SA and CQAs are satisfied"
+  }
+ ]
+}

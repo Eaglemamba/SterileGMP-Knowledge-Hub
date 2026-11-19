@@ -1,0 +1,361 @@
+{
+ "source": "section-04b1-functionality.html",
+ "blocks": [
+  {
+   "zh": "充填系統功能性：泡沫控制、滴漏控制與均勻性維持",
+   "en": "Filling System Functionality: Foam Control, Drip Control and Maintaining Homogeneity"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解充填曲線（filling curve）如何因泵浦類型不同而調整，以適應不同產品特性",
+   "en": "Understand how the filling curve is adjusted for different pump types to suit different product characteristics"
+  },
+  {
+   "zh": "掌握泡沫（foam）形成的根本原因，以及潛入式針頭（diving needle）等工程對策的原理",
+   "en": "Grasp the root causes of foam formation and the principle behind engineering countermeasures such as the diving needle"
+  },
+  {
+   "zh": "識別滴漏（dripping）的成因鏈——從針頭幾何、軟管設計到液體回縮（liquid retraction）機制",
+   "en": "Identify the causal chain behind dripping, from needle geometry and tubing design to the liquid retraction mechanism"
+  },
+  {
+   "zh": "了解懸浮液與乳劑產品的均勻性維持策略：攪拌（mixing）、再循環迴路（recirculation loop）及兩者的組合設計",
+   "en": "Understand the strategies for maintaining homogeneity of suspension and emulsion products: mixing, recirculation loop, and combinations of the two"
+  },
+  {
+   "zh": "充填曲線延伸討論 — 各泵浦類型的實作方式",
+   "en": "Filling Curve: Extended Discussion - Implementation for Each Pump Type"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>充填曲線 (Filling Curve):</strong> 充填過程中流體速度與針頭運動的同步控制程式，分為四個階段：啟動 → 加速 → 定速充填 → 減速停止。每個產品因黏度、起泡性、流動性不同，需要客製化調整。",
+   "en": "<strong>Filling Curve:</strong> The program that synchronizes fluid velocity and needle movement during filling, divided into four phases: start-up → acceleration → constant-speed filling → deceleration and stop. Each product needs a customized curve because of its viscosity, foaming tendency and flow behavior."
+  },
+  {
+   "zh": "<strong>各泵浦的調整方式：</strong>",
+   "en": "<strong>How each pump is adjusted:</strong>"
+  },
+  {
+   "zh": "RPP — 活塞推出速度（伺服馬達控制）",
+   "en": "RPP - piston push-out speed (servo motor controlled)"
+  },
+  {
+   "zh": "DP — 底部撥片對隔膜的行程幅度",
+   "en": "DP - stroke amplitude of the bottom paddle against the diaphragm"
+  },
+  {
+   "zh": "PP — 滾輪（shoe）旋轉速度",
+   "en": "PP - rotational speed of the rollers (shoe)"
+  },
+  {
+   "zh": "TP — 夾管閥開合速度、開放時間、關閉速度（壓力固定，最少彈性）",
+   "en": "TP - pinch valve opening and closing speed, open time and closing speed (fixed pressure, least flexibility)"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "充填曲線就像開車時的油門曲線：啟動時輕踩（避免濺灑）、上坡全速（提升效率）、快到終點前提前放油門（避免衝過頭）。TP 系統就像只能靠定速巡航行駛的車，曲線調整空間極小；PP、RPP、DP 則像有全自動變速的車，可以精細調控每個瞬間的速度。",
+   "en": "The filling curve is like the throttle curve when driving: ease on gently at the start (to avoid splashing), full speed on the uphill stretch (for efficiency), and lift off early before the destination (to avoid overshooting). A TP system is like a car that can only run on cruise control, leaving very little room to adjust the curve; PP, RPP and DP are like cars with a fully automatic transmission that can fine-tune the speed at every moment."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "TP 系統的充填曲線彈性最低，因為它依賴固定壓力 + 閥門開關時間，無法像機械泵浦那樣透過行程回縮創造液體回抽效果。這在處理容易起泡或容易滴漏的產品時是重大限制。選擇充填技術時，產品 CQA 必須優先於設備採購成本。",
+   "en": "The TP system has the least filling curve flexibility because it relies on fixed pressure plus valve open/close timing and cannot create a liquid suck-back effect through stroke retraction the way a mechanical pump can. This is a major limitation for products that foam or drip easily. When selecting a filling technology, product CQAs must take priority over equipment purchase cost."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "一個高黏度蛋白質藥物容易在充填末端形成「絲線」，你會選擇哪種泵浦？為什麼？",
+   "en": "A high-viscosity protein drug tends to form a \"string\" at the end of filling. Which pump type would you choose, and why?"
+  },
+  {
+   "zh": "充填曲線的「減速段」主要是為了防止哪兩種缺陷？",
+   "en": "The \"deceleration phase\" of the filling curve is mainly meant to prevent which two defects?"
+  },
+  {
+   "zh": "4.4 Functionality Affecting Foam — 影響泡沫的功能性",
+   "en": "4.4 Functionality Affecting Foam"
+  },
+  {
+   "zh": "<strong>泡沫 (Foam) 的形成機制：</strong>泡沫本質上是「氣液界面被機械能破壞」的結果。任何讓藥液自由落下、撞擊液面、或與空氣快速接觸的動作，都會促進泡沫。",
+   "en": "<strong>Mechanism of foam formation:</strong> Foam is essentially the result of the gas-liquid interface being disrupted by mechanical energy. Any action that lets the drug solution fall freely, strike the liquid surface, or come into rapid contact with air promotes foam."
+  },
+  {
+   "zh": "<strong>主要防泡措施：</strong>",
+   "en": "<strong>Main anti-foam measures:</strong>"
+  },
+  {
+   "zh": "浸入管 (dip tube / J-tube)：讓液體從最低點進入容器，消除自由落距",
+   "en": "Dip tube / J-tube: lets liquid enter the container from the lowest point, eliminating free-fall distance"
+  },
+  {
+   "zh": "液面下補充 (sub-surface addition)：每次補料都必須在液面以下進行",
+   "en": "Sub-surface addition: every addition of liquid must take place below the liquid surface"
+  },
+  {
+   "zh": "潛入式針頭 (diving needle)：針頭隨液面上升同步退出，始終保持近距離出口",
+   "en": "Diving needle: the needle withdraws in step with the rising liquid level, always staying close to the outlet"
+  },
+  {
+   "zh": "充填曲線慢啟動 / 慢結束：減少液面擾動",
+   "en": "Slow start / slow finish of the filling curve: reduces disturbance of the liquid surface"
+  },
+  {
+   "zh": "管路充分排氣 (priming)：消除管內氣泡",
+   "en": "Thorough priming of the tubing: eliminates air bubbles in the line"
+  },
+  {
+   "zh": "想像倒啤酒：從高處垂直倒下 = 大量泡沫；傾斜杯子讓酒沿著杯壁流下 = 幾乎無泡。潛入式針頭就像把出酒口伸入容器底部然後慢慢往上拉，完全模仿「沿壁流下」的效果。蛋白質藥物的表面活性劑往往讓它們比啤酒更容易起泡，所以這個設計在生物製劑充填中尤其關鍵。",
+   "en": "Think of pouring beer: pouring straight down from a height = lots of foam; tilting the glass so the beer runs down the wall = almost no foam. The diving needle is like putting the beer outlet to the bottom of the container and then slowly pulling it up, which fully imitates the \"running down the wall\" effect. The surfactants in protein drugs often make them foam more easily than beer, so this design is especially critical in biologics filling."
+  },
+  {
+   "zh": "泡沫對批次品質的危害是雙重的：(1) 充填量不準確（泡沫佔體積但不計重量）；(2) 若泡沫破裂導致液滴飛濺至瓶口外，可能造成容器密封失效或污染風險。100% IPC 重量檢測能即時偵測因氣泡導致的充填不足，是前端預防加後端確認的雙重保障——這符合無菌保證 (Sterility Assurance) 優先的決策層級。",
+   "en": "The harm foam does to batch quality is twofold: (1) inaccurate fill volume (foam takes up volume but adds no weight); (2) if bursting foam splashes droplets outside the container mouth, it may cause container closure failure or a contamination risk. 100% IPC weight checks can immediately detect underfills caused by bubbles, giving two layers of protection, prevention at the front end and confirmation at the back end. This is consistent with the decision hierarchy that places Sterility Assurance first."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在 CDMO 接受一個新的 mAb（單株抗體）產品時，初步配方評估顯示高度起泡性。在設備需求規格 (URS) 中應明確要求：潛入式針頭、液面偵測器、管路自動排氣程序，以及充填啟動 / 結束段的低速參數設定。這些需求應在技術轉移早期確認，否則上線後才發現需要改裝，工程成本與驗證時間將大幅增加。",
+   "en": "When a CDMO takes on a new mAb (monoclonal antibody) product and initial formulation assessment shows a high foaming tendency, the User Requirement Specification (URS) should explicitly require: a diving needle, a liquid level detector, an automatic tubing priming procedure, and low-speed parameter settings for the start and end of filling. These requirements should be confirmed early in technology transfer; otherwise, if the need for retrofitting is found only after go-live, engineering cost and validation time will increase substantially."
+  },
+  {
+   "zh": "為什麼容器補料時必須從液面下方進行，而非從頂部倒入？這跟泡沫的哪個形成機制有關？",
+   "en": "Why must container top-up be done below the liquid surface rather than by pouring in from the top? Which foam formation mechanism does this relate to?"
+  },
+  {
+   "zh": "100% IPC 重量檢測如何間接偵測管路中的氣泡問題？",
+   "en": "How does a 100% IPC weight check indirectly detect air bubble problems in the tubing?"
+  },
+  {
+   "zh": "4.5 Functionality Affecting Drip Control — 影響滴漏控制的功能性",
+   "en": "4.5 Functionality Affecting Drip Control"
+  },
+  {
+   "zh": "<strong>滴漏 (Dripping) 的兩種主要型態：</strong>",
+   "en": "<strong>Two main types of dripping:</strong>"
+  },
+  {
+   "zh": "<strong>低表面張力型：</strong>液體在針頭出口無法「握住」最後一滴，自由滴落",
+   "en": "<strong>Low surface tension type:</strong> the liquid cannot \"hold\" the last drop at the needle outlet and drips freely"
+  },
+  {
+   "zh": "<strong>高黏度絲線型 (string/thread)：</strong>充填結束後，殘留在針頭內的高黏度液體被拉成細絲，無法完全切斷",
+   "en": "<strong>High-viscosity string/thread type:</strong> after filling ends, the high-viscosity liquid remaining in the needle is drawn into a fine thread that cannot be completely cut off"
+  },
+  {
+   "zh": "<strong>液體回縮 (Liquid Retraction / Suck-back):</strong> 充填結束瞬間，泵浦做一個微小的反向行程，將針頭出口的液體略微往回吸，使液面由凸變凹，藉表面張力「鎖住」最後一滴，防止滴漏。",
+   "en": "<strong>Liquid Retraction / Suck-back:</strong> At the instant filling ends, the pump makes a small reverse stroke that draws the liquid at the needle outlet slightly back, turning the meniscus from convex to concave so that surface tension \"locks in\" the last drop and prevents dripping."
+  },
+  {
+   "zh": "<strong>各泵浦的液體回縮能力：</strong>",
+   "en": "<strong>Liquid retraction capability of each pump:</strong>"
+  },
+  {
+   "zh": "PP — 伺服馬達可反轉，回縮容易實現",
+   "en": "PP - the servo motor can reverse, so retraction is easy to achieve"
+  },
+  {
+   "zh": "RPP — 活塞伺服驅動可反向行程",
+   "en": "RPP - the servo-driven piston can perform a reverse stroke"
+  },
+  {
+   "zh": "DP — 調整底部撥片時序與夾管閥可協調回縮",
+   "en": "DP - retraction can be coordinated by adjusting the bottom paddle timing and the pinch valve"
+  },
+  {
+   "zh": "TP — <strong>無法主動回縮</strong>（只能靠快速關閥模擬，效果有限）",
+   "en": "TP - <strong>cannot actively retract</strong> (it can only be simulated by closing the valve quickly, with limited effect)"
+  },
+  {
+   "zh": "液體回縮就像用吸管喝飲料後，輕輕放開吸嘴讓吸管吸回最後一口，防止液體從吸管底部繼續滴落。TP 系統沒有這個「放開吸嘴」的動作，它只能快速夾住管子（快速關閥），效果類似但不如主動回縮精準。對於像蜂蜜那樣高黏度的產品，這種差異會非常明顯——快速夾管仍然無法切斷已形成的絲狀液柱。",
+   "en": "Liquid retraction is like drinking through a straw and then gently releasing the mouthpiece so the straw draws back the last mouthful, preventing liquid from continuing to drip from the bottom of the straw. A TP system lacks this \"release the mouthpiece\" action; it can only pinch the tube quickly (fast valve closure), which is similar in effect but less precise than active retraction. For high-viscosity products such as honey, the difference is very obvious: fast pinching still cannot cut off a liquid column that has already formed a thread."
+  },
+  {
+   "zh": "<strong>泡沫 vs. 滴漏的「蹺蹺板」困境：</strong>軟管位置越低（低於充填點）→ 靜壓頭越大 → 越容易滴漏；軟管位置越高（高於充填點）→ 空氣越容易被捲入 → 越容易起泡。兩者是相互競爭的需求，設計時必須基於產品的主要風險（起泡優先？滴漏優先？）做出明確取捨，而非同時最佳化。",
+   "en": "<strong>The \"seesaw\" dilemma of foam vs. dripping:</strong> The lower the tubing position (below the filling point) → the greater the static head → the more likely dripping; the higher the tubing position (above the filling point) → the more easily air is entrained → the more likely foaming. The two are competing requirements, so the design must make an explicit trade-off based on the product's main risk (foam first? drip first?) rather than optimizing both at once."
+  },
+  {
+   "zh": "<strong>「一組硬體解決所有產品」的陷阱：</strong>本節最後的結論警告清晰——過度追求設備通用性（one-size fits all）往往是滴漏問題的根源。在 CDMO 多品種環境中，每個新產品都應重新評估針頭 ID、軟管規格與充填曲線參數的適配性。",
+   "en": "<strong>The trap of \"one set of hardware for all products\":</strong> The conclusion at the end of this section gives a clear warning: excessive pursuit of equipment universality (one-size fits all) is often the root of dripping problems. In a multi-product CDMO environment, the suitability of needle ID, tubing specification and filling curve parameters should be reassessed for every new product."
+  },
+  {
+   "zh": "設計考量框架 Design Consideration Framework",
+   "en": "Design Consideration Framework"
+  },
+  {
+   "zh": "滴漏風險評估矩陣：\n\n高表面張力 → 較小針頭 ID → 液體回縮較容易\n低表面張力 → 必須主動回縮 → TP 不適用\n高黏度     → 針頭 ID 需放大 → 注意切斷不完全\n低黏度     → 注意靜壓滴漏 → 軟管位置需謹慎\n\n軟管長度 ↑ → 重力弧垂 ↑ → 滴漏風險 ↑\n泵浦尺寸 ↑ → 針頭最小 ID ↑ → 殘留量 ↑ → 滴漏 ↑",
+   "en": "Drip risk assessment matrix:\n\nHigh surface tension → smaller needle ID → liquid retraction easier\nLow surface tension → active retraction required → TP not suitable\nHigh viscosity     → needle ID needs to be enlarged → watch for incomplete cut-off\nLow viscosity      → watch for static-pressure dripping → tubing position needs care\n\nTubing length ↑ → gravity sag ↑ → drip risk ↑\nPump size ↑ → minimum needle ID ↑ → residual volume ↑ → dripping ↑"
+  },
+  {
+   "zh": "CDMO 技術轉移評估時，對於任何新接收的注射產品，建議在技術轉移協議（TTA）中明確記錄：產品表面張力測量值、黏度（在充填溫度下）、起泡傾向測試結果。這三個數據可直接驅動針頭規格選型與充填曲線開發方向，避免在驗證批次才發現滴漏問題導致批次廢棄。",
+   "en": "When assessing any newly received injectable product during CDMO technology transfer, it is recommended to explicitly record the following in the technology transfer agreement (TTA): the measured product surface tension, the viscosity (at filling temperature), and the foaming tendency test results. These three data points directly drive needle specification selection and the direction of filling curve development, avoiding the discovery of drip problems only at the validation batch, which would result in batch rejection."
+  },
+  {
+   "zh": "一個低黏度、低表面張力的眼藥水產品，你如何評估它是否適合現有的 TP 充填系統？",
+   "en": "For a low-viscosity, low-surface-tension eye drop product, how would you assess whether it is suitable for an existing TP filling system?"
+  },
+  {
+   "zh": "走行樑傳送系統（walking-beam）為何比固定站式傳送更容易因振動導致滴漏？",
+   "en": "Why is a walking-beam transport system more prone to vibration-induced dripping than a fixed-station transport system?"
+  },
+  {
+   "zh": "為什麼泵浦選型「偏大」會間接導致滴漏問題？",
+   "en": "Why can an oversized pump selection indirectly lead to dripping problems?"
+  },
+  {
+   "zh": "4.6 Functionality for Maintaining Homogeneity — 均勻性維持的功能性",
+   "en": "4.6 Functionality for Maintaining Homogeneity"
+  },
+  {
+   "zh": "<strong>均勻性 (Homogeneity) 的挑戰：</strong>乳劑 (emulsions)、懸浮液 (suspensions)、ATMP 和細胞治療產品（cell therapy products）的活性成分具有沉降傾向。在充填過程中如果靜置過久，先充填的容器與後充填的容器中活性成分的濃度可能出現顯著差異——這直接影響每個劑型的療效，是 Product CQA 的核心議題。",
+   "en": "<strong>The challenge of homogeneity:</strong> The active ingredients of emulsions, suspensions, ATMPs and cell therapy products tend to settle. If the product stands for too long during filling, the active ingredient concentration may differ significantly between containers filled early and those filled later. This directly affects the efficacy of each dose and is a core product CQA issue."
+  },
+  {
+   "zh": "<strong>兩種基本對策：</strong>",
+   "en": "<strong>Two basic countermeasures:</strong>"
+  },
+  {
+   "zh": "<strong>攪拌 (Mixing)：</strong>在槽體內安裝攪拌器，靠容器內的流動維持均勻性。優點：簡單；缺點：無法保護連接管路中的產品。",
+   "en": "<strong>Mixing:</strong> A mixer is installed in the tank, and flow within the container maintains homogeneity. Advantage: simple; disadvantage: it cannot protect the product in the connecting tubing."
+  },
+  {
+   "zh": "<strong>再循環迴路 (Recirculation Loop)：</strong>讓產品持續在整個液體路徑中流動，包括管路和中間緩衝槽。優點：全路徑保護；缺點：系統複雜，剪切力風險需評估。",
+   "en": "<strong>Recirculation Loop:</strong> The product flows continuously through the entire fluid path, including the tubing and the intermediate buffer tank. Advantage: protection along the whole path; disadvantage: a complex system, and the shear-force risk must be evaluated."
+  },
+  {
+   "zh": "<strong>剪切力敏感性 (Shear-force Sensitivity)：</strong>某些產品（如細胞懸浮液）對機械剪切力非常敏感，過度循環會破壞細胞或蛋白質結構。因此，再循環設計必須在「保持均勻性」與「保護產品完整性」之間取得平衡。",
+   "en": "<strong>Shear-force Sensitivity:</strong> Some products (such as cell suspensions) are very sensitive to mechanical shear, and excessive circulation can damage cells or protein structure. The recirculation design must therefore balance \"maintaining homogeneity\" against \"protecting product integrity.\""
+  },
+  {
+   "zh": "維持懸浮液均勻性就像保持一杯珍珠奶茶的均勻分布：如果你靜置不動，珍珠（活性粒子）會沉到底部。你可以：(A) 持續攪拌杯中（= 槽內攪拌器），但吸管裡的珍珠還是可能沉積；(B) 持續從底部抽出再從頂部倒入循環（= 再循環迴路），讓整個系統包括吸管都保持流動。對於吸管特別長的情況（= 長管路），只用 A 是不夠的，必須用 B 或 A+B 組合。",
+   "en": "Maintaining suspension homogeneity is like keeping a cup of bubble tea evenly distributed: if you leave it standing, the pearls (active particles) sink to the bottom. You can: (A) keep stirring the cup (= in-tank mixer), but pearls in the straw may still settle; (B) continuously draw from the bottom and pour back in at the top (= recirculation loop), so the whole system, including the straw, stays in motion. When the straw is particularly long (= long tubing), A alone is not enough; B or an A+B combination is required."
+  },
+  {
+   "zh": "<strong>機器停機的普遍性：</strong>充填線停機是常態，不是例外。沉降時間是關鍵的驗證參數——必須確認「機器最長允許停機時間」不超過「產品驗證的最大靜置時間」。常見停機原因包括：環境監測沉降碟更換（每4小時）、玻璃碎片清理、塞子卡住、人員換班等。這些都必須在 Hold Time Study 中被考慮到。",
+   "en": "<strong>Machine stoppages are common:</strong> Stoppages on the filling line are the norm, not the exception. Settling time is a key validation parameter: it must be confirmed that the \"maximum allowable machine stoppage time\" does not exceed the \"maximum standing time validated for the product.\" Common causes of stoppage include: replacement of environmental monitoring settle plates (every 4 hours), glass fragment clearance, stoppers jamming, and personnel shift changes. All of these must be considered in the Hold Time Study."
+  },
+  {
+   "zh": "<strong>最低有效循環體積：</strong>當批次接近尾聲，槽體液位下降時，攪拌器可能已無法有效運作（液面低於攪拌葉片），此時必須提前停止充填並廢棄剩餘產品。廢棄體積的估算直接影響批次產率，是商業計算的重要參數。",
+   "en": "<strong>Minimum effective circulation volume:</strong> As the batch nears its end and the tank level falls, the mixer may no longer work effectively (liquid level below the impeller). Filling must then be stopped early and the remaining product discarded. The estimated discard volume directly affects batch yield and is an important parameter in commercial calculations."
+  },
+  {
+   "zh": "在接收一個新的脂質奈米粒子 (LNP) mRNA 疫苗產品時（高沉降傾向 + 剪切力敏感），CDMO 應在工程運行前完成：(1) 沉降動力學研究以確定 Hold Time Limit；(2) 剪切力耐受性研究以設定再循環泵浦轉速上限；(3) PAT 均勻性監測系統的安裝位置評估（置於分液歧管下游更能代表實際充填狀態）。這些資料應進入 CPP 設定，而非僅作為開發參考。",
+   "en": "When taking on a new lipid nanoparticle (LNP) mRNA vaccine product (high settling tendency + shear-force sensitive), the CDMO should complete the following before engineering runs: (1) a settling kinetics study to determine the Hold Time Limit; (2) a shear tolerance study to set the upper limit of recirculation pump speed; (3) an assessment of the installation position of the PAT homogeneity monitoring system (placing it downstream of the distribution manifold better represents the actual filling state). These data should feed into CPP settings rather than serve merely as development reference."
+  },
+  {
+   "zh": "為什麼「攪拌」在連接管路很長時不足以防止沉降？再循環迴路如何解決這個問題？",
+   "en": "Why is \"mixing\" insufficient to prevent settling when the connecting tubing is very long? How does a recirculation loop solve this problem?"
+  },
+  {
+   "zh": "PAT 均勻性感測器應安裝在歧管（manifold）上游還是下游？各有什麼優缺點？",
+   "en": "Should the PAT homogeneity sensor be installed upstream or downstream of the manifold? What are the advantages and disadvantages of each?"
+  },
+  {
+   "zh": "4.6.1 Design Options for Maintaining Homogeneity — 均勻性維持的設計選項",
+   "en": "4.6.1 Design Options for Maintaining Homogeneity"
+  },
+  {
+   "zh": "四種設計就像四種不同的城市供水系統，應對「水管中雜質沉積」的問題：",
+   "en": "The four designs are like four different city water supply systems dealing with the problem of \"impurities settling in the water pipes\":"
+  },
+  {
+   "zh": "Fig 1 = 水塔有攪拌，但水管靜止（適合短距離輸送）",
+   "en": "Fig 1 = the water tower has a stirrer, but the pipes are static (suitable for short-distance delivery)"
+  },
+  {
+   "zh": "Fig 2 = 水塔攪拌 + 末端管路持續循環（中等距離）",
+   "en": "Fig 2 = water tower stirring + continuous circulation in the end section of piping (medium distance)"
+  },
+  {
+   "zh": "Fig 3 = 取消水塔攪拌，讓全管路持續有水在流（管路不太長）",
+   "en": "Fig 3 = no stirring in the water tower, with water flowing continuously through the entire piping (piping not too long)"
+  },
+  {
+   "zh": "Fig 4 = 水塔端和末端各自有獨立循環系統（最長距離、最複雜的建築物）",
+   "en": "Fig 4 = independent circulation systems at both the water tower end and the far end (longest distance, most complex installation)"
+  },
+  {
+   "zh": "沒有哪一種是「最好的」——只有哪一種最適合你的產品沉降速率、管路長度和剪切力限制。",
+   "en": "None of them is \"the best\"; there is only the one that best suits your product's settling rate, tubing length and shear-force limits."
+  },
+  {
+   "zh": "<strong>PAT 感測器位置的策略選擇：</strong>部分使用者將 PAT 置於中間緩衝槽出口，確認進入歧管前的均勻性；另一些使用者選擇置於歧管下游，能更直接確認到達充填泵浦前的最終狀態。關鍵原則：PAT 位置越靠近充填點，越能代表實際充填的均勻性，但設備整合難度也越高。應根據產品的沉降速率和管路設計來決定最佳位置。",
+   "en": "<strong>Strategic choice of PAT sensor position:</strong> Some users place the PAT at the outlet of the intermediate buffer tank to confirm homogeneity before the product enters the manifold; others place it downstream of the manifold, which more directly confirms the final state before the product reaches the filling pump. The key principle: the closer the PAT position is to the filling point, the better it represents the homogeneity actually filled, but the harder the equipment integration. The best position should be decided based on the product's settling rate and the tubing design."
+  },
+  {
+   "zh": "<strong>廢棄體積的商業意義：</strong>「最低有效攪拌體積」直接決定了每批次的最大可用量。對於高價值生物製劑（如 CAR-T 細胞治療），這個廢棄量的計算精度直接影響批次經濟性。設計時應最小化廢棄體積，同時確保均勻性不受妥協。",
+   "en": "<strong>Commercial significance of discard volume:</strong> The \"minimum effective mixing volume\" directly determines the maximum usable quantity per batch. For high-value biologics (such as CAR-T cell therapy), the accuracy of this discard calculation directly affects batch economics. The design should minimize discard volume while ensuring that homogeneity is not compromised."
+  },
+  {
+   "zh": "當 CDMO 評估接收一個新的重組蛋白懸浮液產品時，建議在可行性評估階段即完成以下問題的答案：(1) 產品靜置後多快開始沉降（5分鐘？30分鐘？）；(2) 管路總長度和截面積是否能維持湍流狀態；(3) 現有設備是否已有再循環泵浦，還是需要追加投資；(4) 歧管設計是否存在死角（dead legs）導致局部沉積。這四個問題的答案將直接決定採用哪種圖示的設計模式。",
+   "en": "When a CDMO evaluates taking on a new recombinant protein suspension product, it is recommended to have answers to the following questions already at the feasibility assessment stage: (1) how quickly does the product begin to settle on standing (5 minutes? 30 minutes?); (2) can the total tubing length and cross-sectional area sustain turbulent flow; (3) does the existing equipment already have a recirculation pump, or is additional investment needed; (4) does the manifold design contain dead legs that cause local sedimentation. The answers to these four questions will directly determine which of the illustrated design patterns to adopt."
+  },
+  {
+   "zh": "Figure 4.6.1-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p107-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>（純外迴路再循環）的進料泵浦為什麼必須比純充填需求更大？多出的流量去了哪裡？",
+   "en": "Why must the feed pump in Figure 4.6.1-3<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=pda-guide-no1&amp;file=fig-p107-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> (pure external-loop recirculation) be larger than that required for filling alone? Where does the extra flow go?"
+  },
+  {
+   "zh": "在 Fig 4.6.1-4 的雙迴路設計中，如果內迴路再循環泵浦發生故障，中間緩衝槽中的產品會有什麼風險？你應該如何設計警報和連鎖？",
+   "en": "In the dual-loop design of Fig 4.6.1-4, if the inner-loop recirculation pump fails, what risks does the product in the intermediate buffer tank face? How should you design the alarms and interlocks?"
+  },
+  {
+   "zh": "對於一個剪切力極敏感的細胞治療產品，你會如何在「防止沉降」和「保護細胞活性」之間取得平衡？",
+   "en": "For a cell therapy product that is extremely shear-sensitive, how would you balance \"preventing settling\" against \"protecting cell viability\"?"
+  },
+  {
+   "zh": "核心概念解析 — 四種設計模式比較",
+   "en": "Key Concepts - Comparison of the Four Design Patterns"
+  },
+  {
+   "zh": "本小節介紹了從簡單到複雜的均勻性維持系統設計。以下是四種模式的系統性比較：",
+   "en": "This subsection introduces homogeneity-maintaining system designs from simple to complex. A systematic comparison of the four patterns follows:"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary (4.4–4.6.1)",
+   "en": "Section Summary (4.4-4.6.1)"
+  },
+  {
+   "zh": "<strong>充填曲線彈性：</strong>TP 彈性最低（依賴固定壓力 + 閥門時序），PP / RPP / DP 具備更豐富的速度調控能力，適合複雜產品特性的適配",
+   "en": "<strong>Filling curve flexibility:</strong> TP has the lowest flexibility (relies on fixed pressure + valve timing); PP / RPP / DP offer richer speed control and suit more complex product characteristics"
+  },
+  {
+   "zh": "<strong>泡沫控制：</strong>三大對策——液面下補料（dip tube）、潛入式針頭（diving needle）、管路充分排氣（priming）；充填曲線的啟動段與結束段是最高風險點，應降速處理",
+   "en": "<strong>Foam control:</strong> three main countermeasures: sub-surface addition (dip tube), diving needle, and thorough tubing priming; the start and end phases of the filling curve are the highest-risk points and should be slowed down"
+  },
+  {
+   "zh": "<strong>滴漏控制：</strong>TP 因無法主動液體回縮（liquid retraction）而對低表面張力或高黏度產品適用性受限；針頭 ID、軟管規格、泵浦尺寸必須作為整體系統設計而非獨立選型；「泡沫 vs. 滴漏」是軟管位置設計的核心取捨",
+   "en": "<strong>Drip control:</strong> because TP cannot perform active liquid retraction, its suitability is limited for low-surface-tension or high-viscosity products; needle ID, tubing specification and pump size must be designed as an overall system rather than selected independently; \"foam vs. dripping\" is the core trade-off in tubing position design"
+  },
+  {
+   "zh": "<strong>均勻性維持：</strong>單純攪拌無法保護連接管路中的產品；再循環迴路是更全面的解決方案，但需評估剪切力敏感性；設計模式從簡單（純攪拌）到複雜（雙迴路）應基於產品沉降速率、管路長度和剪切力限制來選擇",
+   "en": "<strong>Maintaining homogeneity:</strong> mixing alone cannot protect the product in the connecting tubing; a recirculation loop is a more comprehensive solution but shear-force sensitivity must be evaluated; the design pattern, from simple (mixing only) to complex (dual loop), should be chosen based on the product's settling rate, tubing length and shear-force limits"
+  },
+  {
+   "zh": "<strong>決策層級確認：</strong>以上所有功能性設計（充填曲線、泡沫、滴漏、均勻性）最終服務的是「無菌保證 (Sterility Assurance) → 產品 CQA → 商業彈性」的優先順序，不可因追求通用性或降低成本而妥協前兩項",
+   "en": "<strong>Decision hierarchy confirmed:</strong> all of the above functional designs (filling curve, foam, dripping, homogeneity) ultimately serve the priority order of \"Sterility Assurance → product CQA → commercial flexibility,\" and the first two must not be compromised in pursuit of universality or cost reduction"
+  }
+ ]
+}
