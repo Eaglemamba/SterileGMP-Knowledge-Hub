@@ -365,32 +365,54 @@ body {
   .card-name { font-size: 16px; }
 }
 </style>
+<script>
+// Site language (same key as index.html and rpg/rpg.js)
+var EN = (function () { try { return localStorage.getItem('sgk_rpg_lang') === 'en'; } catch (e) { return false; } })();
+function T(zh, en) { return EN ? en : zh; }
+document.addEventListener('DOMContentLoaded', function () {
+  if (EN) {
+    document.documentElement.lang = 'en';
+    document.title = 'SterileGMP — Knowledge Map (Mobile)';
+    document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.getAttribute('data-en'); });
+    document.querySelectorAll('[data-en-ph]').forEach(function (el) { el.placeholder = el.getAttribute('data-en-ph'); });
+  }
+  var b = document.createElement('button');   // same switch as rpg/rpg.js; sits in the nav bar here because the bar is sticky
+  b.id = 'rpg-lang'; b.type = 'button';
+  b.textContent = EN ? '中文' : 'EN';
+  b.title = EN ? '切換為繁體中文' : 'Switch to English';
+  b.setAttribute('aria-label', b.title);
+  b.style.cssText = 'flex-shrink:0;margin-left:6px;padding:3px 10px;border-radius:999px;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.92);color:#0f172a;font:700 12px/1.2 system-ui,-apple-system,"Noto Sans TC",sans-serif;cursor:pointer';
+  b.onclick = function () { try { localStorage.setItem('sgk_rpg_lang', EN ? 'zh' : 'en'); } catch (e) { return; } location.reload(); };
+  var badge = document.getElementById('navBadge');   // last item of the sticky nav bar = top right
+  if (badge && badge.parentNode) badge.parentNode.appendChild(b); else document.body.appendChild(b);
+});
+</script>
 </head>
 <body>
 
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
-  <div style="font-size:13px;color:#64748b">載入知識地圖中…</div>
+  <div style="font-size:13px;color:#64748b" data-en="Loading knowledge map…">載入知識地圖中…</div>
 </div>
 
 <!-- Top nav -->
 <nav class="top-nav">
-  <a class="nav-back" href="index.html">← 首頁</a>
-  <span class="nav-title">知識地圖</span>
-  <a href="mindmap.html" style="margin-left:auto;font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 9px;border-radius:6px;text-decoration:none;border:1px solid #e2e8f0;white-space:nowrap;flex-shrink:0">🖥️ 桌面版</a>
+  <a class="nav-back" href="index.html" data-en="← Home">← 首頁</a>
+  <span class="nav-title" data-en="Knowledge Map">知識地圖</span>
+  <a href="mindmap.html" style="margin-left:auto;font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 9px;border-radius:6px;text-decoration:none;border:1px solid #e2e8f0;white-space:nowrap;flex-shrink:0" data-en="🖥️ Desktop">🖥️ 桌面版</a>
   <span class="nav-badge" id="navBadge" style="margin-left:6px">—</span>
 </nav>
 
 <!-- Tab bar -->
 <div class="tab-bar">
   <button class="tab-btn active" id="tab-dept" onclick="switchView('dept')">
-    <span class="tab-icon">🏢</span> 部門
+    <span class="tab-icon">🏢</span> <span data-en="Departments">部門</span>
   </button>
   <button class="tab-btn" id="tab-topic" onclick="switchView('topic')">
-    <span class="tab-icon">🗂️</span> 主題
+    <span class="tab-icon">🗂️</span> <span data-en="Topics">主題</span>
   </button>
   <button class="tab-btn" id="tab-source" onclick="switchView('source')">
-    <span class="tab-icon">📚</span> 來源
+    <span class="tab-icon">📚</span> <span data-en="Sources">來源</span>
   </button>
 </div>
 
@@ -400,7 +422,7 @@ body {
   <!-- ═══ BY DEPARTMENT VIEW ═══════════════════════════════════ -->
   <div class="view active" id="view-dept">
     <div class="search-wrap">
-      <input class="search-input" id="search-dept" type="search" placeholder="搜尋部門或文件代號…" oninput="filterCards('dept', this.value)">
+      <input class="search-input" id="search-dept" type="search" placeholder="搜尋部門或文件代號…" data-en-ph="Search departments or document IDs…" oninput="filterCards('dept', this.value)">
     </div>
     <div class="stats-strip" id="stats-dept"></div>
     <div class="cards" id="cards-dept"></div>
@@ -409,7 +431,7 @@ body {
   <!-- ═══ BY TOPIC VIEW ════════════════════════════════════════ -->
   <div class="view" id="view-topic">
     <div class="search-wrap">
-      <input class="search-input" id="search-topic" type="search" placeholder="搜尋主題或關鍵字…" oninput="filterCards('topic', this.value)">
+      <input class="search-input" id="search-topic" type="search" placeholder="搜尋主題或關鍵字…" data-en-ph="Search topics or keywords…" oninput="filterCards('topic', this.value)">
     </div>
     <div class="stats-strip" id="stats-topic"></div>
     <div class="cards" id="cards-topic"></div>
@@ -418,7 +440,7 @@ body {
   <!-- ═══ BY SOURCE VIEW ═══════════════════════════════════════ -->
   <div class="view" id="view-source">
     <div class="search-wrap">
-      <input class="search-input" id="search-source" type="search" placeholder="搜尋標準組織或文件…" oninput="filterCards('source', this.value)">
+      <input class="search-input" id="search-source" type="search" placeholder="搜尋標準組織或文件…" data-en-ph="Search organisations or documents…" oninput="filterCards('source', this.value)">
     </div>
     <div class="stats-strip" id="stats-source"></div>
     <div class="cards" id="cards-source"></div>
@@ -449,11 +471,11 @@ function switchView(v) {
 function updateNavBadge(v) {
   const total = Object.keys(reportsData).filter(k => reportsData[k].section_map?.length).length;
   const badges = {
-    dept: departments.length + ' 部門',
-    topic: topicNetworkDef.clusters.length + ' 主題',
-    source: Object.keys(sourceOrgs).length + ' 來源',
+    dept: departments.length + T(' 部門', ' departments'),
+    topic: topicNetworkDef.clusters.length + T(' 主題', ' topics'),
+    source: Object.keys(sourceOrgs).length + T(' 來源', ' sources'),
   };
-  document.getElementById('navBadge').textContent = badges[v] || total + ' 份文件';
+  document.getElementById('navBadge').textContent = badges[v] || total + T(' 份文件', ' documents');
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -487,11 +509,11 @@ function buildDeptCards() {
   const legend = document.createElement('div');
   legend.className = 'legend-wrap';
   legend.innerHTML = `
-    <div class="legend-chip"><span class="legend-dot-chip" style="background:#dc2626"></span>Tier 1 基礎必讀</div>
-    <div class="legend-chip"><span class="legend-dot-chip" style="background:#ea580c"></span>Tier 2 核心能力</div>
-    <div class="legend-chip"><span class="legend-dot-chip" style="background:#7c3aed"></span>Tier 3 進階專業</div>
-    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ 必讀</div>
-    <div class="legend-chip">選讀</div>`;
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#dc2626"></span>Tier 1 ${T('基礎必讀', 'Foundation')}</div>
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#ea580c"></span>Tier 2 ${T('核心能力', 'Core')}</div>
+    <div class="legend-chip"><span class="legend-dot-chip" style="background:#7c3aed"></span>Tier 3 ${T('進階專業', 'Advanced')}</div>
+    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ ${T('必讀', 'Required')}</div>
+    <div class="legend-chip">${T('選讀', 'Optional')}</div>`;
   container.appendChild(legend);
 
   // Annex 1 responsibility map: dept → sections
@@ -521,10 +543,10 @@ function buildDeptCards() {
       <div class="card-icon">${dept.icon}</div>
       <div class="card-titles">
         <div class="card-name">${dept.name}</div>
-        <div class="card-name-zh">${dept.nameZh}</div>
+        ${EN ? '' : `<div class="card-name-zh">${dept.nameZh}</div>`}
       </div>
       <div class="card-meta">
-        <span class="card-count" style="color:${dept.color};background:${dept.color}18">${totalDocs} 份</span>
+        <span class="card-count" style="color:${dept.color};background:${dept.color}18">${totalDocs}${T(' 份', ' docs')}</span>
         <span class="card-arrow">›</span>
       </div>`;
 
@@ -544,8 +566,8 @@ function buildDeptCards() {
     if (annexSecs.length) {
       const annexDiv = document.createElement('div');
       annexDiv.className = 'annex-section';
-      annexDiv.innerHTML = '<div style="width:100%;font-size:11px;font-weight:700;color:#64748b;margin-bottom:2px;letter-spacing:.5px">PIC/S ANNEX 1 責任章節</div>' +
-        annexSecs.map(s => `<span class="annex-chip" title="${s.nameZh}">${s.num} ${s.nameZh}</span>`).join('');
+      annexDiv.innerHTML = '<div style="width:100%;font-size:11px;font-weight:700;color:#64748b;margin-bottom:2px;letter-spacing:.5px">PIC/S ANNEX 1 ' + T('責任章節', 'RESPONSIBLE SECTIONS') + '</div>' +
+        annexSecs.map(s => `<span class="annex-chip" title="${EN ? s.name : s.nameZh}">${s.num} ${EN ? s.name : s.nameZh}</span>`).join('');
       body.appendChild(annexDiv);
     }
 
@@ -560,8 +582,8 @@ function buildDeptCards() {
       tierHeader.innerHTML = `
         <span class="tier-level tier-level-${tier.level}">${tier.level}</span>
         <span class="tier-label">${tier.label}</span>
-        <span class="tier-label-zh"> · ${tier.labelZh}</span>
-        <span class="tier-doc-count">${tier.docs.length} 份</span>
+        ${EN ? '' : `<span class="tier-label-zh"> · ${tier.labelZh}</span>`}
+        <span class="tier-doc-count">${tier.docs.length}${T(' 份', ' docs')}</span>
         <span class="tier-arrow">›</span>`;
 
       const tierDocs = document.createElement('div');
@@ -574,7 +596,7 @@ function buildDeptCards() {
         if (link) item.setAttribute('onclick', `window.open('${link}','_blank')`);
 
         item.innerHTML = `
-          <span class="doc-badge ${doc.required ? 'badge-required' : 'badge-optional'}">${doc.required ? '★ 必讀' : '選讀'}</span>
+          <span class="doc-badge ${doc.required ? 'badge-required' : 'badge-optional'}">${doc.required ? T('★ 必讀', '★ Required') : T('選讀', 'Optional')}</span>
           <div class="doc-info">
             <div class="doc-key">${doc.key}</div>
             <div class="doc-title">${getDocTitle(doc.key)}</div>
@@ -601,7 +623,7 @@ function buildDeptCards() {
   const total = departments.reduce((s, d) => s + d.tiers.reduce((ts, t) => ts + t.docs.length, 0), 0);
   const req = departments.reduce((s, d) => s + d.tiers.reduce((ts, t) => ts + t.docs.filter(dd => dd.required).length, 0), 0);
   document.getElementById('stats-dept').textContent =
-    `${departments.length} 個部門 · ${total} 份文件（${req} 份必讀）`;
+    T(`${departments.length} 個部門 · ${total} 份文件（${req} 份必讀）`, `${departments.length} departments · ${total} documents (${req} required)`);
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -628,8 +650,8 @@ function buildTopicCards() {
   const legend = document.createElement('div');
   legend.className = 'legend-wrap';
   legend.innerHTML = `
-    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ 必讀（跨部門）</div>
-    <div class="legend-chip">一般文件</div>`;
+    <div class="legend-chip" style="background:#fef3c7;border-color:#fde68a">★ ${T('必讀（跨部門）', 'Required (cross-department)')}</div>
+    <div class="legend-chip">${T('一般文件', 'Other documents')}</div>`;
   container.appendChild(legend);
 
   topicNetworkDef.clusters.forEach(cluster => {
@@ -650,10 +672,10 @@ function buildTopicCards() {
       <div class="card-color-bar" style="background:${cluster.color}"></div>
       <div class="card-titles">
         <div class="card-name">${cluster.name}</div>
-        ${cluster.nameZh ? `<div class="card-name-zh">${cluster.nameZh}</div>` : ''}
+        ${cluster.nameZh && !EN ? `<div class="card-name-zh">${cluster.nameZh}</div>` : ''}
       </div>
       <div class="card-meta">
-        <span class="card-count" style="color:${cluster.color};background:${cluster.color}18">${cluster.subtopics.length} 子主題</span>
+        <span class="card-count" style="color:${cluster.color};background:${cluster.color}18">${cluster.subtopics.length}${T(' 子主題', ' subtopics')}</span>
         <span class="card-arrow">›</span>
       </div>`;
 
@@ -675,7 +697,7 @@ function buildTopicCards() {
       topRow.innerHTML = `
         <span class="subtopic-dot" style="background:${cluster.color}"></span>
         <span class="subtopic-name">${sub.name}</span>
-        ${cnt ? `<span class="subtopic-count">${cnt} 份</span>` : ''}`;
+        ${cnt ? `<span class="subtopic-count">${cnt}${T(' 份', ' docs')}</span>` : ''}`;
       item.appendChild(topRow);
 
       if (sub.tags?.length) {
@@ -707,7 +729,7 @@ function buildTopicCards() {
           const dRow = document.createElement('div');
           dRow.style.cssText = `display:flex;align-items:baseline;gap:6px;font-size:12px;padding:4px 6px;border-radius:6px;${isReq ? 'background:#fffbeb;border:1px solid #fde68a;' : ''}`;
           const badge = isReq
-            ? `<span style="flex-shrink:0;font-size:9px;font-weight:800;background:#f59e0b;color:#fff;padding:1px 5px;border-radius:3px;white-space:nowrap">★ 必讀</span>`
+            ? `<span style="flex-shrink:0;font-size:9px;font-weight:800;background:#f59e0b;color:#fff;padding:1px 5px;border-radius:3px;white-space:nowrap">★ ${T('必讀', 'Required')}</span>`
             : `<span style="flex-shrink:0;font-weight:700;color:#475569;background:#f1f5f9;padding:1px 5px;border-radius:3px;font-size:10px">${doc.source}</span>`;
           dRow.innerHTML = badge;
           if (isReq) {
@@ -735,7 +757,7 @@ function buildTopicCards() {
     if (crossLinks.length) {
       const crossDiv = document.createElement('div');
       crossDiv.style.cssText = 'padding:8px 14px 12px;border-top:1px solid #f1f5f9';
-      crossDiv.innerHTML = `<div style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">相關連結主題</div>`;
+      crossDiv.innerHTML = `<div style="font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">${T('相關連結主題', 'Related topics')}</div>`;
       const chips = document.createElement('div');
       chips.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px';
       crossLinks.forEach(cl => {
@@ -759,7 +781,7 @@ function buildTopicCards() {
 
   const nSubs = topicNetworkDef.clusters.reduce((s, c) => s + c.subtopics.length, 0);
   document.getElementById('stats-topic').textContent =
-    `${topicNetworkDef.clusters.length} 主題群 · ${nSubs} 子主題 · ${(topicNetworkDef.crossLinks || []).length} 跨主題連結`;
+    T(`${topicNetworkDef.clusters.length} 主題群 · ${nSubs} 子主題 · ${(topicNetworkDef.crossLinks || []).length} 跨主題連結`, `${topicNetworkDef.clusters.length} clusters · ${nSubs} subtopics · ${(topicNetworkDef.crossLinks || []).length} cross-links`);
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -814,7 +836,7 @@ function buildSourceCards() {
         <div class="card-name-zh">${meta.label}</div>
       </div>
       <div class="card-meta">
-        <span class="card-count" style="color:${meta.color};background:${meta.color}18">${docs.length} 份</span>
+        <span class="card-count" style="color:${meta.color};background:${meta.color}18">${docs.length}${T(' 份', ' docs')}</span>
         <span class="card-arrow">›</span>
       </div>`;
 
@@ -836,7 +858,7 @@ function buildSourceCards() {
         <div class="doc-info">
           <div class="doc-key">${key}</div>
           <div class="doc-title">${rep.title || rep.report_title_en || key}</div>
-          ${rep.titleZh ? `<div style="font-size:11px;color:#64748b;margin-top:1px">${rep.titleZh}</div>` : ''}
+          ${rep.titleZh && !EN ? `<div style="font-size:11px;color:#64748b;margin-top:1px">${rep.titleZh}</div>` : ''}
           ${tags ? `<div style="margin-top:4px">${tags}</div>` : ''}
         </div>
         ${link ? '<span class="doc-arrow">›</span>' : ''}`;
@@ -851,7 +873,7 @@ function buildSourceCards() {
   });
 
   document.getElementById('stats-source').textContent =
-    `${Object.keys(sourceOrgs).length} 個標準組織 · ${totalShown} 份已處理文件`;
+    T(`${Object.keys(sourceOrgs).length} 個標準組織 · ${totalShown} 份已處理文件`, `${Object.keys(sourceOrgs).length} organisations · ${totalShown} documents`);
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -877,7 +899,7 @@ function filterCards(view, query) {
       empty.className = 'empty-msg';
       container.appendChild(empty);
     }
-    empty.textContent = `找不到「${query}」相關內容`;
+    empty.textContent = T(`找不到「${query}」相關內容`, `No results for "${query}"`);
     empty.style.display = 'block';
   } else if (empty) {
     empty.style.display = 'none';
