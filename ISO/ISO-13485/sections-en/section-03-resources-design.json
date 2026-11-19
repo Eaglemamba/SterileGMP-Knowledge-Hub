@@ -1,0 +1,421 @@
+{
+ "source": "section-03-resources-design.html",
+ "blocks": [
+  {
+   "zh": "資源管理、產品實現規劃與設計開發管制",
+   "en": "Resource Management, Product Realization Planning and Design and Development Control"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 6.4.2 污染管制條款的獨特性：ISO 13485 特有，明確要求無菌醫療器材在組裝與包裝過程中維持所需潔淨度",
+   "en": "Understand the uniqueness of the 6.4.2 contamination control clause: specific to ISO 13485, it explicitly requires sterile medical devices to maintain the required cleanliness during assembly and packaging"
+  },
+  {
+   "zh": "掌握 7.3 設計開發十個子條款的邏輯脈絡，識別哪些要求超越 ISO 9001 的範疇",
+   "en": "Master the logic of the ten sub-clauses of 7.3 design and development, and identify which requirements go beyond the scope of ISO 9001"
+  },
+  {
+   "zh": "理解 Design and Development File（7.3.10）即設計歷史文件（DHF）的概念與完整性要求",
+   "en": "Understand the concept and completeness requirements of the Design and Development File (7.3.10), i.e., the Design History File (DHF)"
+  },
+  {
+   "zh": "區分設計驗證（Verification：我們做對了嗎？）與設計確認（Validation：我們做的是對的東西嗎？）的本質差異",
+   "en": "Distinguish the essential difference between design verification (Verification: did we build it right?) and design validation (Validation: did we build the right thing?)"
+  },
+  {
+   "zh": "了解 7.3.8 設計轉移（Design Transfer）對 CDMO 承接製造的關鍵意義",
+   "en": "Understand the key significance of 7.3.8 Design Transfer for a CDMO taking on manufacturing"
+  },
+  {
+   "zh": "Clause 6: Resource Management — 資源管理",
+   "en": "Clause 6: Resource Management"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "6.3 Infrastructure：CDMO 的重要細節",
+   "en": "6.3 Infrastructure: Important Details for a CDMO"
+  },
+  {
+   "zh": "「防止產品混淆（prevent product mix-up）」是 ISO 13485 6.3 特別提及的要求，在 ISO 9001 中沒有此明確措辭。",
+   "en": "\"Prevent product mix-up\" is a requirement specifically mentioned in ISO 13485 6.3; ISO 9001 has no such explicit wording."
+  },
+  {
+   "zh": "對 CDMO 意涵：",
+   "en": "What it means for a CDMO:"
+  },
+  {
+   "zh": "設施設計必須包含物理或程序性隔離措施，防止不同客戶產品在同一設施內交叉",
+   "en": "Facility design must include physical or procedural segregation measures to prevent cross-contamination or mix-up between different customers' products within the same facility"
+  },
+  {
+   "zh": "維護計劃必須文件化頻率，且特別說明「維護缺失」對產品品質的影響 — 這是支持 Preventive Maintenance 計劃的法規依據",
+   "en": "The maintenance plan must document the frequency, and specifically address the effect of \"maintenance deficiencies\" on product quality — this is the regulatory basis for supporting a Preventive Maintenance program"
+  },
+  {
+   "zh": "製程設備軟體（如充填機的 recipe 系統）也屬於 Infrastructure，需要受到文件化管控",
+   "en": "Process equipment software (such as the recipe system of a filling machine) also counts as Infrastructure and must be under documented control"
+  },
+  {
+   "zh": "類比說明：基礎設施要求的範圍",
+   "en": "Analogy: The Scope of Infrastructure Requirements"
+  },
+  {
+   "zh": "6.3 把「基礎設施」定義為三層：廠房設施、製程設備、支援服務。這就像一家餐廳的基礎條件：廚房空間（廠房）、爐具與刀具（設備）、水電網路供應（支援服務）——三者缺一不可，且都需要定期維護以確保食品安全。醫療器材製造同理，任何一層的疏漏都可能導致產品品質問題。",
+   "en": "6.3 defines \"infrastructure\" in three layers: buildings and facilities, process equipment, and supporting services. It is like the basic conditions of a restaurant: kitchen space (buildings), stoves and knives (equipment), and water, electricity and network supply (supporting services). None of the three can be missing, and all need regular maintenance to ensure food safety. The same holds for medical device manufacturing: a lapse in any one layer can lead to product quality problems."
+  },
+  {
+   "zh": "概念解析：6.2 的「勝任能力」要求 vs. ISO 9001",
+   "en": "Concept Analysis: The \"Competence\" Requirement in 6.2 vs. ISO 9001"
+  },
+  {
+   "zh": "ISO 13485 的 6.2 在文字上與 ISO 9001 相近，但實務要求更嚴格：",
+   "en": "The wording of ISO 13485 6.2 is similar to ISO 9001, but the practical requirements are stricter:"
+  },
+  {
+   "zh": "對無菌 CDMO：潔淨室操作員、滅菌驗證工程師、QC 分析員的培訓記錄必須包含初始鑑定、定期重新培訓、有效性評估三個層次。",
+   "en": "For a sterile CDMO: the training records of cleanroom operators, sterilization validation engineers and QC analysts must cover three levels: initial qualification, periodic retraining and effectiveness evaluation."
+  },
+  {
+   "zh": "Clause 6.4: Work Environment and Contamination Control — 工作環境與污染管制",
+   "en": "Clause 6.4: Work Environment and Contamination Control"
+  },
+  {
+   "zh": "CDMO 關鍵：6.4.2 連結至整個無菌作業體系",
+   "en": "CDMO Key Point: 6.4.2 Links to the Entire Aseptic Operations System"
+  },
+  {
+   "zh": "對無菌充填 CDMO，6.4.2 是最直接相關的資源管理條款：",
+   "en": "For an aseptic filling CDMO, 6.4.2 is the most directly relevant resource management clause:"
+  },
+  {
+   "zh": "<strong>硬體層面</strong>：潔淨室設計（ISO 14644）、隔離器或 RABS 作業",
+   "en": "<strong>Hardware level</strong>: cleanroom design (ISO 14644), isolator or RABS operations"
+  },
+  {
+   "zh": "<strong>人員層面</strong>：更衣程序、無菌操作培訓（與 6.4.1 人員要求銜接）",
+   "en": "<strong>Personnel level</strong>: gowning procedures, aseptic technique training (linked to the personnel requirements of 6.4.1)"
+  },
+  {
+   "zh": "<strong>監控層面</strong>：EM 計劃（與 7.5.1 生產管制銜接）",
+   "en": "<strong>Monitoring level</strong>: the EM program (linked to production control in 7.5.1)"
+  },
+  {
+   "zh": "<strong>文件層面</strong>：清潔確認報告、潔淨室鑑定報告（與 7.3.8 設計轉移銜接）",
+   "en": "<strong>Documentation level</strong>: cleaning qualification reports, cleanroom qualification reports (linked to design transfer in 7.3.8)"
+  },
+  {
+   "zh": "稽核時，稽核員會要求看到：文件化的潔淨等級要求 → 監控程序 → 監控記錄 → 趨勢分析，形成完整的管制閉環。",
+   "en": "In an audit, the auditor will ask to see: documented cleanliness requirements → monitoring procedures → monitoring records → trend analysis, forming a complete closed control loop."
+  },
+  {
+   "zh": "類比說明：6.4.2 的雙重防線思維",
+   "en": "Analogy: The Double-Defense Thinking of 6.4.2"
+  },
+  {
+   "zh": "6.4.2 的結構是「先防外患，再護核心」：第一層是防止已污染產品（外患）擴散到環境或人員；第二層是無菌製程（核心）必須主動維持潔淨度。就像醫院的感染管制：隔離病房（防止擴散）+ 手術室的嚴格無菌規程（主動防護），兩套措施同時存在，目的不同。",
+   "en": "The structure of 6.4.2 is \"first guard against external threats, then protect the core\": the first layer prevents contaminated product (the external threat) from spreading to the environment or personnel; the second layer requires the aseptic process (the core) to actively maintain cleanliness. It is like infection control in a hospital: isolation wards (preventing spread) + the strict aseptic protocols of the operating room (active protection). The two sets of measures coexist and serve different purposes."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "客戶送來的設備已知表面有微生物污染，需要在您的 CDMO 潔淨室清洗後再組裝。依據 6.4.2 第一段，CDMO 應建立哪些書面管制安排？",
+   "en": "A customer sends equipment that is known to have microbial contamination on its surface, and it needs to be cleaned in your CDMO's cleanroom before assembly. Under the first paragraph of 6.4.2, what documented control arrangements should the CDMO establish?"
+  },
+  {
+   "zh": "您的 ISO 7 潔淨室用於無菌填充的最後目視檢驗。6.4.2 要求您文件化哪些具體的潔淨度要求？稽核員最可能要求看到哪份記錄？",
+   "en": "Your ISO 7 cleanroom is used for the final visual inspection of aseptically filled product. What specific cleanliness requirements does 6.4.2 require you to document? Which record is the auditor most likely to ask to see?"
+  },
+  {
+   "zh": "概念解析：6.4.2 — ISO 13485 獨有的污染管制條款",
+   "en": "Concept Analysis: 6.4.2 — The Contamination Control Clause Unique to ISO 13485"
+  },
+  {
+   "zh": "6.4.2 是 ISO 13485 特有的條款，ISO 9001 中不存在。它有兩個層次的要求：",
+   "en": "6.4.2 is a clause specific to ISO 13485 and does not exist in ISO 9001. It has two levels of requirements:"
+  },
+  {
+   "zh": "實務涵義：無菌醫療器材製造商必須書面定義：在哪些製程步驟、需要維持哪個潔淨等級（如 ISO 5 / ISO 7 / ISO 8），以及如何監控（如 EM 計劃、微粒監測）。",
+   "en": "Practical implication: a sterile medical device manufacturer must define in writing at which process steps which cleanliness class (e.g., ISO 5 / ISO 7 / ISO 8) must be maintained, and how it is monitored (e.g., EM program, particle monitoring)."
+  },
+  {
+   "zh": "Clause 7.1–7.2: Product Realization Planning &amp; Customer-Related Processes — 產品實現規劃與客戶相關流程",
+   "en": "Clause 7.1–7.2: Product Realization Planning &amp; Customer-Related Processes"
+  },
+  {
+   "zh": "概念解析：7.1 的輸出 = 品質計劃（Quality Plan）",
+   "en": "Concept Analysis: The Output of 7.1 = The Quality Plan"
+  },
+  {
+   "zh": "7.1 要求「以適合組織操作方式的書面形式」記錄規劃輸出。這個輸出在實務中就是<strong>品質計劃（Quality Plan）</strong>，也稱為 Device-specific Quality Plan 或 Master Validation Plan。",
+   "en": "7.1 requires the output of planning to be documented \"in a form suitable for the organization's method of operations\". In practice this output is the <strong>Quality Plan</strong>, also called a Device-specific Quality Plan or Master Validation Plan."
+  },
+  {
+   "zh": "一份完整的 7.1 品質計劃應包含：",
+   "en": "A complete 7.1 Quality Plan should include:"
+  },
+  {
+   "zh": "產品專屬品質目標與 CQAs（關鍵品質屬性）",
+   "en": "Product-specific quality objectives and CQAs (critical quality attributes)"
+  },
+  {
+   "zh": "適用的法規與標準清單",
+   "en": "A list of applicable regulations and standards"
+  },
+  {
+   "zh": "各實現階段的 V&amp;V 活動、測試方法與接受標準",
+   "en": "V&amp;V activities, test methods and acceptance criteria for each realization stage"
+  },
+  {
+   "zh": "可追溯性要求與記錄保存規定",
+   "en": "Traceability requirements and record retention provisions"
+  },
+  {
+   "zh": "適用的風險管理活動（對應 ISO 14971 Risk Management Plan）",
+   "en": "Applicable risk management activities (corresponding to the ISO 14971 Risk Management Plan)"
+  },
+  {
+   "zh": "對 CDMO：技術轉移啟動時，客戶提供的 DDP（Device Design Package）+ CDMO 建立的 Site Master Plan 共同構成 7.1 的規劃輸出。",
+   "en": "For a CDMO: when technology transfer starts, the DDP (Device Design Package) provided by the customer + the Site Master Plan established by the CDMO together form the planning output of 7.1."
+  },
+  {
+   "zh": "7.2.1 的「法規要求」項目：CDMO 不能忽略的",
+   "en": "The \"Regulatory Requirements\" Item of 7.2.1: What a CDMO Cannot Ignore"
+  },
+  {
+   "zh": "7.2.1(c) 要求確定「與產品相關的適用法規要求」。這意味著在接受客戶訂單前，CDMO 必須確認：",
+   "en": "7.2.1(c) requires determining \"applicable regulatory requirements related to the product\". This means that before accepting a customer order, the CDMO must confirm:"
+  },
+  {
+   "zh": "目標市場的醫療器材法規（如 EU MDR 2017/745、FDA 21 CFR Part 820、TW TFDA）",
+   "en": "The medical device regulations of the target market (e.g., EU MDR 2017/745, FDA 21 CFR Part 820, TW TFDA)"
+  },
+  {
+   "zh": "產品適用的特定標準（如 ISO 11135 滅菌、ISO 11607 無菌包裝）",
+   "en": "The specific standards applicable to the product (e.g., ISO 11135 for sterilization, ISO 11607 for sterile packaging)"
+  },
+  {
+   "zh": "CDMO 的 QMS 認證範疇是否涵蓋該產品類別",
+   "en": "Whether the scope of the CDMO's QMS certification covers that product category"
+  },
+  {
+   "zh": "7.2.2 的合約審查記錄（Contract Review Record）是稽核員最常要求查閱的文件之一——必須能證明「在承接合約前已確認具備能力」。",
+   "en": "The 7.2.2 Contract Review Record is one of the documents auditors request most often; it must prove that \"the capability was confirmed before the contract was accepted\"."
+  },
+  {
+   "zh": "類比說明：7.2 合約審查的重要性",
+   "en": "Analogy: The Importance of Contract Review in 7.2"
+  },
+  {
+   "zh": "7.2.2 要求在「承諾供應前」完成審查，這就像工程公司在簽署承包合同前必須確認：有設計圖（需求明確）、有施工隊（有能力執行）、法規允許（符合建築法規）。若合同簽了之後才發現沒有執行能力，就已違反 7.2.2 的精神。CDMO 在技術轉移評估階段所做的「可行性評估（Feasibility Assessment）」就是 7.2.2 的實踐。",
+   "en": "7.2.2 requires the review to be completed \"prior to its commitment to supply\". It is like an engineering firm that must confirm before signing a construction contract that there are design drawings (clear requirements), a construction crew (the capability to execute) and regulatory permission (compliance with building codes). If it is discovered only after signing that there is no ability to execute, the spirit of 7.2.2 has already been violated. The \"Feasibility Assessment\" a CDMO performs during technology transfer evaluation is the practical application of 7.2.2."
+  },
+  {
+   "zh": "Clause 7.3: Design and Development — 設計開發管制",
+   "en": "Clause 7.3: Design and Development"
+  },
+  {
+   "zh": "7.3.3 輸入 vs. 7.3.4 輸出：可追溯矩陣的重要性",
+   "en": "7.3.3 Inputs vs. 7.3.4 Outputs: The Importance of the Traceability Matrix"
+  },
+  {
+   "zh": "7.3.3 輸入（設計需求）必須能在 7.3.4 輸出（規格/圖面/程序）中一一對應。業界用<strong>設計追溯矩陣（Design Traceability Matrix / RTM）</strong>記錄此對應關係：",
+   "en": "The 7.3.3 inputs (design requirements) must correspond one-to-one with the 7.3.4 outputs (specifications/drawings/procedures). Industry uses a <strong>Design Traceability Matrix / RTM</strong> to record this correspondence:"
+  },
+  {
+   "zh": "每一條用戶需求（User Requirement）→ 對應設計輸入（Design Input）→ 對應設計輸出（Design Output）→ 對應驗證測試項目",
+   "en": "Each User Requirement → corresponding Design Input → corresponding Design Output → corresponding verification test item"
+  },
+  {
+   "zh": "7.3.2(e) 明確要求此種追溯方法",
+   "en": "7.3.2(e) explicitly requires this kind of traceability method"
+  },
+  {
+   "zh": "稽核員在 DHF 審查時必然追蹤 RTM 的完整性",
+   "en": "During a DHF review, auditors will always check the completeness of the RTM"
+  },
+  {
+   "zh": "客戶提供的 Design Input 文件中有一項要求：「容器密封性符合 ASTM F2096」。這是否滿足 7.3.3 的「可驗證或確認」要求？若客戶改寫為「密封性良好」，有何問題？",
+   "en": "One requirement in a customer-supplied Design Input document states: \"Container closure integrity complies with ASTM F2096\". Does this satisfy the 7.3.3 requirement to be \"verifiable or validatable\"? If the customer rewrites it as \"good sealing\", what is the problem?"
+  },
+  {
+   "zh": "設計審查（7.3.5）要求有「相關功能的代表」參與。對一個無菌充填 CDMO 承接的新產品，設計審查應包含哪些功能代表？",
+   "en": "Design review (7.3.5) requires the participation of \"representatives of functions concerned\". For a new product taken on by an aseptic filling CDMO, which functional representatives should the design review include?"
+  },
+  {
+   "zh": "概念解析：ISO 13485 的 7.3 為何是所有 ISO 標準中最嚴格的設計管制？",
+   "en": "Concept Analysis: Why Is 7.3 of ISO 13485 the Strictest Design Control in Any ISO Standard?"
+  },
+  {
+   "zh": "ISO 13485 的 7.3 共有 10 個子條款，遠超 ISO 9001（僅 7.3.1–7.3.7 共 7 項）。額外要求包括：",
+   "en": "7.3 of ISO 13485 has 10 sub-clauses, well beyond ISO 9001 (only 7.3.1–7.3.7, a total of 7 items). The additional requirements include:"
+  },
+  {
+   "zh": "7.3.2 的規劃文件必須隨設計進展持續更新，意味著 D&amp;D Plan 不是靜態文件，而是動態管理工具。",
+   "en": "The planning documents of 7.3.2 must be continually updated as the design progresses, which means the D&amp;D Plan is not a static document but a dynamic management tool."
+  },
+  {
+   "zh": "<strong>Clause 7.3.6–7.3.10: Verification, Validation, Transfer, Change Control &amp; D&amp;D File Clause 7.3.6–7.3.10：驗證、確認、移轉、變更控制與設計開發檔案</strong>",
+   "en": "<strong>Clause 7.3.6–7.3.10: Verification, Validation, Transfer, Change Control &amp; D&amp;D File</strong>"
+  },
+  {
+   "zh": "7.3.8 設計轉移：CDMO 最直接的相關條款",
+   "en": "7.3.8 Design Transfer: The Most Directly Relevant Clause for a CDMO"
+  },
+  {
+   "zh": "對 CDMO 而言，7.3.8 是整個 7.3 最直接相關的條款：",
+   "en": "For a CDMO, 7.3.8 is the most directly relevant clause in all of 7.3:"
+  },
+  {
+   "zh": "<strong>設計轉移程序</strong>：CDMO 必須有書面程序，定義如何接收客戶的設計輸出（規格、圖面、BOM）並轉化為 CDMO 的生產規範",
+   "en": "<strong>Design transfer procedure</strong>: the CDMO must have a written procedure defining how to receive the customer's design outputs (specifications, drawings, BOM) and convert them into the CDMO's production specifications"
+  },
+  {
+   "zh": "<strong>可製造性驗證</strong>：在成為最終生產規格之前，CDMO 必須確認設計輸出在其設施中「可重現製造」——這就是 Process Qualification（PQ）的前置步驟",
+   "en": "<strong>Manufacturability verification</strong>: before they become final production specifications, the CDMO must confirm that the design outputs can be \"reproducibly manufactured\" at its facility; this is the precursor step to Process Qualification (PQ)"
+  },
+  {
+   "zh": "<strong>生產能力確認</strong>：設備、人員、環境必須能滿足產品需求——對應設備 IQ/OQ/PQ 的概念",
+   "en": "<strong>Confirmation of production capability</strong>: equipment, personnel and environment must be able to meet product requirements, corresponding to the concept of equipment IQ/OQ/PQ"
+  },
+  {
+   "zh": "實務文件：技術轉移報告（Technology Transfer Report）即是 7.3.8 的記錄輸出。",
+   "en": "Practical document: the Technology Transfer Report is the record output of 7.3.8."
+  },
+  {
+   "zh": "7.3.9 設計變更管制：「在製或已交付」的影響評估",
+   "en": "7.3.9 Control of Design and Development Changes: Impact Assessment on Product \"In Process or Already Delivered\""
+  },
+  {
+   "zh": "ISO 13485 的設計變更管制比 ISO 9001 多了一項關鍵要求：必須評估變更對<strong>已在製造中或已交付的相同或類似產品</strong>的影響。",
+   "en": "ISO 13485 design change control has one more key requirement than ISO 9001: the change must be evaluated for its effect on <strong>constituent parts and product already in process or already delivered</strong>."
+  },
+  {
+   "zh": "這意味著：",
+   "en": "This means:"
+  },
+  {
+   "zh": "客戶變更設計 → CDMO 必須評估現有庫存、在製品、已出貨產品是否受影響",
+   "en": "Customer changes the design → the CDMO must assess whether existing inventory, work in process and shipped product are affected"
+  },
+  {
+   "zh": "若已出貨產品受影響且可能危及安全 → 可能觸發 Field Safety Corrective Action（FSCA）",
+   "en": "If shipped product is affected and safety may be endangered → a Field Safety Corrective Action (FSCA) may be triggered"
+  },
+  {
+   "zh": "此評估必須包含風險管理輸出的重新審查（即 ISO 14971 流程）",
+   "en": "This assessment must include re-review of the risk management outputs (i.e., the ISO 14971 process)"
+  },
+  {
+   "zh": "概念解析：7.3.10 設計開發文件（DHF）——FDA 設計歷史文件的 ISO 對應",
+   "en": "Concept Analysis: 7.3.10 Design and Development File (DHF) — The ISO Counterpart of the FDA Design History File"
+  },
+  {
+   "zh": "7.3.10 要求每種醫療器材型號（或產品族）維護一份<strong>設計開發文件（Design and Development File）</strong>，這等同於 FDA 21 CFR Part 820 中的<strong>Design History File（DHF）</strong>。",
+   "en": "7.3.10 requires a <strong>Design and Development File</strong> to be maintained for each medical device type (or family), which is equivalent to the <strong>Design History File (DHF)</strong> in FDA 21 CFR Part 820."
+  },
+  {
+   "zh": "DHF/D&amp;D File 必須包含或引用：",
+   "en": "The DHF/D&amp;D File must include or reference:"
+  },
+  {
+   "zh": "D&amp;D 計劃（7.3.2 輸出）",
+   "en": "D&amp;D Plan (output of 7.3.2)"
+  },
+  {
+   "zh": "設計輸入記錄（7.3.3）",
+   "en": "Design input records (7.3.3)"
+  },
+  {
+   "zh": "設計輸出記錄（7.3.4）",
+   "en": "Design output records (7.3.4)"
+  },
+  {
+   "zh": "設計審查記錄（7.3.5）",
+   "en": "Design review records (7.3.5)"
+  },
+  {
+   "zh": "驗證記錄（7.3.6）",
+   "en": "Verification records (7.3.6)"
+  },
+  {
+   "zh": "確認記錄（7.3.7）",
+   "en": "Validation records (7.3.7)"
+  },
+  {
+   "zh": "設計轉移記錄（7.3.8）",
+   "en": "Design transfer records (7.3.8)"
+  },
+  {
+   "zh": "設計變更記錄（7.3.9）",
+   "en": "Design change records (7.3.9)"
+  },
+  {
+   "zh": "DHF 是稽核時最重要的設計管制文件——它串連整個 7.3 的所有活動，形成完整的設計管制歷史。",
+   "en": "The DHF is the most important design control document in an audit: it links all the activities of 7.3 together and forms a complete history of design control."
+  },
+  {
+   "zh": "客戶完成了使用工程樣品的設計驗證，現在要進行設計確認。依據 7.3.7，這份確認應使用什麼樣的產品？若客戶堅持使用工程樣品，風險何在？",
+   "en": "A customer has completed design verification using engineering samples and now wants to perform design validation. According to 7.3.7, what kind of product should this validation use? If the customer insists on using engineering samples, what is the risk?"
+  },
+  {
+   "zh": "客戶決定將注射器的針頭材質從 316L 不鏽鋼改為新型合金。依據 7.3.9，CDMO 應要求客戶在變更實施前完成哪些評估？若 CDMO 倉庫中已有 10,000 支使用舊材質的在製品，應如何處置？",
+   "en": "A customer decides to change the needle material of a syringe from 316L stainless steel to a new alloy. According to 7.3.9, what evaluations should the CDMO require the customer to complete before the change is implemented? If the CDMO's warehouse already holds 10,000 units of work in process made with the old material, how should they be handled?"
+  },
+  {
+   "zh": "稽核員要求查閱某型號醫療器材的 Design and Development File（7.3.10）。CDMO 表示「設計是客戶的責任，我們只負責生產」。從 ISO 13485 的角度，這個回答是否正確？CDMO 應保存 DHF 的哪些部分？",
+   "en": "An auditor asks to see the Design and Development File (7.3.10) for a certain medical device model. The CDMO replies, \"Design is the customer's responsibility; we only handle production.\" From the ISO 13485 perspective, is this answer correct? Which parts of the DHF should the CDMO retain?"
+  },
+  {
+   "zh": "概念解析：驗證（Verification）vs. 確認（Validation）的本質區別",
+   "en": "Concept Analysis: The Essential Difference between Verification and Validation"
+  },
+  {
+   "zh": "這是醫療器材法規中最常被混淆的兩個概念：",
+   "en": "These are the two concepts most often confused in medical device regulation:"
+  },
+  {
+   "zh": "7.3.7 明確規定：確認必須使用「代表性產品，包括初期生產批次或相當品」。這意味著不能用手工樣品做設計確認——必須是接近最終生產條件的批次。",
+   "en": "7.3.7 explicitly specifies that validation must use \"representative product, including initial production units, batches or their equivalents\". This means that handmade samples cannot be used for design validation; the batches must be close to final production conditions."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>6.4.2 污染管制是 ISO 13485 獨有條款</strong>：無菌醫療器材製造商必須文件化微生物與微粒管制要求，並在組裝/包裝過程中維持潔淨度——這是無菌 CDMO 潔淨室管理的法規基礎",
+   "en": "<strong>6.4.2 contamination control is a clause unique to ISO 13485</strong>: manufacturers of sterile medical devices must document microbial and particulate control requirements and maintain cleanliness during assembly/packaging; this is the regulatory basis for cleanroom management at a sterile CDMO"
+  },
+  {
+   "zh": "<strong>7.1 品質計劃 = 產品實現規劃的輸出</strong>：包含 CQAs、測試方法、接受標準及適用程序的參引；對 CDMO 而言即技術轉移後的 Device-specific Quality Plan",
+   "en": "<strong>7.1 Quality Plan = the output of product realization planning</strong>: it contains the CQAs, test methods, acceptance criteria and references to applicable procedures; for a CDMO it is the Device-specific Quality Plan after technology transfer"
+  },
+  {
+   "zh": "<strong>7.3 是所有 ISO 標準中最嚴格的設計管制</strong>：10 個子條款，特別增加了程序文件要求（7.3.1）、設計轉移（7.3.8）和 DHF（7.3.10）——這三項是 ISO 9001 沒有的",
+   "en": "<strong>7.3 is the strictest design control of any ISO standard</strong>: 10 sub-clauses, with particular additions of the procedure documentation requirement (7.3.1), design transfer (7.3.8) and the DHF (7.3.10); these three are not in ISO 9001"
+  },
+  {
+   "zh": "<strong>驗證 vs. 確認的核心區別</strong>：Verification（輸出 vs. 輸入）可用原型；Validation（產品 vs. 預期用途）必須用代表性生產批次，且須在產品交付客戶前完成",
+   "en": "<strong>The core difference between verification and validation</strong>: Verification (outputs vs. inputs) may use prototypes; Validation (product vs. intended use) must use representative production batches and must be completed before product is delivered to the customer"
+  },
+  {
+   "zh": "<strong>7.3.8 設計轉移是 CDMO 最直接相關的條款</strong>：技術轉移報告是 7.3.8 的記錄輸出，必須證明設計輸出在 CDMO 設施中可重現製造",
+   "en": "<strong>7.3.8 Design Transfer is the clause most directly relevant to a CDMO</strong>: the Technology Transfer Report is the record output of 7.3.8 and must demonstrate that the design outputs can be reproducibly manufactured at the CDMO's facility"
+  },
+  {
+   "zh": "<strong>DHF（7.3.10）是設計管制的總索引</strong>：串連所有 7.3 活動的記錄，稽核時必查文件；CDMO 即使不主導設計，也應持有與製造相關的 DHF 部分",
+   "en": "<strong>The DHF (7.3.10) is the master index of design control</strong>: it links the records of all 7.3 activities and is a document always checked in an audit; even if it does not lead the design, a CDMO should hold the manufacturing-related parts of the DHF"
+  }
+ ]
+}
