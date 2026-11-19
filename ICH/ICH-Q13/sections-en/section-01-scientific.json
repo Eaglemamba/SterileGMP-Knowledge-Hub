@@ -1,0 +1,225 @@
+{
+ "source": "section-01-scientific.html",
+ "blocks": [
+  {
+   "zh": "Section 1: Scientific Approaches — Control Strategy｜科學方法：控制策略",
+   "en": "Section 1: Scientific Approaches - Control Strategy"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 <strong>受控狀態（State of Control）</strong> 在 CM 中的特殊含義：CM 允許「動態但受控」的狀態，而非要求「穩態（Steady State）」",
+   "en": "Understand what <strong>State of Control</strong> means in CM: CM allows a \"dynamic but controlled\" state rather than requiring a \"Steady State\""
+  },
+  {
+   "zh": "掌握 <strong>製程動態（Process Dynamics）</strong> 的核心概念：RTD（停留時間分佈）的定義、意義及表徵方法",
+   "en": "Master the core concepts of <strong>Process Dynamics</strong>: the definition and significance of RTD (residence time distribution) and how to characterize it"
+  },
+  {
+   "zh": "了解 CM 物料特性評估（§3.1.3）和設備設計整合（§3.1.4）的 CM 專屬考量點",
+   "en": "Know the CM-specific considerations for material attribute assessment (§3.1.3) and equipment design integration (§3.1.4)"
+  },
+  {
+   "zh": "能夠說明 <strong>材料追蹤（Material Traceability）</strong> 和 <strong>物料分流（Material Diversion）</strong> 在 CM 中的角色",
+   "en": "Be able to explain the role of <strong>Material Traceability</strong> and <strong>Material Diversion</strong> in CM"
+  },
+  {
+   "zh": "理解 <strong>製程模型（Process Models）</strong> 在 CM 控制策略中的三個功能：開發工具、控制策略元素、RTRT 支撐",
+   "en": "Understand the three functions of <strong>Process Models</strong> in a CM control strategy: development tool, control strategy element, and support for RTRT"
+  },
+  {
+   "zh": "掌握 CM 的 <strong>四種產量調整方式</strong> 及各自的風險特徵",
+   "en": "Master the <strong>four ways of adjusting output</strong> and the risk profile of each"
+  },
+  {
+   "zh": "了解 <strong>連續製程確效（Continuous Process Verification, CPV）</strong> 作為傳統批次製程確效替代方案的適用條件",
+   "en": "Know the conditions under which <strong>Continuous Process Verification (CPV)</strong> is applicable as an alternative to traditional batch process validation"
+  },
+  {
+   "zh": "3.1 Control Strategy｜控制策略",
+   "en": "3.1 Control Strategy"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：CM 的受控狀態 ≠ 穩態",
+   "en": "Core Concept: State of control in CM ≠ steady state"
+  },
+  {
+   "zh": "這是 CM 與批次製造最根本的概念差異之一。在批次製造中，「穩態（Steady State）」通常是品質保證的基礎——製程要保持穩定。但 CM 的「受控狀態（State of Control）」允許參數在指定範圍內動態變化，只要整體過程和輸出品質持續受控。",
+   "en": "This is one of the most fundamental conceptual differences between CM and batch manufacturing. In batch manufacturing, \"Steady State\" is usually the basis of quality assurance - the process must remain stable. But the \"State of Control\" in CM allows parameters to vary dynamically within specified ranges, as long as the overall process and the output quality remain in control."
+  },
+  {
+   "zh": "<strong>舉例</strong>：在連續混合-壓片線上，饋料器的流量可能隨著物料粉末流動特性的輕微批間差異而波動，但只要關鍵 CQA（如含量均一度）持續符合規格，系統就處於「受控狀態」——即使它不在「穩態」。",
+   "en": "<strong>Example</strong>: on a continuous blending-tableting line, the feeder flow rate may fluctuate with slight batch-to-batch differences in the flow properties of the powder, but as long as the critical CQAs (such as content uniformity) continue to meet specification, the system is in a \"state of control\" - even if it is not in a \"steady state\"."
+  },
+  {
+   "zh": "這個「動態但受控」的概念，是 PAT 和即時放行測試（RTRT）在 CM 中特別重要的原因：需要即時測量才能確認系統始終保持受控狀態。",
+   "en": "This concept of \"dynamic but controlled\" is why PAT and real-time release testing (RTRT) are particularly important in CM: real-time measurement is needed to confirm that the system remains in control at all times."
+  },
+  {
+   "zh": "重點提示｜CM 物料規格可能需要超出藥典標準",
+   "en": "Key Point | CM material specifications may need to go beyond pharmacopoeial standards"
+  },
+  {
+   "zh": "§3.1.3 的一個重要提示：CM 製程中，輸入物料可能需要控制「超出傳統批次製造規格」的屬性。例如：",
+   "en": "An important point in §3.1.3: in a CM process, input materials may need to be controlled for attributes \"beyond traditional batch manufacturing specifications\". For example:"
+  },
+  {
+   "zh": "固體製劑連續製造中，粒徑分佈、吸濕性、靜電荷等影響粉體流動性的屬性，在批次製程中通常不列入規格，但在 CM 中可能是 EC",
+   "en": "In continuous manufacturing of solid dosage forms, attributes affecting powder flow, such as particle size distribution, hygroscopicity, and electrostatic charge, are usually not part of the specification in batch processes but may be EC in CM"
+  },
+  {
+   "zh": "若藥典有標準，可能需要在藥典標準之外增加 CM 專屬的控制屬性",
+   "en": "Where a pharmacopoeial standard exists, CM-specific control attributes may need to be added on top of it"
+  },
+  {
+   "zh": "對 CDMO 而言，這意味著在 CM 製程轉換時，必須重新評估所有輸入物料規格，確認是否需要增加 CM 專屬的物料屬性控制要求。若原有供應商的物料不符合 CM 的新要求，可能需要更換供應商或要求供應商調整製程。",
+   "en": "For a CDMO, this means that when converting a process to CM, all input material specifications must be re-evaluated to confirm whether CM-specific material attribute controls need to be added. If the material from the existing supplier does not meet the new CM requirements, it may be necessary to change suppliers or ask the supplier to adjust its process."
+  },
+  {
+   "zh": "物料分流策略設計框架",
+   "en": "Framework for designing a material diversion strategy"
+  },
+  {
+   "zh": "分流觸發標準設計：\n\n情境：PAT 測量顯示某品質屬性趨向不合格\n\nStep 1: 擾動識別\n  → PAT 數據超出控制限（不是規格限）\n  → 觸發調查 + 預防性分流啟動\n\nStep 2: 分流範圍確定\n  → 基於 RTD：擾動訊號在系統中傳播的時間範圍\n  → 加入安全裕度（safety margin）考慮 RTD 不確定性\n  → 若多個 PAT 測量點都顯示正常 → 可縮小分流範圍\n\nStep 3: 分流結束與重新收集\n  → PAT 數據恢復正常且穩定\n  → 達到預設的「重新收集」標準\n  → 記錄分流起始/結束時間和分流量\n\nStep 4: 分流物料處置\n  → 分流物料的命運：隔離 → 離線測試 → 調查 → 棄置/回收\n  → PQS 中維護分流物料的處置程序",
+   "en": "Design of diversion trigger criteria:\n\nScenario: PAT measurement shows a quality attribute trending toward failure\n\nStep 1: Disturbance identification\n  → PAT data exceed the control limit (not the specification limit)\n  → Triggers investigation + preventive diversion\n\nStep 2: Determining the diversion range\n  → Based on RTD: the time range over which the disturbance signal propagates through the system\n  → Add a safety margin to account for RTD uncertainty\n  → If multiple PAT measurement points all show normal results → the diversion range can be narrowed\n\nStep 3: End of diversion and resumption of collection\n  → PAT data return to normal and are stable\n  → The preset \"resume collection\" criteria are met\n  → Record the start/end time of diversion and the quantity diverted\n\nStep 4: Disposition of diverted material\n  → Fate of diverted material: quarantine → offline testing → investigation → disposal/recovery\n  → The PQS maintains the disposition procedure for diverted material"
+  },
+  {
+   "zh": "比喻說明｜RTD 就像「河流中的汙染物擴散模型」",
+   "en": "Analogy | RTD is like a \"pollutant dispersion model in a river\""
+  },
+  {
+   "zh": "假設在一條河流的上游某處倒入了一桶染料（擾動），RTD 告訴你：這些染料在何時開始出現在下游的水質監測站？何時濃度最高？何時稀釋到可忽略的程度？掌握 RTD，就可以精確計算「從上游監測到染料投入到下游水質開始受影響」之間的時間窗口——這正是 CM 中分流策略的科學基礎。不知道 RTD 的系統，就像不知道河流流速和擴散模式的工程師，無法設計有效的汙染管控措施。",
+   "en": "Suppose a bucket of dye (the disturbance) is poured into a river at some point upstream. The RTD tells you: when will the dye start to appear at the downstream water quality monitoring station? When will its concentration peak? When will it be diluted to a negligible level? With the RTD, you can calculate precisely the time window between \"dye added upstream\" and \"downstream water quality starts to be affected\" - and this is the scientific basis of the diversion strategy in CM. A system without a known RTD is like an engineer who does not know the river flow velocity and dispersion pattern: unable to design effective pollution control measures."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "如果一個 CM 系統的 NIR 探針突然失效（PAT 數據中斷），在 RTD 的框架下，應如何確定受影響的物料範圍？分流策略應如何回應？",
+   "en": "If the NIR probe of a CM system suddenly fails (PAT data are interrupted), how should the affected material range be determined within the RTD framework? How should the diversion strategy respond?"
+  },
+  {
+   "zh": "在固體口服製劑的 CM 線中，若某批次原料藥的粒徑分佈（D90）比正常批次偏大 20%，RTD 研究能提供什麼資訊來評估這個批間差異對下游品質的影響？",
+   "en": "In a CM line for solid oral dosage forms, if the particle size distribution (D90) of one lot of API is 20% larger than that of normal lots, what information can an RTD study provide to assess the impact of this lot-to-lot difference on downstream quality?"
+  },
+  {
+   "zh": "RTD（停留時間分佈）——CM 的核心科學概念",
+   "en": "RTD (Residence Time Distribution) - the core scientific concept of CM"
+  },
+  {
+   "zh": "<strong>RTD（Residence Time Distribution，停留時間分佈）</strong>是描述物料在 CM 系統中停留時間分佈的函數。它是 CM 科學的核心工具：",
+   "en": "<strong>RTD (Residence Time Distribution)</strong> is a function describing the distribution of the time that material spends in a CM system. It is the core tool of CM science:"
+  },
+  {
+   "zh": "<strong>RTD 表徵方法</strong>：示蹤劑研究（tracer studies，需選擇與物料流動特性相似但惰性的示蹤劑）、步驟測試（step testing）、in silico 模擬配合實驗確認。",
+   "en": "<strong>RTD characterization methods</strong>: tracer studies (a tracer must be selected that has flow behavior similar to the material but is inert), step testing, and in silico simulation combined with experimental confirmation."
+  },
+  {
+   "zh": "製程模型的三個應用層次",
+   "en": "Three application levels of process models"
+  },
+  {
+   "zh": "模型的監管要求與其「影響類別（Impact Category）」成正比——模型對最終放行決策的影響越大，要求越嚴格。",
+   "en": "The regulatory expectations for a model are proportional to its \"Impact Category\" - the greater the model's influence on the final release decision, the stricter the requirements."
+  },
+  {
+   "zh": "3.2 Changes in Production Output｜產量調整方式",
+   "en": "3.2 Changes in Production Output"
+  },
+  {
+   "zh": "重點提示｜批次大小範圍內的靈活性",
+   "en": "Key Point | Flexibility within the batch size range"
+  },
+  {
+   "zh": "若公司在原始申請中定義了批次大小為「最小 4 小時—最大 12 小時運行時間」，則在這個範圍內調整每批次的運行時間（即「方式一：增加運行時間」），屬於批次大小範圍內的調整，可在 PQS 框架下管控，無需額外的監管報告。但若公司想突破最大運行時間（如需要 16 小時），則構成批次大小範圍的超出，需要申請更新——這正是批次大小「範圍」定義的法規優勢和設計要點。",
+   "en": "If the company defined the batch size in the original application as \"minimum 4 hours - maximum 12 hours of run time\", then adjusting the run time of each batch within this range (that is, \"Option 1: increase run time\") is an adjustment within the batch size range, can be managed under the PQS, and requires no additional regulatory reporting. But if the company wants to exceed the maximum run time (for example, needs 16 hours), this goes beyond the batch size range and requires an application update - this is exactly the regulatory advantage and the key design point of defining batch size as a \"range\"."
+  },
+  {
+   "zh": "比喻說明｜CPV 就像「持續健康監測的智慧型設備」vs.「定期體檢」",
+   "en": "Analogy | CPV is like a \"smart device for continuous health monitoring\" vs. a \"periodic physical exam\""
+  },
+  {
+   "zh": "傳統製程確效就像「每年做一次完整體檢」——在規定的時間點集中評估健康狀況。連續製程確效就像「配戴智慧型健康手錶 24 小時監測」——心率、血壓、睡眠品質持續記錄，任何異常立即提醒。CM 製程天然搭配 PAT 和即時監控，就像是一個「自帶健康監測功能的製造系統」，使得 CPV 成為邏輯上最自然的確效方式——不需要特別安排「確效批次」，因為每一批生產都在持續確效。",
+   "en": "Traditional process validation is like \"a full physical exam once a year\" - health status is assessed in a concentrated way at a specified point in time. Continuous process verification is like \"wearing a smart health watch that monitors 24 hours a day\" - heart rate, blood pressure, and sleep quality are recorded continuously, and any abnormality triggers an immediate alert. A CM process is naturally paired with PAT and real-time monitoring, like a \"manufacturing system with built-in health monitoring\", which makes CPV the most logically natural approach to validation - there is no need to arrange specific \"validation batches\", because every batch produced is continuously being verified."
+  },
+  {
+   "zh": "實務應用｜CDMO 選擇 CPV vs. 傳統 PV 的策略考量",
+   "en": "Practical Application | Strategic considerations for a CDMO choosing CPV vs. traditional PV"
+  },
+  {
+   "zh": "對 CDMO 而言，CPV 的導入需要具備以下前提：",
+   "en": "For a CDMO, introducing CPV requires the following prerequisites:"
+  },
+  {
+   "zh": "<strong>充分的 PAT 基礎設施</strong>：在線/近線 NIR、UV 等測量系統已安裝並驗證",
+   "en": "<strong>Adequate PAT infrastructure</strong>: in-line/at-line NIR, UV, and other measurement systems installed and validated"
+  },
+  {
+   "zh": "<strong>統計製程控制（SPC）能力</strong>：能夠即時分析 CM 數據並識別製程漂移",
+   "en": "<strong>Statistical process control (SPC) capability</strong>: able to analyze CM data in real time and identify process drift"
+  },
+  {
+   "zh": "<strong>製程模型支撐</strong>：用於即時品質評估的軟感測器或分析模型已建立並驗證",
+   "en": "<strong>Process model support</strong>: soft sensors or analytical models for real-time quality assessment established and validated"
+  },
+  {
+   "zh": "<strong>監管機構早期溝通</strong>：建議在申請前與 FDA/EMA 進行 Type B/C 諮詢，確認 CPV 方案的可接受性",
+   "en": "<strong>Early engagement with regulators</strong>: it is recommended to hold a Type B/C meeting with FDA/EMA before submission to confirm the acceptability of the CPV approach"
+  },
+  {
+   "zh": "若上述條件尚未成熟，建議先採用傳統 PV 路徑，同時建設 CPV 基礎設施，在獲批後的生命週期管理中逐步轉換。",
+   "en": "If the above conditions are not yet mature, it is recommended to take the traditional PV route first while building the CPV infrastructure, and then transition gradually through post-approval lifecycle management."
+  },
+  {
+   "zh": "若 CDMO 計畫將一個已核准的批次固體口服製劑轉換為 CM，但不改變配方，哪種產量調整方式最適合作為初始 CM 系統的批次大小起點？理由是什麼？",
+   "en": "If a CDMO plans to convert an approved batch solid oral dosage form to CM without changing the formulation, which way of adjusting output is the most suitable starting point for the batch size of the initial CM system? What is the rationale?"
+  },
+  {
+   "zh": "採用 CPV 代替傳統 PV 時，「初始上市前需額外論證對商業製程的信心」——具體應提供哪些數據或論證來滿足這個要求？",
+   "en": "When CPV is used instead of traditional PV, \"additional justification of confidence in the commercial process is needed for the initial marketing\" - what specific data or arguments should be provided to meet this requirement?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>受控狀態（State of Control）</strong>：CM 允許「動態但受控」，參數可在指定範圍內變化，不要求穩態——這是 PAT 和 RTRT 重要性的根本原因",
+   "en": "<strong>State of Control</strong>: CM allows \"dynamic but controlled\" operation; parameters can vary within specified ranges and a steady state is not required - this is the fundamental reason why PAT and RTRT are important"
+  },
+  {
+   "zh": "<strong>RTD（停留時間分佈）</strong>：CM 科學的核心工具，用於物料追蹤、分流策略設計、採樣頻率設定、批次邊界定義和製程模型開發",
+   "en": "<strong>RTD (residence time distribution)</strong>: the core tool of CM science, used for material traceability, diversion strategy design, sampling frequency setting, batch boundary definition, and process model development"
+  },
+  {
+   "zh": "<strong>CM 物料規格的擴展</strong>：輸入物料可能需要控制批次製程中不常見的屬性（如粉體流動性），可能需要超出藥典標準",
+   "en": "<strong>Extended CM material specifications</strong>: input materials may need to be controlled for attributes uncommon in batch processes (such as powder flowability), possibly beyond pharmacopoeial standards"
+  },
+  {
+   "zh": "<strong>設備整合設計</strong>：Surge tank 平衡流量差異；設備連接設計和取樣/分流點位置是控制策略的硬體基礎",
+   "en": "<strong>Integrated equipment design</strong>: surge tanks balance flow differences; the design of equipment connections and the locations of sampling/diversion points are the hardware basis of the control strategy"
+  },
+  {
+   "zh": "<strong>製程模型三個層次</strong>：開發工具 → 控制策略元素 → RTRT 支撐，影響越大、監管要求越嚴格",
+   "en": "<strong>Three levels of process models</strong>: development tool → control strategy element → RTRT support; the greater the impact, the stricter the regulatory expectations"
+  },
+  {
+   "zh": "<strong>四種產量調整</strong>：增加運行時間（風險最低，可能在批次範圍內）→ 增加流速（需重評控制策略）→ Scale-out（like-for-like 低風險）→ Scale-up（最高監管負擔）",
+   "en": "<strong>Four ways to adjust output</strong>: increase run time (lowest risk, possibly within the batch range) → increase flow rate (control strategy needs re-evaluation) → scale-out (like-for-like, low risk) → scale-up (highest regulatory burden)"
+  },
+  {
+   "zh": "<strong>CPV 替代傳統 PV</strong>：CM 的 PAT 基礎設施天然支持 CPV；需充分製程理解和論證；監管機構早期溝通是成功關鍵",
+   "en": "<strong>CPV as an alternative to traditional PV</strong>: the PAT infrastructure of CM naturally supports CPV; sufficient process understanding and justification are needed; early engagement with regulators is the key to success"
+  }
+ ]
+}
