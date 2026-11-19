@@ -1,0 +1,525 @@
+{
+ "source": "section-11-appendix-integrity-methods.html",
+ "blocks": [
+  {
+   "zh": "附錄二：非破壞性物理完整性測試方法",
+   "en": "Appendix 2: Non-Destructive Physical Integrity Test Methods"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握泡點測試 (Bubble Point Test) 的原理、操作要點及適用範圍",
+   "en": "Understand the principle, key operating points and scope of application of the Bubble Point Test"
+  },
+  {
+   "zh": "理解擴散流測試 (Diffusive Flow Test) 的定量測量方法及其對大面積濾膜的優勢",
+   "en": "Understand how the Diffusive Flow Test measures flow quantitatively and why it suits large-area filters"
+  },
+  {
+   "zh": "學會壓力保持/衰減測試 (Pressure Hold/Decay Test) 的間接測量原理及上游體積的影響",
+   "en": "Learn the indirect measurement principle of the Pressure Hold/Decay Test and the effect of upstream volume"
+  },
+  {
+   "zh": "了解自動化完整性測試儀器 (Automated Integrity-Test Instruments) 的工作原理",
+   "en": "Understand how Automated Integrity-Test Instruments work"
+  },
+  {
+   "zh": "理解壓力衰減與擴散流之間的數學關聯（Equations 10-14）及其在驗證中的角色",
+   "en": "Understand the mathematical relationship between pressure decay and diffusive flow (Equations 10-14) and its role in validation"
+  },
+  {
+   "zh": "<strong>11.1 Bubble Point Test 11.1 氣泡點測試</strong>",
+   "en": "<strong>11.1 Bubble Point Test</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Bubble Point (泡點):</strong> 在濕潤的濾膜上游加壓，當壓力足以將最大孔隙中的潤濕液推出時，氣體會以「整體流」(Bulk Flow) 方式穿過，在下游液面產生持續的氣泡流。這個壓力值就是泡點。",
+   "en": "<strong>Bubble Point:</strong> The upstream side of a wetted membrane is pressurized. When the pressure is high enough to push the wetting liquid out of the largest pores, gas passes through as \"bulk flow\" and produces a continuous stream of bubbles in the liquid downstream. That pressure value is the bubble point."
+  },
+  {
+   "zh": "<strong>關鍵限制：</strong>",
+   "en": "<strong>Key limitations:</strong>"
+  },
+  {
+   "zh": "泡點反映的是<strong>最大孔隙</strong>的大小，但無法告訴你有多少個這樣的孔隙",
+   "en": "The bubble point reflects the size of the <strong>largest pore</strong>, but it does not tell you how many such pores there are"
+  },
+  {
+   "zh": "泡點值與特定的濾膜/潤濕液組合有關，不同組合不能互相比較",
+   "en": "A bubble point value belongs to a specific membrane/wetting liquid combination; values for different combinations cannot be compared with each other"
+  },
+  {
+   "zh": "對大面積濾膜，擴散流的背景「噪音」可能掩蓋泡點信號",
+   "en": "For large-area membranes, the background \"noise\" of diffusive flow can mask the bubble point signal"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "泡點測試就像吹氣球的反向操作。想像你有一片海綿（濾膜），上面有許多大小不同的孔，全部灌滿了水。你從一側慢慢加壓吹氣：",
+   "en": "The bubble point test is like blowing up a balloon in reverse. Imagine a sponge (the membrane) with many pores of different sizes, all filled with water. You slowly increase the air pressure from one side:"
+  },
+  {
+   "zh": "<strong>低壓時：</strong> 空氣透過水「滲透」過去（擴散流），只看到偶爾的小氣泡 — 這不是泡點！",
+   "en": "<strong>At low pressure:</strong> Air \"permeates\" through the water (diffusive flow), and you see only occasional small bubbles. This is not the bubble point!"
+  },
+  {
+   "zh": "<strong>到達泡點：</strong> 壓力大到把最大孔中的水「吹」出來，空氣直接流過，看到持續穩定的氣泡流 — 這才是真正的泡點",
+   "en": "<strong>At the bubble point:</strong> The pressure is high enough to \"blow\" the water out of the largest pore, air flows straight through, and you see a continuous, steady stream of bubbles. This is the true bubble point."
+  },
+  {
+   "zh": "最常見的操作錯誤就是把擴散產生的偶發氣泡誤認為泡點。就像分辨「水龍頭在滴水」和「水龍頭開了」的差別。",
+   "en": "The most common operating error is mistaking the occasional bubbles produced by diffusion for the bubble point. It is like telling the difference between a tap that is dripping and a tap that has been turned on."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>「不是第一個氣泡，而是自由流動的空氣」(Free flowing air is the indication, not the first bubble)：</strong> 這是泡點測試中最重要的操作判斷。許多完整性測試失敗的調查中，都發現是操作人員過早判定泡點。",
+   "en": "<strong>\"Free flowing air is the indication, not the first bubble\":</strong> This is the most important operating judgment in the bubble point test. Many investigations of integrity test failures have found that the operator called the bubble point too early."
+  },
+  {
+   "zh": "<strong>不可重複性：</strong> 一旦泡點被超過（潤濕液被排出），必須重新潤濕濾膜才能再測。這與擴散流測試不同，增加了操作的緊張性。",
+   "en": "<strong>Not repeatable:</strong> Once the bubble point has been exceeded (the wetting liquid has been expelled), the membrane must be re-wetted before it can be tested again. Unlike the diffusive flow test, this adds pressure on the operator to get the test right the first time."
+  },
+  {
+   "zh": "<strong>人員主觀性：</strong> 手動泡點測試的結果因操作員而異，所以操作員培訓和資格確認至關重要。自動化儀器可以消除這種主觀性。",
+   "en": "<strong>Operator subjectivity:</strong> The result of a manual bubble point test varies from operator to operator, so operator training and qualification are critical. Automated instruments can remove this subjectivity."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong> 在 CDMO 的無菌充填 (Aseptic Filling) 產線上，泡點測試最常用於：",
+   "en": "<strong>CDMO scenario:</strong> On a CDMO aseptic filling line, the bubble point test is most commonly used for:"
+  },
+  {
+   "zh": "<strong>小面積濾器驗證：</strong> 實驗室中 47mm 圓盤濾膜的品質檢測",
+   "en": "<strong>Validation of small-area filters:</strong> Quality testing of 47 mm disc membranes in the laboratory"
+  },
+  {
+   "zh": "<strong>PUPSIT (使用前滅菌後完整性測試)：</strong> 部分場景下作為快速過/不過判斷",
+   "en": "<strong>PUPSIT (pre-use post-sterilization integrity testing):</strong> In some situations, as a quick pass/fail check"
+  },
+  {
+   "zh": "<strong>來料檢驗：</strong> 濾膜供應商出廠時的品質保證測試",
+   "en": "<strong>Incoming inspection:</strong> Quality assurance testing of membranes at release by the filter supplier"
+  },
+  {
+   "zh": "但對於生產規模的大面積濾芯（如 10 吋 cartridge），通常優先使用擴散流或壓力衰減測試，因為大面積下擴散流的背景流量會干擾泡點判讀。",
+   "en": "For production-scale, large-area cartridges (such as 10-inch cartridges), however, diffusive flow or pressure decay testing is usually preferred, because at large areas the background diffusive flow interferes with reading the bubble point."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼泡點測試對大面積濾膜系統的敏感度可能受限？與擴散流有什麼關係？",
+   "en": "Why can the sensitivity of the bubble point test be limited for large-area membrane systems? How is this related to diffusive flow?"
+  },
+  {
+   "zh": "手動泡點測試中，為什麼壓力增加太快可能導致「超調」(overshoot)？這對測試結果有什麼影響？",
+   "en": "In a manual bubble point test, why can increasing the pressure too quickly cause \"overshoot\"? How does this affect the test result?"
+  },
+  {
+   "zh": "泡點測試告訴你最大孔隙的壓力閾值，但為什麼說它「無法用來直接計算孔徑」？",
+   "en": "The bubble point tells you the pressure threshold of the largest pore, so why is it said that it \"cannot be used to calculate pore size directly\"?"
+  },
+  {
+   "zh": "<strong>11.2 Diffusive Flow Test 11.2 擴散流測試</strong>",
+   "en": "<strong>11.2 Diffusive Flow Test</strong>"
+  },
+  {
+   "zh": "<strong>Diffusive Flow Test (擴散流測試):</strong> 在泡點壓力以下的固定測試壓力下，定量測量氣體通過濕潤濾膜的總流量。這個總流量包含兩部分：",
+   "en": "<strong>Diffusive Flow Test:</strong> At a fixed test pressure below the bubble point, the total gas flow through the wetted membrane is measured quantitatively. This total flow has two components:"
+  },
+  {
+   "zh": "<strong>擴散流 (Diffusive Flow)：</strong> 氣體溶解於潤濕液中再擴散到下游 — 正常現象",
+   "en": "<strong>Diffusive Flow:</strong> Gas dissolves in the wetting liquid and then diffuses to the downstream side. This is normal."
+  },
+  {
+   "zh": "<strong>開放孔隙流 (Open Pore Flow)：</strong> 如果有未被潤濕的孔隙，氣體直接穿過 — 異常，表示可能有缺陷",
+   "en": "<strong>Open Pore Flow:</strong> If there are pores that have not been wetted, gas passes straight through. This is abnormal and indicates a possible defect."
+  },
+  {
+   "zh": "<strong>測量方式有兩種：</strong>",
+   "en": "<strong>There are two ways to measure:</strong>"
+  },
+  {
+   "zh": "<strong>下游測量 (Downstream)：</strong> 在下游收集擴散出來的氣體體積（如倒置量筒法）",
+   "en": "<strong>Downstream:</strong> The volume of gas that has diffused through is collected on the downstream side (for example, the inverted measuring cylinder method)"
+  },
+  {
+   "zh": "<strong>上游測量 (Upstream)：</strong> 測量維持恆定上游壓力所需補充的氣體流量（如質量流量計法）",
+   "en": "<strong>Upstream:</strong> The gas flow needed to maintain a constant upstream pressure is measured (for example, the mass flow meter method)"
+  },
+  {
+   "zh": "擴散流測試就像檢查潛水衣是否漏水。你穿著潛水衣跳入水中：",
+   "en": "The diffusive flow test is like checking whether a wetsuit leaks. You jump into the water wearing the wetsuit:"
+  },
+  {
+   "zh": "<strong>正常情況：</strong> 水分子會緩慢地「滲透」過潛水衣材料 — 這就像擴散流，是材料本身的特性，量很少且可預測",
+   "en": "<strong>Normal situation:</strong> Water molecules slowly \"permeate\" through the wetsuit material. This is like diffusive flow: it is a property of the material itself, and the amount is small and predictable."
+  },
+  {
+   "zh": "<strong>有破洞時：</strong> 水會快速地直接灌入 — 這就像開放孔隙的整體流，量會明顯超出正常值",
+   "en": "<strong>With a hole:</strong> Water rushes straight in. This is like bulk flow through an open pore, and the amount clearly exceeds the normal value."
+  },
+  {
+   "zh": "擴散流測試的價值在於：它能區分「正常的材料滲透」和「異常的破洞漏水」，透過量化測量給出明確的過/不過判定。",
+   "en": "The value of the diffusive flow test is that it can distinguish \"normal material permeation\" from \"abnormal leakage through a hole\", and by measuring quantitatively it gives a clear pass/fail decision."
+  },
+  {
+   "zh": "<strong>測試氣體的影響：</strong> 不同氣體（如空氣 vs 氮氣 vs CO<sub>2</sub>）在潤濕液中的溶解度和擴散係數不同，因此擴散流限值必須針對特定氣體類型設定。這一點泡點測試不受影響，因為泡點取決於表面張力而非氣體溶解性。",
+   "en": "<strong>Effect of the test gas:</strong> Different gases (for example air vs nitrogen vs CO<sub>2</sub>) have different solubilities and diffusion coefficients in the wetting liquid, so the diffusive flow limit must be set for the specific gas type. The bubble point test is not affected by this, because the bubble point depends on surface tension rather than gas solubility."
+  },
+  {
+   "zh": "<strong>溫度敏感性：</strong> 溫度變化會同時影響氣體的溶解度、擴散係數和潤濕液的表面張力。即使 1-2°C 的溫度波動也可能導致測量值偏差，尤其在大面積濾膜系統中效果更明顯。",
+   "en": "<strong>Temperature sensitivity:</strong> Temperature changes affect the gas solubility, the diffusion coefficient and the surface tension of the wetting liquid at the same time. Even a temperature fluctuation of 1-2°C can bias the measured value, and the effect is more pronounced in large-area membrane systems."
+  },
+  {
+   "zh": "<strong>下游操作的無菌風險：</strong> 手動擴散流測試需要在下游（無菌側）進行管路連接和氣體收集。這在 PUPSIT 場景中會帶來無菌性破壞的風險，是促使業界採用自動化測試儀器的重要原因之一。",
+   "en": "<strong>Sterility risk of downstream operations:</strong> A manual diffusive flow test requires making line connections and collecting gas on the downstream (sterile) side. In a PUPSIT scenario this carries a risk of compromising sterility, which is one of the main reasons the industry has adopted automated test instruments."
+  },
+  {
+   "zh": "公式與計算 Formula — 擴散流與面積的關係",
+   "en": "Formula and Calculation: Relationship Between Diffusive Flow and Area"
+  },
+  {
+   "zh": "擴散流限值通常以 ml/min 表示\n\n對於相同材質的濾膜：\n  擴散流 ∝ 面積 (A)\n\n例如：\n  單支 10\" 濾芯面積 ≈ 0.7 m²\n  → 擴散流限值 ≈ X ml/min\n\n  三支 10\" 並聯\n  → 總面積 = 2.1 m²\n  → 擴散流限值 ≈ 3X ml/min\n\n重要：使用者必須根據實際安裝的\n濾芯數量計算正確的擴散流限值",
+   "en": "The diffusive flow limit is usually expressed in ml/min\n\nFor membranes of the same material:\n  Diffusive flow ∝ area (A)\n\nFor example:\n  One 10\" cartridge, area ≈ 0.7 m²\n  → diffusive flow limit ≈ X ml/min\n\n  Three 10\" cartridges in parallel\n  → total area = 2.1 m²\n  → diffusive flow limit ≈ 3X ml/min\n\nImportant: The user must calculate the correct\ndiffusive flow limit based on the number of\ncartridges actually installed"
+  },
+  {
+   "zh": "為什麼擴散流測試「專為大面積濾膜系統設計」？小面積濾膜使用此方法有什麼困難？",
+   "en": "Why is the diffusive flow test \"designed for large-area membrane systems\"? What difficulties arise when this method is used on small-area membranes?"
+  },
+  {
+   "zh": "手動測試中，為什麼要「最小化下游管路連接和體積」？過大的下游體積會如何影響測量準確性？",
+   "en": "In manual testing, why should downstream line connections and volume be \"minimized\"? How does an excessive downstream volume affect measurement accuracy?"
+  },
+  {
+   "zh": "如果生產過程中使用的產品液體改變了潤濕液的特性，對擴散流測試結果有什麼影響？應該如何處理？",
+   "en": "If the product liquid used in the process changes the properties of the wetting liquid, how does this affect the diffusive flow test result? How should it be handled?"
+  },
+  {
+   "zh": "<strong>11.3 Pressure Hold/Decay Test 11.3 壓力保持／衰減測試</strong>",
+   "en": "<strong>11.3 Pressure Hold/Decay Test</strong>"
+  },
+  {
+   "zh": "<strong>Pressure Hold/Decay Test (壓力保持/衰減測試):</strong> 這是一種<strong>間接</strong>的擴散流測試方法。核心原理很簡單：將濾膜上游加壓到指定壓力後，關閉氣源，然後觀察壓力下降的速率。",
+   "en": "<strong>Pressure Hold/Decay Test:</strong> This is an <strong>indirect</strong> method of diffusive flow testing. The principle is simple: the upstream side of the membrane is pressurized to a specified pressure, the gas supply is then shut off, and the rate at which the pressure falls is observed."
+  },
+  {
+   "zh": "<strong>為什麼壓力會下降？</strong> 因為氣體持續通過濕潤濾膜擴散到下游（加上任何缺陷孔隙的洩漏）",
+   "en": "<strong>Why does the pressure fall?</strong> Because gas keeps diffusing through the wetted membrane to the downstream side (plus any leakage through defective pores)"
+  },
+  {
+   "zh": "<strong>為什麼是「間接」？</strong> 因為它測量的是壓力變化，而非直接測量氣體流量。需要知道上游體積才能換算成等效流量",
+   "en": "<strong>Why is it \"indirect\"?</strong> Because it measures a change in pressure rather than measuring gas flow directly. The upstream volume must be known to convert the result into an equivalent flow"
+  },
+  {
+   "zh": "<strong>最大優勢：</strong> 不需要在下游（無菌側）進行任何操作，不會破壞下游的無菌環境",
+   "en": "<strong>Greatest advantage:</strong> No operation is needed on the downstream (sterile) side, so the downstream sterile environment is not compromised"
+  },
+  {
+   "zh": "壓力衰減測試就像檢查腳踏車輪胎是否漏氣：",
+   "en": "The pressure decay test is like checking whether a bicycle tire is leaking:"
+  },
+  {
+   "zh": "<strong>打飽氣（加壓）：</strong> 你把輪胎充到指定壓力，然後拔掉氣嘴（關閉氣源）",
+   "en": "<strong>Inflate (pressurize):</strong> You inflate the tire to a specified pressure and then remove the pump (shut off the gas supply)"
+  },
+  {
+   "zh": "<strong>觀察壓力表（衰減測量）：</strong> 如果 10 分鐘後壓力只掉了一點點，輪胎沒問題（通過測試）；如果壓力快速下降，表示有洩漏（測試失敗）",
+   "en": "<strong>Watch the gauge (decay measurement):</strong> If the pressure has dropped only slightly after 10 minutes, the tire is fine (passes the test); if the pressure falls quickly, there is a leak (fails the test)"
+  },
+  {
+   "zh": "<strong>輪胎大小的影響（上游體積）：</strong> 大卡車輪胎和小腳踏車輪胎即使漏洞一樣大，壓力下降速率完全不同 — 體積越大，同樣的洩漏造成的壓力變化越小",
+   "en": "<strong>Effect of tire size (upstream volume):</strong> A large truck tire and a small bicycle tire with the same size of hole show completely different rates of pressure drop. The larger the volume, the smaller the pressure change caused by the same leak."
+  },
+  {
+   "zh": "這就是為什麼壓力衰減的「允許值」不是一個固定數字，而必須根據每個系統的上游體積單獨計算。",
+   "en": "This is why the \"allowable value\" for pressure decay is not a fixed number, but must be calculated individually from the upstream volume of each system."
+  },
+  {
+   "zh": "<strong>上游體積的雙重效應：</strong>",
+   "en": "<strong>The dual effect of upstream volume:</strong>"
+  },
+  {
+   "zh": "<strong>體積越大 → 測試敏感度越低：</strong> 同樣的氣體洩漏量，在大體積系統中造成的壓力變化更小，更難被偵測到",
+   "en": "<strong>Larger volume → lower test sensitivity:</strong> The same amount of gas leakage causes a smaller pressure change in a large-volume system, so it is harder to detect"
+  },
+  {
+   "zh": "<strong>體積越大 → 穩定時間越長：</strong> 加壓後需要更長時間讓溫度和壓力達到平衡",
+   "en": "<strong>Larger volume → longer stabilization time:</strong> After pressurization, more time is needed for temperature and pressure to reach equilibrium"
+  },
+  {
+   "zh": "<strong>體積越小 → 溫度敏感度越高：</strong> 小體積系統中，微小的溫度變化就會造成明顯的壓力波動，可能被誤判為洩漏",
+   "en": "<strong>Smaller volume → higher temperature sensitivity:</strong> In a small-volume system, a minor temperature change causes a noticeable pressure fluctuation, which may be misjudged as a leak"
+  },
+  {
+   "zh": "<strong>整體組件測試：</strong> 壓力衰減測試檢驗的不只是濾膜本身，而是包含外殼密封、O-ring、管路接頭在內的整個過濾組件。如果測試失敗，在判定「濾膜不完整」之前，必須先排除密封洩漏的可能性。",
+   "en": "<strong>Whole-assembly test:</strong> The pressure decay test checks not only the membrane itself but the entire filtration assembly, including the housing seals, O-rings and line connections. If the test fails, the possibility of a seal leak must be ruled out before concluding that the \"membrane is non-integral\"."
+  },
+  {
+   "zh": "公式與計算 Formula — 壓力衰減允許值計算",
+   "en": "Formula and Calculation: Calculating the Allowable Pressure Decay"
+  },
+  {
+   "zh": "壓力衰減的基本概念：\n\n  允許壓降 = f(擴散流規格, 上游體積, 測試時間)\n\n概念公式：\n  ΔP_允許 ≈ (F_limit × t_test × P_atm) / V_up\n\n其中：\n  F_limit = 擴散流規格限值 (ml/min)\n  t_test = 測試時間 (min)\n  P_atm = 大氣壓力 (mbar)\n  V_up = 上游體積 (ml)\n\n實例：\n  F_limit = 15 ml/min\n  t_test = 10 min\n  V_up = 5000 ml\n  P_atm = 1013 mbar\n\n  ΔP_允許 ≈ (15 × 10 × 1013) / 5000\n           ≈ 30.4 mbar\n\n注意：這是簡化概念。實際計算需使用\nEquation 14 的精確指數衰減模型。",
+   "en": "Basic concept of pressure decay:\n\n  Allowable pressure drop = f(diffusive flow specification, upstream volume, test time)\n\nConceptual formula:\n  ΔP_allowable ≈ (F_limit × t_test × P_atm) / V_up\n\nWhere:\n  F_limit = diffusive flow specification limit (ml/min)\n  t_test = test time (min)\n  P_atm = atmospheric pressure (mbar)\n  V_up = upstream volume (ml)\n\nExample:\n  F_limit = 15 ml/min\n  t_test = 10 min\n  V_up = 5000 ml\n  P_atm = 1013 mbar\n\n  ΔP_allowable ≈ (15 × 10 × 1013) / 5000\n               ≈ 30.4 mbar\n\nNote: This is a simplified concept. The actual calculation\nmust use the exact exponential decay model of\nEquation 14."
+  },
+  {
+   "zh": "<strong>CDMO 場景 — PUPSIT 的首選方法：</strong>",
+   "en": "<strong>CDMO scenario: the preferred method for PUPSIT:</strong>"
+  },
+  {
+   "zh": "壓力衰減測試是執行 PUPSIT (使用前滅菌後完整性測試) 時最受青睞的方法，因為：",
+   "en": "The pressure decay test is the most favored method for performing PUPSIT (pre-use post-sterilization integrity testing), because:"
+  },
+  {
+   "zh": "完全在上游操作，不需要觸碰下游無菌側 — 維護了無菌保證 (Sterility Assurance)",
+   "en": "It operates entirely on the upstream side and does not require touching the downstream sterile side, which maintains Sterility Assurance"
+  },
+  {
+   "zh": "可以在滅菌後、過濾前執行，確認整個過濾系統（濾膜+外殼+密封）的完整性",
+   "en": "It can be performed after sterilization and before filtration to confirm the integrity of the whole filtration system (membrane + housing + seals)"
+  },
+  {
+   "zh": "配合自動化儀器，可以消除人為判斷的主觀性",
+   "en": "Combined with an automated instrument, it can remove the subjectivity of human judgment"
+  },
+  {
+   "zh": "但必須注意：上游體積的準確測定是此方法的先決條件。在 CDMO 中，不同產品線可能使用不同配置的管路系統，每次變更都需要重新測定上游體積。",
+   "en": "Note, however, that accurate determination of the upstream volume is a prerequisite for this method. In a CDMO, different product lines may use differently configured piping systems, and the upstream volume must be re-determined after every change."
+  },
+  {
+   "zh": "如果壓力衰減測試失敗，你的調查流程應該從何開始？為什麼不能直接判定「濾膜失敗」？",
+   "en": "If a pressure decay test fails, where should your investigation start? Why can you not simply conclude \"membrane failure\"?"
+  },
+  {
+   "zh": "在一個上游體積為 20L 的系統中執行壓力衰減測試，相較於 2L 系統，需要注意哪些額外的考量？",
+   "en": "When a pressure decay test is performed on a system with a 20 L upstream volume, what additional considerations apply compared with a 2 L system?"
+  },
+  {
+   "zh": "為什麼濾膜製造商不直接公布壓力衰減的允許值，而只公布擴散流規格？",
+   "en": "Why do filter manufacturers not publish an allowable pressure decay value directly, and publish only the diffusive flow specification?"
+  },
+  {
+   "zh": "<strong>11.4 Automated Integrity-Test Instruments 11.4 自動化完整性測試儀器</strong>",
+   "en": "<strong>11.4 Automated Integrity-Test Instruments</strong>"
+  },
+  {
+   "zh": "<strong>Automated Integrity-Test Instruments (自動化完整性測試儀器):</strong> 這些儀器將手動測試的步驟自動化，主要有三種測量方法：",
+   "en": "<strong>Automated Integrity-Test Instruments:</strong> These instruments automate the steps of manual testing. There are three main measurement methods:"
+  },
+  {
+   "zh": "<strong>增量壓力衰減法：</strong> 在逐步增加的壓力下執行壓力衰減，用演算法偵測壓力衰減從線性變為非線性的轉折點，自動判定泡點",
+   "en": "<strong>Incremental pressure decay method:</strong> Pressure decay is performed at stepwise increasing pressures, and an algorithm detects the turning point where the pressure decay changes from linear to non-linear, thereby determining the bubble point automatically"
+  },
+  {
+   "zh": "<strong>計算擴散流法：</strong> 在指定壓力下測量壓力衰減，利用預先測量的上游體積計算等效擴散流值",
+   "en": "<strong>Calculated diffusive flow method:</strong> Pressure decay is measured at a specified pressure, and the equivalent diffusive flow value is calculated using a previously measured upstream volume"
+  },
+  {
+   "zh": "<strong>直接流量測量法 (Direct Flow)：</strong> 使用上游質量流量計直接測量維持恆壓所需的氣體流量，無需知道上游體積",
+   "en": "<strong>Direct Flow measurement method:</strong> An upstream mass flow meter directly measures the gas flow needed to maintain constant pressure, with no need to know the upstream volume"
+  },
+  {
+   "zh": "手動 vs 自動化完整性測試，就像用秤重天平 vs 電子秤來稱重：",
+   "en": "Manual vs automated integrity testing is like weighing with a balance vs an electronic scale:"
+  },
+  {
+   "zh": "<strong>手動（天平）：</strong> 需要操作員技巧、判斷和經驗，結果可能因人而異",
+   "en": "<strong>Manual (balance):</strong> Requires operator skill, judgment and experience, and results may vary from person to person"
+  },
+  {
+   "zh": "<strong>自動化（電子秤）：</strong> 一鍵測量，數字直接顯示，結果客觀可重複。但電子秤也需要定期校準（qualification against reference method）",
+   "en": "<strong>Automated (electronic scale):</strong> One-button measurement, the number is displayed directly, and the result is objective and repeatable. But an electronic scale also needs periodic calibration (qualification against a reference method)."
+  },
+  {
+   "zh": "<strong>儀器確認 (Qualification) 是必要的：</strong> 不論使用哪種自動化儀器，都必須經過獨立參考方法的確認。這通常包括：",
+   "en": "<strong>Instrument qualification is required:</strong> Whichever automated instrument is used, it must be qualified against an independent reference method. This usually includes:"
+  },
+  {
+   "zh": "<strong>IQ (安裝確認)：</strong> 儀器正確安裝，硬體完好",
+   "en": "<strong>IQ (Installation Qualification):</strong> The instrument is correctly installed and the hardware is intact"
+  },
+  {
+   "zh": "<strong>OQ (操作確認)：</strong> 在標準條件下使用參考標準品測試，結果符合規格",
+   "en": "<strong>OQ (Operational Qualification):</strong> The instrument is tested under standard conditions using reference standards, and the results meet specifications"
+  },
+  {
+   "zh": "<strong>PQ (性能確認)：</strong> 在實際生產條件下驗證儀器性能",
+   "en": "<strong>PQ (Performance Qualification):</strong> The instrument performance is verified under actual production conditions"
+  },
+  {
+   "zh": "不同廠牌的自動化儀器使用不同的演算法，因此不能假設不同儀器的測試結果完全等效。跨儀器的比較需要額外的驗證工作。",
+   "en": "Automated instruments from different manufacturers use different algorithms, so it cannot be assumed that the test results of different instruments are fully equivalent. Comparing across instruments requires additional validation work."
+  },
+  {
+   "zh": "Direct Flow 測量法相較於壓力衰減計算法，最大的技術優勢是什麼？為什麼它可以免除上游體積測量的需求？",
+   "en": "Compared with the calculated pressure decay method, what is the greatest technical advantage of the Direct Flow measurement method? Why does it remove the need to measure the upstream volume?"
+  },
+  {
+   "zh": "如果你的 CDMO 同時使用了 A 廠和 B 廠的自動化測試儀器，在驗證策略上需要注意什麼？",
+   "en": "If your CDMO uses automated test instruments from both manufacturer A and manufacturer B, what must be considered in the validation strategy?"
+  },
+  {
+   "zh": "<strong>11.5 Correlation Between Pressure Hold/Decay and Diffusive Flow 11.5 壓力保持／衰減與擴散流的相關性</strong>",
+   "en": "<strong>11.5 Correlation Between Pressure Hold/Decay and Diffusive Flow</strong>"
+  },
+  {
+   "zh": "<strong>壓力衰減與擴散流的數學關聯：</strong> 本節的數學推導建立了一個關鍵橋樑：<strong>如何從測量到的壓力衰減值 (p<sub>2I</sub> - p<sub>2II</sub>) 計算出等效的標準體積流量 (V<sub>s</sub>)</strong>。",
+   "en": "<strong>Mathematical relationship between pressure decay and diffusive flow:</strong> The mathematical derivation in this section builds a key bridge: <strong>how to calculate the equivalent standard volumetric flow (V<sub>s</sub>) from a measured pressure decay (p<sub>2I</sub> - p<sub>2II</sub>)</strong>."
+  },
+  {
+   "zh": "推導的邏輯鏈：",
+   "en": "The logical chain of the derivation:"
+  },
+  {
+   "zh": "<strong>Equation 10：</strong> Fick 定律 + Henry 定律 → 擴散流的物理模型",
+   "en": "<strong>Equation 10:</strong> Fick's law + Henry's law → the physical model of diffusive flow"
+  },
+  {
+   "zh": "<strong>Equation 11/11a：</strong> 理想氣體定律 → 壓力變化與莫耳數變化的關係",
+   "en": "<strong>Equation 11/11a:</strong> The ideal gas law → the relationship between pressure change and change in the number of moles"
+  },
+  {
+   "zh": "<strong>Equation 12-13：</strong> 結合上述 → 壓力衰減率的微分方程",
+   "en": "<strong>Equation 12-13:</strong> Combining the above → the differential equation for the rate of pressure decay"
+  },
+  {
+   "zh": "<strong>Equation 13b/14：</strong> 積分求解 → 壓力衰減的指數衰減模型",
+   "en": "<strong>Equation 13b/14:</strong> Integration → the exponential decay model of pressure decay"
+  },
+  {
+   "zh": "最終結果（Equation 14）告訴我們：壓力衰減遵循<strong>指數衰減</strong>模式，而非簡單的線性下降。",
+   "en": "The final result (Equation 14) tells us that pressure decay follows an <strong>exponential decay</strong> pattern rather than a simple linear drop."
+  },
+  {
+   "zh": "公式與計算 Formula — Equation 14 的物理解讀",
+   "en": "Formula and Calculation: Physical Interpretation of Equation 14"
+  },
+  {
+   "zh": "Equation 14:\nΔP = (p₂ᵢ - p₁) × [1 - exp(-t/τ)]\n\n其中時間常數 τ 與以下因素有關：\n  τ ∝ V_up / V_s\n\n物理意義：\n  - 壓力衰減遵循指數衰減，不是線性下降\n  - 初期衰減較快，逐漸趨緩\n  - 上游體積 (V_up) 越大，衰減越慢\n  - 擴散流 (V_s) 越大，衰減越快\n\n實務簡化：\n  當衰減量遠小於初始壓差時\n  (即 ΔP &lt;&lt; p₂ᵢ - p₁)\n  指數函數可近似為線性：\n  ΔP ≈ V_s × ρ_S × t / V_up\n\n這就是為什麼短時間測試中，\n壓力衰減看起來幾乎是線性的。",
+   "en": "Equation 14:\nΔP = (p₂ᵢ - p₁) × [1 - exp(-t/τ)]\n\nWhere the time constant τ is related to:\n  τ ∝ V_up / V_s\n\nPhysical meaning:\n  - Pressure decay follows an exponential decay, not a linear drop\n  - Decay is faster at first, then gradually slows\n  - The larger the upstream volume (V_up), the slower the decay\n  - The larger the diffusive flow (V_s), the faster the decay\n\nPractical simplification:\n  When the decay is much smaller than the initial pressure difference\n  (i.e. ΔP &lt;&lt; p₂ᵢ - p₁)\n  the exponential function can be approximated as linear:\n  ΔP ≈ V_s × ρ_S × t / V_up\n\nThis is why, in short tests,\nthe pressure decay looks almost linear."
+  },
+  {
+   "zh": "壓力衰減的指數衰減就像一杯熱咖啡的冷卻過程（牛頓冷卻定律）：",
+   "en": "The exponential decay of pressure is like a hot cup of coffee cooling down (Newton's law of cooling):"
+  },
+  {
+   "zh": "剛沖好的咖啡（高壓差）→ 熱散失最快（壓力衰減率最高）",
+   "en": "Freshly brewed coffee (high pressure difference) → heat is lost fastest (highest rate of pressure decay)"
+  },
+  {
+   "zh": "隨著溫度接近室溫（壓差減小）→ 冷卻速率逐漸降低",
+   "en": "As the temperature approaches room temperature (smaller pressure difference) → the cooling rate gradually falls"
+  },
+  {
+   "zh": "杯子越大（上游體積越大）→ 冷卻越慢（壓力衰減越慢）",
+   "en": "The larger the cup (the larger the upstream volume) → the slower the cooling (the slower the pressure decay)"
+  },
+  {
+   "zh": "在短時間內觀察，冷卻幾乎是線性的 — 這就是為什麼在實際測試中（通常只有幾分鐘），線性近似通常足夠準確。",
+   "en": "Observed over a short period, the cooling is almost linear. This is why, in actual testing (usually only a few minutes), a linear approximation is normally accurate enough."
+  },
+  {
+   "zh": "<strong>驗證的核心目標：</strong> 建立非破壞性物理測試（壓力衰減/擴散流）與破壞性微生物挑戰測試之間的相關性。這意味著：",
+   "en": "<strong>The core goal of validation:</strong> To establish a correlation between the non-destructive physical test (pressure decay/diffusive flow) and the destructive microbial challenge test. This means:"
+  },
+  {
+   "zh": "物理測試的限值必須能夠可靠地預測濾膜的微生物截留能力",
+   "en": "The limit of the physical test must reliably predict the microbial retention capability of the membrane"
+  },
+  {
+   "zh": "每種濾膜材質和配置都需要獨立建立這種相關性",
+   "en": "This correlation must be established independently for each membrane material and configuration"
+  },
+  {
+   "zh": "相關性的建立是濾膜製造商的責任，使用者需要驗證其適用性",
+   "en": "Establishing the correlation is the responsibility of the filter manufacturer, and the user needs to verify that it is applicable"
+  },
+  {
+   "zh": "<strong>三個必要條件：</strong> 使用 Equation 14 需要：(1) 精確的壓力和時間測量、(2) 已知的上游體積、(3) 恆定的溫度。任何一項不確定都會影響計算結果的可靠性。",
+   "en": "<strong>Three necessary conditions:</strong> Using Equation 14 requires (1) accurate pressure and time measurement, (2) a known upstream volume, and (3) constant temperature. Uncertainty in any one of them affects the reliability of the calculated result."
+  },
+  {
+   "zh": "<strong>CDMO 場景 — 驗證策略：</strong>",
+   "en": "<strong>CDMO scenario: validation strategy:</strong>"
+  },
+  {
+   "zh": "在 CDMO 中同時生產多種產品，過濾系統配置經常變動。理解壓力衰減與擴散流的數學關聯至關重要：",
+   "en": "A CDMO manufactures multiple products at the same time, and the filtration system configuration changes frequently. Understanding the mathematical relationship between pressure decay and diffusive flow is therefore essential:"
+  },
+  {
+   "zh": "<strong>新產線安裝：</strong> 需要精確測定上游體積，這通常透過已知流量的氣體源和壓力響應來計算",
+   "en": "<strong>New line installation:</strong> The upstream volume must be determined accurately, which is usually calculated from a gas source of known flow and the pressure response"
+  },
+  {
+   "zh": "<strong>配置變更管理：</strong> 任何管路或組件的變更都可能改變上游體積，需要重新測定和更新壓力衰減允許值",
+   "en": "<strong>Configuration change management:</strong> Any change to piping or components may change the upstream volume, requiring re-determination and an update of the allowable pressure decay value"
+  },
+  {
+   "zh": "<strong>跨方法等效性：</strong> 如果需要在擴散流測試和壓力衰減測試之間切換，必須透過 Equation 14 建立換算關係",
+   "en": "<strong>Cross-method equivalence:</strong> If it is necessary to switch between the diffusive flow test and the pressure decay test, a conversion relationship must be established through Equation 14"
+  },
+  {
+   "zh": "為什麼 Equation 14 顯示壓力衰減是指數衰減而非線性下降？在什麼條件下線性近似是合理的？",
+   "en": "Why does Equation 14 show that pressure decay is exponential rather than a linear drop? Under what conditions is a linear approximation reasonable?"
+  },
+  {
+   "zh": "如果上游體積的測量有 10% 的誤差，這會如何影響壓力衰減允許值的計算？對測試結果的判定有什麼風險？",
+   "en": "If the measurement of the upstream volume has a 10% error, how does this affect the calculation of the allowable pressure decay value? What risk does it pose to the judgment of the test result?"
+  },
+  {
+   "zh": "Table 11.5-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p95-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中的符號 H<sub>c</sub>（Henry's Law coefficient）代表什麼物理意義？如果更換測試氣體（從空氣改為氮氣），哪些符號的值會改變？",
+   "en": "What physical meaning does the symbol H<sub>c</sub> (Henry's Law coefficient) in Table 11.5-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p95-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> represent? If the test gas is changed (from air to nitrogen), which symbols will change in value?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>泡點測試 (Bubble Point)：</strong> 偵測最大孔隙開啟的壓力閾值，適合小面積濾膜；手動操作具主觀性，需注意區分擴散氣泡和真正的整體流",
+   "en": "<strong>Bubble Point:</strong> Detects the pressure threshold at which the largest pores open; suited to small-area membranes; manual operation is subjective, so care is needed to distinguish diffusion bubbles from true bulk flow"
+  },
+  {
+   "zh": "<strong>擴散流測試 (Diffusive Flow)：</strong> 定量測量氣體通過濕潤濾膜的流量，為大面積濾膜系統設計；受測試氣體類型和溫度影響",
+   "en": "<strong>Diffusive Flow:</strong> Measures quantitatively the gas flow through a wetted membrane; designed for large-area membrane systems; affected by the type of test gas and by temperature"
+  },
+  {
+   "zh": "<strong>壓力衰減測試 (Pressure Hold/Decay)：</strong> 間接的上游擴散流測試，不需下游操作，是 PUPSIT 的首選方法；需要精確的上游體積測定",
+   "en": "<strong>Pressure Hold/Decay:</strong> An indirect upstream diffusive flow test that needs no downstream operation and is the preferred method for PUPSIT; requires accurate determination of the upstream volume"
+  },
+  {
+   "zh": "<strong>自動化儀器：</strong> 消除人為主觀性，可執行泡點和擴散流測試，但必須經過獨立參考方法的確認 (qualification)",
+   "en": "<strong>Automated instruments:</strong> Remove human subjectivity and can perform bubble point and diffusive flow tests, but must be qualified against an independent reference method"
+  },
+  {
+   "zh": "<strong>方法間的數學關聯 (Equations 10-14)：</strong> 壓力衰減遵循指數衰減模型，透過 Equation 14 可將壓力衰減值換算為等效擴散流值，前提是已知上游體積和恆定溫度",
+   "en": "<strong>Mathematical relationship between the methods (Equations 10-14):</strong> Pressure decay follows an exponential decay model, and Equation 14 converts a pressure decay value into an equivalent diffusive flow value, provided the upstream volume is known and the temperature is constant"
+  },
+  {
+   "zh": "<strong>驗證的終極目標：</strong> 建立非破壞性物理測試與微生物截留能力之間的可靠相關性",
+   "en": "<strong>The ultimate goal of validation:</strong> To establish a reliable correlation between non-destructive physical tests and microbial retention capability"
+  }
+ ]
+}

@@ -1,0 +1,941 @@
+{
+ "source": "section-05a-filtration-process.html",
+ "blocks": [
+  {
+   "zh": "過濾製程設計、使用與操作考量（第一部分：5.0 - 5.4.1）",
+   "en": "Filtration Process Design, Usage, and Handling Considerations (Part 1: 5.0 - 5.4.1)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解除菌過濾製程設計（Filtration Process Design）的整體架構，掌握 FDA 製程驗證三階段與 ICH Q8 設計空間的核心理念",
+   "en": "Understand the overall framework of sterilizing filtration process design, including the three stages of FDA process validation and the ICH Q8 design space concept"
+  },
+  {
+   "zh": "學會如何評估產品特性與濾膜相容性（Product Properties and Filter Compatibility），包含化學相容性、物理特性與吸附效應",
+   "en": "Learn how to evaluate product properties and filter compatibility, including chemical compatibility, physical properties, and adsorption effects"
+  },
+  {
+   "zh": "掌握設計空間（Design Space）的定義方法，了解影響過濾操作範圍的關鍵因子（溫度、體積、流速、壓力、時間等）",
+   "en": "Master how the design space is defined and the key factors that set the operating range of filtration (temperature, volume, flow rate, pressure, time, etc.)"
+  },
+  {
+   "zh": "理解流量特性（Flow Characteristics）、入口/差壓（Inlet/Differential Pressure）、過濾溫度（Temperature）、過濾時間（Filtration Time）的相互關係與製程影響",
+   "en": "Understand how flow characteristics, inlet/differential pressure, temperature, and filtration time relate to one another and affect the process"
+  },
+  {
+   "zh": "掌握濾膜通量與最大體積（Filter Throughput and Maximum Volume）的評估方法及影響因子",
+   "en": "Master the methods for evaluating filter throughput and maximum volume, and the factors that influence them"
+  },
+  {
+   "zh": "理解縮小規模系統（Scale-Down Systems）與小規模裝置測試（Small Scale Device Testing）的原理、方法與放大注意事項",
+   "en": "Understand the principles, methods, and scale-up considerations of scale-down systems and small scale device testing"
+  },
+  {
+   "zh": "<strong>5.0 Filtration Process Design, Usage, and Handling Considerations 5.0 過濾製程設計、使用與操作考量</strong>",
+   "en": "<strong>5.0 Filtration Process Design, Usage, and Handling Considerations</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>製程驗證三階段（Three Stages of Process Validation）：</strong>",
+   "en": "<strong>Three Stages of Process Validation:</strong>"
+  },
+  {
+   "zh": "<strong>Stage 1 - Process Design（製程設計）：</strong>透過開發活動，定義製程的商業化製造條件。本章（5.0）正是聚焦於此。",
+   "en": "<strong>Stage 1 - Process Design:</strong> Through development activities, the commercial manufacturing conditions of the process are defined. This chapter (5.0) focuses on this stage."
+  },
+  {
+   "zh": "<strong>Stage 2 - Process Qualification（製程確認）：</strong>在實際製造環境中驗證設計的製程能夠可重複地運作。Section 6.0 涵蓋此內容。",
+   "en": "<strong>Stage 2 - Process Qualification:</strong> Demonstrates, in the actual manufacturing environment, that the designed process performs reproducibly. Section 6.0 covers this."
+  },
+  {
+   "zh": "<strong>Stage 3 - Continued Process Verification（持續製程確認）：</strong>持續監控，確保製程維持在受控狀態。",
+   "en": "<strong>Stage 3 - Continued Process Verification:</strong> Ongoing monitoring to ensure the process remains in a state of control."
+  },
+  {
+   "zh": "<strong>ICH Q8 設計空間（Design Space）：</strong>先定義出操作空間的邊界，再建立控制策略 (Control Strategy)，確保在空間內的任何操作條件都能穩定產出合格產品。",
+   "en": "<strong>ICH Q8 Design Space:</strong> First define the boundaries of the operating space, then establish a control strategy to ensure that any operating condition within that space consistently yields acceptable product."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像你是一位大廚要開新餐廳。你不會等食物端上桌後才檢查好不好吃（那就是「事後檢驗」）。正確做法是：",
+   "en": "Imagine you are a head chef opening a new restaurant. You would not wait until the food is on the table to check whether it tastes good (that is \"after-the-fact testing\"). The right approach is:"
+  },
+  {
+   "zh": "<strong>Stage 1（設計）：</strong>先在實驗廚房研發菜單，確定食材、溫度、時間的最佳範圍",
+   "en": "<strong>Stage 1 (Design):</strong> Develop the menu in a test kitchen first and establish the best ranges for ingredients, temperature, and time"
+  },
+  {
+   "zh": "<strong>Stage 2（確認）：</strong>在正式廚房依配方試做，確認出品一致",
+   "en": "<strong>Stage 2 (Qualification):</strong> Cook to the recipe in the real kitchen and confirm that the output is consistent"
+  },
+  {
+   "zh": "<strong>Stage 3（監控）：</strong>開業後持續品管，確保每道菜的品質不走味",
+   "en": "<strong>Stage 3 (Monitoring):</strong> Keep up quality control after opening so that every dish stays true to standard"
+  },
+  {
+   "zh": "除菌過濾就像餐廳最後一道食安關卡 -- 如果你的食材本身已經有問題，再好的過濾也無法完全補救。「品質內建」的概念就是從源頭把關。",
+   "en": "Sterilizing filtration is like the restaurant's last food safety checkpoint -- if the ingredients themselves are already a problem, even the best filtration cannot fully fix it. The concept of \"quality built in\" means controlling quality from the source."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>濾膜是最後的微生物控制屏障：</strong>在無菌充填製程中，除菌濾膜（Sterilizing Filter）往往是產品給予病患前的最後一道防線。這意味著過濾失敗 = 直接影響病患安全，沒有後續補救手段。",
+   "en": "<strong>The filter is the last microbial control barrier:</strong> In aseptic filling processes, the sterilizing filter is often the last line of defense before the product reaches the patient. This means a filtration failure = a direct impact on patient safety, with no downstream remedy."
+  },
+  {
+   "zh": "<strong>非最終屏障的應用：</strong>除菌級濾膜也可用於中間製程的 Bioburden（生物負荷）控制，這些應用的風險較低，驗證要求可以適度簡化。但「可以簡化」不代表「可以忽略」。",
+   "en": "<strong>Non-final barrier applications:</strong> Sterilizing-grade filters may also be used for in-process bioburden control. These applications carry lower risk and the validation requirements can be moderately simplified. But \"can be simplified\" does not mean \"can be ignored\"."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>作為 CDMO，你可能同時為多個客戶代工不同產品，每個產品的除菌過濾製程都需要獨立的 Stage 1 設計。即使使用相同型號的濾膜，不同產品的化學特性、粒子負荷、溫度要求都不同，設計空間必須個別建立。這是合規的基本要求，也是客戶稽核時的重點關注項目。",
+   "en": "<strong>CDMO scenario:</strong> As a CDMO, you may manufacture different products for several clients at the same time, and each product's sterilizing filtration process needs its own independent Stage 1 design. Even when the same filter model is used, the chemical properties, particle load, and temperature requirements differ from product to product, so the design space must be established individually. This is a basic compliance requirement and a focus area in client audits."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "FDA 製程驗證三階段中，為什麼 Stage 1（製程設計）必須在 Stage 2（製程確認）之前完成？如果跳過會有什麼後果？",
+   "en": "Among the three stages of FDA process validation, why must Stage 1 (Process Design) be completed before Stage 2 (Process Qualification)? What are the consequences of skipping it?"
+  },
+  {
+   "zh": "為什麼 TR26 強調除菌濾膜是「final microbial control barrier」？在你的工廠中，是否有其他微生物控制措施可以作為後備？",
+   "en": "Why does TR26 emphasize that the sterilizing filter is the \"final microbial control barrier\"? In your facility, are there other microbial control measures that can serve as a backup?"
+  },
+  {
+   "zh": "<strong>5.1 Process Design: Design Space Evaluation 5.1 製程設計：設計空間評估</strong>",
+   "en": "<strong>5.1 Process Design: Design Space Evaluation</strong>"
+  },
+  {
+   "zh": "<strong>Design Space（設計空間）：</strong>根據 ICH Q8 的定義，設計空間是「經證明能提供品質保證的多維度組合與交互作用」。在除菌過濾中，這意味著你必須定義出溫度、壓力、流速、體積、時間等參數的安全操作範圍。",
+   "en": "<strong>Design Space:</strong> As defined in ICH Q8, the design space is \"the multidimensional combination and interaction of input variables that have been demonstrated to provide assurance of quality\". For sterilizing filtration, this means you must define safe operating ranges for parameters such as temperature, pressure, flow rate, volume, and time."
+  },
+  {
+   "zh": "設計空間的三大要素評估順序：",
+   "en": "The three elements of the design space, in order of evaluation:"
+  },
+  {
+   "zh": "<strong>產品特性（Product Properties）：</strong>了解你要過濾什麼",
+   "en": "<strong>Product Properties:</strong> understand what you are filtering"
+  },
+  {
+   "zh": "<strong>相容性（Compatibility）：</strong>確認產品與濾膜系統能和平共處",
+   "en": "<strong>Compatibility:</strong> confirm that the product and the filter system can coexist"
+  },
+  {
+   "zh": "<strong>操作範圍（Operational Ranges）：</strong>定義每個參數的上下限",
+   "en": "<strong>Operational Ranges:</strong> define the upper and lower limits of each parameter"
+  },
+  {
+   "zh": "設計空間就像開車時的安全駕駛範圍：你的車有速限（最大壓力），有最低油溫才能正常運轉（最低溫度），輪胎有最大承載量（最大體積），油箱有容量限制（過濾時間）。只有在所有這些參數同時落在安全範圍內，你才能安全到達目的地。",
+   "en": "The design space is like the safe driving range of a car: it has a speed limit (maximum pressure), it needs a minimum oil temperature to run properly (minimum temperature), the tires have a maximum load (maximum volume), and the fuel tank has a capacity limit (filtration time). You reach your destination safely only when all of these parameters are within their safe ranges at the same time."
+  },
+  {
+   "zh": "注意這裡說的是「初步評估」（initial evaluation），暗示設計空間的建立是一個迭代過程 -- 隨著你獲得更多製程知識，空間會不斷精煉。不要期望一次就能完美定義所有範圍。",
+   "en": "Note that the text speaks of an \"initial evaluation\", which implies that establishing the design space is an iterative process -- as you gain more process knowledge, the space is continually refined. Do not expect to define every range perfectly the first time."
+  },
+  {
+   "zh": "ICH Q8 提出的「設計空間」概念如何應用到除菌過濾？與傳統的單一操作條件驗證有何不同？",
+   "en": "How does the ICH Q8 \"design space\" concept apply to sterilizing filtration? How does it differ from traditional validation at a single operating condition?"
+  },
+  {
+   "zh": "為什麼評估順序是產品特性 → 相容性 → 操作範圍？能否顛倒順序？",
+   "en": "Why is the evaluation order product properties → compatibility → operational ranges? Could the order be reversed?"
+  },
+  {
+   "zh": "<strong>5.1.1 Product Properties and Filter Compatibility 5.1.1 產品特性與過濾器相容性</strong>",
+   "en": "<strong>5.1.1 Product Properties and Filter Compatibility</strong>"
+  },
+  {
+   "zh": "<strong>相容性分析的兩步驟：</strong>",
+   "en": "<strong>Two steps of compatibility analysis:</strong>"
+  },
+  {
+   "zh": "<strong>第一步 -- 化學相容性（Chemical Compatibility）：</strong>",
+   "en": "<strong>Step 1 -- Chemical Compatibility:</strong>"
+  },
+  {
+   "zh": "評估溶液的化學特性（溶劑、酸鹼度、離子強度）",
+   "en": "Evaluate the chemical properties of the solution (solvent, pH, ionic strength)"
+  },
+  {
+   "zh": "確認濾膜材質和外殼（Housing）能否承受這些化學環境",
+   "en": "Confirm that the filter material and housing can withstand these chemical environments"
+  },
+  {
+   "zh": "起點：濾膜製造商的化學相容性表",
+   "en": "Starting point: the filter manufacturer's chemical compatibility chart"
+  },
+  {
+   "zh": "<strong>第二步 -- 物理相容性（Physical Compatibility）：</strong>",
+   "en": "<strong>Step 2 -- Physical Compatibility:</strong>"
+  },
+  {
+   "zh": "評估溫度範圍、粒子負荷、黏度",
+   "en": "Evaluate the temperature range, particle load, and viscosity"
+  },
+  {
+   "zh": "確認系統能承受機械應力並在整個過濾過程維持完整性",
+   "en": "Confirm that the system can withstand mechanical stress and maintain integrity throughout the entire filtration"
+  },
+  {
+   "zh": "<strong>Adsorption（吸附）：</strong>產品成分與濾膜或系統材料結合的現象。這不是過濾的目的，而是副作用。吸附可能導致：",
+   "en": "<strong>Adsorption:</strong> The phenomenon in which product components bind to the filter or system materials. This is not the purpose of filtration but a side effect. Adsorption can lead to:"
+  },
+  {
+   "zh": "產品濃度降低 -- 尤其對高價值生物製劑影響巨大",
+   "en": "Reduced product concentration -- especially significant for high-value biologics"
+  },
+  {
+   "zh": "產品組成改變 -- 某些成分被選擇性吸附",
+   "en": "Altered product composition -- some components are selectively adsorbed"
+  },
+  {
+   "zh": "濾膜堵塞加速 -- 吸附物累積導致 Fouling（堵塞）",
+   "en": "Accelerated filter plugging -- accumulation of adsorbed material causes fouling"
+  },
+  {
+   "zh": "想像你要用一個新的水壺泡茶。你需要考慮：",
+   "en": "Imagine using a new kettle to brew tea. You would need to consider:"
+  },
+  {
+   "zh": "<strong>化學相容性：</strong>這個水壺材質能不能承受熱水？會不會被茶的單寧酸腐蝕？就像確認濾膜能否承受你的製程液體",
+   "en": "<strong>Chemical compatibility:</strong> Can the kettle material withstand hot water? Will it be corroded by the tannins in the tea? This is like confirming that the filter can withstand your process liquid"
+  },
+  {
+   "zh": "<strong>物理相容性：</strong>水壺夠大嗎？能承受高溫嗎？就像確認過濾系統能處理你的溫度和體積",
+   "en": "<strong>Physical compatibility:</strong> Is the kettle big enough? Can it withstand high temperature? This is like confirming that the filtration system can handle your temperature and volume"
+  },
+  {
+   "zh": "<strong>吸附問題：</strong>新水壺會不會吸走茶的香氣或顏色？就像濾膜會吸附某些藥物成分。前幾壺泡出來的茶味道不對，但泡久了就穩定了 -- 這就是「初期吸附高，後來趨於平穩」的現象",
+   "en": "<strong>Adsorption:</strong> Will the new kettle absorb the aroma or color of the tea? This is like a filter adsorbing certain drug components. The first few pots taste off, but after a while it stabilizes -- this is the phenomenon of \"high initial adsorption that levels off later\""
+  },
+  {
+   "zh": "<strong>MoC（Materials of Construction，建構材料）：</strong>吸附評估不能只看濾膜！整個過濾系統的所有接觸面（bags、connectors、tubing）都可能吸附產品成分，必須個別評估。",
+   "en": "<strong>MoC (Materials of Construction):</strong> Adsorption assessment cannot look at the filter alone! All product-contact surfaces of the filtration system (bags, connectors, tubing) can adsorb product components and must be evaluated individually."
+  },
+  {
+   "zh": "<strong>預處理選項：</strong>Buffer flush（緩衝液沖洗）或 soaking（浸泡）可以「飽和」濾膜的吸附位點，減少後續過濾時的產品損失。對於高價值的生物製劑，這是常見的實務做法。",
+   "en": "<strong>Pretreatment options:</strong> A buffer flush or soaking can \"saturate\" the adsorption sites of the filter and reduce subsequent product loss during filtration. For high-value biologics, this is common practice."
+  },
+  {
+   "zh": "<strong>Filter-Fouling（濾膜堵塞）：</strong>非特異性吸附不僅影響產品收率，還會加速濾膜堵塞，直接影響過濾性能和 Filter Sizing（濾膜規格選擇）。",
+   "en": "<strong>Filter fouling:</strong> Non-specific adsorption not only affects product yield but also accelerates filter fouling, directly affecting filtration performance and filter sizing."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>吸附率估算概念：</strong>",
+   "en": "<strong>Concept for estimating the adsorption rate:</strong>"
+  },
+  {
+   "zh": "Adsorption Rate = (C_feed - C_filtrate) / C_feed x 100%\n\n其中：\n  C_feed = 進料端產品濃度\n  C_filtrate = 濾液端產品濃度\n\n若 Adsorption Rate &gt; 可接受範圍：\n  → 考慮 Buffer flush 預處理\n  → 評估替代濾膜材質\n  → 調整過濾體積以池化稀釋",
+   "en": "Adsorption Rate = (C_feed - C_filtrate) / C_feed x 100%\n\nWhere:\n  C_feed = product concentration on the feed side\n  C_filtrate = product concentration on the filtrate side\n\nIf Adsorption Rate &gt; acceptable range:\n  → Consider buffer flush pretreatment\n  → Evaluate alternative filter materials\n  → Adjust the filtration volume to dilute by pooling"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>一家 CDMO 接到新客戶的單株抗體（mAb）產品代工需求。在除菌過濾製程設計階段，你發現該 mAb 的等電點（pI）接近製程 pH，導致蛋白質在 PVDF 膜上的吸附率高達 15%。",
+   "en": "<strong>CDMO scenario:</strong> A CDMO receives a request to manufacture a new client's monoclonal antibody (mAb) product. During sterilizing filtration process design, you find that the isoelectric point (pI) of the mAb is close to the process pH, causing protein adsorption on the PVDF membrane as high as 15%."
+  },
+  {
+   "zh": "應對策略：(1) 切換至 PES 膜材測試吸附率 (2) 進行 buffer flush 預處理降低初始吸附 (3) 評估池化策略是否可行 (4) 計算吸附導致的產品損失成本，與更換濾膜的成本做比較。",
+   "en": "Response strategies: (1) switch to a PES membrane and test the adsorption rate; (2) perform a buffer flush pretreatment to reduce initial adsorption; (3) evaluate whether a pooling strategy is feasible; (4) calculate the cost of product loss due to adsorption and compare it with the cost of changing the filter."
+  },
+  {
+   "zh": "為什麼化學相容性評估要在物理相容性之前？如果順序顛倒，可能遇到什麼問題？",
+   "en": "Why should chemical compatibility be evaluated before physical compatibility? If the order were reversed, what problems might arise?"
+  },
+  {
+   "zh": "對於一個高濃度蛋白質藥物，你預期在過濾初期和後期的吸附行為會有什麼不同？這對生產操作有什麼影響？",
+   "en": "For a high-concentration protein drug, how would you expect adsorption behavior to differ between the early and late stages of filtration? What does this mean for production operations?"
+  },
+  {
+   "zh": "除了濾膜本身，還有哪些過濾系統組件需要評估吸附風險？列舉至少三個。",
+   "en": "Besides the filter itself, which other components of the filtration system need to be evaluated for adsorption risk? List at least three."
+  },
+  {
+   "zh": "<strong>5.1.2 Defining the Design Space and Operational Ranges 5.1.2 定義設計空間與操作範圍</strong>",
+   "en": "<strong>5.1.2 Defining the Design Space and Operational Ranges</strong>"
+  },
+  {
+   "zh": "<strong>前瞻性設計（Prospective Design）：</strong>TR26 強調在設計階段就要預見商業化規模的需求。不要只看現在的臨床批量，要考慮未來市場需求可能帶來的最大批量。這樣做的好處是避免日後因批量放大而需要重新驗證（Revalidation）。",
+   "en": "<strong>Prospective Design:</strong> TR26 stresses anticipating commercial-scale needs at the design stage. Do not look only at the current clinical batch size; consider the maximum batch size that future market demand may bring. The benefit is avoiding revalidation later when the batch size is scaled up."
+  },
+  {
+   "zh": "<strong>Table 5.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p33-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 八大設計因子：</strong>",
+   "en": "<strong>Table 5.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p33-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> The eight design factors:</strong>"
+  },
+  {
+   "zh": "<strong>溫度（Temperature）：</strong>從冷藏到加溫，影響黏度、流速和微生物生長",
+   "en": "<strong>Temperature:</strong> from refrigerated to heated; affects viscosity, flow rate, and microbial growth"
+  },
+  {
+   "zh": "<strong>總產品體積（Total Product Volume）：</strong>最小到最大，決定細菌截留驗證範圍和濾膜尺寸",
+   "en": "<strong>Total Product Volume:</strong> minimum to maximum; determines the range of the bacterial retention validation and the filter size"
+  },
+  {
+   "zh": "<strong>流速（Flow Rate）：</strong>零到最大預期值，取決於應用場景",
+   "en": "<strong>Flow Rate:</strong> zero to the maximum expected value, depending on the application"
+  },
+  {
+   "zh": "<strong>差壓（Differential Pressure）：</strong>最小到最大，需研究壓力與流速的關係",
+   "en": "<strong>Differential Pressure:</strong> minimum to maximum; the relationship between pressure and flow rate needs to be studied"
+  },
+  {
+   "zh": "<strong>過濾時間（Filtration Time）：</strong>最大值，包含製程設置和中斷時間",
+   "en": "<strong>Filtration Time:</strong> maximum value, including process setup and interruption time"
+  },
+  {
+   "zh": "<strong>產品接觸時間（Product Contact Time）：</strong>最大值，影響相容性和完整性",
+   "en": "<strong>Product Contact Time:</strong> maximum value; affects compatibility and integrity"
+  },
+  {
+   "zh": "<strong>驅動力（Driving Force）：</strong>脈動或恆壓，決定泵浦類型",
+   "en": "<strong>Driving Force:</strong> pulsatile or constant pressure; determines the pump type"
+  },
+  {
+   "zh": "<strong>配置（Configuration）：</strong>單一或冗餘/多重濾膜，考量物理空間和風險管理",
+   "en": "<strong>Configuration:</strong> single or redundant/multiple filters; considers physical space and risk management"
+  },
+  {
+   "zh": "定義設計空間就像規劃高速公路。你不只考慮今天的車流量，還要預測未來 20 年的交通需求。如果只按現在的車流量設計雙線道，五年後車流量翻倍時就得重新施工擴建（= 重新驗證）。但如果一開始就預留四線道的空間（= 涵蓋未來最大批量），即使初期有些「多餘」，長期來看卻省下大量重建成本。",
+   "en": "Defining the design space is like planning a highway. You consider not only today's traffic but also forecast traffic demand 20 years ahead. If you design a two-lane road based on current traffic, you will have to rebuild and widen it (= revalidation) when traffic doubles five years later. But if you reserve room for four lanes from the start (= covering the future maximum batch size), even though it looks somewhat \"excessive\" at first, it saves a great deal of reconstruction cost in the long run."
+  },
+  {
+   "zh": "<strong>最小差壓也很重要：</strong>注意 Table 中「Differential Pressure」的範圍包含最小值。設定合理的最小差壓可以幫助偵測濾膜安裝錯誤 -- 如果過濾時壓差異常低，可能表示濾膜沒有正確安裝或存在旁路（bypass）。",
+   "en": "<strong>The minimum differential pressure also matters:</strong> Note that the range for \"Differential Pressure\" in the Table includes a minimum value. Setting a reasonable minimum differential pressure can help detect filter installation errors -- if the pressure drop is abnormally low during filtration, the filter may not be installed correctly or there may be a bypass."
+  },
+  {
+   "zh": "<strong>Product Contact Time vs Filtration Time：</strong>這是兩個不同的概念。過濾時間是實際過濾的持續時間；產品接觸時間包含了製程等待時間、中斷時間等。後者通常更長，且是驗證的最差情境。",
+   "en": "<strong>Product Contact Time vs Filtration Time:</strong> These are two different concepts. Filtration time is the duration of actual filtration; product contact time includes process waiting time, interruption time, and so on. The latter is usually longer and is the worst case for validation."
+  },
+  {
+   "zh": "<strong>Configuration 決策：</strong>冗餘過濾（Redundant Filtration）在某些監管轄區可能是要求，而非選項。提前在設計空間中納入，避免後期被動修改。",
+   "en": "<strong>Configuration decision:</strong> Redundant filtration may be a requirement, not an option, in some regulatory jurisdictions. Include it in the design space early to avoid forced changes later."
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你的工廠目前為客戶生產 100L 批量的注射劑，但客戶的商業化計畫預計批量將擴展到 500L。如果你在設計空間中只驗證到 150L，當客戶需求增長時就必須重新進行細菌截留驗證和製程驗證，耗時 3-6 個月。但如果一開始就將設計空間擴展到 600L（含安全餘量），雖然初期研發成本多 20%，但可以避免未來的重新驗證，為公司節省大量時間和成本。",
+   "en": "<strong>CDMO scenario:</strong> Your facility currently produces 100 L batches of an injectable for a client, but the client's commercialization plan expects batch sizes to grow to 500 L. If you validate the design space only up to 150 L, then when the client's demand grows you will have to repeat the bacterial retention validation and process validation, taking 3-6 months. But if you expand the design space to 600 L (including a safety margin) from the start, development costs are 20% higher initially, yet you avoid future revalidation and save the company a great deal of time and cost."
+  },
+  {
+   "zh": "為什麼 Table 5.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p33-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中的「Flow Rate」範圍從「Zero」開始？在什麼情境下流速為零？",
+   "en": "Why does the \"Flow Rate\" range in Table 5.1.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p33-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> start from \"Zero\"? In what situations is the flow rate zero?"
+  },
+  {
+   "zh": "「Driving Force」中提到 pulsatile（脈動）和 constant pressure（恆壓）兩種模式，各適用於什麼情境？為什麼這會影響設計空間？",
+   "en": "\"Driving Force\" mentions two modes, pulsatile and constant pressure. In what situations is each suitable? Why does this affect the design space?"
+  },
+  {
+   "zh": "如果你是 CDMO 的製程開發人員，你會如何說服管理層在初期多投入資源建立更寬廣的設計空間？請用商業語言描述投資報酬率。",
+   "en": "If you were a process development scientist at a CDMO, how would you persuade management to invest more resources up front to establish a wider design space? Describe the return on investment in business language."
+  },
+  {
+   "zh": "<strong>5.2 Flow Characteristics 5.2 流動特性</strong>",
+   "en": "<strong>5.2 Flow Characteristics</strong>"
+  },
+  {
+   "zh": "<strong>EFA（Effective Filtration Area，有效過濾面積）：</strong>這是過濾科學中最核心的參數之一。EFA 是濾膜實際參與過濾的表面積，是放大（Scale-up）和縮小（Scale-down）計算的基礎。",
+   "en": "<strong>EFA (Effective Filtration Area):</strong> This is one of the most central parameters in filtration science. EFA is the membrane surface area that actually takes part in filtration and is the basis for scale-up and scale-down calculations."
+  },
+  {
+   "zh": "<strong>Flux（通量）：</strong>單位面積的流速，通常以 L/m²/hr 表示。這是比較不同尺寸濾膜性能的標準化指標。",
+   "en": "<strong>Flux:</strong> The flow rate per unit area, usually expressed in L/m²/hr. It is a standardized metric for comparing the performance of filters of different sizes."
+  },
+  {
+   "zh": "<strong>Table 5.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p34-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的邏輯：</strong>流速受八個因素影響，其中大部分由濾膜設計和液體性質決定。在實際操作中，你能直接控制的主要是差壓（Differential Pressure）-- 這就是為什麼它是「最關鍵的可調參數」。",
+   "en": "<strong>The logic of Table 5.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p34-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>:</strong> Flow rate is affected by eight factors, most of which are determined by the filter design and the liquid properties. In actual operation, the main factor you can control directly is the differential pressure -- which is why it is the \"most critical adjustable parameter\"."
+  },
+  {
+   "zh": "理解流速就像理解水龍頭出水。想像你家的水管：",
+   "en": "Understanding flow rate is like understanding water flowing from a tap. Imagine the pipes in your home:"
+  },
+  {
+   "zh": "<strong>孔隙大小（Pore Size）= 水管口徑：</strong>管子越粗，水流越大",
+   "en": "<strong>Pore Size = pipe diameter:</strong> the wider the pipe, the greater the water flow"
+  },
+  {
+   "zh": "<strong>差壓（ΔP）= 水壓：</strong>打開水壓開關，水流更大",
+   "en": "<strong>Differential pressure (ΔP) = water pressure:</strong> open the pressure valve and the water flows more"
+  },
+  {
+   "zh": "<strong>黏度（Viscosity）= 水 vs 蜂蜜：</strong>蜂蜜流得慢，需要更大壓力才能推動",
+   "en": "<strong>Viscosity = water vs honey:</strong> honey flows slowly and needs more pressure to push it"
+  },
+  {
+   "zh": "<strong>膜厚度 = 水管長度：</strong>管子越長，阻力越大",
+   "en": "<strong>Membrane thickness = pipe length:</strong> the longer the pipe, the greater the resistance"
+  },
+  {
+   "zh": "<strong>EFA = 多少條水管同時開：</strong>開越多條，總流量越大",
+   "en": "<strong>EFA = how many pipes are open at once:</strong> the more pipes open, the greater the total flow"
+  },
+  {
+   "zh": "在所有這些因素中，你最容易調節的就是「水壓」（差壓），其他因素在你選定濾膜和液體後就固定了。",
+   "en": "Of all these factors, the one you can adjust most easily is the \"water pressure\" (differential pressure); the others are fixed once you have chosen the filter and the liquid."
+  },
+  {
+   "zh": "<strong>不同應用有不同最佳化目標：</strong>",
+   "en": "<strong>Different applications have different optimization goals:</strong>"
+  },
+  {
+   "zh": "<strong>緩衝液等非堵塞性流體：</strong>最佳化目標 = 最大流速 → 選高通量濾膜",
+   "en": "<strong>Non-fouling fluids such as buffers:</strong> optimization goal = maximum flow rate → choose a high-flux filter"
+  },
+  {
+   "zh": "<strong>培養基等含污染物流體：</strong>最佳化目標 = 最大通量（容量）→ 選高容量濾膜",
+   "en": "<strong>Fluids containing contaminants such as culture media:</strong> optimization goal = maximum throughput (capacity) → choose a high-capacity filter"
+  },
+  {
+   "zh": "同一支濾膜不一定同時是「最快」和「最能裝」的 -- 這需要根據應用場景做取捨。",
+   "en": "The same filter is not necessarily both the \"fastest\" and the one that \"holds the most\" -- a trade-off is needed based on the application."
+  },
+  {
+   "zh": "<strong>連結驗證：</strong>本節的流速範圍研究結果，最終將用來定義 Section 6.8 中驗證活動的挑戰範圍。設計階段定義得越清楚，驗證活動就越精準高效。",
+   "en": "<strong>Link to validation:</strong> The results of the flow rate range studies in this section will ultimately be used to define the challenge range of the validation activities in Section 6.8. The more clearly the design stage is defined, the more precise and efficient the validation activities will be."
+  },
+  {
+   "zh": "<strong>基本流量關係（達西定律簡化版）：</strong>",
+   "en": "<strong>Basic flow relationship (simplified Darcy's law):</strong>"
+  },
+  {
+   "zh": "Q = (ΔP x A x K) / (μ x L)\n\n其中：\n  Q = 流量 (Flow Rate)\n  ΔP = 差壓 (Differential Pressure)\n  A = 有效過濾面積 (EFA)\n  K = 膜滲透係數 (Membrane Permeability)\n  μ = 流體黏度 (Viscosity)\n  L = 膜厚度 (Membrane Thickness)\n\nFlux = Q / A = (ΔP x K) / (μ x L)\n\n放大計算基礎：\n  Q_large / Q_small = EFA_large / EFA_small\n  （在相同 ΔP、溫度條件下）",
+   "en": "Q = (ΔP x A x K) / (μ x L)\n\nWhere:\n  Q = Flow Rate\n  ΔP = Differential Pressure\n  A = Effective Filtration Area (EFA)\n  K = Membrane Permeability\n  μ = Fluid Viscosity\n  L = Membrane Thickness\n\nFlux = Q / A = (ΔP x K) / (μ x L)\n\nBasis for scale-up calculations:\n  Q_large / Q_small = EFA_large / EFA_small\n  (at the same ΔP and temperature)"
+  },
+  {
+   "zh": "Table 5.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p34-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 中的八個因素，哪些是操作人員可以控制的？哪些在選定濾膜後就固定了？",
+   "en": "Of the eight factors in Table 5.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p34-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, which can be controlled by operators? Which are fixed once the filter has been selected?"
+  },
+  {
+   "zh": "為什麼「Tortuous Flow Path」（彎曲流路）會降低流速？但它對細菌截留有什麼影響？",
+   "en": "Why does a \"Tortuous Flow Path\" reduce the flow rate? What effect does it have on bacterial retention?"
+  },
+  {
+   "zh": "一位同事建議「既然壓力越高流速越快，那就把壓力開到最大」。這個建議有什麼風險？",
+   "en": "A colleague suggests, \"Since higher pressure means faster flow, just set the pressure to the maximum.\" What are the risks of this suggestion?"
+  },
+  {
+   "zh": "<strong>5.2.1 Inlet and Differential Pressure 5.2.1 入口壓力與壓差</strong>",
+   "en": "<strong>5.2.1 Inlet and Differential Pressure</strong>"
+  },
+  {
+   "zh": "<strong>Differential Pressure (ΔP，差壓) vs Inlet Pressure（入口壓力）：</strong>",
+   "en": "<strong>Differential Pressure (ΔP) vs Inlet Pressure:</strong>"
+  },
+  {
+   "zh": "<strong>ΔP = P_inlet - P_outlet：</strong>真正驅動液體通過濾膜的力。這才是影響過濾性能的核心參數。",
+   "en": "<strong>ΔP = P_inlet - P_outlet:</strong> The force that actually drives liquid through the filter. This is the core parameter affecting filtration performance."
+  },
+  {
+   "zh": "<strong>Inlet Pressure：</strong>只測量進料側的壓力。當出口為大氣壓（如排入開放容器）時，Inlet Pressure ≈ ΔP。",
+   "en": "<strong>Inlet Pressure:</strong> Measures only the pressure on the feed side. When the outlet is at atmospheric pressure (e.g., discharging into an open vessel), Inlet Pressure ≈ ΔP."
+  },
+  {
+   "zh": "但如果出口端是加壓系統（如密封的儲槽），你必須同時測量出口壓力才能算出真正的 ΔP。",
+   "en": "But if the outlet side is a pressurized system (e.g., a sealed tank), you must measure the outlet pressure as well to calculate the true ΔP."
+  },
+  {
+   "zh": "<strong>Filter Fouling 指標：</strong>在恆流速操作下，差壓逐漸上升 = 濾膜正在堵塞。這是一個重要的製程監控信號。",
+   "en": "<strong>Filter fouling indicator:</strong> Under constant flow rate operation, a gradual rise in differential pressure = the filter is fouling. This is an important process monitoring signal."
+  },
+  {
+   "zh": "<strong>兩種驅動模式：</strong>",
+   "en": "<strong>Two driving modes:</strong>"
+  },
+  {
+   "zh": "<strong>泵驅動（Pump-driven）：</strong>蠕動泵（Peristaltic Pump）控制流速，壓力隨阻力變化",
+   "en": "<strong>Pump-driven:</strong> a peristaltic pump controls the flow rate, and the pressure varies with resistance"
+  },
+  {
+   "zh": "<strong>壓力驅動（Pressure-driven）：</strong>壓力控制閥維持恆壓，流速隨阻力變化",
+   "en": "<strong>Pressure-driven:</strong> a pressure control valve maintains constant pressure, and the flow rate varies with resistance"
+  },
+  {
+   "zh": "差壓和入口壓力的差別，就像水塔供水：",
+   "en": "The difference between differential pressure and inlet pressure is like a water tower supply:"
+  },
+  {
+   "zh": "<strong>入口壓力 = 水塔的水壓：</strong>你可以在水表上讀到",
+   "en": "<strong>Inlet pressure = the water pressure at the water tower:</strong> you can read it on the water meter"
+  },
+  {
+   "zh": "<strong>出口壓力 = 你家樓層的水壓：</strong>住在一樓幾乎是零，住在十樓就有明顯的背壓",
+   "en": "<strong>Outlet pressure = the water pressure at your floor:</strong> on the ground floor it is almost zero, while on the tenth floor there is noticeable back pressure"
+  },
+  {
+   "zh": "<strong>差壓 = 真正推動水流的力：</strong>如果水塔壓力 5 bar，你家背壓 2 bar，真正驅動水流的只有 3 bar",
+   "en": "<strong>Differential pressure = the force that actually pushes the water:</strong> if the tower pressure is 5 bar and your back pressure is 2 bar, only 3 bar actually drives the flow"
+  },
+  {
+   "zh": "如果你只看水塔壓力就說「水壓很夠」，但忽略了你家背壓很高，實際水流可能很小。同樣地，只看 Inlet Pressure 可能會高估實際的過濾驅動力。",
+   "en": "If you look only at the tower pressure and say \"the water pressure is plenty\" while ignoring that your back pressure is high, the actual water flow may be very small. Likewise, looking only at Inlet Pressure may overestimate the actual driving force for filtration."
+  },
+  {
+   "zh": "<strong>蠕動泵（Peristaltic Pump）在一次性使用系統（SUS）中的優勢：</strong>",
+   "en": "<strong>Advantages of peristaltic pumps in single-use systems (SUS):</strong>"
+  },
+  {
+   "zh": "無需清洗內部零件（流體只接觸管路，不接觸泵機構）",
+   "en": "No internal parts to clean (the fluid contacts only the tubing, not the pump mechanism)"
+  },
+  {
+   "zh": "流速與轉速（RPM）和管徑直接相關，容易控制",
+   "en": "The flow rate is directly related to rotational speed (RPM) and tubing diameter, so it is easy to control"
+  },
+  {
+   "zh": "非常適合一次性使用系統的理念",
+   "en": "Very well suited to the single-use system concept"
+  },
+  {
+   "zh": "<strong>監管期望：</strong>即使是使用蠕動泵的恆流速系統，某些衛生主管機關仍然可能要求進行壓力監控。這意味著壓力感測器/壓力錶應該被視為標準配備，而非可選項。",
+   "en": "<strong>Regulatory expectation:</strong> Even for constant flow rate systems using peristaltic pumps, some health authorities may still require pressure monitoring. This means pressure sensors/gauges should be regarded as standard equipment rather than optional."
+  },
+  {
+   "zh": "<strong>安全餘量原則：</strong>適當的系統設計應確保操作壓力遠低於驗證的最大壓力限值，留有充足的安全裕度。",
+   "en": "<strong>Safety margin principle:</strong> A properly designed system should ensure that the operating pressure is well below the validated maximum pressure limit, leaving an ample safety margin."
+  },
+  {
+   "zh": "差壓計算：\n  ΔP = P_inlet - P_outlet\n\n情境一：出口排入開放容器（vented vessel）\n  P_outlet ≈ 大氣壓（1 atm）\n  ΔP ≈ P_inlet - 1 atm\n\n情境二：出口排入加壓系統\n  P_outlet = 須實測\n  ΔP = P_inlet - P_outlet（實測值）\n\n情境三：無法測量出口壓力時\n  假設 P_inlet = ΔP（最差情境上限）\n  → 這是保守估算，確保不超過驗證壓力",
+   "en": "Differential pressure calculation:\n  ΔP = P_inlet - P_outlet\n\nScenario 1: outlet discharges into an open vessel (vented vessel)\n  P_outlet ≈ atmospheric pressure (1 atm)\n  ΔP ≈ P_inlet - 1 atm\n\nScenario 2: outlet discharges into a pressurized system\n  P_outlet = must be measured\n  ΔP = P_inlet - P_outlet (measured value)\n\nScenario 3: outlet pressure cannot be measured\n  Assume P_inlet = ΔP (worst-case upper limit)\n  → This is a conservative estimate that ensures the validated pressure is not exceeded"
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你的無菌充填線使用蠕動泵驅動的一次性過濾系統。泵設定在固定 RPM，正常操作壓力約 1.2 bar。某次生產時，操作員注意到壓力已上升到 1.8 bar，但流速維持不變。",
+   "en": "<strong>CDMO scenario:</strong> Your aseptic filling line uses a single-use filtration system driven by a peristaltic pump. The pump is set at a fixed RPM, and normal operating pressure is about 1.2 bar. During one production run, the operator notices that the pressure has risen to 1.8 bar while the flow rate has remained unchanged."
+  },
+  {
+   "zh": "這代表什麼？ -- 濾膜正在堵塞（fouling）。雖然流速還正常，但如果壓力持續上升到接近驗證上限（例如 2.5 bar），就必須停止並更換濾膜。這就是差壓監控的價值：它能在問題影響產品品質之前提供預警。",
+   "en": "What does this mean? -- The filter is fouling. Although the flow rate is still normal, if the pressure keeps rising toward the validated upper limit (for example, 2.5 bar), you must stop and replace the filter. This is the value of differential pressure monitoring: it gives early warning before the problem affects product quality."
+  },
+  {
+   "zh": "在什麼情況下，Inlet Pressure 不等於 Differential Pressure？請舉出你工廠中的實例。",
+   "en": "Under what circumstances is Inlet Pressure not equal to Differential Pressure? Give an example from your facility."
+  },
+  {
+   "zh": "蠕動泵驅動系統和壓力驅動系統各有什麼優缺點？對於 CDMO 來說，你會如何選擇？",
+   "en": "What are the advantages and disadvantages of peristaltic pump-driven and pressure-driven systems? As a CDMO, how would you choose?"
+  },
+  {
+   "zh": "為什麼在恆流速操作下，差壓上升是 filter fouling 的指標？如果是恆壓操作，fouling 的指標會是什麼？",
+   "en": "Why is a rise in differential pressure under constant flow rate operation an indicator of filter fouling? What would the fouling indicator be under constant pressure operation?"
+  },
+  {
+   "zh": "<strong>5.2.2 Filtration Process Temperature 5.2.2 過濾製程溫度</strong>",
+   "en": "<strong>5.2.2 Filtration Process Temperature</strong>"
+  },
+  {
+   "zh": "<strong>溫度對過濾系統的三重影響：</strong>",
+   "en": "<strong>Three effects of temperature on the filtration system:</strong>"
+  },
+  {
+   "zh": "<strong>機械強度降低：</strong>溫度升高 → 濾膜材料軟化 → 最大承受壓力下降。這是一個反比關係：溫度越高，允許的最大差壓越低。",
+   "en": "<strong>Reduced mechanical strength:</strong> temperature rises → the filter material softens → the maximum allowable pressure decreases. This is an inverse relationship: the higher the temperature, the lower the allowable maximum differential pressure."
+  },
+  {
+   "zh": "<strong>可溶出物（Leachables）增加：</strong>高溫促進濾膜材料中化學物質的溶出，可能影響產品品質和安全性。",
+   "en": "<strong>Increased leachables:</strong> High temperature promotes the leaching of chemicals from the filter material, which may affect product quality and safety."
+  },
+  {
+   "zh": "<strong>流體黏度降低：</strong>溫度升高 → 黏度降低 → 流速增加。對於牛頓流體（Newtonian Fluids），這是正面效果。",
+   "en": "<strong>Reduced fluid viscosity:</strong> temperature rises → viscosity decreases → flow rate increases. For Newtonian fluids, this is a positive effect."
+  },
+  {
+   "zh": "<strong>正向 vs 反向流動：</strong>壓力限值在正向和反向流動可能不同。反向流動通常被視為最差情境，因為濾膜結構設計通常是針對正向流動最佳化的。",
+   "en": "<strong>Forward vs reverse flow:</strong> Pressure limits may differ between forward and reverse flow. Reverse flow is generally regarded as the worst case because the filter structure is usually optimized for forward flow."
+  },
+  {
+   "zh": "溫度對濾膜的影響就像天氣對橡皮筋的影響：",
+   "en": "The effect of temperature on a filter is like the effect of weather on a rubber band:"
+  },
+  {
+   "zh": "<strong>低溫：</strong>橡皮筋硬但結實，能承受大力拉扯（高壓力）",
+   "en": "<strong>Low temperature:</strong> the rubber band is stiff but strong and can withstand strong pulling (high pressure)"
+  },
+  {
+   "zh": "<strong>高溫：</strong>橡皮筋軟化，容易被拉斷（低壓力就可能損壞）",
+   "en": "<strong>High temperature:</strong> the rubber band softens and is easily snapped (damage may occur at low pressure)"
+  },
+  {
+   "zh": "<strong>流體黏度：</strong>就像蜂蜜加熱後變稀一樣 -- 同樣的壓力下流動更快",
+   "en": "<strong>Fluid viscosity:</strong> like honey becoming thinner when heated -- it flows faster under the same pressure"
+  },
+  {
+   "zh": "但這裡有一個矛盾：高溫雖然讓液體更容易流動（好事），卻也讓濾膜變脆弱（壞事）。所以操作溫度需要在兩者之間找到平衡。",
+   "en": "But there is a contradiction here: high temperature makes the liquid flow more easily (good) but also makes the filter more fragile (bad). So the operating temperature needs to strike a balance between the two."
+  },
+  {
+   "zh": "<strong>溫度-壓力的反比關係：</strong>Figure 5.2.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=fig-p36-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 所描繪的典型曲線呈下降趨勢 -- 隨著溫度上升，最大允許差壓逐步降低。務必查閱濾膜製造商的資格文件（Qualification Documentation），取得你所使用的特定濾膜型號在各溫度下的壓力限值。",
+   "en": "<strong>The inverse temperature-pressure relationship:</strong> The typical curve depicted in Figure 5.2.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=fig-p36-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> trends downward -- as temperature rises, the maximum allowable differential pressure decreases step by step. Be sure to consult the filter manufacturer's qualification documentation to obtain the pressure limits at each temperature for the specific filter model you use."
+  },
+  {
+   "zh": "<strong>Leachables（可溶出物）的雙重風險：</strong>",
+   "en": "<strong>The dual risk of leachables:</strong>"
+  },
+  {
+   "zh": "產品品質風險：溶出物可能與藥物活性成分交互作用",
+   "en": "Product quality risk: leachables may interact with the active pharmaceutical ingredient"
+  },
+  {
+   "zh": "病患安全風險：某些溶出物可能有毒性",
+   "en": "Patient safety risk: some leachables may be toxic"
+  },
+  {
+   "zh": "高溫操作時，Leachables 評估尤其重要，這與 Section 4（濾膜資格確認）中的 Extractables/Leachables 研究直接相關。",
+   "en": "Leachables assessment is especially important for high-temperature operation, and it is directly related to the extractables/leachables studies in Section 4 (filter qualification)."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 5.2.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=fig-p36-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>（溫度/壓力耐受性曲線）：</strong>雖然此處無法顯示原圖，但典型的曲線樣態如下：",
+   "en": "<strong>Figure 5.2.2-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=fig-p36-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> (temperature/pressure tolerance curve):</strong> Although the original figure cannot be shown here, the typical shape of the curve is as follows:"
+  },
+  {
+   "zh": "X 軸 = 溫度（°C），從室溫到最高使用溫度",
+   "en": "X axis = temperature (°C), from room temperature to the maximum use temperature"
+  },
+  {
+   "zh": "Y 軸 = 最大允許差壓（bar 或 psi）",
+   "en": "Y axis = maximum allowable differential pressure (bar or psi)"
+  },
+  {
+   "zh": "曲線向右下方傾斜：溫度越高，允許的最大壓力越低",
+   "en": "The curve slopes down to the right: the higher the temperature, the lower the maximum allowable pressure"
+  },
+  {
+   "zh": "通常在某個溫度點會有一個顯著的轉折點，超過該點後壓力限值急劇下降",
+   "en": "There is usually a noticeable inflection point at a certain temperature, beyond which the pressure limit drops sharply"
+  },
+  {
+   "zh": "<strong>實務意義：</strong>在進行製程設計時，必須在此曲線的安全區域內操作，並留有適當的安全餘量。",
+   "en": "<strong>Practical significance:</strong> During process design, you must operate within the safe region of this curve, with an appropriate safety margin."
+  },
+  {
+   "zh": "如果你需要過濾一個必須在 60°C 操作的產品，你需要向濾膜供應商確認哪些資訊？",
+   "en": "If you need to filter a product that must be processed at 60°C, what information do you need to confirm with the filter supplier?"
+  },
+  {
+   "zh": "溫度升高同時降低黏度（有利）和降低壓力耐受度（不利），你如何在實際操作中平衡這兩個因素？",
+   "en": "A rise in temperature both lowers viscosity (favorable) and lowers pressure tolerance (unfavorable). How do you balance these two factors in actual operation?"
+  },
+  {
+   "zh": "為什麼反向流動通常被視為壓力限值的最差情境？在什麼操作步驟中可能發生反向流動？",
+   "en": "Why is reverse flow usually regarded as the worst case for pressure limits? In which operating steps might reverse flow occur?"
+  },
+  {
+   "zh": "<strong>5.2.3 Filtration Time 5.2.3 過濾時間</strong>",
+   "en": "<strong>5.2.3 Filtration Time</strong>"
+  },
+  {
+   "zh": "<strong>兩種過濾模式的時間特性：</strong>",
+   "en": "<strong>Time characteristics of the two filtration modes:</strong>"
+  },
+  {
+   "zh": "<strong>單次批量過濾（Single Bulk Filtration）：</strong>將整批藥液一次性過濾到無菌儲槽。過濾時間相對固定且較短。",
+   "en": "<strong>Single Bulk Filtration:</strong> The entire batch of drug solution is filtered once into a sterile holding tank. The filtration time is relatively fixed and short."
+  },
+  {
+   "zh": "<strong>間歇式線上過濾（Intermittent In-line Filtration）：</strong>配合充填機的速度，持續地將藥液過濾到 Break Tank（緩衝槽），由充填泵取用。過濾時間等於整個充填製程的持續時間，可能長達數小時甚至整天。",
+   "en": "<strong>Intermittent In-line Filtration:</strong> Matched to the speed of the filling machine, the drug solution is filtered continuously into a break tank, from which the filling pump draws. The filtration time equals the duration of the whole filling process, which may last several hours or even a whole day."
+  },
+  {
+   "zh": "<strong>過濾時間 vs 產品接觸時間：</strong>",
+   "en": "<strong>Filtration time vs product contact time:</strong>"
+  },
+  {
+   "zh": "<strong>過濾時間：</strong>實際過濾的持續時間",
+   "en": "<strong>Filtration time:</strong> the duration of actual filtration"
+  },
+  {
+   "zh": "<strong>產品接觸時間：</strong>= 過濾時間 + 等待時間 + 中斷時間。這是更嚴格的定義，用於驗證。",
+   "en": "<strong>Product contact time:</strong> = filtration time + waiting time + interruption time. This is the stricter definition and is used for validation."
+  },
+  {
+   "zh": "想像你用濾水壺過濾自來水：",
+   "en": "Imagine filtering tap water with a water filter pitcher:"
+  },
+  {
+   "zh": "<strong>批量過濾：</strong>一次倒滿一整壺水等它濾完 -- 接觸時間就是過濾完成所需的時間",
+   "en": "<strong>Batch filtration:</strong> fill the whole pitcher at once and wait for it to finish filtering -- the contact time is the time needed to complete filtration"
+  },
+  {
+   "zh": "<strong>線上過濾：</strong>你邊喝水邊加水，濾水壺從早到晚一直在工作 -- 接觸時間是一整天",
+   "en": "<strong>In-line filtration:</strong> you add water while you drink, and the pitcher works from morning to night -- the contact time is the whole day"
+  },
+  {
+   "zh": "時間越長，細菌穿透濾膜的風險越高 -- 就像門開越久，蚊子飛進來的機會越大。所以驗證必須涵蓋最長的可能接觸時間。",
+   "en": "The longer the time, the higher the risk of bacteria penetrating the filter -- like a door left open longer gives mosquitoes more chances to fly in. Therefore the validation must cover the longest possible contact time."
+  },
+  {
+   "zh": "<strong>Bacterial Penetration（細菌穿透）風險與時間的關係：</strong>時間是細菌截留驗證中的關鍵最差情境參數。原因包括：",
+   "en": "<strong>The relationship between bacterial penetration risk and time:</strong> Time is a key worst-case parameter in bacterial retention validation. The reasons include:"
+  },
+  {
+   "zh": "長時間接觸讓細菌有更多機會尋找並穿透膜孔",
+   "en": "Long contact gives bacteria more opportunity to find and penetrate the membrane pores"
+  },
+  {
+   "zh": "某些細菌在接觸濾膜後可能改變形態（如縮小體積）",
+   "en": "Some bacteria may change morphology (e.g., shrink in size) after contact with the filter"
+  },
+  {
+   "zh": "長時間浸泡可能影響濾膜材料的完整性",
+   "en": "Prolonged soaking may affect the integrity of the filter material"
+  },
+  {
+   "zh": "<strong>Manufacturing Interruption Scenarios（製造中斷情境）：</strong>最差情境時間必須包含非計畫性中斷。例如：充填機故障、環境監測警報、設備清潔等可能導致過濾暫停但濾膜仍與產品接觸的情境。",
+   "en": "<strong>Manufacturing Interruption Scenarios:</strong> The worst-case time must include unplanned interruptions. Examples: filling machine breakdowns, environmental monitoring alarms, and equipment cleaning, which may pause filtration while the filter remains in contact with the product."
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你的充填線通常一個批次充填 8 小時，但偶爾會遇到設備故障需要暫停 2 小時，且生產操作規範允許最多暫停兩次。那麼你的最差情境產品接觸時間 = 8 + 2 + 2 = 12 小時。你的細菌截留驗證必須涵蓋至少 12 小時的接觸時間，否則一旦實際生產超過驗證範圍，該批次可能面臨合規性質疑。",
+   "en": "<strong>CDMO scenario:</strong> Your filling line usually fills a batch in 8 hours, but occasionally an equipment failure requires a 2-hour pause, and the production procedure allows a maximum of two pauses. Your worst-case product contact time is then 8 + 2 + 2 = 12 hours. Your bacterial retention validation must cover a contact time of at least 12 hours; otherwise, if actual production exceeds the validated range, that batch may face compliance challenges."
+  },
+  {
+   "zh": "在你的工廠中，除菌過濾的最大產品接觸時間是多少？是否已將所有可能的中斷情境納入考量？",
+   "en": "In your facility, what is the maximum product contact time for sterilizing filtration? Have all possible interruption scenarios been taken into account?"
+  },
+  {
+   "zh": "批量過濾和線上過濾的時間風險有何不同？哪種模式需要更嚴格的時間驗證？",
+   "en": "How do the time-related risks of batch filtration and in-line filtration differ? Which mode requires stricter time validation?"
+  },
+  {
+   "zh": "<strong>5.3 Filter Throughput and Maximum Volume 5.3 過濾器處理量與最大容量</strong>",
+   "en": "<strong>5.3 Filter Throughput and Maximum Volume</strong>"
+  },
+  {
+   "zh": "<strong>Filter Throughput（濾膜通量/容量）：</strong>在特定製程條件下，一支濾膜能處理的總體積。這與 Flow Rate（流速）不同 -- 流速是「多快」，通量是「多少」。",
+   "en": "<strong>Filter Throughput:</strong> The total volume a filter can process under specific process conditions. This differs from flow rate -- flow rate is \"how fast\", throughput is \"how much\"."
+  },
+  {
+   "zh": "<strong>Table 5.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p37-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的關鍵洞見：</strong>",
+   "en": "<strong>Key insights from Table 5.3-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p37-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>:</strong>"
+  },
+  {
+   "zh": "<strong>Asymmetric vs Isotropic Pore Shape（非對稱 vs 等向孔形）：</strong>非對稱膜的孔隙從進料側到出口側逐漸收窄，形成漸進式截留，能容納更多粒子 → 通量更高",
+   "en": "<strong>Asymmetric vs Isotropic Pore Shape:</strong> The pores of an asymmetric membrane narrow gradually from the feed side to the outlet side, forming progressive retention that can hold more particles → higher throughput"
+  },
+  {
+   "zh": "<strong>Deformable, Soft Contaminant（可變形軟質污染物）：</strong>軟質粒子（如蛋白質聚集體）會被壓入膜孔，堵塞更嚴重 → 通量更低。硬質粒子則停留在表面，不會深入堵塞",
+   "en": "<strong>Deformable, Soft Contaminant:</strong> Soft particles (such as protein aggregates) are pressed into the membrane pores and cause more severe plugging → lower throughput. Hard particles stay on the surface and do not plug deep into the membrane"
+  },
+  {
+   "zh": "<strong>Shear-Stress History（剪切應力歷史）：</strong>製程上游的高剪切操作（如高速攪拌）可能產生蛋白質聚集體，直接影響過濾通量",
+   "en": "<strong>Shear-Stress History:</strong> High-shear operations upstream in the process (such as high-speed mixing) may generate protein aggregates, directly affecting filtration throughput"
+  },
+  {
+   "zh": "想像你在用咖啡濾紙沖咖啡：",
+   "en": "Imagine brewing coffee with a paper filter:"
+  },
+  {
+   "zh": "<strong>流速（Flow Rate）：</strong>水流過濾紙的速度 -- 「多快」",
+   "en": "<strong>Flow rate:</strong> how fast the water passes through the filter paper -- \"how fast\""
+  },
+  {
+   "zh": "<strong>通量（Throughput）：</strong>這張濾紙在堵塞之前總共能沖幾杯 -- 「多少」",
+   "en": "<strong>Throughput:</strong> how many cups this filter paper can brew in total before it clogs -- \"how much\""
+  },
+  {
+   "zh": "<strong>軟質 vs 硬質污染物：</strong>細咖啡渣（軟、可變形）會鑽進濾紙纖維裡，很快堵死。粗咖啡豆碎片（硬）停在表面，濾紙能用更久",
+   "en": "<strong>Soft vs hard contaminants:</strong> Fine coffee grounds (soft, deformable) work their way into the paper fibers and clog it quickly. Coarse bean fragments (hard) stay on the surface, and the paper lasts longer"
+  },
+  {
+   "zh": "<strong>前段製程影響：</strong>如果你把咖啡豆磨得太細（= 高剪切），濾紙堵塞得更快",
+   "en": "<strong>Upstream process effects:</strong> If you grind the beans too fine (= high shear), the filter paper clogs faster"
+  },
+  {
+   "zh": "<strong>許多最終配方不會造成堵塞：</strong>TR26 特別指出，很多經過除菌過濾的藥液是最終配方，實際上不會造成明顯的濾膜堵塞。在這些情境中，通量限制不是技術問題，但你仍然需要指定一個最大過濾體積用於驗證。",
+   "en": "<strong>Many final formulations are non-fouling:</strong> TR26 specifically points out that many drug solutions that undergo sterilizing filtration are final formulations that in practice do not cause noticeable filter fouling. In these cases throughput limitation is not a technical issue, but you still need to specify a maximum filtration volume for validation."
+  },
+  {
+   "zh": "<strong>高剪切攪拌的影響：</strong>TR26 引用了一個重要案例 -- 單株抗體的高剪切攪拌會產生聚集體（agglomerates），直接影響過濾通量。這提醒我們：過濾性能不只取決於當下的操作條件，還受上游製程歷史的影響。",
+   "en": "<strong>The effect of high-shear mixing:</strong> TR26 cites an important case -- high-shear mixing of a monoclonal antibody generates agglomerates, directly affecting filtration throughput. This reminds us that filtration performance depends not only on current operating conditions but also on the upstream process history."
+  },
+  {
+   "zh": "<strong>即使沒有通量限制也要指定最大體積：</strong>這是驗證要求。驗證必須有明確的邊界條件。",
+   "en": "<strong>Specify a maximum volume even when there is no throughput limitation:</strong> This is a validation requirement. Validation must have clearly defined boundary conditions."
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你的客戶提供了一個 mAb 產品用於除菌過濾。在小規模測試中，你發現過濾到 500 L/m² 時流速開始明顯下降。進一步調查發現，客戶的上游製程使用了高速攪拌器進行混合，產生了蛋白質聚集體。",
+   "en": "<strong>CDMO scenario:</strong> Your client provides a mAb product for sterilizing filtration. In small-scale testing, you find that the flow rate begins to drop noticeably at 500 L/m². Further investigation shows that the client's upstream process used a high-speed mixer for blending, which generated protein aggregates."
+  },
+  {
+   "zh": "解決方案：(1) 建議客戶降低攪拌速度或改用低剪切混合 (2) 增加預過濾步驟去除聚集體 (3) 增加 EFA（使用更大的濾膜）以確保足夠通量 (4) 將上游攪拌條件納入製程設計空間。",
+   "en": "Solutions: (1) recommend that the client reduce the mixing speed or switch to low-shear mixing; (2) add a prefiltration step to remove the aggregates; (3) increase the EFA (use a larger filter) to ensure sufficient throughput; (4) include the upstream mixing conditions in the process design space."
+  },
+  {
+   "zh": "為什麼 Asymmetric Pore Shape 比 Isotropic Pore Shape 能提供更高的通量？請從結構角度說明。",
+   "en": "Why can an Asymmetric Pore Shape provide higher throughput than an Isotropic Pore Shape? Explain from a structural perspective."
+  },
+  {
+   "zh": "如果你的製程液體在實際操作中從未造成濾膜堵塞，你是否還需要進行通量測試？為什麼？",
+   "en": "If your process liquid has never caused filter fouling in actual operation, do you still need to perform throughput testing? Why?"
+  },
+  {
+   "zh": "上游製程的剪切歷史如何影響下游的除菌過濾性能？這對 CDMO 的跨部門協作有什麼啟示？",
+   "en": "How does the shear history of the upstream process affect downstream sterilizing filtration performance? What does this teach a CDMO about cross-functional collaboration?"
+  },
+  {
+   "zh": "<strong>5.4 Scale-Down Systems and Testing 5.4 縮小規模系統與測試</strong>",
+   "en": "<strong>5.4 Scale-Down Systems and Testing</strong>"
+  },
+  {
+   "zh": "<strong>Scale-Down Systems（縮小規模系統）：</strong>在實驗台規模（Bench-scale）模擬大規模生產的過濾條件。核心目的是用少量材料獲得具代表性的製程數據，用於預測商業化規模的性能。",
+   "en": "<strong>Scale-Down Systems:</strong> Simulate the filtration conditions of large-scale production at bench scale. The core purpose is to obtain representative process data from a small amount of material in order to predict commercial-scale performance."
+  },
+  {
+   "zh": "關鍵要求：縮小規模系統必須能「代表」（Representative）大規模製造的過濾行為。這意味著不能隨便縮小 -- 需要保持關鍵參數（如 flux、ΔP、溫度）的一致性。",
+   "en": "Key requirement: the scale-down system must be \"representative\" of the filtration behavior of large-scale manufacturing. This means you cannot scale down arbitrarily -- key parameters (such as flux, ΔP, and temperature) must be kept consistent."
+  },
+  {
+   "zh": "縮小規模測試就像建築師做的建築模型：你用 1:100 的比例模型測試結構強度和空氣流動。模型必須按比例精確縮小，而不是隨意做一個小房子。同樣地，過濾的 scale-down 系統必須按 EFA 比例縮小，同時維持相同的流速（flux）和壓力條件，否則測試結果無法放大到實際生產。",
+   "en": "Scale-down testing is like the architectural model an architect builds: you use a 1:100 scale model to test structural strength and airflow. The model must be scaled down precisely in proportion, not just any small house. Likewise, a filtration scale-down system must be scaled down in proportion to the EFA while maintaining the same flow rate (flux) and pressure conditions; otherwise the test results cannot be scaled up to actual production."
+  },
+  {
+   "zh": "Scale-down 系統的「代表性」是整個製程開發的基礎。如果小規模測試的結果不能準確預測大規模表現，所有後續的設計決策都會建立在不可靠的數據上。這就是為什麼本節要深入討論可用的系統類型和放大考量。",
+   "en": "The \"representativeness\" of the scale-down system is the foundation of the entire process development. If the results of small-scale testing cannot accurately predict large-scale performance, all subsequent design decisions will be built on unreliable data. This is why this section discusses the available system types and scale-up considerations in depth."
+  },
+  {
+   "zh": "為什麼製程開發（PD）活動要在小規模而非大規模進行？除了節省材料，還有哪些考量？",
+   "en": "Why are process development (PD) activities performed at small scale rather than large scale? Besides saving material, what other considerations are there?"
+  },
+  {
+   "zh": "如果小規模測試結果與大規模生產結果不一致，你會從哪些方面排查原因？",
+   "en": "If small-scale test results are inconsistent with large-scale production results, which areas would you investigate to find the cause?"
+  },
+  {
+   "zh": "<strong>5.4.1 Small Scale Device Testing 5.4.1 小規模裝置測試</strong>",
+   "en": "<strong>5.4.1 Small Scale Device Testing</strong>"
+  },
+  {
+   "zh": "<strong>濾膜篩選（Filter Screening）的演進：</strong>",
+   "en": "<strong>Evolution of filter screening:</strong>"
+  },
+  {
+   "zh": "<strong>傳統方法：</strong>使用 25mm 或 47mm 平面濾膜片（Disc）安裝在支架上進行測試",
+   "en": "<strong>Traditional method:</strong> test with 25 mm or 47 mm flat membrane discs mounted in holders"
+  },
+  {
+   "zh": "<strong>現代方法：</strong>使用封裝式濾膜片或小型皺褶膠囊（Small Pleated Capsule），更能代表實際生產中全尺寸濾膜的流動動力學",
+   "en": "<strong>Modern method:</strong> use encapsulated discs or small pleated capsules, which better represent the flow dynamics of full-size filters in actual production"
+  },
+  {
+   "zh": "<strong>兩種測試模式：</strong>",
+   "en": "<strong>Two test modes:</strong>"
+  },
+  {
+   "zh": "<strong>恆壓測試（Constant Pressure）：</strong>固定壓力，測量流速隨過濾體積的衰減。適用於大多數應用。",
+   "en": "<strong>Constant Pressure:</strong> The pressure is fixed and the decline in flow rate is measured as filtered volume increases. Suitable for most applications."
+  },
+  {
+   "zh": "<strong>恆流速測試（Constant Flow Rate）：</strong>固定流速，測量壓力隨過濾體積的上升。適用於含污染物的流體（如培養基），因為恆壓操作可能壓縮膜面的污染物導致更嚴重的堵塞。",
+   "en": "<strong>Constant Flow Rate:</strong> The flow rate is fixed and the rise in pressure is measured as filtered volume increases. Suitable for fluids containing contaminants (such as culture media), because constant pressure operation may compress contaminants on the membrane surface and cause more severe plugging."
+  },
+  {
+   "zh": "<strong>線性放大的限制：</strong>由於流路動力學（Flow-path Dynamics）和皺褶密度（Pleat Density）的差異，小規模結果不一定能線性放大。實驗設計必須充分理解這些限制。",
+   "en": "<strong>Limits of linear scale-up:</strong> Because of differences in flow-path dynamics and pleat density, small-scale results do not necessarily scale up linearly. The experimental design must fully take these limitations into account."
+  },
+  {
+   "zh": "小規模測試就像試穿衣服。傳統的 47mm 濾膜片測試就像看尺寸表估算 -- 只能得到大概的尺寸感。而現代的小型皺褶膠囊測試就像在店裡實際試穿小碼衣服 -- 更能感受到實際穿著時的合身程度和舒適度。",
+   "en": "Small-scale testing is like trying on clothes. The traditional 47 mm disc test is like estimating from a size chart -- you only get a rough sense of size. The modern small pleated capsule test is like actually trying on a small size in the store -- you get a much better feel for how it fits and how comfortable it is."
+  },
+  {
+   "zh": "但即使是實際試穿，也不能保證同款的加大碼穿起來完全一樣 -- 放大後的版型可能有微妙差異。同樣地，小規模過濾測試的結果在放大到生產規模時，也可能出現非線性的偏差。",
+   "en": "But even actually trying it on does not guarantee that the larger size of the same style will fit exactly the same -- the pattern may differ subtly after scaling up. Likewise, small-scale filtration test results may show non-linear deviations when scaled up to production scale."
+  },
+  {
+   "zh": "<strong>恆壓 vs 恆流速的選擇邏輯：</strong>",
+   "en": "<strong>The logic for choosing between constant pressure and constant flow rate:</strong>"
+  },
+  {
+   "zh": "恆壓測試更常見，也是多數廠商推薦的默認方法",
+   "en": "Constant pressure testing is more common and is the default method recommended by most vendors"
+  },
+  {
+   "zh": "但對於含有可壓縮污染物的流體（如培養基），恆壓會將污染物壓入膜孔，導致不具代表性的嚴重堵塞",
+   "en": "But for fluids containing compressible contaminants (such as culture media), constant pressure forces contaminants into the membrane pores, causing non-representative, severe plugging"
+  },
+  {
+   "zh": "恆流速測試避免了這個問題，因為壓力是逐漸上升的",
+   "en": "Constant flow rate testing avoids this problem because the pressure rises gradually"
+  },
+  {
+   "zh": "<strong>Prefilter Combinations（預過濾組合）：</strong>小規模測試也可以用來評估預過濾器（Prefilter）的效果 -- 在除菌級濾膜前增加一個孔徑較大的預過濾器，去除大粒子，延長除菌級濾膜的壽命，降低整體成本。",
+   "en": "<strong>Prefilter Combinations:</strong> Small-scale testing can also be used to evaluate the effect of prefilters -- adding a prefilter with a larger pore size ahead of the sterilizing-grade filter removes large particles, extends the life of the sterilizing-grade filter, and lowers overall cost."
+  },
+  {
+   "zh": "<strong>Yield-Sensitive Applications（對收率敏感的應用）：</strong>對於高價值生物製劑，必須在過濾過程中頻繁取樣檢測產品濃度，確認吸附損失在可接受範圍內。",
+   "en": "<strong>Yield-Sensitive Applications:</strong> For high-value biologics, samples must be taken frequently during filtration to measure product concentration and confirm that adsorption loss is within an acceptable range."
+  },
+  {
+   "zh": "<strong>EFA 比例放大計算：</strong>",
+   "en": "<strong>EFA proportional scale-up calculation:</strong>"
+  },
+  {
+   "zh": "放大倍數 = EFA_production / EFA_small-scale\n\n例如：\n  小規模測試：EFA = 3.5 cm² (47mm disc)\n  生產規模需處理 500L，小規模可處理 50 mL\n\n  所需放大倍數 = 500,000 mL / 50 mL = 10,000\n  生產規模所需 EFA = 3.5 cm² × 10,000 = 35,000 cm² = 3.5 m²\n\n注意：此計算假設線性放大，實際可能需要\n加入安全係數（通常 1.2-2.0x）以補償\n非線性效應和皺褶密度差異。",
+   "en": "Scale-up factor = EFA_production / EFA_small-scale\n\nFor example:\n  Small-scale test: EFA = 3.5 cm² (47 mm disc)\n  Production needs to process 500 L; the small scale can process 50 mL\n\n  Required scale-up factor = 500,000 mL / 50 mL = 10,000\n  EFA required at production scale = 3.5 cm² × 10,000 = 35,000 cm² = 3.5 m²\n\nNote: This calculation assumes linear scale-up. In practice,\na safety factor (typically 1.2-2.0x) may need to be added to\ncompensate for non-linear effects and differences in pleat density."
+  },
+  {
+   "zh": "<strong>CDMO 情境：</strong>你需要為一個新的 mAb 產品選擇除菌濾膜。你手上有三個候選濾膜廠商的小型測試膠囊。",
+   "en": "<strong>CDMO scenario:</strong> You need to select a sterilizing filter for a new mAb product. You have small test capsules from three candidate filter vendors."
+  },
+  {
+   "zh": "<strong>建議的篩選流程：</strong>",
+   "en": "<strong>Suggested screening procedure:</strong>"
+  },
+  {
+   "zh": "使用相同的製程液體，在恆壓條件下（模擬生產壓力）測試三支濾膜",
+   "en": "Using the same process liquid, test the three filters under constant pressure conditions (simulating production pressure)"
+  },
+  {
+   "zh": "繪製流速 vs 過濾體積曲線（Flow Curve）",
+   "en": "Plot the flow rate vs filtered volume curve (Flow Curve)"
+  },
+  {
+   "zh": "比較各濾膜的通量（L/m²）、堵塞傾向和吸附表現",
+   "en": "Compare the throughput (L/m²), fouling tendency, and adsorption performance of each filter"
+  },
+  {
+   "zh": "選出最佳候選者後，用 EFA 比例計算生產規模所需的濾膜尺寸",
+   "en": "After selecting the best candidate, use the EFA proportional calculation to size the filter required at production scale"
+  },
+  {
+   "zh": "加入 1.5-2.0x 安全係數以補償放大過程中的不確定性",
+   "en": "Add a 1.5-2.0x safety factor to compensate for uncertainty in the scale-up"
+  },
+  {
+   "zh": "為什麼現代的小型皺褶膠囊比傳統 47mm 平面濾膜片更能代表生產規模的性能？從流動動力學角度說明。",
+   "en": "Why are modern small pleated capsules more representative of production-scale performance than traditional 47 mm flat discs? Explain from the standpoint of flow dynamics."
+  },
+  {
+   "zh": "在什麼情況下你會選擇恆流速測試而非恆壓測試？請結合你的實際製程經驗回答。",
+   "en": "Under what circumstances would you choose constant flow rate testing over constant pressure testing? Answer based on your actual process experience."
+  },
+  {
+   "zh": "如果小規模測試顯示濾膜在 200 L/m² 時堵塞，但你的生產需求是 180 L/m²，你認為安全餘量是否足夠？你會如何決策？",
+   "en": "If small-scale testing shows that the filter plugs at 200 L/m² but your production requirement is 180 L/m², do you think the safety margin is sufficient? How would you decide?"
+  }
+ ]
+}

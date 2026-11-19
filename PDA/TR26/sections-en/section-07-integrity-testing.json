@@ -1,0 +1,865 @@
+{
+ "source": "section-07-integrity-testing.html",
+ "blocks": [
+  {
+   "zh": "完整性測試",
+   "en": "Integrity Testing"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解完整性測試 (Integrity Test) 的物理原理：擴散流量 (Diffusive Flow) 與泡點 (Bubble Point) 的基本機制",
+   "en": "Understand the physical principles of integrity testing: the basic mechanisms of diffusive flow and bubble point"
+  },
+  {
+   "zh": "掌握完整性測試結果與細菌截留 (Bacterial Retention) 之間的關聯性，以及如何建立測試規格",
+   "en": "Understand the relationship between integrity test results and bacterial retention, and how test specifications are established"
+  },
+  {
+   "zh": "學會根據濾膜面積選擇適當的測試方法（泡點法、擴散流量法、壓力保持法），並理解產品潤濕測試的轉換公式",
+   "en": "Learn to select the appropriate test method (bubble point, diffusive flow, pressure hold) based on membrane area, and understand the conversion equations for product-wet testing"
+  },
+  {
+   "zh": "了解 PUPSIT（使用前滅菌後完整性測試）的考量因素與法規期望",
+   "en": "Understand the considerations and regulatory expectations for PUPSIT (pre-use post-sterilization integrity testing)"
+  },
+  {
+   "zh": "掌握完整性測試失敗的故障排除流程與潤濕不足的分析方法",
+   "en": "Master the troubleshooting process for integrity test failures and the analysis of insufficient wetting"
+  },
+  {
+   "zh": "7.0 Integrity Testing -- Overview 完整性測試概述",
+   "en": "7.0 Integrity Testing -- Overview"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Integrity Test（完整性測試）：</strong>一種非破壞性的物理測試方法，用來確認除菌濾膜在使用前後是否完好無損。由於細菌截留試驗 (Bacterial Retention Test) 是破壞性的，無法在每次生產時執行，因此需要一個「替代方法」來間接確認濾膜的截留能力。",
+   "en": "<strong>Integrity Test:</strong> A non-destructive physical test used to confirm that a sterilizing-grade filter is intact before and after use. Because the bacterial retention test is destructive and cannot be performed on every production filter, a \"surrogate method\" is needed to confirm the filter's retention capability indirectly."
+  },
+  {
+   "zh": "<strong>Bubble Point（泡點）：</strong>當施加在濕潤濾膜上游的氣體壓力達到某個臨界值時，毛細管力不足以將液體保持在孔隙中，液體被推出最大孔隙，氣體開始大量通過。這個臨界壓力就是泡點。",
+   "en": "<strong>Bubble Point:</strong> When the gas pressure applied upstream of a wetted membrane reaches a critical value, capillary forces can no longer hold the liquid in the pores; the liquid is expelled from the largest pores and gas begins to flow in bulk. This critical pressure is the bubble point."
+  },
+  {
+   "zh": "<strong>Diffusive Flow（擴散流量）：</strong>在泡點以下的壓力下，少量氣體溶解進入潤濕液，擴散穿過濕潤的濾膜，在下游釋放出來。這個流量與濾膜完整性直接相關。",
+   "en": "<strong>Diffusive Flow:</strong> At pressures below the bubble point, a small amount of gas dissolves into the wetting liquid, diffuses across the wetted membrane, and is released on the downstream side. This flow is directly related to membrane integrity."
+  },
+  {
+   "zh": "<strong>Capillary Forces（毛細管力）：</strong>液體在微小孔隙中因表面張力而產生的保持力。孔隙越小，毛細管力越大，需要越高的壓力才能將液體推出。",
+   "en": "<strong>Capillary Forces:</strong> The force that holds liquid in very small pores because of surface tension. The smaller the pore, the greater the capillary force, and the higher the pressure needed to push the liquid out."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "<strong>出門前檢查瓦斯：</strong>想像你每天出門前都要確認瓦斯已經關好。你不可能每次都請瓦斯公司來做全面管線壓力測試（那就像細菌截留試驗，費時費力且具破壞性）。取而代之的是，你用簡單的方式——聞一聞有沒有瓦斯味、看看爐頭火焰是否正常——這就是「非破壞性完整性測試」的概念。",
+   "en": "<strong>Checking the gas before leaving home:</strong> Imagine you must confirm every day that the gas is turned off before you leave. You cannot call the gas company each time for a full pipeline pressure test (that would be like the bacterial retention test: time-consuming, laborious and destructive). Instead, you use a simple approach: you sniff for a gas smell and check that the burner flame looks normal. This is the idea behind a \"non-destructive integrity test\"."
+  },
+  {
+   "zh": "<strong>吹氣球找漏洞：</strong>泡點測試就像吹一個氣球——當壓力不大時，氣球表面的微小孔洞讓少量空氣慢慢滲出（擴散流量）。但當你用力吹到某個程度，最大的孔洞會突然讓大量空氣衝出來（泡點）。如果氣球在很低的壓力就大量漏氣，代表它有大洞（濾膜不完整）。",
+   "en": "<strong>Blowing up a balloon to find the leaks:</strong> A bubble point test is like blowing up a balloon. At low pressure, tiny holes in the balloon surface let a small amount of air seep out slowly (diffusive flow). But when you blow hard enough, the largest hole suddenly lets a large volume of air rush out (bubble point). If the balloon leaks heavily at a very low pressure, it has a large hole (the membrane is not integral)."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>為什麼完整性測試如此重要？</strong>在除菌過濾的決策層級中，「無菌濾液保證」永遠是第一優先。完整性測試是連接「濾膜資格確認」與「實際生產使用」之間的橋樑——它讓我們能在不破壞濾膜的情況下，確認每一支生產用濾膜都具備與經過細菌截留驗證的濾膜相同的品質。",
+   "en": "<strong>Why is integrity testing so important?</strong> In the decision hierarchy for sterilizing filtration, \"sterile filtrate assurance\" is always the first priority. Integrity testing is the bridge between \"membrane qualification\" and \"actual production use\": it lets us confirm, without destroying the filter, that every production filter has the same quality as the filters whose bacterial retention was validated."
+  },
+  {
+   "zh": "膜特性曲線 (Characteristic Curve) 的三個區域是理解所有完整性測試方法的基礎：低壓區（擴散流量）、轉折區、高壓區（泡點後的體積流量）。",
+   "en": "The three regions of the membrane characteristic curve are the basis for understanding all integrity test methods: the low-pressure region (diffusive flow), the transition region, and the high-pressure region (bulk flow beyond the bubble point)."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在 CDMO 環境中，每個批次的除菌過濾都需要完整性測試。假設你的工廠一年生產 200 批無菌注射劑，每批都需要至少一次使用後完整性測試。如果其中一批測試失敗，可能意味著整批產品需要丟棄或返工——數百萬元的直接損失，還不包括調查成本和客戶信任的影響。理解完整性測試的物理原理，能幫助你正確解讀結果、區分真正的濾膜損壞與「假陽性失敗」。",
+   "en": "In a CDMO environment, every sterile filtration batch requires integrity testing. Suppose your facility produces 200 batches of sterile injectables a year, and each batch requires at least one post-use integrity test. If one batch fails the test, the whole batch may have to be discarded or reworked: a direct loss of millions of dollars, not counting investigation costs and the impact on customer trust. Understanding the physical principles of integrity testing helps you interpret results correctly and distinguish true filter damage from \"false failures\"."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼細菌截留試驗不適合作為每批生產的常規測試？請列出至少兩個原因。",
+   "en": "Why is the bacterial retention test not suitable as a routine test for every production batch? List at least two reasons."
+  },
+  {
+   "zh": "如果一支濾膜的泡點值異常偏低，這在物理上代表什麼意義？對無菌保證有何影響？",
+   "en": "If a filter's bubble point value is abnormally low, what does this mean physically? What is the impact on sterility assurance?"
+  },
+  {
+   "zh": "膜特性曲線上的三個區域分別對應哪些完整性測試方法？",
+   "en": "Which integrity test methods correspond to each of the three regions of the membrane characteristic curve?"
+  },
+  {
+   "zh": "7.1 Relationship Between Integrity Test Results and Bacterial Retention 完整性測試結果與細菌截留的關係",
+   "en": "7.1 Relationship Between Integrity Test Results and Bacterial Retention"
+  },
+  {
+   "zh": "<strong>完整性測試規格的建立：</strong>濾膜製造商在開發階段會測試一系列「孔徑越來越緊」的濾膜樣品。對每個樣品同時進行細菌截留試驗和物理完整性測試，找出「完整性測試值」與「是否能完全截留細菌」之間的對應關係。最終設定的規格值會加入安全裕度 (Safety Margin)，以涵蓋量測和製造的自然變異。",
+   "en": "<strong>Establishing integrity test specifications:</strong> During development, the membrane manufacturer tests a series of membrane samples with progressively \"tighter\" pore sizes. Each sample undergoes both a bacterial retention test and a physical integrity test to find the correspondence between the \"integrity test value\" and \"whether bacteria are completely retained\". The final specification value includes a safety margin to cover natural measurement and manufacturing variability."
+  },
+  {
+   "zh": "<strong>泡點 vs 擴散流量的互補性：</strong>",
+   "en": "<strong>Bubble point vs diffusive flow are complementary:</strong>"
+  },
+  {
+   "zh": "<strong>Bubble Point（泡點）：</strong>反映最大孔徑的有效直徑，是「最差情況」的指標",
+   "en": "<strong>Bubble Point:</strong> Reflects the effective diameter of the largest pores and is a \"worst-case\" indicator"
+  },
+  {
+   "zh": "<strong>Diffusive Flow（擴散流量）：</strong>反映整體膜結構的完整性，是一個定量的「綜合指標」",
+   "en": "<strong>Diffusive Flow:</strong> Reflects the integrity of the overall membrane structure and is a quantitative \"composite indicator\""
+  },
+  {
+   "zh": "兩者結合可以更完整地描繪孔徑分佈 (Pore Size Distribution)",
+   "en": "Together they give a more complete picture of the pore size distribution"
+  },
+  {
+   "zh": "<strong>駕照考試的及格線：</strong>濾膜製造商建立完整性測試規格的過程，就像交通部門制定駕照考試標準。他們讓不同程度的駕駛（不同孔徑的濾膜）參加路考（細菌截留試驗），找出「筆試分數」（完整性測試值）和「實際駕駛安全」（能否截留細菌）之間的關聯。最後設定一個「及格線」（規格值），而且會比真正的臨界點稍微嚴格一些（安全裕度），確保所有通過的人都真的安全。",
+   "en": "<strong>The passing mark on a driving test:</strong> The way a membrane manufacturer sets integrity test specifications is like a transport authority setting driving test standards. Drivers of different skill levels (membranes of different pore sizes) take a road test (the bacterial retention test), and the authority looks for the relationship between the \"written exam score\" (the integrity test value) and \"actual driving safety\" (whether bacteria are retained). Finally, a \"passing mark\" (the specification value) is set, slightly stricter than the true critical point (the safety margin), to ensure that everyone who passes is really safe."
+  },
+  {
+   "zh": "<strong>泡點測試在大面積濾膜上的局限性：</strong>隨著濾膜面積增加，泡點以下的擴散流量也會增加（因為擴散流量與面積成正比），這會「遮蔽」泡點的訊號，使泡點判定變得困難。這就是為什麼大面積濾膜通常使用擴散流量法而非泡點法。",
+   "en": "<strong>Limitations of bubble point testing on large-area filters:</strong> As membrane area increases, the diffusive flow below the bubble point also increases (because diffusive flow is proportional to area), which \"masks\" the bubble point signal and makes the bubble point harder to determine. This is why large-area filters usually use the diffusive flow method rather than the bubble point method."
+  },
+  {
+   "zh": "<strong>安全裕度的重要性：</strong>規格值不是「剛好能截留細菌」的臨界值，而是加入了統計信賴區間的安全值。這體現了決策層級的第一原則：無菌濾液保證永遠優先於效率考量。",
+   "en": "<strong>The importance of the safety margin:</strong> The specification value is not the threshold at which bacteria are \"just barely retained\"; it is a safe value that incorporates a statistical confidence interval. This reflects the first principle of the decision hierarchy: sterile filtrate assurance always takes priority over efficiency considerations."
+  },
+  {
+   "zh": "為什麼完整性測試規格需要包含安全裕度？如果不加安全裕度會有什麼風險？",
+   "en": "Why must integrity test specifications include a safety margin? What are the risks of not including one?"
+  },
+  {
+   "zh": "為什麼泡點測試的解析度會隨著濾膜面積增加而降低？從物理原理的角度解釋。",
+   "en": "Why does the resolution of the bubble point test decrease as membrane area increases? Explain from the standpoint of the physical principles."
+  },
+  {
+   "zh": "濾膜製造商如何將完整性測試值與細菌截留能力關聯起來？這個過程的關鍵步驟是什麼？",
+   "en": "How does the membrane manufacturer link integrity test values to bacterial retention capability? What are the key steps in this process?"
+  },
+  {
+   "zh": "7.1.1 Test Method Selection 測試方法選擇",
+   "en": "7.1.1 Test Method Selection"
+  },
+  {
+   "zh": "<strong>三種主要測試方法：</strong>",
+   "en": "<strong>The three main test methods:</strong>"
+  },
+  {
+   "zh": "<strong>Bubble Point（泡點法）：</strong>量測最大孔隙被突破的壓力，適用於小面積濾膜",
+   "en": "<strong>Bubble Point:</strong> Measures the pressure at which the largest pores are breached; suitable for small-area filters"
+  },
+  {
+   "zh": "<strong>Diffusive Flow（擴散流量法）：</strong>在泡點以下的壓力量測氣體擴散速率，適用於中大面積濾膜",
+   "en": "<strong>Diffusive Flow:</strong> Measures the gas diffusion rate at a pressure below the bubble point; suitable for medium and large-area filters"
+  },
+  {
+   "zh": "<strong>Pressure Hold/Decay（壓力保持/衰減法）：</strong>擴散流量法的變體，讓壓力自然下降來間接量測擴散流量",
+   "en": "<strong>Pressure Hold/Decay:</strong> A variant of the diffusive flow method that lets the pressure fall naturally to measure diffusive flow indirectly"
+  },
+  {
+   "zh": "<strong>面積與方法選擇的關係：</strong>擴散流量與濾膜面積成正比。面積太小時，擴散流量低到儀器無法可靠量測，所以用泡點法。面積太大時，背景擴散流量太高會遮蔽泡點信號，所以用擴散流量法。",
+   "en": "<strong>Relationship between area and method selection:</strong> Diffusive flow is proportional to membrane area. When the area is too small, the diffusive flow is too low for instruments to measure reliably, so the bubble point method is used. When the area is too large, the background diffusive flow is so high that it masks the bubble point signal, so the diffusive flow method is used."
+  },
+  {
+   "zh": "想像你要檢查一面牆是否有裂縫：",
+   "en": "Imagine you need to check a wall for cracks:"
+  },
+  {
+   "zh": "<strong>小面牆（泡點法）：</strong>你可以靠近仔細看，找到最大的裂縫在哪裡——容易判斷",
+   "en": "<strong>Small wall (bubble point method):</strong> You can get close and look carefully to find where the biggest crack is, which is easy to judge"
+  },
+  {
+   "zh": "<strong>大面牆（擴散流量法）：</strong>牆面太大無法逐一檢查，但可以在牆的一側噴水霧，看另一側整體滲出了多少水——如果總滲水量在標準範圍內，代表牆面整體完好",
+   "en": "<strong>Large wall (diffusive flow method):</strong> The wall is too big to inspect piece by piece, but you can spray a water mist on one side and see how much water seeps out on the other side overall. If the total seepage is within the standard range, the wall as a whole is intact"
+  },
+  {
+   "zh": "<strong>超大面牆（壓力衰減法）：</strong>你密封一個房間加壓，看壓力降多快來推算滲漏量",
+   "en": "<strong>Very large wall (pressure decay method):</strong> You seal and pressurize a room, then calculate the leakage from how fast the pressure drops"
+  },
+  {
+   "zh": "<strong>SUS 與壓力限制：</strong>一次性使用系統 (Single-Use System, SUS) 的壓力耐受度通常比不鏽鋼系統低。泡點測試需要的壓力往往高於擴散流量測試，因此在 SUS 環境中，擴散流量法更為常用。如果硬要在 SUS 上執行泡點測試，可能會損壞管路或接頭。",
+   "en": "<strong>SUS and pressure limits:</strong> Single-use systems (SUS) generally tolerate lower pressures than stainless steel systems. Bubble point tests often require higher pressures than diffusive flow tests, so the diffusive flow method is more commonly used in SUS environments. Forcing a bubble point test on a SUS may damage the tubing or connectors."
+  },
+  {
+   "zh": "<strong>多濾芯組合的特殊處理：</strong>當多支濾芯安裝在同一個外殼中時，擴散流量的上限不能簡單地將單支濾芯的限值乘以數量。需要建立「組合體專屬」的規格值，通常會低於線性倍數值。",
+   "en": "<strong>Special handling of multi-element assemblies:</strong> When several cartridges are installed in the same housing, the upper limit for diffusive flow cannot simply be the single-cartridge limit multiplied by the number of cartridges. An \"assembly-specific\" specification must be established, and it is usually lower than the linear multiple."
+  },
+  {
+   "zh": "在 CDMO 中，你可能同時處理不同客戶的產品。根據 Table 7.1.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p68-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的指引：",
+   "en": "In a CDMO you may handle products for different clients at the same time. According to the guidance in Table 7.1.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p68-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>:"
+  },
+  {
+   "zh": "實驗室小型濾膜（&lt; 0.03 m²）：只用泡點法",
+   "en": "Small laboratory filters (&lt; 0.03 m²): bubble point method only"
+  },
+  {
+   "zh": "標準 10 吋濾芯（~0.5-0.7 m²）：泡點或擴散流量皆可",
+   "en": "Standard 10-inch cartridge (~0.5-0.7 m²): either bubble point or diffusive flow"
+  },
+  {
+   "zh": "多濾芯組合（&gt; 1.8 m²）：以擴散流量為主，輔以泡點",
+   "en": "Multi-cartridge assemblies (&gt; 1.8 m²): primarily diffusive flow, supplemented by bubble point"
+  },
+  {
+   "zh": "在制定 SOP 時，應與濾膜供應商確認各濾膜型號的具體面積門檻值。",
+   "en": "When writing the SOP, confirm the specific area thresholds for each filter model with the filter supplier."
+  },
+  {
+   "zh": "為什麼小面積濾膜不適合用擴散流量法？請從儀器靈敏度的角度解釋。",
+   "en": "Why is the diffusive flow method not suitable for small-area filters? Explain from the standpoint of instrument sensitivity."
+  },
+  {
+   "zh": "為什麼大面積濾膜不適合用泡點法？請從信噪比的角度解釋。",
+   "en": "Why is the bubble point method not suitable for large-area filters? Explain from the standpoint of signal-to-noise ratio."
+  },
+  {
+   "zh": "如果你的製程使用 SUS 搭配除菌濾膜，在選擇完整性測試方法時需要額外考慮什麼因素？",
+   "en": "If your process uses a SUS with a sterilizing-grade filter, what additional factors must you consider when selecting the integrity test method?"
+  },
+  {
+   "zh": "7.1.2 Filtrate Sterility Assurance 濾液無菌保證",
+   "en": "7.1.2 Filtrate Sterility Assurance"
+  },
+  {
+   "zh": "<strong>完整性測試不等於無菌保證的全部：</strong>完整的無菌保證策略需要三個層面的控制同時到位：",
+   "en": "<strong>Integrity testing is not the whole of sterility assurance:</strong> A complete sterility assurance strategy requires controls at three levels to be in place at the same time:"
+  },
+  {
+   "zh": "<strong>濾膜製造商的品質控制：</strong>確保每一批濾膜的品質和一致性",
+   "en": "<strong>Membrane manufacturer's quality control:</strong> Ensures the quality and consistency of every membrane lot"
+  },
+  {
+   "zh": "<strong>用戶的驗證研究：</strong>用特定產品和製程條件證明濾膜能有效除菌",
+   "en": "<strong>User's validation studies:</strong> Demonstrate, with the specific product and process conditions, that the filter effectively removes microorganisms"
+  },
+  {
+   "zh": "<strong>用戶的製程控制：</strong>確保實際操作在驗證過的參數範圍內運行",
+   "en": "<strong>User's process controls:</strong> Ensure that actual operation stays within the validated parameter ranges"
+  },
+  {
+   "zh": "<strong>機場的多層安全機制：</strong>完整性測試就像機場安檢門（金屬探測器）。但機場安全不僅僅靠安檢門——還需要行李 X 光機（生物負荷控制）、護照查驗（驗證研究）、以及航空公司的標準作業程序（製程控制）。任何一個環節的缺失都會危及整體安全，即使安檢門運作正常。",
+   "en": "<strong>Layered security at an airport:</strong> Integrity testing is like the airport security gate (metal detector). But airport security does not rely on the gate alone: it also needs baggage X-ray machines (bioburden control), passport checks (validation studies), and the airline's standard operating procedures (process controls). The absence of any one element endangers overall safety, even if the security gate works perfectly."
+  },
+  {
+   "zh": "這裡再次強調了無菌濾液保證 (Sterile Filtrate Assurance) 作為最高優先的原則。完整性測試通過只代表濾膜本身完好，但如果生物負荷 (Bioburden) 超出驗證範圍，或操作參數偏離驗證條件，濾液的無菌性仍然可能受到威脅。",
+   "en": "This again emphasizes sterile filtrate assurance as the highest-priority principle. A passing integrity test only shows that the filter itself is intact; if the bioburden exceeds the validated range, or operating parameters deviate from the validated conditions, the sterility of the filtrate can still be at risk."
+  },
+  {
+   "zh": "1. 無菌濾液保證 Sterile Filtrate Assurance",
+   "en": "1. Sterile Filtrate Assurance"
+  },
+  {
+   "zh": "2. 產品品質 / CQAs",
+   "en": "2. Product Quality / CQAs"
+  },
+  {
+   "zh": "3. 製程穩健性與商業效率",
+   "en": "3. Process Robustness and Commercial Efficiency"
+  },
+  {
+   "zh": "列舉三個即使完整性測試通過，濾液仍可能不無菌的情境。",
+   "en": "List three scenarios in which the filtrate may still not be sterile even though the integrity test passes."
+  },
+  {
+   "zh": "作為 CDMO 的營運主管，你如何確保無菌保證策略的「所有要素都持續到位」？",
+   "en": "As a CDMO operations head, how do you ensure that \"all elements\" of the sterility assurance strategy are continuously in place?"
+  },
+  {
+   "zh": "7.2 Automated Integrity-Test Instruments 自動化完整性測試儀器",
+   "en": "7.2 Automated Integrity-Test Instruments"
+  },
+  {
+   "zh": "<strong>Automated Integrity-Test Instruments（自動化完整性測試儀器）：</strong>現代除菌過濾的標準是使用自動化儀器進行完整性測試。這些儀器使用高靈敏度的壓力感測器和/或氣體流量計，配合精確的壓力調節，提供高度可重複的測試結果。",
+   "en": "<strong>Automated Integrity-Test Instruments:</strong> The modern standard for sterilizing filtration is to perform integrity tests with automated instruments. These instruments use high-sensitivity pressure sensors and/or gas flow meters together with precise pressure regulation to deliver highly repeatable test results."
+  },
+  {
+   "zh": "<strong>上游測試 vs 下游測試：</strong>自動化儀器從濾膜的上游（非無菌側）進行測試，避免了手動方法需要在下游（無菌側）操作的風險。這是自動化儀器的一個關鍵優勢——不會破壞已建立的無菌狀態。",
+   "en": "<strong>Upstream vs downstream testing:</strong> Automated instruments test from the upstream (non-sterile) side of the membrane, avoiding the risk of manual methods that require manipulation on the downstream (sterile) side. This is a key advantage of automated instruments: they do not break the established sterile condition."
+  },
+  {
+   "zh": "手動完整性測試就像用肉眼和經驗判斷一個輪胎是否漏氣——你把輪胎泡在水裡，觀察有沒有氣泡冒出來。這種方法受限於觀察者的主觀判斷。自動化儀器則像是汽車維修廠的電子胎壓偵測系統——精確到毫巴等級，而且每次測量結果一致可追溯。",
+   "en": "Manual integrity testing is like judging by eye and experience whether a tire is leaking: you submerge the tire in water and watch for bubbles. This method is limited by the observer's subjective judgment. An automated instrument is like the electronic tire pressure monitoring system in a car repair shop: accurate to the millibar level, with consistent and traceable results every time."
+  },
+  {
+   "zh": "<strong>手動測試的限制：</strong>手動完整性測試「現在只應在特殊且有正當理由的情況下」對生產用濾膜執行。這反映了法規對資料完整性 (Data Integrity) 和可重現性的日益重視。在稽核中，如果被發現仍在使用手動方法而沒有充分的理由，可能會引發觀察缺失。",
+   "en": "<strong>Limitations of manual testing:</strong> Manual integrity testing \"should now be performed on production filters only in special and justified circumstances\". This reflects the growing regulatory emphasis on data integrity and reproducibility. In an audit, if you are found still using manual methods without adequate justification, it may lead to an observation."
+  },
+  {
+   "zh": "<strong>下游壓力假設：</strong>大多數自動化儀器假設下游壓力等於大氣壓。如果下游側未與大氣平衡（例如封閉的系統），測試結果可能不準確。這是一個實務上常被忽略的細節。",
+   "en": "<strong>The downstream pressure assumption:</strong> Most automated instruments assume that the downstream pressure equals atmospheric pressure. If the downstream side is not equilibrated with the atmosphere (for example, a closed system), the test results may be inaccurate. This is a practical detail that is often overlooked."
+  },
+  {
+   "zh": "為什麼自動化完整性測試儀器比手動方法更受法規青睞？請從再現性和資料完整性兩個角度說明。",
+   "en": "Why do regulators favor automated integrity test instruments over manual methods? Explain from the perspectives of reproducibility and data integrity."
+  },
+  {
+   "zh": "在什麼情況下，自動化儀器假設下游壓力為大氣壓的前提可能不成立？這會如何影響測試結果？",
+   "en": "Under what circumstances might the instrument's assumption that downstream pressure is atmospheric not hold? How would this affect the test results?"
+  },
+  {
+   "zh": "7.3 Qualification of Integrity Test Devices 完整性測試設備的確認",
+   "en": "7.3 Qualification of Integrity Test Devices"
+  },
+  {
+   "zh": "<strong>設備確認 (Equipment Qualification)：</strong>完整性測試儀器的確認遵循與其他製程測試設備相同的原則——DQ（設計確認）、IQ（安裝確認）、OQ（操作確認）、PQ（性能確認）。設備製造商通常負責 DQ 和部分 OQ，終端用戶負責確認設備在實際使用條件下的表現。",
+   "en": "<strong>Equipment Qualification:</strong> Qualification of integrity test instruments follows the same principles as other process test equipment: DQ (design qualification), IQ (installation qualification), OQ (operational qualification) and PQ (performance qualification). The equipment manufacturer is usually responsible for DQ and part of OQ, and the end user is responsible for confirming performance under actual conditions of use."
+  },
+  {
+   "zh": "<strong>Sensitivity Settings（靈敏度設定）：</strong>自動化儀器會根據不同的濾膜尺寸調整靈敏度。選錯靈敏度可能導致測試結果不準確——太靈敏會產生假失敗，不夠靈敏則可能讓真正有缺陷的濾膜通過。",
+   "en": "<strong>Sensitivity Settings:</strong> Automated instruments adjust their sensitivity to different filter sizes. Choosing the wrong sensitivity can lead to inaccurate test results: too sensitive produces false failures, while not sensitive enough may let a truly defective filter pass."
+  },
+  {
+   "zh": "確認完整性測試儀器就像校準一台體溫計。你不僅要確認它在正常體溫（36.5 度C）時讀數正確（能判定「健康」），還要確認它在發燒溫度（38 度C以上）時也能準確讀出（能偵測到「異常」）。如果你只驗證了「正常通過」的情境，卻沒有驗證「應該失敗」的情境，那這台儀器的確認就不完整。",
+   "en": "Qualifying an integrity test instrument is like calibrating a thermometer. You must not only confirm that it reads correctly at normal body temperature (36.5°C; it can identify \"healthy\"), but also that it reads accurately at fever temperatures (38°C and above; it can detect \"abnormal\"). If you have only verified the \"normal pass\" scenario and not the \"should fail\" scenario, the qualification of the instrument is incomplete."
+  },
+  {
+   "zh": "<strong>資料完整性 (Data Integrity) 是關鍵：</strong>現代法規對電子記錄的要求越來越嚴格。完整性測試儀器必須滿足：密碼保護、使用者權限分級、審計追蹤 (Audit Trail)、以及防止未授權修改測試程式。這些都是稽核的重點項目。",
+   "en": "<strong>Data integrity is critical:</strong> Modern regulations place increasingly strict requirements on electronic records. Integrity test instruments must provide password protection, tiered user access rights, an audit trail, and protection against unauthorized modification of test programs. These are all key audit focus items."
+  },
+  {
+   "zh": "<strong>「通過」和「失敗」都要確認：</strong>完整的確認策略不僅要確認儀器能讓完好的濾膜「通過」，還要能可靠地偵測到破損的濾膜或不正確的測試設定。這是很多工廠容易忽略的地方。",
+   "en": "<strong>Both \"pass\" and \"fail\" must be confirmed:</strong> A complete qualification strategy must confirm not only that the instrument lets an intact filter \"pass\", but also that it reliably detects a damaged filter or an incorrect test setup. This is something many sites tend to overlook."
+  },
+  {
+   "zh": "在完整性測試儀器的確認過程中，為什麼必須同時驗證「通過」和「失敗」兩種情境？",
+   "en": "Why must both \"pass\" and \"fail\" scenarios be verified during qualification of an integrity test instrument?"
+  },
+  {
+   "zh": "如果靈敏度設定與實際使用的濾膜尺寸不匹配，可能會產生哪些問題？",
+   "en": "What problems can arise if the sensitivity setting does not match the size of the filter actually used?"
+  },
+  {
+   "zh": "從資料完整性的角度，列舉至少三個完整性測試儀器必須具備的功能。",
+   "en": "From a data integrity perspective, list at least three functions an integrity test instrument must have."
+  },
+  {
+   "zh": "7.4 Product Wet Integrity Tests 產品潤濕完整性測試",
+   "en": "7.4 Product Wet Integrity Tests"
+  },
+  {
+   "zh": "<strong>Product-Wet vs Water-Wet（產品潤濕 vs 水潤濕）：</strong>濾膜製造商提供的完整性測試規格通常以水作為標準潤濕液。但在實際生產中，濾膜在使用後已經被藥品溶液潤濕。由於藥品的表面張力、氣體溶解度和擴散係數與水不同，完整性測試的數值也會不同。因此需要進行「轉換」，建立產品潤濕的專屬規格。",
+   "en": "<strong>Product-Wet vs Water-Wet:</strong> The integrity test specifications provided by the membrane manufacturer are usually based on water as the standard wetting fluid. In actual production, however, the filter has been wetted by the drug product solution after use. Because the surface tension, gas solubility and diffusion coefficient of the drug product differ from those of water, the integrity test values also differ. A \"conversion\" is therefore needed to establish product-wet specific specifications."
+  },
+  {
+   "zh": "<strong>影響測試值差異的三個因素：</strong>",
+   "en": "<strong>Three factors that cause the test values to differ:</strong>"
+  },
+  {
+   "zh": "<strong>Test gas solubility（測試氣體溶解度）：</strong>氣體在產品中的溶解度可能與水不同",
+   "en": "<strong>Test gas solubility:</strong> The solubility of the gas in the product may differ from that in water"
+  },
+  {
+   "zh": "<strong>Diffusion constant（擴散常數）：</strong>氣體穿過潤濕液的擴散速率不同",
+   "en": "<strong>Diffusion constant:</strong> The rate at which the gas diffuses through the wetting fluid differs"
+  },
+  {
+   "zh": "<strong>Surface tension（表面張力）：</strong>直接影響泡點壓力",
+   "en": "<strong>Surface tension:</strong> Directly affects the bubble point pressure"
+  },
+  {
+   "zh": "<strong>泡茶時茶葉釋出物 vs 實際喝到的：</strong>想像你用同一個茶壺泡不同的茶——綠茶和紅茶的滲出速率不同，顏色深淺也不同。同樣地，用水潤濕和用藥品潤濕的濾膜，在完整性測試中的表現也不同。你不能用「綠茶的標準」去判斷「紅茶是否泡好了」——需要針對每種茶（潤濕液）建立各自的標準。",
+   "en": "<strong>What the tea leaves release vs what you actually drink:</strong> Imagine brewing different teas in the same teapot: green tea and black tea release their color and flavor at different rates and to different depths. In the same way, a filter wetted with water and a filter wetted with the drug product behave differently in an integrity test. You cannot use the \"green tea standard\" to judge whether the \"black tea\" is properly brewed; you need to establish a separate standard for each tea (wetting fluid)."
+  },
+  {
+   "zh": "<strong>Scale-Down Studies 的重要性：</strong>轉換係數的建立通常在小規模實驗中完成，使用濾膜碟片 (Filter Discs) 而非全尺寸的濾芯。這是因為碟片更容易操控和乾燥，可以在相同的濾膜上依序測試水潤濕和產品潤濕的差異。",
+   "en": "<strong>The importance of scale-down studies:</strong> The conversion factors are usually established in small-scale experiments using filter discs rather than full-size cartridges. This is because discs are easier to handle and dry, and the water-wet and product-wet results can be tested one after the other on the same membrane."
+  },
+  {
+   "zh": "為什麼在生產環境中，產品潤濕測試比水潤濕測試更具實際意義？",
+   "en": "Why is product-wet testing more meaningful than water-wet testing in the production environment?"
+  },
+  {
+   "zh": "如果藥品的表面張力低於水，你預期泡點值會如何變化？為什麼？",
+   "en": "If the surface tension of the drug product is lower than that of water, how would you expect the bubble point value to change? Why?"
+  },
+  {
+   "zh": "7.4.1 Product-Wetted Bubble Point Tests 產品潤濕泡點測試",
+   "en": "7.4.1 Product-Wetted Bubble Point Tests"
+  },
+  {
+   "zh": "<strong>Bubble Point Ratio Approach（泡點比值法）：</strong>這是一種將水潤濕泡點規格「轉換」為產品潤濕泡點規格的標準方法。核心邏輯是：產品潤濕泡點與水潤濕泡點之間存在一個穩定的比例關係（主要由表面張力決定），這個比例可以從小規模實驗中測定，然後應用到製造商提供的水潤濕最低泡點值上。",
+   "en": "<strong>Bubble Point Ratio Approach:</strong> This is a standard method for \"converting\" a water-wet bubble point specification into a product-wet bubble point specification. The core logic is that there is a stable ratio between the product-wet bubble point and the water-wet bubble point (determined mainly by surface tension). This ratio can be determined in small-scale experiments and then applied to the minimum water-wet bubble point value provided by the manufacturer."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "Equation 1: Product-Wetted Bubble Point Minimum\n\nPBP_min = WBP_min x (PBP_avg / WBP_avg)\n\n範例計算：\n假設：\n  WBP_min (供應商規格) = 3200 mbar\n  WBP_avg (水潤濕實測平均) = 3800 mbar\n  PBP_avg (產品潤濕實測平均) = 3040 mbar\n\n則：比值 = PBP_avg / WBP_avg = 3040 / 3800 = 0.80\n\nPBP_min = 3200 x 0.80 = 2560 mbar\n\n意義：產品潤濕的最低泡點規格為 2560 mbar",
+   "en": "Equation 1: Product-Wetted Bubble Point Minimum\n\nPBP_min = WBP_min x (PBP_avg / WBP_avg)\n\nWorked example:\nAssume:\n  WBP_min (supplier specification) = 3200 mbar\n  WBP_avg (measured water-wet average) = 3800 mbar\n  PBP_avg (measured product-wet average) = 3040 mbar\n\nThen: ratio = PBP_avg / WBP_avg = 3040 / 3800 = 0.80\n\nPBP_min = 3200 x 0.80 = 2560 mbar\n\nMeaning: the minimum product-wet bubble point specification is 2560 mbar"
+  },
+  {
+   "zh": "這就像匯率轉換。濾膜製造商給你的是「美元價格」（水潤濕泡點規格），但你的工廠使用「歐元」（產品潤濕）。你需要找出匯率（比值），然後把美元價格轉換成歐元價格。匯率的計算方式是：用同一批濾膜碟片，分別量測「美元」和「歐元」的數值，算出比例。",
+   "en": "This is like currency conversion. The membrane manufacturer gives you the \"US dollar price\" (the water-wet bubble point specification), but your plant operates in \"euros\" (product-wet). You need to find the exchange rate (the ratio) and convert the dollar price into a euro price. The exchange rate is calculated by measuring the \"dollar\" and \"euro\" values on the same lot of filter discs and working out the ratio."
+  },
+  {
+   "zh": "<strong>至少三個膜批次：</strong>測試必須使用至少三個不同的濾膜批次，以確保比值具有統計代表性。只用一個批次的數據可能無法反映批次間的正常變異。",
+   "en": "<strong>At least three membrane lots:</strong> The test must use at least three different membrane lots to ensure that the ratio is statistically representative. Data from a single lot may not reflect normal lot-to-lot variability."
+  },
+  {
+   "zh": "<strong>完全去除前一種潤濕液：</strong>在從水潤濕切換到產品潤濕之前，必須確保水已被完全去除（乾燥或充分沖洗）。殘留的水會影響產品潤濕泡點的準確性。",
+   "en": "<strong>Complete removal of the previous wetting fluid:</strong> Before switching from water-wet to product-wet, you must ensure the water has been completely removed (dried or thoroughly flushed out). Residual water will affect the accuracy of the product-wet bubble point."
+  },
+  {
+   "zh": "如果產品的表面張力是水的 80%，你預期 PBP_avg / WBP_avg 的比值大約是多少？",
+   "en": "If the surface tension of the product is 80% that of water, approximately what ratio would you expect for PBP_avg / WBP_avg?"
+  },
+  {
+   "zh": "為什麼測試需要至少三個不同的膜批次？只用一個批次有什麼風險？",
+   "en": "Why does the test require at least three different membrane lots? What is the risk of using only one lot?"
+  },
+  {
+   "zh": "使用上述範例的數據，如果你工廠實測的產品潤濕泡點為 2400 mbar，這支濾膜是否通過測試？",
+   "en": "Using the data from the example above, if your plant measures a product-wet bubble point of 2400 mbar, does this filter pass the test?"
+  },
+  {
+   "zh": "7.4.2 Product-Wetted Diffusive Flow Test 產品潤濕擴散流量測試",
+   "en": "7.4.2 Product-Wetted Diffusive Flow Test"
+  },
+  {
+   "zh": "<strong>兩步驟轉換流程：</strong>產品潤濕的擴散流量規格建立比泡點更複雜，需要兩個步驟：",
+   "en": "<strong>The two-step conversion process:</strong> Establishing a product-wet diffusive flow specification is more complex than for the bubble point and requires two steps:"
+  },
+  {
+   "zh": "<strong>Step 1 -- 轉換測試壓力：</strong>使用與泡點相同的比值，將水潤濕的測試壓力轉換為產品潤濕的測試壓力",
+   "en": "<strong>Step 1 -- Convert the test pressure:</strong> Use the same ratio as for the bubble point to convert the water-wet test pressure to the product-wet test pressure"
+  },
+  {
+   "zh": "<strong>Step 2 -- 轉換擴散流量限值：</strong>在新的測試壓力下，比較水潤濕和產品潤濕的擴散流量，算出轉換係數",
+   "en": "<strong>Step 2 -- Convert the diffusive flow limit:</strong> At the new test pressure, compare the water-wet and product-wet diffusive flows and calculate the conversion factor"
+  },
+  {
+   "zh": "Step 1: 測試壓力轉換 (Equation 2)\nTP_PW = MTP_WW x (PBP_avg / WBP_avg)\n\n範例：\n  MTP_WW = 2500 mbar (供應商指定)\n  比值 = 0.80 (從 Equation 1 計算)\n  TP_PW = 2500 x 0.80 = 2000 mbar\n\nStep 2: 擴散流量限值轉換 (Equation 3)\nDFL_PW = DFL_WW x (DF_PW / DF_WW)\n\n範例：\n  DFL_WW = 12 ml/min (供應商規格)\n  DF_WW = 8 ml/min (水潤濕實測)\n  DF_PW = 10 ml/min (產品潤濕實測)\n  DFL_PW = 12 x (10/8) = 15 ml/min",
+   "en": "Step 1: Test pressure conversion (Equation 2)\nTP_PW = MTP_WW x (PBP_avg / WBP_avg)\n\nExample:\n  MTP_WW = 2500 mbar (specified by supplier)\n  ratio = 0.80 (calculated from Equation 1)\n  TP_PW = 2500 x 0.80 = 2000 mbar\n\nStep 2: Diffusive flow limit conversion (Equation 3)\nDFL_PW = DFL_WW x (DF_PW / DF_WW)\n\nExample:\n  DFL_WW = 12 ml/min (supplier specification)\n  DF_WW = 8 ml/min (measured water-wet)\n  DF_PW = 10 ml/min (measured product-wet)\n  DFL_PW = 12 x (10/8) = 15 ml/min"
+  },
+  {
+   "zh": "<strong>測試氣體的影響：</strong>擴散流量的數值還受測試氣體種類影響。不同氣體在潤濕液中的溶解度和擴散係數不同，因此驗收標準必須針對特定的測試氣體。在實務中，壓縮空氣和氮氣是最常用的測試氣體，但兩者的擴散特性有差異——切換氣體時必須重新建立規格。",
+   "en": "<strong>The effect of the test gas:</strong> Diffusive flow values are also affected by the type of test gas. Different gases have different solubilities and diffusion coefficients in the wetting fluid, so the acceptance criteria must be specific to the test gas used. In practice, compressed air and nitrogen are the most commonly used test gases, but their diffusion characteristics differ; when you switch gases, the specification must be re-established."
+  },
+  {
+   "zh": "<strong>為什麼產品潤濕的擴散流量可能高於水潤濕？</strong>如果產品中測試氣體的溶解度較高或擴散係數較大，同一支完好濾膜的產品潤濕擴散流量會高於水潤濕值。因此，產品潤濕的限值 (DFL_PW) 通常也會高於水潤濕限值 (DFL_WW)。",
+   "en": "<strong>Why can product-wet diffusive flow be higher than water-wet?</strong> If the test gas has higher solubility or a larger diffusion coefficient in the product, the product-wet diffusive flow of the same intact filter will be higher than the water-wet value. Therefore, the product-wet limit (DFL_PW) is usually also higher than the water-wet limit (DFL_WW)."
+  },
+  {
+   "zh": "為什麼擴散流量的轉換需要兩個步驟，而不能像泡點那樣一步完成？",
+   "en": "Why does the diffusive flow conversion require two steps, rather than being done in one step as for the bubble point?"
+  },
+  {
+   "zh": "如果你在驗證過程中切換了測試氣體（從壓縮空氣改為氮氣），是否需要重新建立產品潤濕規格？為什麼？",
+   "en": "If you switch the test gas during validation (for example, from compressed air to nitrogen), do you need to re-establish the product-wet specification? Why?"
+  },
+  {
+   "zh": "7.5 When a Sterilizing-Grade Filter Should be Integrity-Tested 除菌級濾膜應在何時進行完整性測試",
+   "en": "7.5 When a Sterilizing-Grade Filter Should be Integrity-Tested"
+  },
+  {
+   "zh": "<strong>濾膜生命週期中的測試時機：</strong>",
+   "en": "<strong>Test timing across the filter lifecycle:</strong>"
+  },
+  {
+   "zh": "<strong>製造商出廠測試：</strong>每支除菌級濾膜在出廠前都經過完整性測試",
+   "en": "<strong>Manufacturer's release test:</strong> Every sterilizing-grade filter undergoes an integrity test before it leaves the factory"
+  },
+  {
+   "zh": "<strong>用戶使用前、滅菌前測試：</strong>確認安裝正確、運輸無損壞（與出廠測試重複）",
+   "en": "<strong>User's pre-use, pre-sterilization test:</strong> Confirms correct installation and no transport damage (duplicates the manufacturer's release test)"
+  },
+  {
+   "zh": "<strong>用戶使用前、滅菌後測試 (PUPSIT)：</strong>額外確認滅菌過程未損壞濾膜",
+   "en": "<strong>User's pre-use, post-sterilization test (PUPSIT):</strong> Additionally confirms that the sterilization process did not damage the filter"
+  },
+  {
+   "zh": "<strong>用戶使用後測試（強制性）：</strong>確認濾膜在整個使用過程中保持完整",
+   "en": "<strong>User's post-use test (mandatory):</strong> Confirms that the filter remained integral throughout use"
+  },
+  {
+   "zh": "<strong>PUPSIT（使用前滅菌後完整性測試）：</strong>在濾膜滅菌後、過濾產品之前進行的測試。必須確保下游系統的無菌狀態不被破壞。",
+   "en": "<strong>PUPSIT (pre-use post-sterilization integrity test):</strong> A test performed after the filter has been sterilized and before the product is filtered. It must be ensured that the sterility of the downstream system is not compromised."
+  },
+  {
+   "zh": "<strong>出門前檢查瓦斯（再次強化）：</strong>",
+   "en": "<strong>Checking the gas before leaving home (reinforced again):</strong>"
+  },
+  {
+   "zh": "<strong>出廠測試 = 瓦斯公司安裝後的驗收：</strong>確認設備出廠合格",
+   "en": "<strong>Release test = acceptance check after the gas company installs the equipment:</strong> Confirms the equipment left the factory in a conforming state"
+  },
+  {
+   "zh": "<strong>使用前測試 = 你自己聞一聞：</strong>確認搬進新家後管線沒問題",
+   "en": "<strong>Pre-use test = sniffing it yourself:</strong> Confirms the pipes are fine after moving into a new home"
+  },
+  {
+   "zh": "<strong>PUPSIT = 每次用完瓦斯後確認關閉：</strong>確認最近一次使用後一切正常",
+   "en": "<strong>PUPSIT = confirming it is shut off after each use of the gas:</strong> Confirms everything is fine after the most recent use"
+  },
+  {
+   "zh": "<strong>使用後測試 = 做完飯後的最終確認：</strong>這是強制性的——必須確認瓦斯已安全關閉",
+   "en": "<strong>Post-use test = the final check after cooking:</strong> This is mandatory; you must confirm that the gas has been safely turned off"
+  },
+  {
+   "zh": "<strong>使用後測試是強制性的：</strong>如果濾膜的聲稱用途是除菌，使用後完整性測試是「mandatory（強制性的）」——沒有例外。如果測試失敗，通常意味著整批產品需要丟棄或返工。",
+   "en": "<strong>The post-use test is mandatory:</strong> If the filter's claimed purpose is sterilization, the post-use integrity test is \"mandatory\", with no exceptions. If the test fails, it usually means the whole batch must be discarded or reworked."
+  },
+  {
+   "zh": "<strong>法規差異：</strong>對於使用前測試（特別是 PUPSIT），不同地區的法規期望可能不同。EU GMP Annex 1 對 PUPSIT 有更明確的期望，而 FDA 的要求相對靈活。",
+   "en": "<strong>Regulatory differences:</strong> For pre-use tests (especially PUPSIT), regulatory expectations may differ by region. EU GMP Annex 1 has clearer expectations for PUPSIT, while the FDA's requirements are relatively flexible."
+  },
+  {
+   "zh": "為什麼使用後完整性測試是「強制性的」而非「建議性的」？從病患安全的角度解釋。",
+   "en": "Why is the post-use integrity test \"mandatory\" rather than \"recommended\"? Explain from a patient safety perspective."
+  },
+  {
+   "zh": "使用前滅菌前測試與出廠測試有何重疊？為什麼仍有其價值？",
+   "en": "How does the pre-use, pre-sterilization test overlap with the manufacturer's release test? Why does it still have value?"
+  },
+  {
+   "zh": "執行 PUPSIT 時，「確保下游系統的無菌狀態不被破壞」具體需要哪些措施？",
+   "en": "When performing PUPSIT, what specific measures are needed to \"ensure that the sterility of the downstream system is not compromised\"?"
+  },
+  {
+   "zh": "7.5.1 Pre-Use Post-Sterilization Integrity Test (PUPSIT) Considerations PUPSIT 考量",
+   "en": "7.5.1 Pre-Use Post-Sterilization Integrity Test (PUPSIT) Considerations"
+  },
+  {
+   "zh": "<strong>Flaw-Masking（缺陷遮蔽）：</strong>這是 PUPSIT 爭議的核心問題。在某些極端情況下，高堵塞性流體 (High-Foulant Fluids) 可能在使用後測試中「遮蔽」濾膜缺陷——堵塞的孔隙使得擴散流量降低、泡點升高，讓一支有缺陷的濾膜看起來像是通過了測試。PUPSIT 能在產品接觸前偵測到這些缺陷。",
+   "en": "<strong>Flaw-Masking:</strong> This is the core of the PUPSIT debate. In some extreme cases, high-foulant fluids may \"mask\" filter flaws in the post-use test: clogged pores reduce diffusive flow and raise the bubble point, making a defective filter appear to pass the test. PUPSIT can detect these flaws before product contact."
+  },
+  {
+   "zh": "<strong>但是——這種情況非常罕見：</strong>文件明確指出，數十年的經驗顯示這種行為「is scarce（很稀少的）」。而且災難性損壞（如嚴重的機械或熱損傷）不可能被產品成分「遮蔽」到讓使用後測試通過的程度。",
+   "en": "<strong>But this is very rare:</strong> The document clearly states that decades of experience show this behavior \"is scarce\". In addition, catastrophic damage (such as severe mechanical or thermal damage) cannot be \"masked\" by product components to the point that the post-use test passes."
+  },
+  {
+   "zh": "想像你在檢查一個水管是否有裂縫。如果水管裡有很多水垢（fouling），水垢可能會堵住小裂縫，讓漏水測試看起來正常。這就是 flaw-masking。PUPSIT 就像是在水垢形成之前先測一次——確認水管本身是完好的。但實際上，如果水管有大的裂口（catastrophic damage），水垢不可能堵住它；只有微小的邊緣缺陷才可能被遮蔽。",
+   "en": "Imagine you are checking a water pipe for cracks. If the pipe has a lot of scale (fouling), the scale may plug small cracks and make a leak test look normal. This is flaw-masking. PUPSIT is like testing before the scale forms, to confirm that the pipe itself is intact. In practice, though, if the pipe has a large breach (catastrophic damage), scale cannot plug it; only tiny marginal flaws could be masked."
+  },
+  {
+   "zh": "<strong>PUPSIT 不可行時的風險評估：</strong>文件強調，不執行 PUPSIT 時需要的風險評估「不是為了合理化省略 (not to justify omission)」，而是為了「評估和管理相關風險」。這個措辭非常重要——法規並不接受「因為不方便所以不做」的理由，而是要求你證明有足夠的替代控制措施來降低風險。",
+   "en": "<strong>Risk assessment when PUPSIT is not feasible:</strong> The document stresses that the risk assessment needed when PUPSIT is not performed is \"not to justify omission\", but to \"assess and manage the associated risks\". This wording is very important: regulators do not accept \"we did not do it because it is inconvenient\"; they require you to demonstrate that sufficient alternative controls are in place to reduce the risk."
+  },
+  {
+   "zh": "<strong>偵測堵塞的替代方法：</strong>過濾過程中的流量和壓差監控、使用後測試的特殊客製化（偵測異常低的擴散流量或異常高的泡點）都是偵測堵塞的手段。",
+   "en": "<strong>Alternative ways to detect clogging:</strong> Monitoring flow rate and differential pressure during filtration, and special tailoring of the post-use test (detecting abnormally low diffusive flow or an abnormally high bubble point), are both means of detecting clogging."
+  },
+  {
+   "zh": "作為 CDMO，你可能面臨客戶或法規要求執行 PUPSIT 的情境。評估時需考慮：",
+   "en": "As a CDMO, you may face situations where a client or regulator requires PUPSIT. The evaluation should consider:"
+  },
+  {
+   "zh": "產品的堵塞傾向（透過 filterability studies 評估）",
+   "en": "The fouling tendency of the product (assessed through filterability studies)"
+  },
+  {
+   "zh": "SUS 是否能承受 PUPSIT 所需的壓力",
+   "en": "Whether the SUS can withstand the pressure required for PUPSIT"
+  },
+  {
+   "zh": "下游無菌維護的可行性",
+   "en": "The feasibility of maintaining downstream sterility"
+  },
+  {
+   "zh": "是否有足夠的替代控制（如冗餘過濾、生物負荷監控）",
+   "en": "Whether sufficient alternative controls exist (such as redundant filtration and bioburden monitoring)"
+  },
+  {
+   "zh": "如果決定不執行 PUPSIT，風險評估文件必須經過品質部門審核，並在法規稽核時隨時可供查閱。",
+   "en": "If you decide not to perform PUPSIT, the risk assessment document must be reviewed by the quality unit and be available at any time during regulatory inspections."
+  },
+  {
+   "zh": "什麼是 flaw-masking？在什麼類型的產品中最可能發生？",
+   "en": "What is flaw-masking? In what types of products is it most likely to occur?"
+  },
+  {
+   "zh": "為什麼 catastrophic filter damage 不可能被 flaw-masking 遮蔽？",
+   "en": "Why can catastrophic filter damage not be masked by flaw-masking?"
+  },
+  {
+   "zh": "如果你決定不執行 PUPSIT，風險評估中必須包含哪些要素？",
+   "en": "If you decide not to perform PUPSIT, what elements must the risk assessment include?"
+  },
+  {
+   "zh": "7.5.2 Post-Filtration Integrity-Test Considerations 過濾後完整性測試考量",
+   "en": "7.5.2 Post-Filtration Integrity-Test Considerations"
+  },
+  {
+   "zh": "<strong>使用後測試的實務要求：</strong>",
+   "en": "<strong>Practical requirements for the post-use test:</strong>"
+  },
+  {
+   "zh": "<strong>盡快執行：</strong>避免產品殘留乾燥在膜上影響潤濕和測試結果",
+   "en": "<strong>Perform it as soon as possible:</strong> Avoid product residue drying on the membrane and affecting wetting and test results"
+  },
+  {
+   "zh": "<strong>不要丟棄濾膜：</strong>在測試結果確認前，濾膜必須保留——這是批次放行的前提條件",
+   "en": "<strong>Do not discard the filter:</strong> The filter must be retained until the test result is confirmed; this is a prerequisite for batch release"
+  },
+  {
+   "zh": "<strong>保持在外殼中：</strong>測試的不僅是濾膜本身，還包括濾膜與外殼的密封接合",
+   "en": "<strong>Keep it in the housing:</strong> The test covers not only the membrane itself but also the seal between the membrane and the housing"
+  },
+  {
+   "zh": "<strong>存儲條件需確認：</strong>如果使用和測試之間有延遲，存儲條件和時間必須經過驗證",
+   "en": "<strong>Storage conditions must be confirmed:</strong> If there is a delay between use and testing, the storage conditions and time must be validated"
+  },
+  {
+   "zh": "使用後完整性測試就像犯罪現場鑑識——必須在「現場」盡快完成（不要讓證據被破壞），而且必須保留「物證」（不要丟棄濾膜），直到「案件結案」（批次放行）。如果你把濾膜從外殼中取出再測試，就像是把證據從犯罪現場移走再分析——你無法確認它在原始位置的狀態。",
+   "en": "A post-use integrity test is like crime scene forensics: it must be completed at the \"scene\" as soon as possible (do not let the evidence be spoiled), and the \"physical evidence\" (the filter) must be kept (do not discard it) until the \"case is closed\" (batch release). If you remove the filter from its housing and then test it, it is like moving the evidence from the crime scene before analyzing it: you cannot confirm its state in its original position."
+  },
+  {
+   "zh": "<strong>批次放行的門檻：</strong>「確認完整性必須在任何產品批次放行之前獲得」——這是一個明確的法規期望。如果完整性測試結果是失敗的或可疑的，產品批次不能放行，必須進行調查。",
+   "en": "<strong>The threshold for batch release:</strong> \"Confirmation of integrity must be obtained prior to release of any product batch\". This is a clear regulatory expectation. If the integrity test result is a failure or is doubtful, the product batch cannot be released and an investigation must be conducted."
+  },
+  {
+   "zh": "<strong>延遲測試的風險：</strong>如果使用和測試之間的延遲異常長，必須評估「假通過」的可能性。產品殘留乾燥可能改變膜的潤濕特性，導致不準確的測試結果。",
+   "en": "<strong>The risk of delayed testing:</strong> If the delay between use and testing is unusually long, the possibility of a \"false pass\" must be evaluated. Dried product residue can change the wetting characteristics of the membrane and lead to inaccurate test results."
+  },
+  {
+   "zh": "為什麼使用後測試應「盡快」執行？延遲測試可能造成哪些問題？",
+   "en": "Why should the post-use test be performed \"as soon as possible\"? What problems can a delayed test cause?"
+  },
+  {
+   "zh": "為什麼濾膜在測試前必須保持在外殼中？如果取出會遺漏什麼資訊？",
+   "en": "Why must the filter remain in its housing before testing? What information would be missed if it were removed?"
+  },
+  {
+   "zh": "7.5.3 Integrity Testing for Serial or Redundant Filtration 串聯或冗餘過濾的完整性測試",
+   "en": "7.5.3 Integrity Testing for Serial or Redundant Filtration"
+  },
+  {
+   "zh": "<strong>三種多濾膜配置的測試要求：</strong>",
+   "en": "<strong>Test requirements for the three multi-filter configurations:</strong>"
+  },
+  {
+   "zh": "<strong>Double Filtration（雙重過濾）：</strong>兩支濾膜都是除菌用途，都必須通過使用後測試",
+   "en": "<strong>Double Filtration:</strong> Both filters are used for sterilization, and both must pass the post-use test"
+  },
+  {
+   "zh": "<strong>Pre-Filtration（預過濾）：</strong>非除菌用途，完整性測試不一定需要（取決於用途）",
+   "en": "<strong>Pre-Filtration:</strong> Not a sterilizing purpose; integrity testing is not necessarily required (depending on the intended use)"
+  },
+  {
+   "zh": "<strong>Redundant Filtration（冗餘過濾）：</strong>主濾膜（下游）必須測試；冗餘濾膜（上游）僅在主濾膜失敗時才必須測試",
+   "en": "<strong>Redundant Filtration:</strong> The primary filter (downstream) must be tested; the redundant filter (upstream) must be tested only if the primary filter fails"
+  },
+  {
+   "zh": "<strong>雙重安全帶：</strong>冗餘過濾就像飛機上的備用引擎。主引擎（primary filter）每次飛行後都要檢查。備用引擎（redundant filter）只有在主引擎出問題時才需要全面檢測——但一旦需要啟用，就必須確認它是完好的。如果你的系統註冊為「有 PUPSIT」，那就像承諾兩個引擎在每次起飛前都要檢查。",
+   "en": "<strong>Double seat belts:</strong> Redundant filtration is like the spare engine on an aircraft. The primary engine is checked after every flight. The spare engine needs a full inspection only if the primary engine has a problem, but once it has to be brought into service, you must confirm that it is intact. If your system is registered as \"with PUPSIT\", it is like committing to inspect both engines before every takeoff."
+  },
+  {
+   "zh": "<strong>冗餘配置中 PUPSIT 的複雜性：</strong>在冗餘過濾系統中執行 PUPSIT 極其複雜——需要分別測試每支濾膜、維護兩膜之間的無菌性、使用額外的除菌排氣濾膜。這是許多工廠在評估 PUPSIT 可行性時必須仔細考量的實務挑戰。",
+   "en": "<strong>The complexity of PUPSIT in redundant configurations:</strong> Performing PUPSIT in a redundant filtration system is extremely complex: each filter must be tested separately, sterility must be maintained between the two filters, and an additional sterilizing-grade vent filter must be used. This is a practical challenge that many sites must consider carefully when assessing the feasibility of PUPSIT."
+  },
+  {
+   "zh": "<strong>兩膜之間的無菌區域：</strong>如果下游主濾膜失敗，兩膜之間的流體路徑就成為產品無菌性的關鍵。這個區域的無菌狀態必須在整個 PUPSIT 過程中得到保護。",
+   "en": "<strong>The sterile zone between the two filters:</strong> If the downstream primary filter fails, the fluid path between the two filters becomes critical to the sterility of the product. The sterile condition of this zone must be protected throughout the entire PUPSIT process."
+  },
+  {
+   "zh": "在 double filtration 中，為什麼兩支濾膜都必須通過使用後測試？",
+   "en": "In double filtration, why must both filters pass the post-use test?"
+  },
+  {
+   "zh": "在 redundant filtration 中，如果主濾膜通過測試但冗餘濾膜未測試，批次能否放行？",
+   "en": "In redundant filtration, if the primary filter passes the test but the redundant filter is not tested, can the batch be released?"
+  },
+  {
+   "zh": "執行冗餘配置的 PUPSIT 時，為什麼需要額外的除菌排氣濾膜？",
+   "en": "When performing PUPSIT on a redundant configuration, why is an additional sterilizing-grade vent filter needed?"
+  },
+  {
+   "zh": "7.6 Failure Analysis/Troubleshooting 失敗分析/故障排除",
+   "en": "7.6 Failure Analysis/Troubleshooting"
+  },
+  {
+   "zh": "<strong>False Failures（假失敗）：</strong>由於完整性測試的物理機制，可能發生「假失敗」——濾膜本身完好，但測試結果顯示不通過。最常見的原因是潤濕不足 (Incomplete Wetting)。TR26 允許在有程序、有記錄的前提下進行重新測試。",
+   "en": "<strong>False Failures:</strong> Because of the physical mechanisms of integrity testing, \"false failures\" can occur, where the filter is intact but the test result shows a failure. The most common cause is incomplete wetting. TR26 allows retesting provided it is done under a procedure and documented."
+  },
+  {
+   "zh": "<strong>三步故障排除流程：</strong>",
+   "en": "<strong>The three-step troubleshooting process:</strong>"
+  },
+  {
+   "zh": "<strong>Step 1：</strong>按規格重新潤濕並重測",
+   "en": "<strong>Step 1:</strong> Rewet according to the specification and retest"
+  },
+  {
+   "zh": "<strong>Step 2：</strong>加強潤濕條件（增加沖洗量/時間、增加壓差、施加背壓）再重測",
+   "en": "<strong>Step 2:</strong> Intensify the wetting conditions (increase flush volume/time, increase differential pressure, apply back pressure) and retest"
+  },
+  {
+   "zh": "<strong>Step 3：</strong>用低表面張力的參考液測試（排除潤濕性問題），如果仍然失敗，濾膜確認不合格",
+   "en": "<strong>Step 3:</strong> Test with a low surface tension reference fluid (to rule out wettability problems); if the filter still fails, it is confirmed as non-conforming"
+  },
+  {
+   "zh": "想像你的電視遙控器按鍵沒反應。你不會立刻認定電視壞了：",
+   "en": "Imagine the buttons on your TV remote do not respond. You would not immediately conclude that the TV is broken:"
+  },
+  {
+   "zh": "<strong>Step 1：</strong>先換新電池試試（重新潤濕並重測）",
+   "en": "<strong>Step 1:</strong> First try new batteries (rewet and retest)"
+  },
+  {
+   "zh": "<strong>Step 2：</strong>換電池後還是不行，試試用力按、調整角度（加強潤濕條件）",
+   "en": "<strong>Step 2:</strong> If it still does not work after changing the batteries, try pressing harder and adjusting the angle (intensify the wetting conditions)"
+  },
+  {
+   "zh": "<strong>Step 3：</strong>用另一個遙控器試試電視（用參考液測試），如果另一個遙控器也不行，那電視真的有問題（濾膜確認不合格）",
+   "en": "<strong>Step 3:</strong> Try another remote on the TV (test with a reference fluid); if the other remote does not work either, the TV really has a problem (the filter is confirmed non-conforming)"
+  },
+  {
+   "zh": "<strong>Adiabatic Effect（絕熱效應）：</strong>當氣體在密閉系統中膨脹或壓縮時，溫度會變化。這種溫度變化會影響測試結果。解決方法是延長穩定時間和測試時間，讓系統達到熱平衡。大型系統（大體積上游空間）特別容易受此影響。",
+   "en": "<strong>Adiabatic Effect:</strong> When gas expands or is compressed in a closed system, its temperature changes. This temperature change affects the test results. The solution is to extend the stabilization time and test time so that the system reaches thermal equilibrium. Large systems (with a large upstream volume) are especially susceptible."
+  },
+  {
+   "zh": "<strong>重測次數必須預先定義：</strong>允許的重測次數必須在程序中事先明確定義並記錄。不能無限次重測直到通過——這會引發法規對「testing into compliance（測到合格為止）」的關注。",
+   "en": "<strong>The number of retests must be predefined:</strong> The number of permitted retests must be clearly defined and documented in the procedure in advance. You cannot retest indefinitely until the filter passes; this would raise regulatory concerns about \"testing into compliance\"."
+  },
+  {
+   "zh": "在 CDMO 的日常營運中，完整性測試失敗是常見的偏差事件。建立一套清晰的故障排除 SOP 至關重要：",
+   "en": "In day-to-day CDMO operations, integrity test failure is a common deviation event. It is essential to establish a clear troubleshooting SOP:"
+  },
+  {
+   "zh": "明確定義允許的最大重測次數（例如：潤濕重測最多 2 次，加強潤濕 1 次）",
+   "en": "Clearly define the maximum number of permitted retests (for example, up to 2 rewet retests and 1 intensified-wetting retest)"
+  },
+  {
+   "zh": "每次重測都要記錄原因和結果",
+   "en": "Record the reason and result of every retest"
+  },
+  {
+   "zh": "超過重測次數限制時自動觸發偏差調查",
+   "en": "Automatically trigger a deviation investigation when the retest limit is exceeded"
+  },
+  {
+   "zh": "確保操作人員經過培訓，了解何時需要停止重測、升級報告",
+   "en": "Make sure operators are trained to know when to stop retesting and escalate"
+  },
+  {
+   "zh": "為什麼 TR26 允許在完整性測試失敗後重測？這與「testing into compliance」有何不同？",
+   "en": "Why does TR26 allow retesting after an integrity test failure? How is this different from \"testing into compliance\"?"
+  },
+  {
+   "zh": "Adiabatic effect 在什麼類型的系統中最為顯著？如何減輕其影響？",
+   "en": "In what types of systems is the adiabatic effect most significant? How can its impact be mitigated?"
+  },
+  {
+   "zh": "如果 Step 3 中使用參考液測試通過但產品潤濕測試仍然失敗，這說明什麼問題？",
+   "en": "If the reference fluid test passes in Step 3 but the product-wet test still fails, what problem does this indicate?"
+  },
+  {
+   "zh": "7.6.1 Insufficient Wetting Failure Analysis 潤濕不足的失敗分析",
+   "en": "7.6.1 Insufficient Wetting Failure Analysis"
+  },
+  {
+   "zh": "<strong>Insufficient Wetting（潤濕不足）：</strong>這是完整性測試失敗最常見的原因。完整性測試的物理原理建立在「濾膜完全被液體潤濕」的前提上。如果任何孔隙未被潤濕，氣體就能自由通過這些「乾」孔隙，產生異常高的流量讀數，導致測試失敗。",
+   "en": "<strong>Insufficient Wetting:</strong> This is the most common cause of integrity test failure. The physical principles of integrity testing rest on the premise that the membrane is completely wetted by the liquid. If any pores are not wetted, gas can pass freely through these \"dry\" pores, producing abnormally high flow readings and causing the test to fail."
+  },
+  {
+   "zh": "<strong>影響潤濕的六個因素：</strong>",
+   "en": "<strong>Six factors that affect wetting:</strong>"
+  },
+  {
+   "zh": "<strong>膜材質 (Membrane Polymer)：</strong>PES（聚醚碸）比 PVDF（聚偏二氟乙烯）更容易潤濕",
+   "en": "<strong>Membrane Polymer:</strong> PES (polyethersulfone) wets more easily than PVDF (polyvinylidene fluoride)"
+  },
+  {
+   "zh": "<strong>孔徑 (Pore Size)：</strong>0.1 微米比 0.2 微米更難潤濕",
+   "en": "<strong>Pore Size:</strong> 0.1 µm is harder to wet than 0.2 µm"
+  },
+  {
+   "zh": "<strong>潤濕液 (Wetting Fluid)：</strong>某些溶液可能與膜材質不相容",
+   "en": "<strong>Wetting Fluid:</strong> Some solutions may be incompatible with the membrane polymer"
+  },
+  {
+   "zh": "<strong>產品殘留/污染物：</strong>可能改變膜的親水性",
+   "en": "<strong>Product residues/contaminants:</strong> May change the hydrophilicity of the membrane"
+  },
+  {
+   "zh": "<strong>壓力條件：</strong>需按製造商建議的壓力來潤濕",
+   "en": "<strong>Pressure conditions:</strong> Wetting must be performed at the pressure recommended by the manufacturer"
+  },
+  {
+   "zh": "<strong>溫度條件：</strong>溫度影響潤濕液的表面張力",
+   "en": "<strong>Temperature conditions:</strong> Temperature affects the surface tension of the wetting fluid"
+  },
+  {
+   "zh": "想像你在用水潤濕一塊海綿。如果海綿表面有一層油（疏水性污染物），水就很難滲透進去。即使你把海綿大部分泡濕了，那些有油的地方仍然是乾的——這些「乾」區域會讓水通過測試看起來像是海綿有洞。同樣地，如果從上游設備溶出的 Leachables（可溶出物）被濾膜吸附，可能改變膜表面的親水性，導致潤濕不完全。",
+   "en": "Imagine wetting a sponge with water. If the sponge surface has a layer of oil (a hydrophobic contaminant), water has difficulty penetrating. Even if you soak most of the sponge, the oily spots stay dry, and these \"dry\" areas make a water test look as if the sponge has holes. In the same way, if leachables from upstream equipment are adsorbed by the filter, they may change the hydrophilicity of the membrane surface and lead to incomplete wetting."
+  },
+  {
+   "zh": "<strong>Leachables 的意外影響：</strong>上游材料（如矽膠管路、密封圈）釋放的可溶出物可能被濾膜吸附，改變其潤濕特性。這是一個容易被忽略的失敗根因——如果你的工廠更換了上游管路材料，可能會突然開始出現完整性測試失敗。",
+   "en": "<strong>The unexpected effect of leachables:</strong> Leachables released from upstream materials (such as silicone tubing and gaskets) may be adsorbed by the filter and change its wetting characteristics. This is an easily overlooked root cause of failure: if your plant changes upstream tubing materials, integrity test failures may suddenly start to appear."
+  },
+  {
+   "zh": "<strong>孔徑越小越難潤濕：</strong>這是一個重要的實務知識。0.1 微米的除菌濾膜比 0.2 微米更難完全潤濕，可能需要更高的潤濕壓力和更長的潤濕時間。如果你的製程使用 0.1 微米濾膜，潤濕程序的驗證尤為重要。",
+   "en": "<strong>The smaller the pore size, the harder to wet:</strong> This is important practical knowledge. A 0.1 µm sterilizing-grade filter is harder to wet completely than a 0.2 µm one and may require a higher wetting pressure and a longer wetting time. If your process uses a 0.1 µm filter, validation of the wetting procedure is especially important."
+  },
+  {
+   "zh": "為什麼潤濕不足會導致完整性測試「失敗」而非「通過」？從物理機制的角度解釋。",
+   "en": "Why does insufficient wetting cause the integrity test to \"fail\" rather than \"pass\"? Explain from the physical mechanism."
+  },
+  {
+   "zh": "如果你的工廠在更換上游管路後開始出現頻繁的完整性測試失敗，你會從哪些方向調查？",
+   "en": "If your plant starts to see frequent integrity test failures after upstream tubing is changed, which directions would you investigate?"
+  },
+  {
+   "zh": "列舉至少三種提高濾膜潤濕效果的方法。",
+   "en": "List at least three ways to improve filter wetting."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>完整性測試的本質：</strong>一種非破壞性物理測試，作為細菌截留試驗的替代方法 (Surrogate Method)，基於濕潤濾膜的氣體擴散和泡點原理來判定濾膜完整性",
+   "en": "<strong>The nature of integrity testing:</strong> A non-destructive physical test that serves as a surrogate method for the bacterial retention test, using the principles of gas diffusion through a wetted membrane and bubble point to determine filter integrity"
+  },
+  {
+   "zh": "<strong>測試方法的選擇：</strong>取決於濾膜面積——小面積用泡點法，中面積兩者皆可，大面積用擴散流量法。SUS 環境應優先考慮擴散流量法以避免超壓",
+   "en": "<strong>Test method selection:</strong> Depends on membrane area: bubble point for small areas, either method for medium areas, and diffusive flow for large areas. In SUS environments, give priority to the diffusive flow method to avoid overpressure"
+  },
+  {
+   "zh": "<strong>完整性測試只是無菌保證的一環：</strong>必須搭配製造商品質控制、細菌截留驗證、製程控制等多重要素，才能構成完整的無菌保證策略",
+   "en": "<strong>Integrity testing is only one part of sterility assurance:</strong> It must be combined with manufacturer quality control, bacterial retention validation, process controls and other elements to form a complete sterility assurance strategy"
+  },
+  {
+   "zh": "<strong>產品潤濕規格的建立：</strong>需要透過 Bubble Point Ratio Approach 和擴散流量轉換公式（Equations 1-3），將水潤濕的標準規格轉換為產品潤濕的專屬規格",
+   "en": "<strong>Establishing product-wet specifications:</strong> The Bubble Point Ratio Approach and the diffusive flow conversion equations (Equations 1-3) are needed to convert the standard water-wet specifications into product-specific product-wet specifications"
+  },
+  {
+   "zh": "<strong>使用後測試是強制性的：</strong>只要濾膜的聲稱用途是除菌，使用後完整性測試就是必須的。PUPSIT 的執行取決於風險評估和法規要求",
+   "en": "<strong>The post-use test is mandatory:</strong> Whenever a filter's claimed purpose is sterilization, a post-use integrity test is required. Whether to perform PUPSIT depends on risk assessment and regulatory requirements"
+  },
+  {
+   "zh": "<strong>故障排除遵循三步流程：</strong>重新潤濕 → 加強潤濕 → 參考液測試。潤濕不足是最常見的失敗原因，受膜材質、孔徑、潤濕液、污染物、壓力和溫度等因素影響",
+   "en": "<strong>Troubleshooting follows a three-step process:</strong> rewet → intensify wetting → reference fluid test. Insufficient wetting is the most common cause of failure and is influenced by membrane polymer, pore size, wetting fluid, contaminants, pressure and temperature"
+  },
+  {
+   "zh": "<strong>設備確認和資料完整性：</strong>自動化完整性測試儀器是現代標準，必須經過完整的設備確認（含「通過」和「失敗」情境），並符合資料完整性要求",
+   "en": "<strong>Equipment qualification and data integrity:</strong> Automated integrity test instruments are the modern standard; they must undergo full equipment qualification (including \"pass\" and \"fail\" scenarios) and meet data integrity requirements"
+  },
+  {
+   "zh": "<strong>決策層級：</strong>在所有與完整性測試相關的決策中，無菌濾液保證 (Sterile Filtrate Assurance) 永遠是最高優先，高於製程便利性和商業效率",
+   "en": "<strong>Decision hierarchy:</strong> In all decisions related to integrity testing, sterile filtrate assurance is always the highest priority, above process convenience and commercial efficiency"
+  }
+ ]
+}

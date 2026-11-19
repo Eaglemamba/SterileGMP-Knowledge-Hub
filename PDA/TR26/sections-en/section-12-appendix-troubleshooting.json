@@ -1,0 +1,281 @@
+{
+ "source": "section-12-appendix-troubleshooting.html",
+ "blocks": [
+  {
+   "zh": "附錄三：完整性測試故障排除指南",
+   "en": "Appendix 3: Integrity Test Troubleshooting Guide"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "掌握手動完整性測試失敗時的基本排查方向（潤濕不足、不當潤濕液、錯誤孔徑）",
+   "en": "Understand the basic lines of investigation when a manual integrity test fails (insufficient wetting, inappropriate wetting fluid, wrong pore size rating)"
+  },
+  {
+   "zh": "學會使用 Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 系統性排查自動化儀器完整性測試的各類故障",
+   "en": "Learn to use Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> to systematically troubleshoot the various failures of automated integrity test instruments"
+  },
+  {
+   "zh": "理解不同故障現象（無壓力建立、穩定階段中止、泡點失敗、擴散流失敗、壓力衰減失敗等）的可能原因",
+   "en": "Understand the possible causes of different failure symptoms (no pressure build-up, abort during stabilization, bubble point failure, diffusive flow failure, pressure decay failure, etc.)"
+  },
+  {
+   "zh": "建立從「現象到根因」的邏輯調查思維，避免直接歸咎於濾膜缺陷",
+   "en": "Build a \"symptom to root cause\" investigation mindset and avoid blaming the filter membrane for a defect by default"
+  },
+  {
+   "zh": "掌握溫度、潤濕、密封、管路連接等共通根因在多種故障模式中的角色",
+   "en": "Understand the role of common root causes (temperature, wetting, sealing, tubing connections) across multiple failure modes"
+  },
+  {
+   "zh": "<strong>12.0 Integrity Test Troubleshooting Guide 12.0 完整性測試故障排除指南</strong>",
+   "en": "<strong>12.0 Integrity Test Troubleshooting Guide</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Integrity Test Troubleshooting (完整性測試故障排除):</strong> 當完整性測試結果不符合預期時，需要系統性地調查根本原因。關鍵的思維轉變是：<strong>測試失敗不等於濾膜失敗</strong>。",
+   "en": "<strong>Integrity Test Troubleshooting:</strong> When an integrity test result is not as expected, the root cause must be investigated systematically. The key shift in thinking is: <strong>a test failure is not the same as a filter failure</strong>."
+  },
+  {
+   "zh": "故障來源可分為三大類：",
+   "en": "Failure sources fall into three main categories:"
+  },
+  {
+   "zh": "<strong>濾膜相關：</strong> 真正的膜缺陷、錯誤的孔徑規格、膜上殘留產品液",
+   "en": "<strong>Membrane-related:</strong> a genuine membrane defect, the wrong pore size rating, or product residue left on the membrane"
+  },
+  {
+   "zh": "<strong>操作相關：</strong> 潤濕不足、潤濕液不適當、參數設定錯誤、穩定時間不足",
+   "en": "<strong>Operation-related:</strong> insufficient wetting, an inappropriate wetting fluid, incorrect parameter settings, or insufficient stabilization time"
+  },
+  {
+   "zh": "<strong>系統相關：</strong> 管路洩漏、密封損壞、氣源問題、儀器內部故障、溫度偏移",
+   "en": "<strong>System-related:</strong> tubing leaks, damaged seals, gas supply problems, internal instrument faults, or temperature drift"
+  },
+  {
+   "zh": "手動測試還有第四類：<strong>人為判斷錯誤</strong>（例如泡點測試中誤判擴散氣泡為泡點）。自動化儀器消除了這一類問題。",
+   "en": "Manual testing adds a fourth category: <strong>human judgment error</strong> (for example, mistaking diffusive bubbles for the bubble point during a bubble point test). Automated instruments eliminate this category of problem."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "完整性測試故障排除就像汽車檢測不合格時的調查過程：",
+   "en": "Troubleshooting an integrity test is like investigating a car that fails its inspection:"
+  },
+  {
+   "zh": "<strong>排放檢測失敗：</strong> 不代表引擎一定壞了。可能是感測器故障、油品不對、前一次維修沒裝好、或者測試條件（溫度）不對",
+   "en": "<strong>Failed emissions test:</strong> This does not necessarily mean the engine is broken. It could be a faulty sensor, the wrong fuel, a previous repair that was not done properly, or incorrect test conditions (temperature)"
+  },
+  {
+   "zh": "<strong>正確的調查順序：</strong> 先檢查最簡單且最常見的原因（感測器、連接、油品），再往複雜的方向排查（引擎本體）",
+   "en": "<strong>The right investigation order:</strong> First check the simplest and most common causes (sensor, connections, fuel), then work toward the more complex ones (the engine itself)"
+  },
+  {
+   "zh": "<strong>同樣的邏輯：</strong> 濾膜測試失敗時，先查潤濕、密封、管路、參數，最後才考慮濾膜本身有問題",
+   "en": "<strong>The same logic applies:</strong> When a filter test fails, check the wetting, seals, tubing and parameters first, and only then consider a problem with the filter itself"
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>最常見的三個手動測試失敗原因：</strong>",
+   "en": "<strong>The three most common causes of manual test failure:</strong>"
+  },
+  {
+   "zh": "<strong>潤濕不足 (Insufficiently Wetted Filter)：</strong> 這是最常見的根因。如果濾膜沒有被完全潤濕，乾燥的孔隙會讓氣體直接通過，導致擴散流偏高或泡點偏低。解決方案：按照製造商建議的潤濕程序操作，確保足夠的潤濕時間和壓力",
+   "en": "<strong>Insufficiently Wetted Filter:</strong> This is the most common root cause. If the membrane is not completely wetted, dry pores let gas pass straight through, giving a high diffusive flow or a low bubble point. Solution: follow the manufacturer's recommended wetting procedure and ensure sufficient wetting time and pressure"
+  },
+  {
+   "zh": "<strong>不適當的潤濕液 (Inappropriate Wetting Medium)：</strong> 使用溶劑而非水作為潤濕液，會改變表面張力和接觸角，導致測試參數完全不同。必須使用製造商指定的潤濕液",
+   "en": "<strong>Inappropriate Wetting Medium:</strong> Using a solvent instead of water as the wetting fluid changes the surface tension and contact angle, so the test parameters are completely different. The wetting fluid specified by the manufacturer must be used"
+  },
+  {
+   "zh": "<strong>錯誤的孔徑規格：</strong> 安裝了 0.45 μm 的濾膜卻用 0.2 μm 的測試參數，測試必然「失敗」",
+   "en": "<strong>Incorrect pore size rating:</strong> If a 0.45 μm filter is installed but the test parameters for a 0.2 μm filter are used, the test will inevitably \"fail\""
+  },
+  {
+   "zh": "公式與計算 Formula — 故障排除的優先順序模型",
+   "en": "Formula and Calculation: Priority Model for Troubleshooting"
+  },
+  {
+   "zh": "故障排除的「外到內」優先順序：\n\nLevel 1 (最外層 — 先查)：\n  ├── 管路連接是否正確？\n  ├── 密封 / O-ring 是否完好？\n  ├── 閥門是否在正確位置？\n  └── 氣源是否正常供應？\n\nLevel 2 (操作層面)：\n  ├── 潤濕程序是否完整執行？\n  ├── 潤濕液是否正確？\n  ├── 測試參數是否正確設定？\n  ├── 穩定時間是否充足？\n  └── 溫度是否穩定？\n\nLevel 3 (儀器層面)：\n  ├── 儀器內部氣動元件是否正常？\n  ├── 參考體積是否正確？\n  └── 測試代碼是否正確？\n\nLevel 4 (最內層 — 最後查)：\n  └── 濾膜本身是否有缺陷？\n\n統計規律：\n  ~70% 的測試失敗由 Level 1-2 造成\n  ~20% 由 Level 3 造成\n  ~10% 才是真正的濾膜問題",
+   "en": "\"Outside-in\" troubleshooting priority:\n\nLevel 1 (outermost - check first):\n  ├── Are the tubing connections correct?\n  ├── Are the seals / O-rings intact?\n  ├── Are the valves in the correct position?\n  └── Is the gas supply normal?\n\nLevel 2 (operational):\n  ├── Was the wetting procedure fully executed?\n  ├── Is the wetting fluid correct?\n  ├── Are the test parameters set correctly?\n  ├── Is the stabilization time sufficient?\n  └── Is the temperature stable?\n\nLevel 3 (instrument):\n  ├── Are the internal pneumatic components working normally?\n  ├── Is the reference volume correct?\n  └── Is the test code correct?\n\nLevel 4 (innermost - check last):\n  └── Does the filter membrane itself have a defect?\n\nStatistical pattern:\n  ~70% of test failures are caused by Levels 1-2\n  ~20% by Level 3\n  only ~10% are genuine filter problems"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼自動化測試儀器雖然消除了人為主觀性，但仍然可能出現測試失敗？請列舉至少三種自動化儀器特有的故障原因。",
+   "en": "Why can an automated test instrument still produce test failures, even though it eliminates human subjectivity? List at least three causes of failure that are specific to automated instruments."
+  },
+  {
+   "zh": "如果同一支濾芯在手動測試中通過但在自動化測試中失敗，你會如何調查？反過來呢？",
+   "en": "If the same cartridge passes a manual test but fails an automated test, how would you investigate? What about the reverse?"
+  },
+  {
+   "zh": "<strong>Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Automatic Device Integrity Test Troubleshooting Guide Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 自動化裝置完整性測試故障排除指南</strong>",
+   "en": "<strong>Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> Automatic Device Integrity Test Troubleshooting Guide<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a></strong>"
+  },
+  {
+   "zh": "<strong>表格結構解讀：</strong> Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 列出了 10 種不同的故障現象 (Issue)，每種現象對應多個可能原因 (Possible Cause)。學習這張表格的關鍵不在於死記，而在於理解以下模式：",
+   "en": "<strong>Reading the table structure:</strong> Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> lists 10 different failure symptoms (Issue), each linked to several possible causes (Possible Cause). The key to studying this table is not memorization but understanding the following patterns:"
+  },
+  {
+   "zh": "<strong>高頻根因：</strong> 「潤濕不足」(Insufficiently wetted filter) 出現在幾乎所有故障類型中 — 這是最普遍的問題",
+   "en": "<strong>High-frequency root cause:</strong> \"Insufficiently wetted filter\" appears in almost every type of failure, making it the most widespread problem"
+  },
+  {
+   "zh": "<strong>系統性問題：</strong> 「內部氣動元件異常」(Internal pneumatic works improperly) 同樣是高頻原因，指向儀器維護的重要性",
+   "en": "<strong>Systemic problem:</strong> \"Internal pneumatic works improperly\" is also a frequent cause, pointing to the importance of instrument maintenance"
+  },
+  {
+   "zh": "<strong>參數錯誤：</strong> 「錯誤的測試參數設定」和「錯誤的測試氣體」提醒我們人為設定錯誤的風險",
+   "en": "<strong>Parameter errors:</strong> \"Incorrect test parameter settings\" and \"incorrect test gas\" remind us of the risk of human setup errors"
+  },
+  {
+   "zh": "這張故障排除表就像醫院急診的「症狀-鑑別診斷」對照表：",
+   "en": "This troubleshooting table is like the \"symptom to differential diagnosis\" chart in a hospital emergency room:"
+  },
+  {
+   "zh": "<strong>症狀（Issue）：</strong> 病人發燒（= 測試失敗）",
+   "en": "<strong>Symptom (Issue):</strong> The patient has a fever (= the test fails)"
+  },
+  {
+   "zh": "<strong>鑑別診斷（Possible Cause）：</strong> 可能是感冒、肺炎、尿路感染、甚至闌尾炎 — 同一個症狀可能有很多不同原因",
+   "en": "<strong>Differential diagnosis (Possible Cause):</strong> It could be a cold, pneumonia, a urinary tract infection, or even appendicitis; one symptom can have many different causes"
+  },
+  {
+   "zh": "<strong>調查策略：</strong> 不是看到發燒就開抗生素（= 不是測試失敗就判定濾膜壞了），而是要做系統性的排查",
+   "en": "<strong>Investigation strategy:</strong> You do not prescribe antibiotics the moment you see a fever (= you do not declare the filter bad the moment a test fails); you work through a systematic investigation"
+  },
+  {
+   "zh": "同樣地，有些「疾病」（= 根因）會表現為多種不同的「症狀」（= 故障現象）。例如「潤濕不足」這個根因，可能表現為泡點失敗、擴散流失敗、或壓力衰減失敗。",
+   "en": "Likewise, some \"diseases\" (= root causes) show up as several different \"symptoms\" (= failure symptoms). For example, the root cause \"insufficient wetting\" may appear as a bubble point failure, a diffusive flow failure, or a pressure decay failure."
+  },
+  {
+   "zh": "<strong>特別值得關注的故障現象：</strong>",
+   "en": "<strong>Failure symptoms that deserve special attention:</strong>"
+  },
+  {
+   "zh": "<strong>「No Pressure Decay」（無壓力衰減）：</strong> 這是唯一一個可能表示「假通過」的情況。如果下游閥門關閉或管路堵塞，氣體無法擴散到下游，壓力不會衰減 — 測試顯示「通過」但實際上根本沒有測到濾膜！這比測試「失敗」更危險",
+   "en": "<strong>\"No Pressure Decay\":</strong> This is the only case that may indicate a \"false pass\". If the downstream valve is closed or the line is blocked, gas cannot diffuse downstream and the pressure does not decay. The test appears to \"pass\" but the filter has not actually been tested at all! This is more dangerous than a test \"failure\""
+  },
+  {
+   "zh": "<strong>「Elevated temperature during test time」（測試期間溫度升高）：</strong> 在「No Pressure Decay」中出現，因為溫度升高會增加系統壓力，抵消了擴散造成的壓力下降",
+   "en": "<strong>\"Elevated temperature during test time\":</strong> This appears under \"No Pressure Decay\" because a temperature rise increases system pressure and offsets the pressure drop caused by diffusion"
+  },
+  {
+   "zh": "<strong>「Large multiple-cartridge assembly」（大型多支濾芯組件）：</strong> 僅在泡點失敗中出現，因為多支濾芯並聯時，大量擴散流會掩蓋泡點信號",
+   "en": "<strong>\"Large multiple-cartridge assembly\":</strong> This appears only under bubble point failure, because when many cartridges are in parallel, the large diffusive flow masks the bubble point signal"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 場景 — 建立標準調查程序 (SOP)：</strong>",
+   "en": "<strong>CDMO scenario: establishing a standard investigation procedure (SOP):</strong>"
+  },
+  {
+   "zh": "在 CDMO 環境中，完整性測試失敗的調查不僅影響當批產品的放行決策，還涉及法規要求的偏差調查和 CAPA。建議建立以下調查流程：",
+   "en": "In a CDMO environment, investigating an integrity test failure affects not only the release decision for the batch but also the regulatory requirements for deviation investigation and CAPA. The following investigation flow is recommended:"
+  },
+  {
+   "zh": "<strong>第一步 — 記錄現場狀態：</strong> 記錄測試參數、環境溫度、濾芯批號、潤濕程序執行記錄",
+   "en": "<strong>Step 1: Record the status on site.</strong> Record the test parameters, ambient temperature, cartridge lot number and the wetting procedure execution records"
+  },
+  {
+   "zh": "<strong>第二步 — 排除操作和系統因素：</strong> 對照 Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 逐項排查非濾膜因素",
+   "en": "<strong>Step 2: Rule out operational and system factors.</strong> Check the non-filter factors one by one against Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>"
+  },
+  {
+   "zh": "<strong>第三步 — 重新潤濕並重測：</strong> 如果懷疑潤濕不足，按照完整的潤濕程序重新潤濕後再測",
+   "en": "<strong>Step 3: Re-wet and retest.</strong> If insufficient wetting is suspected, re-wet using the complete wetting procedure and then retest"
+  },
+  {
+   "zh": "<strong>第四步 — 更換濾芯重測：</strong> 如果仍然失敗，更換新濾芯測試，確認是否為系統問題",
+   "en": "<strong>Step 4: Replace the cartridge and retest.</strong> If the test still fails, test with a new cartridge to confirm whether the problem lies in the system"
+  },
+  {
+   "zh": "<strong>第五步 — 判定與記錄：</strong> 根據調查結果做出最終判定，記錄根因和改善措施",
+   "en": "<strong>Step 5: Make the determination and document it.</strong> Reach a final determination based on the investigation results, and record the root cause and corrective measures"
+  },
+  {
+   "zh": "關鍵原則：無菌保證 (Sterility Assurance) 永遠是第一優先。如果無法排除濾膜缺陷的可能性，該批產品不得放行。",
+   "en": "Key principle: Sterility Assurance is always the first priority. If a filter defect cannot be ruled out, the batch must not be released."
+  },
+  {
+   "zh": "在 Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的 10 種故障中，哪一種最危險（可能導致不完整的濾膜被誤判為「通過」）？請解釋你的推理。",
+   "en": "Among the 10 failure symptoms in Table 12.0-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR26&amp;file=tbl-p97-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, which is the most dangerous (one that could cause a non-integral filter to be wrongly judged as \"pass\")? Explain your reasoning."
+  },
+  {
+   "zh": "如果你在 CDMO 中遇到連續三個批次的擴散流測試都「偏高但剛好通過」（未超過限值但趨勢上升），你會如何處理？這屬於偏差還是趨勢管理的範疇？",
+   "en": "If, in a CDMO, you encounter three consecutive batches whose diffusive flow tests are \"high but just passing\" (not exceeding the limit but trending upward), how would you handle it? Is this a deviation or a matter of trend management?"
+  },
+  {
+   "zh": "「Filter contains traces of product solution or extraneous material from wetting fluid」這個根因出現在多個故障類型中。為什麼產品液殘留會影響完整性測試結果？它會使結果偏高還是偏低？",
+   "en": "The root cause \"Filter contains traces of product solution or extraneous material from wetting fluid\" appears under multiple failure types. Why does product residue affect the integrity test result? Does it make the result higher or lower?"
+  },
+  {
+   "zh": "你的團隊報告說「壓力衰減測試失敗」。請按照優先順序列出你會排查的前五個可能原因，並解釋為什麼按這個順序。",
+   "en": "Your team reports a \"pressure decay test failure\". List the first five possible causes you would investigate, in priority order, and explain why you chose that order."
+  },
+  {
+   "zh": "重點提示 Key Notes — 共通根因分析",
+   "en": "Key Notes: Common Root Cause Analysis"
+  },
+  {
+   "zh": "<strong>跨故障類型的共通根因統計：</strong>",
+   "en": "<strong>Statistics of common root causes across failure types:</strong>"
+  },
+  {
+   "zh": "結論：<strong>前三大根因都不是「濾膜壞了」</strong>。潤濕、儀器維護和潤濕液選擇才是最需要注意的。",
+   "en": "Conclusion: <strong>The top three root causes are not \"a bad filter\"</strong>. Wetting, instrument maintenance and wetting fluid selection are what need the most attention."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>測試失敗不等於濾膜失敗：</strong> 統計上，大多數完整性測試失敗的根因來自操作（潤濕不足、參數錯誤）和系統（管路洩漏、儀器問題），而非濾膜本身的缺陷",
+   "en": "<strong>A test failure is not a filter failure:</strong> Statistically, most integrity test failures are rooted in operation (insufficient wetting, wrong parameters) and the system (tubing leaks, instrument problems), not in a defect of the filter itself"
+  },
+  {
+   "zh": "<strong>手動測試三大排查方向：</strong> 潤濕不足 (Insufficiently Wetted Filter)、不適當的潤濕液 (Inappropriate Wetting Medium)、錯誤的孔徑規格 (Incorrect Pore Size Rating)",
+   "en": "<strong>Three lines of investigation for manual tests:</strong> Insufficiently Wetted Filter, Inappropriate Wetting Medium, Incorrect Pore Size Rating"
+  },
+  {
+   "zh": "<strong>「No Pressure Decay」是最危險的故障：</strong> 可能導致不完整的濾膜被誤判為通過，因為下游阻塞或溫度升高抵消了壓力衰減",
+   "en": "<strong>\"No Pressure Decay\" is the most dangerous failure:</strong> It can cause a non-integral filter to be wrongly judged as passing, because a downstream blockage or a temperature rise offsets the pressure decay"
+  },
+  {
+   "zh": "<strong>共通高頻根因：</strong> 潤濕不足（出現在 8/10 種故障中）、內部氣動問題（7/10）、不當潤濕液（7/10）是最需要預防性管理的因素",
+   "en": "<strong>Common high-frequency root causes:</strong> Insufficient wetting (appears in 8 of 10 failure types), internal pneumatic problems (7/10) and inappropriate wetting fluid (7/10) are the factors that most need preventive management"
+  },
+  {
+   "zh": "<strong>系統性調查思維：</strong> 採用「由外到內」的排查順序 — 先查管路/密封/操作，再查儀器，最後才考慮濾膜缺陷。建立標準調查 SOP 可以確保調查的一致性和完整性",
+   "en": "<strong>Systematic investigation mindset:</strong> Use an \"outside-in\" order: check tubing, seals and operation first, then the instrument, and consider a filter defect last. A standard investigation SOP ensures consistent and complete investigations"
+  },
+  {
+   "zh": "<strong>無菌保證優先：</strong> 在無法明確排除濾膜缺陷的情況下，必須遵循無菌保證 (Sterility Assurance) 優先原則，不得放行產品",
+   "en": "<strong>Sterility Assurance comes first:</strong> Where a filter defect cannot be clearly ruled out, the Sterility Assurance first principle must be followed and the product must not be released"
+  }
+ ]
+}
