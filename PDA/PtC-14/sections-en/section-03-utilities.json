@@ -1,0 +1,821 @@
+{
+ "source": "section-03-utilities.html",
+ "blocks": [
+  {
+   "zh": "Learning Objectives — 本節學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "解說：為什麼 ATMP 公用系統設計有其獨特性？",
+   "en": "Commentary: Why Is ATMP Utility Design Unique?"
+  },
+  {
+   "zh": "核心原則：基礎相同，但加了一層 BSL 防護",
+   "en": "Core principle: the same foundation, plus a layer of BSL protection"
+  },
+  {
+   "zh": "PDA PtC-14 明確指出：ATMP 的公用系統設計<strong>沒有全新的特殊要求</strong>，其 GMP 基礎與傳統小分子、大分子製藥一致。",
+   "en": "PDA PtC-14 states clearly that utility design for ATMPs has <strong>no entirely new special requirements</strong>; the GMP foundation is the same as for conventional small-molecule and large-molecule manufacturing."
+  },
+  {
+   "zh": "差異在於：ATMP 涉及活細胞、病毒載體、GMO，因此<strong>生物安全等級（BSL）</strong>要求在所有公用系統設計上疊加了一層「圍堵邏輯」。",
+   "en": "The difference is that ATMPs involve living cells, viral vectors and GMOs, so <strong>biosafety level (BSL)</strong> requirements add a layer of \"containment logic\" to the design of every utility system."
+  },
+  {
+   "zh": "傳統藥廠：公用系統主要服務產品品質與無菌保障",
+   "en": "Conventional plant: utilities mainly serve product quality and sterility assurance"
+  },
+  {
+   "zh": "ATMP 廠房：公用系統<strong>同時</strong>必須維持 BSL 圍堵完整性",
+   "en": "ATMP facility: utilities must <strong>also</strong> maintain BSL containment integrity"
+  },
+  {
+   "zh": "比喻：醫院隔離病房的通風系統",
+   "en": "Analogy: ventilation in a hospital isolation room"
+  },
+  {
+   "zh": "一般病房與隔離病房（如 COVID-19 負壓病房）都需要暖通空調（HVAC）。但隔離病房的 HVAC 多了一項核心要求：<strong>負壓設計確保污染物不外洩</strong>。",
+   "en": "Both ordinary wards and isolation rooms (such as COVID-19 negative-pressure rooms) need heating, ventilation and air conditioning (HVAC). But an isolation room's HVAC has one extra core requirement: <strong>negative-pressure design that ensures contaminants do not escape</strong>."
+  },
+  {
+   "zh": "ATMP 廠房的公用系統邏輯完全相同——基礎 GMP 規範不變，BSL 圍堵要求是額外疊加的防護層。",
+   "en": "The utility logic of an ATMP facility is exactly the same: the basic GMP requirements do not change, and BSL containment requirements are an additional protective layer on top."
+  },
+  {
+   "zh": "決策優先序：公用系統穿牆穿板的核心原則",
+   "en": "Decision priority: the core principle for utility penetrations through walls and floors"
+  },
+  {
+   "zh": "每一條管線、每一個感測器、每一個電源插座穿過潔淨室牆壁或 BSL 圍堵邊界時，都必須先問：",
+   "en": "Every pipe, every sensor and every power socket that passes through a cleanroom wall or a BSL containment boundary must first be asked:"
+  },
+  {
+   "zh": "<strong>#1 此穿透點是否維持了 BSL 圍堵完整性？</strong>（操作人員安全）",
+   "en": "<strong>#1 Does this penetration maintain BSL containment integrity?</strong> (operator safety)"
+  },
+  {
+   "zh": "如果不能，設計必須修改，無論成本為何。",
+   "en": "If it cannot, the design must be changed, regardless of cost."
+  },
+  {
+   "zh": "思考題 1",
+   "en": "Discussion Question 1"
+  },
+  {
+   "zh": "一家傳統 mAb 廠要轉型生產 CAR-T 細胞療法。工廠主任說：「我們的 WFI 和 Clean Steam 系統已符合 EU GMP Annex 1，應該不用改了。」",
+   "en": "A conventional mAb plant is converting to produce CAR-T cell therapy. The plant director says, \"Our WFI and Clean Steam systems already comply with EU GMP Annex 1, so we should not need to change anything.\""
+  },
+  {
+   "zh": "這個說法哪裡正確？哪裡可能有遺漏？（提示：BSL 邊界的管線穿透點是否已評估？）",
+   "en": "What is correct about this statement, and what might be missing? (Hint: have the pipe penetrations at the BSL boundary been assessed?)"
+  },
+  {
+   "zh": "氣態去污系統 — ATMP 廠房關鍵解析",
+   "en": "Gaseous Decontamination Systems: Key Analysis for ATMP Facilities"
+  },
+  {
+   "zh": "什麼是氣態去污系統？",
+   "en": "What is a gaseous decontamination system?"
+  },
+  {
+   "zh": "氣態去污（Gaseous Disinfection / Biodecontamination）是指使用氣態或蒸氣形式的殺菌劑對封閉空間進行滅菌/去污，最常見的試劑為：",
+   "en": "Gaseous disinfection (biodecontamination) means using a sporicidal agent in gas or vapor form to sterilize/decontaminate an enclosed space. The most common agents are:"
+  },
+  {
+   "zh": "<strong>VHP（Vaporized Hydrogen Peroxide，汽化過氧化氫）</strong>：最廣泛使用",
+   "en": "<strong>VHP (Vaporized Hydrogen Peroxide)</strong>: the most widely used"
+  },
+  {
+   "zh": "<strong>氯二氧化物（ClO₂）</strong>：適用於大空間",
+   "en": "<strong>Chlorine dioxide (ClO₂)</strong>: suitable for large spaces"
+  },
+  {
+   "zh": "<strong>甲醛氣體</strong>：已逐漸被淘汰（毒性考量）",
+   "en": "<strong>Formaldehyde gas</strong>: being phased out (toxicity concerns)"
+  },
+  {
+   "zh": "在 ATMP 廠房，氣態去污特別重要，因為處理活病毒或 GMO 後，<strong>整個房間</strong>可能需要徹底去污，而非僅表面清潔。",
+   "en": "In an ATMP facility, gaseous decontamination is especially important because after handling live virus or GMOs, <strong>the entire room</strong> may need thorough decontamination, not just surface cleaning."
+  },
+  {
+   "zh": "關鍵警告：氣密性（Airtightness）是 BSL 圍堵的命脈",
+   "en": "Key warning: airtightness is the lifeblood of BSL containment"
+  },
+  {
+   "zh": "要點 (b) 特別強調：所有穿透點——包括感測器、電源插座、門縫、HVAC 隔離閘門——都必須在氣態去污期間被有效密封。",
+   "en": "Point (b) stresses in particular that all penetrations, including sensors, power sockets, door gaps and HVAC isolation dampers, must be effectively sealed during gaseous decontamination."
+  },
+  {
+   "zh": "這直接對應決策優先序 <strong>#1（操作人員安全）</strong>：若 VHP 或 ClO₂ 外洩到走廊，等於 BSL 圍堵失效，操作人員面臨雙重風險（化學品暴露 + 生物材料外洩）。",
+   "en": "This maps directly to decision priority <strong>#1 (operator safety)</strong>: if VHP or ClO₂ leaks into the corridor, BSL containment has failed and operators face a double risk (chemical exposure plus release of biological material)."
+  },
+  {
+   "zh": "氣態去污驗證的三個關鍵量化指標",
+   "en": "Three key quantitative metrics for validating gaseous decontamination"
+  },
+  {
+   "zh": "1. 氣密性測試（Airtightness / Room Integrity Test）\n   - 通常使用壓力衰減法（Pressure Decay Test）\n   - 驗收標準：典型值 &lt; 0.5%/hr 壓力衰減（視試劑種類而定）\n   - BSL 2+ 設施可能要求更嚴格的標準\n\n2. 去污效果確認（Biodecontamination Efficacy）\n   - 使用生物指示劑（BI），通常為枯草桿菌芽孢（Geobacillus stearothermophilus）\n   - 目標：≥ 6-log reduction（D-value × 週期次數）\n\n3. 殘留量驗證（Residual Level Validation）\n   - VHP 殘留量分析（trace-limit-detection method）\n   - 驗收標準：對產品無不良影響的殘留濃度\n   - 通常 &lt; 1 ppm VHP（視產品敏感度而定）",
+   "en": "1. Airtightness test (Room Integrity Test)\n   - Usually performed by the pressure decay method\n   - Acceptance criterion: typically &lt; 0.5%/hr pressure decay (depending on the agent used)\n   - BSL 2+ facilities may require a stricter standard\n\n2. Biodecontamination efficacy\n   - Use biological indicators (BI), usually Geobacillus stearothermophilus spores\n   - Target: ≥ 6-log reduction (D-value × number of cycles)\n\n3. Residual level validation\n   - VHP residual analysis (trace-limit-detection method)\n   - Acceptance criterion: residual concentration with no adverse effect on the product\n   - Usually &lt; 1 ppm VHP (depending on product sensitivity)"
+  },
+  {
+   "zh": "比喻：熱氣球充氣前的氣密性檢查",
+   "en": "Analogy: checking a hot air balloon for leaks before inflating it"
+  },
+  {
+   "zh": "氣態去污就像在氣密空間裡充入有殺菌效果的「氣體」。就像熱氣球充氣前需要確認無破洞，ATMP 廠房在進行 VHP 去污前，必須先驗證整個房間的氣密性。",
+   "en": "Gaseous decontamination is like filling an airtight space with a \"gas\" that has a germicidal effect. Just as a hot air balloon must be checked for holes before inflation, an ATMP facility must first verify the airtightness of the whole room before VHP decontamination."
+  },
+  {
+   "zh": "差別在於：熱氣球漏氣只是飛不起來，ATMP 廠房氣密失效可能導致 BSL 病原體或有毒試劑外洩，後果截然不同。",
+   "en": "The difference is that a leaking balloon simply will not fly, whereas a loss of airtightness in an ATMP facility can release BSL pathogens or toxic agents, with completely different consequences."
+  },
+  {
+   "zh": "思考題 2",
+   "en": "Discussion Question 2"
+  },
+  {
+   "zh": "設施工程師在 BSL-2 ATMP 生產間安裝了一個新的溫溼度感測器，將探頭穿過牆板固定，但未對穿牆孔進行封堵處理。",
+   "en": "A facility engineer installs a new temperature and humidity sensor in a BSL-2 ATMP manufacturing room, fixing the probe through the wall panel but leaving the penetration unsealed."
+  },
+  {
+   "zh": "在下次 VHP 去污週期中可能發生什麼問題？應如何預防？",
+   "en": "What problems could occur in the next VHP decontamination cycle? How should this be prevented?"
+  },
+  {
+   "zh": "CO₂ 系統 — 細胞培養的「生命線」",
+   "en": "CO₂ Systems: the \"Lifeline\" of Cell Culture"
+  },
+  {
+   "zh": "為什麼 ATMP 廠房特別需要 CO₂ 系統？",
+   "en": "Why do ATMP facilities especially need a CO₂ system?"
+  },
+  {
+   "zh": "CO₂ 在 ATMP 製造中的主要用途是細胞培養（Cell Culture）。哺乳動物細胞（包括 T 細胞、NK 細胞、iPSC）的培養環境需要：",
+   "en": "The main use of CO₂ in ATMP manufacturing is cell culture. The culture environment for mammalian cells (including T cells, NK cells and iPSCs) requires:"
+  },
+  {
+   "zh": "溫度：37°C（模擬體溫）",
+   "en": "Temperature: 37°C (simulating body temperature)"
+  },
+  {
+   "zh": "<strong>CO₂ 濃度：5%（維持培養液 pH 值在 7.2–7.4）</strong>",
+   "en": "<strong>CO₂ concentration: 5% (maintains culture medium pH at 7.2–7.4)</strong>"
+  },
+  {
+   "zh": "濕度：高濕度（防止培養液蒸發）",
+   "en": "Humidity: high (prevents evaporation of the culture medium)"
+  },
+  {
+   "zh": "傳統小分子藥廠幾乎不需要 CO₂ 系統；ATMP 廠房的 CO₂ 供應一旦中斷，細胞可能在數小時內因 pH 值失控而死亡，導致批次報廢。",
+   "en": "Conventional small-molecule plants hardly need a CO₂ system at all. In an ATMP facility, if the CO₂ supply is interrupted, cells can die within hours from loss of pH control, resulting in batch loss."
+  },
+  {
+   "zh": "生命安全警告：CO₂ 窒息風險（Asphyxiation Risk）",
+   "en": "Life-safety warning: CO₂ asphyxiation risk"
+  },
+  {
+   "zh": "CO₂ 是無色無味的氣體，在封閉空間中濃度升高時，操作人員在察覺前可能已喪失行動能力。",
+   "en": "CO₂ is a colorless, odorless gas. When its concentration rises in an enclosed space, operators may become incapacitated before they notice."
+  },
+  {
+   "zh": "要點 (f) 要求的三重防護：",
+   "en": "The three-layer protection required by point (f):"
+  },
+  {
+   "zh": "<strong>房間 O₂ 監測系統</strong>：固定式感測器，設視覺 + 聽覺警報",
+   "en": "<strong>Room O₂ monitoring system</strong>: fixed sensors with visual and audible alarms"
+  },
+  {
+   "zh": "<strong>個人 O₂ 感測器</strong>：操作人員隨身攜帶",
+   "en": "<strong>Personal O₂ sensors</strong>: carried by operators"
+  },
+  {
+   "zh": "<strong>夥伴制度（Buddy System）/ 倒地警報（Man-Down Alarm）</strong>：若人員失去回應，觸發緊急救援",
+   "en": "<strong>Buddy system / man-down alarm</strong>: triggers emergency rescue if a person stops responding"
+  },
+  {
+   "zh": "這三重防護對應決策優先序 <strong>#1（操作人員安全）</strong>，屬於不可妥協的強制要求。",
+   "en": "These three layers correspond to decision priority <strong>#1 (operator safety)</strong> and are non-negotiable mandatory requirements."
+  },
+  {
+   "zh": "CO₂ 系統品質分類原則",
+   "en": "Principle for classifying CO₂ system quality"
+  },
+  {
+   "zh": "CO₂ 品質分類取決於接觸點的環境分級：\n\n使用場景              CO₂ 管線品質要求\n─────────────────────────────────────────\nCO₂ 進入 ISO 5 層流罩內部  →  需達到同等潔淨室標準\nCO₂ 進入 ISO 7 培養箱      →  符合 ISO 7 微粒/微生物要求\nCO₂ 用於非產品接觸用途     →  一般工業級可能可接受\n(如 HVAC 壓力平衡用途)\n\n關鍵原則：CO₂ 管線品質 ≥ 其進入的最嚴格環境分級",
+   "en": "CO₂ quality classification depends on the classification of the environment at the point of contact:\n\nUse scenario                           CO₂ line quality requirement\n─────────────────────────────────────────\nCO₂ into an ISO 5 laminar flow hood  →  must meet the equivalent cleanroom standard\nCO₂ into an ISO 7 incubator          →  meets ISO 7 particulate/microbial requirements\nCO₂ for non-product-contact use      →  general industrial grade may be acceptable\n(e.g. HVAC pressure balancing)\n\nKey principle: CO₂ line quality ≥ the most stringent classification of the environment it enters"
+  },
+  {
+   "zh": "比喻：餐廳廚房的天然氣供應",
+   "en": "Analogy: the natural gas supply in a restaurant kitchen"
+  },
+  {
+   "zh": "想像一家餐廳的天然氣系統：",
+   "en": "Picture the natural gas system of a restaurant:"
+  },
+  {
+   "zh": "需要<strong>持續供氣</strong>（備用桶切換 = Source Tank Switchover）",
+   "en": "It needs a <strong>continuous supply</strong> (switching to a backup cylinder = source tank switchover)"
+  },
+  {
+   "zh": "不同爐具有<strong>不同壓力需求</strong>（需要壓力調節）",
+   "en": "Different burners have <strong>different pressure requirements</strong> (pressure regulation is needed)"
+  },
+  {
+   "zh": "天然氣有<strong>爆炸/窒息風險</strong>（需要洩漏偵測）",
+   "en": "Natural gas carries an <strong>explosion/asphyxiation risk</strong> (leak detection is needed)"
+  },
+  {
+   "zh": "CO₂ 系統的邏輯完全相同，只是廚房換成了細胞培養間，天然氣換成了 CO₂，後果從廚房爆炸換成了細胞死亡 + 人員窒息。",
+   "en": "The logic of a CO₂ system is exactly the same; the kitchen becomes a cell culture room, natural gas becomes CO₂, and the consequence changes from a kitchen explosion to cell death plus operator asphyxiation."
+  },
+  {
+   "zh": "思考題 3",
+   "en": "Discussion Question 3"
+  },
+  {
+   "zh": "一個 CAR-T 細胞製造設施有兩條獨立生產線：Line A（自體）和 Line B（異體）。設施工程師建議共用一條 CO₂ 主幹管，再分支到各個培養箱，以節省建設成本。",
+   "en": "A CAR-T cell manufacturing facility has two independent production lines: Line A (autologous) and Line B (allogeneic). The facility engineer suggests sharing one CO₂ main header that branches to every incubator, to save construction cost."
+  },
+  {
+   "zh": "從要點 (d)「交叉污染風險」角度評估：這個設計有何潛在問題？需要哪些工程控制措施？",
+   "en": "Evaluate from the perspective of point (d), \"cross-contamination risk\": what are the potential problems with this design? What engineering controls are needed?"
+  },
+  {
+   "zh": "純化水系統 — ATMP 廠房的清潔水策略",
+   "en": "Purified Water Systems: the Clean Water Strategy of an ATMP Facility"
+  },
+  {
+   "zh": "純化水（Purified Water, PW）的定義與 ATMP 適用範圍",
+   "en": "Definition of purified water (PW) and its scope in ATMP facilities"
+  },
+  {
+   "zh": "純化水依 Ph. Eur. / USP 標準生產，主要用途：",
+   "en": "Purified water is produced to Ph. Eur. / USP standards, and is mainly used for:"
+  },
+  {
+   "zh": "清潔用水（設備表面清洗）",
+   "en": "Cleaning water (washing equipment surfaces)"
+  },
+  {
+   "zh": "配製非注射用消毒劑（如 70% IPA、次氯酸鈉溶液）",
+   "en": "Preparing non-injectable disinfectants (such as 70% IPA and sodium hypochlorite solution)"
+  },
+  {
+   "zh": "非直接產品接觸用途",
+   "en": "Non-direct product-contact uses"
+  },
+  {
+   "zh": "要點 (b) 提出一個重要的 ATMP 特有考量：若純化水水質不穩定，可能影響所配製消毒劑的<strong>效力</strong>（硬度、pH 值影響），從而危及 BSL 環境維持能力。在這種情況下，應考慮<strong>改用 WFI</strong> 來配製消毒劑。",
+   "en": "Point (b) raises an important ATMP-specific consideration: if purified water quality is unstable, it may affect the <strong>efficacy</strong> of the disinfectants prepared with it (hardness and pH have an effect), thereby jeopardizing the ability to maintain the BSL environment. In that case, <strong>switching to WFI</strong> for disinfectant preparation should be considered."
+  },
+  {
+   "zh": "ATMP 廠房純化水的特殊挑戰：生物膜（Biofilm）",
+   "en": "Special challenge of PW in ATMP facilities: biofilm"
+  },
+  {
+   "zh": "傳統藥廠已有成熟的純化水生物膜控制措施（高溫循環、定期臭氧消毒等），但 ATMP 廠房面臨額外風險：",
+   "en": "Conventional plants already have mature biofilm control measures for purified water (hot circulation, periodic ozone sanitization, etc.), but ATMP facilities face additional risk:"
+  },
+  {
+   "zh": "若設施規模較小（如 autologous ATMP 設施），水系統使用頻率可能較低",
+   "en": "If the facility is small (for example an autologous ATMP facility), the water system may be used less frequently"
+  },
+  {
+   "zh": "低流速期間生物膜形成風險上升",
+   "en": "The risk of biofilm formation rises during periods of low flow velocity"
+  },
+  {
+   "zh": "ATMP 免疫療法患者往往免疫力極度低下（化療後），對水中微生物污染<strong>零容忍</strong>",
+   "en": "ATMP immunotherapy patients are often severely immunocompromised (after chemotherapy) and have <strong>zero tolerance</strong> for microbial contamination in water"
+  },
+  {
+   "zh": "要點 (c) 的「無生物膜」要求在 ATMP 廠房中等同決策優先序 <strong>#2（患者安全）</strong>的直接要求。",
+   "en": "The \"no biofilm\" requirement in point (c) is, in an ATMP facility, a direct requirement of decision priority <strong>#2 (patient safety)</strong>."
+  },
+  {
+   "zh": "壓力差防交叉污染原則（Pressure Differential Principle）",
+   "en": "Pressure differential principle for preventing cross-contamination"
+  },
+  {
+   "zh": "雙塊洩放閥（Double-Block and Bleed, DBB）設計：\n\n高壓端（PW 主管）\n       |\n    [Block Valve 1]  ← 正常關閉狀態\n       |\n    [Bleed Valve]    ← 任何洩漏都從此排放到安全位置\n       |\n    [Block Valve 2]  ← 正常關閉狀態\n       |\n低壓端（製程設備 / 清潔用途）\n\n原則：設備側壓力 &lt; PW 分配管壓力\n      即使閥門失效，污染不能逆流進入主管\n\n替代方案：獨立管路設計（無共用連接）",
+   "en": "Double-block and bleed (DBB) design:\n\nHigh-pressure side (PW main header)\n       |\n    [Block Valve 1]  ← normally closed\n       |\n    [Bleed Valve]    ← any leakage is vented from here to a safe location\n       |\n    [Block Valve 2]  ← normally closed\n       |\nLow-pressure side (process equipment / cleaning use)\n\nPrinciple: equipment-side pressure &lt; PW distribution line pressure\n      Even if a valve fails, contamination cannot flow back into the main header\n\nAlternative: independent piping design (no shared connection)"
+  },
+  {
+   "zh": "比喻：城市自來水系統的逆流防止器",
+   "en": "Analogy: the backflow preventer in a city water supply"
+  },
+  {
+   "zh": "城市自來水管網在接入用水戶時，會安裝「逆流防止閥」（Backflow Preventer），確保自來水廠水壓始終高於用戶端，防止污染物從用戶端逆流回水廠。",
+   "en": "When a city water network connects to a user, a \"backflow preventer\" is installed to ensure the water pressure from the waterworks is always higher than on the user side, preventing contaminants from flowing back from the user to the waterworks."
+  },
+  {
+   "zh": "ATMP 廠房 PW 系統的 DBB 設計原理完全相同：確保潔淨水源永遠不被製程端污染，方向只能是「水源 → 製程」，永不逆流。",
+   "en": "The DBB design for an ATMP facility's PW system works on exactly the same principle: it ensures the clean water source is never contaminated by the process side, and the flow can only go \"water source → process\", never backward."
+  },
+  {
+   "zh": "注射用水系統 — ATMP 最高水質要求",
+   "en": "Water for Injection Systems: the Highest Water Quality Requirement in ATMP Manufacturing"
+  },
+  {
+   "zh": "WFI 在 ATMP 製造中的用途",
+   "en": "Uses of WFI in ATMP manufacturing"
+  },
+  {
+   "zh": "注射用水（Water for Injection, WFI）是 ATMP 製造中用於直接產品接觸的水質等級，包括：",
+   "en": "Water for Injection (WFI) is the water grade used for direct product contact in ATMP manufacturing, including:"
+  },
+  {
+   "zh": "最終配製（Final Formulation）：稀釋細胞懸浮液",
+   "en": "Final formulation: diluting the cell suspension"
+  },
+  {
+   "zh": "緩衝液配製（Buffer Preparation）",
+   "en": "Buffer preparation"
+  },
+  {
+   "zh": "無菌清洗（Final Rinse after CIP）",
+   "en": "Sterile rinsing (final rinse after CIP)"
+  },
+  {
+   "zh": "蒸汽滅菌鍋進水（若使用純蒸汽）",
+   "en": "Autoclave feed water (if pure steam is used)"
+  },
+  {
+   "zh": "CCS（污染控制策略）與 WFI 取樣點設計",
+   "en": "CCS (contamination control strategy) and WFI sampling point design"
+  },
+  {
+   "zh": "要點 (a) 特別提到依據 <strong>CCS</strong> 定義取樣位置，這是 EU GMP Annex 1（2022 版）的核心概念。",
+   "en": "Point (a) specifically mentions defining sampling locations based on the <strong>CCS</strong>, a core concept of EU GMP Annex 1 (2022 version)."
+  },
+  {
+   "zh": "CCS 要求不能只在 WFI 產生機出口取樣，必須在<strong>最接近實際使用點</strong>（Point of Use）的位置取樣，因為分配管線本身也可能是污染源。",
+   "en": "The CCS requires that sampling not be done only at the outlet of the WFI generator; it must be done at the location <strong>closest to the actual point of use</strong>, because the distribution loop itself can also be a source of contamination."
+  },
+  {
+   "zh": "在 ATMP 小批量生產中，WFI 系統可能規模較小，取樣點設計尤其重要，因為使用頻率低的支管更容易累積微生物。",
+   "en": "In small-batch ATMP production, the WFI system may be smaller in scale and sampling point design is especially important, because infrequently used branches are more likely to accumulate microorganisms."
+  },
+  {
+   "zh": "比喻：醫院直飲水系統與手術室用水",
+   "en": "Analogy: a hospital drinking fountain versus operating room water"
+  },
+  {
+   "zh": "醫院走廊的飲水機（純化水等級）和手術室的無菌生理食鹽水（WFI 等級），使用不同的水質標準，因為後者直接進入患者體內。",
+   "en": "A hospital corridor water fountain (purified water grade) and the sterile saline in the operating room (WFI grade) follow different water quality standards, because the latter goes directly into the patient's body."
+  },
+  {
+   "zh": "ATMP 廠房的邏輯相同——「用到哪裡、就要達到那裡的水質」，這是 CCS 導向設計的核心精神。",
+   "en": "The logic is the same in an ATMP facility: \"the water must meet the quality required where it is used\", which is the core spirit of CCS-driven design."
+  },
+  {
+   "zh": "思考題 4",
+   "en": "Discussion Question 4"
+  },
+  {
+   "zh": "一家新建的 ATMP CDMO 設施，由於空間限制，工程師提議：WFI 和純化水共用同一條分配管的最後一段，在使用點前才分叉。為了節省成本，兩個管路共用一個取樣口。",
+   "en": "For a newly built ATMP CDMO facility, because of space constraints the engineer proposes that WFI and purified water share the last section of the same distribution line, branching only before the point of use. To save cost, the two lines share one sampling port."
+  },
+  {
+   "zh": "從 Q3.1 要點 (d) 和 CCS 角度，這個設計有哪些問題？如何改進？",
+   "en": "From the perspective of Q3.1 point (d) and the CCS, what problems does this design have? How can it be improved?"
+  },
+  {
+   "zh": "液態氮系統 — ATMP 最關鍵的儲存介質",
+   "en": "Liquid Nitrogen Systems: the Most Critical Storage Medium for ATMPs"
+  },
+  {
+   "zh": "為什麼 LN₂ 對 ATMP 如此關鍵？",
+   "en": "Why is LN₂ so critical for ATMPs?"
+  },
+  {
+   "zh": "液態氮（Liquid Nitrogen, LN₂，沸點 -196°C）是 ATMP 製造中儲存以下最高價值物料的介質：",
+   "en": "Liquid nitrogen (LN₂, boiling point -196°C) is the medium used in ATMP manufacturing to store the following highest-value materials:"
+  },
+  {
+   "zh": "<strong>細胞庫（Cell Banks）</strong>：Master Cell Bank / Working Cell Bank，是整個產品線的源頭",
+   "en": "<strong>Cell banks</strong>: Master Cell Bank / Working Cell Bank, the source of the entire product line"
+  },
+  {
+   "zh": "<strong>病毒庫（Viral Banks）</strong>：基因療法產品的病毒載體種子庫",
+   "en": "<strong>Viral banks</strong>: viral vector seed banks for gene therapy products"
+  },
+  {
+   "zh": "<strong>患者細胞（Patient Cells）</strong>：自體 CAR-T 治療的起始原料，不可再生",
+   "en": "<strong>Patient cells</strong>: the starting material for autologous CAR-T therapy, which cannot be regenerated"
+  },
+  {
+   "zh": "要點 (c) 明確指出：這些是「製程中最關鍵的物料」，因此必須考慮備援設備。這在決策優先序中同時涉及 <strong>#2（患者安全）</strong>和 <strong>#3（產品品質）</strong>。",
+   "en": "Point (c) states explicitly that these are the \"most critical materials in the process\", so backup equipment must be considered. In the decision priorities this involves both <strong>#2 (patient safety)</strong> and <strong>#3 (product quality)</strong>."
+  },
+  {
+   "zh": "雙重危害：窒息（Asphyxiation）+ 低溫灼傷（Cryogenic Burn）",
+   "en": "Dual hazards: asphyxiation plus cryogenic burns"
+  },
+  {
+   "zh": "LN₂ 系統是 ATMP 廠房中最危險的公用系統之一，具有兩種截然不同的危害機制：",
+   "en": "LN₂ systems are among the most dangerous utility systems in an ATMP facility, with two entirely different hazard mechanisms:"
+  },
+  {
+   "zh": "<strong>危害 1：窒息風險</strong>",
+   "en": "<strong>Hazard 1: asphyxiation risk</strong>"
+  },
+  {
+   "zh": "LN₂ 氣化後體積膨脹約 700 倍，迅速排擠空間中的 O₂",
+   "en": "When LN₂ vaporizes it expands about 700-fold, rapidly displacing O₂ from the space"
+  },
+  {
+   "zh": "O₂ 濃度 &lt; 19.5%：危險警戒；&lt; 16%：失去判斷力；&lt; 10%：立即喪失意識",
+   "en": "O₂ concentration &lt; 19.5%: danger alert; &lt; 16%: impaired judgment; &lt; 10%: immediate loss of consciousness"
+  },
+  {
+   "zh": "整個過程可能在數分鐘內發生，且無明顯預警感覺",
+   "en": "The whole process can occur within minutes, with no noticeable warning sensation"
+  },
+  {
+   "zh": "<strong>危害 2：低溫灼傷（凍傷）</strong>",
+   "en": "<strong>Hazard 2: cryogenic burns (frostbite)</strong>"
+  },
+  {
+   "zh": "-196°C 的 LN₂ 接觸皮膚，0.1 秒內造成嚴重凍傷",
+   "en": "LN₂ at -196°C causes severe frostbite on skin contact within 0.1 second"
+  },
+  {
+   "zh": "液氮噴濺可能造成眼睛永久性損傷",
+   "en": "LN₂ splashes can cause permanent eye damage"
+  },
+  {
+   "zh": "PPE 穿戴站和急救站必須在平面圖中醒目標示",
+   "en": "PPE stations and first-aid stations must be clearly marked on the floor plan"
+  },
+  {
+   "zh": "LN₂ 備援系統設計考量",
+   "en": "Design considerations for LN₂ backup systems"
+  },
+  {
+   "zh": "備援設計的三個層級：\n\nLevel 1：備用儲槽（Backup Dewar / Tank）\n  - 確保主儲槽耗盡前可切換\n  - 供應切換需經 Commissioning 驗證\n  - 通常需要額外的樓板荷重設計\n\nLevel 2：備用 LN₂ 冷凍箱（Backup LN₂ Freezer）\n  - 主設備故障時，立即將關鍵物料轉移\n  - 備用設備同樣需要 IQ/OQ/PQ 確效\n  - 需定期演練轉移程序（SOP）\n\nLevel 3：異地儲存（Off-site Storage）\n  - 細胞銀行和病毒銀行通常應在兩個物理分離的地點備份\n  - 這是行業最佳實務，但超出 Q3.1 的範圍\n\n注意：備援設計增加了：\n  + 設施佔地面積（Floor Footprint）\n  + 資本支出（CapEx）\n  + LN₂ 供應管路複雜度",
+   "en": "Three levels of backup design:\n\nLevel 1: backup tank (backup dewar / tank)\n  - Ensures a switchover before the main tank is depleted\n  - Supply switchover must be verified through commissioning\n  - Usually requires additional floor-loading design\n\nLevel 2: backup LN₂ freezer\n  - If the main equipment fails, critical materials are transferred immediately\n  - The backup equipment also needs IQ/OQ/PQ qualification\n  - The transfer procedure (SOP) must be rehearsed regularly\n\nLevel 3: off-site storage\n  - Cell banks and viral banks should usually be backed up at two physically separate locations\n  - This is industry best practice but is beyond the scope of Q3.1\n\nNote: backup design increases:\n  + Facility floor footprint\n  + Capital expenditure (CapEx)\n  + Complexity of the LN₂ supply piping"
+  },
+  {
+   "zh": "比喻：醫院加護病房的不斷電系統（UPS）",
+   "en": "Analogy: the uninterruptible power supply (UPS) in a hospital ICU"
+  },
+  {
+   "zh": "加護病房的維生設備（呼吸器、心臟監護儀）絕不能因停電而中斷，因此醫院設計了 UPS + 發電機雙重備援。",
+   "en": "Life-support equipment in an intensive care unit (ventilators, cardiac monitors) must never be interrupted by a power outage, so hospitals design dual backup with a UPS plus a generator."
+  },
+  {
+   "zh": "ATMP 廠房的 LN₂ 備援邏輯完全相同：細胞庫就是患者的「維生設備」，一旦 LN₂ 供應中斷而無備援，患者可能失去唯一的治療機會，後果不可逆。",
+   "en": "The LN₂ backup logic of an ATMP facility is exactly the same: the cell bank is the patient's \"life support\", and if the LN₂ supply is interrupted without a backup, the patient may lose their only chance of treatment, with irreversible consequences."
+  },
+  {
+   "zh": "思考題 5",
+   "en": "Discussion Question 5"
+  },
+  {
+   "zh": "一家自體 CAR-T 細胞療法的 CDMO，計劃在新設施中儲存 50 名患者的白血球分離產品（每位患者樣本不可複製）。",
+   "en": "An autologous CAR-T cell therapy CDMO plans to store leukapheresis products from 50 patients in its new facility (each patient's sample cannot be replicated)."
+  },
+  {
+   "zh": "工廠設計師建議只安裝一台 LN₂ 儲存箱，以節省空間和成本。",
+   "en": "The plant designer proposes installing only one LN₂ storage freezer to save space and cost."
+  },
+  {
+   "zh": "從風險管理和決策優先序角度，你如何回應？需要準備哪些論據說服管理層？",
+   "en": "From a risk management and decision priority perspective, how would you respond? What arguments would you prepare to persuade management?"
+  },
+  {
+   "zh": "氮氣系統 — 惰性保護與產品穩定性",
+   "en": "Nitrogen Systems: Inert Protection and Product Stability"
+  },
+  {
+   "zh": "N₂ 在 ATMP 製造中的兩種主要用途",
+   "en": "Two main uses of N₂ in ATMP manufacturing"
+  },
+  {
+   "zh": "<strong>用途 1：惰性覆蓋（Inert Overlay / Blanket）</strong>",
+   "en": "<strong>Use 1: inert overlay / blanket</strong>"
+  },
+  {
+   "zh": "在產品容器（藥瓶、袋）頭部空間覆蓋 N₂，排除 O₂",
+   "en": "Cover the headspace of product containers (vials, bags) with N₂ to exclude O₂"
+  },
+  {
+   "zh": "防止產品（特別是細胞、蛋白質、脂質奈米顆粒）被氧化",
+   "en": "Prevent oxidation of the product (especially cells, proteins and lipid nanoparticles)"
+  },
+  {
+   "zh": "維持原料（如敏感性緩衝液試劑）的穩定性",
+   "en": "Maintain the stability of raw materials (such as sensitive buffer reagents)"
+  },
+  {
+   "zh": "<strong>用途 2：管路吹掃（Purging）</strong>",
+   "en": "<strong>Use 2: line purging</strong>"
+  },
+  {
+   "zh": "在灌裝前用 N₂ 吹掃管路，排除空氣中的 O₂ 和水分",
+   "en": "Purge lines with N₂ before filling to remove O₂ and moisture from the air"
+  },
+  {
+   "zh": "在維修後恢復設備前確認管路潔淨",
+   "en": "Confirm line cleanliness before returning equipment to service after maintenance"
+  },
+  {
+   "zh": "N₂ 無菌過濾設計：Source vs. Terminal 過濾",
+   "en": "N₂ sterile filtration design: source vs. terminal filtration"
+  },
+  {
+   "zh": "當 N₂ 直接接觸產品時，需要雙重過濾保障：\n\n供應端過濾（Source Filtration）：\n  位置：N₂ 供應站（Gas Manifold）出口\n  功能：去除來自氣源的微粒和微生物\n  確效：依使用點的環境分級要求確效\n\n末端過濾（Terminal Filtration）：\n  位置：最接近使用點（Point of Use）\n  功能：確保進入產品接觸區域的 N₂ 達到無菌標準\n  確效：0.22 μm 除菌過濾，需進行完整性測試\n\n為何需要兩道過濾？\n  Source 過濾保護管線不受外部污染\n  Terminal 過濾是最後一道防線，防止管線內部污染\n  兩道過濾共同確保到達產品的 N₂ 是無菌的",
+   "en": "When N₂ comes into direct contact with the product, two-stage filtration is needed:\n\nSource filtration:\n  Location: outlet of the N₂ supply station (gas manifold)\n  Function: remove particles and microorganisms coming from the gas source\n  Validation: validated according to the environment classification at the point of use\n\nTerminal filtration:\n  Location: closest to the point of use\n  Function: ensure the N₂ entering the product-contact area meets the sterility standard\n  Validation: 0.22 μm sterilizing filtration, with integrity testing required\n\nWhy are two filters needed?\n  Source filtration protects the lines from external contamination\n  Terminal filtration is the last line of defense, preventing contamination arising inside the lines\n  Together, the two filters ensure the N₂ reaching the product is sterile"
+  },
+  {
+   "zh": "比喻：手術室醫療氣體系統",
+   "en": "Analogy: the medical gas system in an operating room"
+  },
+  {
+   "zh": "手術室天花板上的醫療氣體終端（O₂、N₂O、壓縮空氣）每一個接頭都有顏色標示和防錯設計，就像 Q3.1(e) 要求的管路標示一樣。",
+   "en": "Every medical gas terminal on the operating room ceiling (O₂, N₂O, compressed air) has color coding and mix-up-proof connectors, just like the pipe labeling required by Q3.1(e)."
+  },
+  {
+   "zh": "手術室的 O₂ 若被 N₂ 污染，患者有立即生命危險。ATMP 廠房的 N₂ 若被生物污染物逆流污染，可能危及後續患者的產品安全性。標示的目的都是防止「接錯管子」的災難性後果。",
+   "en": "If the O₂ in an operating room were contaminated with N₂, the patient would be in immediate danger of death. If the N₂ in an ATMP facility were contaminated by biological contaminants flowing back, the safety of subsequent patients' products could be jeopardized. The purpose of labeling in both cases is to prevent the catastrophic consequence of \"connecting the wrong pipe\"."
+  },
+  {
+   "zh": "思考題 6",
+   "en": "Discussion Question 6"
+  },
+  {
+   "zh": "在 mRNA LNP（脂質奈米顆粒）製造設施中，N₂ 被用於兩個目的：(1) 原料儲槽的惰性覆蓋保護（直接接觸脂質原料）；(2) 空調系統的吹掃氣體（不接觸產品）。",
+   "en": "In an mRNA LNP (lipid nanoparticle) manufacturing facility, N₂ is used for two purposes: (1) inert overlay protection of raw material storage tanks (direct contact with lipid raw materials); (2) purge gas for the air conditioning system (no product contact)."
+  },
+  {
+   "zh": "依據 Q3.1 要點 (a) 和 (c)，這兩條 N₂ 管路應分別達到什麼品質分類和過濾要求？可以共用同一條主管嗎？",
+   "en": "Based on Q3.1 points (a) and (c), what quality classification and filtration requirements should each of these two N₂ lines meet? Can they share the same main header?"
+  },
+  {
+   "zh": "N₂ 的窒息風險與 CO₂ 的差異",
+   "en": "N₂ asphyxiation risk and how it differs from CO₂"
+  },
+  {
+   "zh": "N₂ 和 CO₂ 都有窒息風險，但機制稍有不同：",
+   "en": "Both N₂ and CO₂ present an asphyxiation risk, but the mechanisms differ slightly:"
+  },
+  {
+   "zh": "N₂ 的無警告特性使其在所有窒息性氣體中被認為是最危險的，操作人員可能在毫無感覺的情況下喪失意識。",
+   "en": "Because N₂ gives no warning, it is considered the most dangerous of all asphyxiant gases; operators may lose consciousness without feeling anything."
+  },
+  {
+   "zh": "比較表解讀 — ATMP 公用系統設計的四個共通原則",
+   "en": "Reading the comparison table: four common principles of ATMP utility design"
+  },
+  {
+   "zh": "原則 1：所有公用系統都需要「分類」決策",
+   "en": "Principle 1: every utility system requires a \"classification\" decision"
+  },
+  {
+   "zh": "Q3.1 中每個公用系統都強調依「預期用途（Intended Use）」分類。這是一個貫穿整個文件的核心原則：",
+   "en": "Every utility system in Q3.1 emphasizes classification by \"intended use\". This is a core principle running through the whole document:"
+  },
+  {
+   "zh": "CO₂ 進入 ISO 5 環境 = 需達到 ISO 5 品質",
+   "en": "CO₂ entering an ISO 5 environment = must meet ISO 5 quality"
+  },
+  {
+   "zh": "N₂ 直接接觸產品 = 需無菌過濾",
+   "en": "N₂ in direct contact with the product = requires sterile filtration"
+  },
+  {
+   "zh": "WFI 用於最終配製 = 最嚴格的驗證要求",
+   "en": "WFI used for final formulation = the most stringent validation requirements"
+  },
+  {
+   "zh": "這與 EU GMP Annex 1 的「基於風險的方法」（Risk-Based Approach）完全一致。",
+   "en": "This is fully consistent with the risk-based approach of EU GMP Annex 1."
+  },
+  {
+   "zh": "原則 2：氣體系統 = 窒息風險的三重防護",
+   "en": "Principle 2: gas systems = three-layer protection against asphyxiation"
+  },
+  {
+   "zh": "CO₂、LN₂、N₂ 三個系統都需要完全相同的三重安全防護架構：",
+   "en": "The CO₂, LN₂ and N₂ systems all need exactly the same three-layer safety architecture:"
+  },
+  {
+   "zh": "固定式房間 O₂ 監測（視覺 + 聽覺雙重警報）",
+   "en": "Fixed room O₂ monitoring (visual and audible dual alarms)"
+  },
+  {
+   "zh": "個人攜帶式 O₂ 感測器",
+   "en": "Personal portable O₂ sensors"
+  },
+  {
+   "zh": "夥伴制度（Buddy System）/ 倒地警報（Man-Down Alarm）",
+   "en": "Buddy system / man-down alarm"
+  },
+  {
+   "zh": "這三重防護源自同一個決策優先序 <strong>#1（操作人員安全）</strong>，在任何 ATMP 設施設計中都是不可妥協的硬性要求。",
+   "en": "These three layers derive from the same decision priority, <strong>#1 (operator safety)</strong>, and are a non-negotiable hard requirement in any ATMP facility design."
+  },
+  {
+   "zh": "原則 3：防交叉污染 = 壓力差或雙塊洩放閥",
+   "en": "Principle 3: preventing cross-contamination = pressure differential or double-block and bleed valves"
+  },
+  {
+   "zh": "PW、WFI、CO₂、N₂ 系統都強調了交叉污染風險。預防方法有兩種：",
+   "en": "The PW, WFI, CO₂ and N₂ systems all stress the risk of cross-contamination. There are two preventive approaches:"
+  },
+  {
+   "zh": "<strong>壓力差法</strong>：分配主管壓力 &gt; 製程設備壓力，污染不能逆流",
+   "en": "<strong>Pressure differential method</strong>: distribution header pressure &gt; process equipment pressure, so contamination cannot flow back"
+  },
+  {
+   "zh": "<strong>閥門設計法</strong>：雙塊洩放閥（DBB），即使一個閥門失效，也有第二道防護",
+   "en": "<strong>Valve design method</strong>: double-block and bleed (DBB), so that even if one valve fails there is a second layer of protection"
+  },
+  {
+   "zh": "在 ATMP 廠房，交叉污染的後果可能包括批次間患者細胞混淆，屬於決策優先序 <strong>#2（患者安全）</strong>的最高風險類別。",
+   "en": "In an ATMP facility, the consequences of cross-contamination can include mix-up of patient cells between batches, which falls in the highest risk category of decision priority <strong>#2 (patient safety)</strong>."
+  },
+  {
+   "zh": "原則 4：管路標示是 GMP 的基礎，也是安全的第一道防線",
+   "en": "Principle 4: pipe labeling is a GMP basic and the first line of defense for safety"
+  },
+  {
+   "zh": "Q3.1 中所有六個公用系統都要求管路標示流向。這看似基礎，但在 ATMP 廠房中特別重要：",
+   "en": "In Q3.1, all six utility systems require pipe labeling of flow direction. This looks basic, but it is especially important in an ATMP facility:"
+  },
+  {
+   "zh": "多種高風險氣體（CO₂、N₂、LN₂）同時存在於同一設施",
+   "en": "Several high-risk gases (CO₂, N₂, LN₂) are present in the same facility at the same time"
+  },
+  {
+   "zh": "接錯管路可能導致窒息事故或產品污染",
+   "en": "Connecting the wrong pipe can cause an asphyxiation accident or product contamination"
+  },
+  {
+   "zh": "維護人員在緊急狀況下需要快速識別管路類型",
+   "en": "In an emergency, maintenance personnel need to identify the pipe type quickly"
+  },
+  {
+   "zh": "CDMO Scenario 1：從傳統生技廠轉型 ATMP CDMO",
+   "en": "CDMO Scenario 1: converting a conventional biotech plant into an ATMP CDMO"
+  },
+  {
+   "zh": "<strong>情境背景：</strong>一家台灣 CDMO 目前主要生產重組蛋白和 mAb，計劃新增 CAR-T 細胞治療的代工服務。現有廠房已有完整的 WFI、純化水、CDA（Clean Dry Air）系統，通過 EU GMP 認證。",
+   "en": "<strong>Background:</strong> A Taiwanese CDMO currently produces mainly recombinant proteins and mAbs and plans to add CAR-T cell therapy contract services. The existing plant already has complete WFI, purified water and CDA (clean dry air) systems and holds EU GMP certification."
+  },
+  {
+   "zh": "<strong>需要新增或改造哪些公用系統？</strong>",
+   "en": "<strong>Which utility systems need to be added or modified?</strong>"
+  },
+  {
+   "zh": "<strong>必須新增：CO₂ 系統</strong> — 傳統蛋白質生產不需要 CO₂，CAR-T 細胞培養需要 5% CO₂ 恆定供應。需要安裝 CO₂ 分配管、房間 O₂ 監測、個人感測器。",
+   "en": "<strong>Must add: CO₂ system</strong> — conventional protein production does not need CO₂, whereas CAR-T cell culture needs a constant supply of 5% CO₂. A CO₂ distribution line, room O₂ monitoring and personal sensors must be installed."
+  },
+  {
+   "zh": "<strong>必須新增：LN₂ 系統</strong> — 患者白血球分離產品（Apheresis）和培養後的 CAR-T 細胞需要 LN₂ 長期保存。必須同時規劃備援儲存系統。",
+   "en": "<strong>Must add: LN₂ system</strong> — patient apheresis products and cultured CAR-T cells need long-term storage in LN₂. A backup storage system must be planned at the same time."
+  },
+  {
+   "zh": "<strong>需要評估升級：氣態去污系統</strong> — 若 BSL-2 設施需要 VHP 或 ClO₂ 去污，需進行氣密性測試，並確認所有穿牆穿板點的密封性。",
+   "en": "<strong>Needs assessment for upgrade: gaseous decontamination system</strong> — if a BSL-2 facility needs VHP or ClO₂ decontamination, airtightness testing must be performed and the sealing of all wall and floor penetrations confirmed."
+  },
+  {
+   "zh": "<strong>現有系統可能需要確認：N₂ 管路品質分類</strong> — 若用於細胞產品的惰性覆蓋，需確認是否已安裝末端無菌過濾。",
+   "en": "<strong>Existing systems that may need confirmation: N₂ line quality classification</strong> — if used for inert overlay of cell products, confirm whether terminal sterile filtration has been installed."
+  },
+  {
+   "zh": "<strong>WFI 系統可能可沿用</strong> — 但需依 CCS 重新評估新增生產區域的取樣點佈局。",
+   "en": "<strong>The WFI system may be reusable</strong> — but the sampling point layout for the new production areas must be re-evaluated against the CCS."
+  },
+  {
+   "zh": "CDMO Scenario 2：設計新建 ATMP 多功能設施（Multi-modal Facility）",
+   "en": "CDMO Scenario 2: designing a new multi-modal ATMP facility"
+  },
+  {
+   "zh": "<strong>情境背景：</strong>一家新創 ATMP CDMO 計劃建設一個多功能設施，同時支援：Line A（自體 CAR-T，BSL-2）、Line B（AAV 基因療法，BSL-2）、Line C（異體 iPSC 衍生 NK 細胞，BSL-1）。",
+   "en": "<strong>Background:</strong> A start-up ATMP CDMO plans to build a multi-modal facility supporting simultaneously: Line A (autologous CAR-T, BSL-2), Line B (AAV gene therapy, BSL-2) and Line C (allogeneic iPSC-derived NK cells, BSL-1)."
+  },
+  {
+   "zh": "<strong>公用系統設計的關鍵決策點：</strong>",
+   "en": "<strong>Key decision points in utility design:</strong>"
+  },
+  {
+   "zh": "<strong>CO₂ 系統是否共用主幹管？</strong><br/>Q3.1 要點 (d) 警告分支系統的交叉污染風險。自體 vs. 異體生產線的 CO₂ 管路應考慮獨立佈置，或在每個取用點安裝防回流閥，確保 Line A 患者細胞不會通過 CO₂ 管路污染 Line B。",
+   "en": "<strong>Should the CO₂ system share a main header?</strong><br/>Q3.1 point (d) warns of the cross-contamination risk of branched systems. The CO₂ lines for autologous and allogeneic production lines should be laid out independently, or a backflow preventer should be installed at each take-off point, to ensure Line A patient cells cannot contaminate Line B through the CO₂ lines."
+  },
+  {
+   "zh": "<strong>LN₂ 備援如何設計？</strong><br/>三條生產線共用一個 LN₂ 儲存系統還是各自獨立？共用節省成本，但 Line A 自體細胞（不可複製）的風險等級遠高於 Line B/C，建議 Line A 配備獨立備援儲槽。",
+   "en": "<strong>How should LN₂ backup be designed?</strong><br/>Should the three lines share one LN₂ storage system or each have its own? Sharing saves cost, but the risk level of Line A autologous cells (which cannot be replicated) is far higher than that of Lines B/C, so it is recommended that Line A be equipped with its own independent backup tank."
+  },
+  {
+   "zh": "<strong>氣態去污系統的 BSL 邊界管理：</strong><br/>三條生產線的 BSL 邊界不同，VHP 去污週期需要分別設計。BSL-2 的 Line A/B 需要更嚴格的氣密性要求，Line C 可能採用不同的去污策略。",
+   "en": "<strong>BSL boundary management for the gaseous decontamination system:</strong><br/>The three lines have different BSL boundaries, so the VHP decontamination cycle must be designed separately for each. BSL-2 Lines A/B need stricter airtightness requirements, and Line C may adopt a different decontamination strategy."
+  },
+  {
+   "zh": "<strong>WFI vs. PW 分配管路的壓力設計：</strong><br/>多條生產線共用 WFI 主管時，DBB 設計必須確保每條支管的製程壓力低於主管壓力，這需要在設計階段就由設施工程師和工藝開發團隊共同確認壓力需求。",
+   "en": "<strong>Pressure design of WFI vs. PW distribution lines:</strong><br/>When several lines share a WFI main header, the DBB design must ensure that the process pressure of every branch is lower than the main header pressure. The pressure requirements need to be confirmed jointly by the facility engineers and the process development team at the design stage."
+  },
+  {
+   "zh": "CDMO Scenario 3：法規稽查準備 — 公用系統的常見 FDA/EMA 檢查重點",
+   "en": "CDMO Scenario 3: inspection readiness, common FDA/EMA inspection focus areas for utilities"
+  },
+  {
+   "zh": "<strong>基於 Q3.1 原則，稽查員最可能關注的問題：</strong>",
+   "en": "<strong>Based on the Q3.1 principles, the questions inspectors are most likely to focus on:</strong>"
+  },
+  {
+   "zh": "<strong>WFI 取樣點是否依 CCS 設計？</strong><br/>最常見的缺陷：只在 WFI 產生機出口取樣，未在最接近使用點的位置取樣。稽查員會要求看到 CCS 文件，並核對實際取樣點位置與圖面的一致性。",
+   "en": "<strong>Are WFI sampling points designed according to the CCS?</strong><br/>The most common deficiency: sampling only at the WFI generator outlet and not at the location closest to the point of use. Inspectors will ask to see the CCS document and check that the actual sampling point locations are consistent with the drawings."
+  },
+  {
+   "zh": "<strong>LN₂ 備援設備是否已完成確效（Qualification）？</strong><br/>許多設施購置了備用 LN₂ 冷凍箱，但從未進行 IQ/OQ/PQ，因此在緊急情況下備援設備可能是「未確效狀態」，無法合規使用。",
+   "en": "<strong>Has the LN₂ backup equipment been qualified?</strong><br/>Many facilities buy a backup LN₂ freezer but never perform IQ/OQ/PQ, so in an emergency the backup equipment may be in an \"unqualified state\" and cannot be used in compliance."
+  },
+  {
+   "zh": "<strong>氣態去污殘留物驗證是否完整？</strong><br/>稽查員會要求看到 VHP 殘留量分析的驗證報告，確認殘留水平對產品無不良影響。若缺少 Trace-Limit Detection 方法的驗證，這是典型的 483 觀察項目。",
+   "en": "<strong>Is the validation of gaseous decontamination residuals complete?</strong><br/>Inspectors will ask to see the validation report for VHP residual analysis to confirm that the residual level has no adverse effect on the product. A missing validation of the trace-limit detection method is a typical 483 observation."
+  },
+  {
+   "zh": "<strong>O₂ 監測系統的驗證狀態？</strong><br/>CO₂、LN₂、N₂ 房間的 O₂ 監測系統是安全關鍵設備（Safety-Critical Equipment），必須有定期校驗記錄和警報測試記錄。稽查員會核對設備校驗日誌。",
+   "en": "<strong>What is the validation status of the O₂ monitoring system?</strong><br/>The O₂ monitoring systems in the CO₂, LN₂ and N₂ rooms are safety-critical equipment and must have periodic calibration records and alarm test records. Inspectors will check the equipment calibration logs."
+  },
+  {
+   "zh": "<strong>所有穿牆管線是否有密封記錄？</strong><br/>尤其是氣態去污設施的所有穿透點。稽查員可能要求現場確認或查看密封材料的防火/防化學品相容性認證。",
+   "en": "<strong>Are there sealing records for all wall-penetrating lines?</strong><br/>Especially all penetrations in gaseous decontamination facilities. Inspectors may ask for on-site confirmation or review the fire/chemical compatibility certification of the sealing materials."
+  },
+  {
+   "zh": "總結：Q3.1 的核心設計思維",
+   "en": "Summary: the Core Design Thinking of Q3.1"
+  },
+  {
+   "zh": "一句話總結 Q3.1",
+   "en": "Q3.1 in one sentence"
+  },
+  {
+   "zh": "ATMP 公用系統設計的<strong>基礎</strong>與傳統藥廠相同（GMP 標準），但有兩個額外疊加層：",
+   "en": "The <strong>foundation</strong> of ATMP utility design is the same as for conventional plants (GMP standards), but there are two additional layers on top:"
+  },
+  {
+   "zh": "<strong>BSL 圍堵完整性</strong>：所有公用系統的穿透點、分配設計都必須維持 BSL 邊界",
+   "en": "<strong>BSL containment integrity</strong>: the penetrations and distribution design of all utility systems must maintain the BSL boundary"
+  },
+  {
+   "zh": "<strong>活細胞/病毒的特殊脆弱性</strong>：CO₂ 中斷 = 細胞死亡；LN₂ 失效 = 無可挽救的損失",
+   "en": "<strong>Special vulnerability of living cells/viruses</strong>: CO₂ interruption = cell death; LN₂ failure = irrecoverable loss"
+  },
+  {
+   "zh": "ATMP CDMO 在公用系統設計上最容易犯的三個錯誤",
+   "en": "The three mistakes ATMP CDMOs most often make in utility design"
+  },
+  {
+   "zh": "<strong>低估 CO₂ 和 N₂ 的窒息風險</strong>：很多設施只安裝了固定式感測器，忘記要求操作人員攜帶個人感測器，違反 Q3.1 三重防護要求。",
+   "en": "<strong>Underestimating the asphyxiation risk of CO₂ and N₂</strong>: many facilities install only fixed sensors and forget to require operators to carry personal sensors, violating the three-layer protection required by Q3.1."
+  },
+  {
+   "zh": "<strong>未驗證備援 LN₂ 設備</strong>：買了備用冷凍箱但從未確效，緊急時無法合規使用，使備援形同虛設。",
+   "en": "<strong>Not qualifying the backup LN₂ equipment</strong>: a backup freezer is bought but never qualified, so it cannot be used in compliance in an emergency, making the backup meaningless."
+  },
+  {
+   "zh": "<strong>CCS 取樣點設計不足</strong>：WFI 取樣只在產生機出口，不在使用點，無法發現分配管中的生物膜問題。",
+   "en": "<strong>Inadequate CCS sampling point design</strong>: WFI is sampled only at the generator outlet and not at the point of use, so biofilm problems in the distribution loop cannot be detected."
+  },
+  {
+   "zh": "最終比喻：ATMP 公用系統 = 手術室的維生系統",
+   "en": "Final analogy: ATMP utilities = the life-support systems of an operating room"
+  },
+  {
+   "zh": "手術室有三個不能失效的系統：",
+   "en": "An operating room has three systems that must never fail:"
+  },
+  {
+   "zh": "醫療氣體（O₂、麻醉氣體）→ 對應 CO₂/N₂/LN₂",
+   "en": "Medical gases (O₂, anesthetic gases) → correspond to CO₂/N₂/LN₂"
+  },
+  {
+   "zh": "無菌用水（手術沖洗液）→ 對應 WFI",
+   "en": "Sterile water (surgical irrigation fluid) → corresponds to WFI"
+  },
+  {
+   "zh": "負壓通風（防止外部污染進入）→ 對應氣態去污 + BSL 圍堵",
+   "en": "Negative-pressure ventilation (prevents outside contamination from entering) → corresponds to gaseous decontamination plus BSL containment"
+  },
+  {
+   "zh": "每一個系統失效都可能直接危及患者生命。ATMP 廠房的公用系統也是如此——它們不只是「基礎設施」，它們是<strong>患者治療成功的保障</strong>。",
+   "en": "The failure of any one of these systems can directly endanger the patient's life. The same is true of the utilities in an ATMP facility: they are not just \"infrastructure\", they are <strong>the guarantee of successful patient treatment</strong>."
+  },
+  {
+   "zh": "最終綜合練習",
+   "en": "Final Integrated Exercise"
+  },
+  {
+   "zh": "假設你是一家台灣 ATMP CDMO 的 VP Engineering，正在向 Board 提交新設施的公用系統預算。董事會問：「為什麼 LN₂ 系統預算比傳統凍結乾燥設施高出 3 倍？能否削減成本？」",
+   "en": "Suppose you are the VP Engineering of a Taiwanese ATMP CDMO, presenting the utility budget for a new facility to the Board. The board asks: \"Why is the LN₂ system budget 3 times higher than for a conventional freeze-drying facility? Can it be cut?\""
+  },
+  {
+   "zh": "請用本節學到的知識，準備一個 3 分鐘的口頭說明，涵蓋：(1) 雙重危害，(2) 備援必要性，(3) 對患者安全的影響，(4) 法規合規要求。",
+   "en": "Using what you have learned in this section, prepare a 3-minute oral briefing covering: (1) the dual hazards, (2) the need for backup, (3) the impact on patient safety, (4) regulatory compliance requirements."
+  }
+ ]
+}

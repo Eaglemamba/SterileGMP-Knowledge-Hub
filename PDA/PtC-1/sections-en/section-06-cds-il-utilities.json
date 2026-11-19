@@ -1,0 +1,789 @@
+{
+ "source": "section-06-cds-il-utilities.html",
+ "blocks": [
+  {
+   "zh": "過濾器完整性測試、PUPSIT、雙重過濾 及 注射用水系統",
+   "en": "Filter Integrity Testing, PUPSIT, Redundant Filtration and Water for Injection Systems"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解滅菌等級氣體或通氣過濾器 (sterilizing grade gas/vent filter) 的完整性測試時機與頻率，並掌握風險分析的應用原則。",
+   "en": "Understand when and how often to perform integrity testing of sterilizing grade gas/vent filters, and how to apply risk analysis principles."
+  },
+  {
+   "zh": "深入解析 PUPSIT（使用前滅菌後完整性測試）的定義、EU Annex 1 強制要求的背景，以及允許豁免的情境與替代控制措施。",
+   "en": "Understand PUPSIT (pre-use post-sterilization integrity testing) in depth: its definition, the background to the EU Annex 1 mandatory requirement, and the situations in which an exemption is allowed together with alternative controls."
+  },
+  {
+   "zh": "掌握滅菌過濾器使用後完整性測試 (post-use integrity test) 的執行規範，了解過濾器失敗時的分級調查程序。",
+   "en": "Master the requirements for post-use integrity testing of sterilizing filters, and understand the tiered investigation procedure for filter failures."
+  },
+  {
+   "zh": "比較單一過濾器 vs. 串聯雙重過濾器系統的適用時機、文件要求與放行判定準則。",
+   "en": "Compare when a single filter versus a redundant in-series filter system is appropriate, along with the documentation requirements and release criteria."
+  },
+  {
+   "zh": "了解注射用水 (WFI) 的允許製造方法（蒸餾法 vs. 冷膜法），以及 EU 法規鬆綁的技術背景。",
+   "en": "Understand the permitted methods for producing Water for Injection (WFI) (distillation vs. cold membrane-based methods) and the technical background to the relaxation of EU requirements."
+  },
+  {
+   "zh": "掌握 WFI 系統的品質要求、生物負荷控制策略與循環溫度設計考量。",
+   "en": "Understand the quality requirements for WFI systems, bioburden control strategies and design considerations for loop temperature."
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 — 氣體過濾器 vs. 液體過濾器",
+   "en": "Core Concepts: Gas Filters vs. Liquid Filters"
+  },
+  {
+   "zh": "<strong>Sterilizing grade gas/vent filter（滅菌等級氣體/通氣過濾器）</strong>：用於過濾接觸產品或無菌表面的氣體（如氮氣覆蓋、排氣口），材質為疏水性 (hydrophobic)，因為液體不能通過疏水膜——這正是其完整性測試需要用氣泡點法 (bubble point test) 或擴散流量法 (diffusion flow test) 的原因。",
+   "en": "<strong>Sterilizing grade gas/vent filter</strong>: used to filter gases that contact the product or sterile surfaces (for example nitrogen overlay and vent ports). The membrane is hydrophobic, because liquid cannot pass through a hydrophobic membrane. This is exactly why its integrity test uses the bubble point test or the diffusion flow test."
+  },
+  {
+   "zh": "<strong>關鍵差異</strong>：液體過濾器測試用親水膜 + 液體潤濕；氣體過濾器測試用疏水膜 + 氣體加壓。兩者原理相同（偵測孔徑完整性），但操作細節完全不同。",
+   "en": "<strong>Key difference</strong>: liquid filters are tested with a hydrophilic membrane wetted with liquid; gas filters are tested with a hydrophobic membrane pressurized with gas. The principle is the same (detecting the integrity of the pore structure), but the operating details are completely different."
+  },
+  {
+   "zh": "氣泡點法 (Bubble Point Test)：加壓至膜面，偵測第一個氣泡出現的壓力",
+   "en": "Bubble Point Test: pressurize the membrane surface and detect the pressure at which the first bubble appears"
+  },
+  {
+   "zh": "擴散流量法 (Diffusion Flow / Forward Flow Test)：量測低於氣泡點壓力下的穩定氣體流量",
+   "en": "Diffusion Flow / Forward Flow Test: measure the stable gas flow at a pressure below the bubble point"
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "氣體過濾器的測試頻率，就像汽車輪胎的胎壓檢查：每次長途旅行前一定要確認（高風險 = 每次使用前後都測試），但如果只是在停車場短距離移車，靠目視判斷也可接受（低風險應用 = 依據歷史數據決定頻率）。關鍵在於：如果胎壓不足出了問題，你願意損失多少？這就是風險分析的本質。",
+   "en": "Gas filter test frequency is like checking tire pressure on a car. Before every long trip you must check it (high risk = test before and after every use), but for a short move within the parking lot a visual check is acceptable (low-risk application = frequency decided from historical data). The key question is: if low tire pressure causes a problem, how much are you willing to lose? That is the essence of risk analysis."
+  },
+  {
+   "zh": "重點提示 — 批次回顧窗口 (Review Window) 的概念",
+   "en": "Key Point: The Concept of the Review Window"
+  },
+  {
+   "zh": "這裡有個非常重要的邏輯：<strong>過濾器失效的影響範圍，是從「最後一次通過的完整性測試」到「本次發現失效」之間的所有批次</strong>。",
+   "en": "There is a very important piece of logic here: <strong>the impact of a filter failure covers all batches from the \"last passed integrity test\" to the \"discovery of this failure\"</strong>."
+  },
+  {
+   "zh": "舉例：若每週測試一次氣體過濾器，週一發現失效，則週一到上週一之間生產的所有批次都必須啟動調查，可能全部報廢。若改為每日測試，最多只影響 1 天的批次。因此，測試頻率 = 直接影響潛在損失規模。",
+   "en": "For example, if a gas filter is tested once a week and a failure is found on Monday, every batch produced between Monday and the previous Monday must be investigated, and all of them may be rejected. If testing is daily, at most one day of batches is affected. Test frequency therefore directly determines the size of the potential loss."
+  },
+  {
+   "zh": "CDMO 在接受高價值生物製劑（如 mAb、基因治療）客戶時，必須把氣體過濾器測試頻率寫入 Risk Assessment，因為一旦失效，報廢成本可能是數百萬美元。",
+   "en": "When a CDMO accepts customers with high-value biologics (such as mAbs and gene therapies), it must write the gas filter test frequency into the Risk Assessment, because if the filter fails, the cost of rejected batches can be millions of dollars."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "某 CDMO 生產一種高價值 mAb，目前每週對氮氣覆蓋用氣體過濾器進行一次完整性測試。如果本週測試失敗，需要調查多少批次？如果改為每批次測試，風險如何改變？",
+   "en": "A CDMO produces a high-value mAb and currently performs an integrity test once a week on the gas filter used for nitrogen overlay. If this week's test fails, how many batches need to be investigated? If testing is changed to every batch, how does the risk change?"
+  },
+  {
+   "zh": "「歷史製程耐久性 (historical process durability)」這個因素，在實際操作上如何量化？需要收集多少歷史數據才足以支持降低測試頻率的論述？",
+   "en": "How can the factor \"historical process durability\" be quantified in practice? How much historical data must be collected to support an argument for reducing test frequency?"
+  },
+  {
+   "zh": "核心概念解析 — PUPSIT 是什麼？為何重要？",
+   "en": "Core Concepts: What Is PUPSIT and Why Does It Matter?"
+  },
+  {
+   "zh": "<strong>PUPSIT（Pre-Use Post-Sterilization Integrity Test，使用前滅菌後完整性測試）</strong>：在滅菌級過濾器 (sterilizing-grade filter) 完成高壓蒸汽滅菌（SIP）之後、實際進行產品過濾之前，先執行一次完整性測試。",
+   "en": "<strong>PUPSIT (Pre-Use Post-Sterilization Integrity Test)</strong>: an integrity test performed on the sterilizing-grade filter after it has been steam sterilized (SIP) and before the actual product filtration."
+  },
+  {
+   "zh": "<strong>測試時間點的邏輯</strong>：",
+   "en": "<strong>The logic of the test timing</strong>:"
+  },
+  {
+   "zh": "SIP 過程的高溫高壓蒸汽，有可能損壞過濾膜",
+   "en": "The high-temperature, high-pressure steam of the SIP process may damage the filter membrane"
+  },
+  {
+   "zh": "若不做 PUPSIT，直接過濾產品，損壞的濾膜無法攔截微生物",
+   "en": "Without PUPSIT, a damaged membrane that filters product cannot retain microorganisms"
+  },
+  {
+   "zh": "PUPSIT = 在產品進入之前先發現問題，還有機會更換過濾器",
+   "en": "PUPSIT = the problem is found before product enters, while there is still a chance to replace the filter"
+  },
+  {
+   "zh": "Post-use 測試 = 產品過濾完之後才發現失效，批次很可能已報廢",
+   "en": "Post-use test = a failure is found only after the product has been filtered, and the batch is very likely already lost"
+  },
+  {
+   "zh": "比喻說明 — 出門前檢查瓦斯 (PUPSIT Analogy)",
+   "en": "Analogy: Checking the Gas Before Leaving Home (PUPSIT Analogy)"
+  },
+  {
+   "zh": "PUPSIT 就像出門前檢查瓦斯有沒有關好。你當然可以出門後再回來確認（= post-use test only），但如果瓦斯沒關（= 過濾膜損壞），整個屋子已經充滿瓦斯了（= 不合格產品已充填完畢）。PUPSIT 的精神就是：<strong>在代價最小的時機點確認安全</strong>，而不是等到無法挽回的後果發生。",
+   "en": "PUPSIT is like checking that the gas is turned off before you leave the house. You can of course come back and check after you have left (= post-use test only), but if the gas was left on (= damaged filter membrane), the whole house is already full of gas (= non-conforming product has already been filled). The spirit of PUPSIT is to <strong>confirm safety at the point of least cost</strong>, rather than waiting until the consequences are irreversible."
+  },
+  {
+   "zh": "EU 的立場很清楚：你離家前有能力檢查，就應該檢查；如果你住的地方真的無法檢查（= 小批量、高黏度產品），才允許用其他方式補償控制。",
+   "en": "The EU position is clear: if you are able to check before leaving home, you should check; only if you truly live somewhere where checking is impossible (= small batches, highly viscous products) is it permitted to compensate with other controls."
+  },
+  {
+   "zh": "重點提示 — EU vs. FDA 監管哲學的根本差異",
+   "en": "Key Point: The Fundamental Difference in EU vs. FDA Regulatory Philosophy"
+  },
+  {
+   "zh": "<strong>EU Annex 1 (2022)：強制要求 (mandatory, where possible)</strong>",
+   "en": "<strong>EU Annex 1 (2022): mandatory, where possible</strong>"
+  },
+  {
+   "zh": "EU 的邏輯是：如果技術上可行，就必須執行 PUPSIT。若不執行，需要提供充分的 risk assessment 說明「為何不可行」並提出替代措施。這是歐洲 GMP 一貫的「預防原則 (precautionary principle)」哲學。",
+   "en": "The EU logic is that if PUPSIT is technically feasible, it must be performed. If it is not performed, an adequate risk assessment must be provided explaining \"why it is not feasible\", together with alternative measures. This reflects the consistent European GMP \"precautionary principle\" philosophy."
+  },
+  {
+   "zh": "<strong>FDA 的立場：風險導向，不明確強制</strong>",
+   "en": "<strong>FDA position: risk-based, not explicitly mandated</strong>"
+  },
+  {
+   "zh": "FDA 未在其無菌製程指引中明確要求 PUPSIT，傾向於公司自行基於風險評估做決定。這反映 FDA「基於科學的彈性監管」哲學。",
+   "en": "The FDA does not explicitly require PUPSIT in its aseptic processing guidance and tends to leave the decision to the company based on its own risk assessment. This reflects the FDA philosophy of \"science-based, flexible regulation\"."
+  },
+  {
+   "zh": "<strong>PDA 的角色</strong>：作為業界組織，PDA 在此文件中一方面尊重 EU/PIC/S 的強制要求，同時保留讓 PUPSIT 設計不增加風險的前提條件——這是非常重要的平衡立場。",
+   "en": "<strong>Role of PDA</strong>: as an industry organization, PDA in this document respects the mandatory EU/PIC/S requirement while retaining the precondition that the PUPSIT design must not add risk. This is a very important balanced position."
+  },
+  {
+   "zh": "重點提示 — PUPSIT 的核心矛盾：保護 vs. 風險",
+   "en": "Key Point: The Core Paradox of PUPSIT: Protection vs. Risk"
+  },
+  {
+   "zh": "PUPSIT 帶來的悖論（paradox）：",
+   "en": "The paradox PUPSIT creates:"
+  },
+  {
+   "zh": "<strong>沒有 PUPSIT 的風險</strong>：SIP 損壞過濾膜未被發現，產品過濾無效",
+   "en": "<strong>Risk without PUPSIT</strong>: damage to the filter membrane caused by SIP goes undetected, and product filtration is ineffective"
+  },
+  {
+   "zh": "<strong>有 PUPSIT 的風險</strong>：為了執行測試，需在滅菌後的過濾器下游做額外操作（管線連接、流體注入）——這些操作本身就可能引入污染",
+   "en": "<strong>Risk with PUPSIT</strong>: to run the test, additional manipulations are needed downstream of the sterilized filter (pipe connections, fluid introduction), and these manipulations can themselves introduce contamination"
+  },
+  {
+   "zh": "因此，PDA 的結論是：<strong>PUPSIT 必須設計得好（well-designed）</strong>，否則執行比不執行更危險。這也是為什麼文件特別強調 PUPSIT 相關操作必須納入 APS（Aseptic Process Simulation，無菌製程模擬）。",
+   "en": "PDA therefore concludes that <strong>PUPSIT must be well-designed</strong>, otherwise performing it is more dangerous than not performing it. This is also why the document specifically emphasizes that PUPSIT-related operations must be included in the APS (Aseptic Process Simulation)."
+  },
+  {
+   "zh": "PUPSIT 的實際操作挑戰 — CDMO 的困境",
+   "en": "Practical Challenges of PUPSIT: The CDMO Dilemma"
+  },
+  {
+   "zh": "<strong>1. 高黏度產品（高黏度蛋白質、脂質體）</strong>",
+   "en": "<strong>1. Highly viscous products (high-viscosity proteins, liposomes)</strong>"
+  },
+  {
+   "zh": "PUPSIT 需要用水或潤濕液濕潤濾膜。對蛋白質藥物而言，潤濕液可能稀釋產品，或水分對活性成分造成損害（如某些凍乾製劑前驅液）。",
+   "en": "PUPSIT requires wetting the membrane with water or a wetting fluid. For protein drugs, the wetting fluid may dilute the product, or the water may damage the active ingredient (for example some pre-lyophilization solutions)."
+  },
+  {
+   "zh": "<strong>2. 極小批量 (small volume)</strong>",
+   "en": "<strong>2. Very small batches (small volume)</strong>"
+  },
+  {
+   "zh": "執行 PUPSIT 需要一定量的流體推送通過過濾膜，對只有幾十毫升的臨床試驗批次，無法在不損耗大量產品的情況下完成測試。",
+   "en": "Performing PUPSIT requires a certain volume of fluid to be pushed through the membrane. For a clinical trial batch of only a few tens of milliliters, the test cannot be completed without losing a large amount of product."
+  },
+  {
+   "zh": "<strong>CDMO 的替代方案設計</strong>：",
+   "en": "<strong>Alternative approaches designed by the CDMO</strong>:"
+  },
+  {
+   "zh": "使用 WFI（注射用水）作為潤濕液，並確認對產品稀釋的影響可接受",
+   "en": "Use WFI (Water for Injection) as the wetting fluid and confirm that the effect of product dilution is acceptable"
+  },
+  {
+   "zh": "設計封閉的 PUPSIT 系統，最小化下游操作暴露",
+   "en": "Design a closed PUPSIT system that minimizes exposure of downstream manipulations"
+  },
+  {
+   "zh": "若豁免 PUPSIT，需提供強健的 risk assessment + enhanced bioburden monitoring + 100% post-use testing",
+   "en": "If PUPSIT is waived, provide a robust risk assessment + enhanced bioburden monitoring + 100% post-use testing"
+  },
+  {
+   "zh": "風險評估架構 — PUPSIT Risk Assessment 要素",
+   "en": "Risk Assessment Framework: Elements of a PUPSIT Risk Assessment"
+  },
+  {
+   "zh": "PUPSIT Risk Assessment 必須涵蓋：\n\n1. 過濾器失效的後果 (Consequence of failure)\n   → 產品批次損失金額、患者風險\n\n2. 執行 PUPSIT 帶來的操作風險 (Risk of PUPSIT itself)\n   → Grade A 區域額外操作次數、開放連接暴露時間\n\n3. 現有控制措施偵測能力 (Detectability)\n   → Post-use test 是否足夠？Bioburden monitoring？\n\n4. 製程特殊性 (Process constraints)\n   → 小批量？高黏度？時間敏感？\n\n比較邏輯：\n若 Risk(PUPSIT) &lt; Risk(no PUPSIT) → 執行 PUPSIT\n若 Risk(PUPSIT) &gt; Risk(no PUPSIT) → 豁免 + 替代控制\n若不確定 → 執行 PUPSIT（預防原則）",
+   "en": "A PUPSIT Risk Assessment must cover:\n\n1. Consequence of filter failure\n   → Value of lost product batches, patient risk\n\n2. Operational risk introduced by performing PUPSIT (Risk of PUPSIT itself)\n   → Number of additional manipulations in the Grade A area, duration of open-connection exposure\n\n3. Detectability by existing controls\n   → Is the post-use test sufficient? Bioburden monitoring?\n\n4. Process constraints\n   → Small batch? High viscosity? Time-sensitive?\n\nComparison logic:\nIf Risk(PUPSIT) &lt; Risk(no PUPSIT) → perform PUPSIT\nIf Risk(PUPSIT) &gt; Risk(no PUPSIT) → waive + alternative controls\nIf uncertain → perform PUPSIT (precautionary principle)"
+  },
+  {
+   "zh": "實務應用 — CDMO 承接 EU 市場產品時",
+   "en": "Practical Application: When a CDMO Takes On Products for the EU Market"
+  },
+  {
+   "zh": "當 CDMO 承接要銷往歐盟的無菌注射劑時，EU Annex 1 的 PUPSIT 要求就成為 Tech Transfer 清單上的必要評估項目。實務建議：",
+   "en": "When a CDMO takes on a sterile injectable intended for the EU market, the EU Annex 1 PUPSIT requirement becomes a required assessment item on the tech transfer checklist. Practical recommendations:"
+  },
+  {
+   "zh": "<strong>Tech Transfer 初期</strong>：確認客戶原廠的 PUPSIT 設計，評估是否可在 CDMO 設備上複製",
+   "en": "<strong>Early in tech transfer</strong>: confirm the PUPSIT design at the customer's originating site and assess whether it can be replicated on the CDMO's equipment"
+  },
+  {
+   "zh": "<strong>若無法複製</strong>：提早與客戶及 EU 監管機構溝通 risk assessment，在 IMPD 或 MAA 中提前說明",
+   "en": "<strong>If it cannot be replicated</strong>: communicate the risk assessment early to the customer and EU regulators, and explain it in advance in the IMPD or MAA"
+  },
+  {
+   "zh": "<strong>APS 設計</strong>：PUPSIT 操作步驟必須在媒體充填（Media Fill）中模擬，否則查廠時會被開缺失",
+   "en": "<strong>APS design</strong>: the PUPSIT operating steps must be simulated in the media fill, otherwise a deficiency will be raised during an inspection"
+  },
+  {
+   "zh": "某 mAb 藥品（高黏度，40 cP），公司認為 PUPSIT 潤濕液會稀釋產品導致濃度超出規格，因此提議豁免 PUPSIT。根據 EU Annex 1，此豁免論述需要提供哪些要素？",
+   "en": "A mAb product (high viscosity, 40 cP): the company believes the PUPSIT wetting fluid would dilute the product so that the concentration falls outside specification, and therefore proposes to waive PUPSIT. Under EU Annex 1, what elements must this waiver justification provide?"
+  },
+  {
+   "zh": "為什麼 PDA 特別強調「risk assessment 必須 unbiased，不得有 predetermined outcomes（預設結論）」？這在 FDA 查廠中有何現實意義？",
+   "en": "Why does PDA specifically emphasize that \"the risk assessment must be unbiased and must not have predetermined outcomes\"? What is the real-world significance of this in an FDA inspection?"
+  },
+  {
+   "zh": "PUPSIT 操作需要納入 APS 程序——這代表如果 APS 設計沒有包含 PUPSIT，該公司的 APS 程序是否有缺陷？應如何補救？",
+   "en": "PUPSIT operations need to be included in the APS program. Does this mean that if the APS design does not include PUPSIT, the company's APS program is deficient? How should it be remedied?"
+  },
+  {
+   "zh": "核心概念解析 — Post-Use Integrity Test（使用後完整性測試）",
+   "en": "Core Concepts: Post-Use Integrity Test"
+  },
+  {
+   "zh": "<strong>Post-use integrity test</strong>：在產品過濾完成後，對過濾器進行完整性測試。這是 FDA 和 EU 都<strong>強制要求</strong>的步驟（不像 PUPSIT 僅 EU 強制）。",
+   "en": "<strong>Post-use integrity test</strong>: an integrity test performed on the filter after product filtration is complete. This step is <strong>mandatory</strong> for both the FDA and the EU (unlike PUPSIT, which is mandatory only in the EU)."
+  },
+  {
+   "zh": "<strong>邏輯</strong>：",
+   "en": "<strong>Logic</strong>:"
+  },
+  {
+   "zh": "PUPSIT（使用前）= 確認過濾器在過濾前是完好的",
+   "en": "PUPSIT (pre-use) = confirms the filter was intact before filtration"
+  },
+  {
+   "zh": "Post-use test（使用後）= 確認過濾器在整個過濾過程中維持完整性",
+   "en": "Post-use test = confirms the filter remained intact throughout the filtration process"
+  },
+  {
+   "zh": "兩者組合 = 過濾器在「使用前」和「使用後」都通過測試，才能確保過濾過程全程有效",
+   "en": "Both combined = only when the filter passes the test both \"before use\" and \"after use\" can the whole filtration process be assured to be effective"
+  },
+  {
+   "zh": "<strong>重要：Post-use test 失敗，代表什麼？</strong>",
+   "en": "<strong>Important: what does a post-use test failure mean?</strong>"
+  },
+  {
+   "zh": "若使用後測試失敗，該批次的無菌保證受到質疑，通常需要啟動正式的偏差調查，並考慮批次報廢。",
+   "en": "If the post-use test fails, the sterility assurance of that batch is called into question; a formal deviation investigation usually needs to be initiated, and batch rejection should be considered."
+  },
+  {
+   "zh": "過濾器失敗調查的三步驟程序 (PDA TR26)",
+   "en": "Three-Step Filter Failure Investigation Procedure (PDA TR26)"
+  },
+  {
+   "zh": "第一次失敗 (First Failure)\n  → 檢查過濾器組件與完整性測試儀的連接\n  → 重新潤濕 (rewet) 過濾器\n  → 重新測試\n\n第二次失敗 (Second Failure)\n  → 用低表面張力液體沖洗（如水、溶劑混合物）\n  → 排除潤濕不足的假陽性\n  → 重新測試\n\n第三次失敗 (Third Failure)\n  → 保留過濾器（不得丟棄！）\n  → 送回過濾器製造商進行詳細調查\n  → 製造商提供根本原因分析報告\n\n最終判定：\n  True failure（真正失效）→ 批次報廢 + CAPA\n  False failure（假陽性）→ 記錄原因 + 更新 SOP",
+   "en": "First Failure\n  → Check the connections between the filter assembly and the integrity tester\n  → Rewet the filter\n  → Retest\n\nSecond Failure\n  → Flush with a low surface tension liquid (such as water or a solvent mixture)\n  → Rule out a false failure caused by insufficient wetting\n  → Retest\n\nThird Failure\n  → Retain the filter (do not discard it!)\n  → Return it to the filter manufacturer for detailed investigation\n  → The manufacturer provides a root cause analysis report\n\nFinal determination:\n  True failure → batch rejection + CAPA\n  False failure → document the cause + update the SOP"
+  },
+  {
+   "zh": "重點提示 — 假陽性失敗 (False Failure) 最常見原因",
+   "en": "Key Point: The Most Common Causes of False Failures"
+  },
+  {
+   "zh": "根據過濾器廠商的現場經驗，<strong>大多數（約70-80%）的過濾器完整性測試失敗是假陽性</strong>，原因包括：",
+   "en": "Based on filter vendors' field experience, <strong>most (about 70-80%) filter integrity test failures are false failures</strong>, with causes including:"
+  },
+  {
+   "zh": "<strong>潤濕不足 (improper wetting)</strong>：最常見！產品殘留、溫度變化、沖洗壓力不當都可能造成局部未潤濕",
+   "en": "<strong>Improper wetting</strong>: the most common! Product residue, temperature changes and improper flushing pressure can all cause local areas to remain unwetted"
+  },
+  {
+   "zh": "<strong>洩漏點 (system leak)</strong>：測試儀與過濾器之間的連接未鎖緊，造成氣體外洩",
+   "en": "<strong>System leak</strong>: a connection between the tester and the filter that is not tightened, allowing gas to escape"
+  },
+  {
+   "zh": "<strong>溫度效應</strong>：測試溫度與驗證溫度不同，影響測試數值",
+   "en": "<strong>Temperature effects</strong>: a test temperature different from the validated temperature affects the test value"
+  },
+  {
+   "zh": "<strong>流量計/壓力計校正問題</strong>",
+   "en": "<strong>Flowmeter/pressure gauge calibration problems</strong>"
+  },
+  {
+   "zh": "正因如此，PDA 建議在「宣布批次失敗」之前，需要走完三步調查程序，避免因假陽性造成不必要的高值批次報廢。",
+   "en": "For this reason, PDA recommends completing the three-step investigation procedure before \"declaring the batch a failure\", to avoid unnecessary rejection of high-value batches because of a false failure."
+  },
+  {
+   "zh": "實務應用 — CDMO 的過濾器調查 SOP",
+   "en": "Practical Application: The CDMO Filter Investigation SOP"
+  },
+  {
+   "zh": "建議 CDMO 在過濾器完整性測試失敗 SOP 中明確規定：",
+   "en": "It is recommended that the CDMO's SOP for filter integrity test failure clearly specify:"
+  },
+  {
+   "zh": "失敗後第一步必須「隔離批次（不放行、不報廢）」，等待調查結果",
+   "en": "After a failure, the first step must be to \"quarantine the batch (neither release nor reject)\" pending the outcome of the investigation"
+  },
+  {
+   "zh": "三次測試均需記錄每次的測試條件（溫度、壓力、潤濕方式）",
+   "en": "The test conditions (temperature, pressure, wetting method) must be recorded for each of the three tests"
+  },
+  {
+   "zh": "送廠商調查時，保留完整的批次記錄與過濾器操作歷史",
+   "en": "When sending the filter to the vendor for investigation, retain the complete batch record and filter operating history"
+  },
+  {
+   "zh": "如果是真正失敗：啟動品質事件調查，評估需否執行額外放行測試（如無菌測試）",
+   "en": "If it is a true failure: initiate a quality event investigation and evaluate whether additional release testing (such as the sterility test) is needed"
+  },
+  {
+   "zh": "某批次完成過濾後，post-use integrity test 第一次失敗。操作員立刻宣布批次報廢。根據 PDA TR26，此決定是否正確？為什麼？",
+   "en": "For a batch, the post-use integrity test failed the first time after filtration was complete. The operator immediately declared the batch rejected. According to PDA TR26, is this decision correct? Why?"
+  },
+  {
+   "zh": "如果過濾器已執行 PUPSIT（通過）且 post-use test 也通過，但稍後在廠商實驗室測試中發現過濾膜有微小裂縫，應如何解讀？對批次放行有何影響？",
+   "en": "If a filter passed PUPSIT and also passed the post-use test, but a small crack in the membrane is later found in testing at the vendor's laboratory, how should this be interpreted? What is the impact on batch release?"
+  },
+  {
+   "zh": "核心概念解析 — 串聯 vs. 並聯過濾器的根本差異",
+   "en": "Core Concepts: The Fundamental Difference Between Series and Parallel Filters"
+  },
+  {
+   "zh": "<strong>串聯 (In-Series / Redundant)</strong>：兩個過濾器依序排列，第一個過濾器的濾出液通過第二個過濾器再過濾。目的：<strong>備援（任一過濾器失效，另一個仍可保護產品）</strong>。",
+   "en": "<strong>In-Series (Redundant)</strong>: two filters are arranged one after the other, and the filtrate of the first filter is filtered again through the second. Purpose: <strong>redundancy (if either filter fails, the other still protects the product)</strong>."
+  },
+  {
+   "zh": "<strong>並聯 (Parallel)</strong>：兩個過濾器同時接收相同的原料液，分流過濾後合流。目的：<strong>增加過濾面積（提高流速或處理更大批量）</strong>，不是備援！",
+   "en": "<strong>Parallel</strong>: two filters receive the same feed liquid at the same time, filter it in split streams, and the streams are then combined. Purpose: <strong>increased filtration area (higher flow rate or larger batch size)</strong>, not redundancy!"
+  },
+  {
+   "zh": "關鍵差異：並聯時，所有過濾器都必須通過完整性測試，因為任何一個失效都會讓不合格液體進入下游。串聯時，「至少一個通過」即可——這個放行標準必須在 CCS 和驗證計畫中明確規定。",
+   "en": "Key difference: in parallel, all filters must pass the integrity test, because failure of any one allows non-conforming liquid to enter the downstream. In series, \"at least one passing\" is sufficient, and this release criterion must be clearly specified in the CCS and the validation plan."
+  },
+  {
+   "zh": "比喻說明 — 雙重保險系統 (Double Insurance)",
+   "en": "Analogy: The Double Insurance System"
+  },
+  {
+   "zh": "串聯雙重過濾器就像飛機的雙引擎設計：在技術上，一個引擎（一個過濾器）就足以完成飛行任務（過濾任務）。但對於跨太平洋的長途飛行（高價值批次），萬一唯一的引擎失效，後果是機毀人亡（批次報廢 + 患者風險）。雙引擎的成本遠低於代價，這是商業決策，不是技術必要性。",
+   "en": "An in-series redundant filter is like the twin-engine design of an aircraft: technically, one engine (one filter) is enough to complete the flight (the filtration task). But on a long trans-Pacific flight (a high-value batch), if the only engine failed, the consequence would be a crash with loss of life (batch rejection + patient risk). The cost of the second engine is far lower than the cost of that consequence; this is a business decision, not a technical necessity."
+  },
+  {
+   "zh": "PDA 的立場也是如此：<strong>科學上不需要</strong>（properly validated single filter is sufficient），但<strong>商業上可能合理</strong>（尤其是批次價值極高的生物製劑）。",
+   "en": "The PDA position is the same: <strong>scientifically unnecessary</strong> (a properly validated single filter is sufficient), but <strong>possibly justified commercially</strong> (especially for biologic batches of very high value)."
+  },
+  {
+   "zh": "重點提示 — 雙重過濾的文件要求",
+   "en": "Key Point: Documentation Requirements for Redundant Filtration"
+  },
+  {
+   "zh": "如果決定使用串聯雙重過濾器，PDA 明確要求在以下文件中規定放行標準：",
+   "en": "If you decide to use in-series redundant filters, PDA explicitly requires the release criteria to be specified in the following documents:"
+  },
+  {
+   "zh": "<strong>CCS（污染控制策略）</strong>：明確說明兩個過濾器的角色與放行判定",
+   "en": "<strong>CCS (Contamination Control Strategy)</strong>: clearly state the roles of the two filters and the release determination"
+  },
+  {
+   "zh": "<strong>CMC 申報文件</strong>：在 CTD Module 3 中的 manufacturing process 描述中說明",
+   "en": "<strong>CMC filing documents</strong>: describe it in the manufacturing process description in CTD Module 3"
+  },
+  {
+   "zh": "<strong>Master Validation Plan</strong>：雙重過濾系統的確效設計",
+   "en": "<strong>Master Validation Plan</strong>: the validation design of the redundant filtration system"
+  },
+  {
+   "zh": "<strong>放行標準的核心問題</strong>：若第一個過濾器 post-use test 失敗，但第二個通過，批次可以放行嗎？答案取決於你在驗證計畫中如何設計——但前提是兩個過濾器都必須位於盡量靠近充填點的位置，以確保整個過濾路徑都受到保護。",
+   "en": "<strong>The core question of the release criteria</strong>: if the first filter fails its post-use test but the second passes, can the batch be released? The answer depends on how you design it in the validation plan, but the precondition is that both filters must be located as close to the point of fill as possible, so that the entire filtration path is protected."
+  },
+  {
+   "zh": "重點提示 — 最終過濾器位置的重要性",
+   "en": "Key Point: The Importance of the Final Filter Position"
+  },
+  {
+   "zh": "文件特別強調：<strong>最終滅菌過濾器應盡可能靠近充填點 (point of fill)</strong>。原因：",
+   "en": "The document specifically emphasizes: <strong>the final sterilizing filter should be as close to the point of fill as possible</strong>. The reasons:"
+  },
+  {
+   "zh": "過濾後到充填前的管路，是污染再引入的風險區段",
+   "en": "The piping between the filter and the point of fill is a segment where contamination may be reintroduced"
+  },
+  {
+   "zh": "過濾器位置越靠近充填點，這個「無菌後暴露管路」就越短",
+   "en": "The closer the filter is to the point of fill, the shorter this \"post-sterilization exposed piping\" becomes"
+  },
+  {
+   "zh": "若因設備限制過濾器無法靠近充填點，需要在 CCS 中說明替代控制措施",
+   "en": "If equipment constraints prevent the filter from being placed close to the point of fill, alternative controls must be explained in the CCS"
+  },
+  {
+   "zh": "某公司在生產基因治療產品（批次價值 $5M USD）時，決定採用串聯雙重過濾器。在放行 SOP 中，應如何定義當第一個過濾器 post-use test 失敗而第二個通過時的批次處置方式？",
+   "en": "A company producing a gene therapy product (batch value $5M USD) decides to use in-series redundant filters. In the release SOP, how should the batch disposition be defined when the first filter fails its post-use test and the second passes?"
+  },
+  {
+   "zh": "「並聯過濾不是備援過濾」——如果並聯的兩個過濾器之一在使用後測試中失敗，對批次放行有何影響？與串聯失敗有何本質差異？",
+   "en": "\"Parallel filtration is not redundant filtration.\" If one of two parallel filters fails the post-use test, what is the impact on batch release? How does it fundamentally differ from a failure in series?"
+  },
+  {
+   "zh": "實務應用 — CDMO 承接高價值生物製劑的決策矩陣",
+   "en": "Practical Application: Decision Matrix for a CDMO Taking On High-Value Biologics"
+  },
+  {
+   "zh": "在 Tech Transfer 評估會議中，是否建議客戶採用串聯雙重過濾器，可用以下矩陣評估：",
+   "en": "In a tech transfer assessment meeting, whether to recommend that the customer adopt in-series redundant filters can be evaluated with the following matrix:"
+  },
+  {
+   "zh": "<span class=\"section-num\">VII</span> Critical Utilities — 關鍵公用設施",
+   "en": "<span class=\"section-num\">VII</span> Critical Utilities"
+  },
+  {
+   "zh": "核心概念解析 — WFI 的製造方法演進",
+   "en": "Core Concepts: The Evolution of WFI Manufacturing Methods"
+  },
+  {
+   "zh": "<strong>WFI（Water for Injection，注射用水）</strong>：製藥無菌生產中最關鍵的原料之一，用於配方、沖洗、清潔，直接影響最終產品的無菌性和內毒素水準。",
+   "en": "<strong>WFI (Water for Injection)</strong>: one of the most critical raw materials in sterile pharmaceutical manufacturing, used for formulation, rinsing and cleaning, and directly affecting the sterility and endotoxin level of the final product."
+  },
+  {
+   "zh": "<strong>傳統方法：蒸餾法 (Distillation)</strong>",
+   "en": "<strong>Traditional method: Distillation</strong>"
+  },
+  {
+   "zh": "將水加熱至沸騰，收集蒸汽冷凝水",
+   "en": "Water is heated to boiling and the condensate of the steam is collected"
+  },
+  {
+   "zh": "可有效去除微生物、內毒素、無機物",
+   "en": "Effectively removes microorganisms, endotoxin and inorganic substances"
+  },
+  {
+   "zh": "USP 和 EP 長期唯一認可的方法（EP 直到 2017 年才開放）",
+   "en": "For a long time the only method recognized by the USP and EP (the EP opened up only in 2017)"
+  },
+  {
+   "zh": "能耗高，但可靠性高",
+   "en": "High energy consumption, but high reliability"
+  },
+  {
+   "zh": "<strong>新方法：冷膜法 (Membrane-based, e.g., reverse osmosis + ultrafiltration)</strong>",
+   "en": "<strong>New method: Cold membrane-based methods (e.g., reverse osmosis + ultrafiltration)</strong>"
+  },
+  {
+   "zh": "EU/EP 於 2017 年正式允許，USP &lt;1231&gt; 也認可",
+   "en": "Formally permitted by the EU/EP in 2017, and also recognized by USP &lt;1231&gt;"
+  },
+  {
+   "zh": "不需要加熱，能耗低、適合節能",
+   "en": "No heating required; low energy consumption and suited to energy saving"
+  },
+  {
+   "zh": "需要嚴格的系統設計（多重膜過濾、UV、電去離子）",
+   "en": "Requires rigorous system design (multiple membrane filtration steps, UV, electrodeionization)"
+  },
+  {
+   "zh": "生物膜 (biofilm) 控制是主要挑戰",
+   "en": "Biofilm control is the main challenge"
+  },
+  {
+   "zh": "比喻說明 — 技術進步改變法規 (技術進步改變法規)",
+   "en": "Analogy: Technological Progress Changes Regulation"
+  },
+  {
+   "zh": "EU 允許冷膜法 WFI，就像手機從按鍵機演進到觸控機：最初法規只認可「傳統按鍵機」（蒸餾法），因為那是唯一被驗證可靠的技術。當觸控技術（冷膜技術）證明可以達到同等甚至更好的通話品質（水質標準）時，法規就修訂允許新技術。關鍵始終是：<strong>終點產品的品質標準沒有降低，只是達到目標的路徑更靈活了</strong>。",
+   "en": "EU permission for cold membrane-based WFI is like the phone evolving from keypad handsets to touchscreens: at first the regulations recognized only the \"traditional keypad phone\" (distillation) because it was the only technology validated as reliable. When touchscreen technology (cold membrane technology) proved that it could achieve equal or even better call quality (water quality standards), the regulations were revised to allow the new technology. The key point is always: <strong>the quality standard of the end product has not been lowered; only the path to reach the goal has become more flexible</strong>."
+  },
+  {
+   "zh": "重點提示 — EU 法規的歷史轉變及其商業含義",
+   "en": "Key Point: The Historical Change in EU Regulation and Its Commercial Implications"
+  },
+  {
+   "zh": "<strong>2017 年歐洲藥典（EP）第 9 版修訂</strong>：允許使用非蒸餾方法（包括逆滲透膜）製備 WFI，前提是能達到同等水質。這一改變的商業影響：",
+   "en": "<strong>2017 revision of the European Pharmacopoeia (EP), 9th edition</strong>: permits the preparation of WFI by non-distillation methods (including reverse osmosis membranes), provided equivalent water quality can be achieved. The commercial impact of this change:"
+  },
+  {
+   "zh": "蒸餾設備投資成本可達 200-500 萬歐元；冷膜系統通常更便宜",
+   "en": "Capital cost of distillation equipment can reach EUR 2-5 million; cold membrane systems are usually cheaper"
+  },
+  {
+   "zh": "能耗：蒸餾法每產 1L WFI 需要約 10-15L 蒸汽；冷膜系統能耗可降低 60-70%",
+   "en": "Energy consumption: distillation needs about 10-15 L of steam per 1 L of WFI produced; a cold membrane system can reduce energy consumption by 60-70%"
+  },
+  {
+   "zh": "特別適合：新建廠房、生物製劑廠（不需蒸汽管路基礎設施）",
+   "en": "Especially suitable for: newly built facilities and biologics plants (no steam piping infrastructure needed)"
+  },
+  {
+   "zh": "<strong>PDA 的立場</strong>：支持技術中立原則，只要能證明水質相當，任何驗證的方法均可接受。這與 FDA 的彈性監管哲學一致。",
+   "en": "<strong>PDA position</strong>: supports the principle of technology neutrality; any validated method is acceptable as long as equivalent water quality can be demonstrated. This is consistent with the FDA's philosophy of flexible regulation."
+  },
+  {
+   "zh": "重點提示 — Biofilm（生物膜）是冷膜 WFI 的主要威脅",
+   "en": "Key Point: Biofilm Is the Main Threat to Cold Membrane-Based WFI"
+  },
+  {
+   "zh": "蒸餾法 WFI 通常在 70-85°C 熱循環，高溫本身就能抑制微生物生長。冷膜系統若不設計好，在常溫管路中極易形成 biofilm（微生物在管壁形成的生物膜聚落）。",
+   "en": "Distillation WFI is usually circulated hot at 70-85°C, and the high temperature itself suppresses microbial growth. If a cold membrane system is not well designed, biofilm (a biofilm colony formed by microorganisms on the pipe wall) forms very easily in ambient-temperature piping."
+  },
+  {
+   "zh": "一旦 biofilm 形成，普通沖洗無法清除，需要高溫或化學消毒，且可能持續釋放內毒素。因此：",
+   "en": "Once biofilm forms, ordinary flushing cannot remove it; high temperature or chemical sanitization is required, and it may continue to release endotoxin. Therefore:"
+  },
+  {
+   "zh": "冷膜 WFI 系統設計必須無死角 (no dead legs)、符合衛生設計標準",
+   "en": "The design of a cold membrane-based WFI system must have no dead legs and comply with sanitary design standards"
+  },
+  {
+   "zh": "需定期消毒（熱水或蒸汽消毒）",
+   "en": "Periodic sanitization (hot water or steam sanitization) is required"
+  },
+  {
+   "zh": "監測頻率通常高於熱循環系統",
+   "en": "Monitoring frequency is usually higher than for hot-loop systems"
+  },
+  {
+   "zh": "某新建 CDMO 廠房正在評估 WFI 系統。客戶包含歐盟市場的無菌注射劑，但也有 FDA 監管的美國市場產品。選擇蒸餾法 vs. 冷膜法，各有哪些監管風險和商業考量？",
+   "en": "A newly built CDMO facility is evaluating its WFI system. Its customers include sterile injectables for the EU market, but also products for the US market regulated by the FDA. What regulatory risks and commercial considerations apply to choosing distillation vs. cold membrane-based methods?"
+  },
+  {
+   "zh": "「任何驗證的方法均可使用」——冷膜法的「驗證」需要涵蓋哪些要素，才能讓監管機構（FDA/EMA）接受？",
+   "en": "\"Any validated method may be used.\" What elements must the \"validation\" of a cold membrane-based method cover for regulators (FDA/EMA) to accept it?"
+  },
+  {
+   "zh": "WFI 循環溫度設計的三種模式",
+   "en": "Three Modes of WFI Loop Temperature Design"
+  },
+  {
+   "zh": "模式 1：熱循環 Hot Loop (&gt; 70°C)\n  優點：持續高溫抑制微生物，免消毒\n  缺點：能耗高、管路保溫成本高\n  適用：大型無菌充填廠\n\n模式 2：溫循環 Warm Loop (40-70°C)\n  優點：兼顧節能與生物控制\n  缺點：需要更頻繁的監測\n  適用：需求量大且持續生產的場所\n\n模式 3：冷循環 Cold Loop / Ambient Loop (&lt; 40°C)\n  優點：能耗最低、溫度敏感管路可行\n  缺點：必須定期 sanitization（熱水/蒸汽）\n        biofilm 風險最高，監測最密集\n  適用：間歇性使用、特殊工藝需求\n\n溫度閾值：&gt; 70°C → 維持品質充分（自我消毒）\n          &lt; 70°C → 需要定期主動消毒計畫",
+   "en": "Mode 1: Hot Loop (&gt; 70°C)\n  Advantages: continuous high temperature suppresses microorganisms; no sanitization needed\n  Disadvantages: high energy consumption, high cost of piping insulation\n  Suitable for: large sterile filling plants\n\nMode 2: Warm Loop (40-70°C)\n  Advantages: balances energy saving with biological control\n  Disadvantages: requires more frequent monitoring\n  Suitable for: sites with large, continuous demand\n\nMode 3: Cold Loop / Ambient Loop (&lt; 40°C)\n  Advantages: lowest energy consumption; feasible for temperature-sensitive piping\n  Disadvantages: periodic sanitization (hot water/steam) is mandatory\n            highest biofilm risk, most intensive monitoring\n  Suitable for: intermittent use, special process needs\n\nTemperature threshold: &gt; 70°C → quality adequately maintained (self-sanitizing)\n          &lt; 70°C → a periodic active sanitization program is needed"
+  },
+  {
+   "zh": "重點提示 — Dead Legs（死管段）是 WFI 系統最大隱患",
+   "en": "Key Point: Dead Legs Are the Biggest Hidden Hazard in WFI Systems"
+  },
+  {
+   "zh": "<strong>Dead leg（死管段）</strong>：WFI 分配管路中，連接用水點的支管如果過長、使用頻率低，會形成「靜止水區」（standing water），這是 biofilm 生長的溫床。",
+   "en": "<strong>Dead leg</strong>: in a WFI distribution line, a branch connecting a point of use that is too long and rarely used creates a zone of standing water, which is a breeding ground for biofilm."
+  },
+  {
+   "zh": "<strong>ISPE 標準設計原則</strong>：死管段長度不得超過管徑的 3-6 倍（即 L/D ≤ 3~6）。",
+   "en": "<strong>ISPE standard design principle</strong>: the length of a dead leg must not exceed 3-6 times the pipe diameter (i.e., L/D ≤ 3~6)."
+  },
+  {
+   "zh": "<strong>CDMO 的常見問題</strong>：",
+   "en": "<strong>Common CDMO problems</strong>:"
+  },
+  {
+   "zh": "廠房設計初期未充分考量所有用水點位置，後期追加管路時易形成死管段",
+   "en": "Not all points of use were fully considered in the early facility design, and adding piping later easily creates dead legs"
+  },
+  {
+   "zh": "取樣閥、壓力錶的連接處若設計不當，也可能形成微型死管段",
+   "en": "Poorly designed connections of sampling valves and pressure gauges can also create micro dead legs"
+  },
+  {
+   "zh": "FDA 查廠時，WFI 系統的 dead leg 問題是高頻 483 觀察項目",
+   "en": "During FDA inspections, WFI system dead leg problems are a frequent Form 483 observation"
+  },
+  {
+   "zh": "比喻說明 — WFI 系統設計",
+   "en": "Analogy: WFI System Design"
+  },
+  {
+   "zh": "WFI 分配系統就像一個設計良好的城市供水系統：熱循環 WFI 就像 24 小時流動的自來水——只要水持續流動，管路就保持清潔；冷循環 WFI 就像偶爾才開的水管——不用的時候水靜止在管裡，時間一長就會有水垢和細菌。Dead leg 就像接在主管上的一個用處不大的分支管——水流永遠繞開它，細菌就在那裡安家落戶。",
+   "en": "A WFI distribution system is like a well-designed city water supply: hot-loop WFI is like tap water that flows 24 hours a day; as long as the water keeps flowing, the pipes stay clean. Cold-loop WFI is like a pipe that is only opened occasionally; when it is not in use the water sits still in the pipe, and over time scale and bacteria develop. A dead leg is like a seldom-used branch pipe attached to the main line: the flow always bypasses it, and bacteria make their home there."
+  },
+  {
+   "zh": "實務應用 — CDMO WFI 系統的客戶審計準備",
+   "en": "Practical Application: Customer Audit Preparation for the CDMO WFI System"
+  },
+  {
+   "zh": "當客戶進行 CDMO 廠房審計時，WFI 系統通常是必查項目。CDMO 應準備：",
+   "en": "When a customer audits a CDMO facility, the WFI system is usually a must-see item. The CDMO should prepare:"
+  },
+  {
+   "zh": "<strong>P&amp;ID 圖紙</strong>：顯示所有用水點、取樣點、迴路設計",
+   "en": "<strong>P&amp;ID drawings</strong>: showing all points of use, sampling points and loop design"
+  },
+  {
+   "zh": "<strong>Dead leg 計算清單</strong>：列出所有連接點的 L/D 值",
+   "en": "<strong>Dead leg calculation list</strong>: listing the L/D value of every connection point"
+  },
+  {
+   "zh": "<strong>循環溫度記錄</strong>：連續 3-6 個月的趨勢數據",
+   "en": "<strong>Loop temperature records</strong>: trend data for 3-6 consecutive months"
+  },
+  {
+   "zh": "<strong>定期監測記錄</strong>：TOC、電導率、生物負荷、內毒素的趨勢報告",
+   "en": "<strong>Routine monitoring records</strong>: trend reports for TOC, conductivity, bioburden and endotoxin"
+  },
+  {
+   "zh": "<strong>消毒記錄</strong>（如果是冷循環系統）：每次消毒的溫度/時間記錄",
+   "en": "<strong>Sanitization records</strong> (if a cold loop system): temperature/time records for each sanitization"
+  },
+  {
+   "zh": "<strong>Water System Validation Report</strong>：Installation Qualification (IQ)、Operational Qualification (OQ)、Performance Qualification (PQ) 三段驗證",
+   "en": "<strong>Water System Validation Report</strong>: the three-stage qualification of Installation Qualification (IQ), Operational Qualification (OQ) and Performance Qualification (PQ)"
+  },
+  {
+   "zh": "某 CDMO 的 WFI 系統設計為冷循環（室溫），每月進行一次熱水消毒。若本月生物負荷監測數據顯示某用水點超過行動限值，應如何處理？需要啟動什麼程序？",
+   "en": "A CDMO's WFI system is designed as a cold loop (room temperature) with hot water sanitization once a month. If this month's bioburden monitoring data show that a point of use exceeds the action limit, how should it be handled? What procedures must be initiated?"
+  },
+  {
+   "zh": "根據 PDA PtC-1 的內容，WFI 系統的監測計畫應「依據特定製程和設備能力的風險評估」決定。這在實務上如何翻譯成監測頻率和取樣點設計？",
+   "en": "According to PDA PtC-1, the WFI system monitoring program should be determined \"based on a risk assessment of the specific process and equipment capability\". How does this translate in practice into monitoring frequency and sampling point design?"
+  },
+  {
+   "zh": "核心概念解析 — WFI 品質規格摘要",
+   "en": "Core Concepts: Summary of WFI Quality Specifications"
+  },
+  {
+   "zh": "根據 USP &lt;1231&gt; 和 EP 7.0，WFI 的主要品質指標：",
+   "en": "According to USP &lt;1231&gt; and EP 7.0, the main quality attributes of WFI:"
+  },
+  {
+   "zh": "注：各項監測點（製造出口 vs. 使用點 vs. 循環回路）可有不同的行動限值 (action limits)，通常由公司內部的水系統驗證報告規定，比藥典限值更嚴格。",
+   "en": "Note: different monitoring locations (production outlet vs. point of use vs. recirculation loop) may have different action limits, which are usually set in the company's internal water system validation report and are stricter than the pharmacopoeial limits."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary — VI (I-L) + VII",
+   "en": "Section Summary — VI (I-L) + VII"
+  },
+  {
+   "zh": "<strong>Topic I（氣體過濾器測試）</strong>：測試頻率應基於風險分析，高風險應用（直接接觸無菌產品）應在安裝後及使用後各測試一次；過濾器失敗的影響範圍是自「上次通過測試」至「本次發現失效」的所有批次。",
+   "en": "<strong>Topic I (gas filter testing)</strong>: test frequency should be based on risk analysis; high-risk applications (direct contact with sterile product) should be tested once after installation and once after use; the impact of a filter failure covers all batches from the \"last passed test\" to the \"discovery of this failure\"."
+  },
+  {
+   "zh": "<strong>Topic J（PUPSIT）</strong>：EU Annex 1 (2022) 強制要求（在可行的情況下），FDA 未明確要求；豁免條件是需要充分的 risk assessment 且必須有替代控制措施；PUPSIT 操作本身也可能引入污染，因此必須納入 APS 模擬。",
+   "en": "<strong>Topic J (PUPSIT)</strong>: mandatory under EU Annex 1 (2022) where feasible and not explicitly required by the FDA; an exemption requires an adequate risk assessment and must have alternative controls; PUPSIT operations can themselves introduce contamination, so they must be included in the APS simulation."
+  },
+  {
+   "zh": "<strong>Topic K（使用後完整性測試）</strong>：第一次失敗不等於批次報廢，需走 PDA TR26 三步驟程序（重潤濕 → 溶劑沖洗 → 送廠商）；大多數失敗是假陽性（潤濕不足），根本原因調查至關重要。",
+   "en": "<strong>Topic K (post-use integrity test)</strong>: a first failure does not equal batch rejection; the PDA TR26 three-step procedure must be followed (rewetting → solvent flush → send to vendor); most failures are false failures (insufficient wetting), so root cause investigation is essential."
+  },
+  {
+   "zh": "<strong>Topic L（雙重過濾器）</strong>：科學上不強制（單一良好設計的過濾器已足夠），但高價值批次可作為商業決策採用；串聯（備援）≠ 並聯（增加面積），兩者放行標準完全不同；放行標準必須在 CCS 和驗證文件中明確。",
+   "en": "<strong>Topic L (redundant filters)</strong>: not scientifically required (a single well-designed filter is sufficient), but may be adopted as a business decision for high-value batches; in series (redundancy) ≠ parallel (increased area), and the release criteria for the two are completely different; the release criteria must be clearly specified in the CCS and validation documents."
+  },
+  {
+   "zh": "<strong>Topic VII-A（WFI 製造方法）</strong>：蒸餾法和冷膜法（逆滲透等）均可接受（EU 2017 年起），只要能達到同等水質；技術中立原則——以結果為導向，不以方法為限制。",
+   "en": "<strong>Topic VII-A (WFI manufacturing methods)</strong>: both distillation and cold membrane methods (such as reverse osmosis) are acceptable (in the EU since 2017) as long as equivalent water quality is achieved; the principle of technology neutrality means being outcome-oriented rather than restricted by method."
+  },
+  {
+   "zh": "<strong>Topic VII-B（WFI 品質要求）</strong>：內毒素 &lt;0.25 EU/mL、生物負荷 &lt;10 CFU/100mL；熱循環（&gt;70°C）是最可靠的自我消毒設計；冷循環系統需要定期主動消毒；dead leg 是最常見的品質風險，設計時必須遵循 L/D ≤ 3~6 原則。",
+   "en": "<strong>Topic VII-B (WFI quality requirements)</strong>: endotoxin &lt;0.25 EU/mL, bioburden &lt;10 CFU/100mL; a hot loop (&gt;70°C) is the most reliable self-sanitizing design; cold loop systems require periodic active sanitization; dead legs are the most common quality risk and the L/D ≤ 3~6 principle must be followed in design."
+  },
+  {
+   "zh": "<span class=\"section-num\" style=\"background: rgba(255,255,255,0.2);\">全文</span> PDA PtC-1 整體文件回顧 — 全七章綜合總結",
+   "en": "<span class=\"section-num\" style=\"background: rgba(255,255,255,0.2);\">Full Document</span> PDA PtC-1 Overall Review: Summary of All Seven Sections"
+  },
+  {
+   "zh": "導師解析 — PtC-1 全文學習要點整合",
+   "en": "Tutorial Commentary: Integrated Learning Points from the Full PtC-1"
+  },
+  {
+   "zh": "PtC-1 的獨特價值：實務問答格式",
+   "en": "The Unique Value of PtC-1: A Practical Question-and-Answer Format"
+  },
+  {
+   "zh": "PDA PtC-1 不同於一般技術報告的「教科書式」敘述。它採用「問題陳述 → 建議 → 理由」的三段式格式，直接回應製藥從業人員最常遇到的實際問題。",
+   "en": "PDA PtC-1 differs from a typical technical report in its \"textbook-style\" narrative. It uses a three-part format of \"problem statement → recommendation → rationale\" that directly answers the practical questions pharmaceutical practitioners most often face."
+  },
+  {
+   "zh": "這對 CDMO 人員特別有用：當客戶或查廠官提問「你們為何這樣做？」時，PtC-1 的結構讓你可以直接引用業界共識的最佳實踐作為答案基礎。",
+   "en": "This is especially useful for CDMO staff: when a customer or an inspector asks \"why do you do it this way?\", the structure of PtC-1 lets you cite industry-consensus best practice directly as the basis of your answer."
+  },
+  {
+   "zh": "七大章節的串聯邏輯 — 從系統到細節",
+   "en": "The Logic Linking the Seven Sections: From System to Detail"
+  },
+  {
+   "zh": "PtC-1 的七章其實是一個完整的無菌製程品質保證系統：",
+   "en": "The seven sections of PtC-1 form a complete quality assurance system for aseptic processing:"
+  },
+  {
+   "zh": "<strong>I 導論</strong>：設定脈絡，強調 PtC 格式的使用方式",
+   "en": "<strong>I Introduction</strong>: sets the context and emphasizes how to use the PtC format"
+  },
+  {
+   "zh": "<strong>II CCS</strong>：最上層的策略框架，所有後續決策都應在 CCS 下統籌",
+   "en": "<strong>II CCS</strong>: the top-level strategic framework, under which all later decisions should be coordinated"
+  },
+  {
+   "zh": "<strong>III 設施設備</strong>：硬體的無菌屏障設計（Isolator/RABS/Cleanroom）",
+   "en": "<strong>III Facilities and Equipment</strong>: the sterile barrier design of the hardware (isolator/RABS/cleanroom)"
+  },
+  {
+   "zh": "<strong>IV 滅菌技術</strong>：將元件和設備帶入無菌狀態",
+   "en": "<strong>IV Sterilization Technologies</strong>: bringing components and equipment to a sterile state"
+  },
+  {
+   "zh": "<strong>V 無菌操作</strong>：人員和操作層面的無菌保證",
+   "en": "<strong>V Aseptic Operations</strong>: sterility assurance at the personnel and operations level"
+  },
+  {
+   "zh": "<strong>VI 過濾除菌</strong>：產品液體的最終無菌屏障",
+   "en": "<strong>VI Sterilizing Filtration</strong>: the final sterile barrier for the product liquid"
+  },
+  {
+   "zh": "<strong>VII 關鍵公用設施</strong>：支撐整個系統的基礎設施（WFI）",
+   "en": "<strong>VII Critical Utilities</strong>: the infrastructure that supports the entire system (WFI)"
+  },
+  {
+   "zh": "少了任何一環，整個無菌保證體系就不完整。",
+   "en": "If any link is missing, the whole sterility assurance system is incomplete."
+  },
+  {
+   "zh": "比喻說明 — PtC-1 如同手術室的完整標準",
+   "en": "Analogy: PtC-1 as the Complete Standard of an Operating Room"
+  },
+  {
+   "zh": "PtC-1 就像一本完整的「無菌手術室設計與操作手冊」：CCS 是整體手術室管理政策、設施設備是手術室的物理設計（負壓、空氣過濾）、滅菌技術是手術器械消毒程序、無菌操作是外科醫師的刷手和無菌操作規範、過濾除菌是術前備血的過濾去菌步驟、WFI 是手術室的無菌用水系統。缺一不可，但每個要素都有其獨立的標準和驗收準則。",
+   "en": "PtC-1 is like a complete \"manual for aseptic operating room design and operation\": the CCS is the overall operating room management policy, facilities and equipment are the physical design of the operating room (negative pressure, air filtration), sterilization technologies are the surgical instrument disinfection procedures, aseptic operations are the surgeon's scrubbing and aseptic technique rules, sterilizing filtration is the pre-operative filtration step that removes bacteria from blood preparations, and WFI is the operating room's sterile water system. None can be missing, but each element has its own standards and acceptance criteria."
+  },
+  {
+   "zh": "PtC-1 核心決策框架回顧",
+   "en": "Review of the Core Decision Framework of PtC-1"
+  },
+  {
+   "zh": "PDA PtC-1 的貫穿邏輯：\n\n1. 無菌保證 (Sterility Assurance) 永遠是第一優先\n   ↓\n2. 產品 CQA（患者安全）是第二優先\n   ↓\n3. 商業彈性和效率是第三優先\n\n在每個問題中，這個優先序決定最終建議：\n- PUPSIT：EU 強制，但設計不好則反而增加污染風險（#1 &gt; #3）\n- 雙重過濾器：科學上不需要，但高價值批次商業上合理（#3 在不違背 #1 前提下）\n- 冷膜 WFI：若能維持相同水質則可接受（#1 不受影響，#3 改善）",
+   "en": "The through-line logic of PDA PtC-1:\n\n1. Sterility assurance is always the first priority\n   ↓\n2. Product CQAs (patient safety) are the second priority\n   ↓\n3. Commercial flexibility and efficiency are the third priority\n\nIn every question, this order of priority determines the final recommendation:\n- PUPSIT: mandatory in the EU, but a poor design increases contamination risk instead (#1 &gt; #3)\n- Redundant filters: not scientifically necessary, but commercially justified for high-value batches (#3, provided #1 is not compromised)\n- Cold membrane-based WFI: acceptable if the same water quality is maintained (#1 unaffected, #3 improved)"
+  },
+  {
+   "zh": "綜合練習題 — 串聯 PtC-1 全文的整合性思考",
+   "en": "Comprehensive Practice Questions: Integrated Thinking Across the Full PtC-1"
+  },
+  {
+   "zh": "<strong>系統整合思維</strong>：某 CDMO 正在為一個歐盟市場的無菌注射劑申請案撰寫 CCS（污染控制策略）。請根據 PtC-1 的七個主要章節，描述 CCS 應涵蓋的關鍵要素，並說明各要素如何相互支撐整體無菌保證。",
+   "en": "<strong>Systems integration thinking</strong>: a CDMO is writing the CCS (Contamination Control Strategy) for a sterile injectable marketing application for the EU. Based on the seven main sections of PtC-1, describe the key elements the CCS should cover, and explain how each element supports overall sterility assurance."
+  },
+  {
+   "zh": "<strong>PUPSIT + 雙重過濾器的決策整合</strong>：某公司決定對一個批次價值 $3M USD 的 CAR-T 產品使用串聯雙重過濾器。若同時需要遵守 EU Annex 1 的 PUPSIT 要求，應對哪個過濾器執行 PUPSIT？放行標準如何制定（第一個失效 + 第二個通過 = 放行？）？這些決策應記錄在哪些文件中？",
+   "en": "<strong>Integrated decision on PUPSIT + redundant filters</strong>: a company decides to use in-series redundant filters for a CAR-T product with a batch value of $3M USD. If it must also comply with the EU Annex 1 PUPSIT requirement, which filter should be subjected to PUPSIT? How should the release criteria be set (first fails + second passes = release?)? In which documents should these decisions be recorded?"
+  },
+  {
+   "zh": "<strong>WFI + 過濾器的上游下游連結</strong>：WFI 在無菌製程中同時被用作（a）配方溶劑、（b）設備 CIP 用水、（c）PUPSIT 的潤濕液。如果 WFI 系統的生物負荷監測某一用水點超標，應如何評估對這三個用途各自的影響？",
+   "en": "<strong>Upstream and downstream links between WFI and filters</strong>: in an aseptic process, WFI is used as (a) the formulation solvent, (b) equipment CIP water and (c) the PUPSIT wetting fluid. If bioburden monitoring at one point of use of the WFI system exceeds the limit, how should the impact on each of these three uses be assessed?"
+  },
+  {
+   "zh": "<strong>監管哲學比較</strong>：PtC-1 多處顯示 EU（Annex 1）和 FDA 在監管要求上的差異（PUPSIT 是最明顯的例子）。作為一家同時服務歐美市場的 CDMO，如何設計一套「一套程序、符合雙方」的無菌過濾操作規範？哪些要素需要做到「最嚴格者」的標準？",
+   "en": "<strong>Comparison of regulatory philosophies</strong>: PtC-1 shows in many places the differences between EU (Annex 1) and FDA regulatory requirements (PUPSIT is the most obvious example). As a CDMO serving both the US and European markets, how would you design a sterile filtration operating standard of \"one procedure that satisfies both\"? Which elements need to meet the \"strictest\" standard?"
+  },
+  {
+   "zh": "<strong>回顧整體文件的學習</strong>：回顧 PDA PtC-1 的 VII 個主要章節，哪個章節的內容對你目前的工作角色影響最直接？為什麼？在實務中，你如何確保 PtC-1 的最新版本（2023 年修訂版）中的建議被反映在公司的 SOP 和 CCS 中？",
+   "en": "<strong>Review of learning across the whole document</strong>: looking back over the seven main sections of PDA PtC-1, which section has the most direct impact on your current role? Why? In practice, how do you ensure that the recommendations in the latest version of PtC-1 (the 2023 revision) are reflected in your company's SOPs and CCS?"
+  }
+ ]
+}

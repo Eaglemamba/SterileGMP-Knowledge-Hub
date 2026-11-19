@@ -1,0 +1,945 @@
+{
+ "source": "section-04b-alcs-audit-trails.html",
+ "blocks": [
+  {
+   "zh": "ALCS 稽核追蹤、紀錄與常見缺陷",
+   "en": "ALCS Audit Trails, Records and Common Deficiencies"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 ALCS 中 Results Printing/Publishing（結果列印/發布）的意義，以及與資料完整性的關聯，包括再處理的管控要求。",
+   "en": "Understand what Results Printing/Publishing means in an ALCS, how it relates to data integrity, and the controls required for reprocessing."
+  },
+  {
+   "zh": "掌握六大類稽核追蹤（System → Project Level）的功能差異，並能對照各層級捕捉的資訊重點，建立完整稽核覆蓋。",
+   "en": "Understand the functional differences between the six categories of audit trail (System to Project Level), and match the key information captured at each level so that audit coverage is complete."
+  },
+  {
+   "zh": "區分 Audit Trail（稽核軌跡）與 Transactional Log（交易日誌）的本質差異，理解各自的保留義務與審查策略。",
+   "en": "Distinguish between an Audit Trail and a Transactional Log, and understand the retention obligations and review strategy for each."
+  },
+  {
+   "zh": "識別色層儀器軟體及其他類型設備（XRD、KF）的交易日誌特性，以及誤導性錯誤訊息的辨別方法。",
+   "en": "Recognize the transactional log characteristics of chromatography instrument software and other equipment types (XRD, KF), and how to identify misleading error messages."
+  },
+  {
+   "zh": "熟悉 FDA Warning Letter 中最常見的 ALCS 資料完整性缺陷類型，以「查核官視角」預防常見違規。",
+   "en": "Become familiar with the ALCS data integrity deficiencies most often cited in FDA Warning Letters, and prevent common violations by thinking from the inspector's perspective."
+  },
+  {
+   "zh": "本章目錄 Contents",
+   "en": "Contents"
+  },
+  {
+   "zh": "<strong>6.3.8 Results Printing or Publishing 6.3.8 結果列印或發布</strong>",
+   "en": "<strong>6.3.8 Results Printing or Publishing</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：Publishing ≠ 列印到紙",
+   "en": "Core concept: Publishing is not the same as printing to paper"
+  },
+  {
+   "zh": "「Publishing」是 ALCS 術語，指將測試結果<strong>鎖定並正式輸出</strong>的動作——無論是電子發布或紙本列印。一旦 Publish，結果即為<strong>最終資料（final data）</strong>，不可在不留痕跡的情況下修改。",
+   "en": "\"Publishing\" is an ALCS term for the act of <strong>locking and formally issuing</strong> test results, whether electronically or on paper. Once published, the results become <strong>final data</strong> and cannot be changed without leaving a trace."
+  },
+  {
+   "zh": "若需修改已發布結果，必須走<strong>Reprocessing（再處理）</strong>流程，並強制要求填寫修改理由（justification）——這正是資料完整性設計的核心防線。",
+   "en": "Any change to published results must go through <strong>Reprocessing</strong>, with a mandatory justification for the change. This is the core line of defense in the data integrity design."
+  },
+  {
+   "zh": "類比：Publishing 如同公文用印",
+   "en": "Analogy: Publishing is like stamping an official document"
+  },
+  {
+   "zh": "把分析結果想像成一份公文：<br/>\n            • <strong>分析中</strong> = 草稿階段，可自由修改<br/>\n            • <strong>Publishing</strong> = 主管蓋章用印，正式生效<br/>\n            • <strong>用印後修改</strong> = 必須收回、重新簽核，並記錄原因",
+   "en": "Think of the analytical result as an official document:<br/>\n            • <strong>During analysis</strong> = draft stage, freely editable<br/>\n            • <strong>Publishing</strong> = the supervisor stamps it and it takes formal effect<br/>\n            • <strong>Changes after stamping</strong> = must be withdrawn, re-approved and the reason recorded"
+  },
+  {
+   "zh": "ALCS 的 Publishing 機制正是數位版的「用印管控」。",
+   "en": "The ALCS Publishing mechanism is the digital version of this \"stamp control\"."
+  },
+  {
+   "zh": "實務注意：紙本列印的風險",
+   "en": "Practical note: the risks of paper printouts"
+  },
+  {
+   "zh": "TR80 明確指出：紙本列印<strong>不是理想做法</strong>，但仍有廠商因軟體限制或資源不足而使用。若採用紙本，審查員需確認：",
+   "en": "TR80 states clearly that paper printouts are <strong>not the ideal approach</strong>, but some companies still use them because of software limitations or limited resources. If paper is used, the reviewer must confirm that:"
+  },
+  {
+   "zh": "原始電子資料是否仍可存取並為最終版本",
+   "en": "The original electronic data are still accessible and are the final version"
+  },
+  {
+   "zh": "紙本是否有審查者簽名及日期戳記",
+   "en": "The printout carries the reviewer's signature and date stamp"
+  },
+  {
+   "zh": "再列印（re-printing）是否有管控程序，防止選擇性報告",
+   "en": "Re-printing is controlled by a procedure to prevent selective reporting"
+  },
+  {
+   "zh": "查核準備：必須產出的七項報告",
+   "en": "Inspection readiness: the seven reports that must be available"
+  },
+  {
+   "zh": "每次分析後，系統中必須可取得以下報告供審查：",
+   "en": "After each analysis, the following reports must be retrievable from the system for review:"
+  },
+  {
+   "zh": "樣品序列（Sample sequence）",
+   "en": "Sample sequence"
+  },
+  {
+   "zh": "儀器方法（Instrument method）",
+   "en": "Instrument method"
+  },
+  {
+   "zh": "積分事件/處理方法（Integration events）",
+   "en": "Integration events / processing method"
+  },
+  {
+   "zh": "結果色譜圖（Results/chromatograms）",
+   "en": "Results/chromatograms"
+  },
+  {
+   "zh": "結果稽核軌跡（Results audit trail）",
+   "en": "Results audit trail"
+  },
+  {
+   "zh": "序列稽核軌跡（Sequence audit trail）",
+   "en": "Sequence audit trail"
+  },
+  {
+   "zh": "方法稽核軌跡（Method audit trail）",
+   "en": "Method audit trail"
+  },
+  {
+   "zh": "查核官會要求調出上述所有報告——任何一項缺失都是缺陷的潛在來源。",
+   "en": "Inspectors will ask for all of the reports above. Any one that is missing is a potential source of a deficiency."
+  },
+  {
+   "zh": "<strong>6.3.9 Audit Trails — Overview 6.3.9 稽核軌跡 — 概述</strong>",
+   "en": "<strong>6.3.9 Audit Trails — Overview</strong>"
+  },
+  {
+   "zh": "核心定義：稽核追蹤的四大要素",
+   "en": "Core definition: the four elements of an audit trail"
+  },
+  {
+   "zh": "稽核追蹤（Audit Trail）必須回答四個問題：",
+   "en": "An audit trail must answer four questions:"
+  },
+  {
+   "zh": "<strong>WHO</strong>（誰）— 使用者身份",
+   "en": "<strong>WHO</strong> — the identity of the user"
+  },
+  {
+   "zh": "<strong>WHAT</strong>（做了什麼）— 操作內容",
+   "en": "<strong>WHAT</strong> — what was done"
+  },
+  {
+   "zh": "<strong>WHEN</strong>（何時）— 時間戳記",
+   "en": "<strong>WHEN</strong> — the time stamp"
+  },
+  {
+   "zh": "<strong>WHY</strong>（為什麼）— 修改理由",
+   "en": "<strong>WHY</strong> — the reason for the change"
+  },
+  {
+   "zh": "這四個維度構成電子紀錄的「完整可重建性」——即使事後質疑，也能追溯整個事件鏈。",
+   "en": "Together these four dimensions make an electronic record fully reconstructable, so that the whole chain of events can be traced even if it is questioned later."
+  },
+  {
+   "zh": "QU 職責：不僅啟用，還要選擇欄位",
+   "en": "Quality Unit responsibility: not just enabling, but also selecting fields"
+  },
+  {
+   "zh": "TR80 明確要求 Quality Unit 負責：",
+   "en": "TR80 explicitly makes the Quality Unit responsible for:"
+  },
+  {
+   "zh": "確保稽核追蹤功能「全時開啟」",
+   "en": "Ensuring the audit trail function is \"on at all times\""
+  },
+  {
+   "zh": "評估各類 Metadata 的捕捉內容",
+   "en": "Evaluating what each type of metadata captures"
+  },
+  {
+   "zh": "選擇驗證資料可靠性所需的必要欄位",
+   "en": "Selecting the fields needed to verify data reliability"
+  },
+  {
+   "zh": "此設計應配合批次放行程序及定期審查計畫共同規劃。",
+   "en": "This design should be planned together with the batch release procedure and the periodic review program."
+  },
+  {
+   "zh": "<strong>6.3.9.1 System-Level Audit Trail 6.3.9.1 系統層次稽核軌跡</strong>",
+   "en": "<strong>6.3.9.1 System-Level Audit Trail</strong>"
+  },
+  {
+   "zh": "Figure 6.3.9.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=fig-p41-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: System Audit Trail (Default) — 注意第11筆日期為2017，與其他2018不符",
+   "en": "Figure 6.3.9.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=fig-p41-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>: System Audit Trail (Default) — note that entry 11 is dated 2017, which does not match the 2018 dates of the other entries"
+  },
+  {
+   "zh": "系統級稽核追蹤：監控「誰」進出系統",
+   "en": "System-level audit trail: monitoring \"who\" enters and leaves the system"
+  },
+  {
+   "zh": "System-Level Audit Trail 是最底層的安全防線，捕捉所有<strong>使用者認證事件</strong>：",
+   "en": "The System-Level Audit Trail is the lowest-level security safeguard and captures all <strong>user authentication events</strong>:"
+  },
+  {
+   "zh": "成功登入 / 登出",
+   "en": "Successful logins / logouts"
+  },
+  {
+   "zh": "失敗登入嘗試（含次數）",
+   "en": "Failed login attempts (including the number of attempts)"
+  },
+  {
+   "zh": "身份確認失敗",
+   "en": "Failed identity confirmation"
+  },
+  {
+   "zh": "使用者權限變更",
+   "en": "Changes to user privileges"
+  },
+  {
+   "zh": "專案建立、刪除、修改、還原",
+   "en": "Project creation, deletion, modification and restoration"
+  },
+  {
+   "zh": "類比：大樓門禁系統的刷卡記錄",
+   "en": "Analogy: the swipe-card log of a building access control system"
+  },
+  {
+   "zh": "System Audit Trail 就像大樓的門禁紀錄簿：記錄每個人<strong>什麼時間進出哪扇門</strong>、哪次刷卡失敗。<br/>\n            當發生資料疑義時，查核官第一步就是比對「登入登出時間」與「資料操作時間」是否吻合——若某位分析師在系統顯示未登入時，資料卻出現修改，就是明確的資料完整性問題。",
+   "en": "The System Audit Trail is like a building's access log: it records <strong>who went through which door and when</strong>, and which swipes failed.<br/>\n            When there is a question about data, the inspector's first step is to compare \"login/logout times\" with \"data operation times\". If data were modified while the system shows the analyst was not logged in, that is a clear data integrity problem."
+  },
+  {
+   "zh": "Figure 6.3.9.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=fig-p41-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的查核重點",
+   "en": "Inspection points for Figure 6.3.9.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=fig-p41-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>"
+  },
+  {
+   "zh": "仔細觀察這份系統稽核追蹤範例：",
+   "en": "Look carefully at this example of a system audit trail:"
+  },
+  {
+   "zh": "<strong>第2、5、6、7筆</strong>：Analyst A 連續三次登入失敗 — 可能是密碼共用或嘗試用他人帳號",
+   "en": "<strong>Entries 2, 5, 6 and 7</strong>: Analyst A failed to log in three times in a row, which may indicate password sharing or an attempt to use someone else's account"
+  },
+  {
+   "zh": "<strong>第4、10筆</strong>：「Unsuccessful Attempt to Confirm Identity」— 這是電子簽章二次驗證失敗，比一般登入失敗更嚴重",
+   "en": "<strong>Entries 4 and 10</strong>: \"Unsuccessful Attempt to Confirm Identity\" is a failed second-step verification for an electronic signature, which is more serious than an ordinary failed login"
+  },
+  {
+   "zh": "<strong>第11筆</strong>：日期為 <strong>2017</strong>，其他皆為 2018 — 暗示可能的日期/時鐘篡改風險",
+   "en": "<strong>Entry 11</strong>: the date is <strong>2017</strong> while all the others are 2018, suggesting a possible risk of date/clock tampering"
+  },
+  {
+   "zh": "Figure 6.3.9.1-2 的紅旗警訊",
+   "en": "Red flags in Figure 6.3.9.1-2"
+  },
+  {
+   "zh": "五個專案（XYZ、AAA、BCD、HGK、DDB）在短時間內連續被刪除，操作者均為 <strong>System/Administrator</strong>。",
+   "en": "Five projects (XYZ, AAA, BCD, HGK, DDB) were deleted one after another in a short period, all by <strong>System/Administrator</strong>."
+  },
+  {
+   "zh": "查核官的問題會是：",
+   "en": "The inspector's questions would be:"
+  },
+  {
+   "zh": "這些專案是否有對應的批次紀錄（Batch Records）？",
+   "en": "Do these projects have corresponding batch records?"
+  },
+  {
+   "zh": "Administrator 執行批量刪除是否有書面授權？",
+   "en": "Was the Administrator's bulk deletion authorized in writing?"
+  },
+  {
+   "zh": "XYZ 的刪除時間（4/14 晚間 8PM）與其他四個（3/22 白天）相差甚遠——有沒有說明？",
+   "en": "The deletion time of XYZ (evening of 4/14, 8 PM) is far from the other four (daytime on 3/22). Is there an explanation?"
+  },
+  {
+   "zh": "定期審查頻率的設定原則",
+   "en": "Principles for setting the periodic review frequency"
+  },
+  {
+   "zh": "TR80 要求 QU 「定期」審查系統稽核追蹤，特別針對<strong>刪除事件</strong>。實務上建議：",
+   "en": "TR80 requires the QU to review the system audit trail \"periodically\", with particular attention to <strong>deletion events</strong>. In practice, we recommend:"
+  },
+  {
+   "zh": "設定自動警報：連續 N 次登入失敗 → 通知 IT/QA",
+   "en": "Set up automatic alerts: N consecutive failed logins trigger a notification to IT/QA"
+  },
+  {
+   "zh": "Administrator 操作（尤其刪除）需雙人授權",
+   "en": "Administrator operations (especially deletions) require dual authorization"
+  },
+  {
+   "zh": "系統時鐘應與網路時間伺服器同步，防止時間篡改",
+   "en": "Synchronize the system clock with a network time server to prevent time tampering"
+  },
+  {
+   "zh": "<strong>6.3.9.2 Application-Level Audit Trail 6.3.9.2 應用程式層次稽核軌跡</strong>",
+   "en": "<strong>6.3.9.2 Application-Level Audit Trail</strong>"
+  },
+  {
+   "zh": "應用程式層稽核：捕捉「操作行為」",
+   "en": "Application-level audit: capturing \"user actions\""
+  },
+  {
+   "zh": "Application-Level Audit Trail 比 System-Level 更細緻，記錄使用者在軟體應用中的每個動作：開啟/關閉哪個資料檔案、讀取、編輯、處理、刪除欄位、發布報告。",
+   "en": "The Application-Level Audit Trail is more granular than the System-Level one and records every action a user takes in the software application: which data file was opened or closed, and reading, editing, processing, deleting fields and publishing reports."
+  },
+  {
+   "zh": "重要特色：<strong>Before &amp; After</strong> 捕捉——不只記錄「有人改了這個欄位」，還記錄「原本是什麼值」和「改成什麼值」。這是資料完整性調查時還原事件的關鍵。",
+   "en": "Key feature: <strong>Before &amp; After</strong> capture. It records not only that \"someone changed this field\" but also \"what the original value was\" and \"what it was changed to\". This is the key to reconstructing events in a data integrity investigation."
+  },
+  {
+   "zh": "類比：Word 的「追蹤修訂」功能",
+   "en": "Analogy: Track Changes in Word"
+  },
+  {
+   "zh": "Application Audit Trail 就像 Microsoft Word 的「追蹤修訂（Track Changes）」：每次修改都清楚標示<strong>刪除了什麼、新增了什麼、誰修改、什麼時間</strong>。主管可以接受或拒絕每一項修改，並保留完整歷程。",
+   "en": "The Application Audit Trail works like \"Track Changes\" in Microsoft Word: every edit clearly shows <strong>what was deleted, what was added, who made the change and when</strong>. A supervisor can accept or reject each change while the full history is preserved."
+  },
+  {
+   "zh": "與 System-Level 的分工",
+   "en": "How it divides the work with the System-Level trail"
+  },
+  {
+   "zh": "System-Level 與 Application-Level 是互補的：",
+   "en": "The System-Level and Application-Level trails are complementary:"
+  },
+  {
+   "zh": "<strong>System</strong>：登入登出等系統事件，Application 不會捕捉的資訊",
+   "en": "<strong>System</strong>: system events such as login and logout, information the Application trail does not capture"
+  },
+  {
+   "zh": "<strong>Application</strong>：檔案操作、資料修改、發布行為，System 不追蹤的內容",
+   "en": "<strong>Application</strong>: file operations, data modifications and publishing actions, which the System trail does not track"
+  },
+  {
+   "zh": "調查時兩者必須交叉比對，才能構成完整的時間軸。",
+   "en": "In an investigation the two must be cross-checked to build a complete timeline."
+  },
+  {
+   "zh": "查核觀察重點",
+   "en": "Inspection observation points"
+  },
+  {
+   "zh": "查核官會尋找：是否有資料在「未公告的時間」被開啟或修改，特別是在結果不理想後不久發生的操作。Application Audit Trail 的時間序列往往能還原「是否有人試圖選擇性報告」。",
+   "en": "Inspectors will look for data that were opened or modified at \"unannounced times\", especially operations that occur shortly after an unsatisfactory result. The time sequence in the Application Audit Trail can often show whether someone tried to report selectively."
+  },
+  {
+   "zh": "<strong>6.3.9.3 Method Audit Trail 6.3.9.3 方法稽核軌跡</strong>",
+   "en": "<strong>6.3.9.3 Method Audit Trail</strong>"
+  },
+  {
+   "zh": "方法稽核追蹤：確保方法一致性",
+   "en": "Method audit trail: ensuring method consistency"
+  },
+  {
+   "zh": "Method Audit Trail 回答的核心問題是：<strong>「這個序列執行時，用的是哪個版本的方法？」</strong>",
+   "en": "The core question the Method Audit Trail answers is: <strong>\"Which version of the method was used when this sequence was run?\"</strong>"
+  },
+  {
+   "zh": "若方法在序列中途被修改（method modified between sequences），此追蹤將清楚顯示前後使用的方法版本，確保結果可歸因到正確的方法條件。",
+   "en": "If a method is modified between sequences (or partway through), this trail clearly shows which method versions were used before and after, so that results can be attributed to the correct method conditions."
+  },
+  {
+   "zh": "常見的 DI 風險點",
+   "en": "Common DI risk points"
+  },
+  {
+   "zh": "方法稽核追蹤最常揭露的問題：",
+   "en": "The problems the Method Audit Trail most often reveals:"
+  },
+  {
+   "zh": "分析師在同一序列中間<strong>靜默修改積分方法</strong>（e.g., 調整積分視窗使峰形看起來更好），若無版本追蹤則難以偵測",
+   "en": "An analyst <strong>silently modifies the integration method</strong> in the middle of a sequence (e.g., adjusting the integration window so the peak shape looks better), which is hard to detect without version tracking"
+  },
+  {
+   "zh": "使用未驗證或未正式核准的方法版本進行分析",
+   "en": "Analysis performed with an unvalidated or not formally approved method version"
+  },
+  {
+   "zh": "Method ID 不一致（方法名稱相同但參數已更改）",
+   "en": "Inconsistent Method ID (same method name but the parameters have changed)"
+  },
+  {
+   "zh": "審查建議",
+   "en": "Review recommendation"
+  },
+  {
+   "zh": "在批次放行審查中，應比較：Method Audit Trail 中的方法版本號 vs. 該批次 SOP 指定的核准方法版本。若版本不一致，必須調查並說明。",
+   "en": "During batch release review, compare the method version number in the Method Audit Trail with the approved method version specified in the SOP for that batch. If the versions do not match, this must be investigated and explained."
+  },
+  {
+   "zh": "<strong>6.3.9.4 Results Audit Trail 6.3.9.4 結果稽核軌跡</strong>",
+   "en": "<strong>6.3.9.4 Results Audit Trail</strong>"
+  },
+  {
+   "zh": "Results Audit Trail：「結果有沒有被動過手腳？」",
+   "en": "Results Audit Trail: \"Have the results been tampered with?\""
+  },
+  {
+   "zh": "Results Audit Trail 是最直接回答「結果是否被竄改」的工具。關鍵欄位包括：",
+   "en": "The Results Audit Trail is the tool that most directly answers whether results have been tampered with. Key fields include:"
+  },
+  {
+   "zh": "<strong>Altered</strong> 欄：「Yes」表示樣品名稱在採集後被修改過——這是一個警示訊號",
+   "en": "<strong>Altered</strong> column: \"Yes\" means the sample name was changed after acquisition, which is a warning sign"
+  },
+  {
+   "zh": "<strong>Date Acquired vs. Date Processed</strong>：時間差是否合理？",
+   "en": "<strong>Date Acquired vs. Date Processed</strong>: is the time difference reasonable?"
+  },
+  {
+   "zh": "<strong>Integration Type</strong>：使用的是自動積分還是手動積分事件（manual integration events）？",
+   "en": "<strong>Integration Type</strong>: was automatic integration or manual integration events used?"
+  },
+  {
+   "zh": "<strong>Result Number</strong>：是否有跳號（gap）或重複——暗示刪除或複製",
+   "en": "<strong>Result Number</strong>: are there gaps or duplicates, which suggest deletion or copying?"
+  },
+  {
+   "zh": "類比：醫院病歷的修改記錄",
+   "en": "Analogy: the amendment record of a hospital medical chart"
+  },
+  {
+   "zh": "Results Audit Trail 就像電子病歷的修改紀錄：每次修改都標記「修改人、修改時間、修改前後的內容」，確保病歷的「Altered = No」代表從未被動過。",
+   "en": "The Results Audit Trail is like the amendment record of an electronic medical chart: every change is marked with who changed it, when, and the content before and after, so that \"Altered = No\" means the record has never been touched."
+  },
+  {
+   "zh": "Filter 搜尋的重要性（Figure 6.3.9.4-2）",
+   "en": "The importance of Filter searches (Figure 6.3.9.4-2)"
+  },
+  {
+   "zh": "TR80 提到可以使用 Filter 搜尋「同一樣品是否在多個專案中被注射」。這是偵測<strong>試驗性注射（trial injections）</strong>最有效的方法之一：",
+   "en": "TR80 mentions that a Filter can be used to search whether \"the same sample was injected in multiple projects\". This is one of the most effective ways to detect <strong>trial injections</strong>:"
+  },
+  {
+   "zh": "搜尋條件：同一樣品名稱（Sample Name）出現在多個 Project/Sample Set 中",
+   "en": "Search criterion: the same Sample Name appearing in multiple Projects/Sample Sets"
+  },
+  {
+   "zh": "若發現，必須調查：是正當的重複測試，還是不當的「先試看看」？",
+   "en": "If found, investigate whether it is legitimate retesting or an improper \"let's just try it first\" injection."
+  },
+  {
+   "zh": "電子資料為最終版本（Final Data）",
+   "en": "Electronic data are the final version (Final Data)"
+  },
+  {
+   "zh": "TR80 明確：<strong>電子資料是最終紀錄</strong>，紙本只是副本。即使結果已用紙本簽核，若與電子資料有出入，以電子資料為準。",
+   "en": "TR80 is clear: <strong>the electronic data are the final record</strong> and paper is only a copy. Even if results have been signed off on paper, if they differ from the electronic data, the electronic data prevail."
+  },
+  {
+   "zh": "任何對已核准資料的修改，<strong>必須有正當理由</strong>，並留存記錄。",
+   "en": "Any change to approved data <strong>must have a valid justification</strong> and be recorded."
+  },
+  {
+   "zh": "批次審查時的 Results Audit Trail 查核要點",
+   "en": "Results Audit Trail checkpoints during batch review"
+  },
+  {
+   "zh": "確認 <strong>Altered = No</strong>（或若有 Yes，調查原因）",
+   "en": "Confirm <strong>Altered = No</strong> (or, if Yes, investigate the cause)"
+  },
+  {
+   "zh": "比對 Date Acquired 與 Date Processed 的時間邏輯",
+   "en": "Check the logic of the time between Date Acquired and Date Processed"
+  },
+  {
+   "zh": "確認使用的 Integration Type 符合驗證方法",
+   "en": "Confirm that the Integration Type used is consistent with the validated method"
+  },
+  {
+   "zh": "搜尋同樣本是否出現在其他專案（Filter 功能）",
+   "en": "Search whether the same sample appears in other projects (Filter function)"
+  },
+  {
+   "zh": "<strong>6.3.9.5 Sequence Audit Trail 6.3.9.5 序列稽核軌跡</strong>",
+   "en": "<strong>6.3.9.5 Sequence Audit Trail</strong>"
+  },
+  {
+   "zh": "序列稽核追蹤：「這個批次的注射序列有沒有被動過？」",
+   "en": "Sequence audit trail: \"Has the injection sequence of this batch been tampered with?\""
+  },
+  {
+   "zh": "Sequence Audit Trail（樣品集稽核追蹤）追蹤的是整個分析批次的<strong>執行順序完整性</strong>。它回答：",
+   "en": "The Sequence Audit Trail (sample set audit trail) tracks the <strong>integrity of the execution order</strong> of the whole analytical run. It answers:"
+  },
+  {
+   "zh": "序列執行過程中，是否有樣品名稱被更改？",
+   "en": "Were any sample names changed during the sequence run?"
+  },
+  {
+   "zh": "序列是否曾被中斷（aborted）？",
+   "en": "Was the sequence ever aborted?"
+  },
+  {
+   "zh": "序列執行中是否有注射被插入或移除？",
+   "en": "Were any injections inserted or removed during the sequence run?"
+  },
+  {
+   "zh": "「中斷序列（Aborted Sequence）」的查核意義",
+   "en": "Why an aborted sequence matters in an inspection"
+  },
+  {
+   "zh": "一個序列在中途被中斷，最常見的原因包括：",
+   "en": "The most common reasons a sequence is aborted midway include:"
+  },
+  {
+   "zh": "系統套適性（System Suitability）失敗，需要重新進針",
+   "en": "System suitability failure, requiring re-injection"
+  },
+  {
+   "zh": "樣品前處理有問題",
+   "en": "A problem with sample preparation"
+  },
+  {
+   "zh": "—— 或者 —— 選擇性地中止「結果不理想」的序列",
+   "en": "— or — selectively aborting a sequence whose results are unsatisfactory"
+  },
+  {
+   "zh": "查核官會要求解釋每一個被中斷的序列，並確認有對應的偏差報告（Deviation Report）。",
+   "en": "Inspectors will ask for an explanation of every aborted sequence and confirm that a corresponding Deviation Report exists."
+  },
+  {
+   "zh": "審查重點",
+   "en": "Review focus"
+  },
+  {
+   "zh": "序列稽核追蹤與 Results Audit Trail 和 Method Audit Trail 應<strong>交叉比對</strong>，確保：",
+   "en": "The Sequence Audit Trail should be <strong>cross-checked</strong> against the Results Audit Trail and the Method Audit Trail to ensure that:"
+  },
+  {
+   "zh": "序列執行期間的方法版本與 Method Audit Trail 一致",
+   "en": "The method version during the sequence run is consistent with the Method Audit Trail"
+  },
+  {
+   "zh": "所有注射結果都在 Results Audit Trail 中有對應記錄",
+   "en": "All injection results have a corresponding record in the Results Audit Trail"
+  },
+  {
+   "zh": "無「靜默刪除」的注射（Injection IDs 無跳號）",
+   "en": "There are no \"silently deleted\" injections (no gaps in Injection IDs)"
+  },
+  {
+   "zh": "<strong>6.3.9.6 Project-Level Audit Trail 6.3.9.6 專案層次稽核軌跡</strong>",
+   "en": "<strong>6.3.9.6 Project-Level Audit Trail</strong>"
+  },
+  {
+   "zh": "▲ 注射被刪除的記錄。Project Audit Trail 可捕捉此事件；此圖為「不良範例」說明詐欺性資料的樣貌。",
+   "en": "▲ Record of a deleted injection. The Project Audit Trail can capture this event; this figure is a \"poor example\" showing what fraudulent data look like."
+  },
+  {
+   "zh": "專案稽核追蹤：最全面的視角",
+   "en": "Project audit trail: the most comprehensive view"
+  },
+  {
+   "zh": "Project-Level Audit Trail 是涵蓋範圍最廣的稽核追蹤，捕捉一個專案內<strong>所有層面的活動</strong>：",
+   "en": "The Project-Level Audit Trail has the broadest scope of all audit trails and captures <strong>all aspects of activity</strong> within a project:"
+  },
+  {
+   "zh": "樣品集（Sample Set）的所有操作",
+   "en": "All operations on the Sample Set"
+  },
+  {
+   "zh": "注射（Injections）的建立、修改、刪除",
+   "en": "Creation, modification and deletion of Injections"
+  },
+  {
+   "zh": "通道（Channels）、結果（Results）、校正曲線（Calibration Curves）、峰值（Peaks）",
+   "en": "Channels, Results, Calibration Curves and Peaks"
+  },
+  {
+   "zh": "重要前提：必須在<strong>建立專案時就啟用</strong>稽核追蹤選項——無法事後追溯。",
+   "en": "Important prerequisite: the audit trail option must be <strong>enabled when the project is created</strong>; it cannot be applied retroactively."
+  },
+  {
+   "zh": "Figure 6.3.9.6-1 的警示：注射刪除 = 潛在詐欺",
+   "en": "Warning from Figure 6.3.9.6-1: injection deleted = potential fraud"
+  },
+  {
+   "zh": "TR80 明確標注此圖為 <strong>\"poor example to show fraudulent data\"</strong>（展示詐欺性資料的不良範例）。",
+   "en": "TR80 explicitly labels this figure a <strong>\"poor example to show fraudulent data\"</strong>."
+  },
+  {
+   "zh": "若 Caffeine RT check 的注射被刪除：",
+   "en": "If the Caffeine RT check injection was deleted:"
+  },
+  {
+   "zh": "可能是「系統適性不符合」但未按規定記錄偏差",
+   "en": "It may have been a system suitability failure for which the deviation was not recorded as required"
+  },
+  {
+   "zh": "可能是「試驗性注射」的刪除（不當做法）",
+   "en": "It may be the deletion of a \"trial injection\" (an improper practice)"
+  },
+  {
+   "zh": "Project Audit Trail 在此處的價值：即使注射被刪除，<strong>刪除行為本身仍被記錄</strong>，查核官可看到完整的「刪除前後」事件鏈",
+   "en": "The value of the Project Audit Trail here: even if the injection is deleted, <strong>the act of deletion itself is still recorded</strong>, and the inspector can see the complete chain of events before and after the deletion"
+  },
+  {
+   "zh": "啟用時機的重要性",
+   "en": "The importance of when it is enabled"
+  },
+  {
+   "zh": "稽核追蹤必須在<strong>專案建立當下</strong>開啟，建議在系統設定層面設為<strong>強制預設啟用</strong>（不允許分析師手動關閉），避免「忘記啟用」導致稽核追蹤缺口。",
+   "en": "The audit trail must be turned on <strong>at the moment the project is created</strong>. We recommend configuring it at system level as <strong>enabled by default and mandatory</strong> (analysts cannot turn it off manually), to avoid audit trail gaps caused by \"forgetting to enable it\"."
+  },
+  {
+   "zh": "<strong>6.3.9.7 Injection Log 6.3.9.7 注射紀錄</strong>",
+   "en": "<strong>6.3.9.7 Injection Log</strong>"
+  },
+  {
+   "zh": "若稽核追蹤已全程啟用，則 Injection Log 的審查並非必要（TR80 原文明確說明）。但 Injection Log 仍可作為<strong>對帳工具（reconciliation）</strong>，驗證預期注射次數與實際注射次數是否吻合。",
+   "en": "If the audit trail has been enabled throughout, review of the Injection Log is not necessary (as TR80 states explicitly). However, the Injection Log can still serve as a <strong>reconciliation</strong> tool to verify that the expected number of injections matches the actual number."
+  },
+  {
+   "zh": "TR80 明確區分兩者的本質差異：",
+   "en": "TR80 clearly distinguishes the essential differences between the two:"
+  },
+  {
+   "zh": "<strong>6.3.10 Transactional Log / System Errors 6.3.10 交易紀錄 / 系統錯誤</strong>",
+   "en": "<strong>6.3.10 Transactional Log / System Errors</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text — 6.3.10.1 Chromatography",
+   "en": "Original Text — 6.3.10.1 Chromatography"
+  },
+  {
+   "zh": "類比：汽車行車記錄器 vs. 法院公證文件",
+   "en": "Analogy: a car dashcam vs. a notarized court document"
+  },
+  {
+   "zh": "Transactional Log 像行車記錄器：持續記錄當下發生的事（Lost prime、Cable disconnected），但儲存空間有限，老資料會被覆蓋。<br/>\n            Audit Trail 像法院公證的文件：一旦簽署就永久有效，任何修改都要留下完整記錄，具有法律效力。",
+   "en": "A Transactional Log is like a dashcam: it continuously records what is happening at the moment (Lost prime, Cable disconnected), but storage space is limited and old data are overwritten.<br/>\n            An Audit Trail is like a notarized court document: once signed it is permanently valid, any change must leave a complete record, and it carries legal effect."
+  },
+  {
+   "zh": "Figure 6.3.10.1-2 的 趨勢觀察重點",
+   "en": "Trend observations for Figure 6.3.10.1-2"
+  },
+  {
+   "zh": "觀察「Column heater door open」在11月27日一天內出現<strong>五次</strong>：",
+   "en": "Note that \"Column heater door open\" appears <strong>five times</strong> in a single day on November 27:"
+  },
+  {
+   "zh": "這可能代表儀器維護問題（門的彈簧損壞？）",
+   "en": "This may indicate an instrument maintenance problem (a broken door spring?)"
+  },
+  {
+   "zh": "可能代表分析師頻繁開蓋進行非常規操作",
+   "en": "It may indicate that analysts are frequently opening the cover to perform non-routine operations"
+  },
+  {
+   "zh": "Transactional Log 的趨勢分析價值：捕捉此類高頻事件，輔助根本原因調查",
+   "en": "The value of trending the Transactional Log: it captures high-frequency events like this and supports root cause investigation"
+  },
+  {
+   "zh": "若此類事件影響分析結果，必須在 <strong>validated audit trail</strong> 中也有對應記錄。",
+   "en": "If such events affect analytical results, they must also be recorded in the <strong>validated audit trail</strong>."
+  },
+  {
+   "zh": "重要：「聽起來嚴重」但可能不在 Audit Trail 的錯誤",
+   "en": "Important: errors that \"sound serious\" but may not be in the Audit Trail"
+  },
+  {
+   "zh": "TR80 特別指出：一些名稱聽起來很嚴重的錯誤（cable disconnected, connection lost, communication failure）可能<strong>只出現在 Transactional Log</strong>，不在 validated audit trail 中。",
+   "en": "TR80 specifically points out that some errors with serious-sounding names (cable disconnected, connection lost, communication failure) may <strong>appear only in the Transactional Log</strong> and not in the validated audit trail."
+  },
+  {
+   "zh": "這對資料完整性調查是個挑戰——無法確定這些「失聯」是否為蓄意人為中斷。廠商需與軟體供應商共同釐清哪些訊息必須納入 validated audit trail。",
+   "en": "This is a challenge for data integrity investigations, because it cannot be determined whether these \"lost connections\" were deliberate human interruptions. Companies need to work with the software vendor to clarify which messages must be included in the validated audit trail."
+  },
+  {
+   "zh": "IQ/OQ/PQ 時的 Transactional Log 工作",
+   "en": "Transactional Log work during IQ/OQ/PQ"
+  },
+  {
+   "zh": "QU 必須在設備安裝與確效期間：",
+   "en": "During equipment installation and qualification, the QU must:"
+  },
+  {
+   "zh": "審查並理解所有 transactional log 訊息",
+   "en": "Review and understand all transactional log messages"
+  },
+  {
+   "zh": "識別哪些訊息為「關鍵訊息」（影響資料或儀器操作）",
+   "en": "Identify which messages are \"critical\" (affecting data or instrument operation)"
+  },
+  {
+   "zh": "確認關鍵訊息是否也被 validated audit trail 捕捉",
+   "en": "Confirm that critical messages are also captured by the validated audit trail"
+  },
+  {
+   "zh": "不影響分析或品質且已在 audit trail 記錄的訊息，<strong>不需要額外保留</strong>",
+   "en": "Messages that do not affect the analysis or quality and are already recorded in the audit trail <strong>need not be retained separately</strong>"
+  },
+  {
+   "zh": "核心區分：Transactional Log ≠ Audit Trail",
+   "en": "Key distinction: Transactional Log is not the same as Audit Trail"
+  },
+  {
+   "zh": "這是 TR80 中最易混淆的概念之一。兩者的關鍵差異：",
+   "en": "This is one of the concepts in TR80 that is most easily confused. The key differences between the two:"
+  },
+  {
+   "zh": "<strong>6.3.10.2 Other Types of Equipment 6.3.10.2 其他設備類型</strong>",
+   "en": "<strong>6.3.10.2 Other Types of Equipment</strong>"
+  },
+  {
+   "zh": "▲ \"Deleted the journal entry\" 的實際原因是作業中斷（job interruption），並非資料刪除——但若審查員不熟悉系統，容易誤判。",
+   "en": "▲ The actual cause of \"Deleted the journal entry\" was a job interruption, not data deletion, but a reviewer unfamiliar with the system could easily misjudge it."
+  },
+  {
+   "zh": "▲ \"Sample data live modified\" 出現兩次——需確認是否為正常操作或需要在 validated audit trail 中有記錄。",
+   "en": "▲ \"Sample data live modified\" appears twice. Confirm whether this is normal operation or needs to be recorded in the validated audit trail."
+  },
+  {
+   "zh": "非色層儀器的 Transactional Log",
+   "en": "Transactional Logs of non-chromatographic instruments"
+  },
+  {
+   "zh": "Transactional Log 不只是 HPLC/GC 特有，<strong>所有自動化分析設備</strong>都可能產生：",
+   "en": "Transactional Logs are not specific to HPLC/GC; <strong>all automated analytical equipment</strong> may generate them:"
+  },
+  {
+   "zh": "X-ray Diffraction（XRD）— 晶型分析",
+   "en": "X-ray Diffraction (XRD) — crystal form analysis"
+  },
+  {
+   "zh": "Karl Fischer（KF）— 水分測定",
+   "en": "Karl Fischer (KF) — moisture determination"
+  },
+  {
+   "zh": "各類自動化天平、pH 計、分光光度計等",
+   "en": "Automated balances, pH meters, spectrophotometers and so on"
+  },
+  {
+   "zh": "XRD \"Deleted the journal entry\" — 誤導性訊息案例",
+   "en": "XRD \"Deleted the journal entry\": a case of a misleading message"
+  },
+  {
+   "zh": "這是 TR80 提供的<strong>最具警示性的範例</strong>：XRD log 顯示「Deleted the journal entry」——字面意思像是刪除了資料，但實際原因是<strong>作業中斷（job interruption）</strong>，軟體系統自動產生此訊息作為內部清理機制。",
+   "en": "This is the <strong>most cautionary example</strong> in TR80: the XRD log shows \"Deleted the journal entry\", which literally sounds like data were deleted, but the actual cause was a <strong>job interruption</strong>, and the software generates this message automatically as an internal clean-up mechanism."
+  },
+  {
+   "zh": "若查核官（或分析師）不了解這個系統，可能會：",
+   "en": "If the inspector (or the analyst) does not understand this system, they may:"
+  },
+  {
+   "zh": "錯誤地認定存在資料刪除/篡改行為",
+   "en": "Wrongly conclude that data were deleted or tampered with"
+  },
+  {
+   "zh": "——或相反—— 把真正的問題訊息忽視，因為「之前都是這樣顯示的」",
+   "en": "— or conversely — ignore a message that signals a real problem because \"it has always been displayed that way\""
+  },
+  {
+   "zh": "<strong>解決方案</strong>：QU 必須與軟體供應商共同建立「訊息字典」，明確每條訊息的真實含義。",
+   "en": "<strong>Solution</strong>: the QU must work with the software vendor to build a \"message dictionary\" that defines the true meaning of each message."
+  },
+  {
+   "zh": "KF Log 的 \"Sample data live modified\" 警告",
+   "en": "The KF log \"Sample data live modified\" warning"
+  },
+  {
+   "zh": "KF log 中出現兩次 <strong>Warning: Sample data live modified</strong>——這表示在分析過程中，樣品資料被即時修改。需確認：",
+   "en": "The KF log shows <strong>Warning: Sample data live modified</strong> twice, which means the sample data were modified in real time during the analysis. Confirm:"
+  },
+  {
+   "zh": "是正當的分析調整（e.g., 重新計算），還是不當的人工干預？",
+   "en": "Was it a legitimate analytical adjustment (e.g., recalculation) or improper manual intervention?"
+  },
+  {
+   "zh": "此事件是否也在 validated audit trail（如 results audit trail）中有對應記錄？",
+   "en": "Is the event also recorded in the validated audit trail (e.g., the results audit trail)?"
+  },
+  {
+   "zh": "跨設備 Transactional Log 的管理建議",
+   "en": "Recommendations for managing Transactional Logs across equipment"
+  },
+  {
+   "zh": "建立各設備的 <strong>訊息分類清單</strong>（Critical / Non-critical）",
+   "en": "Create a <strong>message classification list</strong> (Critical / Non-critical) for each piece of equipment"
+  },
+  {
+   "zh": "Critical 訊息必須確保也出現在 validated audit trail",
+   "en": "Ensure Critical messages also appear in the validated audit trail"
+  },
+  {
+   "zh": "為審查員提供<strong>設備特定培訓</strong>，避免因不熟悉系統而誤判訊息",
+   "en": "Provide reviewers with <strong>equipment-specific training</strong> so that they do not misjudge messages through unfamiliarity with the system"
+  },
+  {
+   "zh": "在 IQ/OQ 確效文件中記錄各訊息的含義與對應處置",
+   "en": "Record the meaning of each message and its corresponding disposition in the IQ/OQ qualification documents"
+  },
+  {
+   "zh": "<strong>6.3.11 Common Deficiencies 6.3.11 常見缺失</strong>",
+   "en": "<strong>6.3.11 Common Deficiencies</strong>"
+  },
+  {
+   "zh": "FDA Warning Letter 常見缺陷：查核官的視角",
+   "en": "Common FDA Warning Letter deficiencies: the inspector's perspective"
+  },
+  {
+   "zh": "Section 6.3.11 是整個 TR80 最具實務價值的一節——它直接列出了 FDA 在 Warning Letter 中反覆引用的缺陷類型。以下以「查核官問題」的形式重新框架。",
+   "en": "Section 6.3.11 is the most practically valuable section of the whole of TR80: it directly lists the types of deficiencies the FDA repeatedly cites in Warning Letters. They are reframed below as \"inspector questions\"."
+  },
+  {
+   "zh": "電腦管控缺陷：查核官會問的問題",
+   "en": "Computer control deficiencies: questions the inspector will ask"
+  },
+  {
+   "zh": "<strong>密碼共用</strong>：「請展示您的帳號是否唯一，且沒有與任何人共用密碼的記錄。」",
+   "en": "<strong>Password sharing</strong>: \"Show me that your account is unique and that there is no record of the password being shared with anyone.\""
+  },
+  {
+   "zh": "<strong>時間戳記篡改</strong>：「系統時鐘是否與 NTP 伺服器同步？若電腦時間被修改，是否有 audit trail 記錄？」",
+   "en": "<strong>Time stamp tampering</strong>: \"Is the system clock synchronized with an NTP server? If the computer time is changed, is there an audit trail record?\""
+  },
+  {
+   "zh": "<strong>軟體更新無管控</strong>：「自動更新是否在 GMP 環境中被停用，且更新程序是否受 change control 管控？」",
+   "en": "<strong>Uncontrolled software updates</strong>: \"Is automatic updating disabled in the GMP environment, and is the update procedure under change control?\""
+  },
+  {
+   "zh": "<strong>資料庫保護不當</strong>：「使用者是否可以直接存取資料庫而不留下 audit trail？」",
+   "en": "<strong>Inadequate database protection</strong>: \"Can users access the database directly without leaving an audit trail?\""
+  },
+  {
+   "zh": "伺服器缺陷：QU 監管的盲點",
+   "en": "Server deficiencies: blind spots in QU oversight"
+  },
+  {
+   "zh": "<strong>QU 缺乏監管</strong>：伺服器的變更（例如定期清理、備份設定修改）是否需要 QU 核准？",
+   "en": "<strong>Lack of QU oversight</strong>: do server changes (for example, routine clean-up or changes to backup settings) require QU approval?"
+  },
+  {
+   "zh": "<strong>Cloud 系統未驗證</strong>：若使用雲端儲存，是否已驗證資料傳輸完整性？是否有資料遺失的偵測機制？",
+   "en": "<strong>Unvalidated cloud systems</strong>: if cloud storage is used, has data transfer integrity been validated? Is there a mechanism to detect data loss?"
+  },
+  {
+   "zh": "<strong>網路映射錯誤</strong>：網路拓撲是否有文件記錄，且資料路徑是否已在確效中驗證？",
+   "en": "<strong>Network mapping errors</strong>: is the network topology documented, and has the data path been verified during validation?"
+  },
+  {
+   "zh": "設備管控缺陷：最常見的 DI 違規",
+   "en": "Equipment control deficiencies: the most common DI violations"
+  },
+  {
+   "zh": "<strong>單次試驗注射</strong>：分析師直接在儀器上進行「試打」，結果不好就不存入系統——這是最典型的選擇性報告行為",
+   "en": "<strong>Single trial injections</strong>: the analyst does a \"test shot\" directly on the instrument and does not save it in the system if the result is poor. This is the most typical selective reporting behavior"
+  },
+  {
+   "zh": "<strong>Stand-alone 設備無稽核追蹤</strong>：未連接伺服器的設備往往可以直接刪除資料，形成管控盲點",
+   "en": "<strong>Stand-alone equipment without an audit trail</strong>: equipment not connected to a server often allows data to be deleted directly, creating a control blind spot"
+  },
+  {
+   "zh": "<strong>Trial injection 功能未被 Audit Trail 捕捉</strong>：某些 ALCS 功能允許「非正式」注射，但若未納入稽核，等同於製造資料缺口",
+   "en": "<strong>Trial injection function not captured by the Audit Trail</strong>: some ALCS functions allow \"informal\" injections, and if these are not covered by the audit trail, this is equivalent to creating a data gap"
+  },
+  {
+   "zh": "<strong>修改系統適性以掩蓋樣品失敗</strong>：這是最嚴重的詐欺行為之一——把樣品失敗偽裝成設備問題",
+   "en": "<strong>Modifying system suitability to mask a sample failure</strong>: this is one of the most serious forms of fraud, disguising a sample failure as an equipment problem"
+  },
+  {
+   "zh": "現成軟體（Off-the-Shelf）的合規陷阱",
+   "en": "Compliance traps of off-the-shelf software"
+  },
+  {
+   "zh": "<strong>Part 11 合規「假設」</strong>：供應商宣稱軟體符合 Part 11，但廠商從未自行驗證——查核官會要求看驗證文件",
+   "en": "<strong>Part 11 compliance \"assumption\"</strong>: the vendor claims the software complies with Part 11, but the company has never verified it. The inspector will ask to see the validation documents"
+  },
+  {
+   "zh": "<strong>軟體版本升級</strong>：新版本是否能開啟舊版本建立的檔案？若不相容，舊資料的存取性（accessibility）受影響",
+   "en": "<strong>Software version upgrades</strong>: can the new version open files created by the old version? If not, the accessibility of old data is affected"
+  },
+  {
+   "zh": "<strong>計算未驗證</strong>：ALCS 中的計算公式（e.g., 含量計算）是否有正式驗證測試案例？",
+   "en": "<strong>Unvalidated calculations</strong>: have the calculation formulas in the ALCS (e.g., assay calculations) been verified with formal validation test cases?"
+  },
+  {
+   "zh": "資料處理缺陷：自我審查清單",
+   "en": "Data handling deficiencies: self-inspection checklist"
+  },
+  {
+   "zh": "對照 Section 6.3.11 的 Data Handling 缺陷，建議每季自我審查：",
+   "en": "Against the Data Handling deficiencies in Section 6.3.11, we recommend a quarterly self-review:"
+  },
+  {
+   "zh": "是否有任何「試驗性注射」記錄未納入正式資料集？",
+   "en": "Are there any \"trial injection\" records that were not included in the official data set?"
+  },
+  {
+   "zh": "是否有積分問題被「私下處理」而非提報 OOS/偏差？",
+   "en": "Have any integration problems been \"handled privately\" rather than raised as an OOS/deviation?"
+  },
+  {
+   "zh": "所有分析序列的稽核追蹤是否已在 Publishing 前被審查並啟用？",
+   "en": "Has the audit trail of every analytical sequence been reviewed, and was it enabled, before Publishing?"
+  },
+  {
+   "zh": "是否有任何事件（設備異常、資料遺失）未被正式記錄？",
+   "en": "Are there any events (equipment abnormality, data loss) that were not formally recorded?"
+  },
+  {
+   "zh": "以上任何一項「是」，都代表潛在的 Warning Letter 風險。",
+   "en": "A \"yes\" to any of the above represents a potential Warning Letter risk."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary — 6.3.8 to 6.3.11",
+   "en": "Section Summary — 6.3.8 to 6.3.11"
+  },
+  {
+   "zh": "<strong>Publishing</strong> = 結果的正式鎖定步驟，發布後不可在無痕跡情況下修改；再處理需附理由說明 (§6.3.8)",
+   "en": "<strong>Publishing</strong> = the formal locking step for results; after publishing they cannot be changed without leaving a trace, and reprocessing requires a documented justification (§6.3.8)"
+  },
+  {
+   "zh": "<strong>七大稽核追蹤層級</strong>（System → Application → Method → Results → Sequence → Project → Injection Log）各有分工，需交叉比對以確保完整覆蓋 (§6.3.9)",
+   "en": "<strong>Seven audit trail levels</strong> (System → Application → Method → Results → Sequence → Project → Injection Log) each have a distinct role and must be cross-checked to ensure complete coverage (§6.3.9)"
+  },
+  {
+   "zh": "<strong>System Audit Trail</strong>：捕捉登入/登出/失敗登入/權限變更/專案刪除，定期審查，特別關注刪除事件 (§6.3.9.1)",
+   "en": "<strong>System Audit Trail</strong>: captures login/logout/failed logins/privilege changes/project deletions; reviewed periodically, with particular attention to deletion events (§6.3.9.1)"
+  },
+  {
+   "zh": "<strong>Results Audit Trail</strong>：<em>Altered</em> 欄位是關鍵標記；電子資料為最終版本；Filter 可搜尋跨專案重複注射 (§6.3.9.4)",
+   "en": "<strong>Results Audit Trail</strong>: the <em>Altered</em> column is the key flag; electronic data are the final version; the Filter can search for duplicate injections across projects (§6.3.9.4)"
+  },
+  {
+   "zh": "<strong>Project Audit Trail</strong>：涵蓋最廣，必須在專案建立時啟用；可偵測被刪除的注射記錄 (§6.3.9.6)",
+   "en": "<strong>Project Audit Trail</strong>: the broadest in scope and must be enabled at project creation; it can detect records of deleted injections (§6.3.9.6)"
+  },
+  {
+   "zh": "<strong>Transactional Log ≠ Audit Trail</strong>：前者是暫時性系統訊息（可被清除），後者是永久驗證紀錄；關鍵訊息必須同時出現在 validated audit trail (§6.3.10)",
+   "en": "<strong>Transactional Log is not the same as Audit Trail</strong>: the former holds temporary system messages (which can be purged), the latter is a permanent validated record; critical messages must also appear in the validated audit trail (§6.3.10)"
+  },
+  {
+   "zh": "<strong>誤導性訊息</strong>（如 XRD \"Deleted the journal entry\" 實為作業中斷）：QU 需與供應商建立訊息字典，培訓審查員 (§6.3.10.2)",
+   "en": "<strong>Misleading messages</strong> (e.g., XRD \"Deleted the journal entry\" is actually a job interruption): the QU should build a message dictionary with the vendor and train reviewers (§6.3.10.2)"
+  },
+  {
+   "zh": "<strong>FDA Warning Letter 高頻缺陷</strong>：密碼共用、時鐘篡改、試驗注射、稽核追蹤未啟用、系統適性造假——建立系統性自我查核清單可有效預防 (§6.3.11)",
+   "en": "<strong>High-frequency FDA Warning Letter deficiencies</strong>: password sharing, clock tampering, trial injections, audit trail not enabled, falsified system suitability. A systematic self-inspection checklist can effectively prevent them (§6.3.11)"
+  }
+ ]
+}

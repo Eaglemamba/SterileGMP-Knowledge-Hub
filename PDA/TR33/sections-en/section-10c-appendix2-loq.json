@@ -1,0 +1,249 @@
+{
+ "source": "section-10c-appendix2-loq.html",
+ "blocks": [
+  {
+   "zh": "附錄二：定量極限（Limit of Quantitation, LoQ）",
+   "en": "Appendix 2: Limit of Quantitation (LoQ)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 <strong>LoQ（Limit of Quantitation，定量極限）</strong>與 <strong>LoD（Limit of Detection，偵測極限）</strong>的本質差異——LoQ 問的是「能否可信賴地量出濃度」，而非僅僅「能否偵測到訊號」",
+   "en": "Understand the essential difference between <strong>LoQ (limit of quantitation)</strong> and <strong>LoD (limit of detection)</strong>: LoQ asks \"can the concentration be measured reliably?\", not merely \"can a signal be detected?\""
+  },
+  {
+   "zh": "掌握兩種計算情境的分野：blank samples（空白樣本）出現陽性訊號時（10.3.1，採加權迴歸／常態分布方法）與 blank samples 讀值為零時（10.3.2，採 Poisson 迴歸方法），並理解為何兩者不能互相套用",
+   "en": "Master the distinction between the two calculation scenarios: when blank samples give a positive signal (10.3.1, weighted regression / normal distribution approach) and when blank samples read zero (10.3.2, Poisson regression approach), and understand why the two cannot be applied interchangeably"
+  },
+  {
+   "zh": "能逐步重現 10.3.1 的加權迴歸手算流程（迴歸截距/斜率、殘差變異數、blank 變異數推估、upper quantile、λ<sub>LoQ</sub>）以及 10.3.2 的 Poisson 零計數機率反推公式",
+   "en": "Be able to reproduce step by step the weighted regression calculation of 10.3.1 (regression intercept/slope, residual variance, estimate of blank variance, upper quantile, λ<sub>LoQ</sub>) and the Poisson zero-count probability back-calculation formula of 10.3.2"
+  },
+  {
+   "zh": "能將兩種情境下得出的 LoQ 數值（6.86 CFU vs. 5.56 CFU）差異，連結到 CDMO 驗證報告撰寫、方法選型與稽核溝通的實務意涵",
+   "en": "Be able to link the difference between the LoQ values obtained in the two scenarios (6.86 CFU vs. 5.56 CFU) to the practical implications for writing CDMO validation reports, selecting methods and communicating in audits"
+  },
+  {
+   "zh": "<strong>10.3 Limit of Quantitation 定量極限</strong>",
+   "en": "<strong>10.3 Limit of Quantitation</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>LoQ（定量極限）：</strong>與前面章節談的 <strong>LoD（偵測極限）</strong>不同——LoD 問的是「有沒有偵測到訊號」，LoQ 問的是「量出來的數字是否可信賴地代表真實濃度」。原文給出分析化學（analytical measurement systems）常見的兩步驟做法：①先算出 blank sample（空白樣本）雜訊分布的 <strong>upper quantile（上分位數）</strong>；②再把這個上分位數「內插」（interpolate）回 <strong>concentration-response curve（濃度反應曲線）</strong>，反推對應的濃度值，這個濃度值就是 LoQ。",
+   "en": "<strong>LoQ (limit of quantitation):</strong> Unlike the <strong>LoD (limit of detection)</strong> discussed in earlier sections, LoD asks \"was a signal detected?\", whereas LoQ asks \"does the measured number reliably represent the true concentration?\" The original text gives the common two-step approach from analytical chemistry (analytical measurement systems): (1) first calculate the <strong>upper quantile</strong> of the noise distribution of the blank sample; (2) then \"interpolate\" this upper quantile back onto the <strong>concentration-response curve</strong> to find the corresponding concentration value, which is the LoQ."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 blank sample 的雜訊想像成收音機在沒有訊號時的「底噪」（background hiss）：如果電台訊號強度只比底噪高一點點，你雖然「隱約聽得到」（相當於 LoD 有偵測到），但沒辦法準確判斷歌詞內容或音量大小（無法可信賴地定量）。只有當訊號強度遠高於底噪、落在某個安全門檻之上，你才能說「這台收音機能準確重現這個音量」——這個安全門檻，就是 LoQ 的概念。",
+   "en": "Think of the noise of a blank sample as the \"background hiss\" of a radio when there is no signal. If a station's signal is only slightly stronger than the hiss, you can \"faintly hear\" it (equivalent to being detected at the LoD), but you cannot reliably tell the lyrics or the volume (it cannot be quantified reliably). Only when the signal is well above the hiss, beyond some safety threshold, can you say \"this radio reproduces this volume accurately\". That safety threshold is the idea of the LoQ."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文特別點出一個關鍵調整：分析化學儀器常用「距離零點 10 個標準差」作為 LoQ 門檻（常態分布假設下），但這對微生物計數資料而言「過於嚴苛（excessive）」——因為低濃度時的菌落計數分布本身就有明顯<strong>右偏態（skewness）</strong>，用 10 SD 會把門檻拉得不合理地高。TR 33 因此改用「upper quantile = 0.001（即 99.9% 信心水準）」作為替代標準，這個選擇貫穿 10.3.1 與 10.3.2 兩種計算情境。",
+   "en": "The original text points out one key adjustment. Analytical chemistry instruments often use \"10 standard deviations from zero\" as the LoQ threshold (under a normal distribution assumption), but for microbial count data this is \"excessive\", because at low concentrations the distribution of colony counts is itself clearly <strong>right-skewed</strong>, and using 10 SD would push the threshold unreasonably high. TR 33 therefore uses an \"upper quantile = 0.001 (that is, a 99.9% confidence level)\" as the alternative criterion, and this choice runs through both calculation scenarios, 10.3.1 and 10.3.2."
+  },
+  {
+   "zh": "本節也預告了整節的核心分岔點：<strong>blank sample 是否會產生陽性訊號</strong>，決定了該用哪一種統計方法——有雜訊訊號用 10.3.1 的迴歸方法，零訊號則必須改用 10.3.2 的 Poisson 方法，兩者不可互相套用。",
+   "en": "This section also previews the core fork of the whole section: <strong>whether the blank sample can produce a positive signal</strong> determines which statistical method to use. If it produces a noise signal, use the regression method of 10.3.1; if it gives zero signal, the Poisson method of 10.3.2 must be used instead. The two cannot be applied interchangeably."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 10.3-1 用一張圖濃縮了 LoQ 的推導邏輯：左側黑色曲線是 blank sample 附近讀值（response, y 軸）的機率密度分布，帶有右偏尾巴；水平紅色虛線標出這個分布的 <strong>Upper Quantile（上分位數）</strong>——也就是「雜訊可能達到的上界」。綠色斜線是 concentration-response curve（濃度 x 對應反應值 y 的迴歸線）。做法是：從 Upper Quantile 這一點水平延伸到綠色迴歸線，再垂直往下投影到 x 軸（Concentration），得到的交點就是 <strong>LoQ</strong>。換句話說，LoQ 是「濃度反應曲線上，恰好對應到雜訊上分位數」的那個濃度值——低於這個濃度，訊號可能和雜訊混淆而無法可信賴定量。",
+   "en": "Figure 10.3-1 condenses the derivation logic of the LoQ into one figure. The black curve on the left is the probability density distribution of readings (response, y axis) near the blank sample, with a right-skewed tail; the horizontal red dashed line marks the <strong>upper quantile</strong> of this distribution, that is, the \"upper bound the noise can reach\". The green sloping line is the concentration-response curve (the regression line of response y against concentration x). The procedure is to extend horizontally from the upper quantile to the green regression line and then project vertically down onto the x axis (concentration); the intersection is the <strong>LoQ</strong>. In other words, the LoQ is the concentration on the concentration-response curve that corresponds exactly to the upper quantile of the noise; below this concentration the signal may be confused with noise and cannot be quantified reliably."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼分析化學常用的「10 個標準差」門檻，套用在微生物計數資料上會被認為「過度保守／不合理」？",
+   "en": "Why is the \"10 standard deviations\" threshold commonly used in analytical chemistry considered \"over-conservative / unreasonable\" when applied to microbial count data?"
+  },
+  {
+   "zh": "如果你的 AMM/RMM 平台的 blank sample 完全不會產生陽性訊號，為什麼不能直接套用本節開頭描述的兩步驟計算法？",
+   "en": "If the blank sample of your AMM/RMM platform never produces a positive signal, why can you not directly apply the two-step calculation described at the start of this section?"
+  },
+  {
+   "zh": "Upper quantile 0.001（99.9%）與先前章節 LoD95 使用的 95% 信心水準，兩者在統計意涵上有何不同？為什麼 LoQ 選用更嚴格的信心水準？",
+   "en": "How do the statistical meanings of the upper quantile 0.001 (99.9%) and the 95% confidence level used for LoD95 in earlier sections differ? Why does the LoQ use a stricter confidence level?"
+  },
+  {
+   "zh": "<strong>10.3.1 Microbiological Methods with Positive Counts at Blank Samples 空白樣本呈陽性計數之微生物方法</strong>",
+   "en": "<strong>10.3.1 Microbiological Methods with Positive Counts at Blank Samples</strong>"
+  },
+  {
+   "zh": "<strong>加權迴歸法推導 LoQ 的核心邏輯：</strong>因為實驗設計中沒有真正測試「blank（零濃度）」樣本，無法直接觀察 blank 的變異數，所以必須用「外插（extrapolation）」的方式反推。做法分三層：①用 6 個濃度的樣本標準差做迴歸，外推出 blank 的預測標準差（1.590）；②把它平方後乘上加權迴歸的殘差變異數 σ̂²（0.946），得到 blank 的「殘差變異數」σ̂₀²；③再加上迴歸截距本身的估計不確定性 SE<sub>α</sub>²，才得到 blank 濃度下的「總變異數」。這個總變異數同時涵蓋了「資料本身的隨機雜訊」與「我們對迴歸線位置的不確定性」兩個來源。",
+   "en": "<strong>Core logic of deriving the LoQ by weighted regression:</strong> Because the experimental design did not actually test \"blank (zero concentration)\" samples, the variance of the blank cannot be observed directly and must be inferred by \"extrapolation\". There are three layers: (1) regress the sample standard deviations at the 6 concentrations to extrapolate the predicted standard deviation of the blank (1.590); (2) square it and multiply by the residual variance σ̂² of the weighted regression (0.946) to obtain the blank's \"residual variance\" σ̂₀²; (3) add the estimation uncertainty of the regression intercept itself, SE<sub>α</sub>², to obtain the \"total variance\" at the blank concentration. This total variance covers both sources: the \"random noise in the data\" and \"our uncertainty about the position of the regression line\"."
+  },
+  {
+   "zh": "這個過程就像氣象局要預測「海拔零公尺（海平面）的氣溫」，但所有測站都設在山上（100 公尺以上），沒有海平面的實測資料。於是氣象局先用各測站的溫度「隨海拔變化的趨勢線」外推回海平面，得到預測氣溫；但這個預測值本身有兩層不確定性——一是溫度計本身的讀數誤差（對應殘差變異數），二是「趨勢線畫得準不準」的不確定性（對應截距的估計誤差 SE<sub>α</sub>²）。把兩層不確定性都算進去，才能得到一個誠實、不低估風險的「海平面氣溫信賴區間」。",
+   "en": "The process is like a weather bureau trying to predict the \"temperature at zero meters altitude (sea level)\" when all its stations are in the mountains (100 m or higher) and there are no measurements at sea level. The bureau first extrapolates the stations' temperature-versus-altitude trend line back to sea level to obtain a predicted temperature. That prediction has two layers of uncertainty: one is the reading error of the thermometers themselves (corresponding to the residual variance), and the other is the uncertainty of \"how accurately the trend line is drawn\" (corresponding to the estimation error of the intercept, SE<sub>α</sub>²). Only by including both layers can you get an honest \"sea-level temperature confidence interval\" that does not understate the risk."
+  },
+  {
+   "zh": "最容易被忽略的一步：<strong>總變異數 = SE<sub>α</sub>² + σ̂₀²，是兩個不同來源的變異數相加，而非只用其中一個</strong>。只用 σ̂₀²（單純的雜訊變異）會低估不確定性，因為忽略了「迴歸線截距本身也是估計值，有自己的誤差」；只用 SE<sub>α</sub>²則忽略了個別樣本讀值本身的隨機波動。TR 33 在此明確要求兩者相加，這也是為什麼最終標準差（1.7798）明顯大於單獨開根號 σ̂₀²（√2.3916 ≈ 1.546）的原因。",
+   "en": "The step most easily overlooked: <strong>total variance = SE<sub>α</sub>² + σ̂₀², the sum of two variances from different sources, not just one of them</strong>. Using only σ̂₀² (the pure noise variance) understates the uncertainty, because it ignores that \"the regression intercept is itself an estimate with its own error\"; using only SE<sub>α</sub>² ignores the random fluctuation of individual sample readings. TR 33 explicitly requires adding the two here, which is why the final standard deviation (1.7798) is clearly larger than the square root of σ̂₀² alone (√2.3916 ≈ 1.546)."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>逐步計算流程（AMM/RMM 資料，源自 Table 10.1-1 加權迴歸）：</strong>",
+   "en": "<strong>Step-by-step calculation (AMM/RMM data, weighted regression from Table 10.1-1):</strong>"
+  },
+  {
+   "zh": "① Blank 的殘差變異數：\n   σ̂₀² = (SD 迴歸截距)² × 殘差變異數\n   σ̂₀² = 2.5281 × 0.946 = 2.3916\n   （2.5281 = 1.590 × 1.590，1.590 為六濃度 SD 對濃度迴歸所得截距）\n\n② 加入截距估計不確定性，得總變異數：\n   SE_α² + σ̂₀² = 0.881² + 2.3916 = 0.7762 + 2.3916 = 3.1677\n   總標準差 = sqrt(3.1677) = 1.7798\n\n③ Upper Quantile（以 3 倍標準差 ≈ 0.1% 顯著水準）：\n   UQ = α + 3 × SD = 0.829 + 3 × 1.7798 = 6.168\n\n④ 內插回濃度反應曲線 (0.829 + 0.778λ)，求 λ_LoQ：\n   λ_LoQ = (UQ − α) / β = (6.168 − 0.829) / 0.778 = 6.863",
+   "en": "(1) Residual variance of the blank:\n   σ̂₀² = (SD regression intercept)² × residual variance\n   σ̂₀² = 2.5281 × 0.946 = 2.3916\n   (2.5281 = 1.590 × 1.590, where 1.590 is the intercept obtained by regressing the SDs at the six concentrations on concentration)\n\n(2) Add the estimation uncertainty of the intercept to get the total variance:\n   SE_α² + σ̂₀² = 0.881² + 2.3916 = 0.7762 + 2.3916 = 3.1677\n   Total standard deviation = sqrt(3.1677) = 1.7798\n\n(3) Upper quantile (using 3 standard deviations ≈ 0.1% significance level):\n   UQ = α + 3 × SD = 0.829 + 3 × 1.7798 = 6.168\n\n(4) Interpolate back onto the concentration-response curve (0.829 + 0.778λ) to find λ_LoQ:\n   λ_LoQ = (UQ − α) / β = (6.168 − 0.829) / 0.778 = 6.863"
+  },
+  {
+   "zh": "變數定義：",
+   "en": "Definition of variables:"
+  },
+  {
+   "zh": "<strong>α（截距）</strong> = 0.829，<strong>β（斜率）</strong> = 0.778 — 加權線性濃度反應曲線係數（來自 Section 10.2.1）",
+   "en": "<strong>α (intercept)</strong> = 0.829, <strong>β (slope)</strong> = 0.778 - coefficients of the weighted linear concentration-response curve (from Section 10.2.1)"
+  },
+  {
+   "zh": "<strong>SE<sub>α</sub></strong> = 0.881 — 截距估計值的標準誤",
+   "en": "<strong>SE<sub>α</sub></strong> = 0.881 - standard error of the intercept estimate"
+  },
+  {
+   "zh": "<strong>σ̂²</strong> = 0.946 — 加權迴歸「校正後」殘差變異數",
+   "en": "<strong>σ̂²</strong> = 0.946 - \"corrected\" residual variance of the weighted regression"
+  },
+  {
+   "zh": "<strong>σ̂₀²</strong> — 推估之 blank（零濃度）殘差變異數",
+   "en": "<strong>σ̂₀²</strong> - estimated residual variance of the blank (zero concentration)"
+  },
+  {
+   "zh": "<strong>UQ</strong> — 雜訊分布的 upper quantile（對應 Figure 10.3-1 的縱軸位置）",
+   "en": "<strong>UQ</strong> - upper quantile of the noise distribution (corresponding to the vertical axis position in Figure 10.3-1)"
+  },
+  {
+   "zh": "<strong>λ<sub>LoQ</sub></strong> — 最終定量極限濃度，本例 = 6.863 ≈ <strong>6.86 CFU</strong>",
+   "en": "<strong>λ<sub>LoQ</sub></strong> - the final limit of quantitation concentration; in this example = 6.863 ≈ <strong>6.86 CFU</strong>"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對 CDMO 而言，這套計算展示了「即使實驗設計沒有納入 blank 濃度點，仍能用統計外推法合理估算 LoQ」的做法——這在微生物驗證上很實用，因為刻意去測試「零污染」樣本往往不具代表性或難以製備。當客戶或稽核單位質疑「你們沒測 blank，怎麼知道 LoQ？」時，可以用本節的加權迴歸外推邏輯（結合殘差變異與截距不確定性）作為具統計嚴謹度的科學論證，而非僅憑經驗判斷設定 LoQ。",
+   "en": "For a CDMO, this calculation shows how the LoQ can still be estimated reasonably by statistical extrapolation even when the experimental design did not include a blank concentration point. This is useful in microbiological validation, because deliberately testing \"zero contamination\" samples is often unrepresentative or hard to prepare. When a customer or an auditor asks, \"You did not test a blank, so how do you know the LoQ?\", the weighted regression extrapolation logic of this section (combining residual variance and intercept uncertainty) can be offered as a statistically rigorous scientific justification, rather than setting the LoQ by experience alone."
+  },
+  {
+   "zh": "為什麼實驗設計中「沒有納入 blank 濃度點」反而需要更多統計步驟，而不是直接省略 blank 變異數的計算？",
+   "en": "Why does an experimental design that \"does not include a blank concentration point\" require more statistical steps, rather than simply omitting the calculation of the blank variance?"
+  },
+  {
+   "zh": "如果只用 σ̂₀²（不加上 SE<sub>α</sub>²）來計算 upper quantile，最終算出的 LoQ 會偏高還是偏低？這代表什麼風險？",
+   "en": "If only σ̂₀² (without adding SE<sub>α</sub>²) is used to calculate the upper quantile, will the resulting LoQ be too high or too low? What risk does that represent?"
+  },
+  {
+   "zh": "三倍標準差（3 SD）大約對應多少信心水準／顯著水準？為什麼原文選擇這個倍數而非慣用的分析化學 10 SD？",
+   "en": "What confidence level / significance level does three standard deviations (3 SD) roughly correspond to? Why does the original text choose this multiple rather than the 10 SD customary in analytical chemistry?"
+  },
+  {
+   "zh": "<strong>10.3.2 Microbiological Methods with Zero Counts at Blank Samples 空白樣本呈零計數之微生物方法</strong>",
+   "en": "<strong>10.3.2 Microbiological Methods with Zero Counts at Blank Samples</strong>"
+  },
+  {
+   "zh": "<strong>零訊號情境下的 LoQ 定義轉換：</strong>當 blank sample「完全沒有訊號」（計數恆為零），10.3.1 的常態分布外推法就失效了，因為根本沒有「blank 雜訊分布」可供估計。此時 TR 33 改用與定性方法 LoD 類似的邏輯：直接定義 LoQ 為「使 P(count &gt; 0) ≥ 1−α」成立的最小濃度 λ<sub>LoQ</sub>——也就是找到一個濃度門檻，使得在這個濃度以上，幾乎不可能（機率 ≤ 0.1%）觀察到「零計數」這種會被誤認為 blank 的結果。",
+   "en": "<strong>Change in the definition of LoQ in the zero-signal scenario:</strong> When the blank sample has \"no signal at all\" (the count is always zero), the normal-distribution extrapolation method of 10.3.1 breaks down, because there is no \"blank noise distribution\" to estimate. TR 33 then uses logic similar to the LoD of qualitative methods: it defines the LoQ directly as the smallest concentration λ<sub>LoQ</sub> for which \"P(count &gt; 0) ≥ 1−α\" holds. That is, it finds a concentration threshold above which it is almost impossible (probability ≤ 0.1%) to observe a \"zero count\", the result that would be mistaken for a blank."
+  },
+  {
+   "zh": "這就像煙霧偵測器的設計邏輯：如果偵測器在「完全無煙」時，讀值恆為零（沒有任何底噪），那麼判斷「這個煙霧濃度是否可靠觸發警報」的方式，不是去分析「無煙時的雜訊分布」（因為根本沒有雜訊），而是直接問：「在這個煙霧濃度下，偵測器有多少機率會維持零讀值、沒有觸發？」只要這個「不觸發機率」低於 0.1%，就代表這個煙霧濃度已經高到幾乎不可能被誤判為「無煙」，這就是 λ<sub>LoQ</sub> 的濃度門檻。",
+   "en": "This is like the design logic of a smoke detector. If the detector always reads zero when there is \"no smoke at all\" (no background noise), then the way to judge \"whether this smoke concentration reliably triggers the alarm\" is not to analyze the \"noise distribution when there is no smoke\" (there is no noise), but to ask directly: \"At this smoke concentration, what is the probability that the detector stays at zero and does not trigger?\" As long as this \"non-trigger probability\" is below 0.1%, the smoke concentration is so high that it can hardly be mistaken for \"no smoke\", and this is the concentration threshold λ<sub>LoQ</sub>."
+  },
+  {
+   "zh": "兩個情境算出的 LoQ 十分接近但並不相同：<strong>10.3.1（有雜訊）= 6.86 CFU，10.3.2（零雜訊）= 5.56 CFU</strong>。原文明確解釋原因：10.3.1 的方法因為要考慮「blank 本身就有機會出現正向計數訊號」，門檻必須設得更高，才能確保真陽性樣本不會與這種「正向雜訊」混淆；而 10.3.2 假設 blank 完全零訊號、濃度反應曲線通過原點（m<sub>A</sub>(0)=0），少了這一層雜訊考量，因此算出的 LoQ 相對較低。這提醒讀者：<strong>LoQ 的數值高低，本質上反映了 blank sample 行為的假設，而非方法效能本身的優劣</strong>。",
+   "en": "The LoQ values calculated in the two scenarios are very close but not identical: <strong>10.3.1 (with noise) = 6.86 CFU; 10.3.2 (zero noise) = 5.56 CFU</strong>. The original text explains the reason explicitly. The method of 10.3.1 must allow for the fact that the \"blank itself can produce a positive count signal\", so the threshold has to be set higher to ensure that a truly positive sample is not confused with this \"positive noise\". The method of 10.3.2 assumes the blank gives no signal at all and the concentration-response curve passes through the origin (m<sub>A</sub>(0)=0); without this layer of noise to consider, the calculated LoQ is relatively lower. This is a reminder that <strong>the size of the LoQ essentially reflects the assumption about how the blank sample behaves, not whether the method performs better or worse</strong>."
+  },
+  {
+   "zh": "<strong>零計數情境之 LoQ 推導（Poisson 迴歸法，源自 Table 10.2.3-1）：</strong>",
+   "en": "<strong>Derivation of the LoQ for the zero-count scenario (Poisson regression, from Table 10.2.3-1):</strong>"
+  },
+  {
+   "zh": "① LoQ 之機率定義：\n   min_λ  P(Y &gt; 0 | m_A(λ))  ≥  1 − α       （本例 1−α = 99.9%）\n\n② Log-linear 濃度反應曲線（Section 10.2.3 配適結果）：\n   m_A(λ) = β₂ · λ^β₃ = 1.5924 · λ^0.8552\n\n③ Poisson 分布下「零計數」發生機率：\n   P(Y = 0) = exp{ −m_A(λ) }\n\n④ 令 P(Y=0) ≤ 0.001，反解 λ_LoQ：\n   λ_LoQ = exp{ log( −log(0.001) / 1.5924 ) / 0.8552 } = 5.56",
+   "en": "(1) Probability definition of the LoQ:\n   min_λ  P(Y > 0 | m_A(λ))  ≥  1 − α       (in this example 1−α = 99.9%)\n\n(2) Log-linear concentration-response curve (fitting result of Section 10.2.3):\n   m_A(λ) = β₂ · λ^β₃ = 1.5924 · λ^0.8552\n\n(3) Probability of a \"zero count\" under a Poisson distribution:\n   P(Y = 0) = exp{ −m_A(λ) }\n\n(4) Set P(Y=0) ≤ 0.001 and solve back for λ_LoQ:\n   λ_LoQ = exp{ log( −log(0.001) / 1.5924 ) / 0.8552 } = 5.56"
+  },
+  {
+   "zh": "<strong>λ</strong> = 濃度水準；<strong>m<sub>A</sub>(λ)</strong> = AMM/RMM 之濃度反應曲線（Poisson 平均值）",
+   "en": "<strong>λ</strong> = concentration level; <strong>m<sub>A</sub>(λ)</strong> = concentration-response curve of the AMM/RMM (Poisson mean)"
+  },
+  {
+   "zh": "<strong>β₂ = 1.5924</strong>（斜率）、<strong>β₃ = 0.8552</strong>（次方）— log-linear 曲線係數",
+   "en": "<strong>β₂ = 1.5924</strong> (slope), <strong>β₃ = 0.8552</strong> (power) - coefficients of the log-linear curve"
+  },
+  {
+   "zh": "<strong>α</strong> = 顯著水準（本例 α = 0.001，對應 99.9% 信心水準，與 10.3.1 一致）",
+   "en": "<strong>α</strong> = significance level (in this example α = 0.001, corresponding to a 99.9% confidence level, consistent with 10.3.1)"
+  },
+  {
+   "zh": "<strong>λ<sub>LoQ</sub></strong> = 5.56 ≈ <strong>5.56 CFU</strong> — 零雜訊情境下之定量極限",
+   "en": "<strong>λ<sub>LoQ</sub></strong> = 5.56 ≈ <strong>5.56 CFU</strong> - limit of quantitation in the zero-noise scenario"
+  },
+  {
+   "zh": "對於偵測靈敏度極高、blank sample 幾乎不會產生假訊號的 AMM/RMM 平台（例如高特異性分子生物學方法），10.3.2 的 Poisson 零計數法提供了一條「不需假造或外推 blank 變異數」的合規路徑，避免驗證團隊為了套用 10.3.1 的常態分布公式而勉強估計一個實際上不存在的雜訊分布。在撰寫驗證報告時，應先確認方法在 blank sample 的實際行為（有雜訊 vs. 恆為零），再決定引用 10.3.1 或 10.3.2 的計算邏輯，兩者不可混用。",
+   "en": "For an AMM/RMM platform with very high detection sensitivity whose blank samples almost never produce a false signal (for example, a highly specific molecular biology method), the Poisson zero-count method of 10.3.2 offers a compliant route that \"does not require fabricating or extrapolating a blank variance\". It spares the validation team from forcing an estimate of a noise distribution that does not in fact exist just to apply the normal-distribution formula of 10.3.1. When writing the validation report, first confirm how the method actually behaves at the blank sample (noise vs. always zero), and then decide whether to cite the calculation logic of 10.3.1 or 10.3.2; the two must not be mixed."
+  },
+  {
+   "zh": "為什麼「blank 恆為零計數」時，不能直接套用 10.3.1 的常態分布外推法來估計雜訊分布？",
+   "en": "Why can the normal-distribution extrapolation method of 10.3.1 not be applied directly to estimate the noise distribution when the \"blank is always a zero count\"?"
+  },
+  {
+   "zh": "10.3.2 的 λ<sub>LoQ</sub> = 5.56 CFU 為什麼會比 10.3.1 的 6.86 CFU 略低？這個差異對驗證報告的呈現方式有何啟示？",
+   "en": "Why is the λ<sub>LoQ</sub> = 5.56 CFU of 10.3.2 slightly lower than the 6.86 CFU of 10.3.1? What does the difference suggest about how to present it in the validation report?"
+  },
+  {
+   "zh": "如果你的方法的 log-linear 濃度反應曲線係數 β₃（次方項）明顯偏離 1，這對濃度反應關係的形狀（線性 vs. 非線性）代表什麼意義？",
+   "en": "If the coefficient β₃ (the power term) of your method's log-linear concentration-response curve deviates clearly from 1, what does this mean for the shape of the concentration-response relationship (linear vs. non-linear)?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>LoQ（定量極限）</strong>與 LoD 不同：LoD 問「偵測得到嗎」，LoQ 問「量得準嗎」。分析化學常見兩步驟法：先算 blank 雜訊的 upper quantile，再內插回濃度反應曲線得到 LoQ；微生物計數資料因右偏態，改用 0.001 的 upper quantile 取代分析化學慣用的 10 SD。",
+   "en": "<strong>LoQ (limit of quantitation)</strong> differs from LoD: LoD asks \"can it be detected?\" and LoQ asks \"can it be measured accurately?\" The common two-step method of analytical chemistry first calculates the upper quantile of the blank noise and then interpolates it back onto the concentration-response curve to obtain the LoQ. Because microbial count data are right-skewed, an upper quantile of 0.001 replaces the 10 SD customary in analytical chemistry."
+  },
+  {
+   "zh": "<strong>10.3.1（blank 有陽性計數）</strong>：以加權迴歸為基礎，需將「blank 推估殘差變異數 σ̂₀²」與「迴歸截距估計不確定性 SE<sub>α</sub>²」相加，才能得到誠實的總變異數；以 3 倍標準差（≈0.1% 顯著水準）定出 upper quantile，內插回濃度反應曲線得 λ<sub>LoQ</sub> = 6.86 CFU。",
+   "en": "<strong>10.3.1 (blank with positive counts)</strong>: Based on weighted regression, the \"estimated residual variance of the blank, σ̂₀²\" and the \"estimation uncertainty of the regression intercept, SE<sub>α</sub>²\" must be added to obtain an honest total variance; the upper quantile is set with 3 standard deviations (≈ 0.1% significance level) and interpolated back onto the concentration-response curve to give λ<sub>LoQ</sub> = 6.86 CFU."
+  },
+  {
+   "zh": "<strong>10.3.2（blank 恆為零計數）</strong>：改用 Poisson 迴歸的 log-linear 濃度反應曲線 m<sub>A</sub>(λ) = β₂·λ^β₃，直接求解「零計數機率 ≤ 0.001」對應的最小濃度，得 λ<sub>LoQ</sub> = 5.56 CFU。",
+   "en": "<strong>10.3.2 (blank always zero count)</strong>: Switch to the log-linear concentration-response curve of Poisson regression, m<sub>A</sub>(λ) = β₂·λ^β₃, and solve directly for the smallest concentration at which the \"zero-count probability ≤ 0.001\", giving λ<sub>LoQ</sub> = 5.56 CFU."
+  },
+  {
+   "zh": "兩種情境算出的 LoQ 數值相近但不同，差異反映的是 <strong>blank sample 訊號行為的假設不同</strong>，而非方法效能優劣；驗證前應先確認方法在 blank 的實際表現，才能選對計算路徑，兩者不可混用。",
+   "en": "The LoQ values from the two scenarios are similar but different, and the difference reflects <strong>different assumptions about the signal behavior of the blank sample</strong>, not better or worse method performance. Before validation, confirm how the method actually performs at the blank so that the right calculation path is chosen; the two must not be mixed."
+  },
+  {
+   "zh": "兩種方法都採用與 10.3.1 一致的 99.9% 信心水準（α = 0.001），確保 LoQ 判定邏輯在不同統計途徑下維持一致的風險容忍度，便於跨方法、跨驗證準則的稽核溝通。",
+   "en": "Both methods use the same 99.9% confidence level as 10.3.1 (α = 0.001), so that the LoQ decision logic keeps the same risk tolerance across statistical approaches, which makes audit communication easier across methods and across validation criteria."
+  }
+ ]
+}

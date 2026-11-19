@@ -1,0 +1,885 @@
+{
+ "source": "section-01-methodology-challenges.html",
+ "blocks": [
+  {
+   "zh": "Section 1: Challenges with Methodologies | 測試方法挑戰",
+   "en": "Section 1: Challenges with Methodologies"
+  },
+  {
+   "zh": "<a class=\"nav-item active\" href=\"#sec30\">\n<span class=\"nav-num\">3.0</span><span class=\"nav-label\">Overview 概覽</span>\n</a>\n<a class=\"nav-item\" href=\"#sec31\">\n<span class=\"nav-num\">3.1</span><span class=\"nav-label\">Positive Controls 陽性對照</span>\n</a>\n<a class=\"nav-item\" href=\"#sec311\">\n<span class=\"nav-num\">3.1.1</span><span class=\"nav-label\">Selecting Controls 選擇標準</span>\n</a>\n<a class=\"nav-item\" href=\"#sec312\">\n<span class=\"nav-num\">3.1.2</span><span class=\"nav-label\">Using Controls 使用注意</span>\n</a>\n<a class=\"nav-item\" href=\"#sec313\">\n<span class=\"nav-num\">3.1.3</span><span class=\"nav-label\">Simulated Defects 模擬缺陷</span>\n</a>\n<a class=\"nav-item\" href=\"#sec314\">\n<span class=\"nav-num\">3.1.4</span><span class=\"nav-label\">Calibrated Leaks 校準洩漏</span>\n</a>\n<a class=\"nav-item\" href=\"#sec315\">\n<span class=\"nav-num\">3.1.5</span><span class=\"nav-label\">Add'l Considerations 補充考量</span>\n</a>\n<a class=\"nav-item\" href=\"#sec32\">\n<span class=\"nav-num\">3.2</span><span class=\"nav-label\">Blockage 阻塞效應</span>\n</a>",
+   "en": "<a class=\"nav-item active\" href=\"#sec30\">\n<span class=\"nav-num\">3.0</span><span class=\"nav-label\">Overview</span>\n</a>\n<a class=\"nav-item\" href=\"#sec31\">\n<span class=\"nav-num\">3.1</span><span class=\"nav-label\">Positive Controls</span>\n</a>\n<a class=\"nav-item\" href=\"#sec311\">\n<span class=\"nav-num\">3.1.1</span><span class=\"nav-label\">Selecting Controls</span>\n</a>\n<a class=\"nav-item\" href=\"#sec312\">\n<span class=\"nav-num\">3.1.2</span><span class=\"nav-label\">Using Controls</span>\n</a>\n<a class=\"nav-item\" href=\"#sec313\">\n<span class=\"nav-num\">3.1.3</span><span class=\"nav-label\">Simulated Defects</span>\n</a>\n<a class=\"nav-item\" href=\"#sec314\">\n<span class=\"nav-num\">3.1.4</span><span class=\"nav-label\">Calibrated Leaks</span>\n</a>\n<a class=\"nav-item\" href=\"#sec315\">\n<span class=\"nav-num\">3.1.5</span><span class=\"nav-label\">Add'l Considerations</span>\n</a>\n<a class=\"nav-item\" href=\"#sec32\">\n<span class=\"nav-num\">3.2</span><span class=\"nav-label\">Blockage</span>\n</a>"
+  },
+  {
+   "zh": "Table of Contents | 本節目錄",
+   "en": "Table of Contents"
+  },
+  {
+   "zh": "<a href=\"#sec30\">3.0 Challenges Overview 方法挑戰概覽</a>\n<a href=\"#sec31\">3.1 Positive Controls 陽性對照組</a>\n<a href=\"#sec311\">3.1.1 Selecting Positive Controls 選擇考量</a>\n<a href=\"#sec312\">3.1.2 Using Positive Controls 使用考量</a>\n<a href=\"#sec313\">3.1.3 Types of Simulated Defects 模擬缺陷類型</a>\n<a href=\"#sec314\">3.1.4 Calibrated Leaks 校準洩漏</a>\n<a href=\"#sec315\">3.1.5 Additional Considerations 補充考量</a>\n<a href=\"#sec32\">3.2 Blockage of Leak Paths 洩漏路徑阻塞</a>\n<a href=\"#comparison-table\">Comparison Table 對照表</a>",
+   "en": "<a href=\"#sec30\">3.0 Challenges Overview</a>\n<a href=\"#sec31\">3.1 Positive Controls</a>\n<a href=\"#sec311\">3.1.1 Selecting Positive Controls</a>\n<a href=\"#sec312\">3.1.2 Using Positive Controls</a>\n<a href=\"#sec313\">3.1.3 Types of Simulated Defects</a>\n<a href=\"#sec314\">3.1.4 Calibrated Leaks</a>\n<a href=\"#sec315\">3.1.5 Additional Considerations</a>\n<a href=\"#sec32\">3.2 Blockage of Leak Paths</a>\n<a href=\"#comparison-table\">Comparison Table</a>"
+  },
+  {
+   "zh": "Learning Objectives | 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "學完本節，你將能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "解釋 CCIT 方法選擇為何以靈敏度、變異性與預期用途為依據",
+   "en": "Explain why CCIT method selection is based on sensitivity, variability and intended use"
+  },
+  {
+   "zh": "描述陽性對照組（洩漏假樣品）在 CCIT 各生命週期階段的作用",
+   "en": "Describe the role of positive controls (leak artifacts) at each lifecycle stage of CCIT"
+  },
+  {
+   "zh": "比較雷射鑽孔、玻璃微管和金屬線三種模擬缺陷的優缺點",
+   "en": "Compare the advantages and disadvantages of three types of simulated defects: laser drilling, glass micropipettes and metal wires"
+  },
+  {
+   "zh": "定義校準洩漏，說明 NIST 可追溯標準的意義",
+   "en": "Define a calibrated leak and explain the significance of NIST-traceable standards"
+  },
+  {
+   "zh": "識別 MALL 概念及其與陽性對照尺寸的關係",
+   "en": "Identify the MALL concept and its relationship to positive control size"
+  },
+  {
+   "zh": "解釋蛋白質、結晶物、矽油等製劑成分如何阻塞缺陷造成偽陰性",
+   "en": "Explain how formulation components such as proteins, crystals and silicone oil can block defects and cause false negatives"
+  },
+  {
+   "zh": "概述能夠應對阻塞風險的 CCI 整體策略",
+   "en": "Outline an overall CCI strategy that addresses the risk of blockage"
+  },
+  {
+   "zh": "Challenges with Methodologies | 測試方法面臨的挑戰",
+   "en": "Challenges with Methodologies"
+  },
+  {
+   "zh": "中文解說 | 核心概念",
+   "en": "Commentary | Core Concepts"
+  },
+  {
+   "zh": "三大方法選擇原則",
+   "en": "Three Principles of Method Selection"
+  },
+  {
+   "zh": "PDA TR86 開宗明義點出選擇 CCIT 方法的三個核心依據：",
+   "en": "PDA TR86 opens by identifying three core criteria for selecting a CCIT method:"
+  },
+  {
+   "zh": "<strong>靈敏度（Sensitivity）</strong>：方法能偵測到多小的缺陷？",
+   "en": "<strong>Sensitivity</strong>: how small a defect can the method detect?"
+  },
+  {
+   "zh": "<strong>低變異性（Reduced Variability）</strong>：結果的再現性是否足夠？",
+   "en": "<strong>Reduced Variability</strong>: is the reproducibility of results sufficient?"
+  },
+  {
+   "zh": "<strong>預期偵測目標（Intended Result）</strong>：要找的是微生物滲入風險？還是氣體滲出？目標不同，方法不同。",
+   "en": "<strong>Intended Result</strong>: are you looking for the risk of microbial ingress, or for gas egress? A different goal calls for a different method."
+  },
+  {
+   "zh": "三類主要干擾來源",
+   "en": "Three Main Sources of Interference"
+  },
+  {
+   "zh": "<strong>製劑本身的干擾</strong>：高濃度蛋白質、高黏度溶液、懸浮顆粒 — 這些可能堵住缺陷通道，讓洩漏難以被偵測。",
+   "en": "<strong>Interference from the formulation itself</strong>: high protein concentration, high-viscosity solutions and suspended particles can block the defect channel and make a leak difficult to detect."
+  },
+  {
+   "zh": "<strong>方法對製劑的影響</strong>：例如高壓差測試可能造成蛋白質聚集或乳化劑破壞，改變樣品本身的特性。",
+   "en": "<strong>Effect of the method on the formulation</strong>: for example, a high-differential-pressure test may cause protein aggregation or break an emulsifier, changing the properties of the sample itself."
+  },
+  {
+   "zh": "<strong>方法對容器的影響</strong>：例如施加壓力後，柔性包裝的洞口可能縮小或擴大，造成測試前後缺陷尺寸不一致。",
+   "en": "<strong>Effect of the method on the container</strong>: for example, once pressure is applied, a hole in a flexible package may shrink or enlarge, so the defect size differs before and after the test."
+  },
+  {
+   "zh": "生活比喻：水管檢漏",
+   "en": "Analogy: Leak-Testing a Water Pipe"
+  },
+  {
+   "zh": "想像用加壓水柱測試水管有無裂縫。如果水裡加了很多麵粉（高黏度製劑），裂縫可能被麵糊堵住而測不出來。如果加壓太高（方法干擾容器），原本很細的裂縫可能被撐大，得到假性放大的洩漏訊號。這就是 Section 3.0 要強調的方法侷限性思維。",
+   "en": "Imagine testing a water pipe for cracks with a pressurized water column. If the water contains a lot of flour (a high-viscosity formulation), the crack may be plugged by the paste and go undetected. If the pressure is too high (the method interferes with the container), a very fine crack may be forced wider, giving a falsely amplified leak signal. This is the mindset of method limitations that Section 3.0 emphasizes."
+  },
+  {
+   "zh": "CDMO 應用提示",
+   "en": "CDMO Application Tip"
+  },
+  {
+   "zh": "在 CDMO 環境中，同一條填充線往往處理不同製劑（水針、凍乾粉、蛋白質藥物）。選擇 CCIT 方法時，必須針對<strong>每種產品</strong>評估以上三類干擾，不能將一種方法套用所有產品。特別注意：蛋白質藥物和高黏度眼科製劑是最容易出現阻塞干擾的品項。",
+   "en": "In a CDMO setting, the same filling line often handles different formulations (liquid injectables, lyophilized powders, protein drugs). When selecting a CCIT method, you must assess the three types of interference above for <strong>each product</strong>; one method cannot be applied to all products. Take particular care with protein drugs and high-viscosity ophthalmic formulations, which are the products most prone to blockage interference."
+  },
+  {
+   "zh": "思考練習",
+   "en": "Discussion Questions"
+  },
+  {
+   "zh": "你的填充線同時生產 10 mg/mL 和 150 mg/mL 的單抗產品。為什麼不能用完全相同的 CCIT 方法驗證兩者？",
+   "en": "Your filling line produces both a 10 mg/mL and a 150 mg/mL monoclonal antibody product. Why can the two not be validated with exactly the same CCIT method?"
+  },
+  {
+   "zh": "高壓差真空衰減法（VD）在測試含矽油潤滑劑的玻璃注射器時，可能出現哪種干擾？屬於上述哪一類問題？",
+   "en": "When vacuum decay (VD) with a high differential pressure is used to test glass syringes containing silicone oil lubricant, what kind of interference might occur? Which of the above categories does it belong to?"
+  },
+  {
+   "zh": "如果選擇的 CCIT 方法本身會改變容器形狀，對驗證結果的可靠性有何影響？",
+   "en": "If the chosen CCIT method itself changes the shape of the container, how does that affect the reliability of the validation results?"
+  },
+  {
+   "zh": "Positive Controls | 陽性對照組（洩漏假樣品）",
+   "en": "Positive Controls (Leak Artifacts)"
+  },
+  {
+   "zh": "中文解說 | 陽性對照的本質與用途",
+   "en": "Commentary | Nature and Purpose of Positive Controls"
+  },
+  {
+   "zh": "什麼是「Leak Artifact」（洩漏假樣品）？",
+   "en": "What Is a \"Leak Artifact\"?"
+  },
+  {
+   "zh": "陽性對照組（Positive Control）是人為製造或刻意保留有缺陷的包裝單元，用來確認 CCIT 方法「確實能偵測到洩漏」。TR86 用了一個更形象的術語：<span class=\"key-term\">Leak Artifact</span>（洩漏假樣品），強調這是刻意製作出來的「假缺陷品」，不是真正的不良品。",
+   "en": "A positive control is a package unit that is deliberately manufactured, or deliberately retained, with a defect, and is used to confirm that the CCIT method can actually detect a leak. TR86 uses a more descriptive term, <span class=\"key-term\">Leak Artifact</span>, emphasizing that this is a purposely created \"artificial defective unit\" and not a genuinely defective one."
+  },
+  {
+   "zh": "陽性對照的八大使用場景",
+   "en": "Eight Use Cases for Positive Controls"
+  },
+  {
+   "zh": "<strong>容器設計開發</strong>：評估新容器設計的密封性能邊界",
+   "en": "<strong>Container design development</strong>: evaluating the sealing performance limits of a new container design"
+  },
+  {
+   "zh": "<strong>測試方法開發</strong>：確立方法的基本操作參數",
+   "en": "<strong>Test method development</strong>: establishing the basic operating parameters of the method"
+  },
+  {
+   "zh": "<strong>靈敏度範圍確認</strong>：了解方法對各類缺陷的偵測能力",
+   "en": "<strong>Confirming the sensitivity range</strong>: understanding the method's ability to detect different types of defects"
+  },
+  {
+   "zh": "<strong>偵測極限（LoD）測定</strong>：確認方法能偵測到的最小缺陷尺寸",
+   "en": "<strong>Limit of detection (LoD) determination</strong>: confirming the smallest defect size the method can detect"
+  },
+  {
+   "zh": "<strong>方法驗證（Validation）</strong>：法規要求的正式驗證活動",
+   "en": "<strong>Method validation</strong>: the formal validation activity required by regulations"
+  },
+  {
+   "zh": "<strong>系統適用性（System Suitability）</strong>：常規測試前的儀器確認",
+   "en": "<strong>System suitability</strong>: instrument confirmation before routine testing"
+  },
+  {
+   "zh": "<strong>穩定性測試</strong>：監控容器密封性在儲存條件下的變化",
+   "en": "<strong>Stability testing</strong>: monitoring changes in container closure integrity under storage conditions"
+  },
+  {
+   "zh": "<strong>製程開發（QC 參數）</strong>：最佳化封填、壓蓋等製程參數",
+   "en": "<strong>Process development (QC parameters)</strong>: optimizing process parameters such as sealing and capping"
+  },
+  {
+   "zh": "<span class=\"key-term\">MALL</span>（最大允許洩漏限值）是一個由產品特性決定的關鍵數值，代表在此洩漏率以下，產品的無菌性和品質仍被認為可以接受。校準洩漏的尺寸理想上應等於或小於 MALL，以確保方法能夠偵測到具有臨床意義的缺陷。",
+   "en": "<span class=\"key-term\">MALL</span> (maximum allowable leakage limit) is a critical value determined by product characteristics; below this leak rate, product sterility and quality are still considered acceptable. The size of a calibrated leak should ideally be equal to or smaller than the MALL, so that the method is able to detect clinically meaningful defects."
+  },
+  {
+   "zh": "實務上，100% 在線 CCIT 因為速度限制，有時無法達到 MALL 的靈敏度要求，這種情況需要在風險評估中明確說明。",
+   "en": "In practice, 100% in-line CCIT sometimes cannot meet the MALL sensitivity requirement because of speed constraints; such cases must be explicitly addressed in the risk assessment."
+  },
+  {
+   "zh": "生活比喻：火災演習",
+   "en": "Analogy: Fire Drill"
+  },
+  {
+   "zh": "陽性對照就像消防演習時的「模擬火警警報」。你不需要真的發生火災，才能確認消防系統是否正常運作。每次演習的警報源頭是已知且受控的，這正是「工程模擬缺陷」的精神。天然洩漏則像偶然發現的真實火災殘跡，雖然真實，但時過境遷後可能已無法重現。",
+   "en": "A positive control is like the simulated fire alarm in a fire drill. You do not need an actual fire to confirm that the fire protection system works. The source of the alarm in each drill is known and controlled, which is the spirit of an \"engineered simulated defect\". A natural leak is more like the remains of a real fire found by chance: it is genuine, but with time it may no longer be reproducible."
+  },
+  {
+   "zh": "你在做凍乾西林瓶的 CCIT 方法驗證。為什麼不應該直接用生產線上偶然發現的破損瓶來當陽性對照？",
+   "en": "You are validating a CCIT method for lyophilized vials. Why should you not simply use a broken vial found by chance on the production line as the positive control?"
+  },
+  {
+   "zh": "天然洩漏「今天可測、明天可能不行」的原因是什麼？試列舉至少兩種機制。",
+   "en": "Why might a natural leak be \"detectable today but not tomorrow\"? List at least two mechanisms."
+  },
+  {
+   "zh": "校準洩漏（Calibrated Leak）被安裝在儀器內部而非產品容器上，這樣設計的優缺點各是什麼？",
+   "en": "A calibrated leak is installed inside the instrument rather than on the product container. What are the advantages and disadvantages of this design?"
+  },
+  {
+   "zh": "Considerations for Selecting Positive Controls | 選擇陽性對照的考量",
+   "en": "Considerations for Selecting Positive Controls"
+  },
+  {
+   "zh": "中文解說 | 如何選擇正確的陽性對照",
+   "en": "Commentary | How to Select the Right Positive Control"
+  },
+  {
+   "zh": "三個選擇依據",
+   "en": "Three Selection Criteria"
+  },
+  {
+   "zh": "<strong>產品包裝特性（Product Package Profile）</strong>：西林瓶用橡皮塞、預填式注射器有活塞，兩者的潛在缺陷位置和型態完全不同，需要對應不同的陽性對照設計。",
+   "en": "<strong>Product package profile</strong>: a vial has a rubber stopper and a prefilled syringe has a plunger; the locations and forms of potential defects are completely different, so different positive control designs are needed."
+  },
+  {
+   "zh": "<strong>測試方法類型</strong>：電容放電（HVLD）vs 頂空氣體分析（HSA）vs 真空衰減（VD），每種方法的靈敏度特性不同，對應的最小可偵測缺陷尺寸也不同。",
+   "en": "<strong>Type of test method</strong>: high voltage leak detection (HVLD), headspace analysis (HSA) and vacuum decay (VD) each have different sensitivity characteristics and therefore different minimum detectable defect sizes."
+  },
+  {
+   "zh": "<strong>生命週期階段的預期用途</strong>：方法開發用的陽性對照可以比較寬鬆，但驗證用的必須嚴格對應 MALL 和 LoD。",
+   "en": "<strong>Intended use at the lifecycle stage</strong>: positive controls for method development can be less stringent, but those for validation must correspond strictly to the MALL and LoD."
+  },
+  {
+   "zh": "「圍繞 MALL 的缺陷尺寸範圍」是最低要求",
+   "en": "\"A Range of Defect Sizes Around the MALL\" Is the Minimum Requirement"
+  },
+  {
+   "zh": "驗證用陽性對照必須包含：",
+   "en": "Positive controls for validation must include:"
+  },
+  {
+   "zh": "小於 MALL 的缺陷（方法<em>應該偵測不到</em>，或偵測到的概率很低）",
+   "en": "Defects smaller than the MALL (which the method <em>should not detect</em>, or should detect with low probability)"
+  },
+  {
+   "zh": "等於 MALL 的缺陷（臨界點，方法應以高置信度偵測到）",
+   "en": "Defects equal to the MALL (the critical point, which the method should detect with high confidence)"
+  },
+  {
+   "zh": "大於 MALL 的缺陷（方法<em>必須</em>以 ≥95% 的可靠性偵測到）",
+   "en": "Defects larger than the MALL (which the method <em>must</em> detect with a reliability of ≥95%)"
+  },
+  {
+   "zh": "這個三段式設計讓你能描繪出方法的「偵測率曲線（POD Curve）」，是法規審查的核心內容。",
+   "en": "This three-tier design lets you construct the method's probability of detection (POD) curve, which is a core item in regulatory review."
+  },
+  {
+   "zh": "選擇邏輯示意",
+   "en": "Selection Logic Diagram"
+  },
+  {
+   "zh": "產品包裝特性  ──→  潛在缺陷位置和型態\n方法類型      ──→  靈敏度範圍和 LoD\n生命週期階段  ──→  驗證嚴格程度\n\n三者交集 ──→ 陽性對照的缺陷尺寸範圍\n         ──→ 陽性對照的缺陷類型\n         ──→ 陽性對照的數量要求",
+   "en": "Product package profile  ──→  Location and form of potential defects\nMethod type              ──→  Sensitivity range and LoD\nLifecycle stage          ──→  Stringency of validation\n\nIntersection of the three ──→ Defect size range of the positive controls\n                          ──→ Defect types of the positive controls\n                          ──→ Quantity requirements of the positive controls"
+  },
+  {
+   "zh": "比喻：磅秤校準",
+   "en": "Analogy: Calibrating a Weighing Scale"
+  },
+  {
+   "zh": "選擇陽性對照就像為磅秤選校準砝碼。你不會只用一個砝碼測試，而是用一系列砝碼——包括量程的最小值、最大值和中間值——以確認整個量測範圍都準確。CCIT 驗證的陽性對照也需要「涵蓋 MALL 上下的範圍」，而非只挑一個尺寸。",
+   "en": "Selecting positive controls is like choosing calibration weights for a weighing scale. You would not test with a single weight; you would use a series of weights, including the minimum, maximum and midpoint of the range, to confirm that the whole measuring range is accurate. Positive controls for CCIT validation likewise need to \"cover the range above and below the MALL\" rather than picking just one size."
+  },
+  {
+   "zh": "一支 2 mL 預填式注射器的 MALL 設定為 2 µm 等效孔徑。請列出你在驗證時至少需要準備哪些尺寸的陽性對照（以 µm 表示）？",
+   "en": "The MALL of a 2 mL prefilled syringe is set at a 2 µm equivalent orifice diameter. List the sizes of positive controls (in µm) that you would need to prepare, at a minimum, for validation."
+  },
+  {
+   "zh": "為什麼同一種陽性對照不能同時適用於電氣式（HVLD）和壓力式（VD）兩種 CCIT 方法的驗證？",
+   "en": "Why can the same positive control not be used to validate both an electrical method (HVLD) and a pressure-based method (VD)?"
+  },
+  {
+   "zh": "文中提到「方法無法完全表徵 CCS 的真實 MALL」，這句話的含義是什麼？對 CDMO 的風險評估有何影響？",
+   "en": "The text states that \"the method cannot fully characterize the true MALL of the CCS\". What does this mean, and what is its impact on a CDMO's risk assessment?"
+  },
+  {
+   "zh": "Considerations When Using Positive Controls | 使用陽性對照的注意事項",
+   "en": "Considerations When Using Positive Controls"
+  },
+  {
+   "zh": "中文解說 | 使用陽性對照的關鍵注意點",
+   "en": "Commentary | Key Points When Using Positive Controls"
+  },
+  {
+   "zh": "天然缺陷不能用於方法驗證 — 三個原因",
+   "en": "Natural Defects Cannot Be Used for Method Validation: Three Reasons"
+  },
+  {
+   "zh": "<strong>尺寸無法控制</strong>：製程失敗造成的缺陷通常偏大（如封口機設定錯誤），不代表最小臨界缺陷。",
+   "en": "<strong>Size cannot be controlled</strong>: defects caused by process failures are usually on the large side (for example, a sealer set up incorrectly) and do not represent the smallest critical defect."
+  },
+  {
+   "zh": "<strong>高度脆弱</strong>：天然缺陷容易被產品堵住，測試重複性差。",
+   "en": "<strong>Highly fragile</strong>: natural defects are easily plugged by the product, giving poor test repeatability."
+  },
+  {
+   "zh": "<strong>寬廣的變異性</strong>：同一批次發現的天然缺陷，幾何形狀和尺寸千差萬別，無法用於量化靈敏度。",
+   "en": "<strong>Wide variability</strong>: natural defects found in the same batch vary greatly in geometry and size, so they cannot be used to quantify sensitivity."
+  },
+  {
+   "zh": "95% 偵測置信度要求",
+   "en": "95% Detection Confidence Requirement"
+  },
+  {
+   "zh": "PDA TR86 明確要求：<strong>所有尺寸等於或大於方法 LoD 的陽性對照，必須以高置信度（例如 95%）被偵測到。</strong>",
+   "en": "PDA TR86 explicitly requires that <strong>all positive controls equal to or larger than the method LoD must be detected with high confidence (for example, 95%).</strong>"
+  },
+  {
+   "zh": "這個要求呼應了統計學上的 POD（Probability of Detection）概念。在驗證時，通常需要足夠的樣本數（例如 n=20）以統計方式確認達到 ≥95% 的偵測率。",
+   "en": "This requirement echoes the statistical concept of probability of detection (POD). During validation, a sufficient sample size (for example, n=20) is usually needed to confirm statistically that a detection rate of ≥95% is achieved."
+  },
+  {
+   "zh": "模擬缺陷也會被堵住！",
+   "en": "Simulated Defects Can Also Be Blocked!"
+  },
+  {
+   "zh": "即使是精心製作的工程模擬缺陷，在以下情況下也可能被堵塞：",
+   "en": "Even carefully made engineered simulated defects can become blocked in the following situations:"
+  },
+  {
+   "zh": "製品中的顆粒或蛋白質沉積於缺陷通道",
+   "en": "Particles or protein from the product deposit in the defect channel"
+  },
+  {
+   "zh": "不當搬運（震動、跌落）使微管破裂或移位",
+   "en": "Improper handling (vibration, dropping) breaks or displaces the micropipette"
+  },
+  {
+   "zh": "長期儲存後環境污染物進入缺陷通道",
+   "en": "Environmental contaminants enter the defect channel during long-term storage"
+  },
+  {
+   "zh": "溫度變化使彈性材料回彈，縮小了缺陷開口",
+   "en": "Temperature changes cause the elastomer to rebound and narrow the defect opening"
+  },
+  {
+   "zh": "因此，陽性對照需要專屬的儲存條件和處理 SOP，並在使用前做預先確認（pre-use verification）。",
+   "en": "Positive controls therefore need dedicated storage conditions and a handling SOP, plus pre-use verification."
+  },
+  {
+   "zh": "驗證時需要「大缺陷 + 小缺陷」雙重挑戰",
+   "en": "Validation Requires a \"Large Defect + Small Defect\" Dual Challenge"
+  },
+  {
+   "zh": "方法驗證不只是確認能偵測最小缺陷，還要：",
+   "en": "Method validation is not only about confirming detection of the smallest defect; it must also:"
+  },
+  {
+   "zh": "<strong>粗大缺陷（Gross Leaks）</strong>：確認方法在信號很強時不會飽和或誤判",
+   "en": "<strong>Gross leaks</strong>: confirm that the method does not saturate or misclassify when the signal is very strong"
+  },
+  {
+   "zh": "<strong>微小缺陷（Small Leaks）</strong>：確認方法能在臨界點附近正確分類",
+   "en": "<strong>Small leaks</strong>: confirm that the method classifies correctly near the critical point"
+  },
+  {
+   "zh": "比喻：體溫計校準",
+   "en": "Analogy: Calibrating a Thermometer"
+  },
+  {
+   "zh": "如果你要驗證一支醫用體溫計是否準確，不會只測 37°C，還要測 35°C（低溫）和 40°C（高溫），以確認整個臨床相關範圍都可靠。CCIT 陽性對照的「大小缺陷並用」道理完全相同。",
+   "en": "To verify the accuracy of a medical thermometer, you would not test only at 37°C; you would also test at 35°C (low) and 40°C (high) to confirm reliability across the whole clinically relevant range. The principle of using both large and small defects in CCIT positive controls is exactly the same."
+  },
+  {
+   "zh": "你的同事主張直接用生產線退件的破裂西林瓶作為 HVLD 方法驗證的陽性對照。你會如何回應？",
+   "en": "Your colleague proposes using ruptured vials rejected from the production line as positive controls for HVLD method validation. How would you respond?"
+  },
+  {
+   "zh": "設計一個陽性對照儲存和使用 SOP 的關鍵要素，至少包含三點。",
+   "en": "Design the key elements of an SOP for the storage and use of positive controls, including at least three points."
+  },
+  {
+   "zh": "為什麼偵測率（POD）要求是 95% 而不是 100%？從統計學角度解釋。",
+   "en": "Why is the probability of detection (POD) requirement 95% rather than 100%? Explain from a statistical perspective."
+  },
+  {
+   "zh": "Types of Simulated Positive Controls | 模擬缺陷類型",
+   "en": "Types of Simulated Positive Controls"
+  },
+  {
+   "zh": "中文解說 | 三種主要模擬缺陷技術詳解",
+   "en": "Commentary | The Three Main Simulated Defect Techniques in Detail"
+  },
+  {
+   "zh": "USP &lt;1207.1&gt; 連結",
+   "en": "Link to USP &lt;1207.1&gt;"
+  },
+  {
+   "zh": "TR86 在此呼應了 USP &lt;1207.1&gt; 的要求：陽性對照必須是「代表真實包裝缺陷的正控制樣本」。這代表你不能隨便用任何有洞的容器，缺陷的形態、尺寸和位置都需要在設計時考慮，使其接近真實生產環境中最可能出現的缺陷類型。",
+   "en": "TR86 echoes the requirement of USP &lt;1207.1&gt; here: a positive control must be a \"positive control sample that represents a real package defect\". This means you cannot simply use any container with a hole in it; the form, size and location of the defect must be considered at the design stage so that it approximates the type of defect most likely to occur in the real production environment."
+  },
+  {
+   "zh": "方法一：玻璃微管（Glass Micropipette）",
+   "en": "Method 1: Glass Micropipette"
+  },
+  {
+   "zh": "<strong>工作原理：</strong>將極細的玻璃毛細管（0.1–10 µm 內徑）插入橡皮塞或玻璃壁，用環氧樹脂固定，形成已知尺寸的通道缺陷。",
+   "en": "<strong>How it works:</strong> an extremely fine glass capillary (0.1–10 µm inner diameter) is inserted into a rubber stopper or glass wall and fixed with epoxy resin, forming a channel defect of known size."
+  },
+  {
+   "zh": "<strong>核心優勢：</strong>可製作出最小尺寸（低至 0.1 µm），適合極高靈敏度方法的驗證。",
+   "en": "<strong>Key advantage:</strong> it can produce the smallest sizes (down to 0.1 µm), suitable for validating very high sensitivity methods."
+  },
+  {
+   "zh": "<strong>主要限制：</strong>",
+   "en": "<strong>Main limitations:</strong>"
+  },
+  {
+   "zh": "極易破裂 — 製樣時輕微外力即可造成末端斷裂",
+   "en": "Very easy to break: slight external force during sample preparation can snap the tip"
+  },
+  {
+   "zh": "斷裂後流速異常升高，但外觀上難以辨識",
+   "en": "After breakage the flow rate rises abnormally, but this is difficult to recognize by appearance"
+  },
+  {
+   "zh": "使用前<em>必須</em>做顯微鏡確認 + 流量核驗",
+   "en": "Microscope confirmation + flow verification <em>must</em> be performed before use"
+  },
+  {
+   "zh": "若用於染料滲入或微生物侵入測試，需預先填充介質（priming）",
+   "en": "If used for dye ingress or microbial challenge testing, the channel must be primed with medium beforehand"
+  },
+  {
+   "zh": "方法二：金屬線插入（Wire Insertion）",
+   "en": "Method 2: Wire Insertion"
+  },
+  {
+   "zh": "<strong>工作原理：</strong>在壓蓋或組裝前，將細金屬線夾在橡皮塞/活塞與玻璃之間，由於彈性材料無法完全包覆金屬線，形成繞線的微通道缺陷。",
+   "en": "<strong>How it works:</strong> before capping or assembly, a fine metal wire is clamped between the rubber stopper/plunger and the glass; because the elastomer cannot fully conform around the wire, a micro-channel defect forms along the wire."
+  },
+  {
+   "zh": "<strong>兩種主要應用：</strong>",
+   "en": "<strong>Two main applications:</strong>"
+  },
+  {
+   "zh": "<strong>西林瓶 / 注射器</strong>：使用鎳鈦合金線（25 µm 以上直徑）→ 產生 2–10 µm 等效缺陷",
+   "en": "<strong>Vials / syringes</strong>: nitinol wire (25 µm diameter or larger) → produces a 2–10 µm equivalent defect"
+  },
+  {
+   "zh": "<strong>熱封袋 / 托盤</strong>：使用不鏽鋼線（≥50 µm），封合後拉出，留下通道",
+   "en": "<strong>Heat-sealed pouches / trays</strong>: stainless steel wire (≥50 µm), pulled out after sealing, leaving a channel"
+  },
+  {
+   "zh": "<strong>影響缺陷尺寸的因素：</strong>線徑、彈性材料硬度、壓蓋力/組裝力、放置到測試的時間間隔、溫度（影響橡皮彈性）",
+   "en": "<strong>Factors affecting defect size:</strong> wire diameter, elastomer hardness, capping/assembly force, time interval between placement and testing, and temperature (which affects rubber elasticity)"
+  },
+  {
+   "zh": "<strong>注意：</strong>金屬線模擬的是「異物夾入密封面」這類真實缺陷，例如生產時有毛髮或纖維落入封口區，是 CDMO 最常見的容器密封失效模式之一。",
+   "en": "<strong>Note:</strong> wire simulates real defects of the \"foreign material trapped in the sealing surface\" type, for example a hair or fiber falling into the seal area during production, which is one of the most common container closure failure modes in a CDMO."
+  },
+  {
+   "zh": "方法三：雷射鑽孔（Laser Drilling）",
+   "en": "Method 3: Laser Drilling"
+  },
+  {
+   "zh": "<strong>工作原理：</strong>用雷射光束在容器壁產生局部高溫，熔化或裂解材料，形成孔洞。",
+   "en": "<strong>How it works:</strong> a laser beam generates localized high temperature on the container wall, melting or decomposing the material to form a hole."
+  },
+  {
+   "zh": "<strong>玻璃容器的特殊性：</strong>",
+   "en": "<strong>Special features of glass containers:</strong>"
+  },
+  {
+   "zh": "雷射只打到接近穿透但未完全穿透玻璃壁 → 熱應力造成裂紋 → 裂紋才是真正的洩漏通道",
+   "en": "The laser only drills close to, but not completely through, the glass wall → thermal stress produces a crack → the crack is the actual leak path"
+  },
+  {
+   "zh": "裂紋幾何形狀不規則：可能是銳孔、微通道或兩者組合",
+   "en": "The crack geometry is irregular: it may be a sharp orifice, a micro-channel or a combination of both"
+  },
+  {
+   "zh": "較新的技術（增加兩次雷射之間的冷卻時間）可製作出較規則的「蟲孔（wormhole）型」缺陷",
+   "en": "Newer techniques (increasing the cooling time between two laser pulses) can produce more regular \"wormhole\" type defects"
+  },
+  {
+   "zh": "<strong>彈性包裝的應用：</strong>雷射鑽孔是軟袋（IV bag）、單次使用系統（SUS）等柔性容器的首選缺陷製作方式。",
+   "en": "<strong>Application to flexible packaging:</strong> laser drilling is the preferred way to create defects in flexible containers such as IV bags and single-use systems (SUS)."
+  },
+  {
+   "zh": "<strong>不鏽鋼碟片替代方案：</strong>可在鋼碟上雷射鑽孔至 0.5 µm，然後安裝在儀器測試迴路中，比直接在玻璃上鑽孔更一致且耐用。",
+   "en": "<strong>Stainless steel disc alternative:</strong> holes down to 0.5 µm can be laser-drilled in a steel disc, which is then installed in the instrument's test circuit; this is more consistent and durable than drilling the glass directly."
+  },
+  {
+   "zh": "雷射鑽孔的尺寸校準問題",
+   "en": "Sizing and Calibration of Laser-Drilled Holes"
+  },
+  {
+   "zh": "雷射孔的「等效直徑」是用空氣流量 + 已知銳孔口徑曲線<em>間接推算</em>的，不是直接量測。這意味著：",
+   "en": "The \"equivalent diameter\" of a laser hole is <em>derived indirectly</em> from air flow and a known orifice calibration curve; it is not measured directly. This means:"
+  },
+  {
+   "zh": "校準曲線不得外推（不能用 5–50 µm 範圍的曲線去推算 1 µm 的缺陷）",
+   "en": "The calibration curve must not be extrapolated (a curve for the 5–50 µm range cannot be used to estimate a 1 µm defect)"
+  },
+  {
+   "zh": "玻璃上 &lt;10 µm 的缺陷本身就有較大變異性",
+   "en": "Defects below 10 µm in glass inherently show greater variability"
+  },
+  {
+   "zh": "使用前建議驗證實際流量，避免因孔徑偏移造成偽陰性",
+   "en": "Verify the actual flow before use to avoid false negatives caused by drift in hole size"
+  },
+  {
+   "zh": "你需要為一支含活塞的預填式注射器（2 mL）製作 5 µm 等效缺陷的陽性對照。玻璃微管和金屬線兩種方法各有何優缺點？你會如何選擇？",
+   "en": "You need to make a positive control with a 5 µm equivalent defect for a 2 mL prefilled syringe with a plunger. What are the advantages and disadvantages of the glass micropipette and wire methods? How would you choose?"
+  },
+  {
+   "zh": "雷射鑽孔玻璃瓶的缺陷是「通過裂紋」而非「通過孔洞」本身導通，這對 CCIT 方法的選擇有何影響？（提示：考慮 HVLD 和 VD 的偵測機制差異）",
+   "en": "The defect in a laser-drilled glass vial conducts through a crack rather than through the hole itself. What does this mean for the choice of CCIT method? (Hint: consider the difference in detection mechanisms between HVLD and VD.)"
+  },
+  {
+   "zh": "為什麼金屬線在熱封袋中需要「封合後立即拔出」而不是讓它留在裡面？",
+   "en": "Why must the wire in a heat-sealed pouch be pulled out immediately after sealing rather than left inside?"
+  },
+  {
+   "zh": "Comparison Table — Positive Control Types | 陽性對照類型對照表",
+   "en": "Comparison Table: Positive Control Types"
+  },
+  {
+   "zh": "Calibrated Leaks | 校準洩漏元件",
+   "en": "Calibrated Leaks"
+  },
+  {
+   "zh": "中文解說 | 校準洩漏的工作原理與法規意義",
+   "en": "Commentary | How Calibrated Leaks Work and Their Regulatory Significance"
+  },
+  {
+   "zh": "什麼是「NIST 可追溯」的校準洩漏？",
+   "en": "What Is a \"NIST-Traceable\" Calibrated Leak?"
+  },
+  {
+   "zh": "<span class=\"key-term\">NIST（美國國家標準與技術研究院）</span>可追溯性是指：校準洩漏元件的洩漏量值，可以通過一條連續的校準鏈，追溯到國家或國際計量標準。",
+   "en": "<span class=\"key-term\">NIST (National Institute of Standards and Technology)</span> traceability means that the leak value of a calibrated leak element can be traced through an unbroken calibration chain to a national or international measurement standard."
+  },
+  {
+   "zh": "在 CCIT 中，這表示：",
+   "en": "In CCIT, this means:"
+  },
+  {
+   "zh": "你的校準洩漏標示的「He 洩漏率 = 1.2×10⁻⁴ mbar·L/s」是有文件依據的量值",
+   "en": "The \"He leak rate = 1.2×10⁻⁴ mbar·L/s\" stated for your calibrated leak is a documented value"
+  },
+  {
+   "zh": "這個量值由製造商用標準漏氣測試儀（mass spectrometer）對照 NIST 標準件進行校準",
+   "en": "This value is calibrated by the manufacturer against a NIST standard using a standard leak tester (mass spectrometer)"
+  },
+  {
+   "zh": "校準證書上會標明量值、不確定度、和可追溯鏈",
+   "en": "The calibration certificate states the value, the uncertainty and the traceability chain"
+  },
+  {
+   "zh": "He 洩漏率 vs 水洩漏率的換算關係",
+   "en": "Converting Between He Leak Rate and Water Leak Rate"
+  },
+  {
+   "zh": "由於氦氣（He）和水的黏度差異，同一個孔洞的 He 洩漏率和水洩漏率可以相互換算（在層流假設下）。常用公式：",
+   "en": "Because helium (He) and water differ in viscosity, the He leak rate and water leak rate of the same hole can be converted into each other (assuming laminar flow). The commonly used formula is:"
+  },
+  {
+   "zh": "Q(water) ≈ Q(He) × (η_He / η_water) × (ΔP_water / ΔP_He)<br/><br/>\n              η_He ≈ 1.96×10⁻⁵ Pa·s (氦氣動態黏度)<br/>\n              η_water ≈ 1.0×10⁻³ Pa·s (水動態黏度 @25°C)",
+   "en": "Q(water) ≈ Q(He) × (η_He / η_water) × (ΔP_water / ΔP_He)<br/><br/>\n              η_He ≈ 1.96×10⁻⁵ Pa·s (dynamic viscosity of helium)<br/>\n              η_water ≈ 1.0×10⁻³ Pa·s (dynamic viscosity of water @25°C)"
+  },
+  {
+   "zh": "這個換算對於決定使用氦質譜法（He Mass Spectrometry）還是液體型 CCIT 方法（如染料滲入法）非常重要。",
+   "en": "This conversion is important when deciding between helium mass spectrometry and a liquid-based CCIT method (such as dye ingress)."
+  },
+  {
+   "zh": "校準洩漏的關鍵設計特點",
+   "en": "Key Design Features of a Calibrated Leak"
+  },
+  {
+   "zh": "<strong>堅固金屬外殼</strong>：保護元件不受搬運損壞",
+   "en": "<strong>Rugged metal housing</strong>: protects the element from handling damage"
+  },
+  {
+   "zh": "<strong>過濾器保護</strong>：防止顆粒堵塞校準孔道",
+   "en": "<strong>Filter protection</strong>: prevents particles from blocking the calibrated orifice"
+  },
+  {
+   "zh": "<strong>無限氣源連接</strong>：校準洩漏需要持續供氣，這意味著它無法模擬密閉頂空容器（如西林瓶）的有限氣體供應情況",
+   "en": "<strong>Infinite gas source connection</strong>: a calibrated leak needs a continuous gas supply, which means it cannot simulate the limited gas supply of a sealed headspace container (such as a vial)"
+  },
+  {
+   "zh": "<strong>閥門控制</strong>：打開時注入已知流量，進行系統挑戰",
+   "en": "<strong>Valve control</strong>: when opened, it injects a known flow for a system challenge"
+  },
+  {
+   "zh": "比喻：測功機校準",
+   "en": "Analogy: Calibrating a Dynamometer"
+  },
+  {
+   "zh": "校準洩漏就像汽車測功機上的「標準負載砝碼」。測功機本身只是量測工具，砝碼確保測功機的讀數準確。每次啟動前，用砝碼確認儀器狀態，這就是「系統適用性驗證（System Suitability）」。校準洩漏在 CCIT 儀器中扮演的正是這個角色。",
+   "en": "A calibrated leak is like the \"standard load weight\" on a car dynamometer. The dynamometer itself is only a measuring tool; the weight ensures that its readings are accurate. Checking the instrument with the weight before each start-up is \"system suitability\". The calibrated leak plays exactly this role in a CCIT instrument."
+  },
+  {
+   "zh": "CDMO 應用：系統適用性的頻率設計",
+   "en": "CDMO Application: Designing the Frequency of System Suitability"
+  },
+  {
+   "zh": "在 GMP 環境中，校準洩漏通常用於：",
+   "en": "In a GMP environment, a calibrated leak is typically used:"
+  },
+  {
+   "zh": "<strong>每批次開始前</strong>：執行系統適用性（System Suitability Test）確認儀器敏感度未漂移",
+   "en": "<strong>Before the start of each batch</strong>: run a system suitability test to confirm the instrument sensitivity has not drifted"
+  },
+  {
+   "zh": "<strong>設備維護後</strong>：確認維修未影響測試迴路的密封性",
+   "en": "<strong>After equipment maintenance</strong>: confirm that the repair has not affected the sealing integrity of the test circuit"
+  },
+  {
+   "zh": "<strong>驗證活動</strong>：作為已知洩漏率的挑戰標準",
+   "en": "<strong>Validation activities</strong>: as a challenge standard with a known leak rate"
+  },
+  {
+   "zh": "注意：對於已驗證的決定性方法（Deterministic Methods），若儀器在校準維護狀態下，常規測試時可不再需要每次搭配產品陽性對照，但仍需定期校準洩漏驗證。",
+   "en": "Note: for a validated deterministic method, if the instrument is in a calibrated and maintained state, routine testing may no longer require a product positive control every time, but periodic calibrated leak verification is still required."
+  },
+  {
+   "zh": "校準洩漏無法模擬「密閉頂空容器」的情境，這對頂空氣體分析（HSA）方法的驗證意味著什麼？需要額外哪種陽性對照補充？",
+   "en": "A calibrated leak cannot simulate a \"sealed headspace container\". What does this mean for the validation of headspace analysis (HSA) methods? What additional type of positive control is needed?"
+  },
+  {
+   "zh": "如果你的 He 漏氣測試儀的校準洩漏元件出現堵塞，系統適用性結果可能顯示什麼？（偽通過還是偽失敗？）",
+   "en": "If the calibrated leak element of your He leak tester becomes blocked, what might the system suitability result show (a false pass or a false fail)?"
+  },
+  {
+   "zh": "如何從一個 He 洩漏率為 5×10⁻⁴ mbar·L/s 的缺陷估算其水洩漏率？這個計算的假設條件是什麼？",
+   "en": "How would you estimate the water leak rate of a defect with a He leak rate of 5×10⁻⁴ mbar·L/s? What assumptions underlie this calculation?"
+  },
+  {
+   "zh": "Additional Considerations for Controls | 陽性對照的補充考量",
+   "en": "Additional Considerations for Controls"
+  },
+  {
+   "zh": "中文解說 | MALL 的行業差異與常規測試豁免",
+   "en": "Commentary | Industry Differences in MALL and Exemption from Routine Testing"
+  },
+  {
+   "zh": "MALL 在行業中沒有統一標準",
+   "en": "There Is No Uniform Industry Standard for MALL"
+  },
+  {
+   "zh": "不同公司、不同產品類型對 MALL 的設定各不相同。目前業界常見的參考值包括：",
+   "en": "Different companies and product types set the MALL differently. Reference values commonly seen in industry include:"
+  },
+  {
+   "zh": "注射劑（水針）：通常設定 MALL = 1–10 µm 等效孔徑（參考微生物侵入臨界孔徑 ~0.2–1 µm 加上安全邊際）",
+   "en": "Injectables (liquid): MALL is usually set at a 1–10 µm equivalent orifice diameter (based on a critical microbial ingress orifice of ~0.2–1 µm plus a safety margin)"
+  },
+  {
+   "zh": "凍乾粉針：因為乾粉對微生物污染的直接風險較低，但需關注水氣滲入造成的品質降解",
+   "en": "Lyophilized powder injectables: dry powder carries a lower direct risk of microbial contamination, but attention is needed to quality degradation caused by moisture ingress"
+  },
+  {
+   "zh": "眼科製劑：更嚴格，因無菌要求極高",
+   "en": "Ophthalmic formulations: stricter, because sterility requirements are extremely high"
+  },
+  {
+   "zh": "這種差異性意味著：陽性對照的設計標準因產品和公司而異，沒有放諸四海皆準的設定。",
+   "en": "This variability means that the design criteria for positive controls differ by product and company; there is no universally applicable setting."
+  },
+  {
+   "zh": "豁免常規陽性對照的前提條件",
+   "en": "Prerequisites for Exemption from Routine Positive Controls"
+  },
+  {
+   "zh": "決定性方法可以豁免常規陽性對照，但必須同時滿足：",
+   "en": "A deterministic method can be exempted from routine positive controls, but all of the following must be met:"
+  },
+  {
+   "zh": "方法已通過正式驗證（含陽性對照挑戰）",
+   "en": "The method has passed formal validation (including a positive control challenge)"
+  },
+  {
+   "zh": "儀器在現行校準週期內",
+   "en": "The instrument is within its current calibration interval"
+  },
+  {
+   "zh": "儀器已按規定執行預防性維護",
+   "en": "The instrument has undergone preventive maintenance as specified"
+  },
+  {
+   "zh": "每次使用前執行系統適用性測試（使用校準洩漏或其他核准標準）",
+   "en": "A system suitability test is performed before each use (using a calibrated leak or another approved standard)"
+  },
+  {
+   "zh": "缺少任何一項，陽性對照的豁免就不成立。",
+   "en": "If any one of these is missing, the exemption from positive controls does not apply."
+  },
+  {
+   "zh": "CDMO 常規 CCIT 作業設計建議",
+   "en": "Recommended Design for Routine CCIT Operations at a CDMO"
+  },
+  {
+   "zh": "根據 3.1.5 的原則，建議 CDMO 在批次測試 SOP 中明確區分：",
+   "en": "Based on the principles of 3.1.5, a CDMO is advised to clearly distinguish the following in its batch testing SOP:"
+  },
+  {
+   "zh": "<strong>驗證批次</strong>：必須使用一系列陽性對照（從小於 MALL 到大於 MALL 的完整範圍）",
+   "en": "<strong>Validation batches</strong>: must use a series of positive controls (the full range from below the MALL to above the MALL)"
+  },
+  {
+   "zh": "<strong>常規生產批次（決定性方法）</strong>：系統適用性確認（含校準洩漏）+ 儀器校準記錄核查 → 可不使用產品陽性對照",
+   "en": "<strong>Routine production batches (deterministic methods)</strong>: system suitability confirmation (including the calibrated leak) + review of instrument calibration records → product positive controls may be omitted"
+  },
+  {
+   "zh": "<strong>常規生產批次（概率性方法）</strong>：每批需搭配陽性對照進行系統適用性",
+   "en": "<strong>Routine production batches (probabilistic methods)</strong>: each batch must include positive controls for system suitability"
+  },
+  {
+   "zh": "你的 CCIT 方法是真空衰減法（Vacuum Decay — 決定性方法）。驗證完成後，可以完全取消每批測試的陽性對照嗎？需要滿足什麼條件？",
+   "en": "Your CCIT method is vacuum decay (a deterministic method). Once validation is complete, can you completely eliminate positive controls from each batch test? What conditions must be met?"
+  },
+  {
+   "zh": "染料滲入法（Dye Ingress）通常被歸類為概率性方法（因肉眼判斷有主觀性）。為什麼這類方法在常規測試中需要更多的系統確認步驟？",
+   "en": "Dye ingress is usually classified as a probabilistic method (because visual judgment is subjective). Why does this type of method need more system confirmation steps in routine testing?"
+  },
+  {
+   "zh": "公司 A 設定 MALL = 2 µm，公司 B 設定 MALL = 10 µm（同類型產品）。兩者驗證時使用的陽性對照尺寸範圍會有何差異？哪個驗證更嚴格？",
+   "en": "Company A sets the MALL at 2 µm and company B sets it at 10 µm (same type of product). How will the positive control size ranges used in their validations differ? Which validation is more stringent?"
+  },
+  {
+   "zh": "Blockage of Leak Paths | 洩漏路徑阻塞效應",
+   "en": "Blockage of Leak Paths"
+  },
+  {
+   "zh": "中文解說 | 阻塞效應是 CCIT 最棘手的挑戰",
+   "en": "Commentary | Blockage Is the Most Difficult Challenge in CCIT"
+  },
+  {
+   "zh": "阻塞效應（Blockage）的核心邏輯",
+   "en": "The Core Logic of Blockage"
+  },
+  {
+   "zh": "阻塞效應的本質是：<strong>容器確實有缺陷，但 CCIT 測不到</strong>——因為缺陷通道已被製劑成分堵住。這是最危險的情境，因為：",
+   "en": "The essence of blockage is this: <strong>the container does have a defect, but CCIT cannot detect it</strong>, because the defect channel has been plugged by formulation components. This is the most dangerous scenario because:"
+  },
+  {
+   "zh": "CCIT 結果顯示「合格」",
+   "en": "The CCIT result shows \"pass\""
+  },
+  {
+   "zh": "但容器密封在阻塞前可能已經發生過微生物滲入",
+   "en": "But microbial ingress may already have occurred before the blockage formed"
+  },
+  {
+   "zh": "阻塞去除後（如運輸振動、溫度變化），洩漏可能重新出現",
+   "en": "Once the blockage is removed (for example by transport vibration or temperature changes), the leak may reappear"
+  },
+  {
+   "zh": "關鍵研究結果：120 mg/mL 蛋白質 vs 相同黏度的替代液",
+   "en": "Key Study Result: 120 mg/mL Protein vs a Surrogate Liquid of the Same Viscosity"
+  },
+  {
+   "zh": "TR86 引用的研究清楚說明：即使排除黏度因素（使用相同黏度的替代液做對照），高濃度蛋白質溶液仍然無法通過缺陷通道。這證明了：",
+   "en": "A study cited in TR86 clearly shows that even when viscosity is excluded as a factor (using a surrogate liquid of the same viscosity as a control), the high-concentration protein solution still could not pass through the defect channel. This demonstrates that:"
+  },
+  {
+   "zh": "阻塞效應不僅僅是「黏度太高流不過去」的問題",
+   "en": "Blockage is not simply a problem of \"viscosity too high to flow through\""
+  },
+  {
+   "zh": "蛋白質分子本身的物理化學特性（聚集、吸附）是關鍵機制",
+   "en": "The physicochemical properties of the protein molecules themselves (aggregation, adsorption) are the key mechanism"
+  },
+  {
+   "zh": "用非蛋白質的替代液驗證的 CCIT 方法，可能<em>無法</em>準確預測真實蛋白質製劑的行為",
+   "en": "A CCIT method validated with a non-protein surrogate liquid may <em>fail</em> to predict accurately the behavior of the real protein formulation"
+  },
+  {
+   "zh": "生活比喻：被水垢堵住的水管",
+   "en": "Analogy: A Pipe Blocked by Limescale"
+  },
+  {
+   "zh": "想像一根輕微裂縫的水管。初期會滲水（洩漏），但水中的礦物質慢慢沉積在裂縫處，最終將裂縫完全填補（阻塞）。這時如果你做漏水測試，結果顯示正常——但水管的結構性缺陷仍在，只是暫時被遮蓋了。下次震動或高壓時，阻塞物脫落，漏水重現。這就是 CCIT 阻塞效應的精確比喻。",
+   "en": "Imagine a pipe with a slight crack. At first it seeps water (leaks), but minerals in the water slowly deposit in the crack and eventually fill it completely (blockage). If you then run a leak test, the result looks normal, yet the structural defect in the pipe is still there, only temporarily covered. At the next vibration or high pressure, the deposit comes loose and the leak returns. This is an exact analogy for the CCIT blockage effect."
+  },
+  {
+   "zh": "最關鍵的警語",
+   "en": "The Most Critical Warning"
+  },
+  {
+   "zh": "這句話是 TR86 Section 3.2 的核心結論：<strong>不能單靠 CCIT 保證無菌性。</strong>阻塞發生之前，微生物可能已經進入容器，阻塞後 CCIT 反而「看不見」這個問題。這就是為什麼需要整體 CCI 策略（Strategy），而非單一測試。",
+   "en": "This statement is the core conclusion of TR86 Section 3.2: <strong>CCIT alone cannot assure sterility.</strong> Before blockage occurs, microorganisms may already have entered the container, and after blockage CCIT instead \"cannot see\" the problem. This is why an overall CCI strategy is needed, rather than a single test."
+  },
+  {
+   "zh": "CCI 整體策略 — 超越 CCIT 的考量",
+   "en": "Overall CCI Strategy: Considerations Beyond CCIT"
+  },
+  {
+   "zh": "根據 3.2 的建議，對於含有阻塞風險製劑的產品（高濃度蛋白質、凍乾製劑等），應建立涵蓋以下要素的 CCI 整體策略：",
+   "en": "Based on the recommendations of 3.2, for products whose formulations carry a blockage risk (high-concentration proteins, lyophilized formulations and so on), an overall CCI strategy should be established covering the following elements:"
+  },
+  {
+   "zh": "<strong>CCIT 方法選擇</strong>：優先選擇對阻塞不敏感的方法（如 HVLD、目視）或互補方法組合",
+   "en": "<strong>CCIT method selection</strong>: preferably choose methods insensitive to blockage (such as HVLD or visual inspection) or a combination of complementary methods"
+  },
+  {
+   "zh": "<strong>穩定性程式中的封口特性監控</strong>：定期測量 RSF（殘餘封合力）或橡皮膨出高度",
+   "en": "<strong>Seal characteristic monitoring in the stability program</strong>: periodically measure RSF (residual seal force) or stopper bulge height"
+  },
+  {
+   "zh": "<strong>目視外觀檢查</strong>：監控活塞-肋條接觸長度（注射器）、橡皮塞/碟封外觀（西林瓶/卡匣）",
+   "en": "<strong>Visual appearance inspection</strong>: monitor plunger-rib contact length (syringes) and the appearance of the stopper/disc seal (vials/cartridges)"
+  },
+  {
+   "zh": "<strong>可行性研究中的阻塞評估</strong>：在方法選擇階段即對真實製劑進行阻塞風險評估",
+   "en": "<strong>Blockage assessment in feasibility studies</strong>: assess the blockage risk with the real formulation already at the method selection stage"
+  },
+  {
+   "zh": "<strong>CCIT 測試時機設計</strong>：考慮在填充後盡快測試（結晶性阻塞隨時間加重）",
+   "en": "<strong>Design of CCIT test timing</strong>: consider testing as soon as possible after filling (crystalline blockage worsens over time)"
+  },
+  {
+   "zh": "你的產品是 120 mg/mL 的融合蛋白凍乾製劑（復水前）。你計劃使用真空衰減法（VD）進行常規 CCIT。根據 3.2 的內容，這個選擇有何風險？應如何補充？",
+   "en": "Your product is a 120 mg/mL fusion protein lyophilized formulation (before reconstitution). You plan to use vacuum decay (VD) for routine CCIT. Based on 3.2, what risks does this choice carry? How should it be supplemented?"
+  },
+  {
+   "zh": "一批西林瓶在生產後立即 CCIT 測試全部合格，但 6 個月穩定性取樣時發現部分容器有明顯滲漏。最可能的原因是什麼？對製劑的哪種特性應重點調查？",
+   "en": "A batch of vials all passed CCIT immediately after production, but at the 6-month stability pull some containers showed obvious leakage. What is the most likely cause? Which property of the formulation should be investigated first?"
+  },
+  {
+   "zh": "HVLD 在阻塞場景下「可能有效」的前提是「殘留水分仍具導電性」。對於凍乾製劑（水分極低），這個前提成立嗎？這說明了什麼？",
+   "en": "HVLD \"may be effective\" in blockage scenarios on the premise that \"residual moisture is still conductive\". Does this premise hold for lyophilized formulations (very low moisture)? What does this show?"
+  },
+  {
+   "zh": "你的 CCI 策略文件中，如何設計「阻塞風險評估（Blockage Risk Assessment）」章節？請概述至少四個評估要素。",
+   "en": "How would you design the \"Blockage Risk Assessment\" section in your CCI strategy document? Outline at least four assessment elements."
+  },
+  {
+   "zh": "Section Summary | 本節重點總結",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "中文重點摘要",
+   "en": "Key Points Summary"
+  },
+  {
+   "zh": "<strong>3.0：</strong>方法選擇的三大變異來源——製劑干擾通道流動、方法干擾製劑特性、方法改變容器形態——缺一不可都需考量。",
+   "en": "<strong>3.0:</strong> The three sources of variability in method selection (the formulation interfering with channel flow, the method interfering with formulation properties, and the method changing container form) must all be considered."
+  },
+  {
+   "zh": "<strong>3.1：</strong>陽性對照貫穿 CCIT 全生命週期。天然洩漏可用於方法能力了解，但不可用於正式驗證；工程模擬缺陷才是驗證的核心工具。",
+   "en": "<strong>3.1:</strong> Positive controls run through the whole CCIT lifecycle. Natural leaks can be used to understand method capability but not for formal validation; engineered simulated defects are the core tool for validation."
+  },
+  {
+   "zh": "<strong>3.1.1：</strong>驗證用陽性對照必須涵蓋 MALL 上下的缺陷尺寸範圍，根據產品包裝特性、方法類型和生命週期階段選擇。",
+   "en": "<strong>3.1.1:</strong> Positive controls for validation must cover a range of defect sizes above and below the MALL, selected according to product package profile, method type and lifecycle stage."
+  },
+  {
+   "zh": "<strong>3.1.2：</strong>天然缺陷變異性太大，不可用於驗證。凡等於或大於 LoD 的陽性對照，方法必須以 ≥95% 置信度偵測到。",
+   "en": "<strong>3.1.2:</strong> Natural defects are too variable to be used for validation. For every positive control equal to or larger than the LoD, the method must detect it with ≥95% confidence."
+  },
+  {
+   "zh": "<strong>3.1.3：</strong>三種主要模擬缺陷技術：玻璃微管（最小但最脆弱）、金屬線（簡便但幾何不一致）、雷射鑽孔（最接近真實缺陷，軟包裝首選）。",
+   "en": "<strong>3.1.3:</strong> Three main simulated defect techniques: glass micropipette (smallest but most fragile), metal wire (simple but geometrically inconsistent), laser drilling (closest to real defects, preferred for flexible packaging)."
+  },
+  {
+   "zh": "<strong>3.1.4：</strong>校準洩漏元件具 NIST 可追溯性，安裝於儀器內部，用於系統適用性驗證，但無法模擬密閉頂空容器。",
+   "en": "<strong>3.1.4:</strong> Calibrated leak elements are NIST-traceable and installed inside the instrument for system suitability verification, but they cannot simulate sealed headspace containers."
+  },
+  {
+   "zh": "<strong>3.1.5：</strong>決定性方法（如 VD）在驗證和校準完成後，常規測試可豁免陽性對照；概率性方法（如染料滲入）仍需每次系統確認。",
+   "en": "<strong>3.1.5:</strong> For deterministic methods (such as VD), once validation and calibration are complete, routine testing may be exempted from positive controls; probabilistic methods (such as dye ingress) still require system confirmation every time."
+  },
+  {
+   "zh": "<strong>3.2：</strong>阻塞效應是最危險的 CCIT 失效模式——缺陷真實存在但測試偵測不到。對高風險製劑，必須超越 CCIT，建立涵蓋 RSF、目視、穩定性封口監控的 CCI 整體策略。",
+   "en": "<strong>3.2:</strong> Blockage is the most dangerous CCIT failure mode: the defect is real but the test cannot detect it. For high-risk formulations, you must go beyond CCIT and establish an overall CCI strategy covering RSF, visual inspection and seal monitoring in stability."
+  }
+ ]
+}

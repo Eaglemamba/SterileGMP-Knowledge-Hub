@@ -1,0 +1,417 @@
+{
+ "source": "section-11a-appendix3-qualitative-noncfu.html",
+ "blocks": [
+  {
+   "zh": "附錄三：替代/快速微生物學方法驗證之統計分析——非 CFU 訊號",
+   "en": "Appendix 3: Statistical Analysis for Validation of Alternative/Rapid Microbiological Methods - Non-CFU Signals"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解為何某些 AMM/RMM 的訊號不是 CFU，而是以 NADH、riboflavin 等細胞標的物為基礎；並掌握 <i>X</i><sub>M</sub> = <i>X</i><sub>CFU</sub> + <i>X</i><sub>NCFU</sub> 的統計拆解邏輯，理解 non-CFU 方法為何理論上比 CMM 更靈敏",
+   "en": "Understand why the signal of some AMM/RMM is not a CFU but is based on cellular targets such as NADH and riboflavin; master the statistical decomposition <i>X</i><sub>M</sub> = <i>X</i><sub>CFU</sub> + <i>X</i><sub>NCFU</sub>, and understand why non-CFU methods are theoretically more sensitive than CMM"
+  },
+  {
+   "zh": "熟悉 Table 11.0-1 的完整符號系統，作為閱讀 Section 11.1 各項公式與範例的共同語言",
+   "en": "Become familiar with the complete symbol system of Table 11.0-1, which serves as the common language for reading the formulas and examples in Section 11.1"
+  },
+  {
+   "zh": "掌握「無偽陽性」與「有相關偽陽性率」兩種情境下，如何以 R<sub>pr</sub>、R<sub>gMPN</sub>、R<sub>M</sub> 等比值進行優越性（superiority）檢定，而非慣用的非劣性（non-inferiority）檢定",
+   "en": "Master how to use ratios such as R<sub>pr</sub>, R<sub>gMPN</sub> and R<sub>M</sub> to perform superiority tests, rather than the usual non-inferiority tests, in two scenarios: \"no false positives\" and \"a relevant false positive rate\""
+  },
+  {
+   "zh": "理解 decision equivalence（決策等效性）與 <i>P</i><sub>AGREE</sub>（一致性機率）的概念，能判斷 non-CFU AMM/RMM 在何種汙染程度下最容易與 CMM 產生放行/拒收決策分歧，並據此規劃 fit-for-purpose 的驗證與放行策略",
+   "en": "Understand the concepts of decision equivalence and <i>P</i><sub>AGREE</sub> (probability of agreement); be able to judge at which contamination levels a non-CFU AMM/RMM is most likely to reach a different release/reject decision from CMM, and plan a fit-for-purpose validation and release strategy accordingly"
+  },
+  {
+   "zh": "<strong>11.0 Appendix 3: Validation of Alternative and Rapid Microbiological Methods: Additional Statistical Analysis-Non-CFU Signals 附錄三：替代/快速微生物學方法驗證之額外統計分析——非 CFU 訊號</strong>",
+   "en": "<strong>11.0 Appendix 3: Validation of Alternative and Rapid Microbiological Methods: Additional Statistical Analysis-Non-CFU Signals</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Non-CFU 訊號:</strong> 傳統 CMM（Conventional Microbiological Method，傳統微生物學方法）仰賴微生物「生長繁殖」才能被偵測到——沒有長出可見菌落，就沒有訊號。但部分 AMM/RMM 是偵測 NADH、riboflavin 等「活細胞代謝標記」，即使該微生物受壓力、受損或處於休眠狀態而無法在培養基上生長（non-culturable），只要細胞仍存活（viable），這類方法依然能偵測到訊號。",
+   "en": "<strong>Non-CFU signals:</strong> The conventional microbiological method (CMM) can detect microorganisms only if they \"grow and multiply\" - if no visible colony forms, there is no signal. However, some AMM/RMM detect \"viable-cell metabolic markers\" such as NADH and riboflavin. Even if the microorganism is stressed, injured or dormant and cannot grow on the medium (non-culturable), these methods can still produce a signal as long as the cell is alive (viable)."
+  },
+  {
+   "zh": "<strong>X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub> 的統計拆解:</strong> 這是本章（乃至整個 Section 11.0）最核心的統計架構。樣本中「總存活微生物數」被拆成兩塊：可培養（X<sub>CFU</sub>，CMM 看得到）與存活但不可培養（X<sub>NCFU</sub>，CMM 看不到、但 non-CFU AMM/RMM 看得到）。CMM 的訊號上限就是 X<sub>CFU</sub>；而 non-CFU AMM/RMM 理論上會同時回應 X<sub>CFU</sub> 與 X<sub>NCFU</sub> 兩者。",
+   "en": "<strong>Statistical decomposition X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub>:</strong> This is the core statistical framework of this chapter (and of the whole of Section 11.0). The \"total number of viable microorganisms\" in a sample is split into two parts: culturable (X<sub>CFU</sub>, visible to CMM) and viable but non-culturable (X<sub>NCFU</sub>, invisible to CMM but visible to a non-CFU AMM/RMM). The signal ceiling of CMM is X<sub>CFU</sub>, whereas a non-CFU AMM/RMM would in theory respond to both X<sub>CFU</sub> and X<sub>NCFU</sub>."
+  },
+  {
+   "zh": "<strong>X<sub>P</sub> = X<sub>NM</sub> + X<sub>M</sub>（總粒子數）:</strong> 若儀器連非活性微生物或非微生物粒子（X<sub>NM</sub>，如死菌碎片、蛋白質聚集物、環境微粒）都會產生訊號，則總訊號變成 X<sub>P</sub>。這正是「偽陽性率」與「背景雜訊」的統計來源——訊號中混雜了「並非真正代表活菌」的成分。",
+   "en": "<strong>X<sub>P</sub> = X<sub>NM</sub> + X<sub>M</sub> (total particles):</strong> If the instrument also produces a signal from non-viable microorganisms or non-microbial particles (X<sub>NM</sub>, such as dead-cell debris, protein aggregates or environmental particulates), the total signal becomes X<sub>P</sub>. This is the statistical source of the \"false positive rate\" and \"background noise\" - the signal is mixed with components that do not truly represent viable microorganisms."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 CMM 想像成「打卡系統」，只有员工實際刷卡進入辦公室（=生長出可見菌落）才會被記錄；而 non-CFU AMM/RMM 更像是「大樓門禁感應+體溫感測」系統，只要有活人（存活細胞）進出大樓，不論他有沒有去刷卡機打卡（不論可不可培養），都會被感應到。因此門禁系統（AMM/RMM）記錄到的人數，理論上會 ≥ 打卡系統（CMM）記錄到的人數——這正是 X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub> 的直覺意義。如果門禁系統連「送貨機器人」（非活性粒子 X<sub>NM</sub>）都會誤觸發警報，那就是偽陽性/背景雜訊的來源。",
+   "en": "Think of CMM as a \"time-clock system\": a person is recorded only if the employee actually swipes a card to enter the office (= grows into a visible colony). A non-CFU AMM/RMM is more like a \"building access-control system with body-temperature sensing\": as long as a living person (a viable cell) passes through the building, they are detected whether or not they went to the card reader (whether or not they are culturable). The head count recorded by the access-control system (AMM/RMM) is therefore theoretically ≥ the count recorded by the time-clock system (CMM) - this is the intuitive meaning of X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub>. If the access-control system even raises false alarms for a \"delivery robot\" (non-viable particles, X<sub>NM</sub>), that is the source of false positives/background noise."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文明確指出一項統計陷阱：若僅以「總微生物數 X<sub>M</sub>」證明 AMM/RMM 對 CMM 的非劣性（non-inferiority），可能掩蓋 AMM/RMM 在 X<sub>CFU</sub> 部分其實表現「劣於」CMM 的事實——因為 X<sub>NCFU</sub> 的額外訊號補足了整體分數。這對 CDMO 品保單位是關鍵警訊：驗證報告若只呈現總數比對通過，未必代表方法在「可培養菌」偵測能力上真的等效。",
+   "en": "The source text points out a statistical trap: if non-inferiority of an AMM/RMM to CMM is demonstrated only on the \"total number of microorganisms X<sub>M</sub>\", it may hide the fact that the AMM/RMM actually performs \"worse than\" CMM on the X<sub>CFU</sub> portion, because the extra signal from X<sub>NCFU</sub> makes up the overall result. This is a key warning for QA at a CDMO: a validation report that shows only a passing comparison of total counts does not necessarily mean the method is truly equivalent in its ability to detect \"culturable organisms\"."
+  },
+  {
+   "zh": "正因為「100% 純 X<sub>CFU</sub> 樣本」在實務上幾乎不可能建構（挑戰菌懸浮液中必然存在一定比例的不可培養細胞），原文建議：比較 non-CFU AMM/RMM 與 CFU-based CMM 時，應優先採用<strong>優越性檢定（superiority test）</strong>而非非劣性檢定（non-inferiority test）——這與 Section 9.0/10.0 針對「同為 CFU 訊號」方法所採用的非劣性架構形成鮮明對比，讀者應特別留意這個方法論上的轉折。",
+   "en": "Because a \"100% pure X<sub>CFU</sub> sample\" is practically impossible to construct (a challenge suspension inevitably contains some proportion of non-culturable cells), the source text recommends that, when comparing a non-CFU AMM/RMM with a CFU-based CMM, a <strong>superiority test</strong> should be preferred over a non-inferiority test. This is in sharp contrast with the non-inferiority framework used in Section 9.0/10.0 for methods whose signals are both CFU; readers should pay particular attention to this methodological turn."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>總存活微生物數的拆解：</strong>",
+   "en": "<strong>Decomposition of the total number of viable microorganisms:</strong>"
+  },
+  {
+   "zh": "<strong>總粒子數（含非活性/非微生物訊號）：</strong>",
+   "en": "<strong>Total number of particles (including non-viable/non-microbial signals):</strong>"
+  },
+  {
+   "zh": "變數定義：",
+   "en": "Variable definitions:"
+  },
+  {
+   "zh": "<strong>X<sub>CFU</sub></strong> = 樣本中存活且可培養的微生物數（CMM 可偵測範圍）",
+   "en": "<strong>X<sub>CFU</sub></strong> = number of viable and culturable microorganisms in the sample (the range detectable by CMM)"
+  },
+  {
+   "zh": "<strong>X<sub>NCFU</sub></strong> = 樣本中存活但不可培養的微生物數（僅 non-CFU AMM/RMM 可偵測）",
+   "en": "<strong>X<sub>NCFU</sub></strong> = number of viable but non-culturable microorganisms in the sample (detectable only by a non-CFU AMM/RMM)"
+  },
+  {
+   "zh": "<strong>X<sub>M</sub></strong> = 存活微生物總數 = X<sub>CFU</sub> + X<sub>NCFU</sub>",
+   "en": "<strong>X<sub>M</sub></strong> = total number of viable microorganisms = X<sub>CFU</sub> + X<sub>NCFU</sub>"
+  },
+  {
+   "zh": "<strong>X<sub>NM</sub></strong> = 非存活微生物或非微生物粒子數（偽陽性/背景雜訊來源）",
+   "en": "<strong>X<sub>NM</sub></strong> = number of non-viable microorganisms or non-microbial particles (source of false positives/background noise)"
+  },
+  {
+   "zh": "<strong>X<sub>P</sub></strong> = 樣本中所有會被偵測到的粒子總數",
+   "en": "<strong>X<sub>P</sub></strong> = total number of particles in the sample that can be detected"
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼「AMM/RMM 對 CMM 的總數 X<sub>M</sub> 呈現非劣性」，不能保證該方法在偵測可培養菌（X<sub>CFU</sub>）上也是非劣的？",
+   "en": "Why can \"non-inferiority of the AMM/RMM to CMM on the total count X<sub>M</sub>\" not guarantee that the method is also non-inferior in detecting culturable organisms (X<sub>CFU</sub>)?"
+  },
+  {
+   "zh": "若貴實驗室正在評估一款以 ATP 生物冷光為原理的快速方法，你會如何設計實驗以估計其 X<sub>NM</sub>（背景雜訊）對整體訊號的貢獻比例？",
+   "en": "If your laboratory is evaluating a rapid method based on ATP bioluminescence, how would you design experiments to estimate the proportion of the overall signal contributed by X<sub>NM</sub> (background noise)?"
+  },
+  {
+   "zh": "<strong>11.1 Qualitative Microbiological Methods with Non-CFU Signals 非 CFU 訊號的定性微生物學方法</strong>",
+   "en": "<strong>11.1 Qualitative Microbiological Methods with Non-CFU Signals</strong>"
+  },
+  {
+   "zh": "<strong>兩種情境的分野:</strong> Section 11.1 依「偽陽性率是否顯著」把 non-CFU 定性方法分成兩類討論——11.1.1 討論幾乎沒有偽陽性的情況，11.1.2 討論偽陽性率具有實質影響的情況。原因很直接：偽陽性會混入 positive rate（陽性率）計算中，若不處理，會扭曲對「真正偵測能力」的估計。",
+   "en": "<strong>Distinguishing two scenarios:</strong> Section 11.1 divides non-CFU qualitative methods into two categories according to whether the false positive rate is significant: 11.1.1 covers the case with practically no false positives, and 11.1.2 covers the case where the false positive rate has a substantial effect. The reason is straightforward: false positives get mixed into the calculation of the positive rate, and if they are not handled they distort the estimate of the \"true detection capability\"."
+  },
+  {
+   "zh": "這就像評估一台新的煙霧偵測器：如果它幾乎不會因為做菜的油煙而誤報（無偽陽性），可以直接比較「真的失火時多快偵測到」；但若它常因油煙誤報（有偽陽性），就必須先扣除「誤報基準值」，才能公平比較兩款偵測器「真正偵測到火災」的能力。",
+   "en": "It is like evaluating a new smoke detector: if it almost never gives false alarms from cooking fumes (no false positives), you can directly compare \"how fast it detects a real fire\"; but if it often gives false alarms from fumes (false positives), you must first subtract the \"false-alarm baseline\" before you can fairly compare how well two detectors \"truly detect fires\"."
+  },
+  {
+   "zh": "這個分類方式決定了後續統計方法的選用——11.1.1 可直接沿用 gMPN（generalized Most Probable Number）比值方法；11.1.2 則需要額外納入 blank samples（空白樣本）的資料，才能扣除偽陽性對 spiked samples（添加樣本）陽性率的「遮蔽效應（masking effect）」。規劃驗證方案時，應先確認方法的偽陽性率是否顯著，再決定採用哪一套統計架構。",
+   "en": "This classification determines the choice of statistical method that follows: 11.1.1 can directly use the gMPN (generalized Most Probable Number) ratio method, whereas 11.1.2 additionally needs the data of blank samples in order to remove the \"masking effect\" of false positives on the positive rate of spiked samples. When planning a validation program, first confirm whether the false positive rate of the method is significant, and then decide which statistical framework to use."
+  },
+  {
+   "zh": "在規劃 AMM/RMM 方法適用性研究時，你會如何預先判斷該方法屬於「幾乎無偽陽性」還是「有相關偽陽性率」？需要哪些前置實驗數據？",
+   "en": "When planning a suitability study for an AMM/RMM, how would you decide in advance whether the method is one with \"practically no false positives\" or one with \"a relevant false positive rate\"? What preliminary experimental data are needed?"
+  },
+  {
+   "zh": "<strong>11.1.1 Limit of Detection when the Non-CFU Alternative/Rapid Microbiological Methods Does Not (or Hardly) Detects False Positives 非 CFU 替代/快速微生物學方法幾乎不偵測到偽陽性時之偵測極限</strong>",
+   "en": "<strong>11.1.1 Limit of Detection when the Non-CFU Alternative/Rapid Microbiological Methods Does Not (or Hardly) Detects False Positives</strong>"
+  },
+  {
+   "zh": "<strong>Superiority Analysis（優越性分析）:</strong> 與 Section 9.0/10.0 的非劣性檢定不同，本節示範用假設檢定 H<sub>1</sub>: p<sub>A</sub> &gt; p<sub>C</sub>（或 θ<sub>A</sub> &gt; θ<sub>C</sub>）來證明 AMM/RMM「確實優於」CMM，而非僅僅「不劣於」。判定標準是：比值（R<sub>pr</sub> 或 R<sub>gMPN</sub>）的<strong>下限（lower 95% CI）</strong>要高於 1。",
+   "en": "<strong>Superiority analysis:</strong> Unlike the non-inferiority tests of Section 9.0/10.0, this section demonstrates the use of the hypothesis H<sub>1</sub>: p<sub>A</sub> &gt; p<sub>C</sub> (or θ<sub>A</sub> &gt; θ<sub>C</sub>) to show that the AMM/RMM is \"truly better than\" CMM, rather than merely \"not worse than\". The criterion is that the <strong>lower limit (lower 95% CI)</strong> of the ratio (R<sub>pr</sub> or R<sub>gMPN</sub>) must be above 1."
+  },
+  {
+   "zh": "<strong>R<sub>pr</sub> vs R<sub>gMPN</sub> 的差異:</strong> R<sub>pr</sub> = p<sub>A</sub>/p<sub>C</sub> 直接比較觀察到的陽性率，較保守（本例下限僅 1.018，勉強超過 1）；R<sub>gMPN</sub> = θ<sub>A</sub>/θ<sub>C</sub> 則透過偵測比例（θ）模型估計，統計效率較高、信賴區間較穩健（本例下限 1.064）。兩者殊途同歸，皆支持優越性結論。",
+   "en": "<strong>Difference between R<sub>pr</sub> and R<sub>gMPN</sub>:</strong> R<sub>pr</sub> = p<sub>A</sub>/p<sub>C</sub> directly compares the observed positive rates and is more conservative (in this example the lower limit is only 1.018, barely above 1); R<sub>gMPN</sub> = θ<sub>A</sub>/θ<sub>C</sub> is estimated through the detection-proportion (θ) model, which is statistically more efficient and gives a more robust confidence interval (lower limit 1.064 in this example). The two routes lead to the same destination and both support the superiority conclusion."
+  },
+  {
+   "zh": "<strong>(1+q)(θ<sub>A</sub>/θ<sub>C</sub>) 的關鍵警示:</strong> 本節最重要的統計洞察在於：計算出的 R<sub>gMPN</sub> = 1.861 其實不是「純粹的偵測能力比值 θ<sub>A</sub>/θ<sub>C</sub>」，而是被 (1+q) 放大過的數字，q = λ<sub>NCFU</sub>/λ<sub>CFU</sub>。也就是說，AMM/RMM 表現優越，很可能是「贏在偵測不可培養菌」，而非「贏在偵測可培養菌本身」——後者（θ<sub>A</sub>/θ<sub>C</sub>）甚至可能 &lt; 1。",
+   "en": "<strong>Key warning on (1+q)(θ<sub>A</sub>/θ<sub>C</sub>):</strong> The most important statistical insight of this section is that the calculated R<sub>gMPN</sub> = 1.861 is not actually the \"pure ratio of detection capability θ<sub>A</sub>/θ<sub>C</sub>\" but a figure inflated by (1+q), where q = λ<sub>NCFU</sub>/λ<sub>CFU</sub>. In other words, the superior performance of the AMM/RMM probably comes from \"winning at detecting non-culturable organisms\" rather than \"winning at detecting culturable organisms themselves\" - the latter (θ<sub>A</sub>/θ<sub>C</sub>) may even be &lt; 1."
+  },
+  {
+   "zh": "想像兩位保全人員巡邏同一棟大樓：保全 A（AMM/RMM）配備熱感應鏡頭，能發現「所有活著、有體溫的人」，包括躲在陰暗角落靜止不動的人（不可培養微生物）；保全 B（CMM）只能靠「聽到腳步聲、看到明顯走動的人」才算數（可培養微生物）。保全 A 的「發現人數」自然比保全 B 多，但這不代表保全 A 在「發現正在走動的人」這件事上，一定比保全 B 厲害——他很可能只是「贏在發現靜止的人」而已。這正是 (1+q)(θ<sub>A</sub>/θ<sub>C</sub>) 想提醒讀者的陷阱：總體優越 ≠ 核心能力（θ<sub>A</sub>/θ<sub>C</sub>）優越。",
+   "en": "Imagine two security guards patrolling the same building: Guard A (AMM/RMM) is equipped with a thermal camera and can find \"everyone who is alive and warm\", including people hiding motionless in dark corners (non-culturable microorganisms); Guard B (CMM) only counts people he can \"hear footsteps from or see clearly moving\" (culturable microorganisms). Guard A naturally finds more people than Guard B, but that does not mean Guard A is necessarily better at \"finding people who are walking around\" - he may simply be \"winning at finding motionless people\". This is exactly the trap that (1+q)(θ<sub>A</sub>/θ<sub>C</sub>) warns about: overall superiority ≠ superiority in the core capability (θ<sub>A</sub>/θ<sub>C</sub>)."
+  },
+  {
+   "zh": "本例中，傳統的 Pearson chi-square（p=0.071）與 Fisher's exact test（p=0.145）在 0.05 顯著水準下<strong>都無法拒絕虛無假設</strong>——也就是說用最保守、最傳統的雙尾檢定，看不出兩方法有顯著差異。但改用「單尾優越性檢定」（R<sub>pr</sub>、R<sub>gMPN</sub> 的下限 CI）後，卻能證明優越性成立。這突顯了選對統計假設方向（雙尾 vs 單尾優越性）對驗證結論的決定性影響，稽核時應檢視驗證方案是否於實驗前就已預先指定正確的假設方向，避免事後選擇性套用檢定方法（p-hacking 疑慮）。",
+   "en": "In this example, neither the traditional Pearson chi-square test (p=0.071) nor Fisher's exact test (p=0.145) can <strong>reject the null hypothesis</strong> at the 0.05 significance level - that is, with the most conservative, traditional two-sided tests, no significant difference between the two methods can be seen. But when the \"one-sided superiority test\" (lower CI limits of R<sub>pr</sub> and R<sub>gMPN</sub>) is used instead, superiority can be demonstrated. This highlights the decisive influence of choosing the right direction of the statistical hypothesis (two-sided vs one-sided superiority) on the validation conclusion; during audits, check whether the validation protocol pre-specified the correct hypothesis direction before the experiments, to avoid selectively applying tests after the fact (a p-hacking concern)."
+  },
+  {
+   "zh": "原文提醒：q 值（非可培養與可培養菌比值）若反映「routine sampling（常規取樣）的自然比例」，則 AMM/RMM 的總體優越性仍具有實務意義——因為它確實比 CMM 多偵測到了對污染控制有意義的活菌訊號，即使這些訊號並非全部來自可培養菌。",
+   "en": "The source text reminds us that if the q value (ratio of non-culturable to culturable organisms) reflects the \"natural proportion in routine sampling\", the overall superiority of the AMM/RMM still has practical meaning, because it really does detect more viable-organism signals that matter for contamination control than CMM, even if not all of these signals come from culturable organisms."
+  },
+  {
+   "zh": "<strong>正確率比值（Positive Rate Ratio）：</strong>",
+   "en": "<strong>Positive Rate Ratio:</strong>"
+  },
+  {
+   "zh": "<strong>gMPN 偵測比例比值（Detection Proportion Ratio）：</strong>",
+   "en": "<strong>gMPN Detection Proportion Ratio:</strong>"
+  },
+  {
+   "zh": "R_gMPN = θ_A / θ_C = 1.861   (Lower 95% CL = 1.064)\n       實際上代表： R_gMPN = (1 + q) × (θ_A / θ_C_true)\n       q = λ_NCFU / λ_CFU",
+   "en": "R_gMPN = θ_A / θ_C = 1.861   (Lower 95% CL = 1.064)\n       In fact this represents: R_gMPN = (1 + q) × (θ_A / θ_C_true)\n       q = λ_NCFU / λ_CFU"
+  },
+  {
+   "zh": "<strong>p<sub>A</sub>, p<sub>C</sub></strong> = AMM/RMM、CMM 觀察到的陽性率",
+   "en": "<strong>p<sub>A</sub>, p<sub>C</sub></strong> = observed positive rates of the AMM/RMM and CMM"
+  },
+  {
+   "zh": "<strong>θ<sub>A</sub>, θ<sub>C</sub></strong> = AMM/RMM、CMM 的偵測比例（單一微生物存在時測得陽性的機率）",
+   "en": "<strong>θ<sub>A</sub>, θ<sub>C</sub></strong> = detection proportions of the AMM/RMM and CMM (probability of a positive result when a single microorganism is present)"
+  },
+  {
+   "zh": "<strong>q</strong> = λ<sub>NCFU</sub>/λ<sub>CFU</sub>，樣本中不可培養與可培養菌的平均密度比",
+   "en": "<strong>q</strong> = λ<sub>NCFU</sub>/λ<sub>CFU</sub>, the ratio of the mean densities of non-culturable to culturable organisms in the sample"
+  },
+  {
+   "zh": "<strong>判讀：</strong>兩比值的下限 CI 皆 &gt; 1 → 拒絕 H<sub>0</sub>: p<sub>A</sub>=p<sub>C</sub>（或 θ<sub>A</sub>=θ<sub>C</sub>），優越性成立。",
+   "en": "<strong>Interpretation:</strong> The lower CI limits of both ratios are &gt; 1 → reject H<sub>0</sub>: p<sub>A</sub>=p<sub>C</sub> (or θ<sub>A</sub>=θ<sub>C</sub>); superiority is established."
+  },
+  {
+   "zh": "為什麼傳統雙尾檢定（chi-square、Fisher's exact）在本例中無法顯示顯著差異，但單尾優越性檢定卻可以？這對驗證方案的假設設計有何啟示？",
+   "en": "Why can the traditional two-sided tests (chi-square, Fisher's exact) not show a significant difference in this example, while the one-sided superiority test can? What does this imply for the design of hypotheses in a validation program?"
+  },
+  {
+   "zh": "若 R<sub>gMPN</sub> 的下限 CI 高於 1，但你懷疑 q 值偏高（樣本中不可培養菌比例異常偏多），你會如何進一步驗證 AMM/RMM 在「純可培養菌」偵測能力上的表現？",
+   "en": "If the lower CI limit of R<sub>gMPN</sub> is above 1 but you suspect the q value is high (an unusually large proportion of non-culturable organisms in the sample), how would you further verify the performance of the AMM/RMM in detecting \"purely culturable organisms\"?"
+  },
+  {
+   "zh": "<strong>11.1.2 Limit of Detection When the Non-CFU Alternative/Rapid Microbiological Method Demonstrates a Relevant False Positive Rate 非 CFU 替代/快速微生物學方法出現具實質意義的偽陽性率時之偵測極限</strong>",
+   "en": "<strong>11.1.2 Limit of Detection When the Non-CFU Alternative/Rapid Microbiological Method Demonstrates a Relevant False Positive Rate</strong>"
+  },
+  {
+   "zh": "<strong>Masking Effect（遮蔽效應）:</strong> 若 AMM/RMM 對空白樣本也會產生偽陽性，直接拿 spiked samples（添加樣本）的陽性率去比較，會高估其真實偵測能力——因為偽陽性「墊高」了 spiked 樣本的陽性率。解法是同時蒐集 blank samples（空白樣本）與 spiked samples 的數據，用兩者共同回推真正的偵測比例 θ。",
+   "en": "<strong>Masking effect:</strong> If the AMM/RMM also gives false positives on blank samples, directly comparing the positive rate of spiked samples will overestimate its true detection capability, because the false positives \"pad\" the positive rate of the spiked samples. The solution is to collect data from both blank samples and spiked samples and use the two together to back-calculate the true detection proportion θ."
+  },
+  {
+   "zh": "<strong>擴展的 gMPN 統計模型:</strong> p<sub>A</sub> = 1 − (1 − η<sub>A</sub>)exp{−θ<sub>A</sub>λ} 是本節的核心模型——它把「偽陽性率 η<sub>A</sub>」與「偵測比例 θ<sub>A</sub>」拆開來估計。當樣本中無微生物（λ=0）時，p<sub>A</sub> 自動退化為 η<sub>A</sub>；當 η<sub>A</sub>=0（無偽陽性）時，模型退化回 Section 9.2.3 的標準 gMPN 模型——這正是 11.1.1 與 11.1.2 兩套方法的數學橋樑。",
+   "en": "<strong>Extended gMPN statistical model:</strong> p<sub>A</sub> = 1 − (1 − η<sub>A</sub>)exp{−θ<sub>A</sub>λ} is the core model of this section - it separates the estimation of the \"false positive rate η<sub>A</sub>\" from that of the \"detection proportion θ<sub>A</sub>\". When the sample contains no microorganisms (λ=0), p<sub>A</sub> automatically reduces to η<sub>A</sub>; when η<sub>A</sub>=0 (no false positives), the model reduces back to the standard gMPN model of Section 9.2.3 - this is the mathematical bridge between the two methods of 11.1.1 and 11.1.2."
+  },
+  {
+   "zh": "<strong>R<sub>M</sub> 與 LCL<sub>M</sub>:</strong> R<sub>M</sub> 是扣除偽陽性影響後的偵測比例比值；LCL<sub>M</sub> 則是其下限信賴區間，透過 ξ（估計量）與 τ²（變異數）計算而得，判定邏輯與 R<sub>gMPN</sub> 相同：下限 &gt; 1 → 優越；下限介於非劣性邊界（如 0.7）與 1 之間 → 僅能宣稱非劣性。",
+   "en": "<strong>R<sub>M</sub> and LCL<sub>M</sub>:</strong> R<sub>M</sub> is the ratio of detection proportions after removing the effect of false positives; LCL<sub>M</sub> is its lower confidence limit, calculated from ξ (the estimator) and τ² (the variance). The decision logic is the same as for R<sub>gMPN</sub>: lower limit &gt; 1 → superior; lower limit between the non-inferiority margin (e.g. 0.7) and 1 → only non-inferiority can be claimed."
+  },
+  {
+   "zh": "這就像評估一台空氣品質監測儀：它在完全乾淨的空氣中（blank）仍會顯示背景讀數 4/30（如 Table 11.1.2-1），代表儀器本身有雜訊。若直接拿它在「有污染源」時的讀數 28/30 去跟傳統儀器的 23/30 比較，會高估新儀器的真實靈敏度，因為新儀器的高讀數裡混有背景雜訊的貢獻。正確做法是先用乾淨空氣的讀數校準出「背景雜訊基準」，再從污染讀數中扣除，才能得出公平的靈敏度比較——這正是 R<sub>M</sub> 公式同時納入 p<sup>0</sup>（空白）與 p<sup>+</sup>（添加）的統計邏輯。",
+   "en": "This is like evaluating an air-quality monitor: even in completely clean air (blank) it still shows a background reading of 4/30 (as in Table 11.1.2-1), which means the instrument itself has noise. If its reading of 28/30 in the presence of a contamination source is compared directly with 23/30 for the conventional instrument, the true sensitivity of the new instrument is overestimated, because its high reading includes a contribution from background noise. The correct approach is to first calibrate a \"background-noise baseline\" from the clean-air reading and subtract it from the contaminated reading to obtain a fair sensitivity comparison - this is the statistical logic of why the R<sub>M</sub> formula includes both p<sup>0</sup> (blank) and p<sup>+</sup> (spiked)."
+  },
+  {
+   "zh": "本例最關鍵的結論轉折：扣除偽陽性影響後，R<sub>M</sub> 從 11.1.1 的 R<sub>gMPN</sub>=1.861 降為 1.763，且其下限 CI（LCL<sub>M</sub>=0.989）已<strong>低於 1</strong>——這代表「優越性」的結論不再成立！這是一個極具教育意義的對照：同一批添加樣本數據，若忽略偽陽性率直接套用 11.1.1 的 gMPN 方法，會得出「優越」的錯誤結論；但正確納入空白樣本數據後，僅能宣稱「非劣性」（在 0.7 或更高的邊界下）。",
+   "en": "The most critical turn in this example: after removing the effect of false positives, R<sub>M</sub> falls from R<sub>gMPN</sub>=1.861 in 11.1.1 to 1.763, and its lower CI limit (LCL<sub>M</sub>=0.989) is now <strong>below 1</strong> - the conclusion of \"superiority\" no longer holds! This is a highly instructive contrast: with the same spiked-sample data, ignoring the false positive rate and directly applying the gMPN method of 11.1.1 gives the wrong conclusion of \"superior\"; but once the blank-sample data are correctly included, only \"non-inferiority\" can be claimed (at a margin of 0.7 or higher)."
+  },
+  {
+   "zh": "原文特別提醒一個容易被誤解的推論陷阱：即使 LCL<sub>M</sub> 顯示非劣性（甚至優越性）成立，這仍<strong>不代表</strong> AMM/RMM 在偵測「純可培養菌 X<sub>CFU</sub>」上也非劣——因為樣本中可能含有大量 X<sub>NCFU</sub> 成分，使 AMM/RMM 在 CFU 部分實際上可能是劣於 CMM 的。這與 11.1.1 的 (1+q)(θ<sub>A</sub>/θ<sub>C</sub>) 警示一脈相承，凸顯了 non-CFU 方法驗證結論必須謹慎解讀的一致主題。",
+   "en": "The source text specifically cautions against an easily misunderstood inference: even if LCL<sub>M</sub> shows that non-inferiority (or even superiority) holds, this still <strong>does not mean</strong> that the AMM/RMM is also non-inferior in detecting \"purely culturable organisms X<sub>CFU</sub>\", because the sample may contain a large X<sub>NCFU</sub> component, so that on the CFU portion the AMM/RMM may in fact be inferior to CMM. This is consistent with the (1+q)(θ<sub>A</sub>/θ<sub>C</sub>) warning of 11.1.1 and underlines the recurring theme that conclusions of non-CFU method validation must be interpreted with care."
+  },
+  {
+   "zh": "<strong>擴展 gMPN 模型（納入偽陽性率）：</strong>",
+   "en": "<strong>Extended gMPN model (including the false positive rate):</strong>"
+  },
+  {
+   "zh": "<strong>偵測比例比值 R_M（扣除偽陽性影響）：</strong>",
+   "en": "<strong>Detection proportion ratio R_M (after removing the effect of false positives):</strong>"
+  },
+  {
+   "zh": "<strong>R_M 的下限 95% 信賴區間：</strong>",
+   "en": "<strong>Lower 95% confidence limit of R_M:</strong>"
+  },
+  {
+   "zh": "<strong>η<sub>A</sub>, η<sub>C</sub></strong> = AMM/RMM、CMM 的偽陽性率",
+   "en": "<strong>η<sub>A</sub>, η<sub>C</sub></strong> = false positive rates of the AMM/RMM and CMM"
+  },
+  {
+   "zh": "<strong>p<sup>0</sup>, p<sup>+</sup></strong> = 空白樣本、添加樣本之陽性率（上標 0/+ 區分，下標 A/C 區分方法）",
+   "en": "<strong>p<sup>0</sup>, p<sup>+</sup></strong> = positive rates of blank samples and spiked samples (the superscript 0/+ distinguishes the sample type, the subscript A/C distinguishes the method)"
+  },
+  {
+   "zh": "<strong>n<sup>0</sup>, n<sup>+</sup></strong> = 對應的空白、添加樣本數",
+   "en": "<strong>n<sup>0</sup>, n<sup>+</sup></strong> = corresponding numbers of blank and spiked samples"
+  },
+  {
+   "zh": "<strong>1.645</strong> = 標準常態分布對應單尾 95% 信心水準的臨界值",
+   "en": "<strong>1.645</strong> = critical value of the standard normal distribution for a one-sided 95% confidence level"
+  },
+  {
+   "zh": "<strong>判讀：</strong>LCL<sub>M</sub>=0.989 &lt; 1 → 優越性不成立；但若非劣性邊界設為 0.7，則 0.989 &gt; 0.7 → 非劣性成立。",
+   "en": "<strong>Interpretation:</strong> LCL<sub>M</sub>=0.989 &lt; 1 → superiority is not established; but if the non-inferiority margin is set at 0.7, then 0.989 &gt; 0.7 → non-inferiority is established."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "假設 Amaran 為客戶評估一款環境監測用的 non-CFU 快速方法，該方法在 30 個空白樣本中出現 4 次偽陽性（背景訊號）。若品保單位只看「添加樣本」的陽性率（28/30 vs 23/30）就直接宣稱優越性，會犯下本節警示的錯誤。正確做法應同時執行空白與添加樣本測試，套用 R<sub>M</sub> 與 LCL<sub>M</sub> 公式，才能得出經得起稽核檢視的結論——本例最終結論應調整為「非劣性（margin 0.7）」而非「優越性」，並在驗證報告中明確記錄此一統計調整的理由。",
+   "en": "Suppose Amaran evaluates a non-CFU rapid method for environmental monitoring on behalf of a client, and the method gives 4 false positives (background signal) in 30 blank samples. If QA looked only at the positive rate of the \"spiked samples\" (28/30 vs 23/30) and directly claimed superiority, it would make exactly the error warned about in this section. The correct approach is to run both blank and spiked sample tests and apply the R<sub>M</sub> and LCL<sub>M</sub> formulas to reach a conclusion that withstands audit scrutiny - in this example the final conclusion should be adjusted to \"non-inferiority (margin 0.7)\" rather than \"superiority\", and the reason for this statistical adjustment should be clearly documented in the validation report."
+  },
+  {
+   "zh": "為什麼直接比較「添加樣本的陽性率」而忽略「空白樣本的偽陽性率」，會導致對 AMM/RMM 偵測能力的高估？",
+   "en": "Why does directly comparing the \"positive rate of spiked samples\" while ignoring the \"false positive rate of blank samples\" lead to an overestimate of the detection capability of the AMM/RMM?"
+  },
+  {
+   "zh": "本例中 R<sub>gMPN</sub>（忽略偽陽性，1.861）與 R<sub>M</sub>（納入偽陽性，1.763）的差異看似不大，但對最終「優越 vs 非劣」的結論卻造成關鍵翻轉。這對你設計驗證方案的統計把關流程有何啟示？",
+   "en": "In this example, R<sub>gMPN</sub> (ignoring false positives, 1.861) and R<sub>M</sub> (including false positives, 1.763) do not look very different, yet they cause a critical flip in the final \"superior vs non-inferior\" conclusion. What does this imply for the statistical review process you set up for validation programs?"
+  },
+  {
+   "zh": "若貴公司的 SOP 要求所有 AMM/RMM 驗證都必須申報偽陽性率數據，你認為這對供應商選型與客戶溝通會帶來什麼樣的影響？",
+   "en": "If your company's SOP requires false positive rate data to be reported for all AMM/RMM validations, what impact do you think this will have on supplier selection and client communication?"
+  },
+  {
+   "zh": "<strong>11.1.3 Discussion on Fit for Purpose 適用性目的之討論</strong>",
+   "en": "<strong>11.1.3 Discussion on Fit for Purpose</strong>"
+  },
+  {
+   "zh": "<strong>四種陽性情境與 Decision Equivalence（決策等效性）:</strong> 原文將 AMM/RMM 呈陽性時的樣本組成拆成四種情境：①純 X<sub>CFU</sub>（CMM 通常也會確認 → 決策等效）、②純 X<sub>NCFU</sub>（CMM 通常不會確認 → 決策不等效，但 AMM/RMM 才是對的）、③X<sub>CFU</sub>+X<sub>NCFU</sub>且 X<sub>CFU</sub> 低於 LOD（CMM 不會確認 → 決策不等效，AMM/RMM 仍是對的）、④偽陽性、實際上無活菌（CMM 不會確認 → 決策不等效，且這次是 AMM/RMM 錯了）。前三種情境中 AMM/RMM 的判斷都是正確的，唯獨第四種情境的「不等效」才是真正需要警惕的偽陽性風險。",
+   "en": "<strong>Four positive scenarios and decision equivalence:</strong> The source text divides the composition of a sample that is positive by AMM/RMM into four scenarios: (1) pure X<sub>CFU</sub> (CMM would usually also confirm → decision equivalent); (2) pure X<sub>NCFU</sub> (CMM would usually not confirm → decision not equivalent, but the AMM/RMM is the one that is right); (3) X<sub>CFU</sub>+X<sub>NCFU</sub> with X<sub>CFU</sub> below the LOD (CMM would not confirm → decision not equivalent, the AMM/RMM is still right); (4) a false positive with no viable organisms actually present (CMM would not confirm → decision not equivalent, and this time the AMM/RMM is wrong). In the first three scenarios the AMM/RMM judgment is correct; only the \"non-equivalence\" in the fourth scenario is a real false positive risk that deserves vigilance."
+  },
+  {
+   "zh": "<strong>P<sub>AGREE</sub>（一致性機率）:</strong> 定義為「AMM/RMM 與 CMM 對同一組樣本做出相同放行/拒收決策」的期望機率。這是評估 non-CFU 方法是否 fit-for-purpose（適用於既定目的）的核心量化指標，而非僅看單一方法的靈敏度。",
+   "en": "<strong>P<sub>AGREE</sub> (probability of agreement):</strong> Defined as the expected probability that the AMM/RMM and CMM reach the same release/reject decision on the same set of samples. This is the core quantitative indicator for assessing whether a non-CFU method is fit for purpose (suitable for its intended use), rather than looking only at the sensitivity of a single method."
+  },
+  {
+   "zh": "<strong>三種情境的一致性公式:</strong> 原文依樣本組成分別導出三條 P<sub>AGREE</sub> 公式——(a) 空白樣本（無菌）、(b) 純 X<sub>NCFU</sub> 樣本、(c) X<sub>CFU</sub>+X<sub>NCFU</sub> 混合樣本；並在假設 Poisson 分布且兩成分獨立進入樣本的前提下，整合成一條可依 λ<sub>CFU</sub> 連續變化的一般化 P<sub>AGREE</sub> 公式，用於繪製 Figure 11.1.3-1。",
+   "en": "<strong>Agreement formulas for three scenarios:</strong> Depending on the sample composition, the source text derives three P<sub>AGREE</sub> formulas - (a) blank (sterile) samples, (b) pure X<sub>NCFU</sub> samples, (c) mixed X<sub>CFU</sub>+X<sub>NCFU</sub> samples; and, assuming a Poisson distribution and independent entry of the two components into the sample, integrates them into one generalized P<sub>AGREE</sub> formula that varies continuously with λ<sub>CFU</sub>, which is used to draw Figure 11.1.3-1."
+  },
+  {
+   "zh": "把 AMM/RMM 與 CMM 想像成兩位醫生，用不同儀器為同一批病人做診斷：醫生 A（AMM/RMM）用的新型影像儀器極為敏感，能發現連傳統聽診器（CMM）都聽不到的早期病灶（X<sub>NCFU</sub>）。當病灶明顯（重度污染）或完全沒有病灶（乾淨樣本）時，兩位醫生的診斷幾乎總是一致；但當病灶處於「剛好在傳統儀器偵測極限附近」的臨界地帶（0.5–3 CFU/sample），醫生 A 可能已經判定「陽性」，醫生 B 卻依然判定「陰性」——這正是兩人最容易產生「放行 vs 拒收」分歧決策的危險地帶，也是 Figure 11.1.3-1 U 形曲線谷底的意義。",
+   "en": "Think of the AMM/RMM and CMM as two doctors using different instruments to diagnose the same group of patients: Doctor A (AMM/RMM) uses a new imaging instrument of extreme sensitivity that can find early-stage lesions (X<sub>NCFU</sub>) that even a conventional stethoscope (CMM) cannot hear. When the lesion is obvious (heavy contamination) or absent altogether (clean sample), the two doctors almost always agree; but when the lesion is in the borderline zone \"just around the detection limit of the conventional instrument\" (0.5–3 CFU/sample), Doctor A may already call it \"positive\" while Doctor B still calls it \"negative\" - this is the danger zone where the two are most likely to reach divergent \"release vs reject\" decisions, and it is the meaning of the trough of the U-shaped curve in Figure 11.1.3-1."
+  },
+  {
+   "zh": "原文引用「80% 為 inter-rater agreement（評分者間一致性）與問卷信度的公認強一致性門檻」——本例空白樣本的 P<sub>AGREE</sub>=86.7%，符合此標準，代表兩方法在無菌樣本上的決策等效性良好。但這個 80% 門檻並非在所有污染程度下都能維持，Figure 11.1.3-1 顯示在 λ<sub>CFU</sub> 介於 0.5–3 CFU/sample 的中間地帶，一致性可能大幅低於 80%（甚至低至 70% 左右）。",
+   "en": "The source text cites \"80% as the accepted threshold of strong agreement for inter-rater agreement and questionnaire reliability\". In this example the P<sub>AGREE</sub> for blank samples is 86.7%, which meets this standard, indicating good decision equivalence of the two methods on sterile samples. But this 80% threshold is not maintained at all contamination levels: Figure 11.1.3-1 shows that in the intermediate zone of λ<sub>CFU</sub> between 0.5 and 3 CFU/sample, agreement may fall well below 80% (even to around 70%)."
+  },
+  {
+   "zh": "最重要的 GMP 決策啟示：non-CFU AMM/RMM 的「優越性」若源自偵測 X<sub>NCFU</sub>（第②③種情境），雖然科學上 AMM/RMM 是對的，但實務上會與既有的、以 CFU 為基礎建立的驗收標準（acceptance criteria）產生決策分歧——這代表導入 non-CFU 方法前，必須重新檢視放行標準是否需要調整，而非直接沿用 CFU-based 的歷史門檻，否則會頻繁出現「AMM/RMM 判陽性、但依 CMM 標準不會拒收」的爭議情境。",
+   "en": "The most important GMP implication for decisions: if the \"superiority\" of a non-CFU AMM/RMM comes from detecting X<sub>NCFU</sub> (scenarios 2 and 3), then although the AMM/RMM is scientifically right, in practice it will produce decision divergence from existing acceptance criteria that were established on a CFU basis. This means that, before introducing a non-CFU method, you must re-examine whether the release criteria need to be adjusted rather than directly carrying over historical CFU-based thresholds; otherwise disputed situations will arise frequently in which \"the AMM/RMM calls a positive, but under the CMM standard no rejection would occur\"."
+  },
+  {
+   "zh": "<strong>(a) 空白樣本一致性：</strong>",
+   "en": "<strong>(a) Agreement for blank samples:</strong>"
+  },
+  {
+   "zh": "P_AGREE = p_A^0 · p_C^0 + (1 − p_A^0)(1 − p_C^0) = 86.7%   (Table 11.1.2-1 數據)",
+   "en": "P_AGREE = p_A^0 · p_C^0 + (1 − p_A^0)(1 − p_C^0) = 86.7%   (data of Table 11.1.2-1)"
+  },
+  {
+   "zh": "<strong>(b) 純 X_NCFU 樣本一致性：</strong>",
+   "en": "<strong>(b) Agreement for pure X_NCFU samples:</strong>"
+  },
+  {
+   "zh": "P_AGREE = π_A(X_NCFU) · p_C^0 + [1 − π_A(X_NCFU)][1 − p_C^0]\n        → 當 X_NCFU 夠大時，P_AGREE → p_C^0（一致性趨近 CMM 偽陽性率，代表嚴重不一致）",
+   "en": "P_AGREE = π_A(X_NCFU) · p_C^0 + [1 − π_A(X_NCFU)][1 − p_C^0]\n        → when X_NCFU is large enough, P_AGREE → p_C^0 (agreement approaches the false positive rate of CMM, indicating serious disagreement)"
+  },
+  {
+   "zh": "<strong>(c) X_CFU + X_NCFU 混合樣本一致性：</strong>",
+   "en": "<strong>(c) Agreement for mixed X_CFU + X_NCFU samples:</strong>"
+  },
+  {
+   "zh": "P_AGREE = π_A(X_NCFU+X_CFU) · π_C(X_CFU) + [1 − π_A(X_NCFU+X_CFU)][1 − π_C(X_CFU)]\n        → X_CFU 高於 CMM 的 LOD 時，P_AGREE ≥ 90%；X_CFU 遠低於 LOD 時，P_AGREE → 0",
+   "en": "P_AGREE = π_A(X_NCFU+X_CFU) · π_C(X_CFU) + [1 − π_A(X_NCFU+X_CFU)][1 − π_C(X_CFU)]\n        → when X_CFU is above the LOD of CMM, P_AGREE ≥ 90%; when X_CFU is far below the LOD, P_AGREE → 0"
+  },
+  {
+   "zh": "<strong>(d) 假設 Poisson 分布且獨立進入樣本之一般化公式（用於繪製 Figure 11.1.3-1）：</strong>",
+   "en": "<strong>(d) Generalized formula assuming a Poisson distribution and independent entry into the sample (used to draw Figure 11.1.3-1):</strong>"
+  },
+  {
+   "zh": "<strong>λ<sub>CFU</sub></strong> = 樣本中可培養活菌的平均數（X 軸變數）",
+   "en": "<strong>λ<sub>CFU</sub></strong> = mean number of culturable viable organisms in the sample (X-axis variable)"
+  },
+  {
+   "zh": "<strong>λ<sub>M</sub></strong> = λ<sub>CFU</sub> + λ<sub>NCFU</sub>，樣本中存活菌總平均數",
+   "en": "<strong>λ<sub>M</sub></strong> = λ<sub>CFU</sub> + λ<sub>NCFU</sub>, the mean total number of viable organisms in the sample"
+  },
+  {
+   "zh": "<strong>θ<sub>A</sub>, θ<sub>C</sub></strong> = AMM/RMM、CMM 的偵測比例（與 LOD 直接相關）",
+   "en": "<strong>θ<sub>A</sub>, θ<sub>C</sub></strong> = detection proportions of the AMM/RMM and CMM (directly related to the LOD)"
+  },
+  {
+   "zh": "<strong>p<sub>A</sub><sup>0</sup>, p<sub>C</sub><sup>0</sup></strong> = AMM/RMM、CMM 的偽陽性率",
+   "en": "<strong>p<sub>A</sub><sup>0</sup>, p<sub>C</sub><sup>0</sup></strong> = false positive rates of the AMM/RMM and CMM"
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 11.1.3-1 以 λ<sub>CFU</sub>（X 軸，可培養活菌平均數，對數尺度 0–10）對 Agreement %（Y 軸，65%–100%）繪出四條曲線。四條線分別代表不同的 θ<sub>A</sub>/θ<sub>C</sub>（偵測比例，與 LOD 相關）及 q=λ<sub>NCFU</sub>/λ<sub>CFU</sub> 組合：綠線（θ=0.8、q 較低）與藍線（θ=0.8、q 較高，λ<sub>M</sub>=1.25λ<sub>CFU</sub>）代表高偵測比例（LOD 較佳）的方法；紅線與黑線則代表 θ<sub>C</sub>=0.5、θ<sub>A</sub>=0.625（LOD 較差）的方法，其中黑線的 q 值又高於紅線。",
+   "en": "Figure 11.1.3-1 plots Agreement % (Y-axis, 65%–100%) against λ<sub>CFU</sub> (X-axis, mean number of culturable viable organisms, log scale 0–10) as four curves. The four lines represent different combinations of θ<sub>A</sub>/θ<sub>C</sub> (detection proportion, related to LOD) and q=λ<sub>NCFU</sub>/λ<sub>CFU</sub>: the green line (θ=0.8, lower q) and the blue line (θ=0.8, higher q, λ<sub>M</sub>=1.25λ<sub>CFU</sub>) represent methods with a high detection proportion (better LOD); the red and black lines represent methods with θ<sub>C</sub>=0.5 and θ<sub>A</sub>=0.625 (poorer LOD), with the q value of the black line higher than that of the red line."
+  },
+  {
+   "zh": "四條曲線皆呈現「U 形」——在極低污染（&lt;0.5 CFU/sample）與極高污染（&gt;3 CFU/sample）時一致性都很高（&gt;90%甚至接近 99%），但在中間地帶（λ<sub>CFU</sub>≈0.5–2，谷底約在 1 附近）一致性會降到最低點：綠/藍線谷底約 77–83%，紅/黑線谷底更低至 70–73%。這代表 LOD 較差的方法（紅、黑線）與 q 值較高的方法（藍、黑線）在中間污染地帶的決策分歧風險更高。對實務操作而言，最重要的意涵是：<strong>污染程度落在方法 LOD 附近時，正是 AMM/RMM 與 CMM 最容易做出不同放行/拒收決策的高風險區間</strong>，應在方法導入評估與變更管理（change control）中特別著墨。",
+   "en": "All four curves are \"U-shaped\": at very low contamination (&lt;0.5 CFU/sample) and very high contamination (&gt;3 CFU/sample) agreement is high (&gt;90%, even close to 99%), but in the intermediate zone (λ<sub>CFU</sub>≈0.5–2, with the trough around 1) agreement falls to its lowest point: about 77–83% at the trough for the green/blue lines and as low as 70–73% for the red/black lines. This means that methods with a poorer LOD (red and black lines) and methods with a higher q value (blue and black lines) carry a higher risk of decision divergence in the intermediate contamination zone. In practical operation, the most important implication is that <strong>when the contamination level falls near the LOD of the method, this is the high-risk range in which the AMM/RMM and CMM are most likely to make different release/reject decisions</strong>, and this should be given particular attention in method implementation assessments and change control."
+  },
+  {
+   "zh": "假設 Amaran 正評估以 non-CFU AMM/RMM 取代環境監測（EM）現行的 CMM 平板法。若歷史數據顯示廠區潔淨室的典型汙染水準恰好落在 0.5–3 CFU/sample 這個「一致性低谷」區間，直接沿用 CMM 的歷史 OOS（out-of-specification）門檻可能導致 AMM/RMM 頻繁觸發「陽性」而 CMM 從未確認的爭議事件。建議做法：導入前先用 Figure 11.1.3-1 的方法論，針對廠區實際 q 值與兩方法的 θ 值繪製自身的一致性曲線，並與 QA、客戶事先溝通「決策不等效」的預期發生率與處理原則（如觸發調查而非直接判定 OOS），避免導入後才發現決策標準需要重新協商。",
+   "en": "Suppose Amaran is evaluating the replacement of the current CMM plate method for environmental monitoring (EM) with a non-CFU AMM/RMM. If historical data show that the typical contamination level of the site's cleanrooms falls exactly in the 0.5–3 CFU/sample \"agreement trough\", directly carrying over the historical CMM OOS (out-of-specification) thresholds could lead to disputed events in which the AMM/RMM frequently triggers a \"positive\" that CMM never confirms. Recommended approach: before implementation, use the methodology of Figure 11.1.3-1 to draw your own agreement curve using the site's actual q value and the θ values of the two methods, and agree in advance with QA and the client on the expected frequency of \"decision non-equivalence\" and the handling principle (for example, trigger an investigation rather than declaring an OOS outright), so that the decision criteria do not have to be renegotiated after implementation."
+  },
+  {
+   "zh": "四種陽性情境中，哪一種最可能真正代表「AMM/RMM 誤判」而非「CMM 太不敏感」？為什麼第②、③種情境即使決策不等效，仍應視為 AMM/RMM 判斷正確？",
+   "en": "Of the four positive scenarios, which one most likely represents a true \"AMM/RMM misjudgment\" rather than \"CMM being insufficiently sensitive\"? Why should scenarios 2 and 3 still be regarded as the AMM/RMM being correct even though the decisions are not equivalent?"
+  },
+  {
+   "zh": "若貴廠潔淨室的典型背景汙染水準經評估落在 Figure 11.1.3-1 的「一致性低谷」區間，你會如何調整導入 AMM/RMM 後的偏差調查（deviation investigation）流程，以因應決策分歧風險升高的事實？",
+   "en": "If the typical background contamination level of your facility's cleanrooms is assessed to fall in the \"agreement trough\" of Figure 11.1.3-1, how would you adjust the deviation investigation process after implementing the AMM/RMM to deal with the increased risk of decision divergence?"
+  },
+  {
+   "zh": "80% 被視為強一致性的門檻，但這是借用自問卷信度與評分者一致性領域的慣例。你認為在無菌保證這種「零風險容忍」的 GMP 情境下，80% 是否足夠嚴格？該如何與客戶協商更適當的一致性驗收標準？",
+   "en": "80% is regarded as the threshold of strong agreement, but this is a convention borrowed from the fields of questionnaire reliability and inter-rater agreement. Do you think 80% is strict enough in a GMP context of \"zero risk tolerance\" such as sterility assurance? How would you negotiate a more appropriate agreement acceptance criterion with clients?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Non-CFU AMM/RMM 偵測的是「存活」而非「可培養」——總存活菌數可拆解為 X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub>，理論上比 CMM 更敏感，但也因此不適合用非劣性檢定，應改用優越性檢定架構",
+   "en": "Non-CFU AMM/RMM detect \"viability\" rather than \"culturability\" - the total number of viable organisms can be decomposed as X<sub>M</sub> = X<sub>CFU</sub> + X<sub>NCFU</sub>, so they are theoretically more sensitive than CMM, but for the same reason a non-inferiority test is not appropriate and a superiority test framework should be used instead"
+  },
+  {
+   "zh": "Table 11.0-1 建立的符號系統（X、π(X)、p、θ、η、q、R、P<sub>AGREE</sub> 等）貫穿本節所有公式，是理解後續統計方法的基礎",
+   "en": "The symbol system established in Table 11.0-1 (X, π(X), p, θ, η, q, R, P<sub>AGREE</sub>, etc.) runs through all formulas in this section and is the foundation for understanding the statistical methods that follow"
+  },
+  {
+   "zh": "11.1.1 示範「幾乎無偽陽性」情境下的優越性檢定：R<sub>pr</sub>、R<sub>gMPN</sub> 下限 CI 皆 &gt; 1，但須留意 R<sub>gMPN</sub> 實際代表 (1+q)(θ<sub>A</sub>/θ<sub>C</sub>)，優越性可能只是贏在偵測不可培養菌",
+   "en": "11.1.1 demonstrates the superiority test for the \"practically no false positives\" scenario: the lower CI limits of R<sub>pr</sub> and R<sub>gMPN</sub> are both &gt; 1, but note that R<sub>gMPN</sub> actually represents (1+q)(θ<sub>A</sub>/θ<sub>C</sub>), so the superiority may simply be a win in detecting non-culturable organisms"
+  },
+  {
+   "zh": "11.1.2 示範「有相關偽陽性率」情境：須同時納入空白與添加樣本數據計算 R<sub>M</sub>，本例扣除偽陽性後 LCL<sub>M</sub>=0.989 &lt; 1，優越性結論由「優越」翻轉為「僅非劣性」",
+   "en": "11.1.2 demonstrates the scenario \"with a relevant false positive rate\": data from both blank and spiked samples must be included to calculate R<sub>M</sub>; in this example, after removing false positives, LCL<sub>M</sub>=0.989 &lt; 1, and the conclusion flips from \"superior\" to \"non-inferior only\""
+  },
+  {
+   "zh": "11.1.3 提出四種陽性情境與 decision equivalence（決策等效性）框架，並以 P<sub>AGREE</sub> 一致性機率量化——Figure 11.1.3-1 顯示中等污染程度（0.5–3 CFU/sample）是兩方法決策分歧風險最高的區間",
+   "en": "11.1.3 presents the four positive scenarios and the decision equivalence framework, quantified by the probability of agreement P<sub>AGREE</sub> - Figure 11.1.3-1 shows that moderate contamination levels (0.5–3 CFU/sample) are the range with the highest risk of decision divergence between the two methods"
+  },
+  {
+   "zh": "導入 non-CFU AMM/RMM 前，應評估其優越性是否伴隨決策等效性下降，並考慮是否需要重新協商以 CFU 為基礎的既有驗收標準",
+   "en": "Before introducing a non-CFU AMM/RMM, assess whether its superiority comes with a loss of decision equivalence, and consider whether the existing CFU-based acceptance criteria need to be renegotiated"
+  }
+ ]
+}

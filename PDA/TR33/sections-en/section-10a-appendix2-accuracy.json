@@ -1,0 +1,389 @@
+{
+ "source": "section-10a-appendix2-accuracy.html",
+ "blocks": [
+  {
+   "zh": "附錄二：替代/快速微生物方法之驗證統計分析（定量方法）— 準確度",
+   "en": "Appendix 2: Validation of Alternative/Rapid Microbiological Methods: Statistical Analysis (Quantitative Methods) - Accuracy"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Section 10.0 附錄二的定位：以範例數據示範定量 AMM/RMM 驗證統計分析的實作方法，並掌握 Table 10.0-1 符號表對閱讀後續所有公式的重要性",
+   "en": "Understand the role of Section 10.0 (Appendix 2): it uses example data to show how to perform the statistical analysis for validating quantitative AMM/RMM, and appreciate why the symbol table (Table 10.0-1) is essential for reading every formula that follows"
+  },
+  {
+   "zh": "掌握 Accuracy（準確度）驗證的三大分析假設架構：添加濃度是否精確已知、計數分布假設（Poisson vs. 常態）、以及是否採用迴歸模型同時分析多濃度數據",
+   "en": "Master the three assumptions that frame an accuracy validation: whether the spiked concentration is known precisely, the count distribution assumed (Poisson vs. normal), and whether a regression model is used to analyze data from several concentrations together"
+  },
+  {
+   "zh": "能夠實際操作常態分布法（對數轉換回收率）與 Poisson 分布法兩種計算 Non-Inferiority（不劣性）下限（LCL）的公式，並解讀 Table 10.1.1.1-1 與 Table 10.1.1.2-1 的分析結果",
+   "en": "Be able to apply both formulas for the non-inferiority lower confidence limit (LCL), the normal distribution approach (log-transformed recovery) and the Poisson distribution approach, and interpret the results in Table 10.1.1.1-1 and Table 10.1.1.2-1"
+  },
+  {
+   "zh": "理解 Lack-of-Fit（適合度）分析如何用 AICC、偏異數檢定（deviance test）與 Pearson 適合度檢定判斷 Poisson 假設是否成立，並具備樣本數規劃（Table 10.1.1.4-1）與 CMM／AMM-RMM 相互比較（Table 10.1.2-1、10.1.3-1、10.1.3-2）的實務判讀能力",
+   "en": "Understand how lack-of-fit analysis uses AICC, the deviance test and the Pearson goodness-of-fit test to judge whether the Poisson assumption holds, and be able to apply sample size planning (Table 10.1.1.4-1) and the CMM vs. AMM/RMM comparisons (Table 10.1.2-1, 10.1.3-1, 10.1.3-2) in practice"
+  },
+  {
+   "zh": "<strong>10.0 Appendix 2: Validation of Alternative and Rapid Microbiological Methods: Statistical Analysis—Quantitative Methods 附錄二：替代/快速微生物方法之驗證：統計分析—定量方法</strong>",
+   "en": "<strong>10.0 Appendix 2: Validation of Alternative and Rapid Microbiological Methods: Statistical Analysis—Quantitative Methods</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Appendix 2（附錄二）的定位:</strong> 這不是新的規範要求，而是 TR33 正文統計方法的「使用手冊＋計算範例」。附錄一（Section 9.0）處理定性方法（陽性/陰性、LOD），附錄二（Section 10.0）處理定量方法（CFU 計數）的準確度、精密度、線性等統計驗證；附錄三（Section 11.0）則專門處理非 CFU 訊號（如螢光強度、RLU）的特殊考量。三者互補，共同支撐正文第 5-8 節的驗證要求。",
+   "en": "<strong>Role of Appendix 2:</strong> This is not a new regulatory requirement. It is a \"user manual plus worked examples\" for the statistical methods in the main body of TR33. Appendix 1 (Section 9.0) covers qualitative methods (positive/negative, LOD); Appendix 2 (Section 10.0) covers the statistical validation of quantitative methods (CFU counts) for accuracy, precision, linearity and so on; Appendix 3 (Section 11.0) deals specifically with non-CFU signals (such as fluorescence intensity or RLU). The three complement one another and together support the validation requirements in Sections 5-8 of the main text."
+  },
+  {
+   "zh": "<strong>符號表 (Table 10.0-1) 的重要性:</strong> 本節後續每一條公式都會用到這裡定義的符號（θ 準確度、λ 添加濃度、n 樣本數、ȳ 平均計數等），建議先掃過一次符號表，之後遇到公式時可隨時回頭查閱，而不需要每次重新理解符號意義。",
+   "en": "<strong>Why the symbol table (Table 10.0-1) matters:</strong> Every formula that follows in this section uses the symbols defined there (θ for accuracy, λ for spiked concentration, n for sample size, ȳ for mean count, and so on). Scan the table once first; when you meet a formula you can then refer back to it at any time instead of working out the meaning of each symbol again."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "Table 10.0-1 就像一本工具書的「圖例說明」：地圖上如果沒有圖例，你看不懂等高線、河流、國界分別是什麼線條；同樣地，統計公式如果沒有先弄懂 θ、λ、n、ȳ 各代表什麼，看到公式只會覺得是一堆希臘字母，完全無法對應到實驗數據。花五分鐘熟悉符號表，可以讓後面每一條公式的理解時間縮短一半以上。",
+   "en": "Table 10.0-1 works like the legend of a map: without it you cannot tell which line is a contour, a river or a national border. In the same way, if you have not worked out what θ, λ, n and ȳ stand for, a formula looks like a pile of Greek letters that cannot be linked to the experimental data. Five minutes spent getting familiar with the symbol table can cut the time needed to understand each later formula by more than half."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "本節特別提醒：所有範例數據雖為人工虛構（artificial），但均「based on real validation experiments」，代表這些公式與結論具有實務參考價值，而非單純的教科書練習。同時，TR33 明確聲明「stakeholder is responsible for selecting the most appropriate statistical analyses」— 也就是說，本附錄提供的是「可接受的」方法選項，並非唯一解，CDMO 在建立 AMM/RMM 驗證方案時，仍須依據自身數據特性（如是否符合 Poisson 分布、樣本數多寡）做出合理判斷與文件化理由。",
+   "en": "This section stresses that although all example data are artificial, they are \"based on real validation experiments\", so the formulas and conclusions have practical reference value and are not merely textbook exercises. TR33 also states explicitly that the \"stakeholder is responsible for selecting the most appropriate statistical analyses\". In other words, this appendix offers \"acceptable\" method options, not the only solution. When a CDMO builds an AMM/RMM validation protocol, it must still make reasonable decisions, and document the rationale, based on the characteristics of its own data (for example, whether they fit a Poisson distribution, and how many samples there are)."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "如果你的 QC 團隊要導入一套新的 AMM/RMM 定量方法，為什麼在開始統計分析前，先確認「添加濃度是否精確已知」與「計數是否符合 Poisson 分布」這兩個假設很重要？",
+   "en": "If your QC team is going to introduce a new quantitative AMM/RMM, why is it important to confirm, before starting the statistical analysis, that \"the spiked concentration is precisely known\" and that \"the counts follow a Poisson distribution\"?"
+  },
+  {
+   "zh": "Table 10.0-1 中 θ<sub>A</sub> 與 θ<sub>C</sub> 分別代表什麼？如果你只有 AMM/RMM 對添加濃度的準確度數據，卻沒有 CMM 的對照數據，還能做出完整的準確度結論嗎？",
+   "en": "What do θ<sub>A</sub> and θ<sub>C</sub> in Table 10.0-1 stand for? If you only have accuracy data for the AMM/RMM against the spiked concentration and no CMM comparison data, can you still reach a complete conclusion on accuracy?"
+  },
+  {
+   "zh": "<strong>10.1 Accuracy of Quantitative Microbiological Methods 定量微生物方法的準確度</strong>",
+   "en": "<strong>10.1 Accuracy of Quantitative Microbiological Methods</strong>"
+  },
+  {
+   "zh": "<strong>Recovery（回收率）:</strong> 觀察到的計數除以添加（spiked）濃度。理想結果是 100%，代表方法完全「量到」實際存在的微生物數量。",
+   "en": "<strong>Recovery:</strong> The observed count divided by the spiked concentration. The ideal result is 100%, meaning the method \"measures\" exactly the number of microorganisms actually present."
+  },
+  {
+   "zh": "<strong>三大分析假設架構:</strong> (1) 添加濃度是否精確已知 — 決定要用「對添加濃度」或「兩方法互比」；(2) 計數分布是否符合 Poisson — 決定要用 Poisson 分布法或常態分布法（log 轉換）；(3) 是否要同時對多濃度建立迴歸模型 — 決定是否需要做 Linearity（線性）分析（見 Section 10.2）。這三個假設彼此獨立、可個別判斷，是本節後續所有小節的決策骨架。",
+   "en": "<strong>The three assumptions that frame the analysis:</strong> (1) Is the spiked concentration precisely known? This decides whether to compare against the spiked concentration or to compare the two methods with each other. (2) Do the counts follow a Poisson distribution? This decides between the Poisson approach and the normal approach (log transformation). (3) Will a regression model be fitted across several concentrations at once? This decides whether a linearity analysis is needed (see Section 10.2). The three assumptions are independent of each other and can be judged one by one; together they form the decision framework for every subsection that follows."
+  },
+  {
+   "zh": "可以把「Poisson 分布 vs. 常態分布」的選擇想像成量測稀薄溶液中的顆粒數 vs. 量測濃稠溶液中的顆粒數：顆粒稀疏時（低濃度，如 5-10 CFU），顆粒之間的隨機分布會造成明顯的「右偏態」— 大部分樣本顆粒數少，但偶爾會冒出一個特別多的樣本，就像抽獎箱裡球很少時中獎機率的分布很不對稱；顆粒濃密時（高濃度，如 250 CFU），大數法則讓分布趨近對稱的鐘形曲線，此時常態分布的假設更站得住腳。",
+   "en": "Think of the choice between the Poisson and the normal distribution as counting particles in a thin solution versus a thick one. When particles are sparse (low concentration, such as 5-10 CFU), their random scatter produces a clearly right-skewed distribution: most samples contain few particles, but now and then one contains a lot, much like the very lopsided odds of a prize draw when the box holds only a few balls. When particles are dense (high concentration, such as 250 CFU), the law of large numbers pulls the distribution toward a symmetrical bell curve, and the normal assumption becomes much more defensible."
+  },
+  {
+   "zh": "Overdispersion（過度離散）是本節反覆強調的風險：Poisson 分布要求「平均數 ≈ 變異數」，但微生物若在懸浮液中呈現群聚（clustering），會使變異數大於平均數，此時繼續用 Poisson 分布計算信賴區間會導致區間「過窄」— 也就是統計上過度樂觀地宣稱不劣性（non-inferiority）成立，但實際上證據不足。這正是 Section 10.1.1.3 Lack-of-Fit 分析要處理的核心問題。",
+   "en": "Overdispersion is a risk this section returns to repeatedly. A Poisson distribution requires the mean to be approximately equal to the variance, but if the microorganisms cluster in the suspension, the variance exceeds the mean. Continuing to compute confidence intervals with a Poisson distribution then yields intervals that are too narrow, that is, statistically over-optimistic claims of non-inferiority when the evidence is in fact insufficient. This is exactly the core issue the lack-of-fit analysis in Section 10.1.1.3 addresses."
+  },
+  {
+   "zh": "Figure 10.1-1 顯示 10 CFU 濃度下計數呈右偏態，而 50 CFU 濃度下接近對稱。這對於「該用哪個濃度來驗證方法的準確度」有什麼啟示？",
+   "en": "Figure 10.1-1 shows counts that are right-skewed at 10 CFU but close to symmetrical at 50 CFU. What does this suggest about which concentration to use when validating the accuracy of a method?"
+  },
+  {
+   "zh": "如果你的添加濃度是用連續稀釋法配製，精確度可能有限，這時應該優先看「AMM/RMM vs. 添加濃度」還是「AMM/RMM vs. CMM」的比較結果？為什麼？",
+   "en": "If your spiked concentrations were prepared by serial dilution, their precision may be limited. In that case, should you give priority to the \"AMM/RMM vs. spiked concentration\" comparison or the \"AMM/RMM vs. CMM\" comparison? Why?"
+  },
+  {
+   "zh": "<strong>10.1.1 Comparability of the Alternative/Rapid Microbiological Method for Each Concentration Against the Spiked Concentrations 替代/快速微生物方法於各添加濃度相對添加濃度之可比較性</strong>",
+   "en": "<strong>10.1.1 Comparability of the Alternative/Rapid Microbiological Method for Each Concentration Against the Spiked Concentrations</strong>"
+  },
+  {
+   "zh": "<strong>Non-Inferiority（不劣性）測試:</strong> 不要求 AMM/RMM 的回收率「等於」100%，而是要求它不會「顯著劣於」一個事先訂定的門檁（如 70%）。這是統計假設檢定中常見於方法轉換／方法等效驗證的架構，比嚴格的等效性測試（equivalence test）更符合微生物方法「寧可靈敏度高、不要求完全相等」的實務需求。",
+   "en": "<strong>Non-inferiority test:</strong> This does not require the AMM/RMM recovery to \"equal\" 100%; it requires that recovery is not \"significantly worse than\" a pre-defined threshold (such as 70%). This framework is common in statistical hypothesis testing for method change and method equivalence, and it fits the practical needs of microbiological methods (higher sensitivity is welcome and exact equality is not demanded) better than a strict equivalence test."
+  },
+  {
+   "zh": "Observed Recovery 的計算就像用體重機驗證「這台秤準不準」：如果標準砝碼是 50 公斤，體重機顯示 45 公斤，回收率就是 45/50 = 90%。不劣性測試則是問：「就算沒有剛好 100%，這台秤的誤差有沒有大到我不能接受（例如低於 70%）？」",
+   "en": "Calculating observed recovery is like checking whether a scale is accurate: if the reference weight is 50 kg and the scale reads 45 kg, the recovery is 45/50 = 90%. The non-inferiority test then asks: \"Even if it is not exactly 100%, is the error large enough to be unacceptable (for example, below 70%)?\""
+  },
+  {
+   "zh": "本節強調這些分析方法「make sense when the spiked concentrations have been determined reliably」— 也就是說，如果你的添加濃度本身配製誤差就很大（例如靠稀釋、無法用另一個獨立方法確認精確濃度），直接把 AMM/RMM 對「添加濃度」做不劣性測試可能會產生誤導的結論，這時應考慮改採 Section 10.1.3 的「AMM/RMM 對 CMM」比較法。",
+   "en": "The section stresses that these analyses \"make sense when the spiked concentrations have been determined reliably\". If the preparation error of the spiked concentration is itself large (for example, it relies on dilution and cannot be confirmed by an independent method), running a non-inferiority test of the AMM/RMM directly against the spiked concentration may lead to misleading conclusions. In that case, consider the \"AMM/RMM vs. CMM\" comparison in Section 10.1.3 instead."
+  },
+  {
+   "zh": "為什麼「Observed Recovery = 100%」是理想結果而非驗收標準？驗收標準與理想值之間的落差，在法規審查時該如何說明？",
+   "en": "Why is \"observed recovery = 100%\" an ideal result rather than an acceptance criterion? How would you explain the gap between the acceptance criterion and the ideal value in a regulatory review?"
+  },
+  {
+   "zh": "<strong>10.1.1.1 Using the Normal Distribution Approach 使用常態分布法</strong>",
+   "en": "<strong>10.1.1.1 Using the Normal Distribution Approach</strong>"
+  },
+  {
+   "zh": "<strong>Heteroscedasticity（異質變異性，中文常譯「異方差」）:</strong> 各添加濃度下回收率的變異程度並不相同—通常濃度越高、變異相對越小。這與傳統分析化學方法假設「變異數在各濃度下都一樣（homoscedastic，同質變異）」的前提相反，是微生物計數資料的典型特徵。",
+   "en": "<strong>Heteroscedasticity:</strong> The variability of recovery differs between spiked concentrations, usually with relatively smaller variability at higher concentrations. This is the opposite of the premise in traditional analytical chemistry that variance is the same at every concentration (homoscedastic), and it is a typical feature of microbial count data."
+  },
+  {
+   "zh": "<strong>為何用 Log 轉換的回收率而非原始回收率:</strong> 微生物計數天生右偏態（低濃度尤其明顯），取自然對數可以壓縮右尾、讓資料更接近常態分布，使得基於常態假設的信賴區間計算更為可靠。",
+   "en": "<strong>Why use log-transformed recovery rather than raw recovery:</strong> Microbial counts are inherently right-skewed (especially at low concentrations). Taking the natural logarithm compresses the right tail and brings the data closer to a normal distribution, so confidence intervals based on the normal assumption are more reliable."
+  },
+  {
+   "zh": "把「Fixed-effects one-way ANOVA（合併變異數）」想像成用同一把尺去量身高和量螞蟻的長度：如果把所有濃度的變異數「攤平合併」成一個共同值，對低濃度（變異本來就小）會顯得太寬鬆（尺標太粗），對高濃度（變異本來就大）又顯得太嚴苛（尺標太細）。這正是原文說「too small for the lower concentrations and too large for the higher concentrations」的意思—一把尺無法同時準確量測差異懸殊的兩種物件。",
+   "en": "Think of \"fixed-effects one-way ANOVA (pooled variance)\" as using the same ruler to measure both a person's height and the length of an ant. If the variances of all concentrations are \"flattened\" into one common value, the result is too lenient for low concentrations (where the variability is small to begin with, so the ruler's graduations are too coarse) and too strict for high concentrations (where the variability is large to begin with, so the graduations are too fine). This is what the original text means by \"too small for the lower concentrations and too large for the higher concentrations\": one ruler cannot measure two objects of very different sizes accurately."
+  },
+  {
+   "zh": "TR33 明確指出：不建議在定量微生物方法準確度驗證中使用「標準固定效應單因子 ANOVA」，即使這在分析化學儀器驗證中很常見。理由是 ANOVA 假設同質變異，而微生物計數資料普遍呈現異質變異。Table 10.1.1.1-1 的實際結果證實了這點：ANOVA 法在 100、150、250 CFU 判定為「劣性」（未通過不劣性測試），但常態分布法（依各濃度個別變異數計算）判定為「不劣」—兩種方法對同一組數據得出矛盾結論，凸顯方法選擇對驗證結果的實質影響。",
+   "en": "TR33 states clearly that the \"standard fixed-effects one-way ANOVA\" is not recommended for validating the accuracy of quantitative microbiological methods, even though it is common in the validation of analytical chemistry instruments. The reason is that ANOVA assumes homogeneous variance, whereas microbial count data are generally heteroscedastic. The actual results in Table 10.1.1.1-1 confirm this: the ANOVA approach declared inferiority at 100, 150 and 250 CFU (failing the non-inferiority test), whereas the normal approach (using the individual variance of each concentration) declared non-inferiority. Two methods gave contradictory conclusions on the same data set, which highlights how much the choice of method affects the validation outcome."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "常態分布法（對數轉換回收率）三步驟：\n\n1. 平均回收率（幾何平均，還原自 log 尺度）：\n   θ_A = exp{ 平均值(log(r_i)) }，i = 1...n_A\n\n2. Log 尺度變異數：\n   s_log^2 = Σ [ (log(r_i) - r̄_log)^2 / (n_A - 1) ]\n\n3. 下限 LCL（還原至原尺度）：\n   LCL = θ_A × exp{ -t^(-1) × s_log / √n_A }\n   （n_A 夠大時，t^(-1)(0.95) ≈ 1.645）\n\n判定規則：\n   LCL &gt; 不劣性邊界（例：70%）→ 判定「不劣」（accept）\n   LCL ≤ 70%                  → 不能拒絕「劣性」\n\nTR33 範例結果（Table 10.1.1.1-1，常態分布法）：\n   5 CFU:   平均回收 88.8%，LCL = 58.7%  → 未通過（LCL &lt; 70%）\n   25 CFU:  平均回收 77.9%，LCL = 64.1%  → 未通過\n   50 CFU:  平均回收 83.6%，LCL = 72.0%  → 通過\n   100 CFU: 平均回收 76.0%，LCL = 70.7%  → 通過（僅小幅超過門檻）\n   150 CFU: 平均回收 80.8%，LCL = 74.8%  → 通過\n   250 CFU: 平均回收 77.7%，LCL = 70.2%  → 通過（僅小幅超過門檻）",
+   "en": "Normal distribution approach (log-transformed recovery), three steps:\n\n1. Mean recovery (geometric mean, back-transformed from the log scale):\n   θ_A = exp{ mean(log(r_i)) }, i = 1...n_A\n\n2. Variance on the log scale:\n   s_log^2 = Σ [ (log(r_i) - r̄_log)^2 / (n_A - 1) ]\n\n3. Lower limit LCL (back-transformed to the original scale):\n   LCL = θ_A × exp{ -t^(-1) × s_log / √n_A }\n   (for large n_A, t^(-1)(0.95) ≈ 1.645)\n\nDecision rule:\n   LCL &gt; non-inferiority limit (e.g. 70%)  → conclude \"non-inferior\" (accept)\n   LCL ≤ 70%                              → cannot reject \"inferiority\"\n\nTR33 example results (Table 10.1.1.1-1, normal approach):\n   5 CFU:   mean recovery 88.8%, LCL = 58.7%  → fail (LCL &lt; 70%)\n   25 CFU:  mean recovery 77.9%, LCL = 64.1%  → fail\n   50 CFU:  mean recovery 83.6%, LCL = 72.0%  → pass\n   100 CFU: mean recovery 76.0%, LCL = 70.7%  → pass (only just above the threshold)\n   150 CFU: mean recovery 80.8%, LCL = 74.8%  → pass\n   250 CFU: mean recovery 77.7%, LCL = 70.2%  → pass (only just above the threshold)"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對 CDMO 而言，這個範例極具參考價值：低濃度（5、25 CFU）通過不了不劣性測試，「不代表方法真的不準」，而可能只是「樣本數不足以在統計上證明它不劣」。實務上遇到這種情況，應先評估是否增加該濃度的重複測試次數（見 Section 10.1.1.4 樣本數規劃），而非直接判定方法失敗，避免做出過度保守、增加不必要重新驗證成本的決策。",
+   "en": "This example is very instructive for a CDMO. Failing the non-inferiority test at low concentrations (5 and 25 CFU) does not mean the method is truly inaccurate; it may simply mean there were not enough samples to demonstrate non-inferiority statistically. When this happens, first assess whether to increase the number of replicates at that concentration (see sample size planning in Section 10.1.1.4) rather than declaring the method a failure outright, so as to avoid an over-conservative decision that adds unnecessary revalidation cost."
+  },
+  {
+   "zh": "為什麼在異質變異（heteroscedasticity）明顯的情況下，合併變異數的 ANOVA 分析會對高濃度組「過度嚴格」、對低濃度組「過度寬鬆」？",
+   "en": "Why does a pooled-variance ANOVA become \"too strict\" for the high-concentration groups and \"too lenient\" for the low-concentration groups when heteroscedasticity is pronounced?"
+  },
+  {
+   "zh": "如果你手上的 ANOVA 分析與常態分布法（各濃度個別變異數）給出矛盾的不劣性結論，你會在驗證報告中如何選擇並說明理由？",
+   "en": "If your ANOVA and the normal approach (individual variance per concentration) give contradictory non-inferiority conclusions, how would you choose between them and justify the choice in the validation report?"
+  },
+  {
+   "zh": "<strong>10.1.1.2 Using the Poisson Distribution Approach 使用卜瓦松（Poisson）分布法</strong>",
+   "en": "<strong>10.1.1.2 Using the Poisson Distribution Approach</strong>"
+  },
+  {
+   "zh": "<strong>Poisson 迴歸的 Offset 參數:</strong> 一種進階技巧—把添加濃度的對數值當作「offset」放入 Poisson 迴歸，可以讓模型直接輸出「計數相對於添加濃度的比值」，也就是回收率本身，不需要事後再手動相除，減少人為計算錯誤。",
+   "en": "<strong>Offset parameter in Poisson regression:</strong> An advanced technique. If the logarithm of the spiked concentration is entered as an \"offset\" in the Poisson regression, the model directly outputs the ratio of the count to the spiked concentration, that is, the recovery itself. No manual division afterwards is needed, which reduces calculation errors."
+  },
+  {
+   "zh": "<strong>算術平均 vs. 幾何平均:</strong> Poisson 法是先算「計數的算術平均」再除以濃度得回收率；常態分布法（log 轉換）本質上是算「回收率的幾何平均」。兩者對同一組資料通常會得出些微不同（但方向一致）的平均回收率數值，這是 Table 10.1.1.1-1 中兩欄 Mean % Recovery 略有差異的原因。",
+   "en": "<strong>Arithmetic mean vs. geometric mean:</strong> The Poisson approach first takes the arithmetic mean of the counts and then divides by the concentration to obtain recovery, whereas the normal approach (log transformation) essentially computes the geometric mean of the recoveries. On the same data the two usually give slightly different (but directionally consistent) mean recoveries, which is why the two Mean % Recovery columns in Table 10.1.1.1-1 differ slightly."
+  },
+  {
+   "zh": "Poisson 分布法 LCL 公式中的 √(1/(n·ȳ)) 項，可以理解成「計數的相對標準誤」—分母是樣本數與平均計數的乘積，代表你收集到的「總資訊量」越大（樣本數多、平均計數高），這個根號項就越小，信賴區間就越窄、越精確。這就像做民調時，樣本數越多，估計值的誤差範圍（margin of error）自然就越小。",
+   "en": "The √(1/(n·ȳ)) term in the Poisson LCL formula can be read as the \"relative standard error of the count\". The denominator is the product of sample size and mean count, representing the total \"amount of information\" collected: the more samples and the higher the mean count, the smaller this square-root term, and the narrower and more precise the confidence interval. It is like an opinion poll, where a larger sample naturally gives a smaller margin of error."
+  },
+  {
+   "zh": "TR33 特別提醒：Poisson 法算出的 95% 信賴下限是「asymptotic or approximate」（漸近或近似），並非精確信賴區間，這與樣本數大小有關—樣本數越小，近似的準確性越差。因此，即使 Poisson 分布假設成立，小樣本情境下仍需謹慎解讀 LCL 的精確度，必要時應搭配 Section 10.1.1.4 的樣本數規劃來評估是否足夠。",
+   "en": "TR33 points out that the 95% lower confidence limit from the Poisson approach is \"asymptotic or approximate\" and not an exact confidence interval, which depends on sample size: the smaller the sample, the poorer the approximation. So even when the Poisson assumption holds, the precision of the LCL must be interpreted with care in small-sample situations, and where necessary the sample size planning in Section 10.1.1.4 should be used to judge whether the sample is large enough."
+  },
+  {
+   "zh": "Poisson 分布法 LCL（平均計數的下限）：\n\n   LCL = ȳ_A × exp{ -1.645 × √(1/(n_A × ȳ_A)) }\n\n   ȳ_A = 單一濃度下的平均計數\n   n_A  = 該濃度下的樣本（重複測試）數\n\n換算為回收率：\n   平均回收率 = ȳ_A / λ × 100%\n   LCL（回收率）= LCL(計數) / λ × 100%\n\nTR33 範例：250 CFU 濃度，AMM/RMM\n   Intercept（log 尺度期望計數）= 5.2730 → exp(5.2730) ≈ 195（還原至原尺度）\n   5 CFU 相對 250 CFU 之 log 差異 = -3.7044\n     → 5 CFU 平均計數 ≈ 195 × exp(-3.7044) ≈ 4.8（= Table 10.1-1 之平均值）\n     → 比例 = 100% × 4.8/195 ≈ 2.46%",
+   "en": "Poisson approach LCL (lower limit of the mean count):\n\n   LCL = ȳ_A × exp{ -1.645 × √(1/(n_A × ȳ_A)) }\n\n   ȳ_A = mean count at a single concentration\n   n_A  = number of samples (replicates) at that concentration\n\nConverted to recovery:\n   Mean recovery = ȳ_A / λ × 100%\n   LCL (recovery) = LCL (count) / λ × 100%\n\nTR33 example: 250 CFU concentration, AMM/RMM\n   Intercept (expected count on the log scale) = 5.2730 → exp(5.2730) ≈ 195 (back-transformed to the original scale)\n   Log difference of 5 CFU relative to 250 CFU = -3.7044\n     → mean count at 5 CFU ≈ 195 × exp(-3.7044) ≈ 4.8 (= the mean in Table 10.1-1)\n     → ratio = 100% × 4.8/195 ≈ 2.46%"
+  },
+  {
+   "zh": "Poisson 分布法與常態分布法（log 轉換）在本範例中對「50、100、150、250 CFU 通過不劣性測試」的結論一致，這說明了什麼？如果兩者結論不一致，你會優先相信哪一個，為什麼？",
+   "en": "In this example the Poisson approach and the normal approach (log transformation) agree that 50, 100, 150 and 250 CFU pass the non-inferiority test. What does that tell you? If the two disagreed, which would you trust first, and why?"
+  },
+  {
+   "zh": "为什麼「offset 參數」的技巧可以讓 Poisson 迴歸直接輸出回收率，而不需要事後再除以添加濃度？",
+   "en": "Why does the \"offset parameter\" technique let a Poisson regression output recovery directly, without dividing by the spiked concentration afterwards?"
+  },
+  {
+   "zh": "<strong>10.1.1.3 Lack-of-Fit Analyses 適合度缺乏（Lack-of-Fit）分析</strong>",
+   "en": "<strong>10.1.1.3 Lack-of-Fit Analyses</strong>"
+  },
+  {
+   "zh": "<strong>Lack-of-Fit（適合度缺乏）分析:</strong> 用來檢驗「我假設的統計分布（Poisson）是否真的符合實際資料」的一組檢定方法，而不是直接檢驗準確度或不劣性本身。這是選擇統計方法前的「前提假設檢查」步驟。",
+   "en": "<strong>Lack-of-fit analysis:</strong> A group of tests that check \"whether the statistical distribution I assumed (Poisson) really fits the actual data\". It does not test accuracy or non-inferiority itself; it is the \"check of the underlying assumptions\" step before choosing a statistical method."
+  },
+  {
+   "zh": "<strong>AICC（Akaike 校正資訊準則）:</strong> 同時考慮「模型配適度」與「模型複雜度」的指標，數值越小代表模型在兩者之間的權衡越好。用來比較 Poisson（較簡單）與負二項分布（Negative Binomial，多估計一個離散度參數，較複雜）何者更適合這組資料。",
+   "en": "<strong>AICC (corrected Akaike information criterion):</strong> An index that considers both model fit and model complexity; the smaller the value, the better the trade-off between the two. It is used to compare the Poisson distribution (simpler) with the negative binomial distribution (which estimates one extra dispersion parameter and is more complex) to see which suits the data better."
+  },
+  {
+   "zh": "Variance/Mean 比值檢查就像量體溫：正常體溫下這個比值應該接近 1（沒有發燒）；比值明顯大於 1，代表「發燒」—也就是過度離散（overdispersion）。但單一次量到 37.8°C（比值約 2）不代表一定生病，還要看整體趨勢（其他濃度是否也偏高）才能下判斷，這正是本文說「taking all of the concentrations into consideration」的意思。",
+   "en": "Checking the variance/mean ratio is like taking a temperature. At normal body temperature the ratio should be close to 1 (no fever); a ratio clearly above 1 means \"fever\", that is, overdispersion. But one reading of 37.8°C (a ratio of about 2) does not necessarily mean illness; you must look at the overall trend (are other concentrations also high?) before deciding, which is what the original text means by \"taking all of the concentrations into consideration\"."
+  },
+  {
+   "zh": "本節示範了完整的三層次驗證邏輯：(1) 用「Variance/Mean 比值」做快速、定性的初篩；(2) 用 AICC 比較 Poisson 與負二項分布模型做正式比較；(3) 用偏異數檢定（deviance test）與 Pearson 適合度檢定給出正式的 p-value。三種方法在本範例中結論一致—均未發現顯著的 Poisson 分布違反證據（AICC: 208.2 vs. 211.6；deviance p=0.452；Pearson p=0.459），因此可以合理採用 Poisson 分布法進行不劣性測試。CDMO 在報告驗證結論時，建議至少呈現一種正式的 Lack-of-Fit 檢定結果作為佐證，而非僅憑經驗判斷。",
+   "en": "This section demonstrates a complete three-level validation logic: (1) a quick, qualitative screen using the variance/mean ratio; (2) a formal comparison of the Poisson and negative binomial models using AICC; (3) formal p-values from the deviance test and the Pearson goodness-of-fit test. The three methods agree in this example, with no significant evidence against the Poisson distribution (AICC: 208.2 vs. 211.6; deviance p = 0.452; Pearson p = 0.459), so the Poisson approach can reasonably be used for the non-inferiority test. When reporting validation conclusions, a CDMO should present at least one formal lack-of-fit test result as supporting evidence rather than rely on experience alone."
+  },
+  {
+   "zh": "在 CDMO 的實務情境中，若某個 AMM/RMM 平台在放大生產批次時發現微生物在懸浮液中容易群聚（例如絮凝性菌株），Lack-of-Fit 分析可能顯示 AICC 明顯偏向負二項分布、且偏異數檢定 p 值 &lt; 0.05，此時應改用負二項分布或常態分布法計算信賴區間，避免因為錯誤地套用 Poisson 假設而低估變異、產生「假不劣」的錯誤結論，這對客戶產品放行的風險評估影響重大。",
+   "en": "In a CDMO setting, suppose an AMM/RMM platform is scaled up to production batches and the microorganisms are found to cluster easily in suspension (for example, flocculating strains). The lack-of-fit analysis may then show an AICC clearly favoring the negative binomial distribution and a deviance test p-value &lt; 0.05. In that case, use the negative binomial distribution or the normal approach to compute confidence intervals, to avoid underestimating variability by wrongly applying the Poisson assumption and reaching a \"falsely non-inferior\" conclusion, which would significantly affect the risk assessment for releasing the customer's product."
+  },
+  {
+   "zh": "如果 AICC 顯示負二項分布模型明顯優於 Poisson 模型，這對你選擇 Section 10.1.1.1（常態分布法）或 Section 10.1.1.2（Poisson 分布法）計算 LCL 有什麼影響？",
+   "en": "If the AICC shows the negative binomial model is clearly better than the Poisson model, how does this affect your choice between Section 10.1.1.1 (normal approach) and Section 10.1.1.2 (Poisson approach) for calculating the LCL?"
+  },
+  {
+   "zh": "Variance/Mean 比值檢查、AICC 比較、偏異數檢定三者分別提供了什麼不同層次的證據？为什麼建議三者合併使用而非只做一種？",
+   "en": "What different levels of evidence do the variance/mean ratio check, the AICC comparison and the deviance test each provide? Why is it advisable to use all three together rather than just one?"
+  },
+  {
+   "zh": "<strong>10.1.1.4 Sample Size Considerations 樣本數考量</strong>",
+   "en": "<strong>10.1.1.4 Sample Size Considerations</strong>"
+  },
+  {
+   "zh": "<strong>樣本數規劃（Sample Size Determination）:</strong> 在驗證實驗設計「之前」，先用統計功效（power）計算法反推「至少要測幾個重複，才有 80% 機率能在真實回收率為某個數值時，正確判定不劣性成立」。這是實驗設計階段的關鍵一步，避免驗證失敗才發現樣本數根本不足。",
+   "en": "<strong>Sample size determination:</strong> Before designing the validation experiment, use a power calculation to work backwards to the minimum number of replicates needed to have an 80% probability of correctly concluding non-inferiority when the true recovery is a given value. This is a key step at the experimental design stage, and it avoids discovering only after a failed validation that the sample size was inadequate."
+  },
+  {
+   "zh": "<strong>Power（統計檢定力）=1−β:</strong> 當真實情況確實是「不劣」時，實驗能正確偵測出這個事實的機率。本節設定 Power=0.8，是業界常見的標準門檻。",
+   "en": "<strong>Power = 1−β:</strong> The probability that the experiment correctly detects non-inferiority when the truth is indeed \"non-inferior\". This section sets Power = 0.8, a common industry threshold."
+  },
+  {
+   "zh": "Table 10.1.1.4-1 的規律就像「聽力測驗」：聲音越小（濃度越低），要聽到同樣清楚的判斷，需要越多次重複播放（樣本數越多）才能確定「有沒有聲音」；聲音越大（濃度越高），一兩次就能確定。同樣地，真實回收率越接近門檻 70%（如真實回收率只有 80% 時），信號與雜訊的差距越小，需要的樣本數也急遽增加—例如濃度 5 CFU 時，真實回收率 100% 只需 20 個樣本，但真實回收率只有 80% 時，需要 157 個樣本才能達到相同的偵測力。",
+   "en": "The pattern in Table 10.1.1.4-1 is like a hearing test. The quieter the sound (the lower the concentration), the more times it must be played (the more samples) to be sure whether there is any sound; with a louder sound, one or two plays suffice. Likewise, the closer the true recovery is to the 70% threshold (for example, a true recovery of only 80%), the smaller the gap between signal and noise, and the required sample size rises steeply. For example, at 5 CFU a true recovery of 100% needs only 20 samples, but a true recovery of only 80% needs 157 samples to reach the same power."
+  },
+  {
+   "zh": "本節提醒「最少不應少於 3 重複」是一個實務下限，即使公式計算出的理論樣本數小於 3（在高濃度、高真實回收率時常發生），仍應以 3 為最低要求。此外，Table 10.1.1.4-1 清楚顯示樣本數需求與「濃度水準」和「真實回收率距離不劣性邊界的遠近」呈現高度非線性關係—在方案設計階段，若已知某濃度是方法的弱點（如低濃度區間回收率偏低），應優先在該濃度增加重複測試數，而非平均分配樣本數到所有濃度。",
+   "en": "The section notes that \"no fewer than 3 replicates\" is a practical lower limit: even where the formula gives a theoretical sample size below 3 (which often happens at high concentrations and high true recovery), 3 is still the minimum. Table 10.1.1.4-1 also shows clearly that the required sample size is highly non-linear in both the \"concentration level\" and the \"distance of the true recovery from the non-inferiority limit\". At the protocol design stage, if a concentration is already known to be a weak point of the method (for example, low recovery in the low concentration range), prioritize extra replicates at that concentration rather than spreading samples evenly across all concentrations."
+  },
+  {
+   "zh": "樣本數規劃公式（常態分布假設，log 轉換計數之變異數=平均值）：\n\n  Power = 1 - Φ( [Φ^(-1)(0.95) + log(Δ) - log(θ)] / √[(1/λ + 1/(θλ)) / n_A] )\n\n  Φ    = 標準常態分布累積函數\n  Φ^-1 = 標準常態分布分位數函數\n  n_A  = 樣本數（未知，欲求解）\n  θ    = 真實回收率（比例，非百分比，例：0.9）\n  λ    = 添加濃度水準\n  Δ    = 不劣性邊界（例：0.7）\n\n用法：反覆代入不同 n_A，找出使 Power = 0.8 的最小整數 n_A（且 n_A &gt; 2）。\n最低樣本數下限：3（即使公式解 &lt; 3 也採用 3）。",
+   "en": "Sample size planning formula (normal assumption, variance of log-transformed counts = mean):\n\n  Power = 1 - Φ( [Φ^(-1)(0.95) + log(Δ) - log(θ)] / √[(1/λ + 1/(θλ)) / n_A] )\n\n  Φ    = cumulative distribution function of the standard normal distribution\n  Φ^-1 = quantile function of the standard normal distribution\n  n_A  = sample size (unknown, to be solved for)\n  θ    = true recovery (as a proportion, not a percentage, e.g. 0.9)\n  λ    = spiked concentration level\n  Δ    = non-inferiority limit (e.g. 0.7)\n\nUsage: substitute different values of n_A repeatedly and find the smallest integer n_A (with n_A &gt; 2) that gives Power = 0.8.\nMinimum sample size: 3 (use 3 even if the formula gives a solution &lt; 3)."
+  },
+  {
+   "zh": "CDMO 在規劃 AMM/RMM 驗證方案的預算與時程時，Table 10.1.1.4-1 是很實用的快速對照表：如果客戶產品的關鍵放行濃度落在低值區（如 5-25 CFU/mL），且對新方法的信心不足（保守假設真實回收率僅 80%），應提前規劃較高的重複測試數（32-157 次），這直接影響耗材成本、人力工時與驗證時程，應在報價與專案排程階段即納入考量，避免驗證中途才發現樣本數不足需要追加實驗。",
+   "en": "When a CDMO plans the budget and timeline for an AMM/RMM validation protocol, Table 10.1.1.4-1 is a very practical quick-reference table. If the customer's critical release concentration is in the low range (such as 5-25 CFU/mL) and confidence in the new method is limited (conservatively assuming a true recovery of only 80%), plan for a higher number of replicates (32-157) early. This directly affects consumable costs, labor hours and the validation timeline, and should be factored in at the quotation and project scheduling stage, so that you do not find midway through validation that the sample size is inadequate and extra experiments are needed."
+  },
+  {
+   "zh": "為什麼「濃度越低、需要的樣本數越多」？這跟 Poisson 分布在低平均值時相對變異較大有什麼關聯？",
+   "en": "Why does a lower concentration need more samples? How does this relate to the relatively larger variability of the Poisson distribution at low means?"
+  },
+  {
+   "zh": "如果你只能負擔每個濃度 5 個重複，依 Table 10.1.1.4-1，在哪些濃度水準與真實回收率假設下，這樣的樣本數是不足的？",
+   "en": "If you can only afford 5 replicates per concentration, then according to Table 10.1.1.4-1, at which concentration levels and true recovery assumptions is that sample size inadequate?"
+  },
+  {
+   "zh": "<strong>10.1.2 Comparability of the Conventional Microbiological Method per Concentration Against the Spike Concentrations 傳統微生物方法（CMM）於各添加濃度相對添加濃度之可比較性</strong>",
+   "en": "<strong>10.1.2 Comparability of the Conventional Microbiological Method per Concentration Against the Spike Concentrations</strong>"
+  },
+  {
+   "zh": "<strong>為什麼要驗證 CMM 對添加濃度的準確度？:</strong> CMM（傳統/藥典法）通常被視為「金標準」，但這不代表它一定量到 100% 回收率。本節示範對 CMM 也做同樣的 Poisson 分布分析，目的是檢查「添加濃度本身」是否可靠—如果連公認的金標準都測不到 100%，問題可能出在配製濃度的精確度，而非任一方法本身。",
+   "en": "<strong>Why validate the accuracy of the CMM against the spiked concentrations?</strong> The CMM (conventional/pharmacopoeial method) is usually regarded as the \"gold standard\", but that does not mean it always recovers 100%. This section applies the same Poisson analysis to the CMM in order to check whether the \"spiked concentrations themselves\" are reliable: if even the accepted gold standard cannot measure 100%, the problem may lie in the accuracy of the prepared concentrations rather than in either method."
+  },
+  {
+   "zh": "<strong>H<sub>0</sub>: Recovery = 100% 假設檢定:</strong> 與前面的「不劣性測試」（單邊、對抗一個門檻值）不同，這裡是雙邊檢定，直接檢驗回收率是否「顯著偏離」100%，p 值越小代表偏離越顯著。",
+   "en": "<strong>Hypothesis test H<sub>0</sub>: Recovery = 100%:</strong> Unlike the earlier non-inferiority test (one-sided, against a threshold value), this is a two-sided test that directly examines whether recovery \"deviates significantly\" from 100%; the smaller the p-value, the more significant the deviation."
+  },
+  {
+   "zh": "這就像用兩把「都號稱準確」的體重機同時量同一顆標準砝碼：如果兩把秤都量出比標示重量輕，問題可能不在秤本身，而是砝碼標示的重量從一開始就不準。同理，當 CMM（金標準方法）與 AMM/RMM 對同一批添加濃度都顯示低於 100% 回收率時，更合理的解釋是「添加濃度配製本身有誤差」，而非兩個方法都測不準。",
+   "en": "It is like using two scales that both claim to be accurate to weigh the same reference weight: if both read lighter than the labeled weight, the problem probably lies not with the scales but with a label that was inaccurate from the start. Likewise, when both the CMM (the gold standard method) and the AMM/RMM show recovery below 100% against the same spiked concentrations, the more reasonable explanation is an error in the preparation of the spiked concentrations rather than both methods measuring inaccurately."
+  },
+  {
+   "zh": "本節的關鍵洞見：當 CMM 與 AMM/RMM 都對添加濃度顯示偏低回收率時，比較策略應該調整—與其各自對「添加濃度」做不劣性測試（此時添加濃度的不確定性會混入兩邊的誤差），不如直接比較「AMM/RMM 對 CMM」（見 Section 10.1.3），因為此時只需考慮兩個方法自身的變異，添加濃度是否精確已不再是分析的必要前提，測試效力（power）反而可能更高。",
+   "en": "The key insight of this section: when both the CMM and the AMM/RMM show low recovery against the spiked concentrations, the comparison strategy should change. Rather than each running a non-inferiority test against the spiked concentrations (where the uncertainty of the spiked concentrations mixes into the errors on both sides), compare the \"AMM/RMM against the CMM\" directly (see Section 10.1.3). Only the variability of the two methods themselves then needs to be considered, the precision of the spiked concentration is no longer a necessary premise of the analysis, and the power may in fact be higher."
+  },
+  {
+   "zh": "CMM 對添加濃度 H0: Recovery=100% 之 p 值（分段公式）：\n\n  若 ȳ_C &gt; λ：  p = 2 × [1 - Φ( log(ȳ_C/λ) / √(1/(n_C·ȳ_C)) )]\n  若 ȳ_C ≤ λ：  p = 2 × Φ( log(ȳ_C/λ) / √(1/(n_C·ȳ_C)) )\n\n  ȳ_C = CMM 於該添加濃度之平均計數\n  λ   = 添加濃度水準\n  n_C = 該濃度下的重複數\n\nTR33 範例結果（Table 10.1.2-1，CMM）：\n  5 CFU:   回收 116.0%，LCL=85.5%，p=0.424  （不顯著偏離100%）\n  25 CFU:  回收 87.2%， LCL=74.5%，p=0.153  （不顯著偏離100%）\n  50 CFU:  回收 89.6%， LCL=80.3%，p=0.100  （不顯著偏離100%，臨界）\n  100 CFU: 回收 86.6%， LCL=80.0%，p=0.003  （顯著偏離100%）\n  150 CFU: 回收 84.7%， LCL=79.3%，p&lt;0.001 （顯著偏離100%）\n  250 CFU: 回收 80.6%， LCL=76.5%，p&lt;0.001 （顯著偏離100%）",
+   "en": "p-value of H0: Recovery = 100% for the CMM against the spiked concentration (piecewise formula):\n\n  If ȳ_C &gt; λ:  p = 2 × [1 - Φ( log(ȳ_C/λ) / √(1/(n_C·ȳ_C)) )]\n  If ȳ_C ≤ λ:  p = 2 × Φ( log(ȳ_C/λ) / √(1/(n_C·ȳ_C)) )\n\n  ȳ_C = mean count of the CMM at that spiked concentration\n  λ   = spiked concentration level\n  n_C = number of replicates at that concentration\n\nTR33 example results (Table 10.1.2-1, CMM):\n  5 CFU:   recovery 116.0%, LCL=85.5%, p=0.424  (no significant deviation from 100%)\n  25 CFU:  recovery 87.2%,  LCL=74.5%, p=0.153  (no significant deviation from 100%)\n  50 CFU:  recovery 89.6%,  LCL=80.3%, p=0.100  (no significant deviation from 100%, borderline)\n  100 CFU: recovery 86.6%,  LCL=80.0%, p=0.003  (significant deviation from 100%)\n  150 CFU: recovery 84.7%,  LCL=79.3%, p&lt;0.001 (significant deviation from 100%)\n  250 CFU: recovery 80.6%,  LCL=76.5%, p&lt;0.001 (significant deviation from 100%)"
+  },
+  {
+   "zh": "當驗證團隊發現 CMM（金標準）本身對高濃度的添加濃度也顯示顯著偏低回收率（如本例 100 CFU 以上 p&lt;0.05），這是重新檢視「添加濃度配製流程」（如稀釋序列、微生物懸浮液計數方法本身的準確度）的訊號，而不是急著否定新導入的 AMM/RMM。CDMO 應在方法轉移或驗證方案中，同時記錄 CMM 對添加濃度的表現，作為判讀 AMM/RMM 結果時的重要對照基準。",
+   "en": "When a validation team finds that even the CMM (the gold standard) shows significantly low recovery against the spiked concentrations at high levels (as in this example, p&lt;0.05 at 100 CFU and above), it is a signal to re-examine the \"preparation process of the spiked concentrations\" (such as the dilution series, and the accuracy of the counting method for the microbial suspension), not to rush to reject the newly introduced AMM/RMM. In method transfer or validation protocols, a CDMO should also record the CMM's performance against the spiked concentrations, as an important reference baseline when interpreting the AMM/RMM results."
+  },
+  {
+   "zh": "如果 CMM 對添加濃度的回收率在高濃度顯著低於 100%，這對你解讀 AMM/RMM 對添加濃度的不劣性測試結果，會帶來什麼樣的保留態度？",
+   "en": "If the CMM's recovery against the spiked concentrations is significantly below 100% at high concentrations, what reservations would that bring to your interpretation of the AMM/RMM non-inferiority results against the spiked concentrations?"
+  },
+  {
+   "zh": "當 CMM 與 AMM/RMM 都對添加濃度顯示偏低回收率時，為什麼「AMM/RMM 對 CMM 直接比較」可能是更有效力（power）的分析策略？",
+   "en": "When both the CMM and the AMM/RMM show low recovery against the spiked concentrations, why might a direct \"AMM/RMM against CMM\" comparison be an analysis strategy with more power?"
+  },
+  {
+   "zh": "<strong>10.1.3 Comparability of the Alternative/Rapid Microbiological Method with Respect to the Conventional Method per Concentration 替代/快速微生物方法相對於傳統方法於各濃度之可比較性</strong>",
+   "en": "<strong>10.1.3 Comparability of the Alternative/Rapid Microbiological Method with Respect to the Conventional Method per Concentration</strong>"
+  },
+  {
+   "zh": "<strong>Interaction Term（交互作用項）:</strong> 在 Poisson 迴歸中加入「方法 × 濃度」的交互作用項，可以讓每個濃度各自估計一個不同的回收率；若移除交互作用項，則假設回收率在所有濃度下「恆定」，模型會給出單一的「合併」（pooled）回收率估計。",
+   "en": "<strong>Interaction term:</strong> Adding a \"method × concentration\" interaction term to the Poisson regression lets each concentration have its own estimated recovery. If the interaction term is removed, recovery is assumed to be \"constant\" across all concentrations and the model gives a single \"pooled\" recovery estimate."
+  },
+  {
+   "zh": "<strong>Pooling（合併分析）的雙面性:</strong> 合併分析能提高檢定力（power），因為所有樣本一起貢獻資訊；但也可能「掩蓋」某一濃度真正表現不佳的事實，形成 TR33 特別點名的風險—「testing into compliance」（用統計手法把不合格的結果包裝成合格）。",
+   "en": "<strong>The two sides of pooling:</strong> Pooling can raise power because all samples contribute information together; but it can also \"mask\" the fact that one concentration performs poorly, creating the risk TR33 specifically names, \"testing into compliance\" (using statistical techniques to dress up a non-conforming result as conforming)."
+  },
+  {
+   "zh": "Pooling 就像把班級整體平均成績拿來當作每個學生的成績：如果全班平均分數不錯，但其中一位學生其實不及格，只看班級平均會「掩蓋」這位學生的真實表現。TR33 提醒的正是這一點—如果某一濃度（如 5 CFU）本身回收率明顯偏低，直接把它跟其他濃度「平均」在一起得出合併回收率，可能讓這個弱點被稀釋、不被發現，除非有充分的微生物學論證支持「回收率在各濃度應該一致」這個前提。",
+   "en": "Pooling is like using the class average as every student's grade: if the class average is good but one student actually failed, looking only at the class average \"hides\" that student's real performance. This is exactly what TR33 warns about. If recovery at one concentration (such as 5 CFU) is clearly low, averaging it together with the other concentrations into a pooled recovery may dilute and hide that weakness, unless there is sound microbiological justification for the premise that \"recovery should be consistent across concentrations\"."
+  },
+  {
+   "zh": "本節示範了嚴謹的決策順序：先看每個濃度個別的回收率（Table 10.1.3-1，各濃度都接近 90%，只有 5 CFU 未通過），再用 AICC 統計比較「個別估計」vs.「合併恆定」兩個模型（400.0 vs. 412.8），只有在 AICC 支持「合併模型更佳」且沒有微生物學上的矛盾證據時，才採用合併回收率（94.3%，LCL 89.9%）宣稱所有濃度（包含原本未過關的 5 CFU）皆達不劣性。這是一個「先個別驗證、後合理合併」的範例，而非一開始就跳過個別分析直接合併，值得 CDMO 驗證團隊借鏡。",
+   "en": "This section demonstrates a rigorous decision sequence: first look at the recovery at each individual concentration (Table 10.1.3-1: all concentrations are close to 90%, and only 5 CFU fails), then use AICC to compare the two models, \"individual estimates\" vs. \"pooled constant\" (400.0 vs. 412.8). Only when AICC favors the pooled model and there is no contradictory microbiological evidence is the pooled recovery (94.3%, LCL 89.9%) used to claim non-inferiority at all concentrations, including the 5 CFU that originally failed. This is an example of \"validate individually first, pool reasonably afterwards\", not of skipping the individual analysis and pooling from the start, and CDMO validation teams should learn from it."
+  },
+  {
+   "zh": "AMM/RMM 對 CMM 之回收率 LCL（各濃度分別估計）：\n\n  LCL = (x̄_A/x̄_C) × exp{ -1.645 × √[1/(n_A·x̄_A) + 1/(n_C·x̄_C)] }\n\n  x̄_A, x̄_C = AMM/RMM、CMM 之平均計數\n  n_A, n_C  = AMM/RMM、CMM 之樣本數\n\n範例（5 CFU 濃度）：\n  回收率 = 100% × (4.8/5.8) ≈ 82.8%（見 Table 10.1-1 平均值）\n  LCL = 52.6%（未達 70% 不劣性邊界 → 未通過）\n\n合併（Pooled）回收率估計（移除交互作用項後之 Poisson 迴歸）：\n  Method: AMM/RMM 係數 = -0.0587（log 尺度，相對 CMM）\n  合併回收率 = 100 × exp(-0.0587) = 94.3%\n  95% LCL   = 100 × exp(-0.1066) = 89.9%   → 通過（LCL &gt; 70%）\n\n模型選擇（AICC，數值越小越好）：\n  個別濃度模型（含交互作用項）：AICC = 412.8\n  合併恆定模型（不含交互作用項）：AICC = 400.0  ← 較佳",
+   "en": "LCL of the AMM/RMM recovery relative to the CMM (estimated separately for each concentration):\n\n  LCL = (x̄_A/x̄_C) × exp{ -1.645 × √[1/(n_A·x̄_A) + 1/(n_C·x̄_C)] }\n\n  x̄_A, x̄_C = mean counts of the AMM/RMM and the CMM\n  n_A, n_C  = sample sizes of the AMM/RMM and the CMM\n\nExample (5 CFU concentration):\n  Recovery = 100% × (4.8/5.8) ≈ 82.8% (means from Table 10.1-1)\n  LCL = 52.6% (below the 70% non-inferiority limit → fail)\n\nPooled recovery estimate (Poisson regression after removing the interaction term):\n  Method: AMM/RMM coefficient = -0.0587 (log scale, relative to the CMM)\n  Pooled recovery = 100 × exp(-0.0587) = 94.3%\n  95% LCL         = 100 × exp(-0.1066) = 89.9%   → pass (LCL &gt; 70%)\n\nModel selection (AICC, smaller is better):\n  Individual-concentration model (with interaction term): AICC = 412.8\n  Pooled constant model (without interaction term):       AICC = 400.0  ← better"
+  },
+  {
+   "zh": "對 CDMO 商業與法規策略而言，這一節示範了一個「以統計證據拓寬適用濃度範圍」的合法途徑：原本 5 CFU 濃度單獨分析未能通過不劣性測試（LCL 52.6% &lt; 70%），但透過 AICC 驗證「回收率在各濃度間確實恆定」這個前提後，合併分析讓 5 CFU 也納入不劣性宣稱範圍。這代表方法的適用下限（等同於實務上的 LOQ 相關濃度區間）可以在有充分統計與微生物學論證支持下合理擴大，而非僅能依賴逐一濃度的個別結果，對客戶產品放行規格的濃度覆蓋範圍有直接的商業與法規效益。",
+   "en": "For a CDMO's commercial and regulatory strategy, this section demonstrates a legitimate route to \"broaden the applicable concentration range with statistical evidence\". At 5 CFU analyzed alone, non-inferiority was not shown (LCL 52.6% &lt; 70%), but once AICC verified the premise that \"recovery is indeed constant across concentrations\", the pooled analysis brought 5 CFU within the non-inferiority claim. This means the lower limit of applicability of the method (in practice, the concentration range around the LOQ) can reasonably be extended when supported by adequate statistical and microbiological justification, rather than relying only on concentration-by-concentration results, which has direct commercial and regulatory benefits for the concentration coverage of the customer's product release specifications."
+  },
+  {
+   "zh": "為什麼 TR33 強調 pooling「不應自動進行，應有微生物學論證與額外統計分析支持」？如果只憑 AICC 比較就決定合併，可能忽略了什麼風險？",
+   "en": "Why does TR33 stress that pooling \"should not be done automatically and should be supported by microbiological justification and additional statistical analysis\"? If the decision to pool were based on the AICC comparison alone, what risk might be overlooked?"
+  },
+  {
+   "zh": "5 CFU 濃度在個別分析中未通過不劣性測試（LCL 52.6%），但在合併分析中卻通過（LCL 89.9%）。身為審查驗證報告的 QA 人員，你會要求作者額外補充哪些論證，才能接受這個合併結論？",
+   "en": "At 5 CFU the individual analysis failed the non-inferiority test (LCL 52.6%), but the pooled analysis passed (LCL 89.9%). As the QA reviewer of the validation report, what additional justification would you require from the author before accepting this pooled conclusion?"
+  },
+  {
+   "zh": "（Figure 10.1-1 原文已呈現於 Section 10.1 左欄，此處補充圖表解讀。）",
+   "en": "(The original text of Figure 10.1-1 appears in the left column of Section 10.1; a figure interpretation is added here.)"
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 10.1-1 並列呈現兩張直方圖：左圖是 500 次重複測試在添加濃度 10 CFU 下的計數分布，右圖是同樣 500 次重複在 50 CFU 下的計數分布。左圖明顯右偏—紅色曲線（理論常態分布）與藍色長條（實際計數分布）在右側有落差，代表低濃度下少數樣本會出現異常高的計數值，拉長右尾；右圖則紅色曲線與藍色長條吻合度更高，分布左右對稱，顯示濃度越高，計數分布越接近常態、越對稱。",
+   "en": "Figure 10.1-1 presents two histograms side by side: the left shows the count distribution for 500 replicate tests at a spiked concentration of 10 CFU, and the right shows the same 500 replicates at 50 CFU. The left plot is clearly right-skewed: the red curve (theoretical normal distribution) and the blue bars (actual count distribution) diverge on the right, showing that at low concentration a few samples give unusually high counts that stretch the right tail. In the right plot the red curve fits the blue bars much better and the distribution is symmetrical, showing that the higher the concentration, the closer to normal and the more symmetrical the count distribution becomes."
+  },
+  {
+   "zh": "這張圖直接支持了本節「為什麼低濃度用 log 轉換的常態分布法，而非直接對原始回收率做常態假設」的論述基礎—讀者可以把這張圖當作 Section 10.1.1.1 建議使用 log 轉換的視覺化證據。在實務上，這也提醒 CDMO 在低濃度（如 LOQ 附近）驗證時，不能假設計數資料會像高濃度一樣對稱，必須採用適當的轉換或分布假設，否則信賴區間的計算將失真。",
+   "en": "This figure directly supports the reasoning in this section for \"why use a log-transformed normal approach at low concentrations rather than assume normality for raw recovery\", and readers can treat it as visual evidence for the log transformation recommended in Section 10.1.1.1. In practice it also reminds a CDMO that, when validating at low concentrations (such as near the LOQ), count data cannot be assumed to be symmetrical as at high concentrations; an appropriate transformation or distribution assumption must be used, or the confidence interval calculation will be distorted."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "定量微生物方法的準確度驗證有三大假設決策點：添加濃度是否精確已知、計數分布是否符合 Poisson、是否需要跨濃度迴歸模型；這三個假設決定了該用「常態分布法（log 轉換）」、「Poisson 分布法」或「迴歸/線性分析」。",
+   "en": "Accuracy validation of quantitative microbiological methods has three assumption decision points: whether the spiked concentration is precisely known, whether the counts follow a Poisson distribution, and whether a regression model across concentrations is needed. These three decide whether to use the normal approach (log transformation), the Poisson approach, or regression/linearity analysis."
+  },
+  {
+   "zh": "標準固定效應單因子 ANOVA 因假設同質變異（homoscedastic），不適用於天生具異質變異（heteroscedastic）的微生物計數資料；本節範例證實 ANOVA 法與常態分布法／Poisson 法在高濃度組會得出矛盾的不劣性結論。",
+   "en": "The standard fixed-effects one-way ANOVA is unsuitable for microbial count data, which are inherently heteroscedastic, because it assumes homoscedasticity; the examples in this section confirm that the ANOVA approach and the normal/Poisson approaches reach contradictory non-inferiority conclusions in the high-concentration groups."
+  },
+  {
+   "zh": "Lack-of-Fit 分析（Variance/Mean 比值、AICC、偏異數檢定、Pearson 檢定）是選用 Poisson 分布前的必要前提檢查；一旦發現過度離散（overdispersion），應改採負二項分布或常態分布法。",
+   "en": "Lack-of-fit analysis (variance/mean ratio, AICC, deviance test, Pearson test) is a necessary check of the underlying assumptions before adopting the Poisson distribution; once overdispersion is found, switch to the negative binomial distribution or the normal approach."
+  },
+  {
+   "zh": "樣本數規劃公式顯示，濃度越低、真實回收率越接近不劣性邊界，所需樣本數呈非線性遞增，驗證方案設計應優先為方法弱點濃度配置足夠重複數（最低不少於 3 重複）。",
+   "en": "The sample size planning formula shows that the lower the concentration and the closer the true recovery is to the non-inferiority limit, the more the required sample size rises, non-linearly. The validation protocol should give priority to allocating enough replicates (and never fewer than 3) to the concentrations where the method is weak."
+  },
+  {
+   "zh": "當 CMM 對添加濃度本身也顯示偏低回收率時，宜改採「AMM/RMM 對 CMM」直接比較（而非各自對添加濃度比較），可提高檢定力並降低添加濃度不確定性的干擾。",
+   "en": "When the CMM itself also shows low recovery against the spiked concentrations, a direct \"AMM/RMM against CMM\" comparison (rather than each against the spiked concentrations) is preferable; it can raise power and reduce interference from the uncertainty of the spiked concentrations."
+  },
+  {
+   "zh": "合併（Pooling）多濃度回收率可提高檢定力、擴大不劣性宣稱的濃度範圍，但必須先以 AICC 等統計證據驗證「回收率恆定」假設成立，並輔以微生物學論證，避免淪為「testing into compliance」。",
+   "en": "Pooling recovery across concentrations can raise power and widen the concentration range of the non-inferiority claim, but the \"constant recovery\" assumption must first be verified with statistical evidence such as AICC and supported by microbiological justification, to avoid \"testing into compliance\"."
+  }
+ ]
+}

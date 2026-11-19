@@ -1,0 +1,817 @@
+{
+ "source": "section-02b-package-design-sus-ivbag-cryo.html",
+ "blocks": [
+  {
+   "zh": "包裝設計挑戰：單次使用系統、IV袋、低溫條件（4.2–4.4）",
+   "en": "Package Design Challenges: Single-Use Systems, IV Bags, and Cryogenic Conditions (4.2-4.4)"
+  },
+  {
+   "zh": "Learning Objectives 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "學完本節後，你能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "說明 2-D 與 3-D SUS 袋的結構差異，以及複雜性如何驅動完整性風險。",
+   "en": "Explain the structural differences between 2-D and 3-D SUS bags and how complexity drives integrity risk."
+  },
+  {
+   "zh": "解釋 SUS 管路中 70+ 接合點為何造成指數級失效潛力。",
+   "en": "Explain why 70+ joining points in SUS tubing assemblies create an exponential failure potential."
+  },
+  {
+   "zh": "比較氦氣洩漏檢測與壓力降技術在 SUS 測試上的優缺點。",
+   "en": "Compare the advantages and limitations of helium leak testing and pressure decay techniques for SUS testing."
+  },
+  {
+   "zh": "辨識充液 IV 袋的 CCI 獨特挑戰，包括脫氣造成的假陽性。",
+   "en": "Identify the unique CCI challenges of liquid-filled IV bags, including false positives caused by outgassing."
+  },
+  {
+   "zh": "解釋低溫（-80 °C）下 CCI 失效的物理機制。",
+   "en": "Explain the physical mechanism of CCI failure at low temperature (-80 °C)."
+  },
+  {
+   "zh": "解讀頭空間 CO₂/O₂ 數據作為低溫 CCI 失效的間接證據。",
+   "en": "Interpret headspace CO₂/O₂ data as indirect evidence of CCI failure under cryogenic conditions."
+  },
+  {
+   "zh": "將生命週期 CCI 思維應用於 CAR-T、mRNA 等超低溫儲存產品。",
+   "en": "Apply lifecycle CCI thinking to ultra-cold stored products such as CAR-T and mRNA."
+  },
+  {
+   "zh": "Section Contents 本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "單次使用系統 — 軟性散裝容器 | Pages 17–20",
+   "en": "Single-Use Systems: Flexible Bulk Containers | Pages 17-20"
+  },
+  {
+   "zh": "Overview 概覽",
+   "en": "Overview"
+  },
+  {
+   "zh": "中文解析 — SUS 是什麼？",
+   "en": "Commentary: What is an SUS?"
+  },
+  {
+   "zh": "<span class=\"key-term\">Single-Use System (SUS)</span> 即「單次使用系統」，是生物製藥製程中用於儲存、混合、傳輸原料藥或藥品的一次性軟性袋體，使用後即丟棄，無需清洗驗證。",
+   "en": "<span class=\"key-term\">Single-Use System (SUS)</span> refers to disposable flexible bags used in biopharmaceutical manufacturing to store, mix, and transfer drug substance or drug product. They are discarded after use and require no cleaning validation."
+  },
+  {
+   "zh": "2-D 平板袋",
+   "en": "2-D Flat Bags"
+  },
+  {
+   "zh": "容量：20 mL – 50 L",
+   "en": "Capacity: 20 mL - 50 L"
+  },
+  {
+   "zh": "外觀：扁平如枕頭",
+   "en": "Appearance: flat, like a pillow"
+  },
+  {
+   "zh": "適用：小批量、實驗室規模",
+   "en": "Use: small batches, laboratory scale"
+  },
+  {
+   "zh": "代表：Mobius® (Merck)",
+   "en": "Example: Mobius® (Merck)"
+  },
+  {
+   "zh": "3-D 立體袋",
+   "en": "3-D Bags"
+  },
+  {
+   "zh": "容量：50 L – 3000 L",
+   "en": "Capacity: 50 L - 3000 L"
+  },
+  {
+   "zh": "外觀：圓柱形桶狀",
+   "en": "Appearance: cylindrical, drum-like"
+  },
+  {
+   "zh": "適用：大批量生產",
+   "en": "Use: large-scale production"
+  },
+  {
+   "zh": "代表：Flexsafe® (Sartorius)",
+   "en": "Example: Flexsafe® (Sartorius)"
+  },
+  {
+   "zh": "CDMO 重要性",
+   "en": "Why It Matters for CDMOs"
+  },
+  {
+   "zh": "SUS 的最大優點是省去清洗驗證（CIP/SIP），但代價是必須對每個批次的完整性負責。在 CDMO 環境下，SUS 常用於細胞培養基、原料藥儲存與灌裝前的緩衝液準備。",
+   "en": "The biggest advantage of SUS is that it eliminates cleaning validation (CIP/SIP), but the trade-off is that you are responsible for the integrity of every batch. In a CDMO setting, SUS is commonly used for cell culture media, drug substance storage, and buffer preparation before filling."
+  },
+  {
+   "zh": "Design 設計",
+   "en": "Design"
+  },
+  {
+   "zh": "設計重點解析",
+   "en": "Key Design Points"
+  },
+  {
+   "zh": "MALL 定義",
+   "en": "MALL Definition"
+  },
+  {
+   "zh": "<span class=\"key-term\">MALL</span>（Maximum Allowable Leakage Limit）= 最大允許洩漏限值。對 SUS 而言，MALL 必須根據<strong>實際使用條件</strong>來確立，例如：灌裝時的靜壓力、運輸振動、高度變化等。",
+   "en": "<span class=\"key-term\">MALL</span> (Maximum Allowable Leakage Limit) is the largest leak that can be tolerated. For an SUS, the MALL must be established based on <strong>actual use conditions</strong>, such as hydrostatic pressure during filling, transport vibration, and altitude changes."
+  },
+  {
+   "zh": "USP &lt;1207&gt; 不適用 SUS",
+   "en": "USP &lt;1207&gt; Does Not Apply to SUS"
+  },
+  {
+   "zh": "USP &lt;1207&gt; 的範圍僅涵蓋「有限制性密封元件」的容器（如瓶/塞/蓋組合），SUS 的軟性結構不符合此定義。但 <strong>ASTM WK64337</strong> 正在制訂專屬 SUS 的完整性指引，補充這個監管空白。",
+   "en": "The scope of USP &lt;1207&gt; covers only containers with \"limited-restriction sealing elements\" (such as vial/stopper/cap combinations); the flexible structure of an SUS does not fit this definition. However, <strong>ASTM WK64337</strong> is developing an integrity guide specific to SUS to fill this regulatory gap."
+  },
+  {
+   "zh": "比喻：提袋 vs. 硬盒",
+   "en": "Analogy: Shopping Bag vs. Rigid Box"
+  },
+  {
+   "zh": "SUS 就像軟質購物袋：你可以擠壓它、折疊它，但每一個縫線交接點都是潛在的破洞。相比之下，玻璃瓶就像硬質盒子，形變有限，更容易評估。",
+   "en": "An SUS is like a soft shopping bag: you can squeeze it and fold it, but every seam junction is a potential hole. A glass vial, by contrast, is like a rigid box with limited deformation, and is much easier to assess."
+  },
+  {
+   "zh": "<strong>三大風險因子：</strong>",
+   "en": "<strong>Three major risk factors:</strong>"
+  },
+  {
+   "zh": "<strong>微生物侵入</strong> — 最常見的 MALL 驅動因素",
+   "en": "<strong>Microbial ingress</strong> - the most common MALL driver"
+  },
+  {
+   "zh": "<strong>液體洩漏</strong> — 對高毒性產品（如腫瘤科藥物）有操作員安全疑慮",
+   "en": "<strong>Liquid leakage</strong> - an operator safety concern for highly toxic products (such as oncology drugs)"
+  },
+  {
+   "zh": "<strong>氣體滲透</strong> — 影響對 O₂ 敏感的生物製品穩定性",
+   "en": "<strong>Gas permeation</strong> - affects the stability of O₂-sensitive biologics"
+  },
+  {
+   "zh": "Challenges 挑戰",
+   "en": "Challenges"
+  },
+  {
+   "zh": "挑戰核心：接合點 = 失效風險",
+   "en": "Core Challenge: Joining Points = Failure Risk"
+  },
+  {
+   "zh": "Large SUS assemblies may have more than 70 joining points<br/>大型 SUS 組件可能有超過 70 個接合點",
+   "en": "Large SUS assemblies may have more than 70 joining points<br/>"
+  },
+  {
+   "zh": "關鍵風險思維",
+   "en": "Key Risk Thinking"
+  },
+  {
+   "zh": "每個接合點（luer 接頭、軟管倒刺、焊接薄膜、歧管連接）都是一個潛在洩漏點。對於 70 個接合點的系統，如果每個接合點的失效概率是 0.1%，整個組件的完整失效概率接近 7%——遠高於單個玻璃瓶的風險。",
+   "en": "Every joining point (luer connector, hose barb, welded film, manifold connection) is a potential leak site. For a system with 70 joining points, if each has a 0.1% probability of failure, the overall probability that the assembly fails is close to 7%, far higher than the risk for a single glass vial."
+  },
+  {
+   "zh": "SUS 複雜性來源",
+   "en": "Sources of SUS Complexity"
+  },
+  {
+   "zh": "<strong>膜對膜密封</strong>（film-to-film seals）— 熱封質量難以 100% 驗證",
+   "en": "<strong>Film-to-film seals</strong> - heat seal quality is difficult to verify 100%"
+  },
+  {
+   "zh": "<strong>軟性材料形變</strong> — 填充後形狀改變，使測試表面積難以評估",
+   "en": "<strong>Deformation of flexible materials</strong> - the shape changes once filled, making the test surface area hard to assess"
+  },
+  {
+   "zh": "<strong>輻射滅菌效應</strong> — gamma 輻射可能使聚合物材料脆化，增加微裂縫",
+   "en": "<strong>Effects of radiation sterilization</strong> - gamma radiation can embrittle polymer materials and increase micro-cracks"
+  },
+  {
+   "zh": "<strong>連接器多樣性</strong> — luer、hose barb、tri-clamp 等各類接頭",
+   "en": "<strong>Connector diversity</strong> - luer, hose barb, tri-clamp, and other connector types"
+  },
+  {
+   "zh": "供應商 vs. 用戶責任劃分",
+   "en": "Supplier vs. User Responsibilities"
+  },
+  {
+   "zh": "SUS <strong>供應商</strong>負責：設計驗證、MALL 確立、製造放行測試。<br/>\n                CDMO <strong>用戶</strong>負責：使用前檢測、運輸驗證、操作相容性確認。<br/>\n                兩者缺一不可，責任不能單方轉移。",
+   "en": "The SUS <strong>supplier</strong> is responsible for: design verification, MALL establishment, and manufacturing release testing.<br/>\n                The CDMO <strong>user</strong> is responsible for: pre-use testing, transport validation, and operational compatibility confirmation.<br/>\n                Both are indispensable, and responsibility cannot be transferred to one party alone."
+  },
+  {
+   "zh": "Test Method Considerations 測試方法考量",
+   "en": "Test Method Considerations"
+  },
+  {
+   "zh": "測試方法決策框架",
+   "en": "Test Method Decision Framework"
+  },
+  {
+   "zh": "微生物挑戰測試：2 種方法比較",
+   "en": "Microbial Challenge Testing: Comparing 2 Methods"
+  },
+  {
+   "zh": "浸沒法（Immersion）",
+   "en": "Immersion"
+  },
+  {
+   "zh": "將 SUS 浸入含菌液中，施加壓力後檢查內部汙染。傳統上認為較嚴苛、統計上較可靠。",
+   "en": "The SUS is immersed in a bacterial suspension and pressure is applied, then the interior is checked for contamination. Traditionally considered more stringent and statistically more reliable."
+  },
+  {
+   "zh": "氣溶膠法（Aerosol）",
+   "en": "Aerosol"
+  },
+  {
+   "zh": "將 SUS 暴露於含菌氣溶膠環境，更能代表實際運輸/使用條件，可測試更多樣品。",
+   "en": "The SUS is exposed to a bacteria-containing aerosol environment, which better represents actual transport/use conditions and allows more samples to be tested."
+  },
+  {
+   "zh": "<strong>新發現：</strong>兩種方法靈敏度相當，MALL 均為 <span class=\"key-term\">2 µm</span>。",
+   "en": "<strong>New finding:</strong> The two methods have comparable sensitivity, with a MALL of <span class=\"key-term\">2 µm</span> for both."
+  },
+  {
+   "zh": "氦氣 vs. 壓力降：如何選擇？",
+   "en": "Helium vs. Pressure Decay: How to Choose?"
+  },
+  {
+   "zh": "<strong>氦氣洩漏檢測</strong> → 供應商放行測試首選（靈敏度高、成本可分攤）",
+   "en": "<strong>Helium leak testing</strong> -> first choice for supplier release testing (high sensitivity, cost can be spread across batches)"
+  },
+  {
+   "zh": "<strong>壓力降技術</strong> → 使用前現場測試首選（操作簡單、設備成本低）",
+   "en": "<strong>Pressure decay technique</strong> -> first choice for pre-use on-site testing (simple to operate, low equipment cost)"
+  },
+  {
+   "zh": "兩者不互斥，在生命週期不同節點各有角色。",
+   "en": "The two are not mutually exclusive; each has a role at different points in the lifecycle."
+  },
+  {
+   "zh": "比喻：MALL vs. LoD 的三角關係",
+   "en": "Analogy: The MALL vs. LoD Relationship"
+  },
+  {
+   "zh": "想像 MALL 是「允許通過的最大汙染物尺寸」，LoD 是「儀器能偵測到的最小洩漏尺寸」。理想情況：",
+   "en": "Think of the MALL as \"the largest leak size allowed to pass\" and the LoD as \"the smallest leak size the instrument can detect.\" The ideal situation is:"
+  },
+  {
+   "zh": "若 LoD 大於 MALL，則測試法無法保護產品——這是大型複雜 SUS 常見的困境。",
+   "en": "If the LoD is larger than the MALL, the test method cannot protect the product. This is a common dilemma for large, complex SUS."
+  },
+  {
+   "zh": "CDMO 實務：驗收測試計畫",
+   "en": "CDMO Practice: Acceptance Testing Plan"
+  },
+  {
+   "zh": "作為 SUS 用戶，CDMO 應要求供應商提供：",
+   "en": "As an SUS user, the CDMO should require the supplier to provide:"
+  },
+  {
+   "zh": "每批 SUS 的 100% 放行測試記錄（helium 或壓力降）",
+   "en": "100% release test records for every SUS lot (helium or pressure decay)"
+  },
+  {
+   "zh": "MALL 確立的科學依據文件",
+   "en": "Documentation of the scientific basis for the MALL"
+  },
+  {
+   "zh": "運輸驗證報告（振動、衝擊測試）",
+   "en": "Transport validation reports (vibration and shock testing)"
+  },
+  {
+   "zh": "輻射滅菌後完整性驗證數據",
+   "en": "Integrity verification data after radiation sterilization"
+  },
+  {
+   "zh": "思考練習",
+   "en": "Discussion Exercise"
+  },
+  {
+   "zh": "你的 CDMO 從供應商採購 200 L SUS 袋用於 mRNA 原料液儲存。供應商聲稱已進行 100% 壓力降測試。你需要向他們索取哪些額外資訊才能接受這份放行測試報告？",
+   "en": "Your CDMO purchases 200 L SUS bags from a supplier for storing mRNA drug substance solution. The supplier claims to have performed 100% pressure decay testing. What additional information do you need to request before you can accept this release test report?"
+  },
+  {
+   "zh": "<em>提示：考慮 MALL、LoD、使用條件相符性</em>",
+   "en": "<em>Hint: consider MALL, LoD, and alignment with use conditions</em>"
+  },
+  {
+   "zh": "Additional Considerations 其他考量",
+   "en": "Additional Considerations"
+  },
+  {
+   "zh": "整合框架：QbD + QRM for SUS",
+   "en": "Integrated Framework: QbD + QRM for SUS"
+  },
+  {
+   "zh": "生命週期完整性管理模型",
+   "en": "Lifecycle Integrity Management Model"
+  },
+  {
+   "zh": "SUS 的 CCI 不是單一測試點，而是貫穿整個生命週期的管理框架：",
+   "en": "CCI for an SUS is not a single test point but a management framework that spans the entire lifecycle:"
+  },
+  {
+   "zh": "<strong>設計開發階段</strong> — 材料選擇、接合點設計、MALL 初步確立",
+   "en": "<strong>Design and development stage</strong> - material selection, joining point design, initial MALL establishment"
+  },
+  {
+   "zh": "<strong>供應商放行階段</strong> — 100% 氦氣/壓力降測試",
+   "en": "<strong>Supplier release stage</strong> - 100% helium/pressure decay testing"
+  },
+  {
+   "zh": "<strong>運輸驗證階段</strong> — 振動、衝擊、高度模擬",
+   "en": "<strong>Transport validation stage</strong> - vibration, shock, and altitude simulation"
+  },
+  {
+   "zh": "<strong>使用前確認階段</strong> — 現場壓力降測試或視覺檢查",
+   "en": "<strong>Pre-use verification stage</strong> - on-site pressure decay testing or visual inspection"
+  },
+  {
+   "zh": "<strong>使用後評估階段</strong> — 端對端完整性（end-of-use testing）",
+   "en": "<strong>Post-use evaluation stage</strong> - end-to-end integrity (end-of-use testing)"
+  },
+  {
+   "zh": "SUS 的清洗驗證 vs. 完整性測試",
+   "en": "SUS Cleaning Validation vs. Integrity Testing"
+  },
+  {
+   "zh": "SUS 最大優點是<strong>不需要清洗驗證</strong>（一次性使用，避免交叉汙染）。但這不等於不需要完整性測試——完整性測試反而<strong>更加重要</strong>，因為一旦袋體失效，你無法重新清洗再用。",
+   "en": "The biggest advantage of SUS is that it <strong>does not require cleaning validation</strong> (single use avoids cross-contamination). But this does not mean integrity testing is unnecessary; integrity testing is in fact <strong>even more important</strong>, because once a bag fails, you cannot clean it and reuse it."
+  },
+  {
+   "zh": "CDMO 採購決策重點",
+   "en": "Key Points for CDMO Procurement Decisions"
+  },
+  {
+   "zh": "選擇 SUS 供應商時，除價格外，應重點評估：",
+   "en": "When selecting an SUS supplier, beyond price, you should focus on evaluating whether the supplier:"
+  },
+  {
+   "zh": "是否提供 ASTM WK64337 合規的完整性文件",
+   "en": "Provides integrity documentation compliant with ASTM WK64337"
+  },
+  {
+   "zh": "是否有專用的完整性測試設備（非目視檢查替代）",
+   "en": "Has dedicated integrity testing equipment (not visual inspection as a substitute)"
+  },
+  {
+   "zh": "是否能支援用戶現場的使用前測試",
+   "en": "Can support pre-use testing at the user site"
+  },
+  {
+   "zh": "客訴與調查回應速度（Field Alert 歷史）",
+   "en": "Responds quickly to complaints and investigations (Field Alert history)"
+  },
+  {
+   "zh": "IV 袋 — 軟性成品藥容器 | Pages 21–22",
+   "en": "IV Bags: Flexible Drug Product Containers | Pages 21-22"
+  },
+  {
+   "zh": "IV 袋 vs. SUS 袋的關鍵差異",
+   "en": "Key Differences Between IV Bags and SUS Bags"
+  },
+  {
+   "zh": "IV 袋設計要素",
+   "en": "IV Bag Design Elements"
+  },
+  {
+   "zh": "關鍵設計組件",
+   "en": "Key Design Components"
+  },
+  {
+   "zh": "<strong>端口設計（Port Design）</strong> — 輸液口、加藥口與薄膜的密封介面是最脆弱的部位",
+   "en": "<strong>Port design</strong> - the sealing interface between the infusion port, the medication port, and the film is the most vulnerable area"
+  },
+  {
+   "zh": "<strong>外包裝（Overwrap）</strong> — 保護主袋免受機械損傷與氣體滲透",
+   "en": "<strong>Overwrap</strong> - protects the primary bag from mechanical damage and gas permeation"
+  },
+  {
+   "zh": "<strong>薄膜材料</strong> — PVC、非 PVC（PP/PE 多層膜）等不同材質影響滲透性",
+   "en": "<strong>Film material</strong> - different materials such as PVC and non-PVC (PP/PE multilayer film) affect permeability"
+  },
+  {
+   "zh": "液體特性影響 CCI 偵測",
+   "en": "How Liquid Properties Affect CCI Detection"
+  },
+  {
+   "zh": "<strong>表面張力</strong>高的液體（如純水）能在微小缺陷處形成液橋，需要更大壓力才會洩漏——導致洩漏「難以發生」但若發生則難以偵測。",
+   "en": "Liquids with high <strong>surface tension</strong> (such as pure water) can form liquid bridges at tiny defects and need higher pressure to leak, so leaks are \"hard to occur\" but, if they do occur, are hard to detect."
+  },
+  {
+   "zh": "<strong>黏度</strong>高的液體（如蛋白質製劑）流動更慢，可能造成微孔堵塞，干擾測試結果。",
+   "en": "Liquids with high <strong>viscosity</strong> (such as protein formulations) flow more slowly and may plug micro-pores, interfering with test results."
+  },
+  {
+   "zh": "IV 袋五大 CCI 挑戰",
+   "en": "Five Major CCI Challenges for IV Bags"
+  },
+  {
+   "zh": "挑戰 1：液體汙染測試設備",
+   "en": "Challenge 1: Liquid Contaminating the Test Equipment"
+  },
+  {
+   "zh": "若 IV 袋有真實洩漏，藥液進入測試腔後必須清洗，直接降低測試吞吐量（throughput）。對生產線而言，停線清洗的代價極高。",
+   "en": "If an IV bag has a real leak, the drug solution enters the test chamber and must be cleaned out, directly reducing test throughput. For a production line, the cost of stopping the line for cleaning is very high."
+  },
+  {
+   "zh": "挑戰 2：缺陷位置影響偵測速率",
+   "en": "Challenge 2: Defect Location Affects Detection Rate"
+  },
+  {
+   "zh": "接觸空氣的缺陷比接觸液體的缺陷更容易被快速偵測——這意味著液面以下的缺陷可能被低估。",
+   "en": "Defects in contact with air are detected more quickly than defects in contact with liquid, which means defects below the liquid level may be underestimated."
+  },
+  {
+   "zh": "挑戰 3：藥液結晶堵塞微孔",
+   "en": "Challenge 3: Drug Solution Crystallization Plugging Micro-Pores"
+  },
+  {
+   "zh": "部分 IV 袋藥液（如某些注射用抗生素、電解質液）在乾燥後會結晶，可能暫時堵塞微米級缺陷，造成「假陰性」——缺陷存在但測試通過。",
+   "en": "Some IV bag solutions (such as certain injectable antibiotics and electrolyte solutions) crystallize on drying, which can temporarily plug micron-scale defects and cause \"false negatives\": the defect exists but the test passes."
+  },
+  {
+   "zh": "挑戰 4：真空測試假陽性問題",
+   "en": "Challenge 4: False Positives in Vacuum Testing"
+  },
+  {
+   "zh": "IV 袋表面的殘留揮發氣體（如滅菌後的水蒸氣）在抽真空時會大量釋出，導致真空衰減法（Vacuum Decay）或質量萃取法（Mass Extraction）出現假陽性。解決方案：在測試前加入足夠的「平衡時間」（equilibration time）或使用特殊夾具限制測試區域。",
+   "en": "Residual volatile gases on the IV bag surface (such as water vapor after sterilization) are released in large amounts when a vacuum is drawn, causing false positives in Vacuum Decay or Mass Extraction methods. Solution: allow sufficient \"equilibration time\" before testing or use special fixtures to limit the test area."
+  },
+  {
+   "zh": "挑戰 5：正對照的工程難度",
+   "en": "Challenge 5: Engineering Difficulty of Positive Controls"
+  },
+  {
+   "zh": "為軟性 IV 袋製作可重複的微米級人工缺陷（正對照）非常困難——每次鑽孔或雷射打孔的結果差異很大，且薄膜材料的彈性可能讓孔洞自動閉合。",
+   "en": "It is very difficult to create repeatable micron-scale artificial defects (positive controls) in flexible IV bags: results vary widely with each drilling or laser-drilling, and the elasticity of the film material may cause the hole to close by itself."
+  },
+  {
+   "zh": "IV 袋可用測試方法彙整",
+   "en": "Summary of Test Methods Applicable to IV Bags"
+  },
+  {
+   "zh": "重點：IV 袋薄膜可能對氦氣有滲透性",
+   "en": "Key point: IV bag films may be permeable to helium"
+  },
+  {
+   "zh": "部分 IV 袋使用的多層薄膜（如非 PVC PP/PE 膜）對氦氣具有固有滲透性，這使氦氣洩漏測試出現假陽性而不適用。這是選擇 CCI 方法時必須提前確認的材料特性。",
+   "en": "The multilayer films used for some IV bags (such as non-PVC PP/PE film) are inherently permeable to helium, which causes false positives in helium leak testing and makes it unsuitable. This is a material property that must be confirmed in advance when selecting a CCI method."
+  },
+  {
+   "zh": "滲透 vs. 洩漏：關鍵區分",
+   "en": "Permeation vs. Leakage: A Key Distinction"
+  },
+  {
+   "zh": "Permeation 滲透 vs. Leakage 洩漏",
+   "en": "Permeation vs. Leakage"
+  },
+  {
+   "zh": "<strong>滲透（Permeation）</strong>是氣體分子通過完整薄膜材料的擴散——這是材料的固有特性，在一定範圍內是<em>可接受的</em>。",
+   "en": "<strong>Permeation</strong> is the diffusion of gas molecules through intact film material. It is an inherent property of the material and is <em>acceptable</em> within a certain range."
+  },
+  {
+   "zh": "<strong>洩漏（Leakage）</strong>是通過缺陷（孔洞、裂縫、未密封的接口）發生的液體或氣體流動——這是<em>不可接受的</em>，直接代表 CCI 失效。",
+   "en": "<strong>Leakage</strong> is the flow of liquid or gas through a defect (hole, crack, or unsealed interface). It is <em>unacceptable</em> and directly represents a CCI failure."
+  },
+  {
+   "zh": "在 IV 袋 CCI 研究中，必須先量化材料固有滲透率，才能設定 CCI 方法的判定閾值（threshold）。",
+   "en": "In IV bag CCI studies, the inherent permeation rate of the material must be quantified first, so that the acceptance threshold for the CCI method can be set."
+  },
+  {
+   "zh": "CDMO 稽查準備",
+   "en": "CDMO Inspection Readiness"
+  },
+  {
+   "zh": "FDA/EMA 稽查員在審查 IV 袋 CCI 驗證時會問：",
+   "en": "When reviewing IV bag CCI validation, FDA/EMA inspectors will ask:"
+  },
+  {
+   "zh": "如何區分滲透率訊號與洩漏訊號？",
+   "en": "How do you distinguish the permeation signal from the leakage signal?"
+  },
+  {
+   "zh": "使用前 vs. 使用後測試如何安排？",
+   "en": "How are pre-use vs. post-use tests arranged?"
+  },
+  {
+   "zh": "HVLD 對產品是否有光降解風險已評估？",
+   "en": "Has the risk of photodegradation of the product by HVLD been assessed?"
+  },
+  {
+   "zh": "正對照缺陷是否能在測試條件下被可靠偵測？",
+   "en": "Can the positive control defects be reliably detected under the test conditions?"
+  },
+  {
+   "zh": "低溫條件下的容器完整性 | Pages 22–26",
+   "en": "Container Integrity Under Cryogenic Conditions | Pages 22-26"
+  },
+  {
+   "zh": "儲存溫度分布",
+   "en": "Storage Temperature Distribution"
+  },
+  {
+   "zh": "<span class=\"temp-val\">2–8 °C</span>\n<span>冷藏（Refrigeration）— 蛋白質製劑、疫苗</span>",
+   "en": "<span class=\"temp-val\">2-8 °C</span>\n<span>Refrigeration - protein formulations, vaccines</span>"
+  },
+  {
+   "zh": "<span class=\"temp-val\">-20 °C</span>\n<span>冷凍（Freezing）— 次常用溫度，部分小分子注射劑</span>",
+   "en": "<span class=\"temp-val\">-20 °C</span>\n<span>Freezing - the next most common temperature, some small-molecule injectables</span>"
+  },
+  {
+   "zh": "<span class=\"temp-val\">-80 °C</span>\n<span>超低溫（Ultra-cold）— 臨床樣品、活病毒疫苗、mRNA LNP</span>",
+   "en": "<span class=\"temp-val\">-80 °C</span>\n<span>Ultra-cold - clinical samples, live virus vaccines, mRNA LNP</span>"
+  },
+  {
+   "zh": "<span class=\"temp-val\">-196 °C</span>\n<span>液態氮（Liquid Nitrogen）— 細胞治療、CAR-T</span>",
+   "en": "<span class=\"temp-val\">-196 °C</span>\n<span>Liquid nitrogen - cell therapy, CAR-T</span>"
+  },
+  {
+   "zh": "為何低溫 CCI 特別困難？",
+   "en": "Why Is CCI at Low Temperature Especially Difficult?"
+  },
+  {
+   "zh": "低溫下的 CCI 失效具有<strong>「自我修復」特性</strong>——在冷凍狀態下失效，升溫後橡膠塞回彈，外觀看起來完整。傳統目視檢查完全無法偵測這類問題。",
+   "en": "CCI failure at low temperature has a <strong>\"self-healing\" characteristic</strong>: the seal fails in the frozen state, but when warmed the rubber stopper rebounds and the container looks intact. Conventional visual inspection cannot detect this type of problem at all."
+  },
+  {
+   "zh": "Design — Cryogenic Storage Observations 設計：低溫儲存觀察",
+   "en": "Design: Cryogenic Storage Observations"
+  },
+  {
+   "zh": "案例分析：超壓現象與頭空間指標",
+   "en": "Case Analysis: Overpressure and Headspace Indicators"
+  },
+  {
+   "zh": "在 20 支於 -80 °C（乾冰）儲存的樣品中<br/>3 支顯示 CO₂ 超標 / O₂ 降低 / 總壓升高<br/>= CCI 失效的直接證據",
+   "en": "Of 20 samples stored at -80 °C (dry ice)<br/>3 showed elevated CO₂ / reduced O₂ / increased total pressure<br/>= direct evidence of CCI failure"
+  },
+  {
+   "zh": "超壓的臨床風險",
+   "en": "Clinical Risk of Overpressure"
+  },
+  {
+   "zh": "當注射器插入已回溫的失效瓶時，瓶內超壓（&gt;1 atm）會推出注射器活塞，並在取出針頭時噴出藥液。這不只是一個「完整性問題」——這是一個直接的<strong>操作員安全風險</strong>（尤其對高活性腫瘤學或生物製劑）。",
+   "en": "When a syringe is inserted into a failed vial that has been warmed up, the overpressure inside the vial (&gt;1 atm) pushes the syringe plunger out and sprays liquid when the needle is withdrawn. This is not just an \"integrity issue\"; it is a direct <strong>operator safety risk</strong> (especially for highly potent oncology products or biologics)."
+  },
+  {
+   "zh": "物理機制比喻",
+   "en": "Analogy for the Physical Mechanism"
+  },
+  {
+   "zh": "想像一個充氣氣球（橡膠塞）放在冰箱裡——它會收縮，讓瓶口露出縫隙。外界的 CO₂（乾冰環境）趁機滲入。當氣球（橡膠塞）回到室溫，它又膨脹封住縫隙，把 CO₂ 鎖在裡面，造成超壓。",
+   "en": "Imagine an inflated balloon (the rubber stopper) placed in a refrigerator: it shrinks, leaving a gap at the vial mouth. External CO₂ (from the dry ice environment) seeps in. When the balloon (rubber stopper) returns to room temperature, it expands again and seals the gap, trapping the CO₂ inside and causing overpressure."
+  },
+  {
+   "zh": "Challenges — Thermal Properties of Packaging Components 挑戰：包材熱學特性",
+   "en": "Challenges: Thermal Properties of Packaging Components"
+  },
+  {
+   "zh": "定量分析：橡膠塞收縮的物理學",
+   "en": "Quantitative Analysis: The Physics of Rubber Stopper Shrinkage"
+  },
+  {
+   "zh": "體積收縮率對比",
+   "en": "Comparison of Volume Shrinkage"
+  },
+  {
+   "zh": "溫度變化: 20°C → -80°C\n\n橡膠塞（丁基橡膠）:\n  20°C → -20°C:  體積減少  6%\n  20°C → -70°C:  體積減少 11%（玻璃化轉變溫度）\n  20°C → -196°C: 體積減少 20%\n\n硼矽玻璃瓶:\n  20°C → -196°C: 體積減少 &lt;1%\n\n差異: 橡膠塞收縮 = 玻璃瓶收縮的 20倍",
+   "en": "Temperature change: 20°C -> -80°C\n\nRubber stopper (butyl rubber):\n  20°C -> -20°C:  volume decrease  6%\n  20°C -> -70°C:  volume decrease 11% (glass transition temperature)\n  20°C -> -196°C: volume decrease 20%\n\nBorosilicate glass vial:\n  20°C -> -196°C: volume decrease &lt;1%\n\nDifference: rubber stopper shrinkage = 20 times glass vial shrinkage"
+  },
+  {
+   "zh": "這個<strong>熱收縮差異</strong>是低溫 CCI 失效的根本原因。",
+   "en": "This <strong>difference in thermal shrinkage</strong> is the root cause of CCI failure at low temperature."
+  },
+  {
+   "zh": "頭空間壓力計算（Gay-Lussac 定律）",
+   "en": "Headspace Pressure Calculation (Gay-Lussac's Law)"
+  },
+  {
+   "zh": "P₁/T₁ = P₂/T₂  （體積固定）\n\n室溫: T₁ = 293 K, P₁ = 1000 mbar\n-80°C: T₂ = 193 K\nP₂ = 1000 × (193/293) = 659 mbar ≈ 660 mbar\n\n乾冰環境洩漏後回溫:\n-70°C (重新密封) → 20°C 回溫:\n壓力 = 1000 × (293/203) ≈ 1443 mbar\n= 1.4 atm 超壓！",
+   "en": "P₁/T₁ = P₂/T₂  (constant volume)\n\nRoom temperature: T₁ = 293 K, P₁ = 1000 mbar\n-80°C: T₂ = 193 K\nP₂ = 1000 × (193/293) = 659 mbar ≈ 660 mbar\n\nAfter leakage in dry ice environment, then warming:\n-70°C (re-sealed) -> 20°C warming:\nPressure = 1000 × (293/203) ≈ 1443 mbar\n= 1.4 atm overpressure!"
+  },
+  {
+   "zh": "玻璃化轉變溫度（Tg）的意義",
+   "en": "Significance of the Glass Transition Temperature (Tg)"
+  },
+  {
+   "zh": "丁基橡膠的 Tg 約為 <strong>-70 °C</strong>。在此溫度以下：",
+   "en": "The Tg of butyl rubber is approximately <strong>-70 °C</strong>. Below this temperature:"
+  },
+  {
+   "zh": "橡膠塞從「彈性體」變為「剛性塑料」",
+   "en": "The rubber stopper changes from an \"elastomer\" to a \"rigid plastic\""
+  },
+  {
+   "zh": "失去主動密封力，無法補償收縮造成的間隙",
+   "en": "It loses active sealing force and cannot compensate for the gap caused by shrinkage"
+  },
+  {
+   "zh": "材料更脆，承受低溫震動時更易破裂",
+   "en": "The material becomes more brittle and is more likely to crack under low-temperature vibration"
+  },
+  {
+   "zh": "-80 °C 儲存剛好超過 Tg，是最危險的儲存溫度。",
+   "en": "Storage at -80 °C is just below the Tg, making it the most dangerous storage temperature."
+  },
+  {
+   "zh": "低溫 CCI 偵測的核心方法",
+   "en": "Core Methods for Detecting CCI at Low Temperature"
+  },
+  {
+   "zh": "雷射頭空間分析（Laser Headspace Analysis）",
+   "en": "Laser Headspace Analysis"
+  },
+  {
+   "zh": "使用<span class=\"key-term\">TDLS（可調諧雷射二極體光譜法）</span>，非破壞性地測量瓶內 CO₂、O₂ 濃度及總壓。",
+   "en": "Uses <span class=\"key-term\">TDLS (tunable diode laser spectroscopy)</span> to non-destructively measure CO₂ and O₂ concentrations and total pressure inside the vial."
+  },
+  {
+   "zh": "<strong>為何是低溫 CCI 首選？</strong>",
+   "en": "<strong>Why is it the first choice for low-temperature CCI?</strong>"
+  },
+  {
+   "zh": "CCI 失效是「暫時性的」——回溫後外觀完整，只有頭空間組成改變",
+   "en": "CCI failure is \"transient\": after warming the container looks intact, and only the headspace composition has changed"
+  },
+  {
+   "zh": "雷射可在不破壞樣品的情況下讀取頭空間",
+   "en": "The laser can read the headspace without destroying the sample"
+  },
+  {
+   "zh": "可同時測量 CO₂↑、O₂↓、P↑ 三個指標",
+   "en": "It can measure three indicators simultaneously: CO₂↑, O₂↓, P↑"
+  },
+  {
+   "zh": "適合 100% 批次放行測試",
+   "en": "Suitable for 100% batch release testing"
+  },
+  {
+   "zh": "測試時機：原位（In-Situ）vs. 回溫後",
+   "en": "Test Timing: In-Situ vs. After Warming"
+  },
+  {
+   "zh": "<strong>原位測試（In-Situ）</strong>：在 -80 °C 下進行測試，可直接偵測洩漏狀態，但設備需低溫相容，技術難度高。",
+   "en": "<strong>In-situ testing</strong>: testing at -80 °C can directly detect the leak state, but the equipment must be compatible with low temperature, making it technically difficult."
+  },
+  {
+   "zh": "<strong>回溫後測試</strong>：回到室溫後，雖然瓶口已重新密封，但頭空間組成的「痕跡」仍可被雷射分析偵測——這是目前最可行的方法。",
+   "en": "<strong>Testing after warming</strong>: after returning to room temperature, although the vial has re-sealed, the \"trace\" in the headspace composition can still be detected by laser analysis. This is currently the most feasible method."
+  },
+  {
+   "zh": "殘餘密封力（Residual Seal Force, RSF）的應用",
+   "en": "Application of Residual Seal Force (RSF)"
+  },
+  {
+   "zh": "RSF 測量橡膠塞對玻璃瓶口的壓縮力。低溫後的 RSF 下降可預測性地指示 CCI 風險——即使外觀尚未失效，RSF 降低就是早期預警信號。在 CAR-T 細胞治療產品的 CCI 驗證中，RSF 測試是重要的補充工具。",
+   "en": "RSF measures the compression force of the rubber stopper on the glass vial neck. A drop in RSF after low-temperature exposure is a predictive indicator of CCI risk: even if the container has not yet visibly failed, a reduced RSF is an early warning signal. In CCI validation of CAR-T cell therapy products, RSF testing is an important complementary tool."
+  },
+  {
+   "zh": "Additional Considerations for Cryogenic Conditions 低溫條件的其他考量",
+   "en": "Additional Considerations for Cryogenic Conditions"
+  },
+  {
+   "zh": "CDMO 前沿應用：細胞治療與 mRNA",
+   "en": "Frontier CDMO Applications: Cell Therapy and mRNA"
+  },
+  {
+   "zh": "CAR-T 細胞治療（-196 °C 液態氮）",
+   "en": "CAR-T Cell Therapy (-196 °C Liquid Nitrogen)"
+  },
+  {
+   "zh": "CAR-T 產品在液態氮中儲存，每個患者樣本的不可替代性使 CCI 失效的風險遠高於一般製劑。目前這類容器（通常為冷凍袋或特殊冷凍管）缺乏成熟的 CCIT 標準，是業界正在努力解決的空白。",
+   "en": "CAR-T products are stored in liquid nitrogen, and because each patient sample is irreplaceable, the risk of CCI failure is far higher than for typical formulations. There are currently no mature CCIT standards for these containers (usually cryobags or special cryovials), a gap the industry is working to close."
+  },
+  {
+   "zh": "<strong>關鍵考量：</strong>液態氮溫度下，任何非金屬材料的脆化風險都需要特別評估。",
+   "en": "<strong>Key consideration:</strong> At liquid nitrogen temperature, the embrittlement risk of any non-metallic material requires special evaluation."
+  },
+  {
+   "zh": "mRNA 疫苗（-80 °C）",
+   "en": "mRNA Vaccines (-80 °C)"
+  },
+  {
+   "zh": "COVID-19 mRNA 疫苗的超低溫需求將 -80 °C CCI 問題推上業界議程。多劑量小瓶在反復取用（多次穿刺橡膠塞）後的 CCI 維持是新的驗證挑戰。每次穿刺都在橡膠塞上留下累積損傷，與低溫收縮共同作用可能加速失效。",
+   "en": "The ultra-cold requirements of COVID-19 mRNA vaccines put the -80 °C CCI problem on the industry agenda. Maintaining CCI of multi-dose vials after repeated withdrawals (multiple punctures of the rubber stopper) is a new validation challenge. Each puncture leaves cumulative damage on the stopper, which, combined with low-temperature shrinkage, may accelerate failure."
+  },
+  {
+   "zh": "USP &lt;1207&gt; 生命週期方法的應用",
+   "en": "Applying the USP &lt;1207&gt; Lifecycle Approach"
+  },
+  {
+   "zh": "對超低溫儲存產品，生命週期 CCI 評估應包括：",
+   "en": "For ultra-cold stored products, a lifecycle CCI assessment should include:"
+  },
+  {
+   "zh": "<strong>研發階段：</strong>包材選擇時的低溫 CCI 評估（材料 Tg 分析）",
+   "en": "<strong>Development stage:</strong> low-temperature CCI evaluation during packaging component selection (material Tg analysis)"
+  },
+  {
+   "zh": "<strong>製造階段：</strong>凍融驗證（freeze-thaw cycling）中的 CCI 監測",
+   "en": "<strong>Manufacturing stage:</strong> CCI monitoring during freeze-thaw cycling validation"
+  },
+  {
+   "zh": "<strong>貨架期：</strong>定期抽樣的雷射頭空間分析",
+   "en": "<strong>Shelf life:</strong> laser headspace analysis on periodically sampled units"
+  },
+  {
+   "zh": "<strong>運輸驗證：</strong>乾冰/液態氮運輸過程中的 CCI 模擬",
+   "en": "<strong>Transport validation:</strong> CCI simulation during dry ice/liquid nitrogen shipment"
+  },
+  {
+   "zh": "綜合思考：低溫 CCI 決策樹",
+   "en": "Integrated Exercise: Low-Temperature CCI Decision Tree"
+  },
+  {
+   "zh": "你的 CDMO 接受一個新的生物製劑客戶，其原料藥需在 -80 °C 乾冰儲存並運輸。請回答：",
+   "en": "Your CDMO is taking on a new biologics client whose drug substance must be stored and shipped on dry ice at -80 °C. Please answer:"
+  },
+  {
+   "zh": "你應該要求客戶提供哪些包材規格數據？（提示：Tg、熱收縮係數）",
+   "en": "What packaging component specification data should you ask the client to provide? (Hint: Tg, thermal shrinkage coefficient)"
+  },
+  {
+   "zh": "你會選擇哪種 CCI 測試方法進行批次放行？為什麼？",
+   "en": "Which CCI test method would you choose for batch release, and why?"
+  },
+  {
+   "zh": "如果頭空間分析發現 3/20 的樣品 CO₂ 超標，你的下一步是什麼？",
+   "en": "If headspace analysis finds CO₂ above the limit in 3 of 20 samples, what is your next step?"
+  },
+  {
+   "zh": "核心訊息總結 — 三大包裝挑戰",
+   "en": "Key Messages Summary: Three Major Packaging Challenges"
+  },
+  {
+   "zh": "CDMO 應用要點",
+   "en": "Key Points for CDMO Application"
+  },
+  {
+   "zh": "SUS 管理：供應商審計優先",
+   "en": "SUS Management: Supplier Audit First"
+  },
+  {
+   "zh": "在 CDMO，SUS 通常是由客戶指定供應商，但 QA 責任仍在工廠。應在技術協議中明確要求供應商提供：ASTM WK64337 合規文件、100% 放行測試數據、MALL 科學依據。",
+   "en": "At a CDMO, the SUS supplier is usually designated by the client, but QA responsibility still rests with the site. The technical agreement should explicitly require the supplier to provide: ASTM WK64337-compliant documentation, 100% release test data, and the scientific basis for the MALL."
+  },
+  {
+   "zh": "IV 袋：方法選擇必須考慮薄膜材質",
+   "en": "IV Bags: Method Selection Must Consider Film Material"
+  },
+  {
+   "zh": "不同薄膜材料的氦氣滲透性差異很大，方法開發前必須先進行材料相容性評估。HVLD 是充液袋的最常見選擇，但需確認測試前已移除外部水分。",
+   "en": "Helium permeability differs greatly between film materials, so a material compatibility assessment must be performed before method development. HVLD is the most common choice for liquid-filled bags, but you must confirm that external moisture has been removed before testing."
+  },
+  {
+   "zh": "低溫產品：從包材選擇開始",
+   "en": "Cryogenic Products: Start with Packaging Component Selection"
+  },
+  {
+   "zh": "最有效的低溫 CCI 保障從包材選擇開始，而不是從測試方法開始。選用 Tg 遠低於儲存溫度的橡膠塞（如特殊配方丁基橡膠）、選用適當的壓蓋壓力——這些設計決策的影響遠大於任何測試方法。",
+   "en": "The most effective low-temperature CCI assurance starts with packaging component selection, not with the test method. Choosing a rubber stopper whose Tg is well below the storage temperature (such as a specially formulated butyl rubber) and applying appropriate capping pressure: these design decisions have far greater impact than any test method."
+  },
+  {
+   "zh": "本節關鍵術語",
+   "en": "Key Terms in This Section"
+  },
+  {
+   "zh": "相關章節與延伸閱讀",
+   "en": "Related Sections and Further Reading"
+  },
+  {
+   "zh": "中文延伸學習建議",
+   "en": "Suggested Further Study (Commentary)"
+  },
+  {
+   "zh": "學習路徑建議",
+   "en": "Suggested Learning Path"
+  },
+  {
+   "zh": "<strong>初學者：</strong>先讀本節 4.4.1–4.4.2，理解低溫物理機制，再看頭空間三指標圖（Figures 4.4.1-1/2/3），建立直覺。",
+   "en": "<strong>Beginners:</strong> First read 4.4.1-4.4.2 in this section to understand the low-temperature physical mechanism, then look at the three headspace indicator figures (Figures 4.4.1-1/2/3) to build intuition."
+  },
+  {
+   "zh": "<strong>進階者：</strong>結合 Section 5.0（氦氣洩漏詳解）與 Section 6.4（生命週期管理），形成完整 SUS 治理框架。",
+   "en": "<strong>Advanced learners:</strong> Combine Section 5.0 (helium leak testing in detail) with Section 6.4 (lifecycle management) to form a complete SUS governance framework."
+  },
+  {
+   "zh": "<strong>CDMO 管理者：</strong>重點是 4.2.4 的 QbD/QRM 框架和 4.4.4 的細胞治療應用。這是業務拓展（mRNA、CAR-T）的技術門檻。",
+   "en": "<strong>CDMO managers:</strong> Focus on the QbD/QRM framework in 4.2.4 and the cell therapy applications in 4.4.4. These are the technical entry requirements for business expansion (mRNA, CAR-T)."
+  },
+  {
+   "zh": "監管趨勢觀察（2021 後）",
+   "en": "Regulatory Trend Watch (Post-2021)"
+  },
+  {
+   "zh": "TR86 發布後，低溫 CCI 的監管關注持續升溫。FDA 在 COVID-19 mRNA 疫苗的 EUA 審查中正式將 -80 °C CCI 列為 CMC 關鍵問題。預期 USP &lt;1207&gt; 的後續修訂將更明確涵蓋 SUS 和低溫條件，CDMO 應持續追蹤這些發展。",
+   "en": "Since the publication of TR86, regulatory attention to low-temperature CCI has continued to grow. In its EUA review of COVID-19 mRNA vaccines, FDA formally listed -80 °C CCI as a key CMC issue. Subsequent revisions of USP &lt;1207&gt; are expected to cover SUS and low-temperature conditions more explicitly, and CDMOs should keep tracking these developments."
+  }
+ ]
+}

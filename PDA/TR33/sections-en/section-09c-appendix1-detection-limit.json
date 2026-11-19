@@ -1,0 +1,281 @@
+{
+ "source": "section-09c-appendix1-detection-limit.html",
+ "blocks": [
+  {
+   "zh": "偵測極限（LoD）之估計",
+   "en": "Estimation of the Limit of Detection (LoD)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Section 9.3 如何在不與 CMM 直接比較的情況下，僅憑單一 AMM/RMM 之多濃度序列實驗（Table 9.3-1）估計 <span class=\"key-term\">Limit of Detection (LoD, 偵測極限)</span>",
+   "en": "Understand how Section 9.3 estimates the <span class=\"key-term\">Limit of Detection (LoD)</span> without a direct comparison with the CMM, using only a multi-concentration serial experiment on a single AMM/RMM (Table 9.3-1)"
+  },
+  {
+   "zh": "掌握 9.3.1 邏輯斯迴歸分析（logistic regression）中兩種風險曲線模型——兩參數邏輯斯模型（α、β）與單參數 gMPN 相關指數模型（θ）——的建模邏輯與差異，並能由參數估計值換算出 λ<sub>LoD</sub>",
+   "en": "Master the modeling logic of, and the differences between, the two risk-curve models in 9.3.1 logistic regression analysis, the two-parameter logistic model (α, β) and the one-parameter gMPN-related exponential model (θ), and be able to convert the parameter estimates into λ<sub>LoD</sub>"
+  },
+  {
+   "zh": "理解 9.3.2 Most-Probable Limit (MPL) 分析與傳統 MPN 假設之根本差異——MPL 將 LoD 視為未知值 L 一併估計，而非事先假設 LoD = 1",
+   "en": "Understand the fundamental difference between Most-Probable Limit (MPL) analysis in 9.3.2 and the traditional MPN assumption: MPL estimates the LoD as an unknown value L rather than assuming LoD = 1 in advance"
+  },
+  {
+   "zh": "能夠依 CDMO 實務情境（資源、是否具備 TriMSA/SAS/R 等專用統計軟體）判斷應選用邏輯斯迴歸或 MPL 分析支持 AMM/RMM 的 LoD 驗證報告，並理解「平均濃度估計值」與「真實 LoD」之間的區別",
+   "en": "Be able to decide, based on the CDMO's practical situation (resources, whether specialized statistical software such as TriMSA/SAS/R is available), whether to use logistic regression or MPL analysis to support the LoD validation report for an AMM/RMM, and understand the difference between the \"estimated mean concentration\" and the \"true LoD\""
+  },
+  {
+   "zh": "<strong>9.3 Estimation of the Detection Limit 偵測極限之估計</strong>",
+   "en": "<strong>9.3 Estimation of the Detection Limit</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "（Table 9.3-1 內容請見下方全寬表格）",
+   "en": "(For the content of Table 9.3-1, see the full-width table below)"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Limit of Detection (LoD, 偵測極限):</strong> AMM/RMM 能以足夠信心（本節採 95% 機率）偵測到的最小微生物數。與 Section 9.2 不同，本節不需要 CMM 做為對照組——只需針對單一 AMM/RMM，用一支懸浮液配製出多個已知平均濃度的稀釋液，各測 20 個樣本，即可單獨估計該方法的 LoD。",
+   "en": "<strong>Limit of Detection (LoD):</strong> The smallest number of microorganisms that the AMM/RMM can detect with sufficient confidence (a 95% probability is used in this section). Unlike Section 9.2, this section does not need a CMM as a comparator: for a single AMM/RMM, one suspension is used to prepare dilutions at several known mean concentrations, 20 samples are tested at each, and the LoD of that method can be estimated on its own."
+  },
+  {
+   "zh": "<strong>實驗設計邏輯:</strong> 起始懸浮液濃度刻意設定接近方法「號稱」的 LoD（例如 &lt;10 cells），再稀釋出 5 個不同濃度點，形成一條「濃度—陽性率」的劑量反應曲線（dose-response curve），這是後續 9.3.1 邏輯斯迴歸與 9.3.2 MPL 分析共同的資料基礎。",
+   "en": "<strong>Experimental design logic:</strong> The starting suspension concentration is deliberately set close to the LoD the method \"claims\" (for example, &lt;10 cells), and 5 different concentration levels are then diluted from it to form a \"concentration vs. positive rate\" dose-response curve. This is the data basis shared by the logistic regression in 9.3.1 and the MPL analysis in 9.3.2."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "這個實驗設計就像測試一支麥克風「最小能收到多小聲音」的靈敏度——你不會只測一種音量，而是準備從很小聲到中等音量的多個級距（本例 5 個濃度點），每個級距重複測試 20 次，記錄「聽得到」的次數比例。聲音（濃度）越小，聽到的比例（陽性率）自然越低；透過觀察這條「音量 vs. 聽到比例」的曲線，就能推算出麥克風真正的靈敏度極限，而不需要拿另一支麥克風來做比較。",
+   "en": "This experimental design is like testing the sensitivity of a microphone, \"how quiet a sound it can pick up\". You would not test just one volume; you would prepare several levels from very quiet to moderate (5 concentration levels in this example), repeat the test 20 times at each level, and record the proportion of times the sound was \"heard\". The quieter the sound (the lower the concentration), the lower the proportion heard (the positive rate) naturally is. By observing this \"volume vs. proportion heard\" curve, the true sensitivity limit of the microphone can be worked out without needing another microphone for comparison."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "本節刻意強調「without making a direct comparison with the CMM（不需要與 CMM 直接比較）」——這與 Section 9.2 的非劣性檢定邏輯不同。9.3 節的目標是描述 AMM/RMM 本身的絕對偵測能力（一條劑量反應曲線），而非相對於傳統方法的「不劣於」宣稱。兩種驗證策略在法規對話中扮演不同角色，實務上常需搭配使用。",
+   "en": "This section deliberately stresses \"without making a direct comparison with the CMM\". This differs from the non-inferiority test logic of Section 9.2. The aim of Section 9.3 is to describe the absolute detection capability of the AMM/RMM itself (a single dose-response curve), rather than to claim \"not inferior\" relative to the traditional method. The two validation strategies play different roles in regulatory discussions and often need to be used together in practice."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼本實驗要刻意將起始懸浮液濃度設定「接近方法號稱的 LoD」，而不是隨意選一個濃度？",
+   "en": "Why does this experiment deliberately set the starting suspension concentration \"close to the LoD the method claims\", rather than choosing any concentration at random?"
+  },
+  {
+   "zh": "若貴單位的 AMM/RMM 平台從未做過類似的多濃度序列實驗，你會如何向客戶/QA 解釋「單獨估計 LoD」與「與 CMM 做非劣性比較」這兩種驗證策略的差異與互補性？",
+   "en": "If your organization's AMM/RMM platform has never run a multi-concentration serial experiment like this, how would you explain to a customer/QA the difference between, and the complementarity of, the two validation strategies, \"estimating the LoD on its own\" and \"a non-inferiority comparison with the CMM\"?"
+  },
+  {
+   "zh": "<strong>9.3.1 Logistic Regression Analysis 邏輯斯迴歸分析</strong>",
+   "en": "<strong>9.3.1 Logistic Regression Analysis</strong>"
+  },
+  {
+   "zh": "<strong>Logistic Regression（邏輯斯迴歸）與 Logit（對數勝算比）:</strong> 邏輯斯迴歸是統計學中用來描述「二元結果（陽性/陰性）機率如何隨連續變數變化」的標準工具。logit = log(p/(1−p)) 把 0～1 之間的機率轉換成 −∞～+∞ 的線性尺度，使其能以簡單的直線方程式 α + β·log(λ) 描述，這是為何要用 log(λ) 而非 λ 本身作為自變數的原因——濃度與陽性率的關係在對數尺度下呈現漂亮的 S 形曲線。",
+   "en": "<strong>Logistic Regression and Logit (log-odds):</strong> Logistic regression is the standard statistical tool for describing \"how the probability of a binary outcome (positive/negative) changes with a continuous variable\". The logit = log(p/(1−p)) converts a probability between 0 and 1 into a linear scale from −∞ to +∞, so that it can be described by the simple straight-line equation α + β·log(λ). This is why log(λ) rather than λ itself is used as the independent variable: on a log scale, the relationship between concentration and positive rate forms a neat S-shaped curve."
+  },
+  {
+   "zh": "<strong>兩參數邏輯斯模型 vs. 單參數 gMPN 相關指數模型:</strong> 前者（α、β）較有彈性、適配度較佳，是大多數統計軟體的預設選項；後者（θ）只有一個參數，數學上與 gMPN 方法（Section 9.2.3）直接相通，θ 本身就是 detection proportion（偵測比例），因此更容易直接轉換為 LoD 的結論，但需要對邏輯斯迴歸函數的選項有更深入的理解才能正確擬合。",
+   "en": "<strong>Two-parameter logistic model vs. one-parameter gMPN-related exponential model:</strong> The former (α, β) is more flexible, gives a better fit, and is the default option in most statistical software. The latter (θ) has only one parameter and is mathematically directly linked to the gMPN method (Section 9.2.3): θ itself is the detection proportion, so it is easier to convert directly into a conclusion on the LoD, but a deeper understanding of the options of the logistic regression function is needed to fit it correctly."
+  },
+  {
+   "zh": "<strong>從 λ<sub>LoD</sub> 到 LoD 的推理:</strong> λ<sub>LoD</sub>（3.60 或 3.08）是「平均濃度」，並非真正的 LoD（最小可偵測微生物數，通常是整數如 1）。原文示範了一個重要的推理鏈：假設平均濃度 3.6 時，Poisson 分布顯示僅 2.73% 樣本為完全空白，其餘 97.27% 至少含 1 顆微生物；若方法無偽陽性，則所有空白樣本都會被判為陰性（約 2.7%），恰好對應到 95% 的偵測機率門檻——因此推論 LoD = 1。",
+   "en": "<strong>Reasoning from λ<sub>LoD</sub> to the LoD:</strong> λ<sub>LoD</sub> (3.60 or 3.08) is a \"mean concentration\" and not the true LoD (the minimum number of detectable microorganisms, usually an integer such as 1). The original text demonstrates an important chain of reasoning: assuming a mean concentration of 3.6, the Poisson distribution shows that only 2.73% of samples are completely empty and the other 97.27% contain at least 1 microorganism; if the method has no false positives, all empty samples will be judged negative (about 2.7%), which corresponds exactly to the 95% detection probability threshold, so the conclusion is that LoD = 1."
+  },
+  {
+   "zh": "把兩參數邏輯斯模型與單參數 gMPN 模型的關係想像成「訂製西裝」與「均碼西裝」：兩參數模型有 α（起始位置）與 β（反應速度）兩個可調參數，就像量身訂做，能更精準貼合各種形狀的資料曲線；單參數 gMPN 模型只有 θ 一個旋鈕，比較像均碼西裝，適配度可能略遜一籌，但穿脫（換算 LoD、與 gMPN／MPN 理論串接）方便許多，也更容易讓非統計背景的微生物學家直接解讀「θ 值多高代表偵測能力多好」。",
+   "en": "Think of the relationship between the two-parameter logistic model and the one-parameter gMPN model as \"a made-to-measure suit\" versus \"a one-size suit\". The two-parameter model has two adjustable parameters, α (starting position) and β (speed of response), like a made-to-measure suit, and can fit data curves of all shapes more precisely. The one-parameter gMPN model has only one knob, θ, more like a one-size suit: the fit may be slightly inferior, but it is much easier to put on and take off (converting to the LoD and linking with gMPN/MPN theory), and it is easier for microbiologists without a statistics background to interpret directly \"how high a θ value means how good the detection capability is\"."
+  },
+  {
+   "zh": "本節反覆強調一個容易被誤解的關鍵區別：<strong>λ<sub>LoD</sub> ≠ LoD</strong>。λ<sub>LoD</sub> 是「在 95% 機率下可被偵測到的平均濃度」，本質上是連續量的估計值（3.60 或 3.08），而 LoD 是「最小可偵測的微生物『個數』」，通常必須是整數。原文明確指出 λ<sub>LoD</sub> 「typically an overestimation of the LoD」——也就是說，若直接把 3.6 或 3.08 當作 LoD 使用，會顯著高估方法所需的最低微生物數，因此必須透過 Poisson 分布反推，才能得出「LoD 最可能等於 1」的合理結論。撰寫驗證報告時，切勿混淆這兩個數字。",
+   "en": "This section repeatedly stresses a key distinction that is easily misunderstood: <strong>λ<sub>LoD</sub> ≠ LoD</strong>. λ<sub>LoD</sub> is \"the mean concentration that can be detected with 95% probability\", essentially an estimate of a continuous quantity (3.60 or 3.08), whereas the LoD is \"the minimum detectable number of microorganisms\", which must usually be an integer. The original text states clearly that λ<sub>LoD</sub> is \"typically an overestimation of the LoD\". That is, using 3.6 or 3.08 directly as the LoD would significantly overstate the minimum number of microorganisms the method needs, so it must be worked back through the Poisson distribution to reach the reasonable conclusion that \"the LoD most likely equals 1\". When writing the validation report, do not confuse these two numbers."
+  },
+  {
+   "zh": "兩條曲線（邏輯斯 vs. gMPN 相關指數模型）給出的 λ<sub>LoD</sub> 略有差異（3.60 vs. 3.08），但推論出的 LoD 結論一致（皆為 1）——這說明在資料品質良好時，兩種建模選擇對最終「LoD 是多少」的實務結論通常是穩健的（robust），差異主要反映在精確的信賴區間寬度上。",
+   "en": "The two curves (logistic vs. gMPN-related exponential model) give slightly different λ<sub>LoD</sub> values (3.60 vs. 3.08), but the inferred LoD conclusion is the same (both 1). This shows that when the data quality is good, the choice between the two models usually leaves the practical conclusion on \"what the LoD is\" robust, with the difference mainly reflected in the width of the exact confidence interval."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "<strong>模型一：兩參數邏輯斯迴歸（Logit 模型）</strong>",
+   "en": "<strong>Model 1: Two-parameter logistic regression (logit model)</strong>"
+  },
+  {
+   "zh": "<strong>p_A</strong> = AMM/RMM 的陽性率",
+   "en": "<strong>p_A</strong> = positive rate of the AMM/RMM"
+  },
+  {
+   "zh": "<strong>λ</strong> = 測試樣本中微生物之平均數量（濃度）",
+   "en": "<strong>λ</strong> = mean number of microorganisms (concentration) in the test sample"
+  },
+  {
+   "zh": "<strong>α</strong> = 截距；<strong>β</strong> = 斜率（陽性率隨 log 濃度變化的速度）",
+   "en": "<strong>α</strong> = intercept; <strong>β</strong> = slope (the rate at which the positive rate changes with log concentration)"
+  },
+  {
+   "zh": "50% 陽性率對應之濃度 = exp{−α/β}",
+   "en": "Concentration corresponding to a 50% positive rate = exp{−α/β}"
+  },
+  {
+   "zh": "<strong>模型二：單參數 gMPN 相關指數模型</strong>",
+   "en": "<strong>Model 2: One-parameter gMPN-related exponential model</strong>"
+  },
+  {
+   "zh": "<strong>θ</strong> = detection proportion（偵測比例，等同 gMPN 分析中的 θ）",
+   "en": "<strong>θ</strong> = detection proportion (the same as θ in the gMPN analysis)"
+  },
+  {
+   "zh": "<strong>代入 Table 9.3-1 資料之估計結果：</strong>",
+   "en": "<strong>Estimates obtained by substituting the Table 9.3-1 data:</strong>"
+  },
+  {
+   "zh": "<strong>95% 偵測機率對應之平均濃度 λ_LoD：</strong>",
+   "en": "<strong>Mean concentration λ_LoD corresponding to a 95% detection probability:</strong>"
+  },
+  {
+   "zh": "其中 19 = (1 − 0.95)/0.05⁻¹ 的等價形式，源自 95% 偵測機率反推濃度時的代數化簡；−log(0.05) ≈ 2.996，是 95% 累積機率對應的自然對數常數。兩式皆為求解「使陽性率達 95% 的濃度」而反推 λ 的公式。",
+   "en": "Here 19 = (1 − 0.95)/0.05⁻¹ is an equivalent form arising from the algebraic simplification when working back from a 95% detection probability to the concentration; −log(0.05) ≈ 2.996 is the natural-logarithm constant corresponding to a 95% cumulative probability. Both formulas solve for λ, \"the concentration at which the positive rate reaches 95%\"."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 9.3.1-1 左側面板以「濃度（原始尺度）」為橫軸，可見藍色（邏輯斯模型）與紅色（gMPN 相關指數模型）兩條曲線幾乎重疊，皆呈現典型的飽和曲線（rapid rise then flatten）——濃度越高，陽性率越快逼近 1，兩模型在此尺度下難以區分優劣。右側面板改以「log 濃度」為橫軸，兩曲線轉為漂亮的 S 形（sigmoid），且在低濃度端可見兩模型出現些微分歧：紅色指數模型在極低 log 濃度處的陽性率略高於藍色邏輯斯模型，反映兩者對「趨近零濃度時陽性率如何趨零」的數學假設不同。這張圖直觀地說明了為何原文建議「先看兩模型是否吻合，再決定用哪一個換算 LoD」——當兩曲線高度重疊時，選擇任一模型所得的 LoD 結論都會一致。",
+   "en": "The left panel of Figure 9.3.1-1 uses \"concentration (original scale)\" as the horizontal axis. The blue (logistic model) and red (gMPN-related exponential model) curves almost overlap, both showing the typical saturation curve (rapid rise then flatten): the higher the concentration, the faster the positive rate approaches 1, and the two models are hard to tell apart on this scale. The right panel uses \"log concentration\" as the horizontal axis; the two curves become a neat S-shape (sigmoid), and a slight divergence between the two models can be seen at the low-concentration end: at very low log concentrations the positive rate of the red exponential model is slightly higher than that of the blue logistic model, reflecting the different mathematical assumptions of the two about how the positive rate tends to zero as the concentration approaches zero. This figure illustrates intuitively why the original text recommends \"first check whether the two models agree, then decide which to use to convert to the LoD\": when the two curves overlap closely, the LoD conclusion is the same whichever model is chosen."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "假設 Amaran 為某客戶的 AMM/RMM 平台執行 LoD 驗證研究，取得類似 Table 9.3-1 的 5 個濃度點資料。若團隊具備一般統計軟體（Minitab、R）但無專屬微生物統計工具，建議優先使用兩參數邏輯斯迴歸（因為大多數軟體皆內建 logistic regression 功能，且更容易擬合），再以 λ<sub>LoD</sub> 搭配 Poisson 分布反推整數 LoD 結論；若同時具備能力驗算 gMPN 相關指數模型，可將其作為交叉驗證（cross-check），若兩模型給出一致的 LoD 結論，驗證報告的說服力將顯著提升，也更能承受稽核方對統計方法選擇的質疑。",
+   "en": "Suppose Amaran carries out an LoD validation study for a customer's AMM/RMM platform and obtains data at 5 concentration levels similar to Table 9.3-1. If the team has general statistical software (Minitab, R) but no dedicated microbiological statistics tools, it is recommended to use the two-parameter logistic regression first (because most software has logistic regression built in and it is easier to fit), and then work back to an integer LoD conclusion from λ<sub>LoD</sub> with the Poisson distribution. If the team can also calculate the gMPN-related exponential model, it can be used as a cross-check: if the two models give a consistent LoD conclusion, the persuasiveness of the validation report improves markedly, and it can better withstand an auditor's questions about the choice of statistical method."
+  },
+  {
+   "zh": "為什麼原文說 λ<sub>LoD</sub>「typically an overestimation of the LoD」？請用 Poisson 分布的邏輯解釋，若直接把 λ<sub>LoD</sub> = 3.6 當作驗證報告中的 LoD，會產生什麼樣的誤導？",
+   "en": "Why does the original text say that λ<sub>LoD</sub> is \"typically an overestimation of the LoD\"? Explain using the logic of the Poisson distribution. What misleading impression would result from using λ<sub>LoD</sub> = 3.6 directly as the LoD in the validation report?"
+  },
+  {
+   "zh": "兩參數邏輯斯模型與單參數 gMPN 相關指數模型，在什麼情境下你會優先選擇後者？（提示：與 Section 9.2.3 gMPN 分析的關聯性）",
+   "en": "In what situations would you choose the one-parameter gMPN-related exponential model over the two-parameter logistic model? (Hint: the link with the gMPN analysis in Section 9.2.3.)"
+  },
+  {
+   "zh": "若你手上的資料使兩條曲線（邏輯斯 vs. gMPN 相關指數）明顯不吻合（不像本例幾乎重疊），這對最終的 LoD 結論可靠度會有什麼影響？你會如何處理這種情況？",
+   "en": "If your data make the two curves (logistic vs. gMPN-related exponential) clearly disagree (unlike this example, where they almost overlap), how would this affect the reliability of the final LoD conclusion? How would you handle the situation?"
+  },
+  {
+   "zh": "<strong>9.3.2 Most-Probable Limit Analysis 最可能極限（MPL）分析</strong>",
+   "en": "<strong>9.3.2 Most-Probable Limit Analysis</strong>"
+  },
+  {
+   "zh": "<strong>Deterministic（確定性）模型 vs. 機率性模型:</strong> 9.3.1 的邏輯斯迴歸與 gMPN 相關指數模型都是「機率性」模型——即使樣本含有微生物，仍以某個機率（而非 100%）呈現陽性。MPL 則假設偵測機制是「確定性」的開關：只要樣本中微生物數 &lt; LoD，必定測得陰性；只要 ≥ LoD，必定測得陽性，中間沒有模糊地帶。",
+   "en": "<strong>Deterministic vs. probabilistic models:</strong> The logistic regression and the gMPN-related exponential model in 9.3.1 are both \"probabilistic\" models: even if a sample contains microorganisms, it still reads positive with some probability (not 100%). MPL assumes the detection mechanism is a \"deterministic\" switch: whenever the number of microorganisms in a sample is &lt; LoD, the result is always negative; whenever it is ≥ LoD, the result is always positive, with no gray zone in between."
+  },
+  {
+   "zh": "<strong>Most-Probable Limit (MPL, 最可能極限):</strong> 傳統 MPN 方法「假設 LoD = 1」（即只要有 1 顆微生物就必然偵測到），再用序列稀釋實驗回推懸浮液中的微生物數。MPL 則反過來——把 LoD 本身視為未知數 L，與懸浮液中微生物數一起同時估計，是 MPN 概念的延伸與推廣。",
+   "en": "<strong>Most-Probable Limit (MPL):</strong> The traditional MPN method \"assumes LoD = 1\" (that is, 1 microorganism is always detected) and then works back from serial dilution experiments to the number of microorganisms in the suspension. MPL works the other way round: it treats the LoD itself as an unknown L and estimates it together with the number of microorganisms in the suspension, extending and generalizing the MPN concept."
+  },
+  {
+   "zh": "<strong>估計結果的雙重性:</strong> 本例 MPL 分析同時給出兩組可能解：LoD = 1 時 MPN = 87 [56, 126]；LoD = 2 時 MPN = 197 [160, 235]。兩者皆為資料可支持的合理解，顯示 MPL 分析的結論有時需要搭配專業判斷（例如生物學上合理性）才能收斂到單一結論。",
+   "en": "<strong>The dual nature of the estimation result:</strong> In this example, the MPL analysis gives two possible solutions at the same time: with LoD = 1, MPN = 87 [56, 126]; with LoD = 2, MPN = 197 [160, 235]. Both are reasonable solutions supported by the data, showing that the conclusions of an MPL analysis sometimes need professional judgment (for example, biological plausibility) to converge on a single conclusion."
+  },
+  {
+   "zh": "MPL 與機率模型的差異，好比「感應式門鎖」與「機率式門鎖」的對比：機率式門鎖（邏輯斯/gMPN 模型）即使刷對卡片，仍有一定機率「刷不開」，卡片權限值越高、開門機率越高，但沒有絕對保證；感應式門鎖（MPL）則是非黑即白——只要卡片權限達到門檻 L，保證 100% 開門，未達門檻則保證 100% 打不開，門檻本身（L）才是待確認的未知數。MPL 分析要做的，就是同時猜出「門檻設在哪」以及「原本有多少張卡片」。",
+   "en": "The difference between MPL and the probabilistic models is like that between a \"proximity door lock\" and a \"probabilistic door lock\". With a probabilistic lock (logistic/gMPN models), even a correct card swipe has some chance of \"failing to open\"; the higher the card's access level, the higher the chance of opening, but there is no absolute guarantee. A proximity lock (MPL) is all or nothing: if the card's access level reaches the threshold L, the door is guaranteed to open 100% of the time; if not, it is guaranteed 100% not to open, and the threshold itself (L) is the unknown to be determined. What MPL analysis does is guess both \"where the threshold is set\" and \"how many cards there were originally\" at the same time."
+  },
+  {
+   "zh": "<strong>原文引用之疑義提醒：</strong>原文此處寫作「Applying the MPL approach to the data in Table 9.2.5-4」，並二度重複此引用。惟 Table 9.2.5-4 在本附錄中實為 Section 9.2.5 之「Critical Values Rejecting Homogeneity（拒絕同質性之臨界值表，Cm、Pm 值）」，與此處 LoD/MPN 之 MPL 分析內容並無直接關聯，數值本身應源自 Table 9.3-1 的多濃度序列資料。此處為忠實轉錄原文之交叉引用標號，建議讀者在引用本節數據進行內部驗證時，以貴公司實際持有之官方版本或後續勘誤（errata）為準，勿逕自沿用此處編號進行二次查證。",
+   "en": "<strong>Note on a doubtful reference in the original text:</strong> At this point the original text reads \"Applying the MPL approach to the data in Table 9.2.5-4\" and repeats this citation a second time. However, Table 9.2.5-4 in this appendix is actually the \"Critical Values Rejecting Homogeneity\" table (the Cm and Pm values) of Section 9.2.5, which has no direct connection with the MPL analysis of LoD/MPN here; the numbers themselves should come from the multi-concentration serial data in Table 9.3-1. The cross-reference number is reproduced here faithfully from the original text. Readers using the data in this section for internal verification are advised to rely on the official version held by their own company or any later errata, and not to reuse this number for secondary verification."
+  },
+  {
+   "zh": "MPL 分析同時給出 LoD=1 與 LoD=2 兩種情境下的 MPN 估計值，且兩者信賴區間並未明顯重疊（[56,126] vs. [160,235]）——這代表「LoD 究竟是 1 還是 2」對於推算懸浮液真實微生物濃度有實質影響，不能隨意假設。實務上應優先參考該物種的生物學特性與方法原理（例如該 AMM/RMM 技術對單一細胞的偵測能力）來判斷哪一個 LoD 值更合理，而非僅憑統計配適度選擇。",
+   "en": "The MPL analysis gives MPN estimates under both the LoD=1 and LoD=2 scenarios, and the confidence intervals of the two do not clearly overlap ([56,126] vs. [160,235]). This means that \"whether the LoD is 1 or 2\" has a substantive effect on estimating the true microbial concentration of the suspension and cannot be assumed arbitrarily. In practice, the biological characteristics of the organism and the principle of the method (for example, the ability of that AMM/RMM technology to detect a single cell) should be consulted first to judge which LoD value is more reasonable, rather than choosing on statistical goodness of fit alone."
+  },
+  {
+   "zh": "<strong>MPL 的確定性偵測模型（概念表示）：</strong>",
+   "en": "<strong>MPL deterministic detection model (conceptual representation):</strong>"
+  },
+  {
+   "zh": "若樣本中微生物數 x &lt; L   →   偵測結果 = 陰性（機率 = 100%）\n若樣本中微生物數 x ≥ L   →   偵測結果 = 陽性（機率 = 100%）",
+   "en": "If the number of microorganisms in the sample x &lt; L   →   detection result = negative (probability = 100%)\nIf the number of microorganisms in the sample x ≥ L   →   detection result = positive (probability = 100%)"
+  },
+  {
+   "zh": "<strong>L</strong> = 未知的偵測極限（LoD），與傳統 MPN 假設 L = 1 不同，MPL 將 L 視為待估參數",
+   "en": "<strong>L</strong> = the unknown limit of detection (LoD). Unlike the traditional MPN assumption of L = 1, MPL treats L as a parameter to be estimated"
+  },
+  {
+   "zh": "MPN（最可能數）= 懸浮液中微生物濃度之估計值，與 L 一併由序列稀釋資料聯合估計",
+   "en": "MPN (most probable number) = estimate of the microbial concentration in the suspension, estimated jointly with L from the serial dilution data"
+  },
+  {
+   "zh": "<strong>本例分析結果：</strong>",
+   "en": "<strong>Results of the analysis in this example:</strong>"
+  },
+  {
+   "zh": "若 L = 1：  MPN = 87   95% CI [56, 126]\n若 L = 2：  MPN = 197  95% CI [160, 235]",
+   "en": "If L = 1:  MPN = 87   95% CI [56, 126]\nIf L = 2:  MPN = 197  95% CI [160, 235]"
+  },
+  {
+   "zh": "MPL 分析屬於聯合估計（joint estimation）問題，無簡單手算公式，須仰賴專用軟體 TriMSA，或以 SAS®／R 程式化實作。",
+   "en": "MPL analysis is a joint estimation problem with no simple hand-calculation formula; it relies on the dedicated software TriMSA, or on programmed implementation in SAS® or R."
+  },
+  {
+   "zh": "若 Amaran 團隊評估一款宣稱可偵測「單一細胞（single-cell detection）」技術原理的 AMM/RMM，MPL 分析特別適合用來交叉驗證該宣稱：若 MPL 估計出的 LoD 落在 [1, 2] 區間且與 9.3.1 邏輯斯迴歸的結論（LoD = 1）一致，即可提供更堅實的多方法交叉證據支持驗證報告；反之，若團隊沒有 SAS/R 程式撰寫能力，可優先以 9.3.1 的邏輯斯迴歸／gMPN 相關指數模型作為主要分析路徑，並在報告中註明 MPL 為文獻建議之替代驗證方式，留待未來有專用軟體資源時補做交叉確認。",
+   "en": "If the Amaran team evaluates an AMM/RMM whose technical principle claims \"single-cell detection\", MPL analysis is particularly suitable for cross-checking that claim: if the LoD estimated by MPL falls in the interval [1, 2] and agrees with the logistic regression conclusion in 9.3.1 (LoD = 1), it provides firmer multi-method cross-evidence in support of the validation report. Conversely, if the team lacks SAS/R programming capability, the logistic regression/gMPN-related exponential model in 9.3.1 can be used first as the main analysis path, with the report noting that MPL is an alternative validation approach suggested in the literature, to be added as a cross-check when dedicated software resources become available."
+  },
+  {
+   "zh": "MPL 的「確定性」假設（低於 LoD 必為陰性、達到 LoD 必為陽性）與 9.3.1 機率性模型的假設，何者更貼近你所熟悉的 AMM/RMM 技術原理？為什麼？",
+   "en": "Which is closer to the technical principle of the AMM/RMM you are familiar with: the \"deterministic\" assumption of MPL (always negative below the LoD, always positive at the LoD) or the assumption of the probabilistic models in 9.3.1? Why?"
+  },
+  {
+   "zh": "本例 MPL 分析對 LoD=1 與 LoD=2 給出兩組不同的 MPN 估計，你會依據哪些額外資訊（例如生物學知識、方法原理）判斷應採用哪一組結果？",
+   "en": "In this example, the MPL analysis gives two different MPN estimates for LoD=1 and LoD=2. What additional information (for example, biological knowledge, the principle of the method) would you use to decide which result to adopt?"
+  },
+  {
+   "zh": "如果貴公司沒有 TriMSA、SAS 或 R 的程式化能力，這是否代表 MPL 分析完全無法採用？你會如何在驗證計畫書中規劃因應方案？",
+   "en": "If your company has no TriMSA, SAS, or R programming capability, does this mean MPL analysis cannot be used at all? How would you plan a contingency in the validation protocol?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Section 9.3 提供一種「不需與 CMM 比較」的 LoD 估計途徑——僅以單一 AMM/RMM 對多個已知濃度懸浮液進行序列測試（Table 9.3-1），建立劑量反應資料",
+   "en": "Section 9.3 provides a route to LoD estimation that \"does not require a comparison with the CMM\": a single AMM/RMM is tested serially on suspensions of several known concentrations (Table 9.3-1) to build dose-response data"
+  },
+  {
+   "zh": "9.3.1 邏輯斯迴歸分析提供兩種風險曲線：兩參數邏輯斯模型（α、β，較有彈性、易於一般軟體擬合）與單參數 gMPN 相關指數模型（θ，與 gMPN 方法直接相通、更易換算 LoD）",
+   "en": "9.3.1 Logistic regression analysis offers two risk curves: the two-parameter logistic model (α, β; more flexible and easy to fit in general software) and the one-parameter gMPN-related exponential model (θ; directly linked to the gMPN method and easier to convert to the LoD)"
+  },
+  {
+   "zh": "關鍵區別：λ<sub>LoD</sub>（95% 偵測機率對應之平均濃度）並非真正的 LoD，通常會高估 LoD；須搭配 Poisson 分布反推，才能得出「LoD 最可能為整數 1」的結論",
+   "en": "Key distinction: λ<sub>LoD</sub> (the mean concentration corresponding to a 95% detection probability) is not the true LoD and usually overestimates it; it must be worked back with the Poisson distribution to reach the conclusion that \"the LoD is most likely the integer 1\""
+  },
+  {
+   "zh": "9.3.2 Most-Probable Limit (MPL) 分析改採確定性偵測模型，將 LoD（L）本身視為未知參數，與懸浮液微生物濃度（MPN）聯合估計，是 MPN 方法的延伸",
+   "en": "9.3.2 Most-Probable Limit (MPL) analysis uses a deterministic detection model and treats the LoD (L) itself as an unknown parameter, estimated jointly with the microbial concentration of the suspension (MPN), as an extension of the MPN method"
+  },
+  {
+   "zh": "MPL 分析依賴專用軟體（TriMSA、SAS、R），且可能對不同 L 假設給出不同的 MPN 解，需搭配生物學判斷收斂結論；邏輯斯迴歸與 MPL 可交叉驗證，強化 LoD 驗證報告的說服力",
+   "en": "MPL analysis depends on dedicated software (TriMSA, SAS, R) and may give different MPN solutions for different assumed values of L, so biological judgment is needed to converge on a conclusion; logistic regression and MPL can cross-validate each other, strengthening the persuasiveness of the LoD validation report"
+  }
+ ]
+}

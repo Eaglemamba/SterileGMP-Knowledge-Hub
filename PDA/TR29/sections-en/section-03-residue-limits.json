@@ -1,0 +1,769 @@
+{
+ "source": "section-03-residue-limits.html",
+ "blocks": [
+  {
+   "zh": "Section 3: Residue and Limits | 殘留物與限度",
+   "en": "Section 3: Residue and Limits"
+  },
+  {
+   "zh": "PDA TR29 Sections 5.0–5.12 | 定量限度計算完整解析",
+   "en": "PDA TR29 Sections 5.0–5.12 | Complete Walkthrough of the Quantitative Limit Calculations"
+  },
+  {
+   "zh": "Learning Objectives | 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "Understand the three basis for setting cleaning residue limits: dose-based, toxicity-based, and default (10 ppm / 4 µg/cm²). | 理解三種限度設定基礎：劑量法、毒理法、預設值",
+   "en": "Understand the three basis for setting cleaning residue limits: dose-based, toxicity-based, and default (10 ppm / 4 µg/cm²)."
+  },
+  {
+   "zh": "Perform MAC and MACO calculations step-by-step using Equations 5A–5N. | 逐步執行 MAC 計算（公式 5A–5N）",
+   "en": "Perform MAC and MACO calculations step-by-step using Equations 5A–5N."
+  },
+  {
+   "zh": "Derive surface area limits (SAL), swab limits, and rinse limits from MAC. | 從 MAC 推導表面積限度、棉棒及沖洗限度",
+   "en": "Derive surface area limits (SAL), swab limits, and rinse limits from MAC."
+  },
+  {
+   "zh": "Recognize special considerations: multiple products, dedicated equipment, genotoxic residues, degradants. | 辨識特殊情況：多產品、專用設備、基因毒性殘留、降解物",
+   "en": "Recognize special considerations: multiple products, dedicated equipment, genotoxic residues, degradants."
+  },
+  {
+   "zh": "Apply bioburden and endotoxin limit principles for cleaning validation. | 應用生物負載與內毒素限度原則",
+   "en": "Apply bioburden and endotoxin limit principles for cleaning validation."
+  },
+  {
+   "zh": "Define visually clean criteria and know when it can substitute analytical sampling. | 定義目視清潔標準及其適用條件",
+   "en": "Define visually clean criteria and know when it can substitute analytical sampling."
+  },
+  {
+   "zh": "Section Contents | 本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<a href=\"#sec50\">5.0 Overview | 總覽</a>\n<a href=\"#sec52\">5.2 Basis for Limits | 限度基礎</a>\n<a href=\"#sec53\">5.3 ARL Determination | ARL 計算</a>\n<a href=\"#sec54\">5.4 MAC / MACO | 最大允許攜帶量</a>\n<a href=\"#sec55\">5.5 Surface Area Limit | 表面積限度</a>\n<a href=\"#sec56\">5.6 Protocol Sample Limits | 樣本限度</a>\n<a href=\"#sec57\">5.7 Consolidated Expressions | 整合公式</a>\n<a href=\"#sec58\">5.8 Example Calculations | 計算範例</a>\n<a href=\"#sec59\">5.9 Other Considerations | 其他考量</a>\n<a href=\"#sec510\">5.10 Bioburden | 生物負載</a>\n<a href=\"#sec511\">5.11 Endotoxin | 內毒素</a>\n<a href=\"#sec512\">5.12 Visually Clean | 目視清潔</a>",
+   "en": "<a href=\"#sec50\">5.0 Overview</a>\n<a href=\"#sec52\">5.2 Basis for Limits</a>\n<a href=\"#sec53\">5.3 ARL Determination</a>\n<a href=\"#sec54\">5.4 MAC / MACO (Maximum Allowable Carryover)</a>\n<a href=\"#sec55\">5.5 Surface Area Limit</a>\n<a href=\"#sec56\">5.6 Protocol Sample Limits</a>\n<a href=\"#sec57\">5.7 Consolidated Expressions</a>\n<a href=\"#sec58\">5.8 Example Calculations</a>\n<a href=\"#sec59\">5.9 Other Considerations</a>\n<a href=\"#sec510\">5.10 Bioburden</a>\n<a href=\"#sec511\">5.11 Endotoxin</a>\n<a href=\"#sec512\">5.12 Visually Clean</a>"
+  },
+  {
+   "zh": "殘留物與限度 — 概覽與定量限度基礎",
+   "en": "Residue and Limits: Overview and the Basis for Quantitative Limits"
+  },
+  {
+   "zh": "Key Calculation Sequence | 計算順序",
+   "en": "Key Calculation Sequence"
+  },
+  {
+   "zh": "中文解說 | 限度基礎三標準比較",
+   "en": "Commentary | Comparison of the Three Standards for the Basis of Limits"
+  },
+  {
+   "zh": "清潔驗證的限度設定，本質上是在問：「殘留多少量，對下一個產品的病人是安全的？」PDA TR29 提供三條路徑回答這個問題：",
+   "en": "Setting limits for cleaning validation is essentially asking: \"How much residue is safe for the patient taking the next product?\" PDA TR29 offers three routes to answer this question:"
+  },
+  {
+   "zh": "生活比喻 | 三個問題對應三條路",
+   "en": "Everyday Analogy | Three Questions, Three Routes"
+  },
+  {
+   "zh": "想像你要設定「廚房切板殘留調味料」的清潔標準：",
+   "en": "Imagine you are setting a cleaning standard for \"seasoning residue on a kitchen cutting board\":"
+  },
+  {
+   "zh": "<strong>劑量法</strong>：鹽的每日安全攝取量 ÷ 1000 — 以正常飲食劑量為基礎",
+   "en": "<strong>Dose-based approach</strong>: the safe daily intake of salt ÷ 1000, based on a normal dietary dose"
+  },
+  {
+   "zh": "<strong>毒理法</strong>：如果是辣椒素（高毒性），就改用毒理資料計算 ADE",
+   "en": "<strong>Toxicity-based approach</strong>: if the residue is capsaicin (highly toxic), switch to toxicological data and calculate an ADE"
+  },
+  {
+   "zh": "<strong>預設值</strong>：如果不知道殘留是什麼，就用 10 ppm 當保守預設",
+   "en": "<strong>Default value</strong>: if you do not know what the residue is, use 10 ppm as a conservative default"
+  },
+  {
+   "zh": "TR29 要求：取三者中<strong>最嚴格的那個</strong>作為最終限度。",
+   "en": "TR29 requires taking <strong>the most stringent of the three</strong> as the final limit."
+  },
+  {
+   "zh": "計算鏈：從 ARL 到樣本限度",
+   "en": "The Calculation Chain: From ARL to Sample Limit"
+  },
+  {
+   "zh": "本節的核心架構是一條線性計算鏈：",
+   "en": "The core structure of this section is a linear calculation chain:"
+  },
+  {
+   "zh": "ARL（濃度）→ MAC（質量）→ SAL（每平方公分）→ 棉棒/沖洗限度",
+   "en": "ARL (concentration) → MAC (mass) → SAL (per square centimeter) → swab/rinse limit"
+  },
+  {
+   "zh": "每一步都是轉換單位，讓實驗室可操作的測量值與病人安全連結。",
+   "en": "Each step is a unit conversion, linking measurements the laboratory can actually perform to patient safety."
+  },
+  {
+   "zh": "下一產品中的可接受殘留濃度 (ARL)",
+   "en": "Acceptable Residue Level (ARL) in the Next Product"
+  },
+  {
+   "zh": "中文解說 | ARL 計算詳解",
+   "en": "Commentary | ARL Calculation in Detail"
+  },
+  {
+   "zh": "ARL 是什麼？",
+   "en": "What is ARL?"
+  },
+  {
+   "zh": "<strong>ARL（Acceptable Residue Level）= 可接受殘留濃度</strong>",
+   "en": "<strong>ARL (Acceptable Residue Level) = the acceptable residue concentration</strong>"
+  },
+  {
+   "zh": "代表下一個產品中，每克（或每毫升）最多允許含有多少殘留物。這是整個限度計算鏈的起點。",
+   "en": "It represents the maximum amount of residue allowed per gram (or per milliliter) of the next product. This is the starting point of the entire limit calculation chain."
+  },
+  {
+   "zh": "單位：µg/g 或 µg/mL（化學殘留）；CFU/g 或 CFU/mL（生物負載）",
+   "en": "Units: µg/g or µg/mL (chemical residues); CFU/g or CFU/mL (bioburden)"
+  },
+  {
+   "zh": "公式 5A 逐步解析 — 千分之一劑量法",
+   "en": "Equation 5A Step by Step: The 1/1000 Dose Approach"
+  },
+  {
+   "zh": "ARL = (MDD × SF) / LDD\n\n直覺解讀：\n- MDD = 被清洗產品的最小每日劑量\n- 乘以 SF = 0.001（安全係數，取千分之一）\n- 除以 LDD = 下一產品的最大每日劑量\n\n意義：下一產品患者每天從殘留中攝入的量，\n最多只能是清洗產品治療劑量的千分之一。",
+   "en": "ARL = (MDD × SF) / LDD\n\nIntuitive reading:\n- MDD = minimum daily dose of the cleaned product\n- Multiply by SF = 0.001 (safety factor, one-thousandth)\n- Divide by LDD = largest daily dose of the next product\n\nMeaning: the amount a patient taking the next product ingests\nfrom residue each day may be at most one-thousandth of the\ntherapeutic dose of the cleaned product."
+  },
+  {
+   "zh": "比喻：藥量安全邊際",
+   "en": "Analogy: Safety Margin of a Drug Dose"
+  },
+  {
+   "zh": "假設你每天服用 100 mg 的藥 A，接著同一設備製造藥 B（每天 800 mg）。",
+   "en": "Suppose you take 100 mg of Drug A daily, and then the same equipment is used to manufacture Drug B (800 mg per day)."
+  },
+  {
+   "zh": "千分之一安全係數的意義：即使藥 B 患者每天從殘留中攝入 0.1 mg 的藥 A，也只是藥 A 治療劑量的 <strong>0.1%</strong>，在藥理上幾乎不可能有不良效果。",
+   "en": "What the 1/1000 safety factor means: even if a Drug B patient ingests 0.1 mg of Drug A from residue each day, that is only <strong>0.1%</strong> of the therapeutic dose of Drug A, and pharmacologically an adverse effect is virtually impossible."
+  },
+  {
+   "zh": "公式 5B 解析 — ADE 毒理學法",
+   "en": "Equation 5B: The ADE Toxicological Approach"
+  },
+  {
+   "zh": "ADE = (NOAEL × BW) / (UFC × MF × PK)\n\n- NOAEL：動物試驗中「無可見不良效應」的劑量\n- BW：病人體重（通常設 50–70 kg）\n- UFC：複合不確定因子（物種差異等，通常 10–1000）\n- MF：毒理學家主觀修正因子\n- PK：藥動學因子（考慮暴露途徑差異）\n\nADE 代表：每天攝入此量對人體安全",
+   "en": "ADE = (NOAEL × BW) / (UFC × MF × PK)\n\n- NOAEL: the dose with \"no observed adverse effect\" in animal studies\n- BW: patient body weight (usually set at 50–70 kg)\n- UFC: composite uncertainty factor (species differences, etc., usually 10–1000)\n- MF: modifying factor (the toxicologist's judgment-based adjustment)\n- PK: pharmacokinetic factor (accounts for differences in exposure route)\n\nADE represents: the amount that is safe for humans to ingest each day"
+  },
+  {
+   "zh": "ADE vs 劑量法 — 何時選哪個？",
+   "en": "ADE vs. the Dose-Based Approach: When to Use Which?"
+  },
+  {
+   "zh": "<strong>一般活性成分</strong>：兩種方法均可，取更嚴格者",
+   "en": "<strong>Typical active ingredients</strong>: either method may be used; take the more stringent result"
+  },
+  {
+   "zh": "<strong>高毒性（高活性）成分</strong>：必須用 ADE 法，劑量法不足",
+   "en": "<strong>Highly toxic (highly potent) ingredients</strong>: the ADE approach must be used; the dose-based approach is not sufficient"
+  },
+  {
+   "zh": "<strong>清潔劑、無劑量殘留</strong>：用 LD50 → NOEL → SDI 路徑（公式 5D-5F）",
+   "en": "<strong>Cleaning agents and residues without a dose</strong>: use the LD50 → NOEL → SDI route (Equations 5D-5F)"
+  },
+  {
+   "zh": "<strong>基因毒性殘留</strong>：考慮 TTC 1.5 µg/day，或毒理學評估",
+   "en": "<strong>Genotoxic residues</strong>: consider the TTC of 1.5 µg/day, or a toxicological assessment"
+  },
+  {
+   "zh": "LD50 路徑三步驟",
+   "en": "The Three Steps of the LD50 Route"
+  },
+  {
+   "zh": "<strong>NOEL = LD50 × BW / MF1</strong>（從動物致死劑量推算無效應量）",
+   "en": "<strong>NOEL = LD50 × BW / MF1</strong> (estimate the no-effect level from the animal lethal dose)"
+  },
+  {
+   "zh": "<strong>SDI = NOEL / MF2</strong>（加入額外安全係數，得到每日安全攝入量）",
+   "en": "<strong>SDI = NOEL / MF2</strong> (apply an additional safety factor to obtain the safe daily intake)"
+  },
+  {
+   "zh": "<strong>ARL = SDI / LDD</strong>（轉換成下一產品中的濃度限度）",
+   "en": "<strong>ARL = SDI / LDD</strong> (convert to a concentration limit in the next product)"
+  },
+  {
+   "zh": "注意：MF1 和 MF2 的累積值一般不超過 1000。",
+   "en": "Note: the cumulative value of MF1 and MF2 generally should not exceed 1000."
+  },
+  {
+   "zh": "練習思考 1 | ARL 計算",
+   "en": "Exercise 1 | ARL Calculation"
+  },
+  {
+   "zh": "某清洗產品的 MDD = 50 mg，安全係數 0.001，下一產品的 LDD = 500 mg。",
+   "en": "A cleaned product has an MDD = 50 mg, a safety factor of 0.001, and the next product has an LDD = 500 mg."
+  },
+  {
+   "zh": "<strong>問：</strong> ARL = ?",
+   "en": "<strong>Question:</strong> ARL = ?"
+  },
+  {
+   "zh": "<em>提示：ARL = (50 mg × 0.001) / 500 mg = 0.0001 mg/mg = 100 µg/g = 100 ppm</em>",
+   "en": "<em>Hint: ARL = (50 mg × 0.001) / 500 mg = 0.0001 mg/mg = 100 µg/g = 100 ppm</em>"
+  },
+  {
+   "zh": "<strong>問：</strong> 此值高於 10 ppm 預設值，最終 ARL 應取哪個值？",
+   "en": "<strong>Question:</strong> This value is higher than the 10 ppm default. Which value should be taken as the final ARL?"
+  },
+  {
+   "zh": "<em>答：取更嚴格的 10 ppm。</em>",
+   "en": "<em>Answer: take the more stringent 10 ppm.</em>"
+  },
+  {
+   "zh": "最大允許攜帶量 (MAC/MACO) 與表面積限度 (SAL)",
+   "en": "Maximum Allowable Carryover (MAC/MACO) and Surface Area Limit (SAL)"
+  },
+  {
+   "zh": "中文解說 | MAC 與 SAL 逐步解析",
+   "en": "Commentary | MAC and SAL Step by Step"
+  },
+  {
+   "zh": "MAC = 最大允許攜帶量（Total Mass Limit）",
+   "en": "MAC = Maximum Allowable Carryover (Total Mass Limit)"
+  },
+  {
+   "zh": "MAC = ARL × MBS\n\n邏輯：\nARL 是「濃度限度」（µg/g）\nMBS 是「批次質量」（g）\n兩者相乘 = 整批產品中允許存在的總殘留質量\n\n例：ARL = 10 µg/g，MBS = 10,000,000 g（10 kg）\nMAC = 10 × 10,000,000 = 100,000,000 µg = 100 g\n\n（注意：這是允許在所有共用設備表面的總量）",
+   "en": "MAC = ARL × MBS\n\nLogic:\nARL is the \"concentration limit\" (µg/g)\nMBS is the \"batch mass\" (g)\nMultiplying the two = the total mass of residue allowed to be\npresent in the whole batch of product\n\nExample: ARL = 10 µg/g, MBS = 10,000,000 g (10 kg)\nMAC = 10 × 10,000,000 = 100,000,000 µg = 100 g\n\n(Note: this is the total amount allowed across all shared equipment surfaces)"
+  },
+  {
+   "zh": "比喻：餐廳廚房的整體殘留總量",
+   "en": "Analogy: Total Residue in a Restaurant Kitchen"
+  },
+  {
+   "zh": "MAC 就像規定「整個廚房所有刀具、砧板、鍋具上的花生殘留總量，不能超過 X 克」。",
+   "en": "MAC is like a rule that says \"the total peanut residue on all knives, cutting boards and cookware in the whole kitchen must not exceed X grams\"."
+  },
+  {
+   "zh": "SAL 則是進一步說：「平均每平方公分表面，不能超過 Y 微克」。",
+   "en": "SAL goes one step further and says: \"on average, no more than Y micrograms per square centimeter of surface\"."
+  },
+  {
+   "zh": "從 MAC 到 SAL，就是把總量分配到每平方公分——讓棉棒取樣有具體目標。",
+   "en": "Going from MAC to SAL means distributing the total amount over each square centimeter, which gives swab sampling a concrete target."
+  },
+  {
+   "zh": "SAL 計算逐步示範",
+   "en": "SAL Calculation: Step-by-Step Demonstration"
+  },
+  {
+   "zh": "已知：\n  MAC = 1,250 mg（從計算範例）\n  SSA = 250,000 cm²（設備總共用表面積）\n\n計算：\n  SAL = MAC / SSA\n      = 1,250 mg / 250,000 cm²\n      = 0.005 mg/cm²\n      = 5 µg/cm²\n\n比較預設值 4 µg/cm²：\n  計算值 5 µg/cm² &gt; 預設值 4 µg/cm²\n  → 取更嚴格的 4 µg/cm² 作為最終 SAL",
+   "en": "Given:\n  MAC = 1,250 mg (from the calculation example)\n  SSA = 250,000 cm² (total shared surface area of the equipment)\n\nCalculation:\n  SAL = MAC / SSA\n      = 1,250 mg / 250,000 cm²\n      = 0.005 mg/cm²\n      = 5 µg/cm²\n\nCompare with the default value of 4 µg/cm²:\n  Calculated value 5 µg/cm² &gt; default 4 µg/cm²\n  → take the more stringent 4 µg/cm² as the final SAL"
+  },
+  {
+   "zh": "SAL 預設值 4 µg/cm² 的意義",
+   "en": "Significance of the Default SAL of 4 µg/cm²"
+  },
+  {
+   "zh": "4 µg/cm² 是目視清潔的臨界值——通常認為超過此值的殘留在適當光線下可被人眼察覺。",
+   "en": "4 µg/cm² is the threshold for visually clean: residue above this level is generally considered detectable by the human eye under suitable lighting."
+  },
+  {
+   "zh": "因此，設定 SAL ≤ 4 µg/cm²，意味著即使是不做分析的目視清潔也能作為合理的安全確認手段。",
+   "en": "Setting SAL ≤ 4 µg/cm² therefore means that even a visual clean check without analysis can serve as a reasonable means of safety confirmation."
+  },
+  {
+   "zh": "（ARL 預設值：藥品製造常用 <strong>10 ppm</strong>；API 製造用 <strong>50–100 ppm</strong>）",
+   "en": "(Default ARL: <strong>10 ppm</strong> is commonly used in drug product manufacturing; <strong>50–100 ppm</strong> is used in API manufacturing)"
+  },
+  {
+   "zh": "練習思考 2 | MAC → SAL 計算",
+   "en": "Exercise 2 | MAC → SAL Calculation"
+  },
+  {
+   "zh": "條件：ARL = 5 µg/g，MBS = 20 kg（20,000,000 mg），SSA = 500,000 cm²",
+   "en": "Conditions: ARL = 5 µg/g, MBS = 20 kg (20,000,000 mg), SSA = 500,000 cm²"
+  },
+  {
+   "zh": "計算 MAC = ARL × MBS = 5 µg/g × 20,000,000 g = 100,000,000 µg = 100 g",
+   "en": "Calculate MAC = ARL × MBS = 5 µg/g × 20,000,000 g = 100,000,000 µg = 100 g"
+  },
+  {
+   "zh": "計算 SAL = MAC / SSA = 100,000,000 µg / 500,000 cm² = 200 µg/cm²",
+   "en": "Calculate SAL = MAC / SSA = 100,000,000 µg / 500,000 cm² = 200 µg/cm²"
+  },
+  {
+   "zh": "SAL = 200 µg/cm² &gt;&gt; 4 µg/cm²（預設上限）",
+   "en": "SAL = 200 µg/cm² &gt;&gt; 4 µg/cm² (default upper limit)"
+  },
+  {
+   "zh": "<strong>最終 SAL = 4 µg/cm²（取預設值，更嚴格）</strong>",
+   "en": "<strong>Final SAL = 4 µg/cm² (take the default value, which is more stringent)</strong>"
+  },
+  {
+   "zh": "Limit in Protocol Samples | 驗證方案樣本限度",
+   "en": "Limit in Protocol Samples"
+  },
+  {
+   "zh": "中文解說 | 三種樣本限度轉換",
+   "en": "Commentary | Converting to the Three Types of Sample Limit"
+  },
+  {
+   "zh": "為什麼需要樣本限度？",
+   "en": "Why are sample limits needed?"
+  },
+  {
+   "zh": "SAL 的單位是 µg/cm²，但實驗室分析的是棉棒萃取液或沖洗液的濃度（µg/mL）。",
+   "en": "SAL is expressed in µg/cm², but the laboratory analyzes the concentration (µg/mL) of the swab extract or rinse solution."
+  },
+  {
+   "zh": "樣本限度轉換的目的：<strong>將表面殘留限度翻譯成實驗室可直接測量的數值。</strong>",
+   "en": "Purpose of the sample limit conversion: <strong>to translate the surface residue limit into a value the laboratory can measure directly.</strong>"
+  },
+  {
+   "zh": "三種轉換路徑一覽",
+   "en": "Overview of the Three Conversion Routes"
+  },
+  {
+   "zh": "【棉棒質量法 5J】\n  限度（µg/棉棒）= SAL × 棉棒取樣面積\n  優點：直觀，但需知道每支棉棒的回收率\n\n【棉棒萃取液濃度法 5K】\n  限度（µg/mL）= SAL × 取樣面積 / 溶劑用量\n  優點：實驗室直接讀值\n\n【沖洗液濃度法 5L/5M】\n  限度（µg/mL）= SAL × 沖洗面積 / 沖洗體積\n  若整條生產線用同一沖洗液：\n  限度 = MAC / 沖洗體積（公式 5M，最簡化）",
+   "en": "[Swab mass method 5J]\n  Limit (µg/swab) = SAL × swabbed area\n  Advantage: intuitive, but the recovery of each swab must be known\n\n[Swab extract concentration method 5K]\n  Limit (µg/mL) = SAL × swabbed area / solvent volume\n  Advantage: the laboratory reads the value directly\n\n[Rinse solution concentration method 5L/5M]\n  Limit (µg/mL) = SAL × rinsed area / rinse volume\n  If the whole production line uses the same rinse solution:\n  Limit = MAC / rinse volume (Equation 5M, the simplest form)"
+  },
+  {
+   "zh": "比喻：棉棒採樣面積的選擇",
+   "en": "Analogy: Choosing the Swabbed Area"
+  },
+  {
+   "zh": "棉棒取樣面積通常是 25 cm² 或 100 cm²。面積越大，同一支棉棒收集的殘留越多，分析靈敏度越高——但取樣的一致性要求也更高。",
+   "en": "The swabbed area is usually 25 cm² or 100 cm². The larger the area, the more residue a single swab collects and the higher the analytical sensitivity, but the requirement for sampling consistency is also higher."
+  },
+  {
+   "zh": "當限度非常低（接近偵測極限），可選擇 100 cm² 的取樣面積以提高可測量性。",
+   "en": "When the limit is very low (close to the detection limit), a swabbed area of 100 cm² can be chosen to improve measurability."
+  },
+  {
+   "zh": "實務計算範例：棉棒萃取液限度",
+   "en": "Worked Example: Swab Extract Limit"
+  },
+  {
+   "zh": "已知：SAL = 4 µg/cm²，取樣面積 = 100 cm²，溶劑用量 = 5 mL",
+   "en": "Given: SAL = 4 µg/cm², swabbed area = 100 cm², solvent volume = 5 mL"
+  },
+  {
+   "zh": "<strong>限度 = (4 × 100) / 5 = 80 µg/mL</strong>",
+   "en": "<strong>Limit = (4 × 100) / 5 = 80 µg/mL</strong>"
+  },
+  {
+   "zh": "若 SAL = 0.5 µg/cm²：限度 = (0.5 × 100) / 5 = 10 µg/mL",
+   "en": "If SAL = 0.5 µg/cm²: limit = (0.5 × 100) / 5 = 10 µg/mL"
+  },
+  {
+   "zh": "→ 實驗室的 HPLC 是否能在 10 µg/mL 以下準確定量？這是選擇分析方法的關鍵。",
+   "en": "→ Can the laboratory HPLC accurately quantify below 10 µg/mL? This is the key to selecting the analytical method."
+  },
+  {
+   "zh": "公式 5M 的優勢",
+   "en": "The Advantage of Equation 5M"
+  },
+  {
+   "zh": "當整條設備用同一批沖洗液時，公式 5M 可以繞過 SSA 的測量：",
+   "en": "When the whole piece of equipment is rinsed with the same batch of rinse solution, Equation 5M bypasses the need to measure SSA:"
+  },
+  {
+   "zh": "限度 = MAC / 沖洗體積",
+   "en": "Limit = MAC / rinse volume"
+  },
+  {
+   "zh": "不需要知道 SAL，直接從 MAC 和沖洗液體積計算。在大型設備難以精確量測表面積時特別實用。",
+   "en": "There is no need to know SAL; the limit is calculated directly from MAC and the rinse volume. This is especially practical for large equipment whose surface area is difficult to measure accurately."
+  },
+  {
+   "zh": "整合公式與計算範例",
+   "en": "Consolidated Equations and Worked Examples"
+  },
+  {
+   "zh": "中文解說 | 整合公式與範例解析",
+   "en": "Commentary | Consolidated Equations and Worked Examples Explained"
+  },
+  {
+   "zh": "為什麼需要整合公式？",
+   "en": "Why are consolidated equations needed?"
+  },
+  {
+   "zh": "在日常操作中，重複進行 ARL → MAC → SAL → 樣本限度的四步計算，容易出錯。",
+   "en": "In daily practice, repeating the four-step calculation ARL → MAC → SAL → sample limit is error-prone."
+  },
+  {
+   "zh": "整合公式（5N, 5O）把所有變數合併成一個方程式，只要輸入原料數據（劑量、批量、面積、溶劑量），直接得到最終限度。",
+   "en": "The consolidated equations (5N, 5O) merge all the variables into a single equation: just enter the source data (dose, batch size, area, solvent volume) to get the final limit directly."
+  },
+  {
+   "zh": "在電子試算表或驗證軟體中，這樣的整合公式特別常見。",
+   "en": "Such consolidated equations are especially common in spreadsheets and validation software."
+  },
+  {
+   "zh": "公式 5N 解析 — MAC 直接計算",
+   "en": "Equation 5N: Direct MAC Calculation"
+  },
+  {
+   "zh": "MAC = (MDD × SF × MBS) / LDD\n\n= 5A 的 ARL × 5H 的 MBS\n= (MDD × SF / LDD) × MBS\n\n理解：\n1. MDD × SF = 允許攜帶到每克下一產品的量（× 批量 = 總量）\n2. 除以 LDD = 標準化每日劑量\n3. 乘以 MBS = 轉換為整批的總允許量",
+   "en": "MAC = (MDD × SF × MBS) / LDD\n\n= ARL from 5A × MBS from 5H\n= (MDD × SF / LDD) × MBS\n\nUnderstanding:\n1. MDD × SF = the amount allowed to carry over into each gram of the next product (× batch size = total amount)\n2. Dividing by LDD = normalizing to the daily dose\n3. Multiplying by MBS = converting to the total allowable amount for the whole batch"
+  },
+  {
+   "zh": "範例 1 完整推導",
+   "en": "Example 1: Full Derivation"
+  },
+  {
+   "zh": "MDD = 100 mg，SF = 0.001，\nMBS = 10 kg = 10,000,000 mg，LDD = 800 mg\n\nMAC = (100 × 0.001 × 10,000,000) / 800\n    = 1,000,000 / 800\n    = 1,250 mg\n\n含義：整條設備所有共用表面的總殘留量不得超過 1,250 mg。",
+   "en": "MDD = 100 mg, SF = 0.001,\nMBS = 10 kg = 10,000,000 mg, LDD = 800 mg\n\nMAC = (100 × 0.001 × 10,000,000) / 800\n    = 1,000,000 / 800\n    = 1,250 mg\n\nMeaning: the total residue across all shared surfaces of the whole equipment must not exceed 1,250 mg."
+  },
+  {
+   "zh": "範例 2 完整推導",
+   "en": "Example 2: Full Derivation"
+  },
+  {
+   "zh": "在範例 1 基礎上加入：\nSSA = 250,000 cm²，取樣面積 = 100 cm²，SEA = 5 mL\n\n棉棒萃取液限度 = MAC × (取樣面積 / SSA) / SEA\n              = 1,250 mg × (100/250,000) / 5\n              = 1,250 mg × 0.0004 / 5\n              = 0.5 mg / 5\n              = 0.1 mg/mL = 100 µg/mL\n\n（或直接用公式 5O 代入）",
+   "en": "Building on Example 1, add:\nSSA = 250,000 cm², swabbed area = 100 cm², SEA = 5 mL\n\nSwab extract limit = MAC × (swabbed area / SSA) / SEA\n                   = 1,250 mg × (100/250,000) / 5\n                   = 1,250 mg × 0.0004 / 5\n                   = 0.5 mg / 5\n                   = 0.1 mg/mL = 100 µg/mL\n\n(or substitute directly into Equation 5O)"
+  },
+  {
+   "zh": "單位一致性是關鍵",
+   "en": "Unit Consistency Is Key"
+  },
+  {
+   "zh": "TR29 特別強調：方程式中的單位必須內部一致。常見錯誤：",
+   "en": "TR29 specifically emphasizes that the units within an equation must be internally consistent. Common errors:"
+  },
+  {
+   "zh": "MDD 用 mg，MBS 用 kg，未轉換 → 結果差 1000 倍",
+   "en": "MDD in mg and MBS in kg without conversion → result off by a factor of 1000"
+  },
+  {
+   "zh": "ARL 用 µg/g，MBS 用 mL → 需確認密度轉換",
+   "en": "ARL in µg/g and MBS in mL → density conversion must be confirmed"
+  },
+  {
+   "zh": "swabbed area 用 cm²，SSA 用 m² → 需統一",
+   "en": "Swabbed area in cm² and SSA in m² → must be made consistent"
+  },
+  {
+   "zh": "建議：在計算表中，每個變數標注單位，最後做量綱分析確認。",
+   "en": "Recommendation: label the units of every variable in the calculation sheet, and finish with a dimensional analysis as a check."
+  },
+  {
+   "zh": "練習思考 3 | 完整計算鏈",
+   "en": "Exercise 3 | Complete Calculation Chain"
+  },
+  {
+   "zh": "<strong>條件：</strong>",
+   "en": "<strong>Conditions:</strong>"
+  },
+  {
+   "zh": "SSA = 100,000 cm²，取樣面積 = 25 cm²，SEA = 10 mL",
+   "en": "SSA = 100,000 cm², swabbed area = 25 cm², SEA = 10 mL"
+  },
+  {
+   "zh": "<strong>計算：</strong>",
+   "en": "<strong>Calculation:</strong>"
+  },
+  {
+   "zh": "ARL = (200 × 0.001) / 1000 = 0.0002 mg/mg = 200 µg/g = 200 ppm → 取 10 ppm",
+   "en": "ARL = (200 × 0.001) / 1000 = 0.0002 mg/mg = 200 µg/g = 200 ppm → take 10 ppm"
+  },
+  {
+   "zh": "SAL = 50,000,000 µg / 100,000 cm² = 500 µg/cm² → 取 4 µg/cm²（預設值）",
+   "en": "SAL = 50,000,000 µg / 100,000 cm² = 500 µg/cm² → take 4 µg/cm² (default value)"
+  },
+  {
+   "zh": "棉棒限度 = 4 µg/cm² × 25 cm² / 10 mL = 10 µg/mL",
+   "en": "Swab limit = 4 µg/cm² × 25 cm² / 10 mL = 10 µg/mL"
+  },
+  {
+   "zh": "<em>在每一步都需比較計算值與預設值，取更嚴格者。</em>",
+   "en": "<em>At every step, compare the calculated value with the default value and take the more stringent one.</em>"
+  },
+  {
+   "zh": "Other Considerations | 其他特殊考量",
+   "en": "Other Considerations"
+  },
+  {
+   "zh": "中文解說 | 特殊情況決策指南",
+   "en": "Commentary | Decision Guide for Special Situations"
+  },
+  {
+   "zh": "5.9.1–5.9.3 核心原則：保守優先",
+   "en": "5.9.1–5.9.3 Core Principle: Conservatism First"
+  },
+  {
+   "zh": "多產品情況的邏輯：<strong>限度取最嚴格的那個</strong>，確保無論哪個產品排在後面，殘留都是安全的。",
+   "en": "The logic for multiple-product situations: <strong>take the most stringent limit</strong>, so that residues are safe regardless of which product follows."
+  },
+  {
+   "zh": "驗證模式（Verification Mode）是開發階段常用的靈活方式：每次清潔後根據實際下一產品個別評估，不預設固定限度。",
+   "en": "Verification mode is a flexible approach commonly used in the development stage: after each cleaning, the actual next product is assessed individually, without a pre-set fixed limit."
+  },
+  {
+   "zh": "5.9.4 安全係數的彈性",
+   "en": "5.9.4 Flexibility of the Safety Factor"
+  },
+  {
+   "zh": "0.001 是針對「長期慢性給藥」設計的保守係數。",
+   "en": "0.001 is a conservative factor designed for \"long-term chronic dosing\"."
+  },
+  {
+   "zh": "對於只用 10 天的感冒藥，長期暴露的風險更低，基於風險評估可以使用較寬鬆的係數——但需要充分的科學論證與文件。",
+   "en": "For a cold medicine taken for only 10 days, the risk of long-term exposure is lower, and a less stringent factor may be used based on risk assessment, but this requires sound scientific justification and documentation."
+  },
+  {
+   "zh": "5.9.8 基因毒性殘留的四條路",
+   "en": "5.9.8 Four Routes for Genotoxic Residues"
+  },
+  {
+   "zh": "<strong>TTC 1.5 µg/day</strong>：最常用，但注射劑需謹慎（FDA 原始設定針對口服）",
+   "en": "<strong>TTC 1.5 µg/day</strong>: the most commonly used, but injectables require caution (the original FDA setting was intended for oral products)"
+  },
+  {
+   "zh": "<strong>設備專用化</strong>：最簡單，但損失彈性",
+   "en": "<strong>Dedicating the equipment</strong>: the simplest, but loses flexibility"
+  },
+  {
+   "zh": "<strong>毒理學計算</strong>：最科學，需毒理學家參與",
+   "en": "<strong>Toxicological calculation</strong>: the most scientific, and requires the involvement of a toxicologist"
+  },
+  {
+   "zh": "<strong>低於偵測極限</strong>：最嚴格，但需醫療風險評估確認可接受性",
+   "en": "<strong>Below the detection limit</strong>: the most stringent, but a medical risk assessment is needed to confirm acceptability"
+  },
+  {
+   "zh": "5.9.11 限度不可測的解方",
+   "en": "5.9.11 Solutions When the Limit Cannot Be Measured"
+  },
+  {
+   "zh": "計算出的限度若低於分析方法偵測極限，本質原因通常是：",
+   "en": "If the calculated limit is below the detection limit of the analytical method, the underlying cause is usually one of the following:"
+  },
+  {
+   "zh": "清洗產品毒性太強（劑量太小）",
+   "en": "The cleaned product is too toxic (the dose is too small)"
+  },
+  {
+   "zh": "下一產品批量太小",
+   "en": "The batch size of the next product is too small"
+  },
+  {
+   "zh": "設備共用表面積太小",
+   "en": "The shared equipment surface area is too small"
+  },
+  {
+   "zh": "解方：改變分子（提高 MBS）、改變分母（增大取樣面積、減少溶劑量），或直接設備專用化。",
+   "en": "Solutions: change the numerator (increase MBS), change the denominator (increase the swabbed area, reduce the solvent volume), or dedicate the equipment outright."
+  },
+  {
+   "zh": "5.9.14 限度分配實例",
+   "en": "5.9.14 Example of Limit Allocation"
+  },
+  {
+   "zh": "假設 MAC = 300 µg，設備 A/B/C 各有 100 cm²（共 300 cm²）：",
+   "en": "Suppose MAC = 300 µg, and equipment A/B/C each have 100 cm² (300 cm² in total):"
+  },
+  {
+   "zh": "<strong>均等分配：</strong>每台 SAL = 300/300 = 1 µg/cm²",
+   "en": "<strong>Equal allocation:</strong> SAL for each unit = 300/300 = 1 µg/cm²"
+  },
+  {
+   "zh": "<strong>差異分配：</strong>A = 0.5 µg/cm²（難清潔），B = 1.0，C = 1.5 µg/cm²（易清潔）",
+   "en": "<strong>Differentiated allocation:</strong> A = 0.5 µg/cm² (hard to clean), B = 1.0, C = 1.5 µg/cm² (easy to clean)"
+  },
+  {
+   "zh": "驗證：(0.5 × 100) + (1.0 × 100) + (1.5 × 100) = 300 µg = MAC ✓",
+   "en": "Check: (0.5 × 100) + (1.0 × 100) + (1.5 × 100) = 300 µg = MAC ✓"
+  },
+  {
+   "zh": "差異分配需要對每台設備的清潔難度和風險有深刻理解。",
+   "en": "Differentiated allocation requires a deep understanding of the cleaning difficulty and risk of each piece of equipment."
+  },
+  {
+   "zh": "5.9.15 優先轉移（Preferential Transfer）",
+   "en": "5.9.15 Preferential Transfer"
+  },
+  {
+   "zh": "灌裝機（Vial filler）是典型的優先轉移設備：殘留可能集中在最初灌裝的幾個瓶子，而非均勻分佈在整批產品。",
+   "en": "A vial filler is a typical preferential transfer piece of equipment: residue may be concentrated in the first few vials filled, rather than evenly distributed across the whole batch."
+  },
+  {
+   "zh": "解決方案：更嚴格的 SAL，或拋棄最初的幾瓶產品，或灌裝機專用化。",
+   "en": "Solutions: a more stringent SAL, discarding the first few vials of product, or dedicating the filler."
+  },
+  {
+   "zh": "預設值系統整理",
+   "en": "Summary of Default Values"
+  },
+  {
+   "zh": "預設值的邏輯：計算值與預設值比較，取<strong>更嚴格</strong>（更低）的那個。",
+   "en": "Logic of default values: compare the calculated value with the default value and take the <strong>more stringent</strong> (lower) one."
+  },
+  {
+   "zh": "Bioburden Limits &amp; Endotoxin Limits | 生物負載限度與內毒素限度",
+   "en": "Bioburden Limits &amp; Endotoxin Limits"
+  },
+  {
+   "zh": "中文解說 | 生物負載與內毒素限度",
+   "en": "Commentary | Bioburden and Endotoxin Limits"
+  },
+  {
+   "zh": "為什麼清潔後設備不要求無菌？",
+   "en": "Why is equipment not required to be sterile after cleaning?"
+  },
+  {
+   "zh": "清潔的目的是去除化學殘留和降低微生物負載，而不是達到滅菌水準。",
+   "en": "The purpose of cleaning is to remove chemical residues and reduce the microbial load, not to achieve a sterilization level."
+  },
+  {
+   "zh": "真正的微生物控制是在後續製程中完成的：SIP（原位滅菌）、高壓蒸氣滅菌、或無菌過濾。清潔驗證中的生物負載評估是確保「後續滅菌步驟不會被過度挑戰」。",
+   "en": "True microbial control is achieved in subsequent process steps: SIP (steam-in-place), autoclaving, or sterile filtration. The bioburden assessment in cleaning validation is intended to ensure that \"the subsequent sterilization step is not over-challenged\"."
+  },
+  {
+   "zh": "比喻：廚房清潔 vs 手術器械消毒",
+   "en": "Analogy: Kitchen Cleaning vs. Surgical Instrument Disinfection"
+  },
+  {
+   "zh": "清潔（Cleaning）= 洗碗機洗碗 — 去除殘留，降低微生物，但不要求完全無菌。",
+   "en": "Cleaning = washing dishes in a dishwasher: removes residue and reduces microorganisms, but does not require complete sterility."
+  },
+  {
+   "zh": "滅菌（Sterilization）= 高壓蒸氣消毒 — 確保無存活微生物。",
+   "en": "Sterilization = autoclave disinfection: ensures no viable microorganisms remain."
+  },
+  {
+   "zh": "清潔驗證中的生物負載限度，是確保洗完碗後，後續的消毒步驟有合理的起始條件（不是從「髒到嚴重污染」開始滅菌）。",
+   "en": "The bioburden limit in cleaning validation ensures that after the dishes are washed, the subsequent disinfection step has a reasonable starting condition (it does not start from \"heavily contaminated\")."
+  },
+  {
+   "zh": "「有害微生物」的判定",
+   "en": "Determining \"Objectionable Microorganisms\""
+  },
+  {
+   "zh": "<strong>Objectionable organisms（有害微生物）</strong>不只是 USP 表列的特定菌種，還包括：",
+   "en": "<strong>Objectionable organisms</strong> are not only the specific species listed in the USP, but also include:"
+  },
+  {
+   "zh": "基於產品特性選擇的指標菌（如高水活性產品的酵母菌）",
+   "en": "Indicator organisms selected based on product characteristics (such as yeasts for products with high water activity)"
+  },
+  {
+   "zh": "數量達到一定閾值才被視為有害（不只是有沒有，也看多少）",
+   "en": "Organisms considered objectionable only once their numbers reach a certain threshold (not just presence or absence, but also how many)"
+  },
+  {
+   "zh": "可鑑定到菌種層級，或僅用排除法（確認非有害菌種即可）",
+   "en": "Organisms that can be identified to species level, or assessed only by exclusion (it is enough to confirm they are not objectionable species)"
+  },
+  {
+   "zh": "5.11 內毒素限度 — 關鍵數值",
+   "en": "5.11 Endotoxin Limit: Key Value"
+  },
+  {
+   "zh": "WFI 內毒素限度：0.25 EU/mL\n\n適用場景：注射劑等有內毒素規格的產品\n\n測試方法：在最終沖洗水中測量內毒素\n\n例外：設備進行去熱原處理（Depyrogenation，\n通常 250°C 乾熱 30 分鐘以上）→\n內毒素已被去活化 → 清潔後不需再測定",
+   "en": "WFI endotoxin limit: 0.25 EU/mL\n\nApplicable scenario: injectables and other products with an endotoxin specification\n\nTest method: measure endotoxin in the final rinse water\n\nException: if the equipment undergoes depyrogenation\n(usually dry heat at 250°C for 30 minutes or longer) →\nendotoxin has been inactivated → no further testing needed after cleaning"
+  },
+  {
+   "zh": "去熱原 vs 生物負載的邏輯差異",
+   "en": "Depyrogenation vs. Bioburden: The Difference in Logic"
+  },
+  {
+   "zh": "<strong>生物負載：</strong>即使後續有 SIP，也建議評估清潔後的生物負載——確認起始條件合理。",
+   "en": "<strong>Bioburden:</strong> even if SIP follows, it is recommended to assess the bioburden after cleaning, to confirm that the starting condition is reasonable."
+  },
+  {
+   "zh": "<strong>內毒素：</strong>如果後續有去熱原步驟（乾熱），則清潔後的內毒素測試<em>可以省略</em>，因為去熱原足以將其去活化。",
+   "en": "<strong>Endotoxin:</strong> if a depyrogenation step (dry heat) follows, endotoxin testing after cleaning <em>can be omitted</em>, because depyrogenation is sufficient to inactivate it."
+  },
+  {
+   "zh": "關鍵差異：內毒素是化學物質（脂多醣），可以被高溫破壞；微生物是活的，需要更複雜的評估。",
+   "en": "Key difference: endotoxin is a chemical substance (lipopolysaccharide) that can be destroyed by high temperature; microorganisms are alive and require a more complex assessment."
+  },
+  {
+   "zh": "Visually Clean Criterion | 目視清潔標準",
+   "en": "Visually Clean Criterion"
+  },
+  {
+   "zh": "中文解說 | 目視清潔的適用邊界",
+   "en": "Commentary | Boundaries of Applicability of Visually Clean"
+  },
+  {
+   "zh": "目視清潔取代分析取樣的三個條件",
+   "en": "Three Conditions for Visually Clean to Replace Analytical Sampling"
+  },
+  {
+   "zh": "<strong>定量視覺限度 &lt; 計算 SAL</strong>：視覺標準必須比計算出的表面積限度更嚴格",
+   "en": "<strong>Quantitative visual limit &lt; calculated SAL:</strong> the visual standard must be more stringent than the calculated surface area limit"
+  },
+  {
+   "zh": "<strong>觀察條件一致</strong>：驗證時的燈光、距離、角度必須與建立定量限度時相同或更嚴",
+   "en": "<strong>Consistent observation conditions:</strong> the lighting, distance and angle during validation must be the same as, or stricter than, those used when the quantitative limit was established"
+  },
+  {
+   "zh": "<strong>雙人確認</strong>：必須有第二人核實，降低主觀性誤差",
+   "en": "<strong>Two-person confirmation:</strong> a second person must verify, to reduce subjective error"
+  },
+  {
+   "zh": "比喻：法醫勘查 vs 日常整理",
+   "en": "Analogy: Forensic Examination vs. Everyday Tidying"
+  },
+  {
+   "zh": "日常目視清潔（補充模式）就像你看一眼廚房說「看起來乾淨了」。",
+   "en": "Everyday visually clean (supplementary mode) is like glancing at the kitchen and saying \"it looks clean\"."
+  },
+  {
+   "zh": "定量目視清潔（取代模式）就像法醫在特定燈光、特定角度、有參照標準的條件下，精確判斷表面是否存在微量殘留——主觀性極低，有客觀證據支持。",
+   "en": "Quantitative visually clean (replacement mode) is like a forensic examiner determining precisely, under specific lighting, at specific angles and against reference standards, whether trace residue is present on a surface; subjectivity is very low and it is backed by objective evidence."
+  },
+  {
+   "zh": "視覺限度 1–4 µg/cm² 的意義",
+   "en": "Significance of the Visual Limit of 1–4 µg/cm²"
+  },
+  {
+   "zh": "這是文獻報告的目視可偵測閾值。意思是：",
+   "en": "This is the visual detection threshold reported in the literature. It means:"
+  },
+  {
+   "zh": "殘留量 &gt; 4 µg/cm²：在適當條件下人眼通常可見",
+   "en": "Residue &gt; 4 µg/cm²: generally visible to the human eye under suitable conditions"
+  },
+  {
+   "zh": "殘留量 1–4 µg/cm²：可能在最佳觀察條件下可見",
+   "en": "Residue of 1–4 µg/cm²: may be visible under optimal viewing conditions"
+  },
+  {
+   "zh": "殘留量 &lt; 1 µg/cm²：人眼幾乎不可見，須依賴分析方法",
+   "en": "Residue &lt; 1 µg/cm²: almost invisible to the human eye; analytical methods must be relied upon"
+  },
+  {
+   "zh": "這也是為什麼 SAL 預設值設在 4 µg/cm²——它是目視清潔和分析方法之間的自然邊界。",
+   "en": "This is also why the default SAL is set at 4 µg/cm²: it is the natural boundary between visually clean and analytical methods."
+  },
+  {
+   "zh": "棉棒目視 vs 設備表面目視",
+   "en": "Visual Inspection of the Swab vs. the Equipment Surface"
+  },
+  {
+   "zh": "TR29 特別說明：棉棒擦拭後，棉棒本身不需要目視清潔。",
+   "en": "TR29 specifically notes that after swabbing, the swab itself does not need to be visually clean."
+  },
+  {
+   "zh": "原因：原本在 1000 cm² 表面上不可見的殘留，被集中到只有幾 cm² 的棉棒頭上後，會顯得「可見」——這是濃縮效應，不代表設備表面的殘留量超標。",
+   "en": "Reason: residue that was not visible on a 1000 cm² surface becomes \"visible\" once concentrated onto a swab head of only a few cm². This is a concentration effect and does not mean the residue on the equipment surface exceeds the limit."
+  },
+  {
+   "zh": "綜合複習問題",
+   "en": "Comprehensive Review Questions"
+  },
+  {
+   "zh": "當計算出的 SAL = 6 µg/cm²，應使用哪個值作為最終 SAL？為什麼？\n                                <br/><em>答：4 µg/cm²（預設上限，更嚴格）</em>",
+   "en": "When the calculated SAL = 6 µg/cm², which value should be used as the final SAL? Why?\n                                <br/><em>Answer: 4 µg/cm² (the default upper limit, which is more stringent)</em>"
+  },
+  {
+   "zh": "某產品有 3 個可能的下一個產品，計算出的棉棒限度分別為 50、30、80 µg/mL，應採用哪個限度？\n                                <br/><em>答：30 µg/mL（最嚴格，以確保所有下一產品均安全）</em>",
+   "en": "A product has 3 possible next products, and the calculated swab limits are 50, 30 and 80 µg/mL respectively. Which limit should be adopted?\n                                <br/><em>Answer: 30 µg/mL (the most stringent, to ensure all next products are safe)</em>"
+  },
+  {
+   "zh": "清潔後設備即將進行 SIP（原位蒸氣滅菌），是否仍需評估生物負載？\n                                <br/><em>答：TR29 建議仍評估，以確認滅菌前的起始生物負載不會過度挑戰滅菌效果</em>",
+   "en": "The equipment is about to undergo SIP (steam-in-place) after cleaning. Is bioburden still required to be assessed?\n                                <br/><em>Answer: TR29 recommends that it still be assessed, to confirm that the pre-sterilization starting bioburden does not over-challenge the sterilization</em>"
+  }
+ ]
+}

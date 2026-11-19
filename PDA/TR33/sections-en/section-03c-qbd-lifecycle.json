@@ -1,0 +1,341 @@
+{
+ "source": "section-03c-qbd-lifecycle.html",
+ "blocks": [
+  {
+   "zh": "傳統方法之自動化、方法變異性與方法選擇",
+   "en": "Automation of Conventional Methods, Method Variability and Method Choice"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解傳統方法自動化（如菌落自動計數）對設備確效（Equipment Qualification）與方法確效（Method Validation）需求的影響，並能解讀 Figure 3.6-1 決策流程圖的判斷邏輯",
+   "en": "Understand how automating a conventional method (for example, automated colony counting) affects equipment qualification and method validation requirements, and interpret the decision logic of the Figure 3.6-1 flowchart"
+  },
+  {
+   "zh": "掌握延伸效能確效（Extended PQ）與結果所需時間（Time to Result, TTR）的定義方式，包括產品樣品與水樣品在孵育時間上的差異",
+   "en": "Know how Extended PQ and Time to Result (TTR) are defined, including the differences in incubation time between product samples and water samples"
+  },
+  {
+   "zh": "理解 CMM 與 AMM/RMM 在方法變異性上的關鍵差異，包括偵測／計數與微生物鑑定兩大類方法各自的驗證考量",
+   "en": "Understand the key differences in method variability between CMM and AMM/RMM, including the validation considerations for detection/enumeration methods versus microbial identification methods"
+  },
+  {
+   "zh": "掌握 AMM/RMM 技術依「定性、定量、鑑定」三大類的分類邏輯，並能依產品風險與法規要求，選擇適合的技術與驗證策略",
+   "en": "Master the logic for classifying AMM/RMM technologies into the three categories of qualitative, quantitative and identification, and select suitable technologies and validation strategies according to product risk and regulatory requirements"
+  },
+  {
+   "zh": "<strong>3.6 Automation of Conventional Methods 傳統方法之自動化</strong>",
+   "en": "<strong>3.6 Automation of Conventional Methods</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>設備確效（Equipment Qualification, EQ）：</strong>證明一台自動化設備（如菌落計數機）本身的功能符合設計規格，通常涵蓋 DQ（設計確效）/IQ（安裝確效）/OQ（操作確效）/PQ（效能確效）。",
+   "en": "<strong>Equipment Qualification (EQ):</strong> demonstrates that an automated instrument (such as a colony counter) itself performs to its design specifications. It usually covers DQ (design qualification), IQ (installation qualification), OQ (operational qualification) and PQ (performance qualification)."
+  },
+  {
+   "zh": "<strong>方法確效（Method Validation）：</strong>證明「整套測試方法」——包含設備、試劑、程序——在既定用途下能產生準確、可靠的結果。",
+   "en": "<strong>Method Validation:</strong> demonstrates that the \"complete test method\" (equipment, reagents and procedure together) produces accurate, reliable results for its intended use."
+  },
+  {
+   "zh": "TR33 在此提出一個關鍵區分：<strong>當自動化只是「取代人眼判讀」而未改變 CMM 的科學原理（同樣的培養基、同樣的孵育時間與條件）</strong>時，只需要在設備確效中加強菌落計數的準確度與精密度比對，不必整套方法重新確效。但<strong>一旦自動化伴隨孵育時間縮短</strong>，就等同改變了 CMM 的關鍵參數，必須額外執行方法確效層級的評估（見 Figure 3.6-1）。",
+   "en": "TR33 makes a key distinction here: <strong>when automation merely \"replaces the human eye\" and does not change the scientific principle of the CMM (same medium, same incubation time and conditions)</strong>, you only need to strengthen the accuracy and precision comparison of colony counting within equipment qualification; the whole method does not need to be revalidated. However, <strong>once automation comes with a shorter incubation time</strong>, a critical parameter of the CMM has changed, and an additional method-validation-level assessment must be performed (see Figure 3.6-1)."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像工廠把「老師傅用眼睛檢查零件瑕疵」換成「機器視覺系統自動判讀」。如果機器只是在同樣的生產線速度、同樣的檢查標準下取代人眼——你只需要驗證機器判讀跟老師傅判讀是否一致（設備確效）。但如果同時把生產線速度加快兩倍（相當於縮短孵育時間），那就不只是「換眼睛」，而是「改變了整個檢驗條件」，必須重新驗證整套檢驗方法是否還能可靠抓出瑕疵品（方法確效）。",
+   "en": "Imagine a factory replacing \"a veteran inspector checking parts for defects by eye\" with \"an automated machine vision system\". If the machine simply replaces the human eye at the same line speed and to the same inspection standard, you only need to verify that the machine's calls agree with the inspector's (equipment qualification). But if the line speed is also doubled (the equivalent of shortening incubation time), this is no longer just \"changing the eyes\"; it \"changes the whole inspection condition\", and you must revalidate whether the complete inspection method can still reliably catch defective parts (method validation)."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 3.6-1 的決策邏輯分為兩條路徑：",
+   "en": "The decision logic of Figure 3.6-1 has two paths:"
+  },
+  {
+   "zh": "<strong>路徑一（No，孵育時間不變）：</strong>直接進入「Qualify Equipment」——重點聚焦於菌落計數的<strong>準確度與精密度</strong>，屬於設備確效範疇，不需要額外的方法確效工作。",
+   "en": "<strong>Path 1 (No, incubation time unchanged):</strong> go directly to \"Qualify Equipment\", focusing on the <strong>accuracy and precision</strong> of colony counting. This falls within equipment qualification and requires no additional method validation work."
+  },
+  {
+   "zh": "<strong>路徑二（Yes，孵育時間縮短）：</strong>依序執行三個步驟——① 確立「Reduced Incubation Time（縮短孵育時間）」的具體數值；② 「Define Time-to-Result（定義 TTR）」，針對特定應用範圍（如產品樣品、水樣品、環境監測）分別定義；③ 「Compare the Automated Colony Count（比較自動化菌落計數結果）」，在縮短孵育時間後，與依藥典程序孵育所得之人工目視計數結果進行比對。",
+   "en": "<strong>Path 2 (Yes, incubation time shortened):</strong> carry out three steps in order: (1) establish the specific value for the \"Reduced Incubation Time\"; (2) \"Define Time-to-Result (TTR)\", separately for each specific application scope (such as product samples, water samples and environmental monitoring); (3) \"Compare the Automated Colony Count\" obtained after the reduced incubation with the manual visual count obtained from plates incubated according to the pharmacopoeial procedure."
+  },
+  {
+   "zh": "這張圖的核心訊息是：<strong>孵育時間是否改變，是判斷「設備確效即可」還是「需要延伸方法確效」的分水嶺</strong>。這也呼應了 Section 3.5 風險評估的精神——風險評估的深度應與變更的科學重大性成正比。",
+   "en": "The core message of this figure is: <strong>whether the incubation time changes is the dividing line between \"equipment qualification is enough\" and \"extended method validation is needed\"</strong>. This also echoes the spirit of the Section 3.5 risk assessment: the depth of risk assessment should be proportional to the scientific significance of the change."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若貴公司導入一台自動菌落計數機，僅取代人工目視計數、孵育時間與培養基完全不變，依 Figure 3.6-1 的邏輯，應該執行哪些確效活動？",
+   "en": "If your company introduces an automated colony counter that only replaces manual visual counting, with incubation time and medium completely unchanged, which validation activities should be performed according to the logic of Figure 3.6-1?"
+  },
+  {
+   "zh": "如果該設備同時宣稱可將水系統例行監測的孵育時間從 7-8 天縮短為 5 天，這會觸發哪些額外的驗證需求？這對 CDMO 的放行時效與客戶合約交期會有什麼影響？",
+   "en": "If the instrument also claims to shorten the incubation time for routine water system monitoring from 7-8 days to 5 days, which additional validation requirements would this trigger? What would be the impact on a CDMO's release timelines and customer contract delivery dates?"
+  },
+  {
+   "zh": "<strong>3.6.1 Performance Qualification 效能確效</strong>",
+   "en": "<strong>3.6.1 Performance Qualification</strong>"
+  },
+  {
+   "zh": "<strong>延伸效能確效（Extended PQ）：</strong>並非重新評估整個微生物分析方法的效能，而是聚焦於「同一塊培養皿上，機器計數 vs. 人工目視計數」的準確度與精密度比對——範圍精準、務實。",
+   "en": "<strong>Extended PQ:</strong> this does not re-evaluate the performance of the entire microbiological method. It focuses on comparing the accuracy and precision of \"machine count versus manual visual count on the same plate\", which keeps the scope precise and practical."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文特別強調：TTR 相關數據應在 PQ「之前」（例如開發研究階段）或「期間」就開始收集，而不是等到 PQ 完成後才臨時補做。這是為了避免驗證計畫因缺乏前導數據而延誤，也符合 QbD／AQbD 一開始就規劃好目標與數據需求的精神（見 Section 3.5）。",
+   "en": "The source text specifically stresses that TTR-related data should be collected \"before\" PQ (for example, during the development study stage) or \"during\" PQ, rather than being added ad hoc after PQ is complete. This avoids delays to the validation plan caused by a lack of preliminary data, and is consistent with the QbD/AQbD principle of planning goals and data requirements from the start (see Section 3.5)."
+  },
+  {
+   "zh": "為什麼延伸 PQ 只需要比對「機器 vs. 人工目視」而不是重做整套微生物分析方法效能評估？",
+   "en": "Why does extended PQ only need to compare \"machine versus manual visual count\" rather than repeat the whole performance evaluation of the microbiological method?"
+  },
+  {
+   "zh": "<strong>3.6.2 Time to Result 結果所需時間</strong>",
+   "en": "<strong>3.6.2 Time to Result</strong>"
+  },
+  {
+   "zh": "<strong>Time to Result (TTR，結果所需時間)：</strong>自動化菌落計數系統要「準確計數到最慢生長的菌種」，並達到與傳統目視計數在最長孵育時間下相同的回收率（recovery），所需要的最短時間。TTR 不是廠商宣稱的理論值，而是必須透過實驗數據具體驗證出來的。",
+   "en": "<strong>Time to Result (TTR):</strong> the shortest time an automated colony counting system needs to \"accurately count the slowest-growing organisms\" and to reach the same recovery as conventional visual counting at the longest incubation time. TTR is not a theoretical value claimed by the vendor; it must be verified concretely with experimental data."
+  },
+  {
+   "zh": "原文給出的實例參數：<strong>產品樣品</strong>——胰化酪蛋白大豆瓊脂（TSA），孵育 3-5 天；<strong>水樣品</strong>——R2A 瓊脂，孵育 7-8 天（因水系統常見慢生長菌）。這兩組不同的基準線，說明 TTR 必須「依樣品類型分別定義」，不能一套參數套用所有應用。",
+   "en": "Example parameters given in the source text: <strong>product samples</strong> use tryptic soy agar (TSA) incubated for 3-5 days; <strong>water samples</strong> use R2A agar incubated for 7-8 days (because slow-growing organisms are common in water systems). These two different baselines show that TTR must be \"defined separately for each sample type\"; one set of parameters cannot be applied to all applications."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "TTR 定義準則（二擇一）：\n\n① 絕對回收率法：\n   自動計數結果 ≥ 預先定義的目視計數回收率門檻\n   （以傳統法最長孵育時間下的目視計數為基準，\n    例如產品樣品第5天、水樣品第7-8天）\n\n② 統計比較法：\n   對關鍵取樣點（如 point-of-use 水樣）\n   以統計方法比較 自動計數 vs. CMM 計數\n   → 自動計數在 TTR 應達到「統計上非劣性\n     （statistically noninferior）」\n\n最終判定：\n   自動化系統 vs. 傳統目視法\n   ＝ \"comparable\"（Ph. Eur. 用語）\n     或 \"non-inferior\"（USP 用語）\n   評估項目：驗證參數、準確度、精密度",
+   "en": "TTR definition criteria (choose one of two):\n\n(1) Absolute recovery approach:\n   Automated count result ≥ a predefined recovery threshold\n   relative to the visual count\n   (based on the visual count at the longest incubation time of the\n    conventional method, e.g. day 5 for product samples,\n    day 7-8 for water samples)\n\n(2) Statistical comparison approach:\n   For critical sampling points (e.g. point-of-use water samples),\n   statistically compare automated count vs. CMM count\n   → the automated count at TTR should be \"statistically\n      noninferior\"\n\nFinal determination:\n   Automated system vs. conventional visual method\n   = \"comparable\" (Ph. Eur. wording)\n     or \"non-inferior\" (USP wording)\n   Assessment items: validation parameters, accuracy, precision"
+  },
+  {
+   "zh": "特別注意 Ph. Eur.（comparable）與 USP（non-inferior）對同一件事使用不同用詞——這提醒我們在撰寫多地區申報文件時，措辭需對應各藥典的慣用語言，避免審查官誤解驗證訴求的統計意涵不同。",
+   "en": "Note that Ph. Eur. (comparable) and USP (non-inferior) use different wording for the same idea. This is a reminder that, in multi-region submissions, the wording must follow the conventional language of each pharmacopoeia, so that reviewers do not misunderstand the statistical meaning of the validation claim."
+  },
+  {
+   "zh": "若貴廠的水系統例行監測目前用 7-8 天的 R2A 培養，導入自動化菌落計數後，如何設計實驗以科學方式定義出可縮短的 TTR？",
+   "en": "If your site currently monitors the water system routinely with 7-8 day R2A incubation, how would you design experiments to define a shortened TTR scientifically after introducing automated colony counting?"
+  },
+  {
+   "zh": "「comparable」與「non-inferior」這兩個詞在統計檢定設計上有何不同？對送件 EU vs. 美國市場的驗證方案是否需要分別撰寫？",
+   "en": "How do \"comparable\" and \"non-inferior\" differ in statistical test design? Do validation protocols for EU and US submissions need to be written separately?"
+  },
+  {
+   "zh": "<strong>3.6.3 Method Suitability Test 方法適用性測試</strong>",
+   "en": "<strong>3.6.3 Method Suitability Test</strong>"
+  },
+  {
+   "zh": "<strong>方法適用性測試（Method Suitability Test）：</strong>證明在「有受試產品存在」的條件下，方法仍能有效回收（偵測到）微生物——這是排除產品本身抑菌/抑黴性干擾的關鍵測試，也是任何微生物方法（含 CMM 與 AMM/RMM）進入常規測試前的必要門檻。",
+   "en": "<strong>Method Suitability Test:</strong> demonstrates that the method can still effectively recover (detect) microorganisms in the presence of the test product. It is the key test for excluding interference from the product's own antibacterial/antifungal properties, and a required threshold for any microbiological method (CMM and AMM/RMM alike) before routine testing."
+  },
+  {
+   "zh": "本節再次強調「風險評估決定驗證深度」的原則（連結 Section 3.5 QRM/AQbD 概念）：培養基種類、孵育溫度等修改，是否需要完整方法確效，取決於風險評估的結論，而非一律套用最嚴格的驗證方案。",
+   "en": "This section again stresses the principle that \"risk assessment determines the depth of validation\" (linked to the QRM/AQbD concepts in Section 3.5): whether a change such as a different medium type or incubation temperature requires full method validation depends on the conclusion of the risk assessment, not on always applying the strictest validation program."
+  },
+  {
+   "zh": "方法適用性測試與方法確效有何不同？為什麼即使方法適用性測試通過，改變培養基種類仍可能需要額外的方法確效？",
+   "en": "How does the method suitability test differ from method validation? Why might changing the medium type still require additional method validation even if the method suitability test passes?"
+  },
+  {
+   "zh": "<strong>3.7 Method Variability in Microbiology and Alternative/Rapid Microbiological Methods 微生物學方法與 AMM/RMM 之方法變異性</strong>",
+   "en": "<strong>3.7 Method Variability in Microbiology and Alternative/Rapid Microbiological Methods</strong>"
+  },
+  {
+   "zh": "<strong>方法變異性（Method Variability）：</strong>微生物方法的結果會受到一連串變因影響——培養基選擇、孵育時間/溫度/條件（濕度、氧氣張力）、取樣方式的侵入性、是否存在抗菌物質，以及方法本身。這些變因疊加菌體的生理狀態（受壓、受損、休眠或 VBNC，見 Section 3.0），共同決定了「這次測試到底能不能真的偵測到現場的微生物」。",
+   "en": "<strong>Method Variability:</strong> microbiological results are affected by a series of variables: medium selection, incubation time/temperature/conditions (humidity, oxygen tension), how invasive the sampling is, the presence of antimicrobial substances, and the method itself. Together with the physiological state of the organisms (stressed, injured, dormant or VBNC; see Section 3.0), these variables determine whether \"this test can actually detect the microorganisms present in the field\"."
+  },
+  {
+   "zh": "<strong>VBNC（存活但不可培養, Viable But Nonculturable）：</strong>菌體處於活性但無法在一般培養基上生長增殖的狀態——這是 CMM 最大的盲點之一，也是本節後續討論 AMM/RMM 優勢與挑戰的核心背景。",
+   "en": "<strong>VBNC (Viable But Nonculturable):</strong> organisms that are alive but cannot grow and multiply on ordinary media. This is one of the biggest blind spots of CMM and is the core background for the later discussion of the advantages and challenges of AMM/RMM in this section."
+  },
+  {
+   "zh": "把微生物方法想像成「用漁網捕魚」。漁網的網目大小（培養基選擇）、下網的時間長短（孵育時間）、水溫水質（孵育條件）、下網的方式輕重（取樣侵入性），都會影響到底能撈到多少魚。而如果魚本身正在生病或裝死（VBNC/休眠），再好的漁網也可能撈不到——這正是傳統方法的天花板，也是 AMM/RMM 嘗試突破的方向。",
+   "en": "Think of a microbiological method as \"catching fish with a net\". The mesh size of the net (medium selection), how long the net is left in the water (incubation time), the water temperature and quality (incubation conditions) and how roughly the net is cast (sampling invasiveness) all affect how many fish are caught. And if the fish themselves are sick or playing dead (VBNC/dormant), even the best net may catch nothing. This is the ceiling of conventional methods, and the direction in which AMM/RMM try to break through."
+  },
+  {
+   "zh": "本節是 3.7.1（偵測/計數）與 3.7.2（鑑定）兩個子節的前言，先建立一個核心心法：<strong>方法變異性不是 AMM/RMM 獨有的問題，CMM 本身就有；但 AMM/RMM 引入了額外的變異來源（如儀器、試劑化學、樣品前處理），必須在驗證前逐一盤點。</strong>",
+   "en": "This section is the preface to the two subsections 3.7.1 (detection/enumeration) and 3.7.2 (identification) and first establishes a core principle: <strong>method variability is not a problem unique to AMM/RMM; CMM has it too. But AMM/RMM introduce additional sources of variability (such as the instrument, reagent chemistry and sample preparation) that must be inventoried one by one before validation.</strong>"
+  },
+  {
+   "zh": "請列舉貴實驗室目前使用的 CMM 中，哪些變因（培養基、孵育條件、取樣方式）最可能造成批次間結果差異？",
+   "en": "Among the CMM currently used in your laboratory, which variables (medium, incubation conditions, sampling method) are most likely to cause batch-to-batch differences in results?"
+  },
+  {
+   "zh": "<strong>3.7.1 Considerations for Detection and Enumeration Approaches 偵測與計數方法之考量</strong>",
+   "en": "<strong>3.7.1 Considerations for Detection and Enumeration Approaches</strong>"
+  },
+  {
+   "zh": "<strong>偵測與計數方法的額外變異來源：</strong>相較 CMM，AMM/RMM 從「樣品前處理」到「偵測」的每個環節都可能引入新的變因——儀器限制（如線上量測需離線驗證）、樣品前處理變異（稀釋、過濾）、分析物本身特性（黏度、溶解度、微生物分布、螢光化學物質互相干擾、非生物/非微生物性粒子）、測試方法學種類（培養法、分子法、化學法、免疫法）、菌體存活力，以及 VBNC 的存在。",
+   "en": "<strong>Additional sources of variability in detection and enumeration methods:</strong> compared with CMM, AMM/RMM can introduce new variables at every step from \"sample preparation\" to \"detection\": instrument limitations (for example, on-line measurements need off-line validation), variability in sample preparation (dilution, filtration), characteristics of the analyte itself (viscosity, solubility, microbial distribution, mutual interference of fluorescent chemicals, abiotic/non-microbial particles), the type of test methodology (culture-based, molecular, chemical, immunological), organism viability, and the presence of VBNC."
+  },
+  {
+   "zh": "<strong>Poisson 分布：</strong>假設微生物均勻分散在受試材料中的統計模型，是解讀微生物計數結果（尤其低濃度樣品）的常用工具；但對於「非典型材料」（如食品基質、黏稠液體），微生物分布可能不均勻，需要替代統計模型。",
+   "en": "<strong>Poisson distribution:</strong> a statistical model that assumes microorganisms are evenly dispersed in the test material. It is a common tool for interpreting microbial counts (especially in low-concentration samples), but for \"atypical materials\" (such as food matrices and viscous liquids) the distribution of microorganisms may be uneven and an alternative statistical model is needed."
+  },
+  {
+   "zh": "把 Poisson 分布想像成「假設全班學生的座位是隨機均勻分佈」來估計某一排有多少人生病。如果教室座位真的隨機分佈，這個估計就準；但如果生病的學生都恰好集中坐在同一角落（微生物分布不均），用 Poisson 模型去推算全班的患病率就會失真——這正是黏稠或不均勻基質樣品在低濃度微生物計數時的挑戰。",
+   "en": "Think of the Poisson distribution as estimating how many students in one row are sick on the assumption that \"everyone in the class sits randomly and evenly\". If seating really is random, the estimate is accurate. But if all the sick students happen to sit in the same corner (uneven microbial distribution), using the Poisson model to infer the illness rate of the whole class will be distorted. This is exactly the challenge of counting low concentrations of microorganisms in viscous or non-homogeneous matrices."
+  },
+  {
+   "zh": "本節列出的「校正標準品」使用建議（微生物計數標準品、化學或粒子替代參考品）是稽核常見追問點：AMM/RMM 若缺乏適當的校正標準，即使方法本身靈敏度再高，也難以證明其長期一致性（consistency）。此外，代謝活性依賴型指標（如 ATP、螢光代謝轉換）對「受壓菌體」可能需要額外活化/孵育步驟才能被偵測到——這代表 TTR 優勢可能因菌體生理狀態而打折扣，驗證設計時必須把「最難偵測的受壓菌株」納入考量，而非只用健康菌株測試。",
+   "en": "The recommendations in this section on \"calibration standards\" (microbial counting standards, chemical or particle surrogate reference materials) are a common audit question: without suitable calibration standards, an AMM/RMM will find it hard to demonstrate long-term consistency, however sensitive the method itself is. In addition, metabolic-activity-dependent indicators (such as ATP or fluorescent metabolic conversion) may need an extra activation/incubation step before \"stressed organisms\" can be detected. This means the TTR advantage may be reduced by the physiological state of the organisms, so the validation design must include the \"hardest-to-detect stressed strains\" rather than testing only healthy strains."
+  },
+  {
+   "zh": "若貴廠考慮導入線上（in-line）螢光粒子偵測技術監測製程用水，原文提到哪些額外的驗證挑戰是傳統離線培養法不需要面對的？",
+   "en": "If your site is considering in-line fluorescent particle detection to monitor process water, which additional validation challenges mentioned in the source text would it face that traditional off-line culture methods do not?"
+  },
+  {
+   "zh": "為什麼「非生物性粒子」與「非微生物性生物粒子」會對 AMM/RMM 的準確度構成干擾？請舉一個可能造成偽陽性的情境。",
+   "en": "Why do \"abiotic particles\" and \"non-microbial biological particles\" interfere with the accuracy of AMM/RMM? Give an example scenario that could cause a false positive."
+  },
+  {
+   "zh": "<strong>3.7.2 Considerations for Identification Approaches 鑑定方法之考量</strong>",
+   "en": "<strong>3.7.2 Considerations for Identification Approaches</strong>"
+  },
+  {
+   "zh": "<strong>分類（Classification） vs. 鑑定（Identification）：</strong>分類是依相似性將菌體歸類（例如同屬），鑑定則是精確指出其屬（genus）與種（species）。這個區分在稽核回應與偏差調查中非常關鍵——鑑定到「種」的層級才能真正評估污染源與風險。",
+   "en": "<strong>Classification vs. Identification:</strong> classification groups organisms by similarity (for example, into the same genus), while identification pinpoints the genus and species. This distinction is critical in audit responses and deviation investigations: only identification to the \"species\" level lets you truly assess the contamination source and risk."
+  },
+  {
+   "zh": "<strong>MALDI-TOF MS 與 16S rRNA 定序：</strong>兩者是目前最廣泛使用的參考鑑定方法，但對於親緣關係接近的物種（如 <em>Bacillus</em> 屬或 <em>Burkholderia</em> 屬）可能難以區分，需要多位點序列分型（multilocus sequencing）等補充方法。新一代技術如全基因體定序、FT-IR／Raman 光譜分析，也能達到類似的比對鑑定能力。",
+   "en": "<strong>MALDI-TOF MS and 16S rRNA sequencing:</strong> these are currently the most widely used reference identification methods, but they may struggle to distinguish closely related species (such as within the genus <em>Bacillus</em> or <em>Burkholderia</em>) and need supplementary methods such as multilocus sequencing. Newer technologies such as whole genome sequencing and FT-IR/Raman spectroscopy can also achieve similar matching-based identification capability."
+  },
+  {
+   "zh": "準確度 Accuracy % =（正確結果數 / 總結果數）× 100\n\n重現性 Reproducibility (Repeatability) % =\n      （結果一致之正確結果數 / 總結果數）× 100\n\n目標：準確度與重現性均應 &gt; 90%\n\nPh. Eur. 5.1.6 對 16S rDNA 定序驗證的三項測試：\n  1. Accuracy（準確度）— 正確鑑定到種以上層級\n  2. Specificity（特異性）— 混合菌落測試不得產生假鑑定\n  3. Robustness（穩健性）— 資料庫與受測菌株符合預定比對率",
+   "en": "Accuracy % = (number of correct results / total number of results) × 100\n\nReproducibility (Repeatability) % =\n      (number of correct results that are consistent / total number of results) × 100\n\nTarget: both accuracy and reproducibility should be &gt; 90%\n\nThe three tests for validating 16S rDNA sequencing in Ph. Eur. 5.1.6:\n  1. Accuracy - correct identification to the species level or above\n  2. Specificity - testing of mixed colonies must not produce false identifications\n  3. Robustness - the database and the tested strains meet the predefined match rate"
+  },
+  {
+   "zh": "本節點出兩個容易被忽略的實務風險：",
+   "en": "This section points out two easily overlooked practical risks:"
+  },
+  {
+   "zh": "<strong>資料庫完整性風險：</strong>鑑定技術的準確度高度依賴其參考資料庫是否收錄完整。對於罕見或新興菌種，資料庫可能缺漏，誤鑑定（misidentification）會直接影響污染調查結論與 CAPA 方向，屬於高風險項目，建議由多人交叉驗證輸入資料的正確性。",
+   "en": "<strong>Database completeness risk:</strong> the accuracy of an identification technology depends heavily on how complete its reference database is. For rare or emerging species the database may have gaps, and misidentification directly affects the conclusion of a contamination investigation and the direction of CAPA. This is a high-risk item, and it is advisable to have multiple people cross-check the correctness of the entered data."
+  },
+  {
+   "zh": "<strong>VBNC 的鑑定侷限：</strong>能偵測 VBNC 的技術（如顯微鏡法、Raman、流式細胞術）往往因為無法取得足夠遺傳物質，而無法完成基因型鑑定——換句話說，「偵測到」不等於「能鑑定出是什麼菌」，這在無菌檢測失敗調查（sterility test failure investigation）中是重大侷限，必須事先在調查程序中規劃因應方案（如平行取樣）。",
+   "en": "<strong>Identification limits for VBNC:</strong> technologies that can detect VBNC organisms (such as microscopy, Raman and flow cytometry) often cannot complete genotypic identification because they cannot obtain enough genetic material. In other words, \"detected\" does not mean \"able to identify what organism it is\". This is a major limitation in a sterility test failure investigation, and a response (such as parallel sampling) must be planned in advance in the investigation procedure."
+  },
+  {
+   "zh": "若某鑑定技術的資料庫尚未收錄貴廠環境監測中曾出現的某罕見菌種，這會帶來什麼風險？應如何在方法確效階段預先因應？",
+   "en": "If an identification technology's database does not yet include a rare species that has appeared in your site's environmental monitoring, what risk does this create? How should it be addressed in advance during method validation?"
+  },
+  {
+   "zh": "破壞性檢測方法（testing process is destructive）若無法保留可存活的分離株進行後續鑑定，原文建議可採取哪些替代策略？這對無菌試驗異常（OOS）調查的時效性有何影響？",
+   "en": "If a destructive testing method (testing process is destructive) cannot retain viable isolates for subsequent identification, which alternative strategies does the source text suggest? What impact does this have on the timeliness of a sterility test failure (OOS) investigation?"
+  },
+  {
+   "zh": "<strong>3.8 Method Choice 方法選擇</strong>",
+   "en": "<strong>3.8 Method Choice</strong>"
+  },
+  {
+   "zh": "<strong>方法選擇的核心邏輯：</strong>不同 AMM/RMM 技術各有其強項——ATP 生物冷光法（ATP bioluminescence）速度最快，適合一般衛生/生物量監測；核酸擴增技術／PCR（NAT/PCR）則具備高分類特異性，且能偵測不可培養的微生物（含 VBNC）。是否要用滿該技術的全部能力（例如把定量方法拿來當定性用），取決於使用者的科學論證與驗證，而非技術規格書上的「理論極限」。",
+   "en": "<strong>Core logic of method choice:</strong> different AMM/RMM technologies each have their strengths. ATP bioluminescence is the fastest and suits general hygiene/bioburden monitoring, while nucleic acid amplification technology/PCR (NAT/PCR) offers high classification specificity and can detect unculturable microorganisms (including VBNC). Whether to use the full capability of a technology (for example, using a quantitative method as a qualitative one) depends on the user's scientific justification and validation, not on the \"theoretical limits\" in the technical data sheet."
+  },
+  {
+   "zh": "<strong>AMM/RMM 的 TTR 定義方式與 CMM 根本不同：</strong>CMM 的 TTR 是「固定孵育天數」（產品 5 天、水 7-8 天）；AMM/RMM 的 TTR 則是「以系統內最難偵測的菌種之偵測時間」為準，且必須透過驗證實驗證明其在較短時間內達到與 CMM 相當或非劣的偵測水準。",
+   "en": "<strong>The way TTR is defined for AMM/RMM is fundamentally different from CMM:</strong> the TTR of a CMM is a \"fixed number of incubation days\" (5 days for product, 7-8 days for water), whereas the TTR of an AMM/RMM is based on \"the detection time of the hardest-to-detect organism in the system\", and validation experiments must show that it reaches a detection level comparable or non-inferior to the CMM in the shorter time."
+  },
+  {
+   "zh": "選擇 AMM/RMM 技術就像挑選交通工具去機場：高鐵（ATP 生物冷光法）最快，適合臨時決定、講求速度的短程需求；但若目的地在偏遠地區、需要精確辨識路況細節（分類特異性），可能得選擇更專業的越野車（NAT/PCR）。沒有一種交通工具「全能」，關鍵是依旅程目的（測試目的、產品風險）選對工具，而不是盲目追求「最快」或「最貴」的選項。",
+   "en": "Choosing an AMM/RMM technology is like choosing transport to the airport: the high-speed train (ATP bioluminescence) is the fastest and suits a last-minute, speed-driven short trip; but if the destination is remote and you need to read the road conditions precisely (classification specificity), you may need a more specialized off-road vehicle (NAT/PCR). No vehicle is \"all-purpose\". The key is to pick the right tool for the purpose of the journey (test purpose, product risk) rather than blindly chasing the \"fastest\" or \"most expensive\" option."
+  },
+  {
+   "zh": "原文特別提到，目前在線（in-line）／線上（on-line）監測技術，實務上仍侷限於「生物螢光粒子的定量」，且多半只適用於相對單純的背景介質（空氣、水），面對化學組成複雜的基質（如濃縮蛋白液、含防腐劑配方）時，仍需額外的前處理與適用性評估。這對正在評估製程即時放行（RTRT, real-time release testing）策略的 CDMO 而言，是規劃技術路線圖時必須誠實面對的技術限制。",
+   "en": "The source text specifically notes that current in-line/on-line monitoring technologies remain limited in practice to the \"quantification of bio-fluorescent particles\" and are mostly suitable only for relatively simple background media (air, water). For matrices with complex chemical composition (such as concentrated protein solutions or formulations containing preservatives), additional sample preparation and suitability assessment are still needed. For a CDMO evaluating a real-time release testing (RTRT) strategy, this is a technical limitation that must be faced honestly when planning the technology roadmap."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對一家臨床階段無菌 CDMO 而言，若客戶產品為短效期的細胞治療產品（ATMP），選擇 NAT/PCR 類型的快速無菌檢測技術，可將 TTR 從傳統 14 天大幅縮短至數小時至數天，直接關係到產品能否在有效期限內完成放行並交付病人——這正是 Section 3.0 所述「時效性產品」導入 AMM/RMM 的核心商業與病人安全論證。",
+   "en": "For a clinical-stage sterile CDMO whose client's product is a short-shelf-life cell therapy product (ATMP), choosing a NAT/PCR type rapid sterility test can shorten the TTR from the traditional 14 days to hours or a few days. This directly determines whether the product can be released and delivered to the patient within its shelf life. This is the core commercial and patient-safety argument for introducing AMM/RMM for \"time-sensitive products\", as described in Section 3.0."
+  },
+  {
+   "zh": "為什麼 AMM/RMM 的 TTR 不能像 CMM 一樣訂出「固定天數」，而必須透過驗證實驗個別決定？",
+   "en": "Why can the TTR of an AMM/RMM not be set as a \"fixed number of days\" like a CMM, and instead must be determined individually through validation experiments?"
+  },
+  {
+   "zh": "ATP 生物冷光法與 NAT/PCR 各自的優勢分別適合哪一種產品放行或監測情境？",
+   "en": "For which product release or monitoring scenarios are the respective advantages of ATP bioluminescence and NAT/PCR best suited?"
+  },
+  {
+   "zh": "<strong>3.8.1 Categorizing Technologies 技術分類</strong>",
+   "en": "<strong>3.8.1 Categorizing Technologies</strong>"
+  },
+  {
+   "zh": "Ph. Eur. 5.1.6 將 AMM/RMM 技術依「輸出數據類型」分成三大類：",
+   "en": "Ph. Eur. 5.1.6 divides AMM/RMM technologies into three categories according to the \"type of output data\":"
+  },
+  {
+   "zh": "<strong>定性（Qualitative）：</strong>偵測微生物「有/無」（如無菌檢測），或特定菌種/生物分子「有/無」（如特定菌、E. coli、Mycoplasma、熱原）。部分定性技術可藉由校正曲線達到半定量效果（如熱原檢測的單核球活化試驗 MAT）。",
+   "en": "<strong>Qualitative:</strong> detects the presence or absence of microorganisms (such as sterility testing), or the presence or absence of specific organisms/biomolecules (such as specific organisms, E. coli, Mycoplasma, pyrogens). Some qualitative techniques can achieve semi-quantitative results by means of a calibration curve (such as the monocyte activation test, MAT, for pyrogen detection)."
+  },
+  {
+   "zh": "<strong>定量（Quantitative）：</strong>計算樣品中微生物的實際數量。傳統藥典微生物計數試驗即屬此類；固相細胞術（solid-phase cytometry）等 AMM/RMM 技術則能做到單細胞層級的精確計數。",
+   "en": "<strong>Quantitative:</strong> counts the actual number of microorganisms in a sample. The traditional pharmacopoeial microbial enumeration tests belong to this category; AMM/RMM technologies such as solid-phase cytometry can achieve precise counting at the single-cell level."
+  },
+  {
+   "zh": "<strong>鑑定（Identification）：</strong>將菌體鑑定到屬、種、亞種甚至株的層級，部分系統（如共軛焦拉曼光譜法）甚至能在單細胞層級完成鑑定。",
+   "en": "<strong>Identification:</strong> identifies organisms to the genus, species, subspecies or even strain level. Some systems (such as confocal Raman spectroscopy) can even complete identification at the single-cell level."
+  },
+  {
+   "zh": "原文特別澄清：這個三分類「不是互斥的」——例如固相細胞術同時具備單細胞判別與定量能力，也能拿來當作單純的「有/無」定性測試使用。這意味著在選擇技術與撰寫驗證方案時，應該依「實際測試目的」（而非技術的全部潛在能力）來界定驗證範圍與可接受標準，避免不必要地擴大驗證負擔，也避免驗證範圍不足以支撐宣稱的用途。",
+   "en": "The source text specifically clarifies that this three-category scheme is \"not mutually exclusive\": for example, solid-phase cytometry has both single-cell discrimination and quantification capability and can also be used as a simple \"presence/absence\" qualitative test. This means that when selecting a technology and writing the validation protocol, the validation scope and acceptance criteria should be defined according to the \"actual test purpose\" (not the full potential capability of the technology), to avoid unnecessarily enlarging the validation burden and also to avoid a scope too narrow to support the claimed use."
+  },
+  {
+   "zh": "固相細胞術同時具備定量與定性能力，若貴公司只打算將其用於「無菌檢測的有/無判定」，驗證方案的範圍應如何界定，才不會過度驗證（over-validation）？",
+   "en": "Solid-phase cytometry has both quantitative and qualitative capability. If your company only intends to use it for the \"presence/absence determination\" of sterility testing, how should the scope of the validation protocol be defined to avoid over-validation?"
+  },
+  {
+   "zh": "依此三分類架構，貴實驗室現有的 CMM 與正在評估的 AMM/RMM 技術，各自落在哪一類？是否有技術橫跨多類的情形？",
+   "en": "Under this three-category framework, into which category does each of your laboratory's existing CMM and the AMM/RMM technologies under evaluation fall? Are there technologies that span multiple categories?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "傳統方法自動化（如自動菌落計數）是否需要延伸方法確效，關鍵在於孵育時間等 CMM 核心參數是否被改變——Figure 3.6-1 提供了清楚的決策流程。",
+   "en": "Whether automating a conventional method (such as automated colony counting) requires extended method validation depends on whether a core CMM parameter such as incubation time has changed. Figure 3.6-1 provides a clear decision flow."
+  },
+  {
+   "zh": "Time to Result (TTR) 對自動化系統與 AMM/RMM 而言，都必須透過驗證實驗個別定義，不能沿用 CMM 固定天數的思維；判定標準依藥典用語分為 Ph. Eur. 的「comparable」與 USP 的「non-inferior」。",
+   "en": "For both automated systems and AMM/RMM, Time to Result (TTR) must be defined individually through validation experiments; the fixed-days mindset of CMM cannot be carried over. The acceptance criterion is expressed as \"comparable\" in Ph. Eur. and \"non-inferior\" in USP, according to the pharmacopoeial wording."
+  },
+  {
+   "zh": "AMM/RMM 在偵測/計數與鑑定兩大類應用上，各自面臨獨特的方法變異性挑戰——前者涉及儀器、樣品前處理與菌體生理狀態（VBNC），後者涉及資料庫完整性與破壞性檢測後鑑定的侷限。",
+   "en": "In detection/enumeration and identification applications, AMM/RMM each face distinct method variability challenges: the former involve the instrument, sample preparation and organism physiological state (VBNC), while the latter involve database completeness and the limits of identification after destructive testing."
+  },
+  {
+   "zh": "方法選擇應依 Ph. Eur. 5.1.6 的定性/定量/鑑定三分類架構，並依實際測試目的界定驗證範圍，避免技術能力與驗證負擔的失衡。",
+   "en": "Method choice should follow the Ph. Eur. 5.1.6 three-category framework of qualitative/quantitative/identification, with the validation scope defined by the actual test purpose, avoiding an imbalance between technology capability and validation burden."
+  }
+ ]
+}

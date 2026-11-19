@@ -1,0 +1,333 @@
+{
+ "source": "section-09b-appendix1-comparability-lod.html",
+ "blocks": [
+  {
+   "zh": "定性 AMM/RMM 偵測極限（LoD）之可比性論證",
+   "en": "Comparability of the Limit of Detection (LoD) of Qualitative AMM/RMM"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解為何定性 AMM/RMM 的可比性評估不需要先估出精確的 LoD 數值，只要證明「偵測結果與 CMM 相似」即可推論 LoD 不劣於 CMM",
+   "en": "Understand why the comparability assessment of a qualitative AMM/RMM does not require an exact LoD value to be estimated first: it is enough to show that \"detection results are similar to the CMM\" in order to infer that the LoD is not inferior to the CMM"
+  },
+  {
+   "zh": "掌握以陽性率比值（Ratio of Positive Rates）進行非劣性檢定的邏輯、Two-One-Sided Test（TOST）操作方式，以及 Farrington-Manning 信賴區間的應用",
+   "en": "Master the logic of the non-inferiority test based on the ratio of positive rates, how to carry out the Two-One-Sided Test (TOST), and how to apply the Farrington-Manning confidence interval"
+  },
+  {
+   "zh": "理解陽性率比值法在陽性率接近 100% 時會失真的原因，並學會以廣義最可能數（generalized Most Probable Number, gMPN）法校正此偏誤",
+   "en": "Understand why the ratio of positive rates becomes distorted when positive rates approach 100%, and learn to correct this bias with the generalized Most Probable Number (gMPN) method"
+  },
+  {
+   "zh": "掌握多重 MPN 試驗搭配 log 轉換 t 檢定，以及彙總（aggregated）資料 gMPN 分析兩種可比性論證途徑的差異與適用時機",
+   "en": "Master the differences between the two approaches to demonstrating comparability, multiple MPN experiments with a log-transformed t-test and gMPN analysis of aggregated data, and when to use each"
+  },
+  {
+   "zh": "學會如何合併多菌種資料以達到足夠檢定力（power），並運用簡易 meta-analysis 方法彙總比值、辨識離群菌種（outlier species）",
+   "en": "Learn how to combine data from multiple species to achieve sufficient test power, and how to use a simple meta-analysis to pool ratios and identify outlier species"
+  },
+  {
+   "zh": "<strong>9.2 Comparability on the Limit of Detection of Qualitative Alternative/Rapid Microbiological Methods 定性 AMM/RMM 偵測極限之可比性</strong>",
+   "en": "<strong>9.2 Comparability on the Limit of Detection of Qualitative Alternative/Rapid Microbiological Methods</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>不需先知道 LoD 數值，也能論證可比性：</strong>這是本節最重要的觀念翻轉。傳統直覺是「先分別測出 AMM/RMM 與 CMM 的 LoD，再比較兩個數字」，但 PDA TR33 提出的替代思路是：只要能證明兩方法在同一批試樣上的<strong>偵測結果（detection results）相似</strong>，就可以間接推論 AMM/RMM 的 LoD 不劣於 CMM，完全不需要明確定義出「LoD 是多少 CFU」這個數字。這大幅簡化了驗證設計，因為估計 LoD 本身需要多個濃度點的試驗，而「比較偵測結果」只需要單一濃度點的配對試驗。",
+   "en": "<strong>Comparability can be demonstrated without first knowing the LoD value:</strong> This is the most important shift in thinking in this section. The traditional intuition is to \"measure the LoD of the AMM/RMM and of the CMM separately, then compare the two numbers\". The alternative proposed by PDA TR33 is that, as long as the <strong>detection results are shown to be similar</strong> for the two methods on the same set of test samples, it can be inferred indirectly that the LoD of the AMM/RMM is not inferior to that of the CMM, without ever having to define \"the LoD is X CFU\". This greatly simplifies the validation design, because estimating the LoD itself requires trials at several concentration levels, whereas \"comparing detection results\" needs only a paired trial at a single concentration level."
+  },
+  {
+   "zh": "<strong>Poisson 分布（卜瓦松分布）：</strong>試樣中微生物數量的隨機性用 Poisson 分布描述——平均值 λ 已知時，試樣中恰好含有 k 個微生物的機率是可計算的。Figure 9.2-1 顯示當 λ=2 時，約 13.5% 的試樣完全不含微生物、55% 含 1-2 個、仍有超過 5% 含 5 個以上。這個「試樣間微生物數量本質上不均勻」的特性，正是後續所有統計檢定方法設計的出發點。",
+   "en": "<strong>Poisson distribution:</strong> The randomness of the number of microorganisms in a sample is described by the Poisson distribution: when the mean λ is known, the probability that a sample contains exactly k microorganisms can be calculated. Figure 9.2-1 shows that when λ=2, about 13.5% of samples contain no microorganisms at all, 55% contain 1-2, and more than 5% still contain 5 or more. This property, that the number of microorganisms is inherently uneven from sample to sample, is the starting point for the design of all the statistical test methods that follow."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把整批菌液想像成一副洗勻的撲克牌，牌面數字代表「這張試樣裡有幾個微生物」。隨機分配試樣給 AMM/RMM 與 CMM，就像把這副牌隨機分成兩疊發給兩位裁判：只要洗牌夠均勻（菌液均質化夠好）、發牌夠隨機（randomization 確實執行），兩疊牌裡大牌、小牌的比例應該接近一致，這樣才能公平比較兩位裁判「認出大牌」的能力。如果洗牌不均勻或發牌有偏差（例如試樣未充分均質化、或分派時系統性地讓某一方法先取樣），某一疊牌可能剛好拿到比較多「大牌」（高微生物數試樣），裁判自然容易判讀正確，但這只是發牌不公平造成的假象，不代表裁判真正比較厲害。",
+   "en": "Imagine the whole batch of microbial suspension as a well-shuffled deck of playing cards, where the number on each card represents \"how many microorganisms are in this sample\". Randomly allocating samples to the AMM/RMM and the CMM is like randomly dealing the deck into two piles for two judges: as long as the shuffle is thorough (the suspension is well homogenized) and the deal is truly random (randomization is actually carried out), the proportions of high and low cards in the two piles should be close to each other, allowing a fair comparison of how well each judge \"recognizes the high cards\". If the shuffle is uneven or the deal is biased (for example, the samples were not fully homogenized, or the allocation systematically let one method sample first), one pile may happen to receive more \"high cards\" (samples with high microbial counts), and that judge will naturally find it easier to read correctly. But this is only an illusion caused by an unfair deal and does not mean the judge is really better."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "Poisson（卜瓦松）分布 —— 描述試樣中微生物數量的隨機性：\n\n  P(X = k) = e^(−λ) × λ^k / k!\n\n  λ  = 試樣中微生物的平均數（bacterial density）\n  k  = 試樣中實際含有的微生物數量（0, 1, 2, 3...）\n  X  = 隨機變數，代表某一試樣中的微生物數\n\n範例（Figure 9.2-1，λ = 2）：\n  P(X=0) = 13.5%　P(X=1) = 27.1%　P(X=2) = 27.1%\n  P(X=3) = 18.0%　P(X=4) = 9.0%　P(X≥5) ≈ 5.3%",
+   "en": "Poisson distribution - describes the randomness of the number of microorganisms in a sample:\n\n  P(X = k) = e^(−λ) × λ^k / k!\n\n  λ  = mean number of microorganisms in a sample (bacterial density)\n  k  = actual number of microorganisms in the sample (0, 1, 2, 3...)\n  X  = random variable representing the number of microorganisms in a given sample\n\nExample (Figure 9.2-1, λ = 2):\n  P(X=0) = 13.5%  P(X=1) = 27.1%  P(X=2) = 27.1%\n  P(X=3) = 18.0%  P(X=4) = 9.0%  P(X≥5) ≈ 5.3%"
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>隨機分配（random allocation）是整個可比性論證的地基，不是可有可無的細節。</strong>原文用非常明確的因果邏輯指出：若 AMM/RMM 剛好分到微生物數較高的試樣，會被誤判為「優於」CMM；反之若 CMM 分到較高微生物數的試樣，AMM/RMM 的非劣性就會「證明不出來」——而這兩種情況都只是取樣不公平造成的統計假象，與方法真正的偵測能力無關。因此在 CDMO 執行方法適用性試驗時，<strong>試樣分派的隨機化程序與菌液均質化紀錄，必須在方案（protocol）與原始記錄中明確可追溯</strong>，否則即使統計結果漂亮，稽核時也站不住腳。",
+   "en": "<strong>Random allocation is the foundation of the entire comparability argument, not an optional detail.</strong> The original text states the cause-and-effect logic very clearly: if the AMM/RMM happens to be allocated samples with higher microbial counts, it will be wrongly judged \"superior\" to the CMM; conversely, if the CMM is allocated the samples with higher counts, the non-inferiority of the AMM/RMM \"cannot be demonstrated\". Both situations are merely statistical artifacts of unfair sampling and have nothing to do with the true detection capability of the method. Therefore, when a CDMO runs a method suitability study, <strong>the randomization procedure for sample allocation and the homogenization records for the suspension must be clearly traceable in the protocol and the raw records</strong>; otherwise, even beautiful statistical results will not stand up in an audit."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 9.2-1 是以長條圖（histogram）呈現 Poisson 分布：橫軸為「試樣中微生物數量」，縱軸為「該數量發生的機率」。當平均菌數 λ=2 時，分布呈右偏（right-skewed）——多數試樣落在 1-2 個微生物附近，但仍有一段「長尾」延伸到 5 個以上。這張圖的實務意義在於：<strong>即使菌液濃度設計得再精準，單一試樣實際含有的微生物數仍會隨機波動</strong>，因此比較 AMM/RMM 與 CMM 時，不能假設兩邊分到的試樣「微生物數完全一樣」，只能靠隨機分派讓兩邊的分布比例趨於一致，這正是上方「重點提示」強調隨機化的統計根源。",
+   "en": "Figure 9.2-1 presents the Poisson distribution as a histogram: the horizontal axis is the \"number of microorganisms in a sample\" and the vertical axis is the \"probability of that number occurring\". When the mean count is λ=2, the distribution is right-skewed: most samples contain around 1-2 microorganisms, but a \"long tail\" still extends to 5 or more. The practical meaning of this figure is: <strong>no matter how precisely the suspension concentration is designed, the actual number of microorganisms in an individual sample still fluctuates randomly</strong>. When comparing the AMM/RMM with the CMM, one therefore cannot assume that the samples allocated to the two sides contain \"exactly the same number of microorganisms\"; one can only rely on random allocation to make the proportions in the two distributions converge. This is the statistical root of the emphasis on randomization in the Key Notes above."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼「證明 AMM/RMM 與 CMM 偵測結果相似」可以取代「分別估計兩方法的 LoD 再比較」？這樣做省下了哪些試驗成本？",
+   "en": "Why can \"demonstrating that the detection results of the AMM/RMM and the CMM are similar\" replace \"estimating the LoD of each method separately and then comparing them\"? What testing costs does this save?"
+  },
+  {
+   "zh": "如果你負責設計一個 40+40 樣本的可比性試驗，你會如何在方案中具體描述「隨機分配」的執行方式，讓稽核員能夠確認試驗確實做到隨機化？",
+   "en": "If you were responsible for designing a 40+40-sample comparability study, how would you describe the execution of \"random allocation\" specifically in the protocol so that an auditor can confirm that randomization was really carried out?"
+  },
+  {
+   "zh": "菌液若均質化不足（例如懸浮液靜置後產生沉澱），對本節的可比性論證會造成什麼風險？",
+   "en": "If the suspension is not sufficiently homogenized (for example, it settles after standing), what risks does this pose to the comparability argument in this section?"
+  },
+  {
+   "zh": "<strong>9.2.1 Demonstrating Comparability Using Ratios of Positive Rates 以陽性率比值論證可比性</strong>",
+   "en": "<strong>9.2.1 Demonstrating Comparability Using Ratios of Positive Rates</strong>"
+  },
+  {
+   "zh": "<strong>「沒有顯著差異」≠「證明相等/不劣」：</strong>本節最關鍵的觀念是區分兩種完全不同的統計問法。卡方檢定（chi-square）與 Fisher's exact test 回答的是「兩個陽性率有沒有顯著不同？」——答案「不顯著」只代表「證據不足以說兩者不同」，<strong>不等於「證明兩者相同或 AMM/RMM 不劣於 CMM」</strong>。非劣性檢定（non-inferiority test）則是反過來設計：預先訂出一個可接受的「非劣性界值 Δ」，用 90% 信賴區間的下限（TOST 邏輯）去正面挑戰「AMM/RMM 比較差」這個虛無假設，唯有下限高於 Δ，才能宣稱非劣性成立。",
+   "en": "<strong>\"No significant difference\" ≠ \"proof of equivalence/non-inferiority\":</strong> The most critical idea in this section is to distinguish two completely different statistical questions. The chi-square test and Fisher's exact test answer \"are the two positive rates significantly different?\" A result of \"not significant\" only means \"the evidence is insufficient to say they differ\", and <strong>does not mean \"proof that the two are the same or that the AMM/RMM is not inferior to the CMM\"</strong>. The non-inferiority test is designed the other way round: an acceptable \"non-inferiority margin Δ\" is set in advance, and the lower limit of the 90% confidence interval (TOST logic) is used to challenge head-on the null hypothesis that \"the AMM/RMM is worse\". Non-inferiority can be claimed only if the lower limit is above Δ."
+  },
+  {
+   "zh": "<strong>Farrington-Manning 信賴區間：</strong>這是 USP ⟨1223⟩ 指定用來計算陽性率比值信賴區間的方法，SAS FREQ 程序有內建；若沒有專用軟體，也可用邏輯迴歸（logistic regression）的漸近信賴區間、貝氏方法（Bayesian）、或臨床試驗中「相對風險（relative risk）」的替代公式估計。",
+   "en": "<strong>Farrington-Manning confidence interval:</strong> This is the method that USP ⟨1223⟩ specifies for calculating the confidence interval of the ratio of positive rates, and it is built into the SAS FREQ procedure. Without dedicated software, it can also be estimated with the asymptotic confidence interval from logistic regression, Bayesian methods, or the alternative formulas for \"relative risk\" used in clinical trials."
+  },
+  {
+   "zh": "把非劣性檢定想像成「求職門檻」而不是「猜謎遊戲」。卡方/Fisher 檢定像是猜「兩位應徵者的能力是否『看起來一樣』」——樣本數（面試題數）太少時，猜不出差異很正常，但這不代表兩人能力真的一樣。非劣性檢定則像是公司先訂出明確門檻（Δ = 0.7，即新人能力至少要達到資深員工的 70%），再用嚴謹的統計方法（90% 信賴區間下限）去正面舉證「新人有沒有達標」。本例中，雖然卡方檢定說「看不出兩方法有差異」，但非劣性檢定卻說「證據不足以證明 AMM/RMM 達到 70% 門檻」——兩者結論方向不同，正是因為問的問題本質不同。",
+   "en": "Think of the non-inferiority test as a \"job qualification threshold\" rather than a \"guessing game\". The chi-square/Fisher test is like guessing whether two applicants \"look equally capable\": when the sample size (the number of interview questions) is too small, it is normal not to detect a difference, but that does not mean the two really have the same ability. The non-inferiority test is like the company first setting a clear threshold (Δ = 0.7, meaning the new hire must reach at least 70% of the senior employee's ability) and then using a rigorous statistical method (the lower limit of the 90% confidence interval) to demonstrate head-on whether the new hire meets the bar. In this example, although the chi-square test says \"no difference between the two methods can be seen\", the non-inferiority test says \"the evidence is insufficient to show that the AMM/RMM reaches the 70% threshold\". The conclusions point in different directions precisely because the questions being asked are fundamentally different."
+  },
+  {
+   "zh": "非劣性假設（Non-Inferiority Hypothesis）：\n\n  H0：pA / pC  &lt;  Δ\n\n    Δ  = 非劣性界值（non-inferiority margin），試驗開始前預先訂定\n         常用 Δ = 0.7；門檻更嚴格時可取 Δ = 0.8\n    pA = AMM/RMM 陽性率\n    pC = CMM 陽性率\n\n檢定邏輯（TOST，Two-One-Sided Test）：\n  計算 90% CI（等同單邊 95% 下限 LCL）\n  若 LCL(Rpr) &gt; Δ  → 拒絕 H0 → 判定「非劣性成立」\n  若 LCL(Rpr) ≤ Δ  → 無法拒絕 H0 → 「非劣性尚未證實」\n\n本例（Table 9.2-1，Farrington-Manning 法）：\n  Rpr = pA/pC = 0.893\n  LCL(90% CI) = 0.676  &lt;  Δ = 0.7\n  → 結論：非劣性「無法證實」",
+   "en": "Non-Inferiority Hypothesis:\n\n  H0: pA / pC  &lt;  Δ\n\n    Δ  = non-inferiority margin, set in advance before the study starts\n         Δ = 0.7 is commonly used; a stricter threshold can use Δ = 0.8\n    pA = positive rate of the AMM/RMM\n    pC = positive rate of the CMM\n\nTest logic (TOST, Two-One-Sided Test):\n  Calculate the 90% CI (equivalent to the one-sided 95% lower limit, LCL)\n  If LCL(Rpr) &gt; Δ  → reject H0 → conclude \"non-inferiority is demonstrated\"\n  If LCL(Rpr) ≤ Δ  → cannot reject H0 → \"non-inferiority is not yet demonstrated\"\n\nThis example (Table 9.2-1, Farrington-Manning method):\n  Rpr = pA/pC = 0.893\n  LCL(90% CI) = 0.676  &lt;  Δ = 0.7\n  → Conclusion: non-inferiority \"cannot be demonstrated\""
+  },
+  {
+   "zh": "樣本數會直接影響傳統假設檢定的結論方向：<strong>樣本數越小，越不容易拒絕「兩率相等」的虛無假設（即使真實差異很大）；樣本數越大，連微小、無實務意義的差異都會被判定顯著</strong>。這正是為何原文特別提醒「不能只看卡方/Fisher 檢定的 p 值就下結論」。此外，本方法（陽性率比值）僅適用於<strong>陽性率偏低（如&lt;50%）</strong>的情境——當陽性率接近 100% 時會嚴重失真，這個限制將在 9.2.2 節用實例具體說明。",
+   "en": "The sample size directly affects the direction of the conclusion in traditional hypothesis testing: <strong>the smaller the sample size, the harder it is to reject the null hypothesis that \"the two rates are equal\" (even if the true difference is large); the larger the sample size, the more even tiny differences of no practical significance are judged significant</strong>. This is why the original text specifically warns against \"drawing conclusions from the p-value of the chi-square/Fisher test alone\". In addition, this method (ratio of positive rates) is applicable only where <strong>positive rates are low (for example, &lt;50%)</strong>; when positive rates approach 100% it becomes seriously distorted, a limitation illustrated with a concrete example in Section 9.2.2."
+  },
+  {
+   "zh": "為什麼卡方檢定「無法拒絕虛無假設」不能直接當作「AMM/RMM 與 CMM 具可比性」的證據？",
+   "en": "Why can the chi-square test \"failing to reject the null hypothesis\" not be taken directly as evidence that the \"AMM/RMM and CMM are comparable\"?"
+  },
+  {
+   "zh": "若把 Δ 從 0.7 改為 0.8（更嚴格門檻），本例的結論會如何改變？這對驗證方案的風險意味著什麼？",
+   "en": "If Δ is changed from 0.7 to 0.8 (a stricter threshold), how would the conclusion for this example change? What does this imply for the risk of the validation program?"
+  },
+  {
+   "zh": "當你在 QMS 文件中撰寫可比性驗證方案時，為什麼「非劣性界值 Δ」必須在試驗執行前就寫死，而不能事後依數據調整？",
+   "en": "When you write a comparability validation protocol in QMS documents, why must the \"non-inferiority margin Δ\" be fixed before the study is run, and not adjusted afterwards based on the data?"
+  },
+  {
+   "zh": "<strong>9.2.2 Justifying Comparability with the Most Probable Number 以最可能數(MPN)論證可比性之必要性</strong>",
+   "en": "<strong>9.2.2 Justifying Comparability with the Most Probable Number</strong>"
+  },
+  {
+   "zh": "<strong>陽性率比值法的「天花板失真」問題：</strong>當菌液濃度設計得偏高，使兩方法的陽性率都趨近 100% 時，即使兩方法的「單一微生物偵測能力」（detection proportion, θ）差距很大，陽性率比值 R<sub>pr</sub> 仍會趨近 1，讓非劣性檢定「看起來通過」，但這其實是統計假象，不是方法真的具備可比性。本節用具體數字證明：θ<sub>C</sub>=0.95、θ<sub>A</sub>=0.527（真實比值僅 0.555，遠低於 Δ=0.7），但若把平均菌數 λ 提高到 4，陽性率比值卻能算出 R<sub>pr</sub>=0.897，遠高於門檻——結論完全相反！",
+   "en": "<strong>The \"ceiling distortion\" problem of the ratio of positive rates:</strong> When the suspension concentration is designed too high, so that the positive rates of both methods approach 100%, the ratio of positive rates R<sub>pr</sub> still approaches 1 even if the two methods differ greatly in their \"detection capability for a single microorganism\" (detection proportion, θ). The non-inferiority test then \"appears to pass\", but this is a statistical artifact and does not mean the methods are truly comparable. This section uses concrete numbers to show it: with θ<sub>C</sub>=0.95 and θ<sub>A</sub>=0.527 (a true ratio of only 0.555, far below Δ=0.7), raising the mean count λ to 4 gives a ratio of positive rates of R<sub>pr</sub>=0.897, well above the threshold. The conclusion is the complete opposite!"
+  },
+  {
+   "zh": "<strong>Detection proportion（偵測比例，θ）：</strong>定義為「試樣中恰好含有 1 個微生物時，該方法測出陽性的機率」，是比「LoD 數字」更精細的指標。θ 與 LoD 可透過本節公式互相換算。",
+   "en": "<strong>Detection proportion (θ):</strong> Defined as \"the probability that the method gives a positive result when the sample contains exactly 1 microorganism\". It is a finer indicator than the \"LoD figure\". θ and LoD can be converted into each other with the formulas in this section."
+  },
+  {
+   "zh": "這就像用「考滿分的比例」評估兩位老師教學能力的差異——如果考題太簡單，全班（不論哪位老師教）都考 100 分，兩班「滿分比例」的差異自然趨近於 0，你會誤以為兩位老師教學效果一樣好。但如果換一份難度適中、能拉開差距的考卷（也就是把菌液濃度調到陽性率接近 50% 的「甜蜜點」），才能真正看出兩位老師（兩個方法）教學能力（偵測能力）的真實差距。原文的數值範例正是「考題太簡單導致天花板效應（ceiling effect）」的統計版本。",
+   "en": "This is like using the \"proportion of perfect scores\" to assess the difference in teaching ability between two teachers. If the exam questions are too easy, the whole class (whichever teacher taught them) scores 100, the difference in \"perfect score proportion\" between the two classes naturally approaches 0, and you would wrongly believe the two teachers are equally effective. But if you switch to an exam of moderate difficulty that can separate the classes (that is, adjusting the suspension concentration to the \"sweet spot\" where the positive rate is close to 50%), you can truly see the real difference in teaching ability (detection capability) between the two teachers (the two methods). The numerical example in the original text is the statistical version of \"questions too easy, causing a ceiling effect\"."
+  },
+  {
+   "zh": "偵測比例（θ）與 LoD 的換算公式：\n\n  θ ≤ 1 − exp( log(0.05) / LoD )        （已知 LoD，求 θ 上限）\n\n  LoD ≥ log(0.05) / log(1 − θ)          （已知 θ，求 LoD 下限）\n\n    θ   = detection proportion（單一微生物存在時，測得陽性的機率）\n    LoD = limit of detection\n\n範例：\n  CMM：  LoD = 1  →  θC = 0.95\n  AMM/RMM： LoD = 4  →  θA = 1 − (1−0.95)^(1/4) = 0.527\n\n  真實比值：θA/θC = 0.527/0.95 = 0.555   （明顯劣於 Δ=0.7）\n\n  但當 λ（平均菌數）拉高到 4 時：\n    陽性率比值 Rpr = pA/pC = 0.897 (0.781, 0.997)\n    → 非劣性檢定「誤判通過」，與真實比值 0.555 矛盾！",
+   "en": "Conversion between detection proportion (θ) and LoD:\n\n  θ ≤ 1 − exp( log(0.05) / LoD )        (given LoD, find the upper limit of θ)\n\n  LoD ≥ log(0.05) / log(1 − θ)          (given θ, find the lower limit of LoD)\n\n    θ   = detection proportion (probability of a positive result when a single microorganism is present)\n    LoD = limit of detection\n\nExample:\n  CMM:  LoD = 1  →  θC = 0.95\n  AMM/RMM: LoD = 4  →  θA = 1 − (1−0.95)^(1/4) = 0.527\n\n  True ratio: θA/θC = 0.527/0.95 = 0.555   (clearly inferior against Δ=0.7)\n\n  But when λ (mean count) is raised to 4:\n    Ratio of positive rates Rpr = pA/pC = 0.897 (0.781, 0.997)\n    → the non-inferiority test \"wrongly passes\", contradicting the true ratio of 0.555!"
+  },
+  {
+   "zh": "<strong>這是本節最重要的警示：陽性率比值法只適用於「CMM 陽性率明顯低於 50%」的情境。</strong>一旦菌液濃度設計偏高、陽性率被推向天花板（接近 100%），比較陽性率會嚴重低估真實的方法間差異，甚至導出與事實相反的結論。因此在設計可比性試驗時，<strong>刻意將挑戰濃度調整到約 50% 陽性率（如 USP ⟨1223⟩ 建議），並非只是操作慣例，而是確保統計方法有效性的必要條件</strong>。若濃度失控偏高，應改用對濃度較不敏感的 gMPN 法（見 9.2.3 節）。",
+   "en": "<strong>This is the most important warning in this section: the ratio of positive rates is applicable only where \"the CMM positive rate is clearly below 50%\".</strong> Once the suspension concentration is designed too high and the positive rates are pushed to the ceiling (close to 100%), comparing positive rates seriously underestimates the true difference between methods and can even lead to a conclusion opposite to the facts. Therefore, when designing a comparability study, <strong>deliberately adjusting the challenge concentration to about a 50% positive rate (as recommended in USP ⟨1223⟩) is not merely an operational habit but a necessary condition for the statistical method to be valid</strong>. If the concentration runs out of control and too high, switch to the gMPN method, which is less sensitive to concentration (see Section 9.2.3)."
+  },
+  {
+   "zh": "Figure 9.2.2-1 畫出 CMM（LoD=1，實線）與 AMM/RMM（LoD=4，虛線）的陽性率曲線，橫軸為平均菌數，縱軸為陽性率。兩條曲線在低平均菌數時差距明顯，但隨著平均菌數增加，<strong>兩條曲線都趨近於 1，彼此的差距也隨之收斂</strong>——這正是「陽性率比值法在高濃度下失真」的視覺化證明：不論兩方法真實偵測能力差距多大，只要挑戰的微生物數夠多，比值終將被推向 1，掩蓋掉真正的方法差異。這張圖是判斷「我的試驗設計濃度是否落在安全區間（陽性率&lt;50%）」的關鍵參考依據。",
+   "en": "Figure 9.2.2-1 plots the positive rate curves of the CMM (LoD=1, solid line) and the AMM/RMM (LoD=4, dashed line), with the mean count on the horizontal axis and the positive rate on the vertical axis. The two curves differ clearly at low mean counts, but as the mean count increases, <strong>both curves approach 1 and the gap between them converges</strong>. This is the visual proof that \"the ratio of positive rates is distorted at high concentrations\": no matter how large the true difference in detection capability between the two methods, once the number of challenge microorganisms is large enough, the ratio is pushed toward 1 and masks the real difference between the methods. This figure is a key reference for judging whether \"the concentration in my study design falls within the safe zone (positive rate &lt;50%)\"."
+  },
+  {
+   "zh": "為什麼菌液濃度刻意調整到「陽性率約 50%」會讓陽性率比值法更可靠？如果你的試驗不小心把濃度做高了，該怎麼補救？",
+   "en": "Why does deliberately adjusting the suspension concentration to a \"positive rate of about 50%\" make the ratio of positive rates method more reliable? If your study accidentally ends up with too high a concentration, how can you remedy it?"
+  },
+  {
+   "zh": "試計算：若某方法 LoD=2，θ 應該是多少？（提示：使用公式 θ ≤ 1 − exp(log(0.05)/LoD)）",
+   "en": "Calculate: if a method has LoD=2, what should θ be? (Hint: use the formula θ ≤ 1 − exp(log(0.05)/LoD).)"
+  },
+  {
+   "zh": "當你審核一份可比性試驗報告時，看到 CMM 的陽性率高達 95%，你會對報告的非劣性結論提出什麼質疑？",
+   "en": "When you review a comparability study report and see that the CMM positive rate is as high as 95%, what questions would you raise about the report's non-inferiority conclusion?"
+  },
+  {
+   "zh": "<strong>9.2.3 Demonstrating Compatibility with the Generalized Most-Probable-Number Approach 以廣義最可能數(gMPN)法論證相容性</strong>",
+   "en": "<strong>9.2.3 Demonstrating Compatibility with the Generalized Most-Probable-Number Approach</strong>"
+  },
+  {
+   "zh": "<strong>MPN vs. gMPN 的關鍵差異：</strong>傳統 MPN 假設「只要試樣裡有 1 個微生物，就一定測得到陽性」（偵測比例 θ=1）；但這在現實中並不成立——即使只有 1 個微生物，方法仍可能漏檢。<strong>gMPN（廣義最可能數）把 θ 當作一個待估參數</strong>，不再假設它必然等於 1，因此能同時反映「菌液濃度」與「方法偵測能力」兩者的影響，這正是 gMPN 比單純陽性率比值法更可靠的數學原因。",
+   "en": "<strong>Key difference between MPN and gMPN:</strong> The traditional MPN assumes that \"if the sample contains even 1 microorganism, a positive result is always obtained\" (detection proportion θ=1). This does not hold in reality: even with only 1 microorganism, the method may still miss it. <strong>The gMPN (generalized Most Probable Number) treats θ as a parameter to be estimated</strong> rather than assuming it must equal 1, so it can reflect the effects of both \"suspension concentration\" and \"method detection capability\". This is the mathematical reason why the gMPN is more reliable than the simple ratio of positive rates."
+  },
+  {
+   "zh": "<strong>R<sub>gMPN</sub> = θ<sub>A</sub>/θ<sub>C</sub></strong> 可解讀為一種「回收率／準確度」指標：它衡量「CMM 測得出的陽性試樣，AMM/RMM 能回收多少比例」。比值小於 1 代表 AMM/RMM 漏掉了一部分 CMM 測得到的陽性試樣。",
+   "en": "<strong>R<sub>gMPN</sub> = θ<sub>A</sub>/θ<sub>C</sub></strong> can be interpreted as a kind of \"recovery/accuracy\" indicator: it measures \"what proportion of the positive samples that the CMM detects can be recovered by the AMM/RMM\". A ratio below 1 means the AMM/RMM misses some of the positive samples that the CMM detects."
+  },
+  {
+   "zh": "如果說陽性率比值法是「只看兩班的及格率」，那 gMPN 就像是<strong>把考卷難度（菌液濃度）與學生實力（偵測能力 θ）分開估計</strong>——即使兩班都考了接近滿分的成績（陽性率趨近 100%），gMPN 仍能透過數學模型「反推」出，若考卷難度不變，兩班學生的真實實力差距（θ 之比）到底有多大，不會被「考題太簡單」這個表象所矇騙。這正是 9.2.3 節數值範例證明的：即使把菌液濃度拉高到讓陽性率比值法誤判「通過」，gMPN 仍正確判定 AMM/RMM 為「非劣性不成立」。",
+   "en": "If the ratio of positive rates is \"looking only at the pass rates of the two classes\", then the gMPN is like <strong>estimating the exam difficulty (suspension concentration) and the students' ability (detection capability θ) separately</strong>. Even if both classes score close to full marks (positive rates approaching 100%), the gMPN can still use a mathematical model to \"work back\" to how large the real difference in student ability (the ratio of θ) is if the exam difficulty stays the same, and is not fooled by the appearance that \"the questions were too easy\". This is exactly what the numerical example in Section 9.2.3 demonstrates: even when the suspension concentration is raised to the point where the ratio of positive rates wrongly concludes \"pass\", the gMPN still correctly concludes that non-inferiority of the AMM/RMM is \"not demonstrated\"."
+  },
+  {
+   "zh": "單一濃度 gMPN 比值與信賴下限：\n\n  RgMPN = log(1 − pA) / log(1 − pC)\n\n  LCLgMPN = RgMPN × exp{ −1.645 × √[\n              pA / ( n(1−pA)[log(1−pA)]² )\n            + pC / ( n(1−pC)[log(1−pC)]² )\n            ] }\n\n    pA, pC = AMM/RMM、CMM 陽性率\n    n      = 各方法測試樣本數\n    exp    = 自然對數的反函數\n\nMPN 估計（輔助觀念）：\n  λ = −log(1 − pA)          （由陽性率反推平均菌數）\n  MPN = Vλ / v               （V=懸浮液體積，v=試樣體積）\n\n範例 1（Table 9.2-1，λ≈2 情境）：\n  RgMPN = 0.815，LCLgMPN = 0.506  &lt;  Δ=0.7  → 非劣性未證實\n\n範例 2（λ=4 高濃度情境，驗證 gMPN 抗濃度干擾）：\n  真實比值 θA/θC = 0.555（AMM/RMM 確實劣於 CMM）\n  RgMPN = 0.564，LCLgMPN = 0.325  &lt;  Δ=0.7  → 正確判定「非劣性不成立」\n  （對照 9.2.2：陽性率比值法在此情境誤判為「通過」！）",
+   "en": "gMPN ratio and lower confidence limit for a single concentration:\n\n  RgMPN = log(1 − pA) / log(1 − pC)\n\n  LCLgMPN = RgMPN × exp{ −1.645 × √[\n              pA / ( n(1−pA)[log(1−pA)]² )\n            + pC / ( n(1−pC)[log(1−pC)]² )\n            ] }\n\n    pA, pC = positive rates of the AMM/RMM and the CMM\n    n      = number of test samples per method\n    exp    = inverse function of the natural logarithm\n\nMPN estimate (supporting concept):\n  λ = −log(1 − pA)          (work back from the positive rate to the mean count)\n  MPN = Vλ / v               (V = suspension volume, v = sample volume)\n\nExample 1 (Table 9.2-1, λ≈2 scenario):\n  RgMPN = 0.815, LCLgMPN = 0.506  &lt;  Δ=0.7  → non-inferiority not demonstrated\n\nExample 2 (λ=4 high-concentration scenario, verifying that the gMPN resists concentration interference):\n  True ratio θA/θC = 0.555 (the AMM/RMM is indeed inferior to the CMM)\n  RgMPN = 0.564, LCLgMPN = 0.325  &lt;  Δ=0.7  → correctly concludes \"non-inferiority not demonstrated\"\n  (Compare 9.2.2: the ratio of positive rates wrongly concludes \"pass\" in this scenario!)"
+  },
+  {
+   "zh": "本節範例 2 是整份文件最有說服力的示範：<strong>同一組（人為構造的）真實情境下，陽性率比值法給出「非劣性通過」的錯誤結論，gMPN 法卻正確判定「非劣性不成立」</strong>。這證明了 gMPN「不受菌液平均濃度影響」的關鍵優勢——不論試驗當天菌液濃度是否精準落在 50% 陽性率的甜蜜點，gMPN 都能穩定反映方法間的真實偵測能力差距。唯一的限制是：gMPN 的信賴區間只有「漸近（asymptotic）」版本，沒有精確（exact）解，樣本數過小時準確度會下降。",
+   "en": "Example 2 in this section is the most convincing demonstration in the whole document: <strong>under the same (artificially constructed) true scenario, the ratio of positive rates gives the wrong conclusion \"non-inferiority passed\", while the gMPN correctly concludes \"non-inferiority not demonstrated\"</strong>. This demonstrates the key advantage that the gMPN is \"unaffected by the mean suspension concentration\": whether or not the suspension concentration on the day of the study falls precisely on the sweet spot of a 50% positive rate, the gMPN steadily reflects the true difference in detection capability between the methods. The only limitation is that the gMPN confidence interval exists only in an \"asymptotic\" version with no exact solution, so accuracy declines when the sample size is too small."
+  },
+  {
+   "zh": "為什麼 gMPN 法比陽性率比值法更能抵抗「菌液濃度設計失準」的風險？用 9.2.2 與 9.2.3 的對照範例說明。",
+   "en": "Why is the gMPN method more resistant than the ratio of positive rates to the risk of \"inaccurate suspension concentration design\"? Explain using the contrasting examples in 9.2.2 and 9.2.3."
+  },
+  {
+   "zh": "若你只有單一濃度的資料（如 Table 9.2-1），你會優先選擇陽性率比值法還是 gMPN 法？兩者的前提假設分別是什麼？",
+   "en": "If you have data at only a single concentration (such as Table 9.2-1), would you choose the ratio of positive rates or the gMPN method first? What are the underlying assumptions of each?"
+  },
+  {
+   "zh": "gMPN 的信賴區間是「漸近」而非「精確」，這對小樣本試驗（如 n=20）的可比性論證有何風險？",
+   "en": "The gMPN confidence interval is \"asymptotic\" rather than \"exact\". What risk does this pose to the comparability argument for small-sample studies (such as n=20)?"
+  },
+  {
+   "zh": "<strong>9.2.4 Demonstrating Comparability Using Multiple Most Probable Number Experiments 以多次標準MPN試驗論證可比性</strong>",
+   "en": "<strong>9.2.4 Demonstrating Comparability Using Multiple Most Probable Number Experiments</strong>"
+  },
+  {
+   "zh": "<strong>多次標準 MPN 試驗設計：</strong>與 9.2.1-9.2.3 只用「單一濃度、一次陽性/陰性結果」不同，本節做法是<strong>在同一懸浮液上做 3 個 10 倍序列稀釋、各 3 重複，重複 6 個獨立批次（runs）</strong>，每個 run 都能用 FDA MPN 表格分別換算出 CMM 與 AMM/RMM 的一個 MPN 估計值，總共得到 6 對 MPN 資料。這種設計的統計優勢是：<strong>每個 MPN 值本身已經整合了多個稀釋濃度的資訊</strong>，比單一濃度的陽性率更穩定。",
+   "en": "<strong>Design of multiple standard MPN experiments:</strong> Unlike Sections 9.2.1-9.2.3, which use only \"a single concentration and a single positive/negative result\", the approach in this section is to <strong>run 3 ten-fold serial dilutions with 3 replicates each on the same suspension, repeated over 6 independent runs</strong>. In each run, the FDA MPN table is used to convert the results into one MPN estimate for the CMM and one for the AMM/RMM, giving 6 pairs of MPN data in total. The statistical advantage of this design is that <strong>each MPN value already integrates information from several dilution levels</strong>, making it more stable than a positive rate at a single concentration."
+  },
+  {
+   "zh": "<strong>Log 轉換的必要性：</strong>MPN 值天生右偏（少數極端高值），取自然對數後更接近常態分布，也讓「比值」的非劣性假設（λA/λC &lt; Δ）轉換成「差值」的假設（log(λA)−log(λC) &lt; log(Δ)），才能套用大家熟悉的 t 檢定。",
+   "en": "<strong>Why a log transformation is needed:</strong> MPN values are inherently right-skewed (a few extreme high values). Taking the natural logarithm brings them closer to a normal distribution, and also turns the non-inferiority hypothesis on a \"ratio\" (λA/λC &lt; Δ) into a hypothesis on a \"difference\" (log(λA)−log(λC) &lt; log(Δ)), so that the familiar t-test can be applied."
+  },
+  {
+   "zh": "如果說 9.2.1-9.2.3 是「用一張考卷的分數」比較兩位老師，本節就像是<strong>讓兩位老師各自帶班考 6 次段考</strong>，每次段考再細分成 3 種難度題組（相當於 3 個稀釋濃度），最後用 FDA 標準換算表把每次段考成績換算成一個「實力分數（MPN）」。6 次段考的分數波動較小、較能反映老師真實實力，這也是為什麼多次 MPN 試驗被視為比單一濃度陽性率法更穩健的設計。",
+   "en": "If Sections 9.2.1-9.2.3 compare two teachers \"using the score on a single exam paper\", this section is like <strong>letting each teacher's class sit 6 midterm exams</strong>, with each exam divided into 3 question sets of different difficulty (equivalent to 3 dilution levels), and finally using the FDA standard conversion table to turn each exam result into one \"ability score (MPN)\". The scores from 6 exams fluctuate less and better reflect the teacher's real ability, which is why multiple MPN experiments are regarded as a more robust design than the single-concentration ratio of positive rates."
+  },
+  {
+   "zh": "Log 轉換後的非劣性假設與 t 檢定：\n\n  原始比值假設： H0：λA / λC  &lt;  Δ\n  Log 轉換後：   H0：log(λA) − log(λC)  &lt;  log(Δ)\n\n    x = log(MPN)   （降低右偏、趨近常態分布）\n    以雙樣本 t 檢定計算 90% CI（TOST 邏輯）\n\n範例（Table 9.2.4-1，六次 MPN runs）：\n  CMM：  x̄C = 2.374（SD=0.415）\n  AMM/RMM： x̄A = 2.754（SD=0.709）\n  差異均值 = 0.381，90% CI = (−0.227, 0.989)\n  log(0.7) ≈ −0.3567\n\n  判定：CI 下限 (−0.227) &gt; log(0.7) (−0.3567)\n        → 拒絕劣性假設 → AMM/RMM 判定「非劣性成立」\n\n彙總資料（Table 9.2.4-2）gMPN 分析（不分 run 直接彙總）：\n  RgMPN = 1.338，90% CI = (0.726, 2.466)  → 同樣支持非劣性",
+   "en": "Non-inferiority hypothesis after log transformation and the t-test:\n\n  Original ratio hypothesis: H0: λA / λC  &lt;  Δ\n  After log transformation:   H0: log(λA) − log(λC)  &lt;  log(Δ)\n\n    x = log(MPN)   (reduces right skew, approaches a normal distribution)\n    Use a two-sample t-test to calculate the 90% CI (TOST logic)\n\nExample (Table 9.2.4-1, six MPN runs):\n  CMM:  x̄C = 2.374 (SD=0.415)\n  AMM/RMM: x̄A = 2.754 (SD=0.709)\n  Mean difference = 0.381, 90% CI = (−0.227, 0.989)\n  log(0.7) ≈ −0.3567\n\n  Decision: CI lower limit (−0.227) &gt; log(0.7) (−0.3567)\n        → reject the inferiority hypothesis → AMM/RMM judged \"non-inferior\"\n\ngMPN analysis of the aggregated data (Table 9.2.4-2) (pooled directly, ignoring runs):\n  RgMPN = 1.338, 90% CI = (0.726, 2.466)  → likewise supports non-inferiority"
+  },
+  {
+   "zh": "<strong>「獨立」與「配對」的判斷關鍵在於懸浮液的來源：</strong>若 6 次 run 都取自同一批懸浮液（如本例），兩方法的 MPN 值視為獨立樣本，用<strong>雙樣本 t 檢定（two-sample t-test）</strong>；但若每次 run 來自不同懸浮液製備（不同天、不同分析員），則兩個 MPN 值應視為配對資料，須改用<strong>配對 t 檢定（paired t-test）</strong>。選錯檢定方法會直接影響信賴區間寬度與結論可信度，必須在試驗設計階段就確認清楚。此外，彙總資料的 gMPN 分析檢定力較強，但沒有封閉數學公式，須仰賴 TriMSA、SAS 或 R 等軟體。",
+   "en": "<strong>The key to judging \"independent\" versus \"paired\" is the source of the suspension:</strong> If all 6 runs are taken from the same batch of suspension (as in this example), the MPN values of the two methods are treated as independent samples and the <strong>two-sample t-test</strong> is used. If each run comes from a different suspension preparation (different days, different analysts), the two MPN values should be treated as paired data and the <strong>paired t-test</strong> must be used instead. Choosing the wrong test directly affects the width of the confidence interval and the credibility of the conclusion, so it must be settled clearly at the study design stage. In addition, the gMPN analysis of aggregated data has greater power but no closed-form mathematical formula, and relies on software such as TriMSA, SAS, or R."
+  },
+  {
+   "zh": "圖表解讀 Table Analysis",
+   "en": "Table Analysis"
+  },
+  {
+   "zh": "Table 9.2.4-1 呈現 6 次 run、每次 3 個稀釋濃度（1.00、0.10、0.01）、CMM 與 AMM/RMM 各 3 重複的陽性計數，最後一列是查 FDA MPN 表換算出的估計值。觀察數據可見 AMM/RMM 的 MPN 值普遍略高於或接近 CMM（例如 Run1：CMM=9.3 vs AMM/RMM=46.0），顯示 AMM/RMM 在多數 run 中偵測到的菌數不劣於甚至優於 CMM。Table 9.2.4-2 則是把 6 次 run 依濃度別加總（忽略 run 結構）：例如稀釋度 0.10 時，CMM 陽性 10/18、AMM/RMM 陽性 13/18，彙總後的 gMPN 分析同樣支持非劣性結論，且與逐 run 比較的 t 檢定結果一致，互相驗證了結論的穩健性。",
+   "en": "Table 9.2.4-1 shows the positive counts for 6 runs, with 3 dilution levels (1.00, 0.10, 0.01) per run and 3 replicates each for the CMM and the AMM/RMM; the last row is the estimate obtained from the FDA MPN table. The data show that the MPN values of the AMM/RMM are generally slightly higher than or close to those of the CMM (for example, Run 1: CMM=9.3 vs. AMM/RMM=46.0), indicating that in most runs the AMM/RMM detected a microbial count that is not inferior to, or even better than, the CMM. Table 9.2.4-2 sums the 6 runs by concentration level (ignoring the run structure): for example, at the 0.10 dilution, the CMM is positive in 10/18 and the AMM/RMM in 13/18. The gMPN analysis of the aggregated data likewise supports the non-inferiority conclusion and agrees with the run-by-run t-test results, the two cross-validating the robustness of the conclusion."
+  },
+  {
+   "zh": "如果你的 6 次 MPN run 是「同一懸浮液，同一天，同一分析員」完成的，你會用獨立 t 檢定還是配對 t 檢定？如果換成「不同天、不同分析員」呢？",
+   "en": "If your 6 MPN runs were completed with \"the same suspension, on the same day, by the same analyst\", would you use an independent t-test or a paired t-test? What if they were done on \"different days, by different analysts\"?"
+  },
+  {
+   "zh": "為什麼 MPN 值要先取 log 轉換才做 t 檢定？直接對原始 MPN 值做 t 檢定會有什麼問題？",
+   "en": "Why must MPN values be log-transformed before the t-test? What problems would arise from running the t-test directly on the raw MPN values?"
+  },
+  {
+   "zh": "逐 run 比較的 t 檢定與彙總資料的 gMPN 分析，兩者在本例中結論一致，這對報告的說服力有何加分？如果兩者結論不一致，你會如何處理？",
+   "en": "In this example, the run-by-run t-test and the gMPN analysis of aggregated data reach the same conclusion. How does this strengthen the persuasiveness of the report? If the two conclusions disagreed, how would you handle it?"
+  },
+  {
+   "zh": "<strong>9.2.5 Sample Size Considerations: Combining Multiple Species 樣本數考量：合併多菌種資料</strong>",
+   "en": "<strong>9.2.5 Sample Size Considerations: Combining Multiple Species</strong>"
+  },
+  {
+   "zh": "<strong>為什麼需要至少 200 個試樣？</strong>傳統假設檢定（虛無假設為「兩方法偵測極限完全相同」）需要每方法至少 200 個試樣才有足夠檢定力；gMPN 法雖然理論上樣本數可較少（見 Table 9.2.5-1），但當真實準確度（θA/θC）接近非劣性門檻時，所需樣本數同樣會暴增到數百個。由於單一菌種很難湊到 200 個試樣，<strong>合併多菌種資料（combining multiple species）</strong>成為實務上的解方——但合併必須謹慎：建議每菌種至少 30 個試樣，總數至少 200 個（例如 6 菌種 × 34 樣本/菌種/方法）。",
+   "en": "<strong>Why are at least 200 samples needed?</strong> Traditional hypothesis testing (with the null hypothesis that \"the detection limits of the two methods are exactly the same\") needs at least 200 samples per method to have sufficient power. In theory the gMPN method can use fewer samples (see Table 9.2.5-1), but when the true accuracy (θA/θC) is close to the non-inferiority threshold, the required sample size likewise surges to several hundred. Because it is hard to reach 200 samples with a single species, <strong>combining data from multiple species</strong> becomes the practical solution, but combining must be done carefully: at least 30 samples per species and at least 200 in total are recommended (for example, 6 species × 34 samples/species/method)."
+  },
+  {
+   "zh": "<strong>合併分析的兩種途徑：</strong>(1) 忽略菌種別、把所有計數直接加總分析（簡單但有「遮蔽效應」風險）；(2) 每菌種分別做 gMPN 分析、再用 meta-analysis 彙總比值（較費工但能揪出離群菌種）。本節用 7 菌種資料同時示範兩種方法，並證明兩者結論可能截然不同。",
+   "en": "<strong>Two approaches to combined analysis:</strong> (1) ignore the species and simply sum all counts for analysis (simple but at risk of a \"masking effect\"); (2) run a gMPN analysis for each species separately and then pool the ratios by meta-analysis (more work but able to find outlier species). This section demonstrates both methods on data for 7 species and shows that the two may reach very different conclusions."
+  },
+  {
+   "zh": "合併多菌種資料就像是<strong>用全校平均成績評估一所學校的教學品質</strong>：如果直接把全校（7 個班級／菌種）的成績加總平均，某個特別弱的班級（如本例的 P. aeruginosa）的低分可能被其他 6 個成績優良的班級「稀釋掉」，讓全校平均看起來沒問題——但這個弱班級的問題並未真正解決，只是被統計上的「多數暴力」遮蔽了。反之，先算出每班的平均、再對這些班級平均做 meta-analysis 彙總（像是「各班平均的平均」），才能同時看到「整體趨勢」與「哪一班特別異常」。",
+   "en": "Combining data from multiple species is like <strong>using the school-wide average score to assess the quality of teaching at a school</strong>: if the scores of the whole school (7 classes/species) are simply summed and averaged, the low scores of one particularly weak class (such as P. aeruginosa in this example) may be \"diluted\" by the other 6 high-performing classes, so the school average looks fine. But the weak class's problem has not actually been solved; it has only been hidden by the statistical \"tyranny of the majority\". Conversely, first calculating each class's average and then pooling those class averages by meta-analysis (like an \"average of class averages\") lets you see both the \"overall trend\" and \"which class is particularly abnormal\"."
+  },
+  {
+   "zh": "Meta-analysis 彙總比值（pooling）：\n\n  Log 轉換平均與標準差：\n    X̄log(R) = Σ[ log(RgMPNᵏ) / m ]，k=1...m\n    S²log(R) = Σ[ (log(RgMPNᵏ) − X̄log(R))² / (m−1) ]，k=1...m\n\n  90% 信賴區間（彙總比值）：\n    exp{ X̄log(R) ± Cm · Slog(R) / √m }\n\n  95% 預測區間（判斷離群值 outlier）：\n    exp{ X̄log(R) ± Pm · Slog(R) · √(1 + 1/m) }\n\n    m  = 合併的菌種數\n    Cm, Pm = 依菌種數與信賴水準查表（Table 9.2.5-4）\n\n範例（Table 9.2.5-3，7 菌種）：\n  X̄log(R) = −0.16943，Slog(R) = 0.29796，Cm(m=7) = 1.94318\n  RPool = 0.844 (0.678, 1.051)   → 含 P. aeruginosa，非劣性未證實\n\n  排除 P. aeruginosa 後（m=6）：\n  RPool = 0.938 (0.856, 1.029)   → 非劣性成立（其餘6菌種）\n  預測區間 = (0.688, 1.280)\n  P. aeruginosa 實際比值 0.447 遠低於區間下限 → 判定為離群值",
+   "en": "Meta-analysis pooled ratio (pooling):\n\n  Log-transformed mean and standard deviation:\n    X̄log(R) = Σ[ log(RgMPNᵏ) / m ], k=1...m\n    S²log(R) = Σ[ (log(RgMPNᵏ) − X̄log(R))² / (m−1) ], k=1...m\n\n  90% confidence interval (pooled ratio):\n    exp{ X̄log(R) ± Cm · Slog(R) / √m }\n\n  95% prediction interval (to identify outliers):\n    exp{ X̄log(R) ± Pm · Slog(R) · √(1 + 1/m) }\n\n    m  = number of species combined\n    Cm, Pm = looked up from a table by number of species and confidence level (Table 9.2.5-4)\n\nExample (Table 9.2.5-3, 7 species):\n  X̄log(R) = −0.16943, Slog(R) = 0.29796, Cm(m=7) = 1.94318\n  RPool = 0.844 (0.678, 1.051)   → including P. aeruginosa, non-inferiority not demonstrated\n\n  After excluding P. aeruginosa (m=6):\n  RPool = 0.938 (0.856, 1.029)   → non-inferiority demonstrated (the other 6 species)\n  Prediction interval = (0.688, 1.280)\n  The actual ratio for P. aeruginosa, 0.447, is far below the lower limit of the interval → judged an outlier"
+  },
+  {
+   "zh": "<strong>「彙總遮蔽效應（masking）」是合併多菌種資料時最大的風險。</strong>本節用真實數字證明：把全部菌種計數直接加總分析，得到 R<sub>gMPN</sub>=0.867（LCL=0.708，非劣性「成立」）；但拆開來看，P. aeruginosa 單獨的比值僅 0.447，明顯劣於其他 6 菌種（都在 0.83-1.13 之間）。若只做彙總分析，這個嚴重問題會被其他表現良好的菌種完全掩蓋。<strong>因此，合併多菌種分析時，務必同時檢視「個別菌種結果」，並用預測區間正式判定離群值，而不能只看彙總後的單一數字。</strong>這對 CDMO 選擇代表性菌種（如藥典建議的挑戰菌種）進行 AMM/RMM 驗證時，是極為關鍵的品質風險管理考量。",
+   "en": "<strong>The \"masking effect\" of aggregation is the biggest risk when combining data from multiple species.</strong> This section uses real numbers to show it: analyzing the summed counts of all species directly gives R<sub>gMPN</sub>=0.867 (LCL=0.708, non-inferiority \"demonstrated\"); but looking at the species separately, P. aeruginosa alone has a ratio of only 0.447, clearly inferior to the other 6 species (all between 0.83 and 1.13). With only the aggregated analysis, this serious problem would be completely hidden by the well-performing species. <strong>Therefore, when analyzing combined multi-species data, always examine the \"individual species results\" as well and use the prediction interval to formally identify outliers, rather than relying on a single aggregated figure.</strong> This is an extremely important quality risk management consideration when a CDMO selects representative species (such as the challenge organisms suggested by the pharmacopoeias) for AMM/RMM validation."
+  },
+  {
+   "zh": "Table 9.2.5-1 顯示 gMPN 法所需的最小理論樣本數，會隨著 CMM 偵測比例（θC）、真實準確度（θA/θC）、平均菌數（λ）與非劣性門檻（Δ）四個因素變動：當 AMM/RMM 優於 CMM 時（比值&gt;1），所需樣本數可低至 40-70；但當真實比值接近門檻（如 θA/θC=0.90 且門檻 Δ=0.8）時，樣本數可暴增到 600-1000 以上。Table 9.2.5-2 列出 7 個藥典常見挑戰菌種（B. subtilis、C. sporogenes、C. albicans、S. aureus、A. brasiliensis、P. aeruginosa、E. coli）的陽性/總數，可見 P. aeruginosa 的 AMM/RMM 陽性數（8/30）明顯低於其他菌種比例。Table 9.2.5-3 進一步用 MPN 與 gMPN 比值呈現每菌種的個別表現，P. aeruginosa 的比值 0.447 與 LCL 0.216 都遠低於其他菌種，是本節分析的核心發現。",
+   "en": "Table 9.2.5-1 shows that the minimum theoretical sample size required by the gMPN method varies with four factors: the CMM detection proportion (θC), the true accuracy (θA/θC), the mean count (λ), and the non-inferiority threshold (Δ). When the AMM/RMM is better than the CMM (ratio &gt;1), the required sample size can be as low as 40-70; but when the true ratio is close to the threshold (such as θA/θC=0.90 with a threshold of Δ=0.8), the sample size can surge to 600-1000 or more. Table 9.2.5-2 lists the positive/total counts for 7 challenge organisms commonly used in the pharmacopoeias (B. subtilis, C. sporogenes, C. albicans, S. aureus, A. brasiliensis, P. aeruginosa, E. coli), and the AMM/RMM positive count for P. aeruginosa (8/30) is clearly lower in proportion than for the other species. Table 9.2.5-3 goes on to present each species' individual performance using the MPN and gMPN ratios; the P. aeruginosa ratio of 0.447 and LCL of 0.216 are both far below those of the other species, which is the core finding of the analysis in this section."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "在 CDMO 為客戶導入新型 AMM/RMM（例如自動化菌落計數平台取代傳統平板法）並涵蓋藥典要求的多株挑戰菌時，若試驗材料或時程有限，合併多菌種資料以節省樣本數是常見的務實作法。但本節的 P. aeruginosa 案例是活生生的警訊：<strong>若只依賴彙總後的單一 gMPN 數字就對客戶或稽核單位宣稱「非劣性成立」，卻沒有逐菌種檢視與離群值判定，一旦某支菌種（尤其是 P. aeruginosa 這類臨床上重要的格蘭氏陰性菌）實際表現不佳卻被掩蓋，日後在商業放行或法規稽核時可能被追溯出重大品質風險，甚至導致方法整體被要求重新驗證。</strong>因此，逐菌種分析與預測區間離群值檢定，應內建於可比性驗證的標準統計分析流程（SOP），而非事後才補做的稽核應對措施。",
+   "en": "When a CDMO introduces a new AMM/RMM for a customer (for example, an automated colony counting platform replacing the traditional plate method) covering the multiple challenge strains required by the pharmacopoeias, combining data from multiple species to save on sample numbers is a common and pragmatic approach when test materials or time are limited. But the P. aeruginosa case in this section is a vivid warning: <strong>if one relies only on a single aggregated gMPN figure to claim \"non-inferiority demonstrated\" to a customer or auditor, without a species-by-species review and outlier determination, then if one strain (especially a clinically important Gram-negative organism such as P. aeruginosa) actually performs poorly but is masked, a major quality risk may later be traced back during commercial release or a regulatory audit, and the whole method may even be required to be revalidated.</strong> Species-by-species analysis and prediction-interval outlier testing should therefore be built into the standard statistical analysis procedure (SOP) for comparability validation, rather than added afterwards as an audit response."
+  },
+  {
+   "zh": "為什麼「每菌種至少 30 個試樣、總數至少 200 個」是常用的合併多菌種樣本數建議？如果做不到這個建議，你該如何在報告中誠實呈現風險？",
+   "en": "Why are \"at least 30 samples per species and at least 200 in total\" the commonly used sample size recommendation for combining multiple species? If this recommendation cannot be met, how would you present the risk honestly in the report?"
+  },
+  {
+   "zh": "本節案例中，彙總分析得出「非劣性成立」，但逐菌種分析卻發現 P. aeruginosa 明顯較差——如果你是品保審查者，會要求原廠如何處理這個矛盾？",
+   "en": "In the case in this section, the aggregated analysis concludes \"non-inferiority demonstrated\", but the species-by-species analysis finds that P. aeruginosa is clearly worse. If you were the QA reviewer, how would you require the originator to handle this contradiction?"
+  },
+  {
+   "zh": "預測區間（prediction interval）與信賴區間（confidence interval）在本節的用途有何不同？為什麼判斷離群值要用預測區間而非信賴區間？",
+   "en": "How do the prediction interval and the confidence interval differ in their use in this section? Why is the prediction interval, rather than the confidence interval, used to identify outliers?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "定性 AMM/RMM 的 LoD 可比性，可透過「證明偵測結果與 CMM 相似」間接論證，不需先明確估出各方法的 LoD 數值",
+   "en": "The LoD comparability of a qualitative AMM/RMM can be argued indirectly by \"demonstrating that detection results are similar to the CMM\", without first explicitly estimating the LoD value of each method"
+  },
+  {
+   "zh": "陽性率比值法（9.2.1）操作簡便，但僅適用於 CMM 陽性率明顯低於 50% 的情境；一旦陽性率被推向天花板，會嚴重失真甚至導出相反結論（9.2.2）",
+   "en": "The ratio of positive rates method (9.2.1) is easy to apply but only suitable where the CMM positive rate is clearly below 50%; once positive rates are pushed to the ceiling, it becomes seriously distorted and can even lead to the opposite conclusion (9.2.2)"
+  },
+  {
+   "zh": "gMPN 法（9.2.3）透過估計偵測比例 θ 而非假設其恆為 1，能有效抵抗菌液濃度設計誤差的干擾，是陽性率比值法失效時的可靠替代方案",
+   "en": "The gMPN method (9.2.3), by estimating the detection proportion θ rather than assuming it is always 1, effectively resists interference from errors in suspension concentration design and is a reliable alternative when the ratio of positive rates fails"
+  },
+  {
+   "zh": "多重標準 MPN 試驗搭配 log 轉換 t 檢定（9.2.4），以及彙總資料的 gMPN 分析，是另一組互相驗證的可比性論證途徑，須留意獨立與配對設計的差異",
+   "en": "Multiple standard MPN experiments with a log-transformed t-test (9.2.4), together with gMPN analysis of aggregated data, form another set of mutually validating routes to a comparability argument; attention must be paid to the difference between independent and paired designs"
+  },
+  {
+   "zh": "合併多菌種資料雖能滿足足夠樣本數（建議每菌種≥30、總數≥200）以達到檢定力，但務必逐菌種檢視並用預測區間判定離群值，避免彙總分析的「遮蔽效應」掩蓋單一菌種的真實劣勢（9.2.5，P. aeruginosa 案例）",
+   "en": "Combining multi-species data can provide a sufficient sample size (recommended at least 30 per species and at least 200 in total) to achieve test power, but each species must be examined individually and outliers identified with the prediction interval, so that the \"masking effect\" of aggregated analysis does not hide the true inferiority of a single species (9.2.5, the P. aeruginosa case)"
+  }
+ ]
+}

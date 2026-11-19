@@ -1,0 +1,793 @@
+{
+ "source": "section-04a-alcs-qualification-data.html",
+ "blocks": [
+  {
+   "zh": "ALCS 資格確認、數據治理與處理",
+   "en": "ALCS Qualification, Data Governance and Processing"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解分析實驗室電腦化系統（ALCS）的定義、範圍與資格確認要求，包括伺服器與雲端環境",
+   "en": "Understand the definition, scope and qualification requirements of analytical laboratory computerized systems (ALCS), including server and cloud environments"
+  },
+  {
+   "zh": "掌握商業現成（COTS）軟體驗證的要點及必要控制措施，並了解其與 21 CFR Part 11 的關聯",
+   "en": "Grasp the key points of commercial off-the-shelf (COTS) software validation and the required controls, and understand their relationship to 21 CFR Part 11"
+  },
+  {
+   "zh": "識別數據生成與注射序列中的數據完整性風險，包括「試注射」與「testing into compliance」的法規違規定義",
+   "en": "Identify data integrity risks in data generation and injection sequences, including the regulatory definitions of \"trial injections\" and \"testing into compliance\" violations"
+  },
+  {
+   "zh": "理解峰值積分（Peak Integration）的正確操作方式、手動積分的限制條件，以及積分操作如何構成數據造假",
+   "en": "Understand the correct way to perform peak integration, the conditions that limit manual integration, and how integration practices can constitute data falsification"
+  },
+  {
+   "zh": "掌握 Figure 6.3-1 數據流與稽核軌跡架構，以及 Figure 6.3.5-1 層析分析典型數據流的意涵",
+   "en": "Grasp the data flow and audit trail architecture of Figure 6.3-1, and the meaning of the typical chromatographic analysis data flow in Figure 6.3.5-1"
+  },
+  {
+   "zh": "<strong>6.3 Analytical Laboratory Computerized Systems (ALCS) 6.3 分析實驗室電腦化系統（ALCS）</strong>",
+   "en": "<strong>6.3 Analytical Laboratory Computerized Systems (ALCS)</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：ALCS 是什麼？",
+   "en": "Core Concept: What Is an ALCS?"
+  },
+  {
+   "zh": "<strong>分析實驗室電腦化系統（Analytical Laboratory Computerized Systems, ALCS）</strong>指用於操控儀器、採集數據、處理結果的軟硬體整合系統，典型例子是 HPLC 或 GC 與層析數據系統（CDS）的組合。",
+   "en": "<strong>Analytical laboratory computerized systems (ALCS)</strong> are integrated hardware and software systems used to control instruments, acquire data and process results. A typical example is an HPLC or GC combined with a chromatography data system (CDS)."
+  },
+  {
+   "zh": "ALCS 的核心數據完整性風險在於：從儀器產生原始訊號，到結果報告，中間每一個環節都可能遭到非預期的變更或蓄意操作。",
+   "en": "The core data integrity risk of an ALCS is that every step, from the instrument generating the raw signal to the reported result, is open to unintended change or deliberate manipulation."
+  },
+  {
+   "zh": "比喻說明：ALCS 就像監控攝影機",
+   "en": "Analogy: An ALCS Is Like a Surveillance Camera System"
+  },
+  {
+   "zh": "想像 ALCS 是一台監控攝影機系統。儀器是攝影機（產生原始影像），伺服器是儲存硬碟，審查員是安全人員，稽核軌跡是時間戳記記錄。若攝影機連接在一般電腦上，任何人都能用同一台電腦打開瀏覽器、刪改影片——這就是 GMP 明確禁止的情境。",
+   "en": "Imagine an ALCS as a surveillance camera system. The instrument is the camera (producing the raw footage), the server is the storage disk, the reviewer is the security officer, and the audit trail is the timestamp log. If the camera is connected to an ordinary computer, anyone could open a browser on that same computer and delete or edit the footage. This is exactly the scenario that GMP explicitly prohibits."
+  },
+  {
+   "zh": "Figure 6.3-1 的數據完整性意涵",
+   "en": "Data Integrity Implications of Figure 6.3-1"
+  },
+  {
+   "zh": "圖中顯示三個稽核軌跡審查點：",
+   "en": "The figure shows three audit trail review points:"
+  },
+  {
+   "zh": "<strong>儀器端</strong>：由介面記錄原始數據、方法參數與元數據",
+   "en": "<strong>Instrument side</strong>: the interface records raw data, method parameters and metadata"
+  },
+  {
+   "zh": "<strong>桌機/文件伺服器端</strong>：定期審查系統稽核軌跡（依公司程序）",
+   "en": "<strong>Desktop/file server side</strong>: the system audit trail is reviewed periodically (according to company procedures)"
+  },
+  {
+   "zh": "<strong>Site QA 中央伺服器端</strong>：批次放行前審查結果稽核軌跡",
+   "en": "<strong>Site QA central server side</strong>: the results audit trail is reviewed before batch release"
+  },
+  {
+   "zh": "此分層架構確保原始數據無法在「到達 QA 之前」被悄悄修改，任何未被記錄的異動均屬數據完整性違規。",
+   "en": "This layered architecture ensures that raw data cannot be quietly altered \"before it reaches QA\"; any unrecorded change is a data integrity violation."
+  },
+  {
+   "zh": "思考練習",
+   "en": "Discussion Exercise"
+  },
+  {
+   "zh": "若實驗室分析員習慣在 HPLC 電腦上處理電子郵件，可能產生哪些數據完整性風險？稽核員在 FDA 查廠時會如何評估這個問題？",
+   "en": "If laboratory analysts habitually handle email on the HPLC computer, what data integrity risks could arise? How would an auditor evaluate this issue during an FDA inspection?"
+  },
+  {
+   "zh": "<strong>6.3.1 Qualification of Computer Server and/or Virtual System 6.3.1 電腦伺服器及 / 或虛擬系統確效</strong>",
+   "en": "<strong>6.3.1 Qualification of Computer Server and/or Virtual System</strong>"
+  },
+  {
+   "zh": "核心概念：伺服器資格確認 vs. 軟體驗證",
+   "en": "Core Concept: Server Qualification vs. Software Validation"
+  },
+  {
+   "zh": "<strong>軟體驗證（Software Validation）</strong>：確認軟體的功能符合使用者需求，通常包含 IQ/OQ/PQ。",
+   "en": "<strong>Software validation</strong>: confirms that the software functions meet user requirements, and usually includes IQ/OQ/PQ."
+  },
+  {
+   "zh": "<strong>伺服器資格確認（Server Qualification）</strong>：確認硬體/作業環境本身能夠支持受管制的軟體運作。兩者缺一不可——伺服器資格確認是軟體驗證的「地基」。",
+   "en": "<strong>Server qualification</strong>: confirms that the hardware and operating environment can themselves support the operation of the regulated software. Both are indispensable; server qualification is the \"foundation\" of software validation."
+  },
+  {
+   "zh": "TR80 的核心主張：<em>不論伺服器在本地機房還是雲端，資格確認要求完全相同。</em>",
+   "en": "The central position of TR80: <em>whether the server is in an on-premises server room or in the cloud, the qualification requirements are exactly the same.</em>"
+  },
+  {
+   "zh": "雲端／SaaS 的責任歸屬——法規關鍵點",
+   "en": "Cloud/SaaS Responsibility: A Key Regulatory Point"
+  },
+  {
+   "zh": "TR80 明確指出：<strong>最終責任仍在藥廠（end user）</strong>。即使將系統委外給 SaaS 供應商，藥廠仍須：",
+   "en": "TR80 states explicitly that <strong>ultimate responsibility remains with the pharmaceutical company (the end user)</strong>. Even if the system is outsourced to a SaaS provider, the company must still:"
+  },
+  {
+   "zh": "審查稽核軌跡、備份日誌、變更控制",
+   "en": "Review audit trails, backup logs and change control"
+  },
+  {
+   "zh": "執行使用者接受測試（UAT）",
+   "en": "Perform user acceptance testing (UAT)"
+  },
+  {
+   "zh": "建立詳細服務等級協議（SLA）",
+   "en": "Establish a detailed service level agreement (SLA)"
+  },
+  {
+   "zh": "每年至少一次稽核雲端供應商",
+   "en": "Audit the cloud provider at least once a year"
+  },
+  {
+   "zh": "制定資料遺失的應急計畫",
+   "en": "Prepare a contingency plan for data loss"
+  },
+  {
+   "zh": "常見的 483/Warning Letter 引用點：「委外給 IT 廠商就等於不需要驗證」——此認知完全錯誤。",
+   "en": "A frequent 483/Warning Letter citation point: \"outsourcing to an IT vendor means no validation is needed\". This belief is completely wrong."
+  },
+  {
+   "zh": "比喻說明：SLA 就像租房合約",
+   "en": "Analogy: An SLA Is Like a Lease"
+  },
+  {
+   "zh": "SaaS 就像向房東租用儲存空間。無論房東多可靠，你的資產（數據）一旦遺失或被非法存取，責任仍在你（藥廠），而不是房東。SLA 就是租約，需清楚定義雙方責任、維護時間、緊急聯絡方式。",
+   "en": "SaaS is like renting storage space from a landlord. No matter how reliable the landlord is, if your assets (data) are lost or illegally accessed, the responsibility remains with you (the pharmaceutical company), not the landlord. The SLA is the lease: it must clearly define each party's responsibilities, maintenance windows and emergency contacts."
+  },
+  {
+   "zh": "Table 6.3.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p30-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的使用方式",
+   "en": "How to Use Table 6.3.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p30-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>"
+  },
+  {
+   "zh": "此交叉參照表的實務價值：在撰寫電腦化系統驗證（CSV）計畫時，可直接查詢特定控制要素（如稽核軌跡、數據備份）在各法規框架中的對應條款，避免遺漏。",
+   "en": "The practical value of this cross-reference table: when writing a computerized system validation (CSV) plan, you can look up directly where a specific control element (such as audit trail or data backup) is addressed in each regulatory framework, avoiding omissions."
+  },
+  {
+   "zh": "例如：若公司同時需符合 FDA 21 CFR Part 11 與 EU Annex 11，則稽核軌跡需分別符合 Part 11.10(e) 與 Annex 11 Section 9 的要求。",
+   "en": "For example, if a company must comply with both FDA 21 CFR Part 11 and EU Annex 11, the audit trail must meet the requirements of Part 11.10(e) and Annex 11 Section 9 separately."
+  },
+  {
+   "zh": "你的 HPLC 系統使用 SaaS 型層析數據系統，供應商告知「他們已完成 IQ/OQ，不需要藥廠再次驗證」。請問：",
+   "en": "Your HPLC system uses a SaaS-based chromatography data system, and the vendor tells you \"we have completed IQ/OQ, so the pharmaceutical company does not need to validate it again\". Consider the following:"
+  },
+  {
+   "zh": "此說法從法規角度是否正確？",
+   "en": "Is this statement correct from a regulatory standpoint?"
+  },
+  {
+   "zh": "藥廠至少還需完成哪些步驟才算符合法規要求？",
+   "en": "What steps must the pharmaceutical company still complete, at a minimum, to meet regulatory requirements?"
+  },
+  {
+   "zh": "<strong>6.3.2 Commercial Off-the-Shelf (COTS) Software Validation for HPLC, GC, and Other Instrument Operations 6.3.2 HPLC、GC 及其他儀器操作之商業現成（COTS）軟體驗證</strong>",
+   "en": "<strong>6.3.2 Commercial Off-the-Shelf (COTS) Software Validation for HPLC, GC, and Other Instrument Operations</strong>"
+  },
+  {
+   "zh": "核心概念：COTS 軟體的驗證策略",
+   "en": "Core Concept: Validation Strategy for COTS Software"
+  },
+  {
+   "zh": "COTS（Commercial Off-the-Shelf）指已商品化的軟體，如 Empower、OpenLAB、Chromeleon 等層析數據系統。由於廠商持有原始碼，實驗室無法修改軟體本身，驗證重點轉移為：",
+   "en": "COTS (commercial off-the-shelf) software is commercialized software, such as the chromatography data systems Empower, OpenLAB and Chromeleon. Because the vendor holds the source code and the laboratory cannot modify the software itself, the validation focus shifts to:"
+  },
+  {
+   "zh": "<strong>廠商已做了什麼</strong>：廠商測試文件、合規憑證",
+   "en": "<strong>What the vendor has already done</strong>: vendor test documentation and compliance certificates"
+  },
+  {
+   "zh": "<strong>實驗室需確認什麼</strong>：在本地環境中的預期功能、使用者配置、介面相容性",
+   "en": "<strong>What the laboratory must confirm</strong>: expected functionality in the local environment, user configuration and interface compatibility"
+  },
+  {
+   "zh": "驗證文件的必要內容——稽核員最常查的清單",
+   "en": "Required Content of Validation Documentation: The Checklist Auditors Check Most Often"
+  },
+  {
+   "zh": "TR80 列出 7 大驗證文件要素，其中最容易被忽略的兩項：",
+   "en": "TR80 lists seven key elements of validation documentation. The two most easily overlooked are:"
+  },
+  {
+   "zh": "<strong>計算演算法基礎</strong>：軟體用哪個 USP/ASTM 標準計算拖尾因子、積分面積？這必須被記錄與驗證。",
+   "en": "<strong>Basis of calculation algorithms</strong>: which USP/ASTM standard does the software use to calculate the tailing factor and integrated area? This must be documented and verified."
+  },
+  {
+   "zh": "<strong>數據傳輸測試</strong>：必須驗證當網路中斷或 PC 斷線時，數據不會遺失或被竄改。",
+   "en": "<strong>Data transfer testing</strong>: it must be verified that data is not lost or corrupted when the network is interrupted or the PC is disconnected."
+  },
+  {
+   "zh": "驗證計算核查舉例",
+   "en": "Example of Verification Calculation Checks"
+  },
+  {
+   "zh": "TR80 要求對軟體計算結果進行手動核算並比對，例如：",
+   "en": "TR80 requires manual calculation of software results and comparison with them, for example:"
+  },
+  {
+   "zh": "%RSD = (標準差 / 平均值) × 100%\n\n拖尾因子 (T) = W₀.₀₅ / (2f)\n  其中 W₀.₀₅ = 5% 峰高處峰寬\n        f = 峰頂到前緣的距離",
+   "en": "%RSD = (standard deviation / mean) × 100%\n\nTailing factor (T) = W₀.₀₅ / (2f)\n  where W₀.₀₅ = peak width at 5% of peak height\n        f = distance from the peak maximum to the leading edge"
+  },
+  {
+   "zh": "驗證時需手動計算至少一個數據集，確認與軟體輸出值一致，偏差在可接受範圍內並有記錄。",
+   "en": "During validation, at least one data set must be calculated manually to confirm that it agrees with the software output, with any deviation within the acceptable range and documented."
+  },
+  {
+   "zh": "比喻說明：COTS 驗證就像驗收新車",
+   "en": "Analogy: COTS Validation Is Like Accepting a New Car"
+  },
+  {
+   "zh": "購買新車（COTS 軟體）時，製造商提供了出廠測試合格書，但你仍需在自己的路況下試駕（UAT），確認它在你的使用場景（實驗室配置、LIMS 介面）下正常運作。製造商的合格書不能取代你的試駕記錄。",
+   "en": "When you buy a new car (COTS software), the manufacturer provides a factory test certificate, but you still need to test-drive it under your own road conditions (UAT) to confirm it works properly in your use scenario (laboratory configuration, LIMS interface). The manufacturer's certificate cannot replace your own test-drive record."
+  },
+  {
+   "zh": "6.3.2.1 最低控制措施的重點：存取控制層級",
+   "en": "6.3.2.1 Key Point of Minimum Controls: Access Control Levels"
+  },
+  {
+   "zh": "TR80 對 COTS 軟體的控制要求可分為三個層面：",
+   "en": "TR80's control requirements for COTS software fall into three layers:"
+  },
+  {
+   "zh": "<strong>人員控制</strong>：個別帳號、定期換密碼、明確的角色與責任清單",
+   "en": "<strong>Personnel controls</strong>: individual accounts, periodic password changes, and a clear list of roles and responsibilities"
+  },
+  {
+   "zh": "<strong>技術控制</strong>：停用非管理員的資料刪除與複製功能",
+   "en": "<strong>Technical controls</strong>: disable data deletion and copy functions for non-administrators"
+  },
+  {
+   "zh": "<strong>程序控制</strong>：變更控制＋風險評估、定期審查控制有效性",
+   "en": "<strong>Procedural controls</strong>: change control plus risk assessment, and periodic review of control effectiveness"
+  },
+  {
+   "zh": "在你的實驗室中，HPLC CDS 軟體是否有以下設定？",
+   "en": "In your laboratory, does the HPLC CDS software have the following settings?"
+  },
+  {
+   "zh": "分析員無法刪除或修改原始數據文件？",
+   "en": "Analysts cannot delete or modify raw data files?"
+  },
+  {
+   "zh": "軟體版本號被記錄在驗證主計畫中？",
+   "en": "Software version numbers are recorded in the validation master plan?"
+  },
+  {
+   "zh": "軟體更新前是否執行變更控制與風險評估？",
+   "en": "Change control and risk assessment are performed before software updates?"
+  },
+  {
+   "zh": "<strong>6.3.3 Laboratory Instrument Functionality and Qualification 6.3.3 實驗室儀器功能性與確效</strong>",
+   "en": "<strong>6.3.3 Laboratory Instrument Functionality and Qualification</strong>"
+  },
+  {
+   "zh": "核心概念：資格確認中的數據風險評估",
+   "en": "Core Concept: Data Risk Assessment in Qualification"
+  },
+  {
+   "zh": "儀器資格確認不僅是確認儀器性能（IQ/OQ/PQ），TR80 明確要求同時識別<strong>數據風險控制點</strong>。資格確認計畫中應包含：",
+   "en": "Instrument qualification is not only about confirming instrument performance (IQ/OQ/PQ); TR80 explicitly requires <strong>data risk control points</strong> to be identified at the same time. The qualification plan should address:"
+  },
+  {
+   "zh": "哪些功能若失效會影響數據完整性？",
+   "en": "Which functions, if they fail, would affect data integrity?"
+  },
+  {
+   "zh": "分析員是否有辦法修改時間戳記或關閉稽核軌跡？",
+   "en": "Is there any way for analysts to modify timestamps or turn off the audit trail?"
+  },
+  {
+   "zh": "儀器內建記憶體與外接電腦之間的數據流定義是否清楚？",
+   "en": "Is the data flow between the instrument's built-in memory and the external computer clearly defined?"
+  },
+  {
+   "zh": "三大數據完整性驗證重點",
+   "en": "Three Key Data Integrity Verification Points"
+  },
+  {
+   "zh": "<strong>時間戳記不可修改</strong>：是最基本的數據可歸因性（Attributable）要求。若系統允許分析員任意修改時間，則所有帶時間戳記的記錄均失去法律效力。",
+   "en": "<strong>Timestamps cannot be modified</strong>: this is the most basic requirement for data attributability (Attributable). If the system allows analysts to change the time freely, every timestamped record loses its legal validity."
+  },
+  {
+   "zh": "<strong>稽核軌跡不可停用</strong>：分析員不得有權限關閉稽核軌跡。這需要在使用者角色配置中明確設定，並在驗證中確認。",
+   "en": "<strong>The audit trail cannot be disabled</strong>: analysts must not have the right to turn off the audit trail. This must be set explicitly in the user role configuration and confirmed during validation."
+  },
+  {
+   "zh": "<strong>內建記憶體的雙重記錄問題</strong>：某些儀器（如 UV/Vis 分光光度計）具有內建顯示器與記憶體，若同時連接外接電腦，需定義哪個才是「原始數據」的來源。",
+   "en": "<strong>Dual records in built-in memory</strong>: some instruments (such as UV/Vis spectrophotometers) have a built-in display and memory; if they are also connected to an external computer, it must be defined which one is the source of the \"raw data\"."
+  },
+  {
+   "zh": "比喻說明：時間戳記就像法院文件的日期戳",
+   "en": "Analogy: A Timestamp Is Like the Date Stamp on a Court Document"
+  },
+  {
+   "zh": "若你的實驗記錄可以事後修改日期，就像可以竄改法院文件上的蓋章日期——無論內容是否正確，該文件的法律效力即告喪失。GMP 記錄中的時間戳記具有同等的法律意涵。",
+   "en": "If the dates on your laboratory records could be changed after the fact, it would be like altering the date stamp on a court document: whether or not the content is correct, the document loses its legal effect. Timestamps in GMP records carry the same legal significance."
+  },
+  {
+   "zh": "假設稽核員發現：分析員可以在 HPLC 電腦上手動修改系統時間，且此操作不會被稽核軌跡捕捉。這代表什麼數據完整性風險？應如何在資格確認時預防？",
+   "en": "Suppose an auditor finds that analysts can manually change the system time on the HPLC computer, and this action is not captured by the audit trail. What data integrity risk does this represent? How should it be prevented during qualification?"
+  },
+  {
+   "zh": "<strong>6.3.4 Data Governance — Generating, Processing, Reporting, and Archiving 6.3.4 數據治理 — 產生、處理、報告與歸檔</strong>",
+   "en": "<strong>6.3.4 Data Governance — Generating, Processing, Reporting, and Archiving</strong>"
+  },
+  {
+   "zh": "核心概念：數據治理的四個維度",
+   "en": "Core Concept: Four Dimensions of Data Governance"
+  },
+  {
+   "zh": "TR80 Section 6.3.4 以數據治理的視角涵蓋四個關鍵環節：",
+   "en": "TR80 Section 6.3.4 covers four key stages from a data governance perspective:"
+  },
+  {
+   "zh": "<strong>生成（Generating）</strong>：數據在何時、以何種方式被創建？",
+   "en": "<strong>Generating</strong>: when and how is the data created?"
+  },
+  {
+   "zh": "<strong>處理（Processing）</strong>：如何對原始數據進行積分、計算？",
+   "en": "<strong>Processing</strong>: how are raw data integrated and calculated?"
+  },
+  {
+   "zh": "<strong>報告（Reporting）</strong>：如何將結果呈現給審查者與 QA？",
+   "en": "<strong>Reporting</strong>: how are results presented to reviewers and QA?"
+  },
+  {
+   "zh": "<strong>歸檔（Archiving）</strong>：數據如何被保存以供未來查閱？",
+   "en": "<strong>Archiving</strong>: how is the data retained for future reference?"
+  },
+  {
+   "zh": "「試注射」是 FDA Warning Letter 的常見引用點",
+   "en": "\"Trial Injections\" Are a Common FDA Warning Letter Citation"
+  },
+  {
+   "zh": "TR80 明確指出：FDA 已在 Warning Letter 中引用試注射（trial injection）問題。常見違規情境：",
+   "en": "TR80 states explicitly that the FDA has cited trial injection problems in Warning Letters. Common violation scenarios:"
+  },
+  {
+   "zh": "分析員在正式測試前注射樣品「看看峰形是否正常」",
+   "en": "Analysts inject a sample before the formal test \"to see whether the peak shape is normal\""
+  },
+  {
+   "zh": "將真實樣品標示為「標準品」進行注射，若結果不理想則刪除",
+   "en": "Real samples are labeled as \"standards\" and injected, and deleted if the results are unsatisfactory"
+  },
+  {
+   "zh": "SOP 中明文允許試注射（FDA 認為此類 SOP 本身即為違規）",
+   "en": "The SOP expressly permits trial injections (the FDA considers such an SOP itself a violation)"
+  },
+  {
+   "zh": "「Testing into Compliance」——最嚴重的數據完整性違規之一",
+   "en": "\"Testing into Compliance\": One of the Most Serious Data Integrity Violations"
+  },
+  {
+   "zh": "<strong>定義</strong>：反覆測試樣品直到獲得「通過」結果，然後只報告通過的結果，不報告失敗的結果。",
+   "en": "<strong>Definition</strong>: repeatedly testing a sample until a \"passing\" result is obtained, then reporting only the passing result and not the failing ones."
+  },
+  {
+   "zh": "<strong>偽裝手法</strong>：",
+   "en": "<strong>Disguises</strong>:"
+  },
+  {
+   "zh": "以「系統適用性測試」名義使用真實樣品",
+   "en": "Using real samples under the name of \"system suitability testing\""
+  },
+  {
+   "zh": "以「平衡管柱」為由注射樣品",
+   "en": "Injecting samples on the pretext of \"equilibrating the column\""
+  },
+  {
+   "zh": "事後刪除「不通過」的注射記錄",
+   "en": "Deleting the \"failing\" injection records afterwards"
+  },
+  {
+   "zh": "<strong>法規立場</strong>：所有上述做法均被視為違反 CGMP，可觸發 Warning Letter 甚至犯罪調查。",
+   "en": "<strong>Regulatory position</strong>: all of the above practices are regarded as violations of CGMP and can trigger a Warning Letter or even a criminal investigation."
+  },
+  {
+   "zh": "比喻說明：Testing into Compliance 就像考試作弊",
+   "en": "Analogy: Testing into Compliance Is Like Cheating on an Exam"
+  },
+  {
+   "zh": "想像你參加考試，考完不滿意就偷偷換一份試卷重考，只交出最高分的那份。GMP 中的測試用同樣邏輯——每一次分析都是「正式考試」，必須完整記錄，不可選擇性揭露結果。",
+   "en": "Imagine taking an exam, being dissatisfied with the result, secretly swapping in a different paper to retake it, and handing in only the highest score. Testing in GMP follows the same logic: every analysis is a \"formal exam\" that must be fully recorded, and results must not be selectively disclosed."
+  },
+  {
+   "zh": "層析軟體具有「數據取得直到運行中斷」的能力，這代表即使分析員以「系統當機」為由終止運行，數據仍存在系統中。若稽核員發現大量「中斷」事件而無書面調查，可能提出什麼樣的 483 觀察？",
+   "en": "Chromatography software can \"acquire data until the run is aborted\", which means that even if an analyst terminates a run citing a \"system crash\", the data still exists in the system. If an auditor finds a large number of \"aborted\" events with no written investigation, what 483 observation might be raised?"
+  },
+  {
+   "zh": "<strong>6.3.5 Data Generation 6.3.5 數據產生</strong>",
+   "en": "<strong>6.3.5 Data Generation</strong>"
+  },
+  {
+   "zh": "核心概念：數據文件的生成時點",
+   "en": "Core Concept: When a Data File Is Generated"
+  },
+  {
+   "zh": "TR80 明確定義：<strong>「數據文件在注射發生或訊號處理開始時即視為已生成」</strong>。這個定義具有重要的法規意涵——",
+   "en": "TR80 defines explicitly that <strong>\"the data file is considered generated when the injection occurs or signal processing begins\"</strong>. This definition has important regulatory implications:"
+  },
+  {
+   "zh": "一旦注射完成，數據文件就已存在，不得被悄悄刪除或替換。任何後續修改都必須通過稽核軌跡留下記錄。",
+   "en": "Once the injection is complete, the data file exists and must not be quietly deleted or replaced. Any later change must leave a record through the audit trail."
+  },
+  {
+   "zh": "Figure 6.3.5-1 的數據流解析",
+   "en": "Interpreting the Data Flow in Figure 6.3.5-1"
+  },
+  {
+   "zh": "此圖呈現層析分析的完整數據流，關鍵的稽核軌跡點包括：",
+   "en": "This figure shows the complete data flow of a chromatographic analysis. The key audit trail points include:"
+  },
+  {
+   "zh": "<strong>儀器設置與注射階段</strong>：捕捉分析員 ID 稽核軌跡與方法稽核軌跡",
+   "en": "<strong>Instrument setup and injection stage</strong>: captures the analyst ID audit trail and the method audit trail"
+  },
+  {
+   "zh": "<strong>積分與數據審查階段</strong>：捕捉結果稽核軌跡、原始數據稽核軌跡，包含元數據、電子時間戳記、電子簽名",
+   "en": "<strong>Integration and data review stage</strong>: captures the results audit trail and the raw data audit trail, including metadata, electronic timestamps and electronic signatures"
+  },
+  {
+   "zh": "<strong>分析與放行階段</strong>：最終結果須與完整稽核軌跡一同呈現",
+   "en": "<strong>Analysis and release stage</strong>: the final result must be presented together with the complete audit trail"
+  },
+  {
+   "zh": "此流程確保數據的可追溯性（Traceable）——每一個操作步驟都有記錄，且可被重建（Reconstructable）。",
+   "en": "This flow ensures that the data is traceable (Traceable): every operating step is recorded and can be reconstructed (Reconstructable)."
+  },
+  {
+   "zh": "SOP 必須定義的六個異常情境",
+   "en": "Six Abnormal Scenarios That the SOP Must Define"
+  },
+  {
+   "zh": "TR80 列出六種需要在實驗室程序中明確定義的情境，稽核員在查廠時會確認這些情境是否有對應的 SOP：",
+   "en": "TR80 lists six scenarios that must be clearly defined in laboratory procedures; during an inspection, auditors will confirm that a corresponding SOP exists for each:"
+  },
+  {
+   "zh": "數據文件何時可視為原始數據？",
+   "en": "When can a data file be regarded as original data?"
+  },
+  {
+   "zh": "運行在完成前中止時如何處理？",
+   "en": "How is a run handled when it is aborted before completion?"
+  },
+  {
+   "zh": "儀器至電腦的傳輸中斷時如何處理？",
+   "en": "How is an interrupted instrument-to-computer transfer handled?"
+  },
+  {
+   "zh": "層析運行中間斷電時如何處理？",
+   "en": "How is a power failure in the middle of a chromatographic run handled?"
+  },
+  {
+   "zh": "訊號取得後的數據文件重命名規範？",
+   "en": "What are the rules for renaming data files after signal acquisition?"
+  },
+  {
+   "zh": "如何識別蓄意破壞數據的行為？",
+   "en": "How is deliberate data sabotage identified?"
+  },
+  {
+   "zh": "比喻說明：數據文件就像出生登記",
+   "en": "Analogy: A Data File Is Like a Birth Registration"
+  },
+  {
+   "zh": "一旦孩子出生（注射完成），出生登記（數據文件）就必須建立，不可撤銷。你可以日後更改孩子的名字（數據處理），但出生的事實本身不可被抹去——稽核軌跡就是這份不可更改的出生證明。",
+   "en": "Once a child is born (the injection is complete), the birth registration (the data file) must be created and cannot be revoked. You can change the child's name later (data processing), but the fact of the birth itself cannot be erased. The audit trail is that unalterable birth certificate."
+  },
+  {
+   "zh": "分析員在 HPLC 注射完成後，以「序列名稱輸入錯誤」為由，刪除了數據文件並重新命名後再次注射。這個操作是否符合 GMP 要求？若不符合，正確的做法應為何？",
+   "en": "After an HPLC injection was completed, an analyst deleted the data file on the grounds of \"sequence name entered incorrectly\", renamed it and injected again. Does this action meet GMP requirements? If not, what should the correct approach be?"
+  },
+  {
+   "zh": "<strong>6.3.6 Injection Sequences 6.3.6 注射序列</strong>",
+   "en": "<strong>6.3.6 Injection Sequences</strong>"
+  },
+  {
+   "zh": "核心概念：注射序列（Injection Sequence）的數據完整性風險",
+   "en": "Core Concept: Data Integrity Risks of Injection Sequences"
+  },
+  {
+   "zh": "注射序列是層析分析最常見的操作模式，但也是數據操縱的高風險區域。TR80 識別出以下主要風險：",
+   "en": "The injection sequence is the most common mode of operation in chromatographic analysis, but it is also a high-risk area for data manipulation. TR80 identifies the following main risks:"
+  },
+  {
+   "zh": "<strong>序列後重命名</strong>：以新名稱覆蓋試注射記錄，使其看起來像正式測試",
+   "en": "<strong>Renaming after the sequence</strong>: overwriting a trial injection record with a new name so that it looks like a formal test"
+  },
+  {
+   "zh": "<strong>部分序列執行</strong>：只跑「好的」樣品，跳過失敗的樣品",
+   "en": "<strong>Partial sequence execution</strong>: running only the \"good\" samples and skipping the failing ones"
+  },
+  {
+   "zh": "<strong>序列中途修改方法參數</strong>：在不希望的峰出現後修改積分參數",
+   "en": "<strong>Changing method parameters mid-sequence</strong>: modifying integration parameters after an unwanted peak appears"
+  },
+  {
+   "zh": "<strong>序列中途插入樣品</strong>：在序列已啟動後加入「補測」樣品而無記錄",
+   "en": "<strong>Inserting samples mid-sequence</strong>: adding \"retest\" samples after the sequence has started, without a record"
+  },
+  {
+   "zh": "稽核軌跡應捕捉的序列資訊",
+   "en": "Sequence Information the Audit Trail Should Capture"
+  },
+  {
+   "zh": "TR80 建議稽核軌跡中至少應包含以下序列資訊，這也是稽核員查廠時的核查清單：",
+   "en": "TR80 recommends that the audit trail include at least the following sequence information, which is also the checklist auditors use during inspections:"
+  },
+  {
+   "zh": "序列名稱/編號",
+   "en": "Sequence name/number"
+  },
+  {
+   "zh": "分析員姓名",
+   "en": "Analyst name"
+  },
+  {
+   "zh": "產品名稱",
+   "en": "Product name"
+  },
+  {
+   "zh": "修改原因（任何變更均需記錄）",
+   "en": "Reason for change (any change must be recorded)"
+  },
+  {
+   "zh": "每個樣品的方法描述",
+   "en": "Method description for each sample"
+  },
+  {
+   "zh": "建議：執行序列前由第二位分析員審核確認",
+   "en": "Recommendation: review and confirmation by a second analyst before the sequence is run"
+  },
+  {
+   "zh": "比喻說明：注射序列就像手術排程",
+   "en": "Analogy: An Injection Sequence Is Like an Operating Room Schedule"
+  },
+  {
+   "zh": "手術室的手術排程一旦確定，不得臨時增加或刪除病人而無記錄。若在手術中途發現某台手術「結果不理想」就將記錄刪除，這在醫療法律上是重大違規。HPLC 序列的操作邏輯相同——每一個注射位置都代表一個「官方分析行為」。",
+   "en": "Once an operating room schedule is set, patients must not be added or removed at short notice without a record. Deleting the records because a procedure turned out \"unsatisfactorily\" midway would be a serious violation in medical law. The logic for an HPLC sequence is the same: every injection position represents an \"official analytical act\"."
+  },
+  {
+   "zh": "第二分析員審核序列的實務意義",
+   "en": "The Practical Significance of Second-Analyst Review of the Sequence"
+  },
+  {
+   "zh": "TR80 「建議」執行序列前由第二位分析員審核，這雖非強制要求，但具有重要的預防價值：",
+   "en": "TR80 \"recommends\" review by a second analyst before the sequence is run. Although this is not mandatory, it has important preventive value:"
+  },
+  {
+   "zh": "確認序列中的樣品識別碼與批次記錄一致",
+   "en": "Confirm that the sample identifiers in the sequence are consistent with the batch records"
+  },
+  {
+   "zh": "確認方法版本正確",
+   "en": "Confirm that the method version is correct"
+  },
+  {
+   "zh": "確認系統適用性注射位置正確",
+   "en": "Confirm that the system suitability injection positions are correct"
+  },
+  {
+   "zh": "防止「故意配錯樣品」或「故意用錯方法」等操縱行為",
+   "en": "Prevent manipulation such as \"deliberately mismatched samples\" or \"deliberately using the wrong method\""
+  },
+  {
+   "zh": "稽核員要求查看過去三個月所有「中止」的注射序列記錄，以及每次中止的調查記錄。你的實驗室能否立即提供這份清單？若不能，代表哪個控制環節存在缺口？",
+   "en": "An auditor asks to see the records of all injection sequences aborted in the past three months, together with the investigation record for each abort. Can your laboratory provide this list immediately? If not, which control step has a gap?"
+  },
+  {
+   "zh": "<strong>6.3.7 Data Processing and Peak Integration 6.3.7 數據處理與峰值積分</strong>",
+   "en": "<strong>6.3.7 Data Processing and Peak Integration</strong>"
+  },
+  {
+   "zh": "核心概念：原始數據 vs. 處理數據",
+   "en": "Core Concept: Raw Data vs. Processed Data"
+  },
+  {
+   "zh": "TR80 明確區分兩種數據類型：",
+   "en": "TR80 clearly distinguishes two types of data:"
+  },
+  {
+   "zh": "<strong>原始電子數據（Acquired Electronic Raw Data）</strong>：儀器訊號本身——時間對應的強度值。一旦取得，不應被更改。",
+   "en": "<strong>Acquired electronic raw data</strong>: the instrument signal itself, i.e. intensity values against time. Once acquired, it should not be changed."
+  },
+  {
+   "zh": "<strong>處理後數據（Processed Data）</strong>：通過積分事件、校準曲線等計算得到的保留時間、峰面積、含量值。這些可以合法地重新計算（reprocess），但必須有記錄（版本控制）。",
+   "en": "<strong>Processed data</strong>: retention times, peak areas and content values obtained through integration events, calibration curves and so on. These can legitimately be recalculated (reprocessed), but this must be recorded (version control)."
+  },
+  {
+   "zh": "關鍵原則：<strong>處理參數的改變不影響原始電子數據本身</strong>，但必須通過稽核軌跡中的版本號追蹤。",
+   "en": "Key principle: <strong>changing the processing parameters does not affect the acquired electronic raw data itself</strong>, but must be tracked through version numbers in the audit trail."
+  },
+  {
+   "zh": "峰積分的基本計算概念",
+   "en": "Basic Calculation Concepts of Peak Integration"
+  },
+  {
+   "zh": "峰面積是量化分析的基礎，其計算方式影響最終報告值：",
+   "en": "Peak area is the basis of quantitative analysis, and the way it is calculated affects the final reported value:"
+  },
+  {
+   "zh": "含量（Assay）= (樣品峰面積 / 標準品峰面積)\n              × 標準品濃度 × 稀釋因子\n\n% 雜質 = (雜質峰面積 / 總峰面積之和) × 100%\n  （或相對於主峰面積）",
+   "en": "Content (Assay) = (sample peak area / standard peak area)\n              × standard concentration × dilution factor\n\n% Impurity = (impurity peak area / sum of total peak areas) × 100%\n  (or relative to the main peak area)"
+  },
+  {
+   "zh": "因此，任何影響峰面積計算的積分操作都會直接影響報告結果。「削峰」（peak trimming）會使面積減少，進而使含量偏低；「過積分」則反之。",
+   "en": "Therefore, any integration operation that affects the peak area calculation directly affects the reported result. \"Peak trimming\" reduces the area and thus lowers the content, while \"over-integration\" does the opposite."
+  },
+  {
+   "zh": "積分操作如何構成數據完整性違規——FDA Warning Letter 重點",
+   "en": "How Integration Practices Become Data Integrity Violations: FDA Warning Letter Focus"
+  },
+  {
+   "zh": "TR80 明確引用 FDA Warning Letter 中的積分操縱案例。常見的違規積分模式：",
+   "en": "TR80 explicitly cites cases of integration manipulation from FDA Warning Letters. Common violating integration patterns:"
+  },
+  {
+   "zh": "<strong>削峰（Peak Trimming, 圖 5c）</strong>：設定峰寬過小，積分線未延伸到峰底，人為減少峰面積 → 讓含量看起來更低（或雜質更少）",
+   "en": "<strong>Peak trimming (Figure 5c)</strong>: the peak width is set too small so the integration line does not extend to the base of the peak, artificially reducing the peak area → content appears lower (or impurities appear lower)"
+  },
+  {
+   "zh": "<strong>基線未歸零（圖 5d）</strong>：積分起始線未從基線開始，包含了基線漂移 → 人為增加峰面積 → 讓含量看起來更高",
+   "en": "<strong>Baseline not returned to zero (Figure 5d)</strong>: the integration start line does not begin at the baseline and includes baseline drift → artificially increases the peak area → content appears higher"
+  },
+  {
+   "zh": "<strong>共洗脫峰不正確分割（圖 6c）</strong>：對部分共洗脫峰使用錯誤的 valley drop 設定 → 少報雜質",
+   "en": "<strong>Incorrect splitting of co-eluting peaks (Figure 6c)</strong>: using an incorrect valley drop setting for partially co-eluting peaks → impurities are under-reported"
+  },
+  {
+   "zh": "<strong>選擇性使用不同積分事件（圖 7c）</strong>：同一序列中不同樣品用不同積分參數 → 選擇性操控特定樣品的結果",
+   "en": "<strong>Selective use of different integration events (Figure 7c)</strong>: different samples in the same sequence are integrated with different parameters → results for specific samples are selectively manipulated"
+  },
+  {
+   "zh": "手動積分的法規立場",
+   "en": "Regulatory Position on Manual Integration"
+  },
+  {
+   "zh": "TR80 的立場非常清晰：",
+   "en": "TR80's position is very clear:"
+  },
+  {
+   "zh": "<strong>R&amp;D 和生物實驗室</strong>：手動積分可能是必要的",
+   "en": "<strong>R&amp;D and biological laboratories</strong>: manual integration may be necessary"
+  },
+  {
+   "zh": "<strong>QC 實驗室</strong>：手動積分僅在特殊情況下可接受（複雜基質、共洗脫、基線問題）",
+   "en": "<strong>QC laboratories</strong>: manual integration is acceptable only in special circumstances (complex matrices, co-elution, baseline problems)"
+  },
+  {
+   "zh": "<strong>含量測定（Assay）</strong>：手動積分<strong>通常不可接受</strong>",
+   "en": "<strong>Assay</strong>: manual integration is <strong>generally not acceptable</strong>"
+  },
+  {
+   "zh": "無論何種情況，手動積分必須：有書面 SOP 規範 → 獲得主管書面批准 → 結果被適當記錄 → 現代軟體會自動標記手動積分峰。",
+   "en": "In any case, manual integration must be governed by a written SOP → approved in writing by a supervisor → results appropriately recorded → modern software automatically flags manually integrated peaks."
+  },
+  {
+   "zh": "圖 6.3.7-4a vs. 4b：呈現比例的重要性",
+   "en": "Figure 6.3.7-4a vs. 4b: The Importance of Display Scale"
+  },
+  {
+   "zh": "這兩張圖揭示了一個審查技巧：相同的層析數據，在不同比例下呈現會有完全不同的可見性。",
+   "en": "These two figures illustrate a review technique: the same chromatographic data, displayed at different scales, can have completely different visibility."
+  },
+  {
+   "zh": "<strong>大比例圖（4a）</strong>：峰很大，基線相關的積分問題被壓縮、隱藏",
+   "en": "<strong>Large-scale figure (4a)</strong>: the peak is large, and baseline-related integration problems are compressed and hidden"
+  },
+  {
+   "zh": "<strong>適當比例圖（4b）</strong>：可清楚看見峰被「削掉」的積分線，以及遺漏的峰",
+   "en": "<strong>Appropriately scaled figure (4b)</strong>: the integration line where the peak has been \"trimmed\", and any missed peaks, can be clearly seen"
+  },
+  {
+   "zh": "TR80 規定：<strong>含量分析：峰頂可見；純度/雜質分析：基線必須清楚可見</strong>。稽核員會要求查看適當比例的層析圖，並對比列印版本。",
+   "en": "TR80 specifies: <strong>for assay, the peak apex must be visible; for purity/impurity analysis, the baseline must be clearly visible</strong>. Auditors will ask to see chromatograms at the appropriate scale and compare them with the printed versions."
+  },
+  {
+   "zh": "Inhibit Integration（抑制積分）的合法使用",
+   "en": "Legitimate Use of Inhibit Integration"
+  },
+  {
+   "zh": "TR80 認可在以下情況使用軟體的積分抑制功能（即設定積分不計算特定時間窗口內的峰）：",
+   "en": "TR80 accepts the use of the software's inhibit integration function (setting the integration not to calculate peaks within a specific time window) in the following situations:"
+  },
+  {
+   "zh": "USP 專論方法中有明確規定",
+   "en": "It is explicitly specified in the USP monograph method"
+  },
+  {
+   "zh": "USP &lt;621&gt;：閾值設定為報告閾值一半以下的峰可被忽略",
+   "en": "USP &lt;621&gt;: peaks below half the reporting threshold may be disregarded"
+  },
+  {
+   "zh": "已知的空白峰、安慰劑峰、溶劑峰、反離子峰",
+   "en": "Known blank peaks, placebo peaks, solvent peaks and counter-ion peaks"
+  },
+  {
+   "zh": "重要前提：<strong>必須有科學依據，且未知峰不得被抑制</strong>——未知峰必須被積分並按品質程序調查。",
+   "en": "Key prerequisite: <strong>there must be a scientific basis, and unknown peaks must not be suppressed</strong>. Unknown peaks must be integrated and investigated under the quality procedures."
+  },
+  {
+   "zh": "比喻說明：積分就像量地積",
+   "en": "Analogy: Integration Is Like Measuring Land Area"
+  },
+  {
+   "zh": "峰積分就像測量一塊不規則土地的面積。正確的測量應從土地的真實邊界開始（峰底到基線）。若你刻意把捲尺放在稍微高一點的地方（削峰），量出來的面積就會偏小。若你把捲尺拉過了邊界（過積分），面積就偏大。地政機關（稽核員）可以比對土地登記謄本（原始數據）與你提交的測量結果，發現兩者不一致。",
+   "en": "Peak integration is like measuring the area of an irregular plot of land. A correct measurement starts from the true boundary of the land (from the base of the peak to the baseline). If you deliberately hold the tape measure slightly higher (peak trimming), the measured area comes out too small. If you stretch the tape past the boundary (over-integration), the area comes out too large. The land registry office (the auditor) can compare the land registration transcript (the raw data) with the survey you submitted and find that the two do not agree."
+  },
+  {
+   "zh": "稽核員查閱你的相關物質分析（Related Substances）結果，發現：",
+   "en": "An auditor reviews your related substances results and finds that:"
+  },
+  {
+   "zh": "某個雜質峰在原始層析圖中清晰可見",
+   "en": "An impurity peak is clearly visible in the original chromatogram"
+  },
+  {
+   "zh": "但列印出來的報告中該峰並未出現在積分報告裡",
+   "en": "But the peak does not appear in the integration report in the printed report"
+  },
+  {
+   "zh": "稽核軌跡顯示積分事件被修改過兩次，但無修改理由記錄",
+   "en": "The audit trail shows the integration events were modified twice, with no record of the reason for the changes"
+  },
+  {
+   "zh": "請問：這代表哪些 ALCOA+ 原則可能被違反？應如何回應稽核員的質疑？",
+   "en": "Which ALCOA+ principles may have been violated? How should you respond to the auditor's challenge?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary (6.3–6.3.7)",
+   "en": "Section Summary (6.3-6.3.7)"
+  },
+  {
+   "zh": "<strong>ALCS 定義與架構</strong>：任何連接分析儀器的電腦系統都屬於 ALCS，不得用於一般用途。系統配置決定稽核軌跡的建立與審查方式（Figure 6.3-1）。",
+   "en": "<strong>ALCS definition and architecture</strong>: any computer system connected to an analytical instrument is an ALCS and must not be used for general purposes. The system configuration determines how audit trails are created and reviewed (Figure 6.3-1)."
+  },
+  {
+   "zh": "<strong>伺服器與雲端資格確認</strong>：無論本地或雲端，伺服器必須完成資格確認（IQ/OQ/UAT）。SaaS 不免除藥廠的法規責任；詳細 SLA 是必要條件，並需每年稽核供應商。",
+   "en": "<strong>Server and cloud qualification</strong>: whether on-premises or in the cloud, the server must be qualified (IQ/OQ/UAT). SaaS does not relieve the pharmaceutical company of regulatory responsibility; a detailed SLA is a necessary condition, and the supplier must be audited annually."
+  },
+  {
+   "zh": "<strong>COTS 軟體驗證</strong>：廠商合規證書不能取代實驗室端的驗證。驗證文件必須涵蓋演算法基礎、統計計算核查、數據傳輸測試，以及與 LIMS/ELN 的相容性。",
+   "en": "<strong>COTS software validation</strong>: a vendor compliance certificate cannot replace validation on the laboratory side. Validation documentation must cover the basis of algorithms, verification of statistical calculations, data transfer testing, and compatibility with LIMS/ELN."
+  },
+  {
+   "zh": "<strong>儀器資格確認的數據焦點</strong>：時間戳記不可修改、稽核軌跡不可停用——這兩項應在資格確認中明確測試並記錄。",
+   "en": "<strong>Data focus of instrument qualification</strong>: timestamps cannot be modified and audit trails cannot be disabled; these two points should be explicitly tested and documented during qualification."
+  },
+  {
+   "zh": "<strong>試注射與 Testing into Compliance</strong>：使用真實樣品進行試注射或系統適用性測試是 CGMP 違規，FDA Warning Letter 已有明確引用案例。",
+   "en": "<strong>Trial injections and testing into compliance</strong>: using real samples for trial injections or system suitability testing is a CGMP violation, and the FDA has clearly cited cases in Warning Letters."
+  },
+  {
+   "zh": "<strong>注射序列控制</strong>：序列的建立、執行、修改、中止均需有程序規範，重命名文件以掩蓋試注射身份是不可接受的做法。",
+   "en": "<strong>Injection sequence control</strong>: the creation, execution, modification and abortion of sequences all require procedural control; renaming files to disguise the identity of a trial injection is unacceptable."
+  },
+  {
+   "zh": "<strong>峰積分</strong>：原始電子數據不可更改；處理參數（積分事件）可修改但必須版本化記錄。一致的積分事件必須應用於整個樣品組。手動積分在 QC 含量測定中通常不可接受，需有 SOP、主管批准與完整記錄。",
+   "en": "<strong>Peak integration</strong>: acquired electronic raw data must not be changed; processing parameters (integration events) may be modified but must be recorded with version control. Consistent integration events must be applied across the whole sample set. Manual integration is generally not acceptable for QC assay, and requires an SOP, supervisor approval and complete records."
+  },
+  {
+   "zh": "<strong>積分操縱的識別</strong>：削峰、過積分、選擇性使用積分事件、不當比例呈現——均已出現在 FDA Warning Letter 中。適當比例呈現（純度分析需可見基線）是識別積分問題的關鍵。",
+   "en": "<strong>Identifying integration manipulation</strong>: peak trimming, over-integration, selective use of integration events and misleading display scale have all appeared in FDA Warning Letters. Display at an appropriate scale (baseline visible for purity analysis) is the key to identifying integration problems."
+  }
+ ]
+}

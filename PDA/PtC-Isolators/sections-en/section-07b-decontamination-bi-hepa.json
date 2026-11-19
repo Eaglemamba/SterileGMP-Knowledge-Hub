@@ -1,0 +1,409 @@
+{
+ "source": "section-07b-decontamination-bi-hepa.html",
+ "blocks": [
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "能夠區分除污循環的「開發（Development）」與「確效（Qualification/Validation）」在目的、彈性與文件嚴謹度上的核心差異。",
+   "en": "Distinguish cycle \"development\" from cycle \"qualification/validation\" for decontamination in terms of purpose, flexibility and documentation rigor."
+  },
+  {
+   "zh": "了解用於 VHP 除污的生物指標（BI）選擇標準，包括菌種選擇、孢子數要求、D 值意義及批次間變異性的管理。",
+   "en": "Understand the selection criteria for biological indicators (BIs) used in VHP decontamination, including organism selection, spore count requirements, the meaning of the D-value, and management of batch-to-batch variability."
+  },
+  {
+   "zh": "掌握多個 BI 同時使用時的佈點策略與失效調查思維，知道如何區分循環失效與 BI 本身問題。",
+   "en": "Master the placement strategy when multiple BIs are used together, and the mindset for failure investigations, including how to tell a cycle failure from a problem with the BI itself."
+  },
+  {
+   "zh": "理解 HEPA 過濾器完整性測試所用油性介質（如 Emery 3004）如何干擾 VHP 除污效能，以及風險管理的正確時序。",
+   "en": "Understand how the oil-based media used for HEPA filter integrity testing (such as Emery 3004) can interfere with VHP decontamination efficacy, and the correct timing for managing that risk."
+  },
+  {
+   "zh": "掌握「每種裝載配置均需個別確效」的原則，並了解括弧策略（Bracketing）與輪換確效的適用條件。",
+   "en": "Master the principle that \"each load configuration must be qualified individually,\" and understand when bracketing and rotational qualification are applicable."
+  },
+  {
+   "zh": "<strong>Q7-5 — Key Differences Between Cycle Development and Cycle Qualification Q7-5 — 循環開發與循環確效之間的主要差異</strong>",
+   "en": "<strong>Q7-5 — Key Differences Between Cycle Development and Cycle Qualification</strong>"
+  },
+  {
+   "zh": "導讀與解析",
+   "en": "Commentary and Analysis"
+  },
+  {
+   "zh": "核心區別一眼看清",
+   "en": "The core distinction at a glance"
+  },
+  {
+   "zh": "這一題的答案其實是兩個字的差距：開發（Design）vs. 驗證（Evidence）。",
+   "en": "The answer to this question comes down to the gap between two words: development (design) vs. validation (evidence)."
+  },
+  {
+   "zh": "<strong>Cycle Development（循環開發）</strong>：你在「探索地形」。哪裡難以到達？H₂O₂ 濃度要多高才夠？溫度、濕度的影響有多大？允許調整，允許失敗，允許從頭來過。",
+   "en": "<strong>Cycle development</strong>: you are \"exploring the terrain.\" Where is it hard to reach? How high must the H₂O₂ concentration be? How much do temperature and humidity matter? Adjustments are allowed, failure is allowed, and starting over is allowed."
+  },
+  {
+   "zh": "<strong>Cycle Qualification（循環確效）</strong>：你在「出考卷並要求滿分」。所有參數已鎖定，只允許確認，不允許修改。",
+   "en": "<strong>Cycle qualification</strong>: you are \"setting the exam and requiring a perfect score.\" All parameters are locked; only confirmation is allowed, not modification."
+  },
+  {
+   "zh": "比喻：食譜研發 vs. 廚師認證考試",
+   "en": "Analogy: recipe development vs. a chef certification exam"
+  },
+  {
+   "zh": "開發就像廚師在廚房裡反覆嘗試一道菜，鹽多了可以減，火大了可以調，目的是找到最佳配方。",
+   "en": "Development is like a chef trying a dish again and again in the kitchen: too much salt can be reduced, the heat can be adjusted, and the aim is to find the best recipe."
+  },
+  {
+   "zh": "確效就像廚師認證考試當天，必須照著已定好的食譜做，考官在旁邊記錄每一步，過程不能臨時更改，三次都要端出一樣的成品。",
+   "en": "Qualification is like the day of the chef certification exam: you must follow the fixed recipe, the examiner records every step, nothing can be changed on the spot, and all three attempts must produce the same dish."
+  },
+  {
+   "zh": "實務關鍵：6 log reduction",
+   "en": "Practical key point: 6 log reduction"
+  },
+  {
+   "zh": "無菌充填用 isolator 的除污循環，通常要驗到 <strong>6 log 滅活</strong>——也就是 10⁶ 個孢子要殺到零。這不只是慣例，更是業界基準線。若要採用較低的 log reduction，必須有完整的風險評估文件支撐，監管單位審查時會直接追問理由。",
+   "en": "Decontamination cycles for aseptic filling isolators are usually validated to a <strong>6 log kill</strong>, that is, 10⁶ spores reduced to zero. This is not just convention but an industry baseline. If a lower log reduction is to be adopted, it must be supported by a complete risk assessment, and regulators will ask for the rationale directly during review."
+  },
+  {
+   "zh": "文件嚴謹度的不同期待",
+   "en": "Different expectations for documentation rigor"
+  },
+  {
+   "zh": "<strong>開發階段</strong>：允許彈性協議（flexible protocol），單次確認執行即可，失敗可調整後重跑。",
+   "en": "<strong>Development phase</strong>: a flexible protocol is allowed, a single confirmation run is enough, and failures can be adjusted and rerun."
+  },
+  {
+   "zh": "<strong>確效階段</strong>：需要三次重複執行（triplicate runs），每次都必須符合預設的接受標準；若失敗，須啟動調查與 CAPA。",
+   "en": "<strong>Qualification phase</strong>: triplicate runs are required, and every run must meet the predefined acceptance criteria; if one fails, an investigation and CAPA must be initiated."
+  },
+  {
+   "zh": "開發的文件是為了「設計出好循環」；確效的文件是為了「向監管單位證明好循環可以重複執行」。",
+   "en": "Development documentation exists to \"design a good cycle\"; qualification documentation exists to \"demonstrate to regulators that a good cycle can be run repeatedly.\""
+  },
+  {
+   "zh": "思考一下",
+   "en": "Something to think about"
+  },
+  {
+   "zh": "如果你的團隊在確效執行過程中，第二次跑出異常數據，你能直接修改參數後繼續第三次嗎？為什麼不行？這個問題的答案，就是確效與開發最重要的邊界線。",
+   "en": "If your team gets abnormal data in the second qualification run, can you simply change the parameters and carry on to the third run? Why not? The answer to this question is the most important boundary between qualification and development."
+  },
+  {
+   "zh": "<strong>Q7-6 — Which BI Should Be Used? Requirements for Spore Count, D-Value Q7-6 — 應使用哪種生物指示劍（BI）？孢子數量與 D 值的要求</strong>",
+   "en": "<strong>Q7-6 — Which BI Should Be Used? Requirements for Spore Count, D-Value</strong>"
+  },
+  {
+   "zh": "為何選 G. stearothermophilus？",
+   "en": "Why G. stearothermophilus?"
+  },
+  {
+   "zh": "<em>Geobacillus stearothermophilus</em>（嗜熱地芽孢桿菌）是 VHP 除污確效的標準挑戰菌。它的孢子對 H₂O₂ 具有高度抵抗性，成為「最壞情況」的代理指標。換句話說：如果這個菌都殺得乾淨，一般環境菌就更不用說了。",
+   "en": "<em>Geobacillus stearothermophilus</em> is the standard challenge organism for VHP decontamination qualification. Its spores are highly resistant to H₂O₂, which makes it a \"worst-case\" surrogate. In other words, if this organism is killed completely, ordinary environmental organisms are certainly killed too."
+  },
+  {
+   "zh": "最低要求：每個 BI 載體上至少 <strong>10⁶ 個孢子（≥ 6 log）</strong>，這樣才能在殺光之前觀察到對數遞減的動態。",
+   "en": "Minimum requirement: at least <strong>10⁶ spores per BI carrier (≥ 6 log)</strong>, so that the logarithmic decline can be observed before everything is killed."
+  },
+  {
+   "zh": "D 值的真正意義與隱藏風險",
+   "en": "The real meaning of the D-value and its hidden risk"
+  },
+  {
+   "zh": "<strong>D 值</strong>（Decimal Reduction Time）= 在特定條件下，殺死 90% 孢子所需的時間（即減少 1 log 所需時間）。",
+   "en": "<strong>D-value</strong> (decimal reduction time) = the time required under specified conditions to kill 90% of the spores (that is, the time for a 1 log reduction)."
+  },
+  {
+   "zh": "問題在於：供應商的 D 值是在<em>他們的</em> isolator、<em>他們的</em>循環條件下測得的。換到你的設備，H₂O₂ 的分布、氣流、溫濕度完全不同，D 值可能差距甚大。",
+   "en": "The problem is that the supplier's D-value was measured in <em>their</em> isolator under <em>their</em> cycle conditions. In your equipment, the H₂O₂ distribution, airflow, temperature and humidity are completely different, and the D-value can differ considerably."
+  },
+  {
+   "zh": "<strong>最佳實務</strong>：在你自己的 isolator 系統中進行 in-house D 值測試，而不是直接沿用供應商資料。",
+   "en": "<strong>Best practice</strong>: perform in-house D-value testing in your own isolator system rather than carrying over supplier data directly."
+  },
+  {
+   "zh": "比喻：D 值就像料理時間表",
+   "en": "Analogy: the D-value is like a cooking time chart"
+  },
+  {
+   "zh": "供應商告訴你「這道菜在 200°C 烤 20 分鐘」，但那是用他們的烤箱測的。你的烤箱可能溫度不均，同樣設定實際上只有 180°C。你需要在自己的烤箱裡重新校準，不能直接套用別人的食譜。",
+   "en": "A supplier tells you \"this dish takes 20 minutes at 200°C,\" but that was measured in their oven. Your oven may heat unevenly, so the same setting may actually give only 180°C. You need to recalibrate in your own oven; you cannot simply apply someone else's recipe."
+  },
+  {
+   "zh": "批次間變異的管理策略",
+   "en": "Strategies for managing batch-to-batch variability"
+  },
+  {
+   "zh": "<strong>孢子單層（Monolayer）</strong>：避免孢子堆疊（clumping），確保 VHP 能直接接觸每個孢子，防止孢子被外層遮蔽而形成「rogue spores」假陽性。",
+   "en": "<strong>Spore monolayer</strong>: avoids spore clumping and ensures VHP can contact each spore directly, preventing spores from being shielded by an outer layer and producing \"rogue spore\" false positives."
+  },
+  {
+   "zh": "<strong>回收率 50–300%</strong>：入廠 BI 品質控制的接受標準。回收率過低代表品質問題，過高則可能計數異常。",
+   "en": "<strong>Recovery of 50–300%</strong>: the acceptance criterion for incoming BI quality control. Recovery that is too low indicates a quality problem, and recovery that is too high may indicate a counting anomaly."
+  },
+  {
+   "zh": "<strong>固定供應商 + 固定批次</strong>：在開發和確效期間維持一致的 BI 來源，可大幅降低批次間變異對結果的影響。",
+   "en": "<strong>Fixed supplier + fixed lot</strong>: keeping a consistent BI source during development and qualification greatly reduces the effect of batch-to-batch variability on results."
+  },
+  {
+   "zh": "<strong>存活-死亡窗口（Survival-Kill Window）</strong>：同批次 BI 的一致性檢查工具——在不同暴露時間下，確認孢子由存活轉為死亡的轉折點是否一致。",
+   "en": "<strong>Survival-kill window</strong>: a tool for checking consistency within a BI lot. At different exposure times, it confirms whether the transition point from survival to kill is consistent."
+  },
+  {
+   "zh": "實務提問",
+   "en": "A practical question"
+  },
+  {
+   "zh": "你的廠在換 BI 供應商時，是否有要求重新進行 in-house D 值測試？還是直接沿用新供應商的 CoA 數據？這兩者在監管審查時的風險，有實質差距。",
+   "en": "When your site changes BI supplier, do you require in-house D-value testing to be repeated, or do you simply carry over the new supplier's CoA data? There is a real difference in regulatory risk between the two."
+  },
+  {
+   "zh": "<strong>Q7-7 — How Should Multiple BIs Be Used and Evaluated During VHP Cycle Development and Validation? Q7-7 — VHP 循環開發與驗證期間，多個生物指示劍（BI）應如何使用與評估？</strong>",
+   "en": "<strong>Q7-7 — How Should Multiple BIs Be Used and Evaluated During VHP Cycle Development and Validation?</strong>"
+  },
+  {
+   "zh": "多個 BI 的策略邏輯",
+   "en": "The strategic logic of using multiple BIs"
+  },
+  {
+   "zh": "為什麼每個位置要放三個（triplicate）BI？因為孢子的生死本身就有統計變異。一個 BI 的結果可能是 BI 本身的問題；三個一起才能判斷：",
+   "en": "Why place three (triplicate) BIs at each location? Because spore survival and death carry statistical variability. One BI's result may reflect a problem with the BI itself; only three together allow a judgement:"
+  },
+  {
+   "zh": "<strong>三個都死</strong>→ 該位置除污效能充足",
+   "en": "<strong>All three killed</strong> → decontamination efficacy at that location is adequate"
+  },
+  {
+   "zh": "<strong>一個沒死</strong>→ 可能是 BI 問題（孢子堆疊、rogue spore），需調查",
+   "en": "<strong>One not killed</strong> → possibly a BI problem (spore clumping, rogue spore), which requires investigation"
+  },
+  {
+   "zh": "<strong>多個沒死</strong>→ 高度懷疑是循環本身的問題",
+   "en": "<strong>Several not killed</strong> → the cycle itself is highly suspect"
+  },
+  {
+   "zh": "佈點的風險導向思維",
+   "en": "Risk-based thinking in placement"
+  },
+  {
+   "zh": "BI 不是隨機放的。要先做 isolator 的風險評估，找出「最難除污的位置」：",
+   "en": "BIs are not placed at random. First perform a risk assessment of the isolator to identify the \"hardest-to-decontaminate locations\":"
+  },
+  {
+   "zh": "死角、轉角、設備背面",
+   "en": "Dead legs, corners and the backs of equipment"
+  },
+  {
+   "zh": "VHP 氣流較弱的區域",
+   "en": "Areas with weaker VHP airflow"
+  },
+  {
+   "zh": "有陰影遮蔽的非產品接觸表面",
+   "en": "Shadowed, non-product-contact surfaces"
+  },
+  {
+   "zh": "管線接頭、閥門周邊",
+   "en": "Pipe connections and the areas around valves"
+  },
+  {
+   "zh": "這些位置才是真正的 <strong>worst-case locations</strong>。如果這些地方都能達到 6 log reduction，其他位置就不用太擔心了。",
+   "en": "These are the true <strong>worst-case locations</strong>. If 6 log reduction is achieved at these places, there is little need to worry about the other locations."
+  },
+  {
+   "zh": "比喻：消防演習的灑水頭測試",
+   "en": "Analogy: testing sprinklers in a fire drill"
+  },
+  {
+   "zh": "多個 BI 的佈點就像在建築物裡測試灑水頭：你要刻意測試最遠的那個房間、有遮蔽的角落、管線末端。如果水壓到得了最難到的地方，整棟建築就沒問題了。",
+   "en": "Placing multiple BIs is like testing the sprinklers in a building: you deliberately test the farthest room, the sheltered corners and the end of the piping. If water pressure reaches the hardest places, the whole building is fine."
+  },
+  {
+   "zh": "BI 陽性調查的分叉決策",
+   "en": "The fork in the road after a positive BI"
+  },
+  {
+   "zh": "BI 陽性（孢子沒死）= 啟動調查。調查有兩條路：",
+   "en": "A positive BI (spores not killed) = start an investigation. The investigation has two paths:"
+  },
+  {
+   "zh": "<strong>路徑 A：循環失效</strong>→ 找出根本原因（RCA），執行 CAPA，重新執行確效。",
+   "en": "<strong>Path A: cycle failure</strong> → find the root cause (RCA), implement CAPA, and repeat the qualification."
+  },
+  {
+   "zh": "<strong>路徑 B：BI 本身問題</strong>→ 記錄原因（如孢子堆疊、處理不當），確認同批次歷史表現，排除後可繼續。",
+   "en": "<strong>Path B: problem with the BI itself</strong> → record the cause (such as spore clumping or improper handling), confirm the historical performance of the same lot, and once it is ruled out you may continue."
+  },
+  {
+   "zh": "兩條路的出口完全不同，而且都必須有文件佐證——不能「感覺上是 BI 問題」就跳過調查。",
+   "en": "The two paths lead to entirely different outcomes, and both must be supported by documentation; you cannot skip the investigation because it \"feels like a BI problem.\""
+  },
+  {
+   "zh": "CDMO 實務提醒",
+   "en": "CDMO practice reminder"
+  },
+  {
+   "zh": "你的 isolator 確效佈點圖（BI placement map）是否已文件化並可重現？每次再確效時，BI 要放在完全一樣的位置。如果位置每次都不同，那不同批次之間的數據根本無法比較。",
+   "en": "Is your isolator qualification BI placement map documented and reproducible? At every requalification, the BIs must be placed in exactly the same positions. If the positions differ each time, data from different batches cannot be compared at all."
+  },
+  {
+   "zh": "<strong>Q7-8 — What Effect Could Oil-Based HEPA-Filter Integrity Agents Have on the Decontamination Cycle? Q7-8 — 油性 HEPA 過濾器完整性測試劍對去污循環可能產生何種影響？</strong>",
+   "en": "<strong>Q7-8 — What Effect Could Oil-Based HEPA-Filter Integrity Agents Have on the Decontamination Cycle?</strong>"
+  },
+  {
+   "zh": "問題的根源：油性介質 vs. VHP",
+   "en": "The root of the problem: oil-based media vs. VHP"
+  },
+  {
+   "zh": "HEPA 過濾器完整性測試（DOP/PAO test）傳統上使用 <strong>Emery 3004</strong> 等油性氣溶膠作為挑戰介質。問題在於：",
+   "en": "HEPA filter integrity testing (DOP/PAO test) has traditionally used oil-based aerosols such as <strong>Emery 3004</strong> as the challenge medium. The problem is:"
+  },
+  {
+   "zh": "油性殘留物會吸附在 HEPA 濾材纖維上",
+   "en": "Oily residue adsorbs onto the HEPA filter media fibers"
+  },
+  {
+   "zh": "H₂O₂（VHP）是強氧化劑，會與油性殘留物發生化學反應",
+   "en": "H₂O₂ (VHP) is a strong oxidizer and reacts chemically with oily residue"
+  },
+  {
+   "zh": "反應消耗了 H₂O₂，導致循環中實際可用的殺菌濃度降低",
+   "en": "The reaction consumes H₂O₂, reducing the effective biocidal concentration available during the cycle"
+  },
+  {
+   "zh": "最終結果：除污效能下降，BI 可能出現假陽性",
+   "en": "The end result: decontamination efficacy falls and BIs may show false positives"
+  },
+  {
+   "zh": "時序管理是關鍵",
+   "en": "Timing management is the key"
+  },
+  {
+   "zh": "PDA 的建議是：HEPA 完整性測試應在<strong>再確效循環之前</strong>執行（ideally before requalification cycles）。",
+   "en": "PDA recommends that HEPA integrity testing be performed <strong>before requalification cycles</strong> (ideally before requalification cycles)."
+  },
+  {
+   "zh": "這代表如果你的年度計劃是：先跑 VHP 確效，再做 HEPA 測試——這個順序需要重新評估。正確做法是：",
+   "en": "This means that if your annual plan is to run the VHP qualification first and then do the HEPA test, that sequence needs to be re-evaluated. The correct approach is:"
+  },
+  {
+   "zh": "執行 HEPA 完整性測試",
+   "en": "Perform the HEPA integrity test"
+  },
+  {
+   "zh": "確認殘留油性介質已清除或驗證不影響後續循環",
+   "en": "Confirm that residual oil-based medium has been removed, or verify that it does not affect subsequent cycles"
+  },
+  {
+   "zh": "再執行 VHP 除污確效",
+   "en": "Then perform the VHP decontamination qualification"
+  },
+  {
+   "zh": "比喻：油汙染水源的消毒",
+   "en": "Analogy: disinfecting contaminated water"
+  },
+  {
+   "zh": "就像在消毒游泳池之前，如果有人倒入一桶機油，氯氣就會先和機油反應，消耗殺菌劑。等你以為池水消毒完成，其實氯早就耗光了，根本沒有殺菌效果。HEPA 油性介質對 VHP 做的就是同樣的事。",
+   "en": "It is like disinfecting a swimming pool after someone has poured in a bucket of machine oil: the chlorine reacts with the oil first and is used up. By the time you think the pool is disinfected, the chlorine is long gone and there is no disinfecting effect at all. Oil-based HEPA test media do exactly the same thing to VHP."
+  },
+  {
+   "zh": "風險評估必須涵蓋的面向",
+   "en": "Aspects the risk assessment must cover"
+  },
+  {
+   "zh": "使用的完整性測試介質是否為油性？（PAO / DOP vs. 水性替代品）",
+   "en": "Is the integrity test medium oil-based? (PAO / DOP vs. water-based alternatives)"
+  },
+  {
+   "zh": "殘留量是否可測量或可排除？",
+   "en": "Can the residual amount be measured or ruled out?"
+  },
+  {
+   "zh": "廠商提供的清除程序是否有效？",
+   "en": "Is the removal procedure provided by the supplier effective?"
+  },
+  {
+   "zh": "HEPA 測試與 VHP 確效的時間間隔是否足夠？",
+   "en": "Is the interval between HEPA testing and VHP qualification sufficient?"
+  },
+  {
+   "zh": "是否有替代方案（如使用水性完整性測試介質）可降低風險？",
+   "en": "Is there an alternative (such as a water-based integrity test medium) that would reduce the risk?"
+  },
+  {
+   "zh": "廠房實務提問",
+   "en": "Practical question for your site"
+  },
+  {
+   "zh": "你的 isolator PM 計劃中，HEPA 完整性測試與 VHP 除污確效的順序是如何安排的？是否有書面的風險評估說明為何這樣排序，以及油性介質的殘留風險已被合理排除？",
+   "en": "In your isolator PM plan, how are HEPA integrity testing and VHP decontamination qualification sequenced? Is there a written risk assessment explaining why they are ordered this way and showing that the residue risk from oil-based media has been reasonably ruled out?"
+  },
+  {
+   "zh": "<strong>Q7-9 — Should Each Load Be Qualified During the Decontamination Cycle Qualification? Q7-9 — 去污循環確效期間是否需對每次裝載進行確效？</strong>",
+   "en": "<strong>Q7-9 — Should Each Load Be Qualified During the Decontamination Cycle Qualification?</strong>"
+  },
+  {
+   "zh": "為什麼不能外推（Extrapolate）？",
+   "en": "Why can't you extrapolate?"
+  },
+  {
+   "zh": "除污循環的效能，取決於 H₂O₂ 如何在 isolator 內擴散和接觸每一個表面。當你放入不同的器具、不同數量的藥瓶或不同尺寸的包材時，氣流路徑改變、陰影位置改變、H₂O₂ 分布也改變。",
+   "en": "Decontamination cycle efficacy depends on how H₂O₂ spreads through the isolator and contacts every surface. When you load different equipment, different numbers of vials or different sizes of packaging material, the airflow paths change, the shadowed locations change, and the H₂O₂ distribution changes too."
+  },
+  {
+   "zh": "<strong>空腔確效 ≠ 帶負載確效。</strong> 兩者的 worst-case location 可能完全不同。",
+   "en": "<strong>Empty-chamber qualification ≠ loaded qualification.</strong> The worst-case locations for the two may be entirely different."
+  },
+  {
+   "zh": "比喻：洗衣機的洗滌程式",
+   "en": "Analogy: a washing machine program"
+  },
+  {
+   "zh": "你確效了洗一件白色棉質 T-shirt 的程式，不代表同樣設定能洗乾淨一件黑色羊毛毛衣加三件牛仔褲。負載的質量、密度、擺放方式都會影響水流與洗滌劑分布——除污循環對 H₂O₂ 分布的敏感性，也是同樣道理。",
+   "en": "Having qualified a program for one white cotton T-shirt does not mean the same setting will clean a black wool sweater plus three pairs of jeans. The mass, density and arrangement of the load all affect water flow and detergent distribution. The sensitivity of a decontamination cycle to H₂O₂ distribution works on the same principle."
+  },
+  {
+   "zh": "再確效策略要與原始確效一致",
+   "en": "The requalification strategy must be consistent with the original qualification"
+  },
+  {
+   "zh": "PDA 的立場非常清楚：再確效（requalification）的策略必須和原始確效保持一致。如果原始確效是針對每種負載個別驗的，那再確效也要維持同樣的框架——不能因為方便就降低標準，除非有充分的數據和風險評估支持策略的調整。",
+   "en": "PDA's position is very clear: the requalification strategy must be consistent with the original qualification. If the original qualification was performed for each load individually, requalification must keep the same framework; standards cannot be lowered for convenience unless the change in strategy is supported by sufficient data and risk assessment."
+  },
+  {
+   "zh": "你的廠房現況",
+   "en": "Your site's current situation"
+  },
+  {
+   "zh": "你的 isolator 目前有幾種不同的裝載配置（例如：10 mL 藥瓶滿載、2 mL 藥瓶半載、空腔）？每一種配置都有對應的確效記錄嗎？如果未來新增一種包材規格，是否有文件化的流程說明何時需要重新進行除污確效？",
+   "en": "How many different load configurations does your isolator currently have (for example, full load of 10 mL vials, half load of 2 mL vials, empty chamber)? Is there a qualification record for each configuration? If a new packaging material specification is added in the future, is there a documented process stating when decontamination qualification must be repeated?"
+  },
+  {
+   "zh": "Section 7b 總結 — Decontamination: BI, HEPA Filters &amp; Cycle Validation",
+   "en": "Section 7b Summary — Decontamination: BI, HEPA Filters &amp; Cycle Validation"
+  },
+  {
+   "zh": "<strong>Q7-5 開發 vs. 確效的本質差異：</strong>開發是探索與設計，允許調整；確效是以固定參數提供可重複的書面證據，需三次重複執行。6 log reduction 是無菌充填用 isolator 的業界基準。",
+   "en": "<strong>Q7-5 The essential difference between development and qualification:</strong> development is exploration and design, and adjustments are allowed; qualification provides repeatable documented evidence with fixed parameters and requires triplicate runs. 6 log reduction is the industry baseline for aseptic filling isolators."
+  },
+  {
+   "zh": "<strong>Q7-6 BI 選擇與 D 值管理：</strong><em>G. stearothermophilus</em> 是 VHP 確效的標準選擇，孢子數 ≥ 10⁶，需為單層排列。D 值必須在自己的 isolator 系統中實測，不能直接沿用供應商資料——因為 D 值高度依賴系統條件，不同設備之間無法互換。",
+   "en": "<strong>Q7-6 BI selection and D-value management:</strong> <em>G. stearothermophilus</em> is the standard choice for VHP qualification, with a spore count ≥ 10⁶ arranged as a monolayer. The D-value must be measured in your own isolator system and cannot be carried over from supplier data, because the D-value depends heavily on system conditions and is not interchangeable between different equipment."
+  },
+  {
+   "zh": "<strong>Q7-7 多個 BI 的佈點與調查：</strong>BI 佈點以風險評估為基礎，瞄準最難除污的 worst-case 位置，通常每處三個。陽性 BI 必須調查，且調查結論需明確區分是循環失效（重跑確效）還是 BI 本身問題（記錄後排除）。",
+   "en": "<strong>Q7-7 Placement and investigation of multiple BIs:</strong> BI placement is based on risk assessment and targets the hardest-to-decontaminate worst-case locations, usually three per location. A positive BI must be investigated, and the conclusion must clearly distinguish between a cycle failure (repeat the qualification) and a problem with the BI itself (record and rule out)."
+  },
+  {
+   "zh": "<strong>Q7-8 HEPA 完整性測試的時序風險：</strong>油性完整性測試介質（如 Emery 3004）殘留於 HEPA 濾材時，會消耗 VHP 中的 H₂O₂，降低除污效能。正確做法是在 VHP 確效之前進行 HEPA 測試，並確認殘留已清除或不影響循環效能。",
+   "en": "<strong>Q7-8 Timing risk of HEPA integrity testing:</strong> when oil-based integrity test media (such as Emery 3004) remain on the HEPA filter media, they consume H₂O₂ in the VHP and reduce decontamination efficacy. The correct approach is to perform HEPA testing before VHP qualification and confirm that residues have been removed or do not affect cycle efficacy."
+  },
+  {
+   "zh": "<strong>Q7-9 每種負載配置均需個別確效：</strong>不同裝載配置影響 H₂O₂ 分布，無法從一種配置外推到另一種。可選用逐一確效（最保守）、括弧策略或輪換再確效，但任何替代策略都必須有數據與風險評估支撐，且再確效方法必須與原始確效策略保持一致。",
+   "en": "<strong>Q7-9 Each load configuration must be qualified individually:</strong> different load configurations affect H₂O₂ distribution and cannot be extrapolated from one configuration to another. Options include qualifying each one individually (most conservative), bracketing, or rotational requalification, but any alternative strategy must be supported by data and risk assessment, and the requalification approach must be consistent with the original qualification strategy."
+  }
+ ]
+}

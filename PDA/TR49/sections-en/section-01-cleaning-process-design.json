@@ -1,0 +1,789 @@
+{
+ "source": "section-01-cleaning-process-design.html",
+ "blocks": [
+  {
+   "zh": "Section 1: Cleaning Process Design &amp; Development | 清潔製程設計與開發",
+   "en": "Section 1: Cleaning Process Design &amp; Development"
+  },
+  {
+   "zh": "本節涵蓋 | Contents of This Section",
+   "en": "Contents of This Section"
+  },
+  {
+   "zh": "<a href=\"#sec31\">3.1 Introduction 導論</a>\n<a href=\"#sec32\">3.2 Cleaning Process Controls 清潔管控</a>\n<a href=\"#sec33\">3.3 Measurements 量測方法</a>\n<a href=\"#sec34\">3.4 Equipment Design 設備設計</a>\n<a href=\"#sec35\">3.5 Soil Evaluation 污染物評估</a>\n<a href=\"#sec36\">3.6 Development Experiments 開發實驗</a>\n<a href=\"#sec37\">3.7 Scale-Up 放大生產</a>\n<a href=\"#sec38\">3.8 Design Space 設計空間</a>",
+   "en": "<a href=\"#sec31\">3.1 Introduction</a>\n<a href=\"#sec32\">3.2 Cleaning Process Controls</a>\n<a href=\"#sec33\">3.3 Measurements</a>\n<a href=\"#sec34\">3.4 Equipment Design</a>\n<a href=\"#sec35\">3.5 Soil Evaluation</a>\n<a href=\"#sec36\">3.6 Development Experiments</a>\n<a href=\"#sec37\">3.7 Scale-Up</a>\n<a href=\"#sec38\">3.8 Design Space</a>"
+  },
+  {
+   "zh": "Introduction | 導論",
+   "en": "Introduction"
+  },
+  {
+   "zh": "導論解析 | Section Overview",
+   "en": "Section Overview"
+  },
+  {
+   "zh": "本節核心主題",
+   "en": "Core topics of this section"
+  },
+  {
+   "zh": "Section 3.0 是 TR49 的技術核心，涵蓋生技產品清潔驗證的製程設計全流程。從初步設計、實驗室開發、設備考量，到放大生產與設計空間建立，形成完整的開發路徑。",
+   "en": "Section 3.0 is the technical core of TR49 and covers the whole process design flow for cleaning validation of biotech products. From initial design and laboratory development through equipment considerations to scale-up and establishment of the design space, it forms a complete development path."
+  },
+  {
+   "zh": "<strong>3.1</strong> — 導論：設計哲學與設計空間概念",
+   "en": "<strong>3.1</strong> — Introduction: design philosophy and the design space concept"
+  },
+  {
+   "zh": "<strong>3.2</strong> — 製程管控輸入與量測輸出（TACT）",
+   "en": "<strong>3.2</strong> — Process control inputs and measurement outputs (TACT)"
+  },
+  {
+   "zh": "<strong>3.3</strong> — 清潔有效性量測",
+   "en": "<strong>3.3</strong> — Measuring cleaning effectiveness"
+  },
+  {
+   "zh": "<strong>3.4</strong> — 設備與廠房設計考量",
+   "en": "<strong>3.4</strong> — Equipment and facility design considerations"
+  },
+  {
+   "zh": "<strong>3.5</strong> — 污染物評估與分類",
+   "en": "<strong>3.5</strong> — Soil evaluation and categorization"
+  },
+  {
+   "zh": "<strong>3.6</strong> — 開發實驗設計（DOE/FMEA）",
+   "en": "<strong>3.6</strong> — Design of development experiments (DOE/FMEA)"
+  },
+  {
+   "zh": "<strong>3.7</strong> — 放大生產與製程管控設定",
+   "en": "<strong>3.7</strong> — Scale-up and setting of process controls"
+  },
+  {
+   "zh": "<strong>3.8</strong> — 設計空間概念應用",
+   "en": "<strong>3.8</strong> — Application of the design space concept"
+  },
+  {
+   "zh": "生活比喻：廚房清洗流程",
+   "en": "Analogy: the kitchen cleaning process"
+  },
+  {
+   "zh": "就像廚房設計時就要考慮洗碗機的水流、溫度、洗碗精濃度——你不會等到裝好廚房再思考怎麼洗碗。<strong>清潔製程設計</strong>同理：在設備投入生產前，先規劃好每個清洗步驟的參數範圍，才能確保日後驗證的可重現性。",
+   "en": "When designing a kitchen, you think about the dishwasher's water flow, temperature, and detergent concentration up front; you would not wait until the kitchen is built to figure out how to wash dishes. <strong>Cleaning process design</strong> works the same way: before equipment goes into production, plan the parameter range of each cleaning step so that later validation is reproducible."
+  },
+  {
+   "zh": "關鍵監管邏輯",
+   "en": "Key regulatory logic"
+  },
+  {
+   "zh": "ICH Q8 引入「設計空間（Design Space）」概念後，PDA TR49 將其延伸至清潔驗證領域。清潔設計空間定義的是：在什麼參數組合範圍內，清潔製程能可靠地達到可接受標準。",
+   "en": "After ICH Q8 introduced the concept of \"design space\", PDA TR49 extended it to cleaning validation. A cleaning design space defines the range of parameter combinations within which the cleaning process reliably achieves the acceptance criteria."
+  },
+  {
+   "zh": "Cleaning Process Controls (Inputs) and Measurements (Outputs) | 清潔製程管控",
+   "en": "Cleaning Process Controls (Inputs) and Measurements (Outputs)"
+  },
+  {
+   "zh": "清潔製程管控解析",
+   "en": "Analysis of cleaning process controls"
+  },
+  {
+   "zh": "清潔循環步驟 — 為何順序重要？",
+   "en": "Cleaning cycle steps: why does the order matter?"
+  },
+  {
+   "zh": "生技產品的清潔循環通常包含5個步驟，每步都有其物理化學功能。蛋白質類污染物（如細胞培養液）在高溫下容易變性，黏附於表面更難清除——這就是為何<strong>預沖洗（Pre-Rinse）要在室溫下</strong>進行的原因。",
+   "en": "The cleaning cycle for a biotech product usually contains 5 steps, each with its own physicochemical function. Protein soils (such as cell culture fluid) tend to denature at high temperature and adhere to surfaces, becoming harder to remove; this is why the <strong>pre-rinse is performed at room temperature</strong>."
+  },
+  {
+   "zh": "TACT — 四大製程參數",
+   "en": "TACT: the four process parameters"
+  },
+  {
+   "zh": "清潔製程的四個關鍵輸入參數（<strong>製程參數</strong>），彼此相互關聯：",
+   "en": "The four key input parameters of a cleaning process (<strong>process parameters</strong>) are interrelated:"
+  },
+  {
+   "zh": "<strong>T — Time（時間）</strong>：直接法（計時器）或間接法（體積/流速換算）",
+   "en": "<strong>T — Time</strong>: determined directly (timer) or indirectly (converted from volume/flow rate)"
+  },
+  {
+   "zh": "<strong>A — Action（動作/機械力）</strong>：浸泡、刷洗、衝擊流（impingement）、湍流（turbulence）",
+   "en": "<strong>A — Action (mechanical force)</strong>: soaking, scrubbing, impingement, turbulence"
+  },
+  {
+   "zh": "<strong>C — Concentration（濃度）</strong>：過低→清除不足；過高→難以沖洗去除",
+   "en": "<strong>C — Concentration</strong>: too low leads to inadequate removal; too high makes the agent difficult to rinse off"
+  },
+  {
+   "zh": "<strong>T — Temperature（溫度）</strong>：預沖洗用室溫，主清洗用高溫，最終沖洗可用高溫提升溶解度",
+   "en": "<strong>T — Temperature</strong>: room temperature for the pre-rinse, elevated temperature for the main wash, and elevated temperature may be used for the final rinse to improve solubility"
+  },
+  {
+   "zh": "TACT 比喻：洗碗機的調校",
+   "en": "TACT analogy: tuning a dishwasher"
+  },
+  {
+   "zh": "家用洗碗機也遵循 TACT 原則：你可以延長洗滌時間（T）、加強水柱衝擊（A）、增加洗碗精（C）、或提高水溫（T）來改善清洗效果。但調高溫度不見得越好——太熱可能讓蛋固化在盤子上（蛋白質變性）。清潔驗證就是找到這四個參數的最佳「設計空間」。",
+   "en": "A household dishwasher also follows the TACT principle: you can lengthen the wash time (T), strengthen the water jet impact (A), add more detergent (C), or raise the water temperature (T) to improve cleaning. But a higher temperature is not always better; if it is too hot, egg can set onto the plate (protein denaturation). Cleaning validation is about finding the optimal \"design space\" for these four parameters."
+  },
+  {
+   "zh": "電導度（Conductivity）的雙重角色",
+   "en": "The dual role of conductivity"
+  },
+  {
+   "zh": "電導度在 CIP（就地清洗）系統中扮演兩個角色：",
+   "en": "Conductivity plays two roles in a CIP (clean-in-place) system:"
+  },
+  {
+   "zh": "<strong>確認清潔劑濃度</strong>：強鹼/強酸清潔劑的電導度與濃度正相關",
+   "en": "<strong>Confirming detergent concentration</strong>: the conductivity of strong alkaline/acidic cleaning agents correlates positively with concentration"
+  },
+  {
+   "zh": "<strong>最終沖洗確認</strong>：電導度達到設定值（如 WFI 水平）表示殘留物已被有效去除",
+   "en": "<strong>Final rinse confirmation</strong>: conductivity reaching a set value (such as WFI level) indicates that residues have been effectively removed"
+  },
+  {
+   "zh": "系統若設有警報：電導度超出預設範圍 → 自動觸發警報，需調查偏差。",
+   "en": "If the system has an alarm: conductivity outside the preset range automatically triggers the alarm, and a deviation investigation is required."
+  },
+  {
+   "zh": "實際應用：蛋白質生技廠的清洗策略",
+   "en": "Practical application: cleaning strategy in a protein biotech plant"
+  },
+  {
+   "zh": "在單株抗體（mAb）製造廠，收穫液（harvest）含大量細胞、蛋白質、培養基成分。清洗策略設計要點：",
+   "en": "In a monoclonal antibody (mAb) manufacturing plant, harvest material contains large amounts of cells, proteins, and culture medium components. Key points in designing the cleaning strategy:"
+  },
+  {
+   "zh": "預沖洗：室溫 WFI，避免蛋白質熱變性黏附",
+   "en": "Pre-rinse: room temperature WFI, to avoid heat denaturation of proteins that would make them adhere"
+  },
+  {
+   "zh": "鹼性清洗：0.1–0.5 M NaOH，60–80°C，循環 30–60 分鐘",
+   "en": "Alkaline wash: 0.1–0.5 M NaOH, 60–80°C, recirculated for 30–60 minutes"
+  },
+  {
+   "zh": "水沖洗：去除鹼性殘留",
+   "en": "Water rinse: removes alkaline residues"
+  },
+  {
+   "zh": "最終沖洗：WFI，電導度 ≤ 1 μS/cm",
+   "en": "Final rinse: WFI, conductivity ≤ 1 μS/cm"
+  },
+  {
+   "zh": "Measurements Used to Determine Cleaning Effectiveness | 清潔有效性量測",
+   "en": "Measurements Used to Determine Cleaning Effectiveness"
+  },
+  {
+   "zh": "量測方法解析",
+   "en": "Analysis of measurement methods"
+  },
+  {
+   "zh": "清潔有效性的四類量測目標",
+   "en": "Four measurement objectives for cleaning effectiveness"
+  },
+  {
+   "zh": "<strong>產品殘留（Product Residue）</strong>：TOC、HPLC、免疫測定（ELISA）",
+   "en": "<strong>Product residue</strong>: TOC, HPLC, immunoassay (ELISA)"
+  },
+  {
+   "zh": "<strong>清潔劑殘留（Cleaning Agent）</strong>：電導度、pH、特定化學分析",
+   "en": "<strong>Cleaning agent residue</strong>: conductivity, pH, specific chemical analysis"
+  },
+  {
+   "zh": "<strong>生物負載（Bioburden）</strong>：微生物計數",
+   "en": "<strong>Bioburden</strong>: microbial counts"
+  },
+  {
+   "zh": "<strong>內毒素（Endotoxin）</strong>：LAL 試驗",
+   "en": "<strong>Endotoxin</strong>: LAL test"
+  },
+  {
+   "zh": "在線 vs 離線量測",
+   "en": "On-line vs. off-line measurement"
+  },
+  {
+   "zh": "<strong>在線量測（On-line）</strong>：如電導度、pH、溫度——即時監控，提供即時製程確認。",
+   "en": "<strong>On-line measurement</strong>: such as conductivity, pH, and temperature; real-time monitoring that provides immediate process confirmation."
+  },
+  {
+   "zh": "<strong>離線量測（Off-line）</strong>：沖洗水樣（rinse sample）或棉棒採樣（swab sample）送實驗室分析——提供精確的殘留量數據，用於驗證批次合格判定。",
+   "en": "<strong>Off-line measurement</strong>: rinse samples or swab samples sent to the laboratory for analysis; these provide accurate residue data used to decide batch acceptance in validation."
+  },
+  {
+   "zh": "詳細分析方法見 TR49 Section 6.0。",
+   "en": "See TR49 Section 6.0 for detailed analytical methods."
+  },
+  {
+   "zh": "Equipment and Plant Design Considerations | 設備與廠房設計考量",
+   "en": "Equipment and Plant Design Considerations"
+  },
+  {
+   "zh": "設備設計考量解析",
+   "en": "Analysis of equipment design considerations"
+  },
+  {
+   "zh": "CIP vs COP 定義",
+   "en": "Definitions of CIP vs. COP"
+  },
+  {
+   "zh": "<strong>CIP（就地清洗 / Clean-In-Place）</strong>：設備不拆卸，清潔液透過管路循環沖洗。適用於大型固定設備（反應槽、管路系統）。",
+   "en": "<strong>CIP (Clean-In-Place)</strong>: equipment is not disassembled, and cleaning solution is circulated through the piping. Suitable for large fixed equipment (reactors, piping systems)."
+  },
+  {
+   "zh": "<strong>COP（移出清洗 / Clean-Out-of-Place）</strong>：小型零件拆卸後移至清洗站（洗滌機、浸泡槽）清洗。適用於小零件、過濾器外殼、接頭等。",
+   "en": "<strong>COP (Clean-Out-of-Place)</strong>: small parts are disassembled and moved to a cleaning station (washer, soak tank) for cleaning. Suitable for small parts, filter housings, fittings, and similar items."
+  },
+  {
+   "zh": "比喻：CIP vs COP",
+   "en": "Analogy: CIP vs. COP"
+  },
+  {
+   "zh": "CIP 就像使用洗碗機——鍋碗不移動，水和洗碗精在機器內部循環清洗。COP 就像把鍋子搬到外面用水管沖洗——適合不方便就地清洗的物件。兩者都需要驗證清洗效果。",
+   "en": "CIP is like using a dishwasher: the pots and bowls stay put, and water and detergent circulate inside the machine. COP is like carrying a pot outside to rinse with a hose, which suits items that are inconvenient to clean in place. Both require verification of cleaning effectiveness."
+  },
+  {
+   "zh": "Deadleg（盲管）的風險",
+   "en": "The risk of dead legs"
+  },
+  {
+   "zh": "盲管（Dead leg）是管路中液體無法充分流動的區域。在 CIP 系統中，盲管會造成：",
+   "en": "A dead leg is an area of piping where liquid cannot flow adequately. In a CIP system, dead legs can cause:"
+  },
+  {
+   "zh": "清潔液無法有效沖洗 → 殘留物堆積",
+   "en": "Cleaning solution cannot rinse effectively, so residues accumulate"
+  },
+  {
+   "zh": "微生物滋生的死角 → 生物負載風險",
+   "en": "Dead spots where microorganisms grow, creating a bioburden risk"
+  },
+  {
+   "zh": "跨批次/跨產品污染的潛在來源",
+   "en": "A potential source of cross-batch and cross-product contamination"
+  },
+  {
+   "zh": "設計準則：管路設計應確保雙向流動，且坡度設計要使液體可完全排出。",
+   "en": "Design criterion: piping should be designed for flow in both directions, with a slope that allows the liquid to drain completely."
+  },
+  {
+   "zh": "集中式 vs 獨立 CIP：多產品廠房的考量",
+   "en": "Centralized vs. discrete CIP: considerations for multiproduct plants"
+  },
+  {
+   "zh": "多產品生技廠中，集中式 CIP 系統面臨的核心挑戰是<strong>產品交叉污染</strong>風險。常見解決方案：",
+   "en": "In a multiproduct biotech plant, the core challenge of a centralized CIP system is the risk of <strong>product cross-contamination</strong>. Common solutions:"
+  },
+  {
+   "zh": "將集中式 CIP 的服務範圍限定在廠房特定區域（上游 or 下游）",
+   "en": "Limit the service scope of the centralized CIP to specific areas of the plant (upstream or downstream)"
+  },
+  {
+   "zh": "病毒去除步驟（如 UF/DF、病毒過濾）前後分別設置獨立 CIP",
+   "en": "Install separate CIP systems before and after the virus removal steps (such as UF/DF and virus filtration)"
+  },
+  {
+   "zh": "層析管柱使用專用清潔方案（通常包含 NaOH + 再生步驟）",
+   "en": "Use a dedicated cleaning regimen for chromatography columns (usually NaOH plus a regeneration step)"
+  },
+  {
+   "zh": "COP 清洗後的管理重點",
+   "en": "Management points after COP cleaning"
+  },
+  {
+   "zh": "COP 零件清洗後必須注意：",
+   "en": "After COP cleaning of parts, attention must be paid to:"
+  },
+  {
+   "zh": "清洗後的搬運程序（避免再次污染）",
+   "en": "Handling procedures after cleaning (to avoid recontamination)"
+  },
+  {
+   "zh": "零件識別標記（確保回裝至正確位置）",
+   "en": "Part identification marking (to ensure reassembly in the correct position)"
+  },
+  {
+   "zh": "無菌處理（若為無菌製造區域的零件）",
+   "en": "Aseptic handling (for parts used in aseptic manufacturing areas)"
+  },
+  {
+   "zh": "Soil Evaluation and Categorization | 污染物評估與分類",
+   "en": "Soil Evaluation and Categorization"
+  },
+  {
+   "zh": "污染物評估解析",
+   "en": "Analysis of soil evaluation"
+  },
+  {
+   "zh": "污染物（Soil）的定義範疇",
+   "en": "Scope of the definition of soil"
+  },
+  {
+   "zh": "在生技製藥清潔驗證中，「<strong>污染物/殘留物（Soil）</strong>」不僅限於產品本身，而是涵蓋所有接觸製程設備表面的物質：",
+   "en": "In biotech cleaning validation, \"<strong>soil/residue</strong>\" is not limited to the product itself but covers all substances that contact process equipment surfaces:"
+  },
+  {
+   "zh": "發酵/細胞培養基（有/無細胞）",
+   "en": "Fermentation/cell culture media (with or without cells)"
+  },
+  {
+   "zh": "蛋白質、核酸等細胞產物",
+   "en": "Cell products such as proteins and nucleic acids"
+  },
+  {
+   "zh": "製程添加劑（抗生素、表面活性劑、醣類）",
+   "en": "Process additives (antibiotics, surfactants, sugars)"
+  },
+  {
+   "zh": "緩衝液鹽類",
+   "en": "Buffer salts"
+  },
+  {
+   "zh": "清潔劑本身（作為下一批次的潛在殘留）",
+   "en": "The cleaning agent itself (as a potential residue for the next batch)"
+  },
+  {
+   "zh": "代表性污染物（Representative Soil）的策略意義",
+   "en": "Strategic significance of representative soil"
+  },
+  {
+   "zh": "生技廠的污染物種類繁多，全部個別驗證不現實。TR49 的策略是：",
+   "en": "A biotech plant has many types of soil, and validating each one individually is not realistic. TR49's strategy is to:"
+  },
+  {
+   "zh": "將污染物分類（如表 3.5.1）",
+   "en": "Categorize the soils (as in Table 3.5.1)"
+  },
+  {
+   "zh": "每類選出<strong>最難清洗的代表性污染物</strong>",
+   "en": "Select the <strong>most difficult-to-clean representative soil</strong> in each category"
+  },
+  {
+   "zh": "用代表性污染物設計實驗，覆蓋整個類別",
+   "en": "Design experiments with the representative soil to cover the whole category"
+  },
+  {
+   "zh": "這種<strong>worst-case bracketing 策略</strong>大幅減少驗證實驗數量。",
+   "en": "This <strong>worst-case bracketing strategy</strong> greatly reduces the number of validation experiments."
+  },
+  {
+   "zh": "化學清洗機制 — 七種主要方式",
+   "en": "Chemical cleaning mechanisms: seven main modes"
+  },
+  {
+   "zh": "<strong>溶解（Solubility）</strong>：溶解污染物",
+   "en": "<strong>Solubility</strong>: dissolves the soil"
+  },
+  {
+   "zh": "<strong>乳化（Emulsification）</strong>：分散油性污染物",
+   "en": "<strong>Emulsification</strong>: disperses oily soils"
+  },
+  {
+   "zh": "<strong>潤濕（Wetting）</strong>：降低表面張力，提升液體滲透",
+   "en": "<strong>Wetting</strong>: lowers surface tension and improves liquid penetration"
+  },
+  {
+   "zh": "<strong>螯合（Chelation）</strong>：捕捉金屬離子（如鈣、鎂）",
+   "en": "<strong>Chelation</strong>: captures metal ions (such as calcium and magnesium)"
+  },
+  {
+   "zh": "<strong>分散（Dispersion）</strong>：防止污染物重新沉積",
+   "en": "<strong>Dispersion</strong>: prevents soil from redepositing"
+  },
+  {
+   "zh": "<strong>水解（Hydrolysis）</strong>：分解蛋白質、油脂鍵結",
+   "en": "<strong>Hydrolysis</strong>: breaks down protein and lipid bonds"
+  },
+  {
+   "zh": "<strong>氧化（Oxidation）</strong>：次氯酸鈉氧化分解蛋白質",
+   "en": "<strong>Oxidation</strong>: sodium hypochlorite oxidatively breaks down proteins"
+  },
+  {
+   "zh": "表面粗糙度 vs 清洗難度",
+   "en": "Surface roughness vs. cleaning difficulty"
+  },
+  {
+   "zh": "想像砧板（木製 vs 不鏽鋼）——木製砧板的細縫讓細菌和污垢難以清除；不鏽鋼砧板光滑易洗。同理，生技設備不鏽鋼表面需進行<strong>電拋光（Electropolishing）</strong>，將表面 Ra 值降低，使污染物難以附著，清洗劑能有效接觸每個表面點位。",
+   "en": "Think of cutting boards (wood vs. stainless steel): the crevices of a wooden board make it hard to remove bacteria and dirt, while a stainless steel board is smooth and easy to wash. Likewise, stainless steel surfaces of biotech equipment need <strong>electropolishing</strong> to lower the surface Ra value, so that soil is less able to adhere and the cleaning agent can contact every point on the surface effectively."
+  },
+  {
+   "zh": "髒持時間（Dirty Hold Time）的設計含義",
+   "en": "Design implications of dirty hold time"
+  },
+  {
+   "zh": "<strong>髒持時間</strong>是指設備使用後到開始清洗前的等待時間。時間越長，污染物越乾燥、越難清除。實驗室 coupon 實驗必須模擬最長預期髒持時間（worst-case），以確保驗證具代表性。",
+   "en": "<strong>Dirty hold time</strong> is the waiting time from the end of equipment use until cleaning begins. The longer it is, the drier and harder to remove the soil becomes. Laboratory coupon studies must simulate the longest expected dirty hold time (worst case) to ensure the validation is representative."
+  },
+  {
+   "zh": "設計清洗研究時，coupon 上的污染物乾燥時間應 ≥ 生產中最長允許的髒持時間。",
+   "en": "When designing cleaning studies, the drying time of soil on the coupon should be ≥ the longest dirty hold time allowed in production."
+  },
+  {
+   "zh": "Coupon 實驗 — 生技廠的標準作法",
+   "en": "Coupon studies: standard practice in biotech plants"
+  },
+  {
+   "zh": "污染物矩陣（Soil-Surface Matrix）篩選實驗：",
+   "en": "Soil-surface matrix screening experiments:"
+  },
+  {
+   "zh": "取各類接觸材質製成的<strong>試片（Coupon）</strong>（不鏽鋼、矽膠等）",
+   "en": "Prepare <strong>coupons</strong> from each type of product-contact material (stainless steel, silicone, etc.)"
+  },
+  {
+   "zh": "塗布代表性污染物溶液，乾燥至模擬生產條件",
+   "en": "Apply the representative soil solution and dry it to simulate production conditions"
+  },
+  {
+   "zh": "在實驗室模擬 CIP 條件（TACT）進行清洗",
+   "en": "Clean under laboratory-simulated CIP conditions (TACT)"
+  },
+  {
+   "zh": "量測殘留量，確認清洗方案有效性",
+   "en": "Measure the residue to confirm the effectiveness of the cleaning regimen"
+  },
+  {
+   "zh": "結果建立「污染物-表面組合」清洗能力矩陣，為製程規模清洗方案選擇提供依據。",
+   "en": "The results build a cleanability matrix of \"soil-surface combinations\", which provides the basis for selecting the cleaning regimen at process scale."
+  },
+  {
+   "zh": "Performing Cleaning Development Experiments | 清潔開發實驗",
+   "en": "Performing Cleaning Development Experiments"
+  },
+  {
+   "zh": "開發實驗設計解析",
+   "en": "Analysis of development experiment design"
+  },
+  {
+   "zh": "Coupon 實驗的標準流程",
+   "en": "Standard coupon study procedure"
+  },
+  {
+   "zh": "清潔開發實驗使用<strong>試片（Coupon）</strong>模擬生產設備表面，在實驗室規模評估清潔方案：",
+   "en": "Cleaning development experiments use <strong>coupons</strong> to simulate production equipment surfaces and evaluate cleaning regimens at laboratory scale:"
+  },
+  {
+   "zh": "試片預清洗（去除製造殘留）",
+   "en": "Pre-clean the coupons (to remove manufacturing residues)"
+  },
+  {
+   "zh": "塗布代表性污染物（均勻、定量）",
+   "en": "Apply the representative soil (uniformly and in a defined amount)"
+  },
+  {
+   "zh": "按預定髒持時間乾燥",
+   "en": "Dry for the predetermined dirty hold time"
+  },
+  {
+   "zh": "在模擬 TACT 條件下清洗",
+   "en": "Clean under simulated TACT conditions"
+  },
+  {
+   "zh": "分析殘留量（TOC、HPLC 等）",
+   "en": "Analyze the residue (TOC, HPLC, etc.)"
+  },
+  {
+   "zh": "<strong>一致性是關鍵</strong>：每個試片的污染物塗布量須一致，以確保實驗可比較性。",
+   "en": "<strong>Consistency is key</strong>: the amount of soil applied to each coupon must be the same, so that experiments are comparable."
+  },
+  {
+   "zh": "為何選用非電拋光不鏽鋼試片？",
+   "en": "Why use non-electropolished stainless steel coupons?"
+  },
+  {
+   "zh": "實驗室評估傾向使用<strong>未電拋光（Non-electropolished）</strong>的不鏽鋼試片，理由是：",
+   "en": "Laboratory evaluations tend to use <strong>non-electropolished</strong> stainless steel coupons, for these reasons:"
+  },
+  {
+   "zh": "表面更粗糙 → 污染物更難清除 → Worst-case 條件",
+   "en": "The surface is rougher, so soil is harder to remove, which gives a worst-case condition"
+  },
+  {
+   "zh": "若粗糙表面能通過清洗測試，光滑的生產設備表面必然也能通過",
+   "en": "If a rough surface passes the cleaning test, the smooth surface of production equipment will certainly pass as well"
+  },
+  {
+   "zh": "這是 worst-case 設計邏輯的實際應用。",
+   "en": "This is a practical application of worst-case design logic."
+  },
+  {
+   "zh": "參數選擇的策略路徑",
+   "en": "Strategic path for parameter selection"
+  },
+  {
+   "zh": "TR49 建議的兩步驟參數研究策略：",
+   "en": "The two-step parameter study strategy recommended by TR49:"
+  },
+  {
+   "zh": "<strong>Step 1 — FMEA 優先排序</strong>：用失效模式分析找出最關鍵的風險參數",
+   "en": "<strong>Step 1 — FMEA prioritization</strong>: use failure mode analysis to identify the most critical risk parameters"
+  },
+  {
+   "zh": "<strong>Step 2a — 單參數研究（OFAT）</strong>：一次變動一個參數，識別主效應",
+   "en": "<strong>Step 2a — One-factor-at-a-time (OFAT) studies</strong>: vary one parameter at a time to identify main effects"
+  },
+  {
+   "zh": "<strong>Step 2b — DOE（實驗設計）</strong>：系統性研究多個參數及其交互作用",
+   "en": "<strong>Step 2b — DOE (design of experiments)</strong>: systematically study multiple parameters and their interactions"
+  },
+  {
+   "zh": "研究顯示：清潔液<strong>濃度和溫度</strong>通常是影響最大的兩個參數。",
+   "en": "Studies show that cleaning solution <strong>concentration and temperature</strong> are usually the two most influential parameters."
+  },
+  {
+   "zh": "DOE 比喻：烘焙配方優化",
+   "en": "DOE analogy: optimizing a baking recipe"
+  },
+  {
+   "zh": "烤蛋糕時，你想知道麵粉量、雞蛋數和烤箱溫度如何影響口感。如果一次只改一個（OFAT），可能需要做 100 次。但用 DOE 設計，只需做 8–16 次，就能同時了解各因素的主效應和交互作用——多一顆雞蛋在高溫下的效果，和低溫下的效果可能完全不同。清潔 DOE 的道理相同：濃度和溫度的交互作用可能遠比單獨效應更關鍵。",
+   "en": "When baking a cake, you want to know how the amount of flour, the number of eggs, and the oven temperature affect the texture. If you change only one at a time (OFAT), you might need 100 runs. With a DOE design, only 8–16 runs are needed to understand both the main effect of each factor and their interactions: the effect of one more egg at high temperature may be completely different from its effect at low temperature. The same is true for cleaning DOE: the interaction between concentration and temperature may be far more critical than their individual effects."
+  },
+  {
+   "zh": "製程轉移中的清潔知識槓桿",
+   "en": "Leveraging cleaning knowledge in process transfer"
+  },
+  {
+   "zh": "當製程從一個廠房轉移至另一個廠房時，若已有完整的清潔設計空間數據：",
+   "en": "When a process is transferred from one facility to another, if complete cleaning design space data are available:"
+  },
+  {
+   "zh": "可利用現有知識評估新廠設備的清洗能力",
+   "en": "Existing knowledge can be used to evaluate the cleaning capability of equipment in the new facility"
+  },
+  {
+   "zh": "若新廠設備設計相似，清潔實驗可大幅縮減",
+   "en": "If the new facility's equipment design is similar, cleaning experiments can be greatly reduced"
+  },
+  {
+   "zh": "僅需確認性（confirmatory）實驗，而非完整重新開發",
+   "en": "Only confirmatory experiments are needed, rather than complete redevelopment"
+  },
+  {
+   "zh": "這正是 ICH Q10「製藥質量體系」中知識管理的具體應用。",
+   "en": "This is a concrete application of knowledge management in the ICH Q10 pharmaceutical quality system."
+  },
+  {
+   "zh": "Cleaning Process Scale-Up | 清潔製程放大生產",
+   "en": "Cleaning Process Scale-Up"
+  },
+  {
+   "zh": "放大生產解析",
+   "en": "Analysis of scale-up"
+  },
+  {
+   "zh": "從實驗室到生產規模的關鍵挑戰",
+   "en": "Key challenges from laboratory to production scale"
+  },
+  {
+   "zh": "實驗室 coupon 實驗成功不等於生產規模清洗有效。放大生產的挑戰在於：",
+   "en": "A successful laboratory coupon study does not guarantee effective cleaning at production scale. The challenges of scale-up are:"
+  },
+  {
+   "zh": "<strong>流體動力學差異</strong>：實驗室的靜態浸泡 vs 生產規模的 CIP 湍流",
+   "en": "<strong>Differences in fluid dynamics</strong>: static soaking in the laboratory vs. turbulent CIP flow at production scale"
+  },
+  {
+   "zh": "<strong>設備幾何形狀</strong>：大型反應槽的死角、焊縫、噴嘴覆蓋範圍",
+   "en": "<strong>Equipment geometry</strong>: dead spots, weld seams, and spray device coverage in large vessels"
+  },
+  {
+   "zh": "<strong>溫度均勻性</strong>：大型設備的溫度梯度可能影響清洗效果",
+   "en": "<strong>Temperature uniformity</strong>: temperature gradients in large equipment may affect cleaning performance"
+  },
+  {
+   "zh": "<strong>清潔液體積</strong>：高污染負載可能耗盡清潔劑活性成分",
+   "en": "<strong>Cleaning solution volume</strong>: a high soil load may exhaust the active components of the cleaning agent"
+  },
+  {
+   "zh": "製程操作參數 vs 性能參數的區別",
+   "en": "Operating parameters vs. performance parameters"
+  },
+  {
+   "zh": "<strong>操作參數（Inputs）</strong>：清洗前設定、控制的參數",
+   "en": "<strong>Operating parameters (inputs)</strong>: parameters set and controlled before cleaning"
+  },
+  {
+   "zh": "髒持時間、流速/壓力、清潔劑濃度、步驟時間、溫度、乾燥氣流",
+   "en": "Dirty hold time, flow rate/pressure, cleaning agent concentration, step time, temperature, drying air flow"
+  },
+  {
+   "zh": "<strong>性能參數（Outputs）</strong>：清洗完成後量測，驗證效果",
+   "en": "<strong>Performance parameters (outputs)</strong>: measured after cleaning is complete to verify the result"
+  },
+  {
+   "zh": "最終沖洗水電導度、TOC、生物負載、內毒素",
+   "en": "Final rinse water conductivity, TOC, bioburden, endotoxin"
+  },
+  {
+   "zh": "兩類參數都必須納入放大生產的評估，且都要設定警戒限（Alert）和行動限（Action）。",
+   "en": "Both types of parameters must be included in the scale-up evaluation, and both need alert and action limits."
+  },
+  {
+   "zh": "警戒限 vs 行動限 — 操作邏輯",
+   "en": "Alert limits vs. action limits: operating logic"
+  },
+  {
+   "zh": "<strong>警戒限（Alert Level）</strong>：基於製程正常變異設定。超出警戒限需要調查，但製程可繼續。",
+   "en": "<strong>Alert level</strong>: set based on normal process variation. Exceeding it requires investigation, but the process may continue."
+  },
+  {
+   "zh": "<strong>行動限（Action Level）</strong>：超出需立即採取行動，否則將危及操作可接受性。",
+   "en": "<strong>Action level</strong>: exceeding it requires immediate action, otherwise the acceptability of the operation is jeopardized."
+  },
+  {
+   "zh": "兩者均須<strong>落在驗證確認的可接受範圍內</strong>。",
+   "en": "Both must <strong>fall within the acceptable range confirmed by validation</strong>."
+  },
+  {
+   "zh": "新污染物引入的決策樹",
+   "en": "Decision tree for introducing a new soil"
+  },
+  {
+   "zh": "當工廠引入新產品或新原料時，清潔系統的評估策略：",
+   "en": "When a plant introduces a new product or new raw material, the strategy for evaluating the cleaning system is:"
+  },
+  {
+   "zh": "新污染物引入",
+   "en": "Introduction of a new soil"
+  },
+  {
+   "zh": "與現有最難清洗污染物比較",
+   "en": "Compare with the existing most difficult-to-clean soil"
+  },
+  {
+   "zh": "更易清洗 → 風險評估決定確認批次數",
+   "en": "Easier to clean: risk assessment determines the number of confirmation batches"
+  },
+  {
+   "zh": "若新污染物比現有最難的污染物<strong>更難清洗</strong>→ 需修改清洗程序 + 重新驗證",
+   "en": "If the new soil is <strong>harder to clean</strong> than the existing most difficult soil: the cleaning procedure must be modified and revalidated"
+  },
+  {
+   "zh": "若新污染物<strong>更易清洗</strong>→ 基於風險評估決定是否需要確認性清洗運行",
+   "en": "If the new soil is <strong>easier to clean</strong>: a risk assessment determines whether confirmatory cleaning runs are needed"
+  },
+  {
+   "zh": "Applying the \"Design Space\" Concept to Cleaning Processes | 清潔設計空間",
+   "en": "Applying the \"Design Space\" Concept to Cleaning Processes"
+  },
+  {
+   "zh": "設計空間概念解析",
+   "en": "Analysis of the design space concept"
+  },
+  {
+   "zh": "設計空間（Design Space）核心定義",
+   "en": "Core definition of design space"
+  },
+  {
+   "zh": "ICH Q8(R2) 定義：<strong>設計空間</strong>是已被證明能保證品質的輸入變數和製程參數的多維度組合與交互作用。",
+   "en": "ICH Q8(R2) definition: <strong>design space</strong> is the multidimensional combination and interaction of input variables and process parameters that have been demonstrated to provide assurance of quality."
+  },
+  {
+   "zh": "清潔製程設計空間 = 在哪些操作參數範圍組合內，清潔製程能<strong>可靠且一致</strong>地達到可接受的清洗效果。",
+   "en": "Cleaning process design space = the combinations of operating parameter ranges within which the cleaning process achieves acceptable cleaning results <strong>reliably and consistently</strong>."
+  },
+  {
+   "zh": "設計空間比喻：安全行駛包絡線",
+   "en": "Design space analogy: the safe driving envelope"
+  },
+  {
+   "zh": "設計空間就像汽車安全行駛的「包絡線」——在時速 0–120 km/h、轉彎半徑 &gt;10 m、路面摩擦係數 &gt;0.4 的範圍內，汽車可以安全行駛。任何在這個「空間」內的操作組合都是安全的。清潔設計空間同理：在規定的最低流速、最低溫度、最低濃度、最長髒持時間範圍內操作，清潔製程就是有效可靠的。",
+   "en": "A design space is like the \"envelope\" for safe driving of a car: within a speed of 0–120 km/h, a turning radius &gt;10 m, and a road friction coefficient &gt;0.4, the car can be driven safely. Any combination of operation inside this \"space\" is safe. A cleaning design space works the same way: if you operate within the specified minimum flow rate, minimum temperature, minimum concentration, and maximum dirty hold time, the cleaning process is effective and reliable."
+  },
+  {
+   "zh": "清潔設計空間 vs 製藥製程設計空間",
+   "en": "Cleaning design space vs. pharmaceutical process design space"
+  },
+  {
+   "zh": "關鍵差異：製藥製程設計空間通常是<strong>產品特定的</strong>（每個發酵製程都不同），但清潔設計空間可以是<strong>設備列車特定的</strong>——同一套清洗方案覆蓋多個不同產品，只需以「最難清洗的污染物」來定義設計空間邊界。",
+   "en": "Key difference: a pharmaceutical process design space is usually <strong>product-specific</strong> (every fermentation process is different), but a cleaning design space can be <strong>equipment-train-specific</strong>: the same cleaning regimen covers multiple different products, and the design space boundary only needs to be defined by the \"most difficult-to-clean soil\"."
+  },
+  {
+   "zh": "這對多產品生技廠特別有價值：一次驗證，覆蓋所有產品（只要新產品的污染物不超出設計空間）。",
+   "en": "This is especially valuable for multiproduct biotech plants: one validation covers all products (as long as the soil of a new product does not fall outside the design space)."
+  },
+  {
+   "zh": "參數關鍵性分類（Criticality Classification）",
+   "en": "Criticality classification of parameters"
+  },
+  {
+   "zh": "基於實驗室研究，每個操作參數依其對清潔效果的影響程度分類：",
+   "en": "Based on laboratory studies, each operating parameter is classified by the degree of its impact on cleaning effectiveness:"
+  },
+  {
+   "zh": "<strong>關鍵參數（Critical）</strong>：對清潔效果影響顯著，必須嚴格監控。偏差 → 需重新清洗。",
+   "en": "<strong>Critical parameters</strong>: significant impact on cleaning effectiveness and must be strictly monitored. A deviation requires recleaning."
+  },
+  {
+   "zh": "<strong>非關鍵參數（Non-critical）</strong>：影響較小，仍需監控但偏差容許度較高。",
+   "en": "<strong>Non-critical parameters</strong>: smaller impact; still monitored, but with a higher tolerance for deviation."
+  },
+  {
+   "zh": "收穫液（Harvest material）通常用作最差情況污染物，因其含有最複雜、最高濃度的生物製程殘留。",
+   "en": "Harvest material is usually used as the worst-case soil because it contains the most complex and highest-concentration bioprocess residues."
+  },
+  {
+   "zh": "操作範圍 vs 設計空間的緩衝策略",
+   "en": "Buffer strategy: operating range vs. design space"
+  },
+  {
+   "zh": "TR49 建議：將日常<strong>操作範圍（Operating Range）設定得比設計空間更窄</strong>，以建立緩衝區。",
+   "en": "TR49 recommends setting the routine <strong>operating range narrower than the design space</strong> to create a buffer zone."
+  },
+  {
+   "zh": "例如：設計空間允許溫度 60–80°C，但日常操作設定在 65–75°C → 若某批次溫度偏低至 63°C（超出操作範圍），仍在設計空間內，可能不需要重新清洗，但需要偏差調查。",
+   "en": "For example: the design space allows a temperature of 60–80°C, but routine operation is set at 65–75°C. If a batch runs low at 63°C (outside the operating range), it is still within the design space and may not require recleaning, but a deviation investigation is needed."
+  },
+  {
+   "zh": "練習思考題 | Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "<strong>Q1.</strong> 在設計 CIP 系統時，為什麼預沖洗步驟要在室溫下進行，而不是使用高溫水？請從蛋白質化學的角度解釋。",
+   "en": "<strong>Q1.</strong> When designing a CIP system, why should the pre-rinse step be performed at room temperature rather than with hot water? Explain from the perspective of protein chemistry."
+  },
+  {
+   "zh": "<strong>Q2.</strong> 一家多產品生技廠正在引入新的抗體藥物（mAb-B），其製程中使用的培養基比現有產品（mAb-A）濃度高出 30%。請描述您會如何評估現有清潔系統對 mAb-B 的適用性，以及需要哪些額外驗證步驟。",
+   "en": "<strong>Q2.</strong> A multiproduct biotech plant is introducing a new antibody drug (mAb-B), whose process uses a culture medium with a concentration 30% higher than that of the existing product (mAb-A). Describe how you would evaluate the suitability of the existing cleaning system for mAb-B, and what additional validation steps are needed."
+  },
+  {
+   "zh": "<strong>Q3.</strong> 解釋清潔製程「設計空間」與「操作範圍」的差異，並說明為什麼將操作範圍設定得比設計空間更窄具有實際監管意義。",
+   "en": "<strong>Q3.</strong> Explain the difference between the \"design space\" and the \"operating range\" of a cleaning process, and explain why setting the operating range narrower than the design space has practical regulatory significance."
+  },
+  {
+   "zh": "<strong>Q4.</strong> 在清潔開發實驗中，為什麼要選用非電拋光的不鏽鋼試片，而非使用與生產設備相同表面規格的試片？這種選擇如何體現 worst-case 設計原則？",
+   "en": "<strong>Q4.</strong> In cleaning development experiments, why use non-electropolished stainless steel coupons rather than coupons with the same surface specification as the production equipment? How does this choice reflect the worst-case design principle?"
+  },
+  {
+   "zh": "<strong>Q5.</strong> 集中式 CIP 與獨立（Discrete）CIP 在多產品哺乳動物細胞療法廠中的應用有何利弊？特別是在病毒去除步驟前後的隔離考量上，您的建議是什麼？",
+   "en": "<strong>Q5.</strong> What are the advantages and disadvantages of centralized CIP vs. discrete CIP in a multiproduct mammalian cell therapy plant? In particular, what do you recommend regarding segregation before and after the virus removal steps?"
+  },
+  {
+   "zh": "監管背景 | Regulatory Context",
+   "en": "Regulatory Context"
+  },
+  {
+   "zh": "TR49 Section 3.0 的設計空間方法與以下監管框架高度一致：",
+   "en": "The design space approach in TR49 Section 3.0 is highly consistent with the following regulatory frameworks:"
+  },
+  {
+   "zh": "<strong>ICH Q8(R2) — 製藥開發</strong>：設計空間概念的原始來源，TR49 將其延伸至清潔驗證",
+   "en": "<strong>ICH Q8(R2) — Pharmaceutical Development</strong>: the original source of the design space concept, which TR49 extends to cleaning validation"
+  },
+  {
+   "zh": "<strong>ICH Q9 — 品質風險管理</strong>：FMEA 用於清潔參數關鍵性評估",
+   "en": "<strong>ICH Q9 — Quality Risk Management</strong>: FMEA is used to assess the criticality of cleaning parameters"
+  },
+  {
+   "zh": "<strong>ICH Q10 — 製藥質量體系</strong>：清潔知識管理、製程轉移中的知識槓桿",
+   "en": "<strong>ICH Q10 — Pharmaceutical Quality System</strong>: cleaning knowledge management and leveraging knowledge in process transfer"
+  },
+  {
+   "zh": "<strong>FDA 2002 清潔驗證指南草案</strong>：支持 worst-case 策略和代表性污染物選擇",
+   "en": "<strong>FDA 2002 draft cleaning validation guidance</strong>: supports the worst-case strategy and selection of representative soils"
+  },
+  {
+   "zh": "<strong>EMA 多產品廠房清潔驗證指南</strong>：多產品設施中 bracketing 策略的監管期望",
+   "en": "<strong>EMA guideline on cleaning validation in multiproduct facilities</strong>: regulatory expectations for bracketing strategies in multiproduct facilities"
+  }
+ ]
+}

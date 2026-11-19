@@ -1,0 +1,485 @@
+{
+ "source": "section-10d-appendix2-precision.html",
+ "blocks": [
+  {
+   "zh": "精密度統計附錄",
+   "en": "Precision: Statistical Appendix"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Repeatability（重複性）與 Intermediate Precision（中間精密度）的定義差異，以及兩者如何分別對應「同一 run 內」與「run 與 run 之間」的變異",
+   "en": "Understand the difference between the definitions of repeatability and intermediate precision, and how they correspond respectively to the variation \"within a run\" and \"between runs\""
+  },
+  {
+   "zh": "掌握以 ANOVA（Analysis of Variance）拆解 MS_W（run 內均方）與 MS_B（run 間均方），並手算出 σ²_W、σ²_B 進而換算成 RSD(%) 的完整流程，包含計數尺度與對數計數尺度兩種算法",
+   "en": "Master the full procedure of using ANOVA (analysis of variance) to separate MS_W (within-run mean square) and MS_B (between-run mean square), calculating σ²_W and σ²_B by hand and converting them to RSD (%), including both the counts scale and the log-counts scale"
+  },
+  {
+   "zh": "理解 Poisson 分布假設下 Generalized Linear Mixed Effects Model（GLMM）的精密度估計方式，以及為何 GLMM 得出的 Repeatability 會與 ANOVA 結果略有差異",
+   "en": "Understand how precision is estimated with a generalized linear mixed effects model (GLMM) under the Poisson distribution assumption, and why the repeatability from the GLMM differs slightly from the ANOVA result"
+  },
+  {
+   "zh": "能夠依據 Table 10.4.3-2 的樣本數需求，判斷 AMM/RMM 與傳統培養法（CMM, Conventional Microbiological Method）精密度比較時應採用「品質比較」而非「傳統假設檢定」的策略考量",
+   "en": "Be able to use the sample size requirements of Table 10.4.3-2 to judge why, when comparing the precision of an AMM/RMM with the conventional microbiological method (CMM), a \"qualitative comparison\" strategy rather than \"traditional hypothesis testing\" should be considered"
+  },
+  {
+   "zh": "掌握 Non-Inferiority Margin（不劣性界限）在精密度比值（ratio of precisions）與變異數比值（ratio of variances）之間換算時的陷阱，避免誤用 0.7/1.3 與其平方值",
+   "en": "Master the pitfalls of converting the non-inferiority margin between the ratio of precisions and the ratio of variances, to avoid misusing 0.7/1.3 and their squares"
+  },
+  {
+   "zh": "<strong>10.4 Precision 精密度</strong>",
+   "en": "<strong>10.4 Precision</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Repeatability（重複性）：</strong>同一分析人員、同一天、同一儀器下重複測量的變異，只反映「run 內」（within-run）雜訊，是方法本身「手夠不夠穩」的量尺。",
+   "en": "<strong>Repeatability:</strong> The variation of repeated measurements by the same analyst, on the same day, with the same instrument. It reflects only the \"within-run\" noise and is the yardstick of how \"steady the hands\" of the method itself are."
+  },
+  {
+   "zh": "<strong>Intermediate Precision（中間精密度）：</strong>不同分析人員、不同天所產生的總變異，等於「run 內 + run 間」變異的總和，反映方法在「日常變動條件」下能否維持一致結果——這才是實驗室日常放行時真正會遇到的變異來源。",
+   "en": "<strong>Intermediate precision:</strong> The total variation produced by different analysts and different days, equal to the sum of the \"within-run + between-run\" variation. It reflects whether the method can give consistent results under \"day-to-day varying conditions\", which is the source of variation a laboratory actually meets in routine release testing."
+  },
+  {
+   "zh": "<strong>ANOVA（變異數分析）：</strong>不需假設分布即可把總變異拆解成 MS_W（run 內均方）與 MS_B（run 間均方）兩塊，是精密度驗證的標準統計工具。",
+   "en": "<strong>ANOVA (analysis of variance):</strong> Without assuming a distribution, it separates the total variation into MS_W (within-run mean square) and MS_B (between-run mean square), and is the standard statistical tool for precision validation."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把精密度驗證想像成評估一家連鎖手搖飲店的「甜度一致性」：Repeatability 就像同一位店員、同一台機器，連續搖十杯飲料的甜度差異；Intermediate Precision 則是把「不同分店、不同店員、不同天」都算進去的總差異。若只看單一店員的表現（Repeatability）很穩，但换店員、換分店後差異暴增，代表你需要更嚴謹的 SOP 或設備校正，而不是只信任單一店員的手感。",
+   "en": "Think of precision validation as assessing the \"sweetness consistency\" of a chain of bubble tea shops. Repeatability is the difference in sweetness when the same staff member, using the same machine, shakes ten drinks in a row. Intermediate precision is the total difference once \"different branches, different staff and different days\" are all counted. If a single staff member performs very consistently (repeatability) but the differences surge when you change staff or branch, you need a tighter SOP or equipment calibration rather than trusting one staff member's feel."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "Poisson 分布有一個關鍵限制：其 RSD 固定為 <strong>100%/√λ</strong>，也就是說平均菌落數（λ）越低，RSD 天生就會越大——在 100 CFU 以下，RSD 永遠不會小於 10%。這代表如果驗證數據在低濃度區間出現「異常漂亮」的低 RSD（遠低於 10%），品保人員反而應該懷疑數據是否真的符合 Poisson 假設，而非直接視為方法優異的證據。這是 Figure 10.4-1 給出的重要警訊曲線。",
+   "en": "The Poisson distribution has a key limitation: its RSD is fixed at <strong>100%/√λ</strong>, that is, the lower the mean colony count (λ), the larger the RSD inherently is. Below 100 CFU, the RSD can never be smaller than 10%. This means that if validation data show an \"unusually good\" low RSD (far below 10%) in the low concentration range, QA staff should suspect that the data do not really fit the Poisson assumption rather than treating it as evidence of an excellent method. This is the important warning curve given by Figure 10.4-1."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>Poisson 分布的相對標準差（RSD）：</strong>",
+   "en": "<strong>Relative standard deviation (RSD) of the Poisson distribution:</strong>"
+  },
+  {
+   "zh": "變數定義：",
+   "en": "Definition of variables:"
+  },
+  {
+   "zh": "<strong>λ</strong> = Poisson 分布之平均值（同時也是其變異數），對應平均菌落數（mean CFU）",
+   "en": "<strong>λ</strong> = mean of the Poisson distribution (which is also its variance), corresponding to the mean colony count (mean CFU)"
+  },
+  {
+   "zh": "此關係僅在「相同濃度下的重複計數」情境下成立",
+   "en": "This relationship holds only for \"replicate counts at the same concentration\""
+  },
+  {
+   "zh": "例如 λ = 68 時，RSD ≈ 100/√68 ≈ 12.1%——這也是後面 10.4.2 節 GLMM 分析實際算出之 Repeatability（12.09%）幾乎完全吻合 Poisson 理論值的原因。",
+   "en": "For example, when λ = 68, RSD ≈ 100/√68 ≈ 12.1%. This is why the repeatability (12.09%) actually calculated by the GLMM analysis in Section 10.4.2 below agrees almost exactly with the theoretical Poisson value."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若某 AMM/RMM 在 30 CFU 濃度下回報的 Repeatability 為 5%，依 Figure 10.4-1 判斷這個數字合理嗎？應該如何進一步查核？",
+   "en": "If an AMM/RMM reports a repeatability of 5% at a concentration of 30 CFU, is that number reasonable according to Figure 10.4-1? How should it be checked further?"
+  },
+  {
+   "zh": "ANOVA 與 GLMM 兩種分析途徑的選擇準則是什麼？如果 run 內變異明顯偏離 Poisson 假設（例如過度離散 overdispersion），該選哪一種？",
+   "en": "What are the criteria for choosing between the ANOVA and the GLMM approach? If the within-run variation clearly departs from the Poisson assumption (for example, overdispersion), which should be chosen?"
+  },
+  {
+   "zh": "<strong>10.4.1 Analysis of Variance for Precision 精密度之變異數分析法</strong>",
+   "en": "<strong>10.4.1 Analysis of Variance for Precision</strong>"
+  },
+  {
+   "zh": "<strong>MS_W / MS_B（Within/Between Mean Square, run 內／run 間均方）：</strong>ANOVA 拆解變異的兩個核心輸出。MS_W 直接就是 σ²_W 的估計值；MS_B 則同時包含 σ²_W 與「放大 n 倍」的 σ²_B，因此必須經過代數處理才能單獨萃取出 σ²_B。",
+   "en": "<strong>MS_W / MS_B (within/between mean squares, within-run / between-run):</strong> The two core outputs of the ANOVA variance decomposition. MS_W is directly the estimate of σ²_W; MS_B contains both σ²_W and σ²_B \"multiplied by n\", so some algebra is needed to extract σ²_B on its own."
+  },
+  {
+   "zh": "<strong>對數尺度分析：</strong>當計數呈現正偏態（positive skewness）時，改在 log(count) 尺度上做 ANOVA 較符合常態假設；但代價是必須額外用平均值 μ 才能與 Poisson 理論 RSD 做比較。",
+   "en": "<strong>Analysis on the log scale:</strong> When counts show positive skewness, running the ANOVA on the log(count) scale fits the normality assumption better, but the price is that the mean μ must additionally be used to compare with the theoretical Poisson RSD."
+  },
+  {
+   "zh": "可以把 σ²_W 和 σ²_B 想成量測身高時的兩層誤差：σ²_W 是「同一把尺、同一個人，重複量三次」的誤差（尺本身的雜訊）；σ²_B 則是「換一把尺、換一個人來量」所多出來的額外落差。MS_B 這個統計量之所以要扣掉 σ²_W 再除以 n，是因為每次「換人換尺」的觀測值，其實已經內含了「同一把尺重複量」的雜訊，必須先拆分乾淨才能單獨看出「換人換尺」本身帶來多少額外變異。",
+   "en": "Think of σ²_W and σ²_B as two layers of error in measuring height. σ²_W is the error of \"the same ruler and the same person, measured three times\" (the noise of the ruler itself); σ²_B is the extra gap from \"switching to a different ruler and a different person\". MS_B has to have σ²_W subtracted and then be divided by n because every observation made after \"switching person and ruler\" already contains the noise of \"measuring repeatedly with the same ruler\"; this must be separated cleanly before you can see how much extra variation the \"switch of person and ruler\" itself brings."
+  },
+  {
+   "zh": "當每個 run 的重複次數不相等時，MS_B 的公式從 <strong>n·σ²_B + σ²_W</strong> 變成 <strong>c·σ²_B + σ²_W</strong>，其中 c 是一個依樣本數不平衡程度而定的加權係數。這提醒品保人員：若驗證實驗設計時各 run 的重複數不一致（例如某天因樣品不足只做了 3 重複而非 4 重複），必須用不平衡 ANOVA 公式，不能直接套用平衡設計的簡化公式，否則 σ²_B 估計值會有偏誤。",
+   "en": "When the number of replicates differs between runs, the formula for MS_B changes from <strong>n·σ²_B + σ²_W</strong> to <strong>c·σ²_B + σ²_W</strong>, where c is a weighting coefficient that depends on the degree of imbalance in the sample sizes. This is a reminder to QA staff: if the number of replicates is not the same in each run of the validation design (for example, on one day only 3 replicates rather than 4 were done because of insufficient sample), the unbalanced ANOVA formula must be used and the simplified formula for a balanced design cannot be applied directly, otherwise the estimate of σ²_B will be biased."
+  },
+  {
+   "zh": "<strong>計數尺度（Counts scale）之精密度量測：</strong>",
+   "en": "<strong>Precision measured on the counts scale:</strong>"
+  },
+  {
+   "zh": "<strong>對數計數尺度（Log-counts scale）之精密度量測：</strong>",
+   "en": "<strong>Precision measured on the log-counts scale:</strong>"
+  },
+  {
+   "zh": "<strong>σ²_W</strong> = run 內變異數成分（由 MS_W 直接估計）",
+   "en": "<strong>σ²_W</strong> = within-run variance component (estimated directly from MS_W)"
+  },
+  {
+   "zh": "<strong>σ²_B</strong> = run 間變異數成分（由 MS_B 扣除 σ²_W 後再除以 n 推算）",
+   "en": "<strong>σ²_B</strong> = between-run variance component (derived from MS_B after subtracting σ²_W and dividing by n)"
+  },
+  {
+   "zh": "<strong>μ</strong> = 計數平均值（僅計數尺度公式需要）",
+   "en": "<strong>μ</strong> = mean of the counts (needed only in the counts-scale formula)"
+  },
+  {
+   "zh": "<strong>exp{}</strong> = 自然指數函數，用於將對數尺度變異數換算回原始比例尺度的相對變異",
+   "en": "<strong>exp{}</strong> = natural exponential function, used to convert the log-scale variance back into relative variation on the original scale"
+  },
+  {
+   "zh": "為什麼 Repeatability 只需要 σ_W，而 Intermediate Precision 需要 σ²_B 與 σ²_W 的合併平方根？這在實務上分別代表什麼放行風險？",
+   "en": "Why does repeatability need only σ_W, whereas intermediate precision needs the combined square root of σ²_B and σ²_W? What release risk does each represent in practice?"
+  },
+  {
+   "zh": "若某驗證實驗發現各 run 重複數不一致，直接套用平衡設計公式 n·σ²_B + σ²_W 會導致什麼後果？",
+   "en": "If a validation experiment finds that the number of replicates differs between runs, what is the consequence of applying the balanced-design formula n·σ²_B + σ²_W directly?"
+  },
+  {
+   "zh": "<strong>10.4.1.1 Analysis of the Counts 計數尺度分析</strong>",
+   "en": "<strong>10.4.1.1 Analysis of the Counts</strong>"
+  },
+  {
+   "zh": "<strong>手算流程示範：</strong>本節是唯一一段完整攤開「從均方到 RSD%」實際計算路徑的段落，讀者可以拿計算機依樣操作以驗證自己是否理解公式。",
+   "en": "<strong>Demonstration of the hand calculation:</strong> This is the only passage that lays out the actual calculation path \"from mean squares to RSD%\" in full, and readers can follow it with a calculator to check whether they understand the formulas."
+  },
+  {
+   "zh": "把 μ = 68.375、MS_B = 86.21、MS_W = 38.00 想成一份「體檢報告的三個關鍵數字」：平均值告訴你「這批菌落大概多少」，MS_W 告訴你「同一天同一人量測本身的雜訊」，MS_B 告訴你「不同天不同人量測後多出來的額外落差」。把這三個數字放進公式，就能一次算出兩種精密度指標，作為方法是否「夠穩」的最終判讀依據。",
+   "en": "Think of μ = 68.375, MS_B = 86.21 and MS_W = 38.00 as the \"three key numbers of a health check report\": the mean tells you \"roughly how many colonies this batch has\", MS_W tells you \"the noise of measuring by the same person on the same day\", and MS_B tells you \"the extra gap that appears when different people measure on different days\". Put these three numbers into the formulas and both precision indices can be calculated at once, as the final basis for judging whether the method is \"steady enough\"."
+  },
+  {
+   "zh": "原文特別註明 σ²_B = 12.0536「is not using rounded mean squares」——這是一個重要的計算細節提醒：中間計算步驟（MS_B、MS_W）應保留足夠有效位數，只有最終呈現的 RSD% 才適合四捨五入，否則多次四捨五入的誤差會逐步放大，導致最終精密度數字失真。",
+   "en": "The original text specifically notes that σ²_B = 12.0536 \"is not using rounded mean squares\". This is an important calculation detail: intermediate results (MS_B, MS_W) should keep enough significant figures, and only the final RSD% should be rounded for presentation, otherwise the errors from repeated rounding accumulate and distort the final precision figures."
+  },
+  {
+   "zh": "<strong>代入計算（Table 10.4-1 計數資料，n = 4 重複/run）：</strong>",
+   "en": "<strong>Substituted calculation (Table 10.4-1 count data, n = 4 replicates/run):</strong>"
+  },
+  {
+   "zh": "μ = 68.375\nMS_B = 86.21,  MS_W = 38.00\nσ²_B = (MS_B − MS_W) / n = (86.21 − 38.00) / 4 ≈ 12.0536  （以未捨入均方精算）\nσ²_W = MS_W = 38.00\n\nRSD_R(%)  = 100% × √38.00 / 68.375        ≈ 9.02%\nRSD_IP(%) = 100% × √(12.0536 + 38.00) / 68.375 ≈ 10.35%",
+   "en": "μ = 68.375\nMS_B = 86.21,  MS_W = 38.00\nσ²_B = (MS_B − MS_W) / n = (86.21 − 38.00) / 4 ≈ 12.0536  (calculated precisely with unrounded mean squares)\nσ²_W = MS_W = 38.00\n\nRSD_R(%)  = 100% × √38.00 / 68.375        ≈ 9.02%\nRSD_IP(%) = 100% × √(12.0536 + 38.00) / 68.375 ≈ 10.35%"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "CDMO 在撰寫方法驗證報告時，應把「未捨入的中間值」與「最終呈現的 RSD%」都納入原始數據附件，方便日後稽核人員重新演算並確認結果的可追溯性（traceability），這也符合 GDocP 對計算過程完整記錄的要求。",
+   "en": "When writing a method validation report, a CDMO should include both the \"unrounded intermediate values\" and the \"final presented RSD%\" in the raw data annex, so that a later auditor can recalculate and confirm the traceability of the results. This also meets the GDocP requirement for complete recording of the calculation process."
+  },
+  {
+   "zh": "如果驗證報告只列出四捨五入後的 MS_B = 86.21、MS_W = 38.00，重新計算得出的 σ²_B 與原文 12.0536 是否會有差異？差異大小是否重要？",
+   "en": "If a validation report lists only the rounded MS_B = 86.21 and MS_W = 38.00, will the recalculated σ²_B differ from the original 12.0536? Does the size of the difference matter?"
+  },
+  {
+   "zh": "<strong>10.4.1.2 Analysis of the Log Counts 對數計數尺度分析</strong>",
+   "en": "<strong>10.4.1.2 Analysis of the Log Counts</strong>"
+  },
+  {
+   "zh": "<strong>Probability Plot（機率圖 / QQ 圖）：</strong>將殘差的分位數與理論常態分位數對照繪製而成——若資料點緊貼對角線，代表殘差近似常態分布，ANOVA 的信賴區間等延伸應用才站得住腳。",
+   "en": "<strong>Probability plot (QQ plot):</strong> Drawn by plotting the quantiles of the residuals against the theoretical normal quantiles. If the data points hug the diagonal, the residuals are approximately normally distributed and extended uses of ANOVA, such as confidence intervals, are on firm ground."
+  },
+  {
+   "zh": "<strong>兩種尺度結果的收斂性：</strong>本例中計數尺度（9.02% / 10.35%）與對數尺度（9.15% / 10.52%）算出的精密度非常接近，說明當偏態不嚴重時，兩種方法的結論具有一致性，可以互相印證。",
+   "en": "<strong>Convergence of the results on the two scales:</strong> In this example the precision calculated on the counts scale (9.02% / 10.35%) and on the log scale (9.15% / 10.52%) is very close, showing that when the skewness is not severe, the conclusions of the two methods are consistent and corroborate each other."
+  },
+  {
+   "zh": "機率圖就像是「量體重時看體重機的準確度校正圖」：如果每次量測結果都落在理想校正線附近，代表這台體重機的誤差是「隨機、對稱」的雜訊，可以放心用常態假設做進一步統計推論；若資料點明顯偏離對角線兩端（像是體重機在極輕、極重時特別不準），代表誤差有系統性偏態，此時常態假設就不成立，得改用其他分布或轉換方式。",
+   "en": "A probability plot is like \"the accuracy calibration chart of a weighing scale\": if every measurement falls near the ideal calibration line, the scale's errors are \"random, symmetrical\" noise and normal-distribution assumptions can safely be used for further statistical inference. If the data points deviate clearly from the diagonal at the two ends (like a scale that is especially inaccurate for very light and very heavy loads), the errors are systematically skewed, the normality assumption does not hold, and another distribution or transformation must be used."
+  },
+  {
+   "zh": "原文的選擇邏輯值得注意：兩種尺度差異「marginal」（邊際、很小），最終仍依殘差圖「視覺上」略微更貼近常態的一方（計數尺度）做為呈報依據。這說明統計方法選擇不是非黑即白的機械式規則，而需搭配圖形診斷做專業判斷——品保審查此類報告時，應確認驗證人員是否附上兩種尺度的殘差圖以供比對，而非僅憑單一數字判斷。",
+   "en": "The selection logic in the original text is worth noting: the difference between the two scales is \"marginal\" (small), and the one whose residual plot \"visually\" looks slightly closer to normal (the counts scale) is still used as the basis for reporting. This shows that choosing a statistical method is not a black-and-white mechanical rule; it requires professional judgment supported by graphical diagnostics. When QA reviews this type of report, it should confirm whether the validation personnel attached the residual plots of both scales for comparison, rather than judging from a single number."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "Figure 10.4.1.2-1 並排呈現兩張 QQ 圖：左圖為計數尺度殘差，縱軸範圍約 −15 至 +15；右圖為對數計數尺度殘差，縱軸範圍約 −0.2 至 +0.2（因為對數轉換後數值尺度變小）。兩圖橫軸皆為理論常態分位數（Quantile），從 −2 到 +2。可以觀察到左右兩圖的資料點皆大致緊貼對角直線，僅在兩端（最低與最高分位數）略有偏離——這是判定「兩種分析尺度皆可接受、但計數尺度略優」的圖形依據。實務上判讀這類圖時，應特別留意兩端尾巴（tail）的偏離程度，因為尾端偏離往往代表極端值（outlier）或分布厚尾（heavy-tail），會影響變異數估計的穩定性。",
+   "en": "Figure 10.4.1.2-1 presents two QQ plots side by side: the left shows the residuals on the counts scale, with a vertical axis range of about −15 to +15; the right shows the residuals on the log-counts scale, with a vertical axis range of about −0.2 to +0.2 (because the numerical scale becomes smaller after the log transformation). Both horizontal axes are theoretical normal quantiles, from −2 to +2. The data points in both plots hug the diagonal line fairly well and deviate slightly only at the two ends (the lowest and highest quantiles). This is the graphical basis for judging that \"both analysis scales are acceptable, but the counts scale is slightly better\". When reading such plots in practice, pay particular attention to the degree of deviation in the two tails, because tail deviation often indicates outliers or a heavy-tailed distribution, which affects the stability of the variance estimate."
+  },
+  {
+   "zh": "<strong>代入計算（對數計數資料）：</strong>",
+   "en": "<strong>Substituted calculation (log-count data):</strong>"
+  },
+  {
+   "zh": "若計數尺度與對數尺度算出的 RSD% 差異很大（例如相差一倍以上），這通常暗示原始資料存在什麼問題？",
+   "en": "If the RSD% calculated on the counts scale and on the log scale differ greatly (for example, by a factor of two or more), what problem with the raw data does this usually suggest?"
+  },
+  {
+   "zh": "你認為品保 SOP 應如何規定「計數尺度 vs. 對數尺度」的選擇準則，才不會流於分析人員主觀判斷？",
+   "en": "How do you think the QA SOP should specify the selection criteria between the \"counts scale and the log scale\", so that it does not come down to the analyst's subjective judgment?"
+  },
+  {
+   "zh": "<strong>10.4.2 Generalized Linear Mixed Effects Model 廣義線性混合效應模型</strong>",
+   "en": "<strong>10.4.2 Generalized Linear Mixed Effects Model</strong>"
+  },
+  {
+   "zh": "<strong>Latent Variable z_i（潛在變數）：</strong>代表每個 run 本身無法直接觀察、但會系統性拉高或拉低該 run 平均計數的隨機效應，假設服從常態分布、平均為 0、變異數為 τ²。",
+   "en": "<strong>Latent variable z_i:</strong> Represents a random effect of each run that cannot be observed directly but systematically raises or lowers the mean count of that run. It is assumed to follow a normal distribution with mean 0 and variance τ²."
+  },
+  {
+   "zh": "<strong>GLMM（廣義線性混合效應模型）：</strong>結合「Poisson 分布描述 run 內計數」與「常態分布描述 run 間潛在變數」的兩層模型結構，比 ANOVA 多了一個明確的分布假設，因此能直接把 Repeatability 綁定在 Poisson 理論值上。",
+   "en": "<strong>GLMM (generalized linear mixed effects model):</strong> A two-level model structure that combines a \"Poisson distribution describing the counts within a run\" with a \"normal distribution describing the latent variable between runs\". It has one more explicit distribution assumption than ANOVA, and can therefore tie repeatability directly to the theoretical Poisson value."
+  },
+  {
+   "zh": "<strong>α（截距）：</strong>exp(α) 即為所有可能 run 的中位數計數（median count），是模型估計出的「典型菌落濃度」。",
+   "en": "<strong>α (intercept):</strong> exp(α) is the median count over all possible runs, the \"typical colony concentration\" estimated by the model."
+  },
+  {
+   "zh": "GLMM 的兩層結構像是「連鎖店業績分析」：每家分店（run）當天的業績（計數）本身有一定隨機波動（Poisson 雜訊，這是 Repeatability 的來源），但不同分店之間又有各自的「基本體質」差異（latent variable z_i，這是額外疊加的 run 間變異，也就是 τ²）。GLMM 同時對這兩層變異建模，比單純看「所有分店業績的變異數」（ANOVA 的做法）更貼近資料實際生成的機制。",
+   "en": "A GLMM's two-level structure is like a \"chain store performance analysis\": the day's performance (count) of each branch (run) has its own random fluctuation (Poisson noise, the source of repeatability), but branches also differ in their own \"underlying strength\" (the latent variable z_i, the extra between-run variation layered on top, that is, τ²). The GLMM models both levels of variation at the same time, which is closer to the mechanism that actually generated the data than simply looking at the \"variance of all branches' performance\" (the ANOVA approach)."
+  },
+  {
+   "zh": "GLMM 算出的 Repeatability（12.09%）明顯高於 ANOVA 算出的 9.02%，但這並非模型「更差」，而是因為 GLMM 把 Repeatability 直接鎖定在 Poisson 理論公式 100%/√λ 上（λ = 68.36 時剛好對應約 12.1%），是一種「符合 Poisson 假設下的理論值」；而 ANOVA 的 9.02% 則是純粹由實驗資料的實際離散程度算出，不受 Poisson 假設限制。兩者的差異本身就是判斷「資料是否真的服從 Poisson 分布」的線索——若兩者差距很大，代表資料可能出現 overdispersion（過度離散）或 underdispersion（離散不足），值得進一步查核。",
+   "en": "The repeatability calculated by the GLMM (12.09%) is clearly higher than the 9.02% from ANOVA. This does not mean the model is \"worse\": the GLMM ties repeatability directly to the theoretical Poisson formula 100%/√λ (λ = 68.36 corresponds to about 12.1%), a \"theoretical value consistent with the Poisson assumption\", whereas the 9.02% of ANOVA is calculated purely from the actual dispersion of the experimental data and is not bound by the Poisson assumption. The difference between the two is itself a clue as to \"whether the data really follow a Poisson distribution\": if the two differ greatly, the data may show overdispersion or underdispersion, which merits further checking."
+  },
+  {
+   "zh": "<strong>GLMM 模型結構：</strong>",
+   "en": "<strong>GLMM model structure:</strong>"
+  },
+  {
+   "zh": "<strong>由 α、τ² 換算精密度：</strong>",
+   "en": "<strong>Converting α and τ² to precision:</strong>"
+  },
+  {
+   "zh": "<strong>α</strong> = 截距，exp(α) 為所有 run 的中位數計數",
+   "en": "<strong>α</strong> = intercept; exp(α) is the median count over all runs"
+  },
+  {
+   "zh": "<strong>τ²</strong> = run 間潛在變數 z_i 的變異數（對數尺度上的 run 間變異）",
+   "en": "<strong>τ²</strong> = variance of the between-run latent variable z_i (between-run variation on the log scale)"
+  },
+  {
+   "zh": "<strong>代入 Table 10.4-1 資料之估計結果：</strong>",
+   "en": "<strong>Estimates from the Table 10.4-1 data:</strong>"
+  },
+  {
+   "zh": "對 CDMO 而言，GLMM 需要 R 或 SAS® GLIMMIX 等專業統計軟體（或 TriMSA 等專用工具），一般 QC 實驗室常用的 Excel/Minitab 未必內建此功能。因此在方法驗證規劃階段，就應評估團隊是否具備執行 GLMM 分析的統計能力與軟體授權，否則可能被迫退回使用 ANOVA 途徑，即使 Poisson 假設成立、GLMM 理論上更合適。",
+   "en": "For a CDMO, a GLMM requires professional statistical software such as R or SAS® GLIMMIX (or a dedicated tool such as TriMSA), and Excel/Minitab, commonly used in QC laboratories, may not have this function built in. At the method validation planning stage, therefore, assess whether the team has the statistical capability and software licenses to run a GLMM analysis. Otherwise you may be forced back to the ANOVA approach even when the Poisson assumption holds and a GLMM is theoretically more suitable."
+  },
+  {
+   "zh": "當 τ² 估計值為 0 時，Intermediate Precision 與 Repeatability 會發生什麼關係？這對解讀方法穩定性有何意義？",
+   "en": "When the estimate of τ² is 0, what is the relationship between intermediate precision and repeatability? What does this mean for interpreting the stability of the method?"
+  },
+  {
+   "zh": "若貴實驗室沒有 R 或 SAS® 授權，如何在文件中合理說明改用 ANOVA 途徑的正當性？",
+   "en": "If your laboratory has no R or SAS® license, how can you reasonably justify in the documentation the switch to the ANOVA approach?"
+  },
+  {
+   "zh": "<strong>10.4.3 Comparing Precision of the Alternative/Rapid Microbiological Method with the Conventional Method 與傳統培養法之精密度比較</strong>",
+   "en": "<strong>10.4.3 Comparing Precision of the Alternative/Rapid Microbiological Method with the Conventional Method</strong>"
+  },
+  {
+   "zh": "<strong>樣本數需求的現實限制：</strong>Table 10.4.3-2 揭示一個關鍵事實——要用傳統假設檢定證明兩個方法變異數差異達 50%（比值 1.5），需要約 193 組樣本；差異只有 25%（比值 1.25）時甚至需要 633 組！這遠超過實務可行的驗證規模。",
+   "en": "<strong>The practical limit of sample size requirements:</strong> Table 10.4.3-2 reveals a key fact: to use traditional hypothesis testing to show that the variances of the two methods differ by 50% (ratio 1.5) requires about 193 samples, and a difference of only 25% (ratio 1.25) requires as many as 633! This is far beyond a feasible validation scale."
+  },
+  {
+   "zh": "<strong>Non-Inferiority Margin（不劣性界限）的方向性：</strong>本節花大篇幅釐清一個常見誤區：0.7 與 1.3 並非對稱的界限——精密度比值倒過來看、或換算成變異數比值（平方關係）時，數值都不能直接互換使用。",
+   "en": "<strong>Directionality of the non-inferiority margin:</strong> This section spends considerable space clarifying a common misconception: 0.7 and 1.3 are not symmetrical limits. When the ratio of precisions is inverted, or converted to a ratio of variances (a squared relationship), the numbers cannot simply be swapped."
+  },
+  {
+   "zh": "把「用假設檢定證明變異數沒有變差」想像成想證明「兩間工廠生產的螺絲鬆緊度變異幾乎一樣」：如果你只想證明差異在 50% 以內，可能需要抽驗近 200 顆才有把握；若想證明差異僅在 25% 以內，甚至要抽超過 600 顆——這在實務品管上幾乎不可行。這正是為什麼原文建議改用「較寬鬆的不劣性界限」或「定性比較」，而非死守統計顯著性檢定。",
+   "en": "Think of \"using a hypothesis test to prove that the variance has not got worse\" as trying to prove that \"the variation in tightness of screws made by two factories is almost the same\": if you only want to prove that the difference is within 50%, you may need to sample nearly 200 screws to be confident; to prove it is within only 25%, you would need to sample more than 600. This is almost infeasible in practical quality control, which is exactly why the original text suggests a \"looser non-inferiority margin\" or a \"qualitative comparison\" instead of clinging to a statistical significance test."
+  },
+  {
+   "zh": "而 0.7 / 1.3 的方向性問題，則像是「打折 30% vs. 漲價 30%」不是互為相反：原價 100 打 7 折是 70，但 70 要漲回 100 需要漲價 42.9%，而不是 30%——比值倒過來後，界限數字並不會單純互為倒數的簡單直覺值，必須實際計算 1/1.3 = 0.769 才是正確的對應值。",
+   "en": "The directionality problem of 0.7 / 1.3 is like \"a 30% discount vs. a 30% price rise\" not being opposites: a 30% discount on an original price of 100 gives 70, but to get from 70 back to 100 requires a price rise of 42.9%, not 30%. After a ratio is inverted, the limit is not the simple intuitive reciprocal-looking number; you must actually calculate 1/1.3 = 0.769 to get the correct corresponding value."
+  },
+  {
+   "zh": "<strong>易混淆陷阱——精密度比值 vs. 變異數比值：</strong>非劣性界限 1.3（用在 σ_A/σ_C，精密度／標準差比值）換算成變異數比值（σ²_A/σ²_C）後會變成 1.69（= 1.3²），而不是 1.3！品保人員在審閱驗證方案時，務必先確認文件中設定的界限究竟是「標準差比值」還是「變異數比值」，兩者混用會導致驗收標準錯誤鬆緊。",
+   "en": "<strong>A confusing trap, ratio of precisions vs. ratio of variances:</strong> A non-inferiority margin of 1.3 (applied to σ_A/σ_C, the ratio of precisions / standard deviations) becomes 1.69 (= 1.3²) when converted to a ratio of variances (σ²_A/σ²_C), not 1.3! When reviewing a validation protocol, QA staff must first confirm whether the margin set in the document is a \"ratio of standard deviations\" or a \"ratio of variances\"; mixing the two leads to an acceptance criterion that is wrongly tight or loose."
+  },
+  {
+   "zh": "<strong>原文提及 Figure 10.4-2</strong>（ANOVA 殘差圖，用於判斷 CMM 資料是否符合常態假設）——此圖為文件中相同性質之殘差診斷圖，判讀方式與 Figure 10.4.1.2-1 相同，此處原文未在本頁重複繪製圖形，讀者可參照 10.4.1.2 節之判讀方式類推應用。",
+   "en": "<strong>The original text mentions Figure 10.4-2</strong> (the ANOVA residual plot, used to judge whether the CMM data fit the normality assumption). This is a residual diagnostic plot of the same kind as elsewhere in the document and is interpreted in the same way as Figure 10.4.1.2-1. The original text does not redraw the figure on this page, and readers can apply the interpretation method of Section 10.4.1.2 by analogy."
+  },
+  {
+   "zh": "對 CDMO 業務開發而言，這一節提供了與客戶溝通的重要論述基礎：當客戶要求「統計上證明新方法精密度不劣於傳統培養法」時，可以引用 Table 10.4.3-2 說明傳統假設檢定所需樣本數在商業上不可行，並主張改採「較寬鬆的不劣性界限（如變異數比 2 倍）」或「定性比較（如殘差圖、GLMM τ 比較）」作為替代驗證策略，這是與客戶及稽核方協商驗證方案時的關鍵科學依據。",
+   "en": "For CDMO business development, this section provides an important basis for discussion with customers. When a customer asks to \"prove statistically that the precision of the new method is not inferior to the conventional culture method\", Table 10.4.3-2 can be cited to show that the sample sizes needed by traditional hypothesis testing are commercially infeasible, and the CDMO can argue for a \"looser non-inferiority margin (such as a variance ratio of 2)\" or a \"qualitative comparison (such as residual plots, or a comparison of the GLMM τ)\" as the alternative validation strategy. This is the key scientific basis when negotiating validation protocols with customers and auditors."
+  },
+  {
+   "zh": "為什麼原文建議把不劣性界限設在「變異數比 2」（而非更嚴格的 1.25 或 1.5）？這個選擇背後的樣本數／可行性權衡是什麼？",
+   "en": "Why does the original text suggest setting the non-inferiority margin at a \"variance ratio of 2\" (rather than the stricter 1.25 or 1.5)? What sample size / feasibility trade-off lies behind this choice?"
+  },
+  {
+   "zh": "若某驗證方案將 1.3 的精密度比值界限誤植為變異數比值界限直接使用，會讓驗收標準變得更寬鬆還是更嚴格？為什麼？",
+   "en": "If a validation protocol mistakenly uses the precision ratio limit of 1.3 directly as a variance ratio limit, does the acceptance criterion become looser or stricter? Why?"
+  },
+  {
+   "zh": "<strong>10.4.3.1 ANOVA Method on the Counts 計數尺度之 ANOVA 比較法</strong>",
+   "en": "<strong>10.4.3.1 ANOVA Method on the Counts</strong>"
+  },
+  {
+   "zh": "<strong>Satterthwaite 型漸近信賴區間：</strong>由於變異數比值的信賴區間在數學上並不直觀（不像平均值差異可直接用 t 分布），本節採用「對數轉換 + 漸近常態近似」的技巧：先取 0.5·log(MS) 的變異數（與自由度成反比），再用常態分布反推出上限，最後指數轉換回原始比值尺度。",
+   "en": "<strong>Satterthwaite-type asymptotic confidence interval:</strong> Because the confidence interval of a variance ratio is not mathematically intuitive (unlike a difference in means, which can use the t distribution directly), this section uses a \"log transformation + asymptotic normal approximation\" technique: first take the variance of 0.5·log(MS) (inversely proportional to the degrees of freedom), then use the normal distribution to back-calculate the upper limit, and finally exponentiate back to the original ratio scale."
+  },
+  {
+   "zh": "<strong>ULR / ULIP（Upper Limit of Repeatability / Intermediate Precision Ratio）：</strong>分別是重複性比值與中間精密度比值的漸近上 95% 信賴上限，用於與預先設定的不劣性界限（如 141%）比較，決定是否宣告 AMM/RMM 精密度不劣於 CMM。",
+   "en": "<strong>ULR / ULIP (upper limit of the repeatability / intermediate precision ratio):</strong> The asymptotic upper 95% confidence limits of the repeatability ratio and the intermediate precision ratio respectively, compared with a pre-set non-inferiority margin (such as 141%) to decide whether to declare the precision of the AMM/RMM non-inferior to that of the CMM."
+  },
+  {
+   "zh": "可以把整套流程想成「用溫度計量體溫時的兩層修正」：先把原始比值（如 78.45%）看成「單次量測讀數」，但你知道這個讀數本身有不確定性；於是先把它轉換到對數尺度（像是把體溫換算成另一種單位方便統計），套用自由度算出的變異數估計出信心區間寬度，再指數轉換回原始比值尺度，得到「這個讀數最壞可能到多高（上限）」的保守估計——這個上限才是用來跟法規界限比較的正確依據，而非原始點估計值本身。",
+   "en": "Think of the whole procedure as \"two layers of correction when taking a temperature with a thermometer\". First treat the raw ratio (such as 78.45%) as a \"single measurement reading\" that you know carries uncertainty. Convert it to the log scale (like converting a body temperature to another unit to make the statistics convenient), use the variance estimate derived from the degrees of freedom to get the width of the confidence interval, and exponentiate back to the original ratio scale. The result is a conservative estimate of \"how high this reading could be in the worst case (upper limit)\", and it is this upper limit, not the raw point estimate, that is the correct basis for comparison with the regulatory limit."
+  },
+  {
+   "zh": "本節的判定邏輯值得特別留意：雖然點估計顯示 AMM/RMM 精密度比值（78.45% / 77.20%）都低於 100%（代表 AMM/RMM 看起來比 CMM 更精密），但正確的統計決策程序仍是計算「上 95% 信賴上限」（109.7% / 107.6%），並將此上限與不劣性界限（141%）比較，而非直接用點估計值判定。這是統計驗證中「用最壞情況（上限）做保守決策」的核心原則，避免因抽樣誤差而過度樂觀地宣稱方法優異。",
+   "en": "The decision logic of this section deserves special attention. Although the point estimates show both precision ratios of the AMM/RMM (78.45% / 77.20%) below 100% (meaning the AMM/RMM looks more precise than the CMM), the correct statistical decision procedure is still to calculate the \"upper 95% confidence limit\" (109.7% / 107.6%) and compare this limit with the non-inferiority margin (141%), rather than judge directly from the point estimate. This is the core principle of \"making conservative decisions on the worst case (the upper limit)\" in statistical validation, and it avoids being over-optimistic in claiming the method is superior because of sampling error."
+  },
+  {
+   "zh": "<strong>均方變異數估計：</strong>",
+   "en": "<strong>Mean square variance estimate:</strong>"
+  },
+  {
+   "zh": "<strong>Repeatability 比值之漸近上 95% 信賴限：</strong>",
+   "en": "<strong>Asymptotic upper 95% confidence limit of the repeatability ratio:</strong>"
+  },
+  {
+   "zh": "<strong>Intermediate Precision 比值之漸近上 95% 信賴限：</strong>",
+   "en": "<strong>Asymptotic upper 95% confidence limit of the intermediate precision ratio:</strong>"
+  },
+  {
+   "zh": "<strong>m</strong> = run 數（本例 = 8）；<strong>n</strong> = 每 run 重複數（本例 = 4）",
+   "en": "<strong>m</strong> = number of runs (in this example = 8); <strong>n</strong> = number of replicates per run (in this example = 4)"
+  },
+  {
+   "zh": "<strong>df_W = m(n−1)</strong> = run 內均方之自由度（本例 = 8×3 = 24）",
+   "en": "<strong>df_W = m(n−1)</strong> = degrees of freedom of the within-run mean square (in this example = 8×3 = 24)"
+  },
+  {
+   "zh": "<strong>df_B = m − 1</strong> = run 間均方之自由度",
+   "en": "<strong>df_B = m − 1</strong> = degrees of freedom of the between-run mean square"
+  },
+  {
+   "zh": "<strong>1.645</strong> = 標準常態分布單尾 95% 信心水準對應之臨界值",
+   "en": "<strong>1.645</strong> = critical value of the standard normal distribution for a one-sided 95% confidence level"
+  },
+  {
+   "zh": "<strong>代入計算：</strong>",
+   "en": "<strong>Substituted calculation:</strong>"
+  },
+  {
+   "zh": "CMM: MS_B = 64.375, MS_W = 157.125, σ²_B ≈ 23.19, mean ≈ 69.81\nRSD_R^C(%)  ≈ 11.49%,   RSD_IP^C(%) ≈ 13.40%\n\nRatio Repeatability = 78.45%,  Ratio Intermediate Precision = 77.20%\ndf_W = 8×(4−1) = 24\n\nULR  = 78.45% × exp{1.645/√24}  ≈ 109.7%\nULIP = 77.20% × exp{1.645×√(η²_A+η²_C)} ≈ 107.6%\n\n非劣性界限（變異數比 2 對應之精密度比）= 100%×√2 ≈ 141%\n→ 109.7% &lt; 141% 且 107.6% &lt; 141%  ⇒  判定 AMM/RMM 精密度不劣於 CMM",
+   "en": "CMM: MS_B = 64.375, MS_W = 157.125, σ²_B ≈ 23.19, mean ≈ 69.81\nRSD_R^C(%)  ≈ 11.49%,   RSD_IP^C(%) ≈ 13.40%\n\nRatio Repeatability = 78.45%,  Ratio Intermediate Precision = 77.20%\ndf_W = 8×(4−1) = 24\n\nULR  = 78.45% × exp{1.645/√24}  ≈ 109.7%\nULIP = 77.20% × exp{1.645×√(η²_A+η²_C)} ≈ 107.6%\n\nNon-inferiority margin (precision ratio corresponding to a variance ratio of 2) = 100%×√2 ≈ 141%\n→ 109.7% &lt; 141% and 107.6% &lt; 141%  ⇒  conclude that the precision of the AMM/RMM is non-inferior to that of the CMM"
+  },
+  {
+   "zh": "原文明確指出這套公式「can be programmed in Excel」，只需輸入每個方法的平均值、兩個均方、及其自由度即可。這對 CDMO 品保／統計人員是重要的實務提示：不必依賴昂貴的統計軟體授權，即可用 Excel 建立標準化的精密度比較計算表單，並將其納入方法驗證 SOP 的標準工具，提升驗證效率與一致性。",
+   "en": "The original text states explicitly that this set of formulas \"can be programmed in Excel\", requiring only the mean of each method, the two mean squares and their degrees of freedom as input. This is an important practical hint for CDMO QA / statistical staff: without relying on costly statistical software licenses, a standardized precision comparison spreadsheet can be built in Excel and included as a standard tool in the method validation SOP, improving validation efficiency and consistency."
+  },
+  {
+   "zh": "為什麼判定非劣性時要用「上 95% 信賴上限」而非點估計值（78.45%、77.20%）本身？如果只用點估計值判斷，會有什麼風險？",
+   "en": "Why use the \"upper 95% confidence limit\" rather than the point estimates themselves (78.45%, 77.20%) when judging non-inferiority? What risk arises if only the point estimates are used?"
+  },
+  {
+   "zh": "若把非劣性界限從變異數比 2（精密度比 141%）改為更嚴格的變異數比 1.5（精密度比約 122%），本例的 ULR = 109.7% 是否還能通過？",
+   "en": "If the non-inferiority margin is changed from a variance ratio of 2 (precision ratio 141%) to the stricter variance ratio of 1.5 (precision ratio about 122%), can the ULR = 109.7% in this example still pass?"
+  },
+  {
+   "zh": "<strong>10.4.3.2 GLMM Poisson Approach GLMM Poisson 比較法</strong>",
+   "en": "<strong>10.4.3.2 GLMM Poisson Approach</strong>"
+  },
+  {
+   "zh": "<strong>Satterthwaite 自由度近似法：</strong>當某個變異數估計量並非來自標準平衡設計（如 GLMM 的 τ̂²），無法直接查表得知精確自由度時，Satterthwaite 提供一個通用公式，用「估計量本身的平方」與「其標準誤的平方」推算出等效自由度，讓 τ̂² 可以近似套用卡方分布（chi-square distribution）進行後續信賴區間或假設檢定。",
+   "en": "<strong>Satterthwaite approximation of degrees of freedom:</strong> When a variance estimator does not come from a standard balanced design (such as τ̂² in a GLMM) and its exact degrees of freedom cannot be looked up in a table, Satterthwaite provides a general formula that derives the equivalent degrees of freedom from the \"square of the estimator itself\" and the \"square of its standard error\", so that τ̂² can approximately follow a chi-square distribution for subsequent confidence intervals or hypothesis tests."
+  },
+  {
+   "zh": "<strong>下限保護機制：</strong>原文特別規定，計算出的 Satterthwaite 自由度不得低於「run 數減一」——這是一個保守的下限保護，避免變異數過小時自由度被低估到不合理程度。",
+   "en": "<strong>Lower-bound protection:</strong> The original text specifies that the calculated Satterthwaite degrees of freedom must not be lower than \"the number of runs minus one\". This is a conservative lower-bound protection that prevents the degrees of freedom from being underestimated to an unreasonable level when the variance is very small."
+  },
+  {
+   "zh": "Satterthwaite 自由度公式就像是在「合併兩份不同可信度的民調結果」時，估算「這份合併結果相當於問了幾個人」的等效樣本數。當某份民調本身的誤差範圍（標準誤）很大、估計值又小，代表這份資料的「有效訊息量」其實很少，即使表面上收集了很多筆觀測值，統計上能提供的自由度也會被相應壓低。",
+   "en": "The Satterthwaite degrees of freedom formula is like estimating the \"equivalent sample size, how many people this combined result is equivalent to having asked\" when \"merging the results of two polls of different reliability\". When a poll has a large margin of error (standard error) and a small estimate, its \"effective information\" is actually small, and even if many observations were nominally collected, the degrees of freedom it can statistically provide are pushed down accordingly."
+  },
+  {
+   "zh": "本節與 10.4.3.1 節形成清楚對照：ANOVA 途徑（10.4.3.1）處理的是 σ²_B、σ²_W 這兩個「均方直接可查表得知自由度」的變異數成分；而 GLMM 途徑（10.4.3.2）處理的 τ² 則沒有現成自由度公式，必須靠 Satterthwaite 近似。這提醒實務人員：選擇 GLMM 分析路徑時，除了模型配適本身的複雜度外，後續進行方法間比較（non-inferiority）時的統計計算也會更複雜，需要更謹慎的軟體驗證與人員訓練。",
+   "en": "This section forms a clear contrast with Section 10.4.3.1. The ANOVA approach (10.4.3.1) deals with the two variance components σ²_B and σ²_W, whose \"mean squares have degrees of freedom that can be looked up directly\"; the τ² handled by the GLMM approach (10.4.3.2) has no ready-made degrees of freedom formula and must rely on the Satterthwaite approximation. This reminds practitioners that when choosing the GLMM analysis path, besides the complexity of fitting the model itself, the later statistical calculations for the comparison between methods (non-inferiority) are also more complex and need more careful software validation and personnel training."
+  },
+  {
+   "zh": "<strong>Satterthwaite 自由度公式：</strong>",
+   "en": "<strong>Satterthwaite degrees of freedom formula:</strong>"
+  },
+  {
+   "zh": "<strong>τ̂²</strong> = run 間變異數成分 τ² 的估計值",
+   "en": "<strong>τ̂²</strong> = estimate of the between-run variance component τ²"
+  },
+  {
+   "zh": "<strong>SE(τ̂²)</strong> = τ̂² 估計量的標準誤",
+   "en": "<strong>SE(τ̂²)</strong> = standard error of the estimator τ̂²"
+  },
+  {
+   "zh": "下限規則：計算出的 df 不得低於（run 數 − 1）",
+   "en": "Lower-bound rule: the calculated df must not be lower than (number of runs − 1)"
+  },
+  {
+   "zh": "<strong>代入 Table 10.4.3.2-1 之估計值：</strong>",
+   "en": "<strong>Substituted estimates from Table 10.4.3.2-1:</strong>"
+  },
+  {
+   "zh": "AMM/RMM:  α̂ = 4.2248 (SE=0.02248),  τ̂² = 0.000378 (SE=0.002022)\nCMM:      α̂ = 4.2441 (SE=0.02960),  τ̂² = 0.003408 (SE=0.003468)\n\ndf_A = 2×(0.000378)² / (0.002022)²  ≈ 0.070   → 因小於 (m−1)=7，取 df_A = 7（套用下限規則）\ndf_C = 2×(0.003408)² / (0.003468)²  ≈ 1.92    → 因小於 (m−1)=7，取 df_C = 7（套用下限規則）",
+   "en": "AMM/RMM:  α̂ = 4.2248 (SE=0.02248),  τ̂² = 0.000378 (SE=0.002022)\nCMM:      α̂ = 4.2441 (SE=0.02960),  τ̂² = 0.003408 (SE=0.003468)\n\ndf_A = 2×(0.000378)² / (0.002022)²  ≈ 0.070   → because it is less than (m−1)=7, take df_A = 7 (lower-bound rule applied)\ndf_C = 2×(0.003408)² / (0.003468)²  ≈ 1.92    → because it is less than (m−1)=7, take df_C = 7 (lower-bound rule applied)"
+  },
+  {
+   "zh": "（註：上列代入計算為依原文公式推導之示範數值，原文本身未列出最終 df 數值，僅說明計算原則與下限保護規則。）",
+   "en": "(Note: the substituted calculations above are demonstration values derived from the formula in the original text; the original text itself does not list the final df values and only explains the calculation principle and the lower-bound protection rule.)"
+  },
+  {
+   "zh": "為什麼 τ̂² 的自由度無法像 ANOVA 的 MS_W、MS_B 一樣直接從實驗設計（run 數、重複數）查表得知，而需要額外用 Satterthwaite 公式估算？",
+   "en": "Why can the degrees of freedom of τ̂² not be looked up directly from the experimental design (number of runs, number of replicates) as for MS_W and MS_B in ANOVA, but need to be estimated with the Satterthwaite formula?"
+  },
+  {
+   "zh": "下限保護規則（df 不得低於 run 數−1）在實務上避免了什麼樣的統計誤判風險？",
+   "en": "What kind of statistical misjudgment risk does the lower-bound protection rule (df not lower than the number of runs − 1) avoid in practice?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "精密度由 Repeatability（run 內變異）與 Intermediate Precision（run 內＋run 間變異）兩個 RSD% 指標共同描述，ANOVA 途徑透過 MS_W、MS_B 拆解變異成分，計數尺度與對數尺度通常結果相近，可用殘差機率圖判斷何者較貼近常態假設",
+   "en": "Precision is described jointly by two RSD% indices, repeatability (within-run variation) and intermediate precision (within-run + between-run variation). The ANOVA approach separates the variance components through MS_W and MS_B; the counts scale and the log scale usually give similar results, and a residual probability plot can be used to judge which is closer to the normality assumption."
+  },
+  {
+   "zh": "若 run 內計數符合 Poisson 分布，GLMM 途徑可將 Repeatability 直接鎖定在理論值 100%/√λ 上，其潛在變數 z_i（變異數 τ²）描述 run 間額外變異；GLMM 與 ANOVA 結果的落差本身即為判斷 Poisson 假設是否成立的診斷線索",
+   "en": "If the within-run counts follow a Poisson distribution, the GLMM approach can tie repeatability directly to the theoretical value 100%/√λ, and its latent variable z_i (variance τ²) describes the extra between-run variation; the gap between the GLMM and ANOVA results is itself a diagnostic clue as to whether the Poisson assumption holds."
+  },
+  {
+   "zh": "AMM/RMM 與 CMM 的精密度比較受限於樣本數需求（Table 10.4.3-2 顯示差異 25–50% 需要數百組樣本），實務上建議採用較寬鬆的不劣性界限（如變異數比 2，對應精密度比約 141%）或搭配 GLMM 的 τ 比較",
+   "en": "The precision comparison of an AMM/RMM with the CMM is limited by sample size requirements (Table 10.4.3-2 shows that differences of 25-50% need hundreds of samples), so in practice a looser non-inferiority margin (such as a variance ratio of 2, corresponding to a precision ratio of about 141%) or a GLMM τ comparison is recommended."
+  },
+  {
+   "zh": "務必區分「精密度比值的非劣性界限」與「變異數比值的非劣性界限」——兩者呈平方關係（如 1.3² = 1.69），且比值反轉後界限也不是簡單倒數（1.3 反轉後為 0.769，而非 0.7）",
+   "en": "Always distinguish the \"non-inferiority margin for the ratio of precisions\" from the \"non-inferiority margin for the ratio of variances\". The two are related by a square (for example, 1.3² = 1.69), and after a ratio is inverted the margin is not a simple reciprocal either (the inverse of 1.3 is 0.769, not 0.7)."
+  },
+  {
+   "zh": "Satterthwaite 自由度近似法用於處理 GLMM 中沒有現成查表自由度的變異數成分（如 τ²），並設有「不低於 run 數−1」的下限保護規則",
+   "en": "The Satterthwaite approximation of degrees of freedom is used for variance components in a GLMM that have no ready table-lookup degrees of freedom (such as τ²), and comes with a lower-bound protection rule of \"not lower than the number of runs − 1\"."
+  }
+ ]
+}

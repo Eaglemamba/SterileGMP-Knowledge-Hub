@@ -1,0 +1,833 @@
+{
+ "source": "section-01b-physical-env-rabs-bfs.html",
+ "blocks": [
+  {
+   "zh": "主題 I–O：物理環境 — RABS、吹-填-封、氣閘與粒子監測",
+   "en": "Topics I-O: Physical Environment - RABS, Blow-Fill-Seal, Air Locks and Particle Monitoring"
+  },
+  {
+   "zh": "本章學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Isolator（隔離器）、Closed RABS（封閉型限制進出屏障系統）、Open RABS 三者在無菌保護等級上的差異，以及各自適用的環境分級要求。",
+   "en": "Understand how isolators, closed RABS and open RABS differ in the level of sterility protection they provide, and the environmental classification each requires."
+  },
+  {
+   "zh": "掌握 Blow-Fill-Seal（BFS，吹瓶-充填-封口）製程的環境控制邏輯：為何 BFS 不需 Grade B 過渡區，其「Grade A 等效」如何透過設計實現。",
+   "en": "Understand the environmental control logic of Blow-Fill-Seal (BFS) processes: why BFS does not need a Grade B transition zone, and how its \"Grade A equivalent\" is achieved through design."
+  },
+  {
+   "zh": "了解潔淨室「清除期（Clean-Up Period）」的確立方式，以及 EU Annex 1 的 20 分鐘指導值背後的意義。",
+   "en": "Understand how the clean-up period of a cleanroom is established, and what the EU Annex 1 guidance value of 20 minutes means."
+  },
+  {
+   "zh": "區別「靜止狀態（At-Rest）」與「操作狀態（In-Operation）」的定義、監測要求，以及 ≥5 µm 粒子監測的限值爭議與實務應對。",
+   "en": "Distinguish the definitions and monitoring requirements of \"at-rest\" and \"in-operation\" states, and understand the debate over limits for ≥5 µm particle monitoring and how to handle it in practice."
+  },
+  {
+   "zh": "掌握氣閘（Air Lock）設計原則：壓力梯度設計、人員通道與物料通道分離，以及 ISO 14644-1 分級採樣量的標準。",
+   "en": "Understand air lock design principles: pressure cascade design, separation of personnel and material flows, and the ISO 14644-1 sample volume used for classification."
+  },
+  {
+   "zh": "本節涵蓋主題 Topics Covered",
+   "en": "Topics Covered"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 — 屏障系統三層次",
+   "en": "Core Concept - The Three Levels of Barrier Systems"
+  },
+  {
+   "zh": "PDA PtC-1 將無菌製程的屏障防護分為三個等級，保護強度由低到高：",
+   "en": "PDA PtC-1 groups barrier protection for aseptic processing into three levels, from lowest to highest protection:"
+  },
+  {
+   "zh": "<strong>傳統帷幕式手工無菌充填</strong>（Classical Curtained Manual）：人員直接在潔淨室操作，依賴 Grade A 層流保護。保護強度最低。",
+   "en": "<strong>Classical curtained manual filling:</strong> Personnel work directly in the cleanroom and rely on Grade A unidirectional airflow for protection. This offers the lowest level of protection."
+  },
+  {
+   "zh": "<strong>RABS（限制進出屏障系統）</strong>：透過固定式手套連接的物理圍欄，將操作員手臂與產品空間隔離。需要放置於 Grade B 環境中（自身提供 Grade A 保護）。",
+   "en": "<strong>RABS (Restricted Access Barrier System):</strong> A physical enclosure with fixed glove ports that separates the operator's arms from the product space. It must be placed in a Grade B environment (the RABS itself provides Grade A protection)."
+  },
+  {
+   "zh": "<strong>Isolator（隔離器）</strong>：完全密封的氣密空間，配備自動化去污系統（通常為 VHP，氣化過氧化氫）。Open Isolator 需 Grade C；Closed Isolator 僅需 Grade D。保護強度最高。",
+   "en": "<strong>Isolator:</strong> A fully sealed, airtight enclosure with an automated decontamination system (usually VHP, vaporized hydrogen peroxide). An open isolator requires a Grade C background; a closed isolator needs only Grade D. This offers the highest level of protection."
+  },
+  {
+   "zh": "<strong>關鍵：</strong>等級越高，對周圍環境分級的要求反而越低，因為設備本身已提供極高的保護。",
+   "en": "<strong>Key point:</strong> The higher the level of protection, the lower the classification required for the surrounding environment, because the equipment itself already provides a very high level of protection."
+  },
+  {
+   "zh": "比喻說明 — 太空站 vs 無塵室",
+   "en": "Analogy - Space Station vs Cleanroom"
+  },
+  {
+   "zh": "把這三種系統想像成不同等級的「防護空間」：",
+   "en": "Think of the three systems as protected spaces of different grades:"
+  },
+  {
+   "zh": "<strong>Isolator = 太空站</strong>：完全密封於外界環境，太空人（操作員）完全在外面，透過機械臂（手套）操作。太空站（Grade D）周圍即使是真空宇宙（惡劣環境）也無所謂，因為內部完全隔絕。進行任何維修（等同開門干預）都必須先做「艙外行走準備」（重新去污）。",
+   "en": "<strong>Isolator = space station:</strong> It is completely sealed from the outside environment, and the astronauts (operators) stay outside and work through robotic arms (gloves). It does not matter if the space station (Grade D) is surrounded by the vacuum of space (a hostile environment), because the interior is fully isolated. Any repair (the equivalent of a door-open intervention) requires \"spacewalk preparation\" first (re-decontamination)."
+  },
+  {
+   "zh": "<strong>RABS = 有圍欄的無塵室</strong>：潔淨室（Grade B）中加裝了玻璃圍欄，操作員仍在同一空間裡，只是手伸進去操作。環境的等級還是很重要。",
+   "en": "<strong>RABS = cleanroom with a glass fence:</strong> A glass enclosure is added inside the cleanroom (Grade B). The operator is still in the same space and only reaches in with their hands. The grade of the surrounding room still matters."
+  },
+  {
+   "zh": "<strong>傳統手工充填 = 開放手術室</strong>：完全依賴空間潔淨度和操作員技術。",
+   "en": "<strong>Classical manual filling = open operating theater:</strong> It relies entirely on room cleanliness and operator technique."
+  },
+  {
+   "zh": "這個比喻也解釋了為何 Isolator 去污後不能隨便開門——就像太空艙開艙門前必須先重新加壓一樣。",
+   "en": "The analogy also explains why an isolator cannot simply be opened after decontamination: just as a space capsule must be repressurized before the hatch is opened."
+  },
+  {
+   "zh": "重點提示 — Open vs Closed RABS 的差異",
+   "en": "Key Point - Open vs Closed RABS"
+  },
+  {
+   "zh": "雖然 PtC-1 文中未明確區分，但 ISPE 定義如下（參考 PDA PtC-12）：",
+   "en": "Although PtC-1 does not explicitly distinguish them, ISPE defines them as follows (see PDA PtC-12):"
+  },
+  {
+   "zh": "<strong>Closed RABS</strong>：干預時門始終關閉，只能透過固定手套操作。保護強度較高。",
+   "en": "<strong>Closed RABS:</strong> Doors remain closed during interventions, which are carried out only through fixed gloves. This offers a higher level of protection."
+  },
+  {
+   "zh": "<strong>Open RABS</strong>：允許在特殊情況下打開門進行干預。必須有補充控制措施（煙霧測試、額外消毒、監測等）。",
+   "en": "<strong>Open RABS:</strong> Doors may be opened for interventions in special circumstances. Supplementary controls (smoke studies, additional disinfection, monitoring, etc.) must be in place."
+  },
+  {
+   "zh": "PtC-1 的立場：RABS 開門干預不是禁止的，但必須是「合格干預清單」中預先評估的項目，且附帶明確的額外控制措施。這是一個「風險為本」的方法。",
+   "en": "PtC-1's position: Opening a RABS door for an intervention is not prohibited, but it must be an item on the pre-evaluated \"qualified interventions list\" with clearly defined additional controls. This is a risk-based approach."
+  },
+  {
+   "zh": "決策框架 — 選擇屏障技術的邏輯樹",
+   "en": "Decision Framework - Logic Tree for Selecting a Barrier Technology"
+  },
+  {
+   "zh": "新建無菌充填廠房選型決策：\n\nQ1: 產品需要最高無菌保證（高風險、生物製品）？\n    → 是：優先考慮 Closed Isolator\n\nQ2: 廠房預算有限，但希望降低環境級別要求？\n    → 是：Closed Isolator（Grade D 環境）\n    → 否：RABS（Grade B 環境，建造成本較高）\n\nQ3: 產品換型頻繁（CDMO 多產品共線）？\n    → 是：RABS 更易於清洗和換型\n    → 否：Isolator 去污時間較長，但長期無菌保證更好\n\nQ4: 現有設施升級（改造 Grade B 空間）？\n    → RABS 是改造現有潔淨室的理想選擇\n    → Isolator 需要更多基礎設施（VHP 系統、廢氣處理）\n\n參考：EU Annex 1 (2022) 明確鼓勵使用 Isolator 或 RABS，\n視為對 CCS 的積極貢獻。",
+   "en": "Barrier selection decision for a new aseptic filling facility:\n\nQ1: Does the product require the highest sterility assurance (high-risk, biologics)?\n    → Yes: Give priority to a closed isolator\n\nQ2: Is the facility budget limited, but you want to lower the environmental classification requirement?\n    → Yes: Closed isolator (Grade D environment)\n    → No: RABS (Grade B environment, higher construction cost)\n\nQ3: Are product changeovers frequent (CDMO with multiple products on a shared line)?\n    → Yes: RABS is easier to clean and change over\n    → No: Isolator decontamination takes longer, but long-term sterility assurance is better\n\nQ4: Is this an upgrade of an existing facility (retrofitting a Grade B space)?\n    → RABS is the ideal choice for retrofitting an existing cleanroom\n    → An isolator requires more infrastructure (VHP system, exhaust treatment)\n\nReference: EU Annex 1 (2022) explicitly encourages the use of isolators or RABS,\nviewing them as a positive contribution to the CCS."
+  },
+  {
+   "zh": "實務應用 — CDMO 場景",
+   "en": "Practical Application - CDMO Scenario"
+  },
+  {
+   "zh": "假設你的 CDMO 同時承接兩個客戶專案：",
+   "en": "Suppose your CDMO takes on two client projects at the same time:"
+  },
+  {
+   "zh": "<strong>客戶 A：</strong>高價值生物製劑，每批次 500 vials，年產 6 批。要求最高無菌保證，監管機構為 EMA。",
+   "en": "<strong>Client A:</strong> A high-value biologic, 500 vials per batch, 6 batches per year. Requires the highest sterility assurance; the regulator is the EMA."
+  },
+  {
+   "zh": "<strong>客戶 B：</strong>通用注射劑，每批次 50,000 vials，年產 50 批，頻繁換型。監管機構為 FDA。",
+   "en": "<strong>Client B:</strong> A generic injectable, 50,000 vials per batch, 50 batches per year, frequent changeovers. The regulator is the FDA."
+  },
+  {
+   "zh": "<strong>分析：</strong>客戶 A 建議使用 Closed Isolator（最高保護，EU 監管傾向）。客戶 B 建議使用 RABS（換型彈性大，批量高）。如果只有一條線，需要做 QRM（品質風險管理）評估共線可行性——這正是 PDA PtC-1 將屏障技術納入 CCS 框架的原因。",
+   "en": "<strong>Analysis:</strong> For Client A, a closed isolator is recommended (highest protection, in line with EU regulatory expectations). For Client B, RABS is recommended (greater changeover flexibility, high batch volume). If there is only one line, a QRM (quality risk management) assessment is needed to evaluate the feasibility of sharing it. This is exactly why PDA PtC-1 brings barrier technology into the CCS framework."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "一家工廠將 RABS 設置在 Grade C 環境中，認為已符合 PDA 建議。這樣做是否正確？理由為何？（提示：PtC-1 明確規定 RABS 必須在 Grade B 環境中。）",
+   "en": "A company installs its RABS in a Grade C environment and believes this complies with PDA recommendations. Is this correct, and why? (Hint: PtC-1 explicitly specifies that a RABS must be located in a Grade B environment.)"
+  },
+  {
+   "zh": "當 RABS 需要進行開門干預時，PDA PtC-1 要求的「額外控制措施」至少包含哪幾項？（請列舉至少 4 項。）",
+   "en": "When a RABS requires a door-open intervention, which \"additional controls\" does PDA PtC-1 require at a minimum? (List at least 4.)"
+  },
+  {
+   "zh": "Isolator 的內表面被說成是「去污（decontaminated）」而非「滅菌（sterilized）」，這在操作規範上有什麼含義？（提示：手套不能觸碰關鍵表面的原因。）",
+   "en": "The interior surfaces of an isolator are described as \"decontaminated\" rather than \"sterilized\". What does this imply for operating practice? (Hint: why gloves must not touch critical surfaces.)"
+  },
+  {
+   "zh": "重點提示 — 環境分級要求對照",
+   "en": "Key Point - Environmental Classification Requirements Compared"
+  },
+  {
+   "zh": "這是監管機構和廠房設計師最常查核的細節：",
+   "en": "These are the details that regulators and facility designers check most often:"
+  },
+  {
+   "zh": "<strong>CDMO 廠房設計含義：</strong>選用 Closed Isolator 可以將廠房主體降到 Grade D 等級，大幅降低 HVAC 建造和運營成本。這是許多新建無菌廠選擇 Isolator 的核心財務理由。",
+   "en": "<strong>Implications for CDMO facility design:</strong> Choosing a closed isolator allows the main facility to be downgraded to Grade D, greatly reducing HVAC construction and operating costs. This is the core financial reason many new aseptic facilities choose isolators."
+  },
+  {
+   "zh": "核心概念解析 — 清除期 (Clean-Up Period)",
+   "en": "Core Concept - Clean-Up Period"
+  },
+  {
+   "zh": "<strong>清除期（Clean-Up Period）</strong>是指：潔淨室在受到擾動（例如人員進出、干預操作、設備維修）後，需要多長時間才能恢復到「靜止狀態（At-Rest）」的粒子水準。",
+   "en": "<strong>Clean-up period</strong> refers to the time a cleanroom needs, after a disturbance (e.g. personnel entering or leaving, interventions, equipment maintenance), to return to its \"at-rest\" particle levels."
+  },
+  {
+   "zh": "PDA PtC-1 的核心立場：<strong>清除時間不應是固定的時間規定，而應是透過資格確認（Qualification）建立的、設施專屬的數據。</strong> 這反映了 GMP 中「科學為本」的原則——每個廠房的 HVAC 設計、換氣次數（ACH）、房間大小都不同，不可能一刀切。",
+   "en": "PDA PtC-1's core position: <strong>The clean-up time should not be a fixed, prescribed time; it should be facility-specific data established through qualification.</strong> This reflects the GMP principle of being \"science-based\": every facility has a different HVAC design, air change rate (ACH) and room size, so one size cannot fit all."
+  },
+  {
+   "zh": "比喻說明 — 餐廳廚房換氣",
+   "en": "Analogy - Ventilating a Restaurant Kitchen"
+  },
+  {
+   "zh": "想像一個大型廚房在炒菜後充滿油煙：一個小廚房（高換氣率）可能5分鐘後就恢復清潔；一個大型工業廚房（低換氣率、大空間）可能需要30分鐘。你不能規定「所有廚房必須10分鐘清除」——必須實測。",
+   "en": "Imagine a large kitchen filled with smoke after stir-frying: a small kitchen (high air change rate) may clear in 5 minutes, while a large industrial kitchen (low air change rate, large space) may need 30 minutes. You cannot mandate that \"all kitchens must clear in 10 minutes\"; it has to be measured."
+  },
+  {
+   "zh": "潔淨室也一樣：EU Annex 1 的 20 分鐘是「指引值（guidance value）」，不是強制標準。你的廠房也許 10 分鐘就夠，也許需要 35 分鐘——關鍵是用數據說話。",
+   "en": "The same applies to cleanrooms: the 20 minutes in EU Annex 1 is a \"guidance value\", not a mandatory standard. Your facility may need only 10 minutes, or it may need 35 minutes. The key is to let the data speak."
+  },
+  {
+   "zh": "重點提示 — EU Annex 1 的 20 分鐘與 PDA 立場的差異",
+   "en": "Key Point - EU Annex 1's 20 Minutes vs the PDA Position"
+  },
+  {
+   "zh": "<strong>EU Annex 1 第 4.29 條：</strong>提供 20 分鐘作為指引值，但明確表示應透過資格確認確定具體時間。",
+   "en": "<strong>EU Annex 1, clause 4.29:</strong> Provides 20 minutes as a guidance value, but explicitly states that the actual time should be determined through qualification."
+  },
+  {
+   "zh": "<strong>PDA PtC-1 立場：</strong>更進一步，認為「不應設定時間限制」，而應建立一套「偏差後環境恢復的系統程序」，包括：",
+   "en": "<strong>PDA PtC-1 position:</strong> Goes a step further, taking the view that \"no time limit should be set\", and that a systematic procedure for environmental recovery after a deviation should be established, including:"
+  },
+  {
+   "zh": "確認擾動已停止",
+   "en": "Confirm that the disturbance has stopped"
+  },
+  {
+   "zh": "驗證 HVAC 運行正常",
+   "en": "Verify that the HVAC is operating normally"
+  },
+  {
+   "zh": "實際粒子監測確認恢復（而非假設時間到就好）",
+   "en": "Confirm recovery through actual particle monitoring (not by assuming that recovery has occurred once the time is up)"
+  },
+  {
+   "zh": "<strong>實務含義：</strong>FDA 查核時，查官可能問：「你的清除期是如何確立的？」——你需要提供資格確認的數據，而不只是引用「EU 說 20 分鐘」。",
+   "en": "<strong>Practical implication:</strong> During an FDA inspection, the investigator may ask: \"How did you establish your clean-up period?\" You need to provide qualification data, not just cite \"the EU says 20 minutes\"."
+  },
+  {
+   "zh": "公式參考 — 換氣次數與清除時間的關係",
+   "en": "Formula Reference - Relationship Between Air Change Rate and Clean-Up Time"
+  },
+  {
+   "zh": "理論清除時間估算（ISPE 方法）：\n\n清除時間 ≈ 3 ÷ ACH（每小時換氣次數）× 60 分鐘\n\n例：Grade B 房間 ACH = 20\n→ 理論清除時間 ≈ 3 ÷ 20 × 60 = 9 分鐘（99% 清除率）\n\n但此公式為理論值，實際需透過粒子計數驗證：\n- 在擾動後（如人員退出）立即啟動粒子監測\n- 記錄粒子數降到 At-Rest 標準的實際時間\n- 此時間即為該設施的合格清除期\n\n注意：EU Annex 1 指引值 20 分鐘對應較保守的\n換氣次數（~9 ACH），現代潔淨室通常可更快。",
+   "en": "Theoretical clean-up time estimate (ISPE method):\n\nClean-up time ≈ 3 ÷ ACH (air changes per hour) × 60 minutes\n\nExample: Grade B room, ACH = 20\n→ Theoretical clean-up time ≈ 3 ÷ 20 × 60 = 9 minutes (99% removal)\n\nHowever, this formula is a theoretical value and must be verified by particle counting:\n- Start particle monitoring immediately after the disturbance (e.g. after personnel exit)\n- Record the actual time for particle counts to fall to the at-rest limit\n- This time is the qualified clean-up period for that facility\n\nNote: The EU Annex 1 guidance value of 20 minutes corresponds to a more conservative\nair change rate (~9 ACH); modern cleanrooms can usually recover faster."
+  },
+  {
+   "zh": "你的工廠 Grade B 填充室的 HVAC 換氣次數為 30 ACH，你的清除期是否可以設定為少於 EU Annex 1 的 20 分鐘指引值？需要提供什麼數據支持？",
+   "en": "The HVAC in your facility's Grade B filling room runs at 30 ACH. Can you set your clean-up period to less than the 20-minute guidance value in EU Annex 1? What data would you need to support it?"
+  },
+  {
+   "zh": "PDA PtC-1 說清除期「不應是時間限制」，那清除期的觸發條件是什麼？恢復的確認標準又是什麼？",
+   "en": "PDA PtC-1 says the clean-up period \"should not be a time limit\". What, then, is the trigger for the clean-up period, and what is the criterion for confirming recovery?"
+  },
+  {
+   "zh": "核心概念解析 — BFS 的「先進無菌」地位",
+   "en": "Core Concept - The \"Advanced Aseptic\" Status of BFS"
+  },
+  {
+   "zh": "<strong>Blow-Fill-Seal（BFS，吹瓶-充填-封口）</strong>是一種整合式無菌包裝技術：塑膠粒料（Resin）在機器內被加熱擠出成型（Parison，熔融管），同時充填藥液，然後密封——整個過程在幾秒鐘內完成，幾乎沒有「開放暴露」時間。",
+   "en": "<strong>Blow-Fill-Seal (BFS)</strong> is an integrated aseptic packaging technology: plastic resin pellets are heated and extruded inside the machine into a parison (a molten tube), the drug solution is filled at the same time, and the container is then sealed. The whole process takes only seconds, with almost no \"open exposure\" time."
+  },
+  {
+   "zh": "<strong>為何 BFS 不需要 Grade B 過渡區？</strong> 因為 BFS 的核心設計理念是「容器在充填前才存在」——不像傳統玻璃瓶需要運輸、清洗、滅菌等多個步驟，BFS 的容器是「即時製造即時充填」，暴露視窗極短，風險本質上不同。",
+   "en": "<strong>Why does BFS not need a Grade B transition zone?</strong> Because the core design concept of BFS is that \"the container only comes into existence just before filling\". Unlike conventional glass vials, which go through transport, washing, sterilization and other steps, a BFS container is \"made and filled on the spot\", the exposure window is extremely short, and the risk is fundamentally different."
+  },
+  {
+   "zh": "這是 EU Annex 1（2022）與 FDA 都認可的「特殊情況」，允許 BFS 機房使用 Grade C，但仍要求 Air Shroud 內達到 Grade A 等效。",
+   "en": "This is a \"special case\" recognized by both EU Annex 1 (2022) and the FDA, which allows BFS machine rooms to be Grade C, while still requiring a Grade A equivalent within the air shroud."
+  },
+  {
+   "zh": "比喻說明 — BFS 像「現場製作的密封飲料」",
+   "en": "Analogy - BFS Is Like a \"Made-to-Order Sealed Drink\""
+  },
+  {
+   "zh": "傳統無菌充填就像：工廠先生產空玻璃瓶（有清洗、滅菌過程），運到充填室，開口充填，再加蓋。每個步驟都有汙染風險。",
+   "en": "Conventional aseptic filling is like this: a factory first makes empty glass bottles (with washing and sterilization), ships them to the filling room, fills them with the opening exposed, and then caps them. Every step carries a contamination risk."
+  },
+  {
+   "zh": "BFS 就像：飲料機現場用熱塑膠「吹」出一個杯子，立刻注入飲料，立刻密封。杯子從沒有「空的」狀態——一生出來就被充填了。所以「容器被汙染」的機會視窗幾乎為零。",
+   "en": "BFS is like this: a drink machine \"blows\" a cup out of hot plastic on the spot, immediately pours in the drink, and immediately seals it. The cup is never in an \"empty\" state; it is filled the moment it is formed. So the window of opportunity for the container to become contaminated is almost zero."
+  },
+  {
+   "zh": "Air Shroud 就像「機器外罩一層玻璃罩子」，確保這個吹製-充填-密封的瞬間受到 Grade A 潔淨空氣保護。",
+   "en": "The air shroud is like \"a glass cover over the machine\", ensuring that the moment of blowing, filling and sealing is protected by Grade A clean air."
+  },
+  {
+   "zh": "重點提示 — BFS 的 EM 特殊挑戰",
+   "en": "Key Point - Special EM Challenges of BFS"
+  },
+  {
+   "zh": "BFS 的環境監測（EM）與傳統充填線不同，有幾個特殊考量：",
+   "en": "Environmental monitoring (EM) for BFS differs from that of a conventional filling line, with several special considerations:"
+  },
+  {
+   "zh": "<strong>Parison 切割產生粒子：</strong>塑膠被切割時會產生顆粒，這些是「非微生物但干擾計數」的粒子。需要建立「基準（Baseline）」來區分製程相關粒子和真正的環境污染。",
+   "en": "<strong>Particles generated by parison cutting:</strong> Cutting the plastic generates particles that are \"non-viable but interfere with counting\". A baseline needs to be established to distinguish process-related particles from true environmental contamination."
+  },
+  {
+   "zh": "<strong>封閉式 Parison 無法取樣：</strong>對於旋轉式或封閉 Parison 設計的 BFS 機器，充填噴嘴在 Parison 內部，根本無法在鄰近位置取 EM 樣本。這是監管機構允許的設計限制，但必須在 EM 計畫中說明理由。",
+   "en": "<strong>Sampling is not possible with an enclosed parison:</strong> For rotary or enclosed-parison BFS machines, the filling nozzle is inside the parison, so EM samples cannot be taken in close proximity. Regulators accept this as a design limitation, but the justification must be documented in the EM program."
+  },
+  {
+   "zh": "<strong>Grade A 的認定方式：</strong>因 BFS 難以設置標準的 Grade A 差壓環境，監管機構接受「透過資格確認研究（包括煙霧可視化）證明等效 Grade A 保護」的方式。",
+   "en": "<strong>How Grade A is demonstrated:</strong> Because it is difficult to set up a standard Grade A pressure-differential environment in BFS, regulators accept demonstrating equivalent Grade A protection through qualification studies (including smoke visualization)."
+  },
+  {
+   "zh": "重點提示 — FDA vs EU Annex 1 對 BFS 的立場對比",
+   "en": "Key Point - FDA vs EU Annex 1 Positions on BFS"
+  },
+  {
+   "zh": "FDA（2004 指引）：承認 BFS 的特殊性，接受 Grade C 機房環境，要求 Grade A 等效的關鍵充填區，但沒有明確要求 Grade B 過渡區。",
+   "en": "FDA (2004 guidance): Recognizes the particular nature of BFS and accepts a Grade C machine room environment, with a Grade A equivalent critical filling zone, but does not explicitly require a Grade B transition zone."
+  },
+  {
+   "zh": "EU Annex 1（2022）：同樣允許 BFS 在 Grade C 操作，明確確認不需要 Grade B 過渡區（這在 2022 年修訂中是一個重要的澄清），但要求充填關鍵區域提供 Grade A 等效保護的書面資格確認。",
+   "en": "EU Annex 1 (2022): Likewise allows BFS to operate in Grade C and explicitly confirms that no Grade B transition zone is required (an important clarification in the 2022 revision), but requires documented qualification showing that the critical filling zone provides Grade A equivalent protection."
+  },
+  {
+   "zh": "<strong>CDMO 實務：</strong>如果同時面向 FDA 和 EMA 市場，BFS 的設計方案通常可以同時滿足兩個監管機構的要求——這是 BFS 的一個監管友好優勢。",
+   "en": "<strong>CDMO practice:</strong> If you serve both the FDA and EMA markets, a BFS design can usually satisfy both regulators at once. This is a regulatory-friendly advantage of BFS."
+  },
+  {
+   "zh": "實務應用 — BFS CDMO 廠房設計",
+   "en": "Practical Application - BFS CDMO Facility Design"
+  },
+  {
+   "zh": "如果 CDMO 考慮引入一台新的 BFS 機器：",
+   "en": "If a CDMO is considering introducing a new BFS machine:"
+  },
+  {
+   "zh": "<strong>廠房環境：</strong>機器主體可在 Grade C，但 Air Shroud 必須設計為 Grade A 等效。",
+   "en": "<strong>Facility environment:</strong> The machine room may be Grade C, but the air shroud must be designed to be Grade A equivalent."
+  },
+  {
+   "zh": "<strong>人員更衣：</strong>進入 BFS 充填室的人員必須按 Grade A/B 要求更衣（比 Grade C 更嚴格），因為他們一旦進行干預，就是在 Grade A 環境附近操作。",
+   "en": "<strong>Personnel gowning:</strong> Personnel entering the BFS filling room must gown to Grade A/B requirements (stricter than Grade C), because when they intervene they are working close to a Grade A environment."
+  },
+  {
+   "zh": "<strong>EM 計畫：</strong>需要特別規劃：哪些位置可取樣、哪些不可取樣（並說明理由）、如何解讀 Parison 切割產生的非生物粒子。",
+   "en": "<strong>EM program:</strong> Needs particular planning: which locations can be sampled, which cannot (with justification), and how to interpret the non-viable particles generated by parison cutting."
+  },
+  {
+   "zh": "<strong>APS（無菌製程模擬）：</strong>必須模擬 Resin 充填過程，但由於容器為不透明/半透明塑膠，培養基生長的可見性可能受限——需要在 APS 計畫中特別說明判讀方法。",
+   "en": "<strong>APS (aseptic process simulation):</strong> Must simulate the resin filling process, but because the containers are opaque or translucent plastic, the visibility of media growth may be limited. The APS program needs to explain the method of reading results."
+  },
+  {
+   "zh": "為什麼 PDA PtC-1 說 BFS 機房「不需要 Grade B 過渡區」？這個結論的科學依據是什麼？",
+   "en": "Why does PDA PtC-1 say a BFS machine room \"does not need a Grade B transition zone\"? What is the scientific basis for this conclusion?"
+  },
+  {
+   "zh": "BFS 的 Parison 切割區域粒子監測面臨哪些特殊挑戰？廠房應如何處理「因製程產生的非微生物粒子」對監測數據的影響？",
+   "en": "What special challenges does particle monitoring in the BFS parison cutting area face? How should a facility handle the impact of \"non-viable particles generated by the process\" on monitoring data?"
+  },
+  {
+   "zh": "核心概念解析 — 為什麼 Resin 品質在 BFS 中特別重要？",
+   "en": "Core Concept - Why Is Resin Quality Especially Important in BFS?"
+  },
+  {
+   "zh": "在傳統無菌充填中，容器（玻璃瓶、安瓿）是預先製造的，廠商通過清洗-去熱原-滅菌來確保無菌。",
+   "en": "In conventional aseptic filling, containers (glass vials, ampoules) are manufactured in advance, and the supplier ensures sterility through washing, depyrogenation and sterilization."
+  },
+  {
+   "zh": "在 BFS 中，塑膠樹脂（Resin）本身就是容器材料的前驅物。樹脂的微生物負荷（Bioburden）和內毒素（Endotoxin）直接影響最終容器的品質——雖然擠出成型的高溫（通常 &gt;170°C）可殺滅大多數微生物，但高溫不能摧毀內毒素。因此，樹脂的生物負荷管控是 BFS 製程中容易被忽視但至關重要的環節。",
+   "en": "In BFS, the plastic resin is itself the precursor of the container material. The bioburden and endotoxin of the resin directly affect the quality of the final container. Although the high temperature of extrusion molding (typically &gt;170°C) kills most microorganisms, it cannot destroy endotoxin. Controlling resin bioburden is therefore an easily overlooked but critical part of the BFS process."
+  },
+  {
+   "zh": "重點提示 — Resin Regrind 的使用",
+   "en": "Key Point - Use of Resin Regrind"
+  },
+  {
+   "zh": "<strong>Resin Regrind（回收研磨料）</strong>是指 BFS 生產中被切除的多餘塑膠（如容器頸部的廢料）被研磨後重新混入新樹脂使用，以減少物料浪費。",
+   "en": "<strong>Resin regrind</strong> is excess plastic trimmed off during BFS production (such as waste from the container neck), which is ground and mixed back into virgin resin to reduce material waste."
+  },
+  {
+   "zh": "PDA PtC-1 的要求：Regrind 的使用必須經過資格確認，至少驗證：",
+   "en": "PDA PtC-1 requirement: The use of regrind must be qualified, verifying at a minimum:"
+  },
+  {
+   "zh": "混用比例對生物負荷（Bioburden）的影響",
+   "en": "The effect of the blend ratio on bioburden"
+  },
+  {
+   "zh": "容器封口完整性是否受影響",
+   "en": "Whether container closure integrity is affected"
+  },
+  {
+   "zh": "容器在整個保存期限（Shelf Life）內的完整性",
+   "en": "Container integrity throughout the shelf life"
+  },
+  {
+   "zh": "<strong>注意：</strong>Regrind 在儲存和研磨過程中可能累積微生物，必須監測並設定限值。",
+   "en": "<strong>Note:</strong> Regrind may accumulate microorganisms during storage and grinding, so it must be monitored and limits must be set."
+  },
+  {
+   "zh": "重點提示 — Silo（大型儲料倉）的特殊風險",
+   "en": "Key Point - Special Risks of Silos"
+  },
+  {
+   "zh": "BFS 工廠常使用大型儲料筒倉（Silos）存放大量樹脂。這些設備的風險點：",
+   "en": "BFS plants often use large silos to store bulk resin. The risk points of this equipment are:"
+  },
+  {
+   "zh": "<strong>水分累積：</strong>塑膠樹脂吸濕後可能影響成型品質，還可能促進微生物生長。",
+   "en": "<strong>Moisture accumulation:</strong> Plastic resin that absorbs moisture may suffer reduced molding quality and may also support microbial growth."
+  },
+  {
+   "zh": "<strong>清潔挑戰：</strong>大型筒倉難以定期清潔，需要建立定期清空-清洗-消毒的 SOP。",
+   "en": "<strong>Cleaning challenges:</strong> Large silos are difficult to clean regularly, so an SOP for periodic emptying, cleaning and disinfection needs to be established."
+  },
+  {
+   "zh": "<strong>監測策略：</strong>定期取樣監測倉內樹脂的微生物負荷和濕度。",
+   "en": "<strong>Monitoring strategy:</strong> Periodically sample and monitor the bioburden and moisture content of the resin in the silo."
+  },
+  {
+   "zh": "為何 BFS 製程中需要監測樹脂的內毒素（Endotoxin）？擠出過程的高溫是否足以消除內毒素風險？",
+   "en": "Why does resin endotoxin need to be monitored in a BFS process? Is the high temperature of extrusion sufficient to eliminate the endotoxin risk?"
+  },
+  {
+   "zh": "BFS 工廠的換型（Resin Changeover）需要哪些特別程序？為何需要確保輸送管線和擠出機的清除（Clearance）？",
+   "en": "What special procedures are needed for resin changeover in a BFS plant? Why must clearance of the transfer lines and the extruder be ensured?"
+  },
+  {
+   "zh": "核心概念解析 — BFS APS 的特殊考量",
+   "en": "Core Concept - Special Considerations for BFS APS"
+  },
+  {
+   "zh": "雖然 PDA PtC-1 說 BFS 的 APS 應「以相同方式進行」，但在實際執行時有幾個重要的特殊考量：",
+   "en": "Although PDA PtC-1 says the APS for BFS should be performed \"in the same way\", there are several important special considerations in actual execution:"
+  },
+  {
+   "zh": "<strong>高度自動化（High Automation）：</strong>BFS 通常沒有人員直接在充填區操作，因此 APS 中「干預模擬」的設計需要特別思考——哪些是 BFS 固有的干預？（如機器停機、Parison 問題處理等）",
+   "en": "<strong>High automation:</strong> BFS usually has no personnel working directly in the filling zone, so the design of \"intervention simulations\" in the APS needs particular thought: which interventions are inherent to BFS? (e.g. machine stoppages, handling of parison problems)"
+  },
+  {
+   "zh": "<strong>容器不透明/半透明問題：</strong>BFS 常用半透明或著色塑膠容器。培養基（通常是 TSB，黃褐色）在這類容器中，污染生長產生的渾濁可能不易目視判別，需要特殊的判讀 SOP 或輔助檢測方法。",
+   "en": "<strong>Opaque/translucent containers:</strong> BFS often uses translucent or colored plastic containers. In such containers, the turbidity from contamination growth in the culture medium (usually TSB, yellow-brown) may be hard to judge visually, so a special inspection SOP or supplementary detection method is needed."
+  },
+  {
+   "zh": "<strong>APS 頻率：</strong>PDA TR22 規定每半年至少一次，BFS 通常不需更頻繁——但因其高自動化程度，一旦有 APS 失敗，追查原因往往更困難。",
+   "en": "<strong>APS frequency:</strong> PDA TR22 specifies at least once every six months, and BFS usually does not need to be more frequent. However, because of its high degree of automation, root cause investigation is often harder if an APS fails."
+  },
+  {
+   "zh": "重點提示 — 培養基可見度問題的監管關注",
+   "en": "Key Point - Regulatory Attention on Media Visibility"
+  },
+  {
+   "zh": "FDA 查核時曾對 BFS 的 APS 結果判讀提出疑問：「你如何確認半透明容器內沒有微生物生長？」",
+   "en": "During FDA inspections, questions have been raised about the interpretation of BFS APS results: \"How do you confirm there is no microbial growth inside the translucent containers?\""
+  },
+  {
+   "zh": "建議的實務做法：",
+   "en": "Suggested practice:"
+  },
+  {
+   "zh": "使用透明版本的相同塑膠配方（如果可行）進行 APS，以提高可見度。",
+   "en": "Perform the APS using a clear version of the same plastic formulation (if feasible) to improve visibility."
+  },
+  {
+   "zh": "如果使用一般生產材料，建立額外的培養基目視判讀 SOP（例如背光照射、傾斜觀察）。",
+   "en": "If normal production material is used, establish an additional SOP for visual inspection of the media (e.g. backlighting, tilted viewing)."
+  },
+  {
+   "zh": "在 APS 計畫中明確說明「可見度限制」及補償措施，並獲得 QA 批准。",
+   "en": "Clearly state the \"visibility limitations\" and the compensating measures in the APS protocol, and obtain QA approval."
+  },
+  {
+   "zh": "一個 BFS APS 使用的是著色（藍色）塑膠容器。培養基為 TSB（澄清黃棕色）。你如何設計 APS 的污染判讀方法？需要哪些額外的 SOP？",
+   "en": "A BFS APS uses colored (blue) plastic containers. The medium is TSB (clear yellow-brown). How would you design the method for reading contamination in the APS? What additional SOPs are needed?"
+  },
+  {
+   "zh": "BFS 高度自動化，幾乎不需要人員干預——那麼 BFS 的 APS 需要模擬哪些「干預」？（提示：考慮機器異常、物料補充等場景。）",
+   "en": "BFS is highly automated and requires almost no personnel interventions. So which \"interventions\" does a BFS APS need to simulate? (Hint: consider scenarios such as machine faults and material replenishment.)"
+  },
+  {
+   "zh": "核心概念解析 — 氣閘（Air Lock）的設計原則",
+   "en": "Core Concept - Air Lock Design Principles"
+  },
+  {
+   "zh": "<strong>氣閘（Air Lock）</strong>是不同等級潔淨區域之間的過渡緩衝空間，功能類似於隔離不同壓力環境的「緩衝區」。其設計應符合以下原則：",
+   "en": "<strong>An air lock</strong> is a transitional buffer space between areas of different cleanliness grades, functioning like a \"buffer zone\" that separates different pressure environments. Its design should follow these principles:"
+  },
+  {
+   "zh": "<strong>人員與物料分開：</strong>人員更衣氣閘和物料傳遞氣閘應分開設置，避免交叉污染。",
+   "en": "<strong>Separate personnel and materials:</strong> Personnel gowning air locks and material transfer air locks should be provided separately to avoid cross-contamination."
+  },
+  {
+   "zh": "<strong>最終更衣室等級匹配：</strong>最終更衣區（脫下外衣、穿好潔淨服的最後一步）必須達到與其通往區域相同等級的靜止條件。",
+   "en": "<strong>Final change room grade matches:</strong> The final change area (the last step where outer garments are removed and cleanroom garments are put on) must meet the at-rest condition of the same grade as the area it leads to."
+  },
+  {
+   "zh": "<strong>主動供氣：</strong>氣閘應有自己的獨立送風系統（Active Air Supply），而不僅僅依賴相鄰房間的空氣滲入。",
+   "en": "<strong>Active air supply:</strong> An air lock should have its own independent air supply system (active air supply), rather than relying only on air leaking in from adjacent rooms."
+  },
+  {
+   "zh": "<strong>互鎖（Interlock）：</strong>防止兩側門同時開啟，確保任何時刻只有一扇門是開著的。",
+   "en": "<strong>Interlock:</strong> Prevents the doors on both sides from being open at the same time, ensuring that only one door is open at any moment."
+  },
+  {
+   "zh": "比喻說明 — 氣閘像水壩的閘門系統",
+   "en": "Analogy - An Air Lock Is Like a Dam Lock System"
+  },
+  {
+   "zh": "想像一個運河閘門系統（船閘）：高水位區（Grade A 或 B）和低水位區（Grade C 或 D）之間，透過一個可控制的「閘門空間」連接。進入時先進入閘門空間，關閉後方門，改變水位（等效：關閉氣閘、恢復壓力差），然後才能開啟前方門。",
+   "en": "Imagine a canal lock system: the high-water area (Grade A or B) and the low-water area (Grade C or D) are connected through a controllable \"lock chamber\". On entering, you first enter the lock chamber, the rear gate is closed, the water level is changed (equivalent to closing the air lock and restoring the pressure differential), and only then can the front gate be opened."
+  },
+  {
+   "zh": "潔淨室氣閘的「水位」對應「壓力差」：",
+   "en": "The \"water level\" of a cleanroom air lock corresponds to the \"pressure differential\":"
+  },
+  {
+   "zh": "Grade A/B 通常是正壓（避免外部空氣流入）",
+   "en": "Grade A/B is normally at positive pressure (to prevent outside air from flowing in)"
+  },
+  {
+   "zh": "氣閘是「過渡壓力」的緩衝區",
+   "en": "The air lock is the buffer zone of \"transitional pressure\""
+  },
+  {
+   "zh": "互鎖確保兩側不會同時開啟，防止「水（空氣）溢出」",
+   "en": "The interlock ensures that both sides are never open at once, preventing the \"water (air) from spilling over\""
+  },
+  {
+   "zh": "PDA PtC-1 還提到一個更簡單的解決方案：<strong>雙門滅菌器（Double-Door Sterilizer）</strong>——就像水壩裡裝了一個「物料傳送管道」，物料直接從非潔淨側進入滅菌機，從潔淨側出來，完全不需要氣閘。",
+   "en": "PDA PtC-1 also mentions a simpler solution: the <strong>double-door sterilizer</strong>. It is like installing a \"material transfer channel\" in the dam: materials enter the sterilizer directly from the non-clean side and exit on the clean side, with no need for an air lock at all."
+  },
+  {
+   "zh": "重點提示 — Grade B 更衣室的最終區域要求",
+   "en": "Key Point - Final Area Requirement for Grade B Change Rooms"
+  },
+  {
+   "zh": "PtC-1 明確規定：<strong>「更衣室的最終區域（final area）應在與其通往區域相同等級的靜止條件下運行。」</strong>",
+   "en": "PtC-1 explicitly specifies: <strong>\"The final area of the change room should be operated at the same at-rest grade as the area it leads to.\"</strong>"
+  },
+  {
+   "zh": "實務含義：如果更衣室通往 Grade B 充填室，那麼最終更衣區（穿上最後一層潔淨衣的地方）必須在靜止狀態下達到 Grade B 的粒子標準（ISO 5 等效）。這不僅是設計要求，也是更衣室的資格確認內容。",
+   "en": "Practical implication: If the change room leads to a Grade B filling room, the final change area (where the last layer of cleanroom garments is put on) must meet the Grade B particle standard (ISO 5 equivalent) at rest. This is not only a design requirement but also part of the change room qualification."
+  },
+  {
+   "zh": "<strong>常見問題：</strong>許多老廠的更衣室「最終更衣區」沒有達到這個標準，或者沒有做過粒子計數確認——這是 EU Annex 1（2022）查核時的高頻缺陷點。",
+   "en": "<strong>Common issue:</strong> In many older facilities the \"final change area\" of the change room does not meet this standard, or has never been confirmed by particle counting. This is a frequent deficiency in EU Annex 1 (2022) inspections."
+  },
+  {
+   "zh": "壓力梯度設計原則",
+   "en": "Pressure Cascade Design Principles"
+  },
+  {
+   "zh": "典型壓力梯度設計（正壓保護模式）：\n\nGrade A/B（充填室）    &gt; Grade B（更衣/氣閘）   &gt; Grade C（外走廊）\n\n壓差建議值（依 EU Annex 1）：\n相鄰區域之間：≥ 10–15 Pa\n\n設計要點：\n1. 氣閘應有獨立送風（不能只靠相鄰房間洩壓）\n2. 互鎖系統：A 門開著時 B 門不能開\n3. 單向人流和物流（進入/退出路線不交叉）\n4. 緊急情況（如毒性或 OEB 高毒性產品）：\n   使用「負壓氣閘」保護外部環境，\n   而非保護內部\n\nGrade A 為正壓的核心邏輯：\n外部空氣（Grade C/D）不應流入 Grade A/B，\n因此 Grade A/B 的壓力必須高於外部。",
+   "en": "Typical pressure cascade design (positive pressure protection mode):\n\nGrade A/B (filling room)    &gt; Grade B (change room/air lock)   &gt; Grade C (outer corridor)\n\nRecommended pressure differential (per EU Annex 1):\nBetween adjacent areas: ≥ 10-15 Pa\n\nDesign points:\n1. An air lock should have independent air supply (not rely only on pressure relief from adjacent rooms)\n2. Interlock system: when door A is open, door B cannot be opened\n3. One-way personnel and material flow (entry/exit routes do not cross)\n4. Special cases (such as toxic or high-potency OEB products):\n   use a \"negative pressure air lock\" to protect the external environment,\n   rather than the internal one\n\nCore logic of positive pressure for Grade A:\nOutside air (Grade C/D) should not flow into Grade A/B,\nso the pressure in Grade A/B must be higher than outside."
+  },
+  {
+   "zh": "如果因廠房限制無法設置獨立的人員氣閘和物料氣閘，PDA PtC-1 建議的替代方案是什麼？這個替代方案需要滿足哪些條件？",
+   "en": "If facility constraints make it impossible to provide separate personnel and material air locks, what alternative does PDA PtC-1 suggest? What conditions must this alternative meet?"
+  },
+  {
+   "zh": "Grade B 充填室的最終更衣區，在靜止狀態下應達到哪個 ISO 等級？這個要求應如何透過資格確認活動來驗證？",
+   "en": "At rest, which ISO class should the final change area of a Grade B filling room achieve? How should this requirement be verified through qualification activities?"
+  },
+  {
+   "zh": "一個設施進行高毒性（OEB 5）產品的無菌充填，氣閘的壓力設計應為正壓還是負壓？為什麼？（這個問題超出 PtC-1 範疇，但考驗整合理解。）",
+   "en": "A facility performs aseptic filling of a highly potent (OEB 5) product. Should the air lock pressure design be positive or negative? Why? (This question goes beyond the scope of PtC-1 but tests integrated understanding.)"
+  },
+  {
+   "zh": "核心概念解析 — At-Rest vs In-Operation 的定義",
+   "en": "Core Concept - Definitions of At-Rest vs In-Operation"
+  },
+  {
+   "zh": "這是 EU Annex 1 和 ISO 14644 中非常基礎但容易混淆的概念：",
+   "en": "These are fundamental but easily confused concepts in EU Annex 1 and ISO 14644:"
+  },
+  {
+   "zh": "<strong>At-Rest（靜止狀態）：</strong>潔淨室安裝完成、HVAC 運行，但無設備運轉、無人員在場。測試的是「環境本身」的潔淨能力。也稱為「As-Built」（剛建成）或「Unoccupied」（無人狀態）。",
+   "en": "<strong>At-rest:</strong> The cleanroom is installed and the HVAC is running, but no equipment is operating and no personnel are present. It tests the cleanliness capability of the \"environment itself\". Also called \"as-built\" or \"unoccupied\"."
+  },
+  {
+   "zh": "<strong>In-Operation（操作狀態）：</strong>生產設備正在運行，人員正在進行正常操作。測試的是「真實生產條件下」的潔淨室表現。",
+   "en": "<strong>In-operation:</strong> Production equipment is running and personnel are carrying out normal operations. It tests how the cleanroom performs \"under real production conditions\"."
+  },
+  {
+   "zh": "兩種狀態通常會有粒子數量差異（操作狀態通常粒子數更高），EU Annex 1 對 Grade A-D 都規定了兩種狀態的限值。",
+   "en": "Particle counts normally differ between the two states (usually higher in operation), and EU Annex 1 specifies limits for both states for Grades A to D."
+  },
+  {
+   "zh": "比喻說明 — At-Rest 是「空教室」，In-Operation 是「上課中」",
+   "en": "Analogy - At-Rest Is an \"Empty Classroom\", In-Operation Is \"Class in Session\""
+  },
+  {
+   "zh": "想像一間學校教室：",
+   "en": "Imagine a school classroom:"
+  },
+  {
+   "zh": "<strong>At-Rest = 下課後清掃完畢的空教室：</strong>地板乾淨、空氣清新。這反映了「教室本身的清潔能力」。",
+   "en": "<strong>At-rest = the empty classroom after class, once cleaned:</strong> The floor is clean and the air is fresh. This reflects the \"cleanliness capability of the classroom itself\"."
+  },
+  {
+   "zh": "<strong>In-Operation = 上課中（50 個學生坐在裡面）：</strong>粉筆灰、說話噴的飛沫、走動揚起的塵埃。這是「實際使用條件」。",
+   "en": "<strong>In-operation = class in session (50 students sitting inside):</strong> Chalk dust, droplets from talking, dust kicked up by movement. These are the \"actual conditions of use\"."
+  },
+  {
+   "zh": "資格確認時，兩種狀態都要測——你需要知道教室本身能達到多乾淨（At-Rest），也需要知道使用中還能維持什麼程度的潔淨（In-Operation）。但日常監測只要有「上課中」的監測就夠了——因為「上課中」的數據已經包含了最壞情況。",
+   "en": "During qualification, both states must be tested: you need to know how clean the classroom can be by itself (at-rest) and how clean it stays in use (in-operation). But for routine monitoring, \"class in session\" monitoring is enough, because the in-session data already include the worst case."
+  },
+  {
+   "zh": "重點提示 — 製程產生粒子的特殊處理",
+   "en": "Key Point - Special Handling of Process-Generated Particles"
+  },
+  {
+   "zh": "PDA PtC-1 特別提到 BFS、Form-Fill-Seal（形成-充填-密封）和粉末充填等製程會本身產生粒子（製程相關粒子），不是環境污染的結果。",
+   "en": "PDA PtC-1 specifically notes that processes such as BFS, form-fill-seal and powder filling generate particles themselves (process-related particles), which are not the result of environmental contamination."
+  },
+  {
+   "zh": "對這類製程，建議：",
+   "en": "For such processes, it is recommended to:"
+  },
+  {
+   "zh": "先建立「沒有製程干擾時的基準（Baseline）」粒子水準",
+   "en": "First establish a baseline particle level without process interference"
+  },
+  {
+   "zh": "用「相對偏差」（相對於基準的異常升高）來設定警戒和行動限值",
+   "en": "Set alert and action limits using \"relative deviation\" (abnormal rise relative to the baseline)"
+  },
+  {
+   "zh": "而非直接套用 ISO/EU 的絕對粒子數限值",
+   "en": "Rather than directly applying the absolute particle count limits of ISO/EU"
+  },
+  {
+   "zh": "這是 PDA 對監管框架的務實補充：標準數字是給一般情況用的，特殊製程需要特殊評估。",
+   "en": "This is PDA's pragmatic supplement to the regulatory framework: the standard numbers are for general cases, and special processes need special evaluation."
+  },
+  {
+   "zh": "PDA PtC-1 說日常監測不需要做 At-Rest 粒子監測——那麼什麼情況下需要重新做 At-Rest 測試？（提示：想想「定期重新確認（Requalification）」的觸發條件。）",
+   "en": "PDA PtC-1 says routine monitoring does not need to include at-rest particle monitoring. So under what circumstances does at-rest testing need to be repeated? (Hint: think about the triggers for requalification.)"
+  },
+  {
+   "zh": "一個粉末充填室（Grade B）的操作狀態粒子計數持續偏高，但 At-Rest 時完全符合標準。這意味著什麼？應如何調查？",
+   "en": "In a powder filling room (Grade B), in-operation particle counts are consistently high, but at-rest counts fully comply with the standard. What does this mean, and how should it be investigated?"
+  },
+  {
+   "zh": "重點提示 — EU Annex 1 兩種狀態的粒子限值",
+   "en": "Key Point - EU Annex 1 Particle Limits for the Two States"
+  },
+  {
+   "zh": "<strong>注意 Grade A：</strong>At-Rest 和 In-Operation 的限值相同（3,520 per m³）。這表示 Grade A（通常是層流保護或 Isolator 內部）在操作過程中不應因人員活動而升高粒子數——這也是為什麼 Isolator/RABS 如此重要：它防止了人員成為 Grade A 區的粒子來源。",
+   "en": "<strong>Note for Grade A:</strong> The at-rest and in-operation limits are the same (3,520 per m³). This means that Grade A (usually under unidirectional airflow protection or inside an isolator) should not see particle counts rise because of personnel activity during operation. This is also why isolators/RABS are so important: they prevent personnel from being a source of particles in the Grade A zone."
+  },
+  {
+   "zh": "核心概念解析 — ISO 14644-1 採樣量的計算",
+   "en": "Core Concept - Calculating the ISO 14644-1 Sample Volume"
+  },
+  {
+   "zh": "ISO 14644-1:2015 定義了每個採樣點的最小採樣量（V<sub>s</sub>）：",
+   "en": "ISO 14644-1:2015 defines the minimum sample volume per sampling location (V<sub>s</sub>):"
+  },
+  {
+   "zh": "計算公式：<strong>V<sub>s</sub> = (20 / C<sub>n,m</sub>) × 1000 (公升)</strong>",
+   "en": "Formula: <strong>V<sub>s</sub> = (20 / C<sub>n,m</sub>) × 1000 (liters)</strong>"
+  },
+  {
+   "zh": "其中 C<sub>n,m</sub> 是該潔淨等級在指定粒徑下的最大允許粒子濃度（per m³）。分子「20」代表統計學上需要捕獲到至少 20 個粒子才能使計數具有統計意義。",
+   "en": "Here C<sub>n,m</sub> is the maximum permitted particle concentration (per m³) for that cleanliness class at the specified particle size. The numerator \"20\" represents the statistical requirement of capturing at least 20 particles for the count to be statistically meaningful."
+  },
+  {
+   "zh": "這對不同等級的含義：",
+   "en": "What this means for the different grades:"
+  },
+  {
+   "zh": "<strong>Grade A（ISO 5，≥0.5µm，3,520 per m³）：</strong>V<sub>s</sub> = 20/3,520 × 1000 ≈ 5.7 L。由於 Grade A 粒子極少，5.7 升就夠了。",
+   "en": "<strong>Grade A (ISO 5, ≥0.5 µm, 3,520 per m³):</strong> V<sub>s</sub> = 20/3,520 × 1000 ≈ 5.7 L. Because Grade A has very few particles, 5.7 liters is enough."
+  },
+  {
+   "zh": "<strong>Grade D（ISO 8，≥0.5µm，3,520,000 per m³）：</strong>V<sub>s</sub> 更小，因粒子濃度高，少量樣本即可。",
+   "en": "<strong>Grade D (ISO 8, ≥0.5 µm, 3,520,000 per m³):</strong> V<sub>s</sub> is much smaller; because the particle concentration is high, a small sample is sufficient."
+  },
+  {
+   "zh": "重點提示 — 最小採樣量 vs 連續監測的差異",
+   "en": "Key Point - Minimum Sample Volume vs Continuous Monitoring"
+  },
+  {
+   "zh": "ISO 14644-1 的最小採樣量是針對<strong>分類/資格確認</strong>用的——你要「宣告」這個房間是 ISO Class X，需要採多少樣本。",
+   "en": "The ISO 14644-1 minimum sample volume applies to <strong>classification/qualification</strong>: how much sample you need to take to \"declare\" a room as ISO Class X."
+  },
+  {
+   "zh": "但日常生產監測（Routine EM）通常使用<strong>連續粒子計數器</strong>，每分鐘採集固定流量（通常 28.3 L/min = 1 CFM），這是一種不同的方法。兩者的目的不同：",
+   "en": "Routine production monitoring (routine EM), however, usually uses <strong>continuous particle counters</strong> that sample at a fixed flow rate each minute (typically 28.3 L/min = 1 CFM), which is a different approach. The two have different purposes:"
+  },
+  {
+   "zh": "ISO 採樣量（大）→ 用於「證明分類」（Classification/Qualification）",
+   "en": "ISO sample volume (large) → used to \"demonstrate classification\" (classification/qualification)"
+  },
+  {
+   "zh": "連續監測（小流量但長時間）→ 用於「趨勢分析和即時警報」（Routine Monitoring）",
+   "en": "Continuous monitoring (small flow rate but long duration) → used for \"trend analysis and real-time alarms\" (routine monitoring)"
+  },
+  {
+   "zh": "PDA PtC-1 的立場：分類請遵守 ISO 14644-1，不要發明自己的採樣量——因為這是全球監管機構共同接受的標準。",
+   "en": "PDA PtC-1's position: For classification, follow ISO 14644-1 and do not invent your own sample volumes, because this is the standard accepted by regulators worldwide."
+  },
+  {
+   "zh": "公式 — ISO 14644-1 最小採樣量",
+   "en": "Formula - ISO 14644-1 Minimum Sample Volume"
+  },
+  {
+   "zh": "最小採樣量計算：\n\nVs = (20 / Cn,m) × 1000  [單位：公升]\n\nCn,m = 該潔淨等級在目標粒徑下的最大濃度（per m³）\n\nGrade A/B（ISO 5）：\n  ≥0.5µm → Cn,m = 3,520 per m³\n  → Vs = (20/3,520) × 1000 ≈ 5.67 L → 取整為 ≥ 6 L\n\nGrade C（ISO 7）：\n  ≥0.5µm → Cn,m = 352,000 per m³\n  → Vs = (20/352,000) × 1000 ≈ 0.057 L ≈ 57 mL\n\nGrade D（ISO 8）：\n  ≥0.5µm → Cn,m = 3,520,000 per m³\n  → Vs = (20/3,520,000) × 1000 ≈ 0.0057 L ≈ 5.7 mL\n\n注意：實際取樣量通常遠大於最小值，\n因連續粒子計數器每分鐘採 28.3L。",
+   "en": "Minimum sample volume calculation:\n\nVs = (20 / Cn,m) × 1000  [unit: liters]\n\nCn,m = maximum concentration (per m³) for the class at the target particle size\n\nGrade A/B (ISO 5):\n  ≥0.5 µm → Cn,m = 3,520 per m³\n  → Vs = (20/3,520) × 1000 ≈ 5.67 L → rounded up to ≥ 6 L\n\nGrade C (ISO 7):\n  ≥0.5 µm → Cn,m = 352,000 per m³\n  → Vs = (20/352,000) × 1000 ≈ 0.057 L ≈ 57 mL\n\nGrade D (ISO 8):\n  ≥0.5 µm → Cn,m = 3,520,000 per m³\n  → Vs = (20/3,520,000) × 1000 ≈ 0.0057 L ≈ 5.7 mL\n\nNote: The actual sample volume is usually far larger than the minimum,\nbecause a continuous particle counter samples 28.3 L per minute."
+  },
+  {
+   "zh": "為什麼 Grade A 環境需要採集比 Grade C 更多體積的空氣樣本才能進行分類？這背後的統計學原理是什麼？",
+   "en": "Why does a Grade A environment require a larger air sample volume than Grade C for classification? What is the statistical principle behind this?"
+  },
+  {
+   "zh": "一個粒子計數器的流量為 28.3 L/min，每次採樣時間為 1 分鐘。這樣的採樣量對 Grade A 分類是否足夠？（請用計算說明。）",
+   "en": "A particle counter has a flow rate of 28.3 L/min and a sampling time of 1 minute per sample. Is this sample volume sufficient for Grade A classification? (Show the calculation.)"
+  },
+  {
+   "zh": "核心概念解析 — 為何 ≥5 µm 粒子監測如此困難？",
+   "en": "Core Concept - Why Is ≥5 µm Particle Monitoring So Difficult?"
+  },
+  {
+   "zh": "粒子計數器（Particle Counter）是透過光散射原理偵測粒子。≥5 µm 的粒子計數面臨三個技術問題：",
+   "en": "A particle counter detects particles by the principle of light scattering. Counting ≥5 µm particles faces three technical problems:"
+  },
+  {
+   "zh": "<strong>濃度太低（Statistically Rare）：</strong>在 Grade A 環境中，≥5 µm 粒子本來就極少。當濃度極低時，計數的隨機誤差（統計誤差）相對於實際數字非常大——你可能測到 0、1、2 個粒子，但這個差異在統計上沒有意義。",
+   "en": "<strong>Concentration too low (statistically rare):</strong> In a Grade A environment, ≥5 µm particles are extremely rare to begin with. When the concentration is extremely low, the random (statistical) error of counting is very large relative to the actual number: you might measure 0, 1 or 2 particles, but the difference is statistically meaningless."
+  },
+  {
+   "zh": "<strong>採樣管損失（Particle Loss in Tubing）：</strong>大粒子在彎曲的採樣管中容易沉降或撞壁損失，到達偵測器的粒子比實際少，造成「假低讀數」。",
+   "en": "<strong>Particle loss in tubing:</strong> Large particles tend to settle or impact the walls in curved sampling tubing, so fewer particles reach the detector than are actually present, giving \"falsely low readings\"."
+  },
+  {
+   "zh": "<strong>假讀數（False Counts）：</strong>相反地，液滴（比如操作員呼吸或設備潤滑油霧）可能被誤計為大粒子，造成「假高讀數」。",
+   "en": "<strong>False counts:</strong> Conversely, droplets (for example from operator breath or equipment lubricant mist) may be miscounted as large particles, giving \"falsely high readings\"."
+  },
+  {
+   "zh": "ISO 14644-1 的結論是：≥5 µm 粒子計數的不確定性太高，不適合用於分類（Classification），但仍可用於趨勢監測。",
+   "en": "The conclusion of ISO 14644-1 is that the uncertainty of ≥5 µm particle counts is too high for classification, although it can still be used for trend monitoring."
+  },
+  {
+   "zh": "比喻說明 — 在空蕩蕩的廣場數人頭",
+   "en": "Analogy - Counting Heads in an Empty Plaza"
+  },
+  {
+   "zh": "想像你需要計算一個巨大廣場上的人數。如果廣場上有 10,000 人（就像 Grade C 的粒子），計數誤差±100 人（1%）是可以接受的。",
+   "en": "Imagine you need to count the people in a huge plaza. If there are 10,000 people (like the particle count in Grade C), a counting error of ±100 people (1%) is acceptable."
+  },
+  {
+   "zh": "但如果廣場上只有 3 個人（Grade A 的 ≥5 µm 粒子），你的計數可能是 2 或 4 個人（±1 的誤差就是 33%！）。這個測量本身就不精確。",
+   "en": "But if there are only 3 people in the plaza (like ≥5 µm particles in Grade A), your count may be 2 or 4 people (an error of ±1 is 33%!). The measurement itself is imprecise."
+  },
+  {
+   "zh": "所以 PDA 說：在幾乎沒有 ≥5 µm 粒子的 Grade A 環境中，每次測到的個位數數字不應設定硬性限值——應該看的是「這個數字是否開始持續上升」（趨勢），而不是「這次測到了 2 個，超過了限值 1」。",
+   "en": "That is why PDA says that in a Grade A environment with almost no ≥5 µm particles, a hard limit should not be set on single-digit numbers measured each time. What should be looked at is \"whether the number starts to rise persistently\" (the trend), not \"this time 2 were measured, exceeding a limit of 1\"."
+  },
+  {
+   "zh": "Grade A 粒子監測限值對照（EU Annex 1 2022）",
+   "en": "Grade A Particle Monitoring Limits Compared (EU Annex 1 2022)"
+  },
+  {
+   "zh": "EU Annex 1 (2022) Grade A 粒子限值：\n\n狀態          ≥0.5 µm (per m³)    ≥5 µm (per m³)\nAt-Rest       3,520               20\nIn-Operation  3,520               20\n\nGrade B：\n狀態          ≥0.5 µm (per m³)    ≥5 µm (per m³)\nAt-Rest       3,520               29 (ISO 5 等效)\nIn-Operation  352,000             2,900\n\nPDA PtC-1 的提醒：\n對於 Grade A 的 ≥5 µm 限值（20 per m³），\n由於測量不確定性，建議：\n1. 遵守 EU 法規要求（必須測量並設定限值）\n2. 同時做趨勢分析（不要過度解讀單次數字）\n3. 假陽性出現時，優先排查液滴/油霧等假讀數來源\n4. 建立查詢流程（Investigation Threshold）而非\n   機械性地觸發生產停線",
+   "en": "EU Annex 1 (2022) Grade A particle limits:\n\nState          ≥0.5 µm (per m³)    ≥5 µm (per m³)\nAt-Rest       3,520               20\nIn-Operation  3,520               20\n\nGrade B:\nState          ≥0.5 µm (per m³)    ≥5 µm (per m³)\nAt-Rest       3,520               29 (ISO 5 equivalent)\nIn-Operation  352,000             2,900\n\nPDA PtC-1 reminder:\nFor the Grade A ≥5 µm limit (20 per m³),\nbecause of measurement uncertainty, it is recommended to:\n1. Comply with EU regulatory requirements (the limit must be measured and set)\n2. Also perform trend analysis (do not over-interpret a single number)\n3. When a false positive occurs, first look for sources of false counts such as droplets/oil mist\n4. Establish an inquiry process (investigation threshold) rather than\n   mechanically triggering a production line stop"
+  },
+  {
+   "zh": "實務應用 — 如何處理 Grade A ≥5 µm 超標事件",
+   "en": "Practical Application - How to Handle a Grade A ≥5 µm Excursion"
+  },
+  {
+   "zh": "假設你的 Grade A 充填區連續粒子監測器顯示 ≥5 µm 粒子突然從 0 變成 3 個（單次測量）。",
+   "en": "Suppose the continuous particle monitor in your Grade A filling zone shows ≥5 µm particles suddenly rising from 0 to 3 (a single measurement)."
+  },
+  {
+   "zh": "<strong>根據 EU Annex 1 限值（20 per m³），3 個粒子是否需要啟動偏差調查？</strong>",
+   "en": "<strong>Based on the EU Annex 1 limit (20 per m³), does 3 particles require a deviation investigation?</strong>"
+  },
+  {
+   "zh": "PDA PtC-1 的建議思路：",
+   "en": "PDA PtC-1's suggested approach:"
+  },
+  {
+   "zh": "首先核查是否為假讀數（液滴、油霧、儀器誤觸）",
+   "en": "First check whether it is a false count (droplets, oil mist, instrument misfire)"
+  },
+  {
+   "zh": "查看同時間的 ≥0.5 µm 數據是否也有異常（一致性驗證）",
+   "en": "Look at whether the ≥0.5 µm data at the same time are also abnormal (consistency check)"
+  },
+  {
+   "zh": "如果 ≥0.5 µm 正常而 ≥5 µm 偶發偏高，可能是假讀數——記錄並觀察趨勢",
+   "en": "If ≥0.5 µm is normal and ≥5 µm is only occasionally high, it may be a false count: record it and watch the trend"
+  },
+  {
+   "zh": "如果 ≥5 µm 持續升高或與 ≥0.5 µm 同步升高，啟動完整的偏差調查",
+   "en": "If ≥5 µm keeps rising or rises in step with ≥0.5 µm, start a full deviation investigation"
+  },
+  {
+   "zh": "調查焦點：是否有新污染源？設備維修後粒子未清除？",
+   "en": "Investigation focus: Is there a new contamination source? Were particles not cleared after equipment maintenance?"
+  },
+  {
+   "zh": "ISO 14644-1:2015 為什麼說 ≥5 µm 粒子計數「不適合用於分類」？其核心的科學理由是什麼？",
+   "en": "Why does ISO 14644-1:2015 say that ≥5 µm particle counts are \"not suitable for classification\"? What is the core scientific reasoning?"
+  },
+  {
+   "zh": "你的設施同時面向 FDA 和 EMA 市場。針對 Grade A 的 ≥5 µm 監測，你的 EM 計畫應如何撰寫，才能同時滿足兩個監管機構的期望並展示科學成熟度？",
+   "en": "Your facility serves both the FDA and EMA markets. How should your EM program be written for Grade A ≥5 µm monitoring so that it meets the expectations of both regulators and demonstrates scientific maturity?"
+  },
+  {
+   "zh": "為什麼 PDA PtC-1 在腳注中特別說明「Grade B 在 At-Rest 條件下（ISO Class 5）也應適用相同建議」？這個等同的依據是什麼？（提示：Grade B at-rest = ISO 5，與 Grade A in-operation 的粒子濃度相同。）",
+   "en": "Why does PDA PtC-1 state in a footnote that \"the same recommendation should also apply to Grade B under at-rest conditions (ISO Class 5)\"? What is the basis for this equivalence? (Hint: Grade B at-rest = ISO 5, the same particle concentration as Grade A in-operation.)"
+  },
+  {
+   "zh": "重點提示 — PDA 與 EU Annex 1 的立場差異（監管現實）",
+   "en": "Key Point - Differences Between PDA and EU Annex 1 (Regulatory Reality)"
+  },
+  {
+   "zh": "這是 Topic O 最重要的監管張力：",
+   "en": "This is the most important regulatory tension in Topic O:"
+  },
+  {
+   "zh": "<strong>CDMO 實務建議：</strong>如果你的產品在 EU 市場上市，EU Annex 1 要求優先——你<strong>必須</strong>設定並遵守 ≥5 µm 限值。同時在監測策略中說明你理解其統計局限性（引用 ISO 14644），並以趨勢分析作為補充解讀工具。這樣既滿足法規要求，又展現科學成熟度。",
+   "en": "<strong>CDMO practice recommendation:</strong> If your product is marketed in the EU, EU Annex 1 takes precedence: you <strong>must</strong> set and comply with the ≥5 µm limit. At the same time, state in your monitoring strategy that you understand its statistical limitations (citing ISO 14644), and use trend analysis as a supplementary interpretive tool. This both satisfies the regulatory requirement and demonstrates scientific maturity."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary — Topics I–O",
+   "en": "Section Summary - Topics I-O"
+  },
+  {
+   "zh": "<strong>屏障技術層次（Topic I）：</strong>保護強度由低到高：傳統手工 &lt; RABS（需 Grade B 環境）&lt; Open Isolator（需 Grade C）&lt; Closed Isolator（需 Grade D）。更高等級的屏障技術允許更低等級的周圍環境，從而降低廠房建造和運營成本。",
+   "en": "<strong>Barrier technology levels (Topic I):</strong> Protection from lowest to highest: classical manual &lt; RABS (requires Grade B environment) &lt; open isolator (requires Grade C) &lt; closed isolator (requires Grade D). A higher level of barrier technology allows a lower grade of surrounding environment, reducing facility construction and operating costs."
+  },
+  {
+   "zh": "<strong>清除期以資格確認為準（Topic J）：</strong>EU Annex 1 的 20 分鐘是指引值，不是強制值。每個廠房應透過實測數據建立自己的清除期，重點在「確認粒子已恢復至 At-Rest 標準」，而非計時。",
+   "en": "<strong>Clean-up period is based on qualification (Topic J):</strong> The 20 minutes in EU Annex 1 is a guidance value, not a mandatory one. Each facility should establish its own clean-up period from measured data; the focus is on \"confirming that particles have returned to the at-rest standard\", not on timing."
+  },
+  {
+   "zh": "<strong>BFS 的特殊地位（Topic K.1–K.3）：</strong>BFS 因高度自動化和極短暴露時間，被允許在 Grade C 環境操作（不需 Grade B 過渡區），但充填關鍵區域仍需達到 Grade A 等效，並須透過資格確認（含煙霧可視化）證明。樹脂生物負荷和 APS 培養基可見度是 BFS 特有的管控挑戰。",
+   "en": "<strong>The special status of BFS (Topic K.1-K.3):</strong> Because of its high automation and very short exposure time, BFS is allowed to operate in a Grade C environment (no Grade B transition zone needed), but the critical filling zone must still achieve Grade A equivalence, demonstrated through qualification (including smoke visualization). Resin bioburden and APS media visibility are control challenges specific to BFS."
+  },
+  {
+   "zh": "<strong>氣閘設計關鍵（Topic L）：</strong>最終更衣區應達到與通往區域相同等級的靜止條件；人員和物料氣閘應盡量分開；雙門滅菌器是物料無菌轉移的最優方案。",
+   "en": "<strong>Key points of air lock design (Topic L):</strong> The final change area should meet the at-rest condition of the same grade as the area it leads to; personnel and material air locks should be separated wherever possible; a double-door sterilizer is the best solution for aseptic material transfer."
+  },
+  {
+   "zh": "<strong>At-Rest vs In-Operation（Topic M）：</strong>兩種狀態都需要在資格確認中測試；日常生產監測只需 In-Operation；製程產生粒子（BFS、粉末充填）的環境應建立基準而非直接套用絕對限值。",
+   "en": "<strong>At-rest vs in-operation (Topic M):</strong> Both states need to be tested during qualification; routine production monitoring needs only in-operation; for environments with process-generated particles (BFS, powder filling), a baseline should be established rather than applying absolute limits directly."
+  },
+  {
+   "zh": "<strong>採樣量與粒子監測（Topic N, O）：</strong>分類採樣量依 ISO 14644-1 計算（最小 20 個粒子的統計量）；≥5 µm 粒子因統計局限性，PDA 建議趨勢分析而非硬性限值，但 EU Annex 1 要求設定限值——面向歐盟市場的廠房必須遵守，同時應用趨勢分析作為補充解讀工具。",
+   "en": "<strong>Sample volume and particle monitoring (Topics N, O):</strong> Classification sample volumes are calculated per ISO 14644-1 (a statistical minimum of 20 particles); because of statistical limitations of ≥5 µm particles, PDA recommends trend analysis rather than hard limits, but EU Annex 1 requires limits to be set. Facilities serving the EU market must comply, and should apply trend analysis as a supplementary interpretive tool."
+  }
+ ]
+}

@@ -1,0 +1,489 @@
+{
+ "source": "section-03-analytical-lab-hybrid.html",
+ "blocks": [
+  {
+   "zh": "分析品質管制實驗室與混合系統",
+   "en": "Analytical Quality Control Laboratory and Hybrid Systems"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "說明分析品質管制實驗室（Analytical QC Lab）在資料完整性管理上的獨特挑戰與風險因素。",
+   "en": "Explain the unique data integrity management challenges and risk factors of the analytical QC laboratory."
+  },
+  {
+   "zh": "區分簡單系統（Simple System）、混合系統（Hybrid System）與複雜電子系統（Complex Electronic System）三種資料獲取模式的差異。",
+   "en": "Distinguish the three data acquisition models: simple systems, hybrid systems and complex electronic systems."
+  },
+  {
+   "zh": "辨識混合系統（Hybrid System）的定義特徵，並解釋 Figure 6.2-1 所描述的資料流程架構。",
+   "en": "Identify the defining characteristics of a hybrid system and explain the data flow architecture described in Figure 6.2-1."
+  },
+  {
+   "zh": "列舉混合系統在資料完整性方面的主要風險項目，包括追溯性缺失與稽核軌跡不完整問題。",
+   "en": "List the main data integrity risks of hybrid systems, including lack of traceability and incomplete audit trails."
+  },
+  {
+   "zh": "描述混合系統資格確認（Qualification）的重點要求，包括資料格式、備份、跨平台能力及生命週期管理。",
+   "en": "Describe the key requirements for qualification of hybrid systems, including data format, backup, cross-platform capability and lifecycle management."
+  },
+  {
+   "zh": "<strong>6.0 Data Integrity in the Analytical Quality Control Laboratory &amp; 6.1 General Considerations and Risks 6.0 分析品質管制實驗室之數據完整性 &amp; 6.1 一般考量與風險</strong>",
+   "en": "<strong>6.0 Data Integrity in the Analytical Quality Control Laboratory &amp; 6.1 General Considerations and Risks</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：ALCOA 原則在 QC 實驗室的基礎地位",
+   "en": "Core Concept: ALCOA as the Foundation in the QC Laboratory"
+  },
+  {
+   "zh": "<strong>ALCOA</strong> 是美國 FDA 對資料品質的五大要求縮寫：",
+   "en": "<strong>ALCOA</strong> is the acronym for the five data quality expectations set out by the US FDA:"
+  },
+  {
+   "zh": "<strong>A</strong>ttributable（可歸責）— 每筆記錄必須清楚標示執行者與時間",
+   "en": "<strong>A</strong>ttributable: every record must clearly show who performed the activity and when"
+  },
+  {
+   "zh": "<strong>L</strong>egible（清晰可讀）— 手寫或列印記錄均須清楚且持久",
+   "en": "<strong>L</strong>egible: handwritten or printed records must be clear and durable"
+  },
+  {
+   "zh": "<strong>C</strong>ontemporaneous（即時記錄）— 在執行步驟當下立刻記錄，不可事後補填",
+   "en": "<strong>C</strong>ontemporaneous: record at the moment the step is performed, never filled in afterwards"
+  },
+  {
+   "zh": "<strong>O</strong>riginal（原始記錄）— 保存第一手資料，不得只保存謄寫版",
+   "en": "<strong>O</strong>riginal: retain the first-hand data; keeping only a transcribed copy is not acceptable"
+  },
+  {
+   "zh": "<strong>A</strong>ccurate（正確）— 資料必須如實反映實際情況",
+   "en": "<strong>A</strong>ccurate: the data must truthfully reflect what actually happened"
+  },
+  {
+   "zh": "部分法規補充了 ALCOA+，增加 Complete（完整）、Consistent（一致）、Enduring（持久）、Available（可取得）。",
+   "en": "Some regulators extend this to ALCOA+, adding Complete, Consistent, Enduring and Available."
+  },
+  {
+   "zh": "類比說明：「法庭證據」標準",
+   "en": "Analogy: the \"Court Evidence\" Standard"
+  },
+  {
+   "zh": "原文提到資料必須「reliable enough to make a case in court」（可靠到足以在法庭上作為證據）。這個比喻非常貼切——製藥公司的資料在 FDA 稽查或訴訟中確實可能被視為法律文件。一旦資料缺乏追溯性或被竄改，輕則收到 Warning Letter，重則面臨產品下架或刑事指控。",
+   "en": "The source text says data must be \"reliable enough to make a case in court\". The comparison is apt: a pharmaceutical company's data can indeed be treated as legal documents in an FDA inspection or litigation. Once data lacks traceability or has been tampered with, the consequence can range from a Warning Letter to product withdrawal or even criminal charges."
+  },
+  {
+   "zh": "重要提醒：暫存記憶體（Transient Data）的風險",
+   "en": "Important Reminder: The Risk of Transient Data"
+  },
+  {
+   "zh": "原文特別強調「temporary memory or transient locations」的風險。許多儀器在資料正式寫入儲存前，先暫存於緩衝區（buffer）或 RAM 中——這段過程中若發生斷電、覆寫或人為介入，資料即告遺失且無法追溯。企業必須評估從訊號產生到最終儲存的完整端對端（end-to-end）資料流。",
+   "en": "The source text specifically stresses the risk of \"temporary memory or transient locations\". Many instruments hold data in a buffer or RAM before it is formally written to storage. If a power failure, overwriting or human intervention occurs during this stage, the data is lost and cannot be traced. Companies must assess the complete end-to-end data flow, from signal generation to final storage."
+  },
+  {
+   "zh": "實務應用：實驗室資料治理手冊（Laboratory Data Governance Manual）",
+   "en": "Practical Application: Laboratory Data Governance Manual"
+  },
+  {
+   "zh": "TR80 建議企業建立一本「資料治理手冊」作為路線圖，涵蓋：",
+   "en": "TR80 recommends that companies establish a \"data governance manual\" as a roadmap, covering:"
+  },
+  {
+   "zh": "從樣品接收到最終報告的完整流程",
+   "en": "The complete process from sample receipt to final report"
+  },
+  {
+   "zh": "各類儀器的資料處理流程圖（flowchart）",
+   "en": "Data handling flowcharts for each type of instrument"
+  },
+  {
+   "zh": "設備、記錄簿與程序管制的相互參照",
+   "en": "Cross-references among equipment, logbooks and procedural controls"
+  },
+  {
+   "zh": "依 ICH Q9 風險管理原則評估 DI 風險點",
+   "en": "Assessment of DI risk points in line with ICH Q9 risk management principles"
+  },
+  {
+   "zh": "這份手冊不是單一 SOP，而是整個 QC 實驗室 DI 管理架構的「主索引」，稽查員常會要求查閱。",
+   "en": "This manual is not a single SOP; it is the \"master index\" of the whole QC laboratory DI management framework, and inspectors often ask to see it."
+  },
+  {
+   "zh": "三種資料獲取系統的比較",
+   "en": "Comparison of the Three Data Acquisition Systems"
+  },
+  {
+   "zh": "混合系統被視為最棘手的類別，因為它跨越紙本與電子兩個世界，容易出現資料流失或竄改的盲點。",
+   "en": "Hybrid systems are regarded as the most problematic category because they straddle the paper and electronic worlds, creating blind spots where data can be lost or manipulated."
+  },
+  {
+   "zh": "<strong>6.2 Hybrid Systems 6.2 混合系統</strong>",
+   "en": "<strong>6.2 Hybrid Systems</strong>"
+  },
+  {
+   "zh": "混合系統的定義關鍵：韌體（Firmware）與軟體（Software）的分野",
+   "en": "Key to Defining a Hybrid System: Firmware vs. Software"
+  },
+  {
+   "zh": "<strong>Firmware（韌體）</strong>：燒錄在儀器晶片內的固定程式，使用者無法修改功能，也無法安裝外部軟體——例如傳統天平、pH 計的內建程式。",
+   "en": "<strong>Firmware</strong>: fixed programs embedded in the instrument's chip. Users cannot modify the functions or install external software, for example the built-in programs of conventional balances and pH meters."
+  },
+  {
+   "zh": "<strong>Software（軟體）</strong>：可安裝、升級、設定的程式，例如 HPLC 的資料工作站（Empower、Chromeleon）。",
+   "en": "<strong>Software</strong>: programs that can be installed, upgraded and configured, such as HPLC data workstations (Empower, Chromeleon)."
+  },
+  {
+   "zh": "一旦天平或 pH 計連接電腦或安裝軟體，就升級為 ALCS（分析實驗室電腦化系統），適用更嚴格的系統驗證要求，不再屬於混合系統的管理範疇。",
+   "en": "Once a balance or pH meter is connected to a computer or has software installed, it is upgraded to an ALCS (analytical laboratory computerized system), is subject to stricter system validation requirements, and no longer falls within the management scope of hybrid systems."
+  },
+  {
+   "zh": "類比說明：混合系統就像「底片相機加數位列印」",
+   "en": "Analogy: A Hybrid System Is Like \"a Film Camera Plus Digital Printing\""
+  },
+  {
+   "zh": "想像一台底片相機（firmware-driven）：它確實會產生影像（類比訊號轉為化學顯影），但要看到影像必須沖洗成紙本（列印輸出）。如果只保存照片而丟棄底片，你無法驗證照片是否被修改。混合系統同理——電子來源資料（底片）才是原始記錄，紙本（列印）只是呈現方式。但很多企業卻只保留列印結果，這正是 FDA 稽查的重點缺失。",
+   "en": "Imagine a film camera (firmware-driven). It does produce an image (an analog signal converted by chemical development), but to see the image it must be developed into a paper print (printed output). If you keep only the photo and discard the negative, you cannot verify whether the photo has been altered. The same applies to hybrid systems: the electronic source data (the negative) is the original record, and the paper (the printout) is only a way of presenting it. Yet many companies keep only the printout, which is exactly a key deficiency that FDA inspections target."
+  },
+  {
+   "zh": "Figure 6.2-1 資料流圖解析：兩類混合系統的管制差異",
+   "en": "Interpreting the Figure 6.2-1 Data Flow Diagram: Control Differences Between the Two Types of Hybrid System"
+  },
+  {
+   "zh": "TR80 的 Figure 6.2-1 將混合系統分為兩個子類：",
+   "en": "TR80 Figure 6.2-1 divides hybrid systems into two subtypes:"
+  },
+  {
+   "zh": "<strong>無儲存能力的簡單系統</strong>（如傳統天平、pH 計）：無電子稽核軌跡，管制重點在於<em>嚴格管控日期/時間設定</em>與<em>記錄簿（logbook）可追溯性</em>。",
+   "en": "<strong>Simple systems without storage capability</strong> (such as conventional balances and pH meters): no electronic audit trail, so the control focus is on <em>strict control of date/time settings</em> and <em>logbook traceability</em>."
+  },
+  {
+   "zh": "<strong>具資料儲存能力的系統</strong>（如自動滴定儀、溶出試驗儀）：除上述控制外，還需進行<em>定期儲存資料核查</em>、<em>資料備份與驗證</em>，以及<em>設備儲存結果與記錄簿之間的定期核對（reconciliation）</em>。",
+   "en": "<strong>Systems with data storage capability</strong> (such as automatic titrators and dissolution testers): in addition to the controls above, these require <em>periodic checks of stored data</em>, <em>data backup and verification</em>, and <em>periodic reconciliation between results stored in the equipment and the logbook</em>."
+  },
+  {
+   "zh": "兩類系統的管制深度不同，但共同點是：紙本列印不得作為唯一原始記錄。",
+   "en": "The depth of control differs between the two types, but they share one principle: a paper printout must not be the sole original record."
+  },
+  {
+   "zh": "監管視角：MHRA 的分類標準",
+   "en": "Regulatory Perspective: MHRA Classification Criteria"
+  },
+  {
+   "zh": "原文引用 MHRA（英國藥品與保健產品監管局）的規定：<strong>沒有軟體的天平與 pH 計視為簡單系統</strong>。這個細節很重要——同一型號的天平，若配備了 USB 輸出軟體或連接電腦，立刻改變其監管分類，需要更高層次的驗證與管制。企業在採購設備時，必須事先釐清設備的功能組合及其對應的分類。",
+   "en": "The source text cites the position of the MHRA (UK Medicines and Healthcare products Regulatory Agency): <strong>balances and pH meters without software are regarded as simple systems</strong>. This detail matters: if the same model of balance is fitted with USB output software or connected to a computer, its regulatory classification changes immediately and a higher level of validation and control is required. When purchasing equipment, companies must first clarify its combination of functions and the corresponding classification."
+  },
+  {
+   "zh": "實務應用：設備採購前的分類評估清單",
+   "en": "Practical Application: Classification Assessment Checklist Before Equipment Purchase"
+  },
+  {
+   "zh": "該儀器使用 firmware 還是可安裝軟體？",
+   "en": "Does the instrument use firmware or installable software?"
+  },
+  {
+   "zh": "是否具備稽核軌跡（audit trail）功能？",
+   "en": "Does it have audit trail functionality?"
+  },
+  {
+   "zh": "是否能儲存電子資料（有無儲存容量）？",
+   "en": "Can it store electronic data (does it have storage capacity)?"
+  },
+  {
+   "zh": "是否連接外部電腦或網路？",
+   "en": "Is it connected to an external computer or network?"
+  },
+  {
+   "zh": "以上任一「是」→ 考慮歸類為 ALCS，需要正式的電腦化系統驗證（CSV）。",
+   "en": "If the answer to any of the above is \"yes\" → consider classifying it as an ALCS, which requires formal computerized system validation (CSV)."
+  },
+  {
+   "zh": "全部「否」但有列印功能 → 歸類為混合系統，需按 6.2.2 進行資格確認。",
+   "en": "If all answers are \"no\" but it has a printing function → classify it as a hybrid system and qualify it in accordance with 6.2.2."
+  },
+  {
+   "zh": "<strong>6.2.1 Hybrid Systems — Associated Risks 6.2.1 混合系統 — 相關風險</strong>",
+   "en": "<strong>6.2.1 Hybrid Systems — Associated Risks</strong>"
+  },
+  {
+   "zh": "高風險警示：混合系統的七大資料完整性弱點",
+   "en": "High-Risk Warning: Seven Data Integrity Weaknesses of Hybrid Systems"
+  },
+  {
+   "zh": "TR80 列出的七項風險並非理論清單，而是 FDA Warning Letter 中反覆出現的真實缺失。以下逐項解析其危害性：",
+   "en": "The seven risks listed in TR80 are not a theoretical list; they are real deficiencies that appear repeatedly in FDA Warning Letters. Their consequences are analyzed one by one below:"
+  },
+  {
+   "zh": "風險 1：缺乏追溯性（Lack of Traceability）",
+   "en": "Risk 1: Lack of Traceability"
+  },
+  {
+   "zh": "混合系統最根本的弱點在於無法追溯「誰、何時、做了什麼」。具體表現包括：",
+   "en": "The most fundamental weakness of a hybrid system is the inability to trace \"who did what, and when\". This shows up as:"
+  },
+  {
+   "zh": "無密碼管控 → 多人共用帳號，無法歸責",
+   "en": "No password control → shared accounts among multiple users, so actions cannot be attributed"
+  },
+  {
+   "zh": "無稽核軌跡功能或蓄意關閉 → 操作歷史被抹去",
+   "en": "No audit trail function, or deliberately disabled → operating history is erased"
+  },
+  {
+   "zh": "日期/時間可手動修改 → 分析時間可被回溯竄改",
+   "en": "Date/time can be changed manually → analysis time can be backdated"
+  },
+  {
+   "zh": "這三點直接違反 ALCOA 中的「Attributable（可歸責）」與「Contemporaneous（即時）」要求。",
+   "en": "These three points directly violate the \"Attributable\" and \"Contemporaneous\" requirements of ALCOA."
+  },
+  {
+   "zh": "類比說明：「Testing into Compliance」是什麼？",
+   "en": "Analogy: What Is \"Testing into Compliance\"?"
+  },
+  {
+   "zh": "想像一個分析師測試溶出度，第一次結果不符規格，他重新取樣做第二次——但只列印第二次（合格）的結果，把第一次記錄丟棄或不上報。這就是「testing into compliance」（測試至符規）。混合系統的紙本列印特性讓這種行為難以被發現：同一儀器可以重複列印，或者只選擇性列印合格結果。",
+   "en": "Imagine an analyst running a dissolution test whose first result fails the specification. He resamples and runs a second test, but prints only the second (passing) result and discards or does not report the first. This is \"testing into compliance\". The paper printout nature of hybrid systems makes this behavior hard to detect: the same instrument can print repeatedly, or print only the passing results selectively."
+  },
+  {
+   "zh": "風險 5：單點故障（Single-Point Failure）",
+   "en": "Risk 5: Single-Point Failure"
+  },
+  {
+   "zh": "許多混合系統將資料儲存在儀器本身的硬碟或 SD 卡中，沒有異地備份。一旦硬碟損壞，所有歷史資料永久遺失。這不僅是資料完整性問題，也是合規風險——FDA 要求記錄必須在規定保存期限內隨時可取得。",
+   "en": "Many hybrid systems store data on the instrument's own hard disk or SD card, with no off-site backup. Once the disk fails, all historical data is permanently lost. This is not only a data integrity issue but also a compliance risk, because the FDA requires records to be available at any time throughout the specified retention period."
+  },
+  {
+   "zh": "風險 6：作業系統層級的資料暴露",
+   "en": "Risk 6: Data Exposure at the Operating System Level"
+  },
+  {
+   "zh": "原文特別提到「access to the computer clock, recycle bin, and data files in operating system files」。這代表若分析師可以進入 Windows 系統的回收桶、系統時鐘設定、或直接存取儀器資料夾，就能在不留痕跡的情況下刪除或修改資料。這就是為何分析師的電腦權限管控（OS-level access control）至關重要。",
+   "en": "The source text specifically mentions \"access to the computer clock, recycle bin, and data files in operating system files\". This means that if analysts can reach the Windows recycle bin, the system clock settings, or the instrument data folders directly, they can delete or modify data without leaving a trace. This is why OS-level access control over analysts' computers is critical."
+  },
+  {
+   "zh": "第二人審查（Second-Person Review）的特殊重要性",
+   "en": "The Particular Importance of Second-Person Review"
+  },
+  {
+   "zh": "混合系統中，列印輸出與電子來源資料之間的一致性驗證，必須由另一名有資格的人員確認：",
+   "en": "In a hybrid system, the consistency between the printed output and the electronic source data must be verified by another qualified person:"
+  },
+  {
+   "zh": "列印結果是否包含所有元數據（metadata）？",
+   "en": "Does the printout include all metadata?"
+  },
+  {
+   "zh": "列印結果是否為完整且未經選取的原始資料？",
+   "en": "Is the printout the complete, unselected raw data?"
+  },
+  {
+   "zh": "計算結果是否與儀器直接輸出一致？",
+   "en": "Are the calculated results consistent with the instrument's direct output?"
+  },
+  {
+   "zh": "在全電子化系統中，稽核軌跡可自動紀錄這些；但混合系統依賴人工確認，因此第二人審查是不可省略的程序補償措施。",
+   "en": "In a fully electronic system, the audit trail can record these automatically; a hybrid system relies on manual confirmation, so second-person review is an indispensable procedural compensating control."
+  },
+  {
+   "zh": "實務應用：混合系統 DI 自查問卷（Quality Unit 定期核查清單）",
+   "en": "Practical Application: Hybrid System DI Self-Inspection Questionnaire (Periodic Checklist for the Quality Unit)"
+  },
+  {
+   "zh": "儀器是否有唯一使用者帳號與密碼？",
+   "en": "Does the instrument have unique user accounts and passwords?"
+  },
+  {
+   "zh": "日期/時間是否鎖定，無法由使用者修改？",
+   "en": "Is the date/time locked so that users cannot change it?"
+  },
+  {
+   "zh": "列印輸出是否包含完整元數據（樣品 ID、批號、計算值、原始數值）？",
+   "en": "Does the printout include complete metadata (sample ID, batch number, calculated values, raw values)?"
+  },
+  {
+   "zh": "是否有記錄簿記錄每次分析與對應列印輸出？",
+   "en": "Is there a logbook entry for each analysis and its corresponding printout?"
+  },
+  {
+   "zh": "是否有第二人確認列印輸出為來源資料的真實副本？",
+   "en": "Does a second person confirm that the printout is a true copy of the source data?"
+  },
+  {
+   "zh": "是否有備份機制，且已定期測試資料還原？",
+   "en": "Is there a backup mechanism, and is data restoration tested periodically?"
+  },
+  {
+   "zh": "是否有定期核對儀器儲存資料與記錄簿記錄的一致性？",
+   "en": "Is the consistency between data stored on the instrument and the logbook entries reconciled periodically?"
+  },
+  {
+   "zh": "<strong>6.2.2 Hybrid Systems — Qualification 6.2.2 混合系統 — 確效</strong>",
+   "en": "<strong>6.2.2 Hybrid Systems — Qualification</strong>"
+  },
+  {
+   "zh": "資格確認（Qualification）vs. 驗證（Validation）的區別",
+   "en": "Qualification vs. Validation"
+  },
+  {
+   "zh": "在混合系統的語境中，TR80 使用「qualification」而非「validation」，原因在於：",
+   "en": "In the context of hybrid systems, TR80 uses \"qualification\" rather than \"validation\", for the following reason:"
+  },
+  {
+   "zh": "<strong>Qualification（資格確認）</strong>：確認儀器硬體及韌體功能符合設計規格（IQ/OQ/PQ）。適用於儀器設備層級。",
+   "en": "<strong>Qualification</strong>: confirms that the instrument hardware and firmware functions meet the design specifications (IQ/OQ/PQ). It applies at the level of the instrument or equipment."
+  },
+  {
+   "zh": "<strong>Validation（驗證）</strong>：確認整個資料處理流程（含軟體）符合預定用途。適用於連接電腦的 ALCS 系統。",
+   "en": "<strong>Validation</strong>: confirms that the entire data handling process (including software) meets its intended use. It applies to ALCS connected to computers."
+  },
+  {
+   "zh": "混合系統的資格確認雖然要求較低，但 QA 必須確認廠商提供的驗證文件確實涵蓋公司的實際使用情境，不能照單全收。",
+   "en": "Although the qualification requirements for hybrid systems are lower, QA must confirm that the validation documents provided by the vendor actually cover the company's real conditions of use, and must not accept them without scrutiny."
+  },
+  {
+   "zh": "高風險格式警告：CSV 與 PDF 的可竄改性",
+   "en": "High-Risk Format Warning: Manipulability of CSV and PDF"
+  },
+  {
+   "zh": "原文特別強調「all types of data have the potential for manipulation, particularly in CSV text or PDF format」。這是因為：",
+   "en": "The source text specifically stresses that \"all types of data have the potential for manipulation, particularly in CSV text or PDF format\". This is because:"
+  },
+  {
+   "zh": "<strong>CSV 檔案</strong>：純文字格式，可在 Excel 或記事本中直接編輯，無任何格式保護機制。",
+   "en": "<strong>CSV files</strong>: plain-text format that can be edited directly in Excel or Notepad, with no format protection mechanism."
+  },
+  {
+   "zh": "<strong>PDF 檔案</strong>：雖然視覺上難以修改，但可用 Adobe Acrobat 或線上工具編輯內容。",
+   "en": "<strong>PDF files</strong>: although difficult to alter visually, the content can be edited with Adobe Acrobat or online tools."
+  },
+  {
+   "zh": "因此，以這些格式儲存的分析資料，必須配合額外的程序管制（如雜湊值核驗、唯讀儲存、訪問權限限制）才能確保完整性。",
+   "en": "Therefore, analytical data stored in these formats requires additional procedural controls (such as hash value verification, read-only storage and restricted access rights) to ensure its integrity."
+  },
+  {
+   "zh": "類比說明：結果輸出的「最低必要元素」如同發票",
+   "en": "Analogy: The \"Minimum Required Elements\" of a Result Output Are Like an Invoice"
+  },
+  {
+   "zh": "TR80 要求列印輸出必須包含「日期時間戳記、原始數據、元數據、測量值、樣品身份、批號、檔案名稱、計算值」——這就像一張合法發票必須包含交易日期、品項、數量、單價、總金額、買賣方資訊才有法律效力。缺少任何一項，整筆記錄的可信度與法規合規性都會受到質疑。",
+   "en": "TR80 requires the printout to include \"date and time stamp, raw data, metadata, measured values, sample identity, batch number, file name and calculated values\". This is like a valid invoice, which must show the transaction date, items, quantity, unit price, total amount and buyer and seller information to have legal effect. If any one item is missing, the credibility and regulatory compliance of the whole record come into question."
+  },
+  {
+   "zh": "FDA Warning Letter 真實案例分析",
+   "en": "Analysis of Real FDA Warning Letter Cases"
+  },
+  {
+   "zh": "<strong>案例 1：天平稱量記錄事後補填</strong>",
+   "en": "<strong>Case 1: Balance weighing records filled in after the fact</strong>"
+  },
+  {
+   "zh": "分析師在跑 HPLC 後才回頭記錄樣品稱量重量，違反了即時記錄（contemporaneous）原則。更嚴重的是，這意味著記錄的重量可能是針對計算結果反推的，而非真實稱量值——這是典型的「使結果符合規格」操作。",
+   "en": "The analyst recorded the sample weights only after running the HPLC, violating the contemporaneous principle. More seriously, this means the recorded weights may have been back-calculated from the results rather than being the actual weighed values, which is a classic case of making results fit the specification."
+  },
+  {
+   "zh": "<strong>案例 2：Karl Fischer 水分測試隱匿 OOS 結果</strong>",
+   "en": "<strong>Case 2: Karl Fischer moisture test concealing an OOS result</strong>"
+  },
+  {
+   "zh": "第一次測試出現超出規格（OOS）結果後，分析師一小時後重新測試並只報告通過的結果。這直接違反 OOS 調查要求（21 CFR 211.192），並可能構成偽造記錄的刑事行為。電子記錄的保存讓 FDA 調查人員得以發現時間線上的異常。",
+   "en": "After the first test gave an out-of-specification (OOS) result, the analyst retested one hour later and reported only the passing result. This directly violates the OOS investigation requirements (21 CFR 211.192) and may constitute criminal falsification of records. Retention of the electronic records allowed FDA investigators to detect the anomaly in the timeline."
+  },
+  {
+   "zh": "獨立系統管理員（Independent System Administrator）最佳實務",
+   "en": "Best Practice: Independent System Administrator"
+  },
+  {
+   "zh": "TR80 建議指定一名<strong>不涉及實驗室分析作業</strong>的獨立系統管理員，專責電子記錄的儲存與保護。這個設計原則源自「利益衝突迴避」：",
+   "en": "TR80 recommends appointing an independent system administrator who is <strong>not involved in laboratory analytical work</strong> and is dedicated to the storage and protection of electronic records. This design principle derives from avoiding conflicts of interest:"
+  },
+  {
+   "zh": "若分析師同時擁有管理員權限，他可以刪除自己的錯誤記錄而不留痕跡。",
+   "en": "If an analyst also holds administrator rights, he can delete his own erroneous records without leaving a trace."
+  },
+  {
+   "zh": "獨立管理員制度將資料存取權與分析操作權分離，形成相互制衡。",
+   "en": "An independent administrator separates data access rights from analytical operating rights, creating mutual checks and balances."
+  },
+  {
+   "zh": "這也是 21 CFR Part 11 中「系統存取控制」要求的具體落實。",
+   "en": "This is also a concrete implementation of the \"system access control\" requirement in 21 CFR Part 11."
+  },
+  {
+   "zh": "實務應用：混合系統資格確認稽查要點",
+   "en": "Practical Application: Inspection Points for Hybrid System Qualification"
+  },
+  {
+   "zh": "當稽查員審查混合系統時，通常會要求提供以下文件與證據：",
+   "en": "When inspectors review a hybrid system, they typically ask for the following documents and evidence:"
+  },
+  {
+   "zh": "設備 IQ/OQ/PQ 文件，確認廠商 validation protocol 的覆蓋範圍",
+   "en": "Equipment IQ/OQ/PQ documents, to confirm the scope covered by the vendor's validation protocol"
+  },
+  {
+   "zh": "資料格式清單（CSV、PDF、proprietary format？）及其對應的管制措施",
+   "en": "A list of data formats (CSV, PDF, proprietary format?) and the corresponding control measures"
+  },
+  {
+   "zh": "資料備份 SOP 及最近一次備份還原測試記錄",
+   "en": "The data backup SOP and the record of the most recent backup restoration test"
+  },
+  {
+   "zh": "日期/時間設定的管控記錄（誰有權限修改？有無鎖定機制？）",
+   "en": "Control records for date/time settings (who has the right to change them? is there a locking mechanism?)"
+  },
+  {
+   "zh": "結果列印輸出樣本（確認包含所有必要元數據）",
+   "en": "Samples of result printouts (to confirm they include all required metadata)"
+  },
+  {
+   "zh": "OOS 調查完整記錄（比對電子存檔與紙本報告的時間線）",
+   "en": "Complete OOS investigation records (comparing the timelines of the electronic archive and the paper report)"
+  },
+  {
+   "zh": "系統管理員職責說明文件與存取權限矩陣",
+   "en": "Documents describing system administrator responsibilities and the access rights matrix"
+  },
+  {
+   "zh": "資料生命週期管理：備份 vs. 封存的差異",
+   "en": "Data Lifecycle Management: Difference Between Backup and Archive"
+  },
+  {
+   "zh": "TR80 區分了 Backup（備份）與 Archive（封存）兩個概念：",
+   "en": "TR80 distinguishes between two concepts, Backup and Archive:"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>6.0/6.1 QC 實驗室 DI 基礎</strong>：所有手動與電子資料均須符合 ALCOA 原則；企業應建立實驗室資料治理手冊作為完整流程的路線圖；資料獲取系統分為簡單、混合、複雜三類，混合系統風險最為複雜。",
+   "en": "<strong>6.0/6.1 QC laboratory DI fundamentals</strong>: all manual and electronic data must comply with ALCOA principles; companies should establish a laboratory data governance manual as a roadmap of the complete process; data acquisition systems fall into three categories (simple, hybrid and complex), and hybrid systems carry the most complex risks."
+  },
+  {
+   "zh": "<strong>6.2 混合系統定義</strong>：以韌體驅動、同時產生電子來源資料與紙本列印的儀器（天平、pH 計、自動滴定儀、溶出試驗儀等）；一旦連接電腦或安裝軟體，即升級為 ALCS，不再屬於混合系統範疇。",
+   "en": "<strong>6.2 Definition of hybrid systems</strong>: firmware-driven instruments that produce both electronic source data and paper printouts (balances, pH meters, automatic titrators, dissolution testers, etc.); once connected to a computer or fitted with software, they are upgraded to ALCS and no longer fall within the hybrid system scope."
+  },
+  {
+   "zh": "<strong>6.2.1 混合系統風險</strong>：七大風險核心為「追溯性缺失」，包括無稽核軌跡、日期/時間可竄改、選擇性列印（testing into compliance）、缺乏第二人審查、作業系統層級資料暴露。",
+   "en": "<strong>6.2.1 Hybrid system risks</strong>: the core of the seven risks is \"lack of traceability\", including no audit trail, manipulable date/time, selective printing (testing into compliance), lack of second-person review, and data exposure at the operating system level."
+  },
+  {
+   "zh": "<strong>6.2.2 資格確認要點</strong>：QA 必須評估並管制八大面向——資料格式與儲存容量、備份封存能力、跨平台相容性、複製至電腦的完整性、資料處理方式、結果輸出元素、備份資料審查，以及生命週期管理；並注意 CSV/PDF 格式的高竄改風險。",
+   "en": "<strong>6.2.2 Key points of qualification</strong>: QA must assess and control eight aspects: data format and storage capacity, backup and archive capability, cross-platform compatibility, integrity of copying to a computer, data processing method, result output elements, review of backup data, and lifecycle management; attention must also be paid to the high manipulation risk of CSV/PDF formats."
+  },
+  {
+   "zh": "<strong>FDA Warning Letter 教訓</strong>：天平稱量事後補填與 OOS 結果隱匿是混合系統最典型的 DI 違規行為，電子記錄保存是發現這類違規的關鍵工具。",
+   "en": "<strong>Lessons from FDA Warning Letters</strong>: balance weighing records filled in after the fact and concealment of OOS results are the most typical DI violations in hybrid systems, and retention of electronic records is the key tool for detecting such violations."
+  }
+ ]
+}

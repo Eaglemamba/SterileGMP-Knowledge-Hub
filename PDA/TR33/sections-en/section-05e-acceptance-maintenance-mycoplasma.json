@@ -1,0 +1,497 @@
+{
+ "source": "section-05e-acceptance-maintenance-mycoplasma.html",
+ "blocks": [
+  {
+   "zh": "最短培養時間、可接受標準變更、維護除役與黴漿菌替代快速方法",
+   "en": "Minimum Incubation Times, Changing Acceptance Criteria, Maintenance and Decommissioning, and Alternative/Rapid Methods for Mycoplasma"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "學會依 <span class=\"key-term\">Time-to-Result (TTR)</span> 與生長速率（Generation Time）計算 <span class=\"key-term\">Growth-Based Methods</span>（生長型方法）的最短培養時間，並理解安全係數（Safety Factor）的三種設定邏輯",
+   "en": "Learn to calculate the minimum incubation time for <span class=\"key-term\">Growth-Based Methods</span> from <span class=\"key-term\">Time-to-Result (TTR)</span> and the growth rate (generation time), and understand the three ways of setting a safety factor"
+  },
+  {
+   "zh": "理解為何 non-CFU（非 CFU）訊號的 AMM/RMM 無法直接套用傳統 <span class=\"key-term\">Alert/Action Levels</span>（警戒/行動水準），以及建立新可接受標準的實務策略（基準值、百分位數、OOT 趨勢規則）",
+   "en": "Understand why AMM/RMM with non-CFU signals cannot simply adopt traditional <span class=\"key-term\">Alert/Action Levels</span>, and the practical strategies for establishing new acceptance criteria (baseline values, percentiles, OOT trend rules)"
+  },
+  {
+   "zh": "掌握上市後系統維護的關鍵要素：變更管制（Change Control）、預防性維護、再確效（Requalification）與週期性審查如何回饋至風險評估",
+   "en": "Grasp the key elements of post-implementation system maintenance: how change control, preventive maintenance, requalification and periodic review feed back into the risk assessment"
+  },
+  {
+   "zh": "了解設備除役（Decommissioning）在生命週期管理中的必要文件與品質考量",
+   "en": "Understand the documentation and quality considerations required for equipment decommissioning within lifecycle management"
+  },
+  {
+   "zh": "建立黴漿菌（Mycoplasma）NAT-based 替代方法驗證的核心邏輯：LOD、Robustness、Comparability/Equivalency 三大支柱，以及 CFU/GC 比值、干擾物質測試的可接受標準",
+   "en": "Build the core logic for validating NAT-based alternative methods for mycoplasma: the three pillars of LOD, robustness and comparability/equivalency, plus the acceptance criteria for the CFU/GC ratio and interfering-substance testing"
+  },
+  {
+   "zh": "<strong>5.4.12 Guidance on Setting Minimum Incubation Times for Growth-Based Methods 生長型方法最短培養時間之設定指引</strong>",
+   "en": "<strong>5.4.12 Guidance on Setting Minimum Incubation Times for Growth-Based Methods</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Time-to-Result / TTR (檢測所需時間):</strong> 在驗證研究（Primary Validation、Method Suitability、Comparability）中，每一株挑戰菌（Challenge Microorganism）被偵測到訊號所需的實際時間。「最長 TTR」通常來自生長最慢的菌株（例如黴菌、孢子形成菌）。",
+   "en": "<strong>Time-to-Result / TTR:</strong> In validation studies (primary validation, method suitability, comparability), the actual time it takes for each challenge microorganism to produce a detectable signal. The \"longest TTR\" usually comes from the slowest-growing organisms (e.g., molds and spore formers)."
+  },
+  {
+   "zh": "<strong>Generation Time / G (世代時間):</strong> 微生物數量倍增所需的時間，是計算培養時間的關鍵動力學參數，可由文獻取得，也可由實驗室自行以對數成長公式回推。",
+   "en": "<strong>Generation Time / G:</strong> The time needed for a microbial population to double. It is the key kinetic parameter for calculating incubation time and can be taken from the literature or back-calculated by the laboratory using the logarithmic growth formula."
+  },
+  {
+   "zh": "<strong>Safety Factor (安全係數):</strong> 在最長 TTR 之上額外加乘的緩衝時間，目的是確保日常放行測試（Routine Test）在真實生產條件下，仍有足夠時間偵測到極少數的慢生長微生物，避免偽陰性（False Negative）放行。",
+   "en": "<strong>Safety Factor:</strong> Extra buffer time added on top of the longest TTR. Its purpose is to ensure that routine release testing under real production conditions still allows enough time to detect the rare slow-growing organism, so that a false negative does not lead to release."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "設定最短培養時間就像規劃「最後一班高鐵」的發車時刻：如果統計上最慢的乘客（最慢生長的菌株）平均要 4.6 天才能趕到月台，你不會把發車時間精準卡在 4.6 天整——因為只要有一點延遲（批次差異、基質干擾），這班車就會「漏掉」真正的陽性訊號。因此無論用「無條件進位到整天」還是用世代時間的對數公式往後推算，本質上都是在幫最慢的乘客多留一點緩衝時間。",
+   "en": "Setting the minimum incubation time is like planning the departure time of the \"last high-speed train\". If the statistically slowest passenger (the slowest-growing strain) needs 4.6 days on average to reach the platform, you would not schedule the departure at exactly 4.6 days, because any small delay (batch variation, matrix interference) would make the train \"miss\" a true positive signal. Whether you round up to a whole day or extend the time with the generation-time logarithmic formula, you are essentially leaving the slowest passenger some extra buffer."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "公式 T = t<sub>TTR</sub> + log<sub>2</sub>(10) · G 中的 log<sub>2</sub>(10) ≈ 3.32，代表「族群數量增加十倍」所需的世代數。這個係數是刻意設計的保守值：它假設即使已經偵測到訊號，微生物數量仍需要再放大十倍才能被穩定、重複地判讀為陽性，因此必須把這段「訊號放大時間」也計入最短培養時間。世代時間 G 若取得不準確（例如用了非典型基質下量測的數值），會直接放大或縮小整個安全係數，因此建議在實際的 AMM/RMM 生長基質中重新量測 G，而非直接引用文獻的一般培養基數據。",
+   "en": "In the formula T = t<sub>TTR</sub> + log<sub>2</sub>(10) · G, log<sub>2</sub>(10) ≈ 3.32 is the number of generations needed for a tenfold increase in population. This factor is a deliberately conservative value: it assumes that even after a signal is first detected, the organisms must still multiply tenfold before the result can be read reliably and reproducibly as positive, so this \"signal amplification time\" must also be counted in the minimum incubation time. If G is inaccurate (for example, measured in an atypical matrix), it directly inflates or shrinks the whole safety factor. It is therefore advisable to re-measure G in the actual AMM/RMM growth medium rather than quoting generic culture-medium data from the literature."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "方法一：無條件進位法（Rounding-up）\n最長 TTR = 4.6 天 → 最短培養時間 = 5.0 天\n\n方法二：加碼一整天法（Extra full day）\n最長 TTR = 4.6 天 → 最短培養時間 = 5.6 天\n\n方法三：世代時間換算法（Generation-time based）\nT = t_TTR + log2(10) x G\n範例 A：t_TTR = 110.40 h, G = 1 h\n  T = 110.40 + 3.32 x 1 = 113.72 h ≈ 4.7 天\n範例 B：t_TTR = 110.40 h, G = 5 h\n  T = 110.40 + 3.32 x 5 = 127 h ≈ 5.3 天\n\n反推世代時間：\nG = t / [3.32 x log10(N / N0)]\n（t：時間區間；N：區間終點菌數；N0：區間起點菌數）",
+   "en": "Method 1: Rounding-up\nLongest TTR = 4.6 days → minimum incubation time = 5.0 days\n\nMethod 2: Extra full day\nLongest TTR = 4.6 days → minimum incubation time = 5.6 days\n\nMethod 3: Generation-time based\nT = t_TTR + log2(10) x G\nExample A: t_TTR = 110.40 h, G = 1 h\n  T = 110.40 + 3.32 x 1 = 113.72 h ≈ 4.7 days\nExample B: t_TTR = 110.40 h, G = 5 h\n  T = 110.40 + 3.32 x 5 = 127 h ≈ 5.3 days\n\nBack-calculating generation time:\nG = t / [3.32 x log10(N / N0)]\n(t: time interval; N: cell count at the end of the interval; N0: cell count at the start of the interval)"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對於 CDMO 而言，最短培養時間直接牽動放行前置時間（Release Lead Time）。若一款 AMM/RMM 的最長 TTR 是 4.6 天，選擇「方法一」（5.0 天）而非「方法三」（4.7 天）看似更安全，卻可能讓客戶產品的放行時間多出好幾小時，在急迫的臨床批次交付時造成商業壓力。因此建議在驗證計畫（Validation Plan）階段就以風險評估決定安全係數策略，並與品保、客戶端 QA 事先溝通清楚，避免驗證完成後才發現培養時間設計過於保守，反而抵銷了導入快速方法的商業效益。",
+   "en": "For a CDMO, the minimum incubation time directly drives release lead time. If the longest TTR of an AMM/RMM is 4.6 days, choosing Method 1 (5.0 days) rather than Method 3 (4.7 days) may look safer, but it can add several hours to the release of the client's product, creating commercial pressure when urgent clinical batches are due. It is therefore advisable to decide the safety-factor strategy by risk assessment at the validation plan stage and to align early with QA and the client's QA. This avoids discovering after validation that the incubation time was designed too conservatively, which would cancel out the commercial benefit of adopting a rapid method."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若你的實驗室測得某黴菌在 AMM/RMM 專用培養基中的世代時間為 8 小時，而最長 TTR 為 96 小時，請用世代時間換算法計算最短培養時間（小時與天數）。",
+   "en": "Your laboratory finds that a mold has a generation time of 8 hours in the AMM/RMM-specific medium, and the longest TTR is 96 hours. Using the generation-time based method, calculate the minimum incubation time (in hours and days)."
+  },
+  {
+   "zh": "為什麼不能只用「文獻上的標準世代時間」，而必須在自己的 AMM/RMM 生長基質中重新量測 G？",
+   "en": "Why can't you rely only on the \"standard generation time from the literature\" instead of re-measuring G in your own AMM/RMM growth medium?"
+  },
+  {
+   "zh": "三種安全係數設定方法中，哪一種最適合用於快速放行（Rapid Release）情境？為什麼商業考量與科學考量在此可能出現張力？",
+   "en": "Which of the three safety-factor methods is best suited to a rapid release scenario, and why might commercial and scientific considerations be in tension here?"
+  },
+  {
+   "zh": "<strong>5.4.13 Guidance on Changing Acceptance Criteria 可接受標準變更之指引</strong>",
+   "en": "<strong>5.4.13 Guidance on Changing Acceptance Criteria</strong>"
+  },
+  {
+   "zh": "<strong>non-CFU 訊號 (非菌落形成單位訊號):</strong> 部分 AMM/RMM 並非以「長出一個可見菌落」為判讀基礎，而是輸出活細胞計數、螢光強度（RLU）、光譜訊號等，其數值不必然等於 CMM 的 CFU，甚至可能因偵測到單一活細胞而非群落而數值偏高。",
+   "en": "<strong>Non-CFU signal:</strong> Some AMM/RMM do not base their readout on \"growth of a visible colony\" but output viable cell counts, fluorescence intensity (RLU), spectral signals and so on. These values do not necessarily equal the CFU of a conventional method (CMM), and may even read higher because a single viable cell is detected rather than a colony."
+  },
+  {
+   "zh": "<strong>Decision-Equivalence (決策等效性):</strong> USP &lt;1223&gt; 提出的概念——不強求 AMM/RMM 的數值與 CMM 數值一致，而是要求兩者在「品質決策」上得出相同結論（例如都判定為合格/OOE），這是重新設定可接受標準的理論基礎。",
+   "en": "<strong>Decision-Equivalence:</strong> A concept proposed in USP &lt;1223&gt;. It does not require the AMM/RMM value to match the CMM value; it requires that both reach the same conclusion in the quality decision (e.g., both judge a result acceptable or OOE). This is the theoretical basis for resetting acceptance criteria."
+  },
+  {
+   "zh": "<strong>OOE (Out-of-Expected) / OOT (Out-of-Trend):</strong> OOE 指單次結果超出預期基準；OOT 則是根據歷史趨勢（如連續上升、交替變化）判斷異常，兩者皆是 non-CFU 方法建立新管制邏輯的核心工具。",
+   "en": "<strong>OOE (Out-of-Expected) / OOT (Out-of-Trend):</strong> OOE means a single result falls outside the expected baseline; OOT means an abnormality judged from historical trends (such as consecutive increases or alternating changes). Both are core tools for building a new control logic for non-CFU methods."
+  },
+  {
+   "zh": "這就像把「以公里計費」的傳統計程車，換成「以感應器偵測到的震動次數計費」的新型車隊。如果新車隊的感應器天生就比里程表敏感，直接套用舊的「每 10 公里收 300 元」標準會不合理——你必須先蒐集新車隊在正常路況下的震動次數基準值，才能訂出對應的新收費標準，而不是硬要它的數字跟舊計程車一模一樣。",
+   "en": "It is like replacing a conventional taxi fleet that charges by the kilometer with a new fleet that charges by the number of vibrations detected by a sensor. If the new sensors are inherently more sensitive than an odometer, applying the old rule of \"300 for every 10 km\" would be unreasonable. You must first collect baseline vibration counts for the new fleet under normal road conditions before you can set a corresponding new fare standard, rather than insisting that its numbers match the old taxis exactly."
+  },
+  {
+   "zh": "EU GMP Annex 1 (2022) 明確要求：若新技術的結果表現方式異於 CFU，廠商必須「科學上證明其限值合理」，並「盡可能」與 CFU 建立關聯（PIC/S Annex 1 2022, Section 8.5 相關精神）。這代表監管機關並未強制要求 1:1 數值換算，但要求企業必須能說明限值訂定的科學依據——這正是本節建議的基準值法、百分位數法、趨勢法存在的監管背景。務必注意：任何可接受標準的變更都可能需要與主管機關溝通或送審，不可僅憑內部決議逕行變更放行標準。",
+   "en": "EU GMP Annex 1 (2022) explicitly requires that if a new technology expresses results differently from CFU, the manufacturer must \"scientifically justify\" the limits and, \"where possible\", relate them to CFU (in the spirit of PIC/S Annex 1 2022, Section 8.5). This means regulators do not mandate a 1:1 numerical conversion, but companies must be able to explain the scientific basis for the limits they set. This is the regulatory background for the baseline, percentile and trend approaches suggested in this section. Note that any change to acceptance criteria may require communication with, or submission to, the competent authority; release criteria must not be changed on the basis of an internal decision alone."
+  },
+  {
+   "zh": "數值關聯法（Correlation Factor）：\n若 non-CFU 訊號 = 5 x CFU 數值（於整個測試範圍內穩定成立）\n→ 可用 5X 校正係數，將既有 CFU Alert/Action Level 換算為新方法的等效限值\n\n百分位數法（Baseline Percentile）：\nAlert Level  ≈ 97.5th percentile 或 平均值 + 2 SD（歷史基準資料）\nAction Level ≈ 99.5th percentile 或 平均值 + 3 SD（歷史基準資料）\n\nOOT 判定規則（任一成立即視為異常）：\n- 1 點以上超出管制/警戒界線\n- 連續 6 點單調遞增\n- 連續 14 點交替升降\n- 出現異於歷史資料的非隨機型態",
+   "en": "Correlation Factor method:\nIf the non-CFU signal = 5 x the CFU value (consistently, across the entire test range)\n→ A 5X correction factor can be used to convert the existing CFU Alert/Action Levels into equivalent limits for the new method\n\nBaseline Percentile method:\nAlert Level  ≈ 97.5th percentile or mean + 2 SD (historical baseline data)\nAction Level ≈ 99.5th percentile or mean + 3 SD (historical baseline data)\n\nOOT decision rules (any one met is treated as abnormal):\n- 1 or more points beyond the control/alert limit\n- 6 consecutive points monotonically increasing\n- 14 consecutive points alternating up and down\n- A non-random pattern that differs from historical data"
+  },
+  {
+   "zh": "對於已導入即時螢光微粒計數器（Real-Time Viable Particle Counter）做環境監測的 CDMO，若直接把既有的 CFU 警戒/行動水準原封不動套用到新系統的自發螢光單位（AFU），極可能出現大量「假性 OOE」而觸發不必要的偏差調查，徒增品保與生產人員負擔。正確做法是先蒐集新系統至少數個月的基準資料（尤其是 Grade C/D 或非分級管制區，因為 Grade A/B 幾乎沒有背景訊號可供統計），再依本節建議的百分位數法或趨勢法重新訂定限值，並將整個訂定邏輯文件化，以備稽核與法規溝通之用。",
+   "en": "For a CDMO that has introduced a real-time viable particle counter for environmental monitoring, applying the existing CFU alert/action levels unchanged to the new system's autofluorescence units (AFU) is likely to generate many \"false OOEs\" that trigger unnecessary deviation investigations and burden QA and production staff. The correct approach is first to collect at least several months of baseline data from the new system (especially in grade C/D or unclassified controlled areas, since grade A/B has almost no background signal to analyze statistically), then reset the limits using the percentile or trend methods suggested here, and document the entire rationale for audits and regulatory discussions."
+  },
+  {
+   "zh": "為什麼「數值關聯法」（5X 校正係數）只在特定條件下適用？請舉出一個可能導致此法失效的情境（例如跨菌種或跨基質）。",
+   "en": "Why does the \"correlation factor method\" (the 5X correction factor) apply only under specific conditions? Give one scenario that could invalidate it (for example, across different species or matrices)."
+  },
+  {
+   "zh": "Grade A/B 無塵室與 Grade C/D 無塵室在建立 AMM/RMM 基準值時，會遇到什麼不同的統計挑戰？",
+   "en": "What different statistical challenges arise when establishing AMM/RMM baselines in grade A/B cleanrooms versus grade C/D cleanrooms?"
+  },
+  {
+   "zh": "「Decision-Equivalence」與「數值對應」有何本質差異？為什麼監管機關傾向前者？",
+   "en": "What is the essential difference between \"decision-equivalence\" and \"numerical correspondence\"? Why do regulators prefer the former?"
+  },
+  {
+   "zh": "<strong>5.4.14 Ongoing Maintenance and Periodic Reviews 持續維護與週期性審查</strong>",
+   "en": "<strong>5.4.14 Ongoing Maintenance and Periodic Reviews</strong>"
+  },
+  {
+   "zh": "<strong>Change Control (變更管制):</strong> 驗證完成後，任何軟體更新、資料庫擴充、耗材批次變更都必須先評估其對「已驗證狀態」的衝擊，才能執行，這是維持系統合規性最核心的機制。",
+   "en": "<strong>Change Control:</strong> After validation, any software update, database expansion or change of consumable lot must first be assessed for its impact on the validated state before it is implemented. This is the most fundamental mechanism for keeping the system compliant."
+  },
+  {
+   "zh": "<strong>Requalification (再確效):</strong> 設備經過維修、校正、軟體更新或零件更換後，重新執行部分或全部確效（IQ/OQ/PQ）以證明系統仍維持原有效能，通常由供應商說明潛在影響範圍後界定再確效需求。",
+   "en": "<strong>Requalification:</strong> After equipment is repaired, calibrated, or has its software updated or parts replaced, some or all of the qualification (IQ/OQ/PQ) is repeated to demonstrate that the system still performs as originally qualified. The scope of requalification is usually defined after the supplier explains the potential impact."
+  },
+  {
+   "zh": "<strong>Periodic Review (週期性審查):</strong> 定期（而非僅在出事後）檢視方法與系統的整體績效，並將結果回饋到最初的風險評估，形成一個閉環的生命週期管理循環。",
+   "en": "<strong>Periodic Review:</strong> Reviewing the overall performance of the method and system at regular intervals (not only after something goes wrong) and feeding the results back into the original risk assessment, forming a closed-loop lifecycle management cycle."
+  },
+  {
+   "zh": "這就像一輛通過驗車的自駕巴士：驗證合格（PQ 通過）不代表可以永遠不管它。定期換機油、韌體更新前要先在測試場地試跑（再確效），每年還要做一次全面體檢（週期性審查），並把體檢結果回饋給最初設計巴士安全規範的工程團隊（風險評估），才能確保這台車終其服役生涯都維持在「可信賴」的狀態。",
+   "en": "This is like a self-driving bus that has passed its inspection: passing validation (PQ) does not mean it can be ignored forever. It needs regular oil changes, a trial run on a test track before each firmware update (requalification), and a full check-up every year (periodic review). The check-up results are fed back to the engineering team that designed the bus's safety specification in the first place (risk assessment), so that the vehicle stays \"trustworthy\" throughout its service life."
+  },
+  {
+   "zh": "供應商執行的預防性維護（例如軟體升級、資料庫擴充）常被誤認為「例行保養、不影響驗證狀態」，但原文明確要求：維護完成後，系統重新上線前必須執行「適當的再確效測試」。CDMO 在與供應商簽訂維護合約時，應要求供應商主動提供「維修/零件更換/效能飄移對驗證狀態的潛在影響」說明，作為決定再確效範圍的依據，而非被動等待稽核時才追溯。",
+   "en": "Preventive maintenance performed by the supplier (such as software upgrades or database expansion) is often mistaken for \"routine servicing that does not affect the validated state\". The source text, however, explicitly requires \"appropriate requalification testing\" after maintenance and before the system returns to service. When signing maintenance contracts, a CDMO should require the supplier to proactively describe the potential impact of repairs, parts replacement and performance drift on the validated state, as the basis for deciding the scope of requalification, rather than waiting passively until an audit to find out retrospectively."
+  },
+  {
+   "zh": "某 CDMO 導入的黴漿菌 NAT 系統廠商每半年會推送一次軟體更新，內含菌種資料庫擴充。若品保與驗證團隊未事先在變更管制程序中定義「資料庫更新是否觸發再確效」，一旦稽核員發現系統版本已變更但無任何再確效紀錄，將直接構成資料完整性（Data Integrity）缺失。建議在供應商合約與內部 SOP 中，把「軟體/資料庫版本變更觸發哪一層級的再確效（僅文件審查、部分 OQ、或完整 PQ）」明訂為變更管制矩陣的一部分，避免各廠站各自解讀。",
+   "en": "The supplier of a mycoplasma NAT system at a CDMO pushes a software update every six months, including expansion of the organism database. If QA and the validation team have not defined in advance, in the change control procedure, whether a database update triggers requalification, then an auditor who finds that the system version has changed but there is no requalification record will treat it as a data integrity deficiency. It is advisable to define, in the supplier contract and the internal SOP, which level of requalification (document review only, partial OQ, or full PQ) is triggered by a software/database version change, as part of the change control matrix, so that each site does not interpret it differently."
+  },
+  {
+   "zh": "為什麼週期性審查的結果需要「回饋到風險評估」，而不是只回饋到 SOP 修訂？",
+   "en": "Why do the results of periodic review need to be \"fed back into the risk assessment\" rather than only into SOP revision?"
+  },
+  {
+   "zh": "如果供應商的預防性維護包含更換偵測器（Detector）零件，你會如何界定再確效的範圍？",
+   "en": "If the supplier's preventive maintenance includes replacing detector parts, how would you define the scope of requalification?"
+  },
+  {
+   "zh": "變更管制程序中，哪些類型的變更「一定」需要再確效？哪些可能僅需文件化即可？",
+   "en": "In a change control procedure, which types of change \"always\" require requalification, and which may only need documentation?"
+  },
+  {
+   "zh": "<strong>5.4.15 Decommissioning of Equipment 設備除役</strong>",
+   "en": "<strong>5.4.15 Decommissioning of Equipment</strong>"
+  },
+  {
+   "zh": "<strong>Decommissioning (除役):</strong> 設備生命週期的最後一個受管制階段，本身視為一項「變更」，必須依循變更管制程序執行，而非單純的資產報廢作業。",
+   "en": "<strong>Decommissioning:</strong> The last controlled stage of the equipment lifecycle. It is itself treated as a \"change\" and must follow the change control procedure; it is not simply an asset write-off."
+  },
+  {
+   "zh": "設備除役就像退休員工的離職交接：不是人一走就結束，還要交回識別證、備份工作檔案、確認交接完成、註銷系統帳號，並留下完整的離職紀錄——每一步都要有文件佐證，才能讓「這個人（設備）曾經合格地在這裡工作過」這件事在未來被稽核時仍可追溯。",
+   "en": "Equipment decommissioning is like the handover when an employee retires: it does not end when the person walks out. The ID badge is returned, work files are backed up, completion of the handover is confirmed, system accounts are closed, and a complete record of departure is kept. Every step needs documentary evidence so that, in a future audit, the fact that \"this person (the equipment) worked here in a qualified state\" remains traceable."
+  },
+  {
+   "zh": "除役文件必須證明「設備在最終使用前，始終處於已確效且已校正的狀態」——這意味著除役不能倒果為因地用來掩蓋一台早已失準卻未被發現的設備。此外，電子資料的封存與「可被檢索（retrievable）」是資料完整性稽核的重點：若除役後電子紀錄無法讀取或還原，將被視為資料治理缺失，即使設備本身已合法報廢。",
+   "en": "Decommissioning documentation must demonstrate that \"the equipment remained in a validated and calibrated state up to its final use\". This means decommissioning cannot be used to work backwards and cover up equipment that had long since drifted out of calibration without being noticed. In addition, archiving electronic data and keeping it \"retrievable\" is a focus of data integrity audits: if electronic records cannot be read or restored after decommissioning, this is regarded as a data governance deficiency, even though the equipment itself has been legitimately scrapped."
+  },
+  {
+   "zh": "若一台 AMM/RMM 系統除役後被轉賣給另一家公司，原廠站需要留存哪些文件以符合本節要求？",
+   "en": "If an AMM/RMM system is resold to another company after decommissioning, what documents must the original site retain to meet the requirements of this section?"
+  },
+  {
+   "zh": "為什麼「電子檔案的可檢索性」在除役程序中與硬體除污同等重要？",
+   "en": "Why is the \"retrievability of electronic files\" as important as hardware decontamination in the decommissioning process?"
+  },
+  {
+   "zh": "<strong>5.5 Alternative/Rapid Microbiological Methods for Mycoplasma Detection 黴漿菌偵測之替代/快速微生物方法</strong>",
+   "en": "<strong>5.5 Alternative/Rapid Microbiological Methods for Mycoplasma Detection</strong>"
+  },
+  {
+   "zh": "<strong>Mycoplasma (黴漿菌):</strong> 一群沒有細胞壁、基因體極小、G+C 含量偏低的特殊細菌，因缺乏細胞壁而無法被常見的細菌濾除方法（0.22 μm 過濾）完全排除，是細胞培養與生物製劑製程中最需警戒的污染源之一。",
+   "en": "<strong>Mycoplasma:</strong> A group of unusual bacteria that lack a cell wall, have a very small genome and a low G+C content. Because they have no cell wall, they are not fully removed by common bacterial filtration (0.22 μm), and they are among the contaminants most to be guarded against in cell culture and biologics processes."
+  },
+  {
+   "zh": "<strong>NAT (核酸增幅技術):</strong> 以 PCR 為代表的分子生物學檢測技術，透過偵測黴漿菌特有的核酸序列（而非培養出可見菌落）達成快速檢出，是本節後續 5.5.1-5.5.3 的驗證主軸。",
+   "en": "<strong>NAT (nucleic acid amplification technique):</strong> A molecular detection technology typified by PCR, which achieves rapid detection by detecting mycoplasma-specific nucleic acid sequences (rather than growing visible colonies). It is the validation focus of the following sections 5.5.1-5.5.3."
+  },
+  {
+   "zh": "<strong>TR 50 與 Eur. Ph. 2.6.7 的關係:</strong> TR 33 本節並非重新發明黴漿菌驗證方法，而是指引讀者：完整的方法選擇邏輯請參考 TR 50，詳細的驗證通則（LOD、干擾物質測試）與最新版 NAT 規範請參考 Eur. Ph. 2.6.7（2025 年 10 月已大幅修訂）。",
+   "en": "<strong>Relationship between TR 50 and Eur. Ph. 2.6.7:</strong> This section of TR 33 does not reinvent mycoplasma validation methods; it directs readers to TR 50 for the full method-selection logic, and to Eur. Ph. 2.6.7 (substantially revised in October 2025) for the detailed general validation principles (LOD, interfering-substance testing) and the latest NAT requirements."
+  },
+  {
+   "zh": "黴漿菌就像沒有「外殼」的病毒級細菌——一般細菌可以靠「濾網（0.22 μm 濾膜）」擋下來，但黴漿菌因為沒有堅硬的細胞壁，可以像變形蟲一樣擠過濾網的孔隙。因此傳統的「濾除+培養」策略對它失效，必須靠專屬的培養法、指示細胞培養法，或本節聚焦的 NAT 分子檢測法來偵測。",
+   "en": "Mycoplasma are like bacteria without a \"shell\", at the level of a virus. Ordinary bacteria can be stopped by a \"sieve\" (a 0.22 μm filter membrane), but because mycoplasma lack a rigid cell wall, they can squeeze through the pores like an amoeba. The traditional \"filter and culture\" strategy therefore fails for them, and detection has to rely on dedicated culture methods, indicator-cell culture methods, or the NAT molecular method that this section focuses on."
+  },
+  {
+   "zh": "本節刻意將 TR 33 定位為「輔助性指引」，並多次提醒讀者必須交叉參考 TR 50 與 Eur. Ph. 2.6.7 這兩份更專門的文件（ICH Q9(R1), Section 3.1 精神一致：多來源交叉引用以確保科學可辯護性）。對負責黴漿菌方法驗證的人員而言，不能只讀 TR 33 就自認已完整掌握規範，務必配合 TR 50（方法選擇通則）與最新版 Eur. Ph. 2.6.7（2025/10 修訂，含詳細 NAT 規範）一併研讀。",
+   "en": "This section deliberately positions TR 33 as \"supplementary guidance\" and repeatedly reminds readers to cross-reference the two more specialized documents, TR 50 and Eur. Ph. 2.6.7 (consistent with the spirit of ICH Q9(R1), Section 3.1: cross-referencing multiple sources to ensure scientific defensibility). Anyone responsible for mycoplasma method validation cannot read only TR 33 and assume they have mastered the requirements; they should study it together with TR 50 (general method selection) and the latest Eur. Ph. 2.6.7 (revised 10/2025, with detailed NAT requirements)."
+  },
+  {
+   "zh": "為什麼黴漿菌無法透過標準的 0.22 μm 除菌過濾去除？這對細胞培養製程的原物料管控有何啟示？",
+   "en": "Why can't mycoplasma be removed by standard 0.22 μm sterilizing filtration? What does this imply for raw material control in cell culture processes?"
+  },
+  {
+   "zh": "TR 33、TR 50、Eur. Ph. 2.6.7 三份文件在黴漿菌驗證的分工上分別扮演什麼角色？",
+   "en": "What roles do TR 33, TR 50 and Eur. Ph. 2.6.7 each play in dividing up mycoplasma validation?"
+  },
+  {
+   "zh": "<strong>5.5.1 Primary Method Validation 主要方法驗證</strong>",
+   "en": "<strong>5.5.1 Primary Method Validation</strong>"
+  },
+  {
+   "zh": "本句是承先啟後的橋樑句：黴漿菌 NAT 方法的主要驗證，仍沿用 TR 33 前面 5.4.1-5.4.11 通用的驗證criteria 框架（LoD、Specificity、Robustness、Comparability），只是後續三個小節（5.5.1.1-5.5.1.3）會針對黴漿菌 NAT 的特性給出更具體的操作參數與可接受標準。",
+   "en": "This sentence is a bridge between what precedes and what follows: the primary validation of a mycoplasma NAT method still uses the general validation criteria framework of 5.4.1-5.4.11 earlier in TR 33 (LoD, specificity, robustness, comparability); the next three subsections (5.5.1.1-5.5.1.3) then give more specific operating parameters and acceptance criteria for the characteristics of mycoplasma NAT."
+  },
+  {
+   "zh": "閱讀 5.5.1.1-5.5.1.3 時，建議同時回頭對照 5.4.1（Specificity）、5.4.2（Accuracy）等通則章節，因為黴漿菌驗證並非另起爐灶，而是把通用統計方法套用到「NAT 訊號 vs. CFU/GC」這組特殊的比較情境上。",
+   "en": "When reading 5.5.1.1-5.5.1.3, it is advisable to refer back to the general sections such as 5.4.1 (Specificity) and 5.4.2 (Accuracy), because mycoplasma validation does not start from scratch; it applies the general statistical methods to the special comparison scenario of \"NAT signal vs. CFU/GC\"."
+  },
+  {
+   "zh": "為什麼 TR 33 選擇用「引用前段章節」而非重寫一套黴漿菌專屬的驗證通則？這反映了什麼樣的文件設計邏輯？",
+   "en": "Why did TR 33 choose to \"refer back to earlier sections\" rather than rewrite a separate set of general validation principles for mycoplasma? What document design logic does this reflect?"
+  },
+  {
+   "zh": "<strong>5.5.1.1 Limit of Detection 偵測極限</strong>",
+   "en": "<strong>5.5.1.1 Limit of Detection</strong>"
+  },
+  {
+   "zh": "<strong>Positive Cut-off Point (陽性判定臨界值):</strong> 在 95% 的測試批次中都能穩定偵測到的最低目標序列數量／樣品體積，是 NAT 方法 LoD 的統計定義，不同於一般 CFU 法用「最低可培養出菌落」的概念。",
+   "en": "<strong>Positive Cut-off Point:</strong> The lowest target sequence number/sample volume that is consistently detected in 95% of test runs. This is the statistical definition of the LoD of a NAT method, and differs from the \"lowest culturable colony\" concept used in general CFU methods."
+  },
+  {
+   "zh": "<strong>設計要求:</strong> 至少 3 個獨立的十倍序列稀釋，每個稀釋濃度需有足夠重複數，總計每個稀釋濃度需達 24 次測試結果，才足以支撐統計分析（例如機率單位迴歸 Probit Regression 常用於此類 95% 偵測率估計）。",
+   "en": "<strong>Design requirement:</strong> At least 3 independent tenfold serial dilutions, with enough replicates per dilution so that a total of 24 test results is reached for each dilution level, which is enough to support statistical analysis (for example, probit regression is commonly used to estimate such 95% detection rates)."
+  },
+  {
+   "zh": "<strong>Specificity（特異性）與交叉反應:</strong> 因為 NAT 是靠引子（Primer）與探針（Probe）辨識特定核酸序列，必須用親緣關係接近黴漿菌的革蘭氏陽性菌（如 Clostridium、Lactobacillus、Streptococcus）挑戰，確認不會產生偽陽性交叉檢出。",
+   "en": "<strong>Specificity and cross-reactivity:</strong> Because NAT identifies specific nucleic acid sequences with primers and probes, the method must be challenged with Gram-positive bacteria closely related to mycoplasma (such as Clostridium, Lactobacillus and Streptococcus) to confirm that no false-positive cross-detection occurs."
+  },
+  {
+   "zh": "設定 Positive Cut-off Point 就像測試一支麥克風「最小能穩定收到聲音的音量」：你不會只測一次就下結論，而是要在多個安靜的房間（3 組獨立稀釋序列）、多次重複測試（每濃度 24 次）中，統計出「95% 的情況下都收得到聲音」的那個音量門檻，這樣才有統計上的信心。而特異性測試就像確認麥克風不會把隔壁房間類似頻率的雜音（親緣相近菌種）誤判成你要找的那個聲音來源。",
+   "en": "Setting the Positive Cut-off Point is like testing the \"quietest volume a microphone can reliably pick up\". You would not draw a conclusion from a single test; instead you test repeatedly (24 results per concentration) across several quiet rooms (3 independent dilution series) and determine statistically the volume threshold at which the sound is picked up \"95% of the time\", which gives statistical confidence. The specificity test is like making sure the microphone does not mistake noise of a similar frequency from the next room (closely related species) for the sound source you are looking for."
+  },
+  {
+   "zh": "24 次測試結果（3 組稀釋序列 × 8 重複，或其他組合達到 24 次）是 Eur. Ph. 2.6.7 設計邏輯的具體化，目的是讓 95% 偵測率的估計具備統計功效（Statistical Power）。若企業自行縮減重複次數，必須提出風險評估與科學論證，否則所定義的 LoD 可能無法通過稽核檢視其統計合理性。",
+   "en": "The 24 test results (3 dilution series × 8 replicates, or another combination reaching 24) make concrete the design logic of Eur. Ph. 2.6.7. The aim is to give the 95% detection-rate estimate statistical power. If a company cuts the number of replicates on its own, it must provide a risk assessment and scientific justification; otherwise the defined LoD may not withstand audit scrutiny of its statistical soundness."
+  },
+  {
+   "zh": "CDMO 在導入黴漿菌 NAT 方法取代傳統培養法時，LoD 驗證的 24 次測試設計會直接影響驗證時程與成本（每次測試涉及 PCR 試劑、標準品、人力）。建議在驗證計畫階段就與 QC 實驗室排定足夠的儀器與人力產能，並考慮把 LoD 研究與 5.5.1.3 的 Comparability Study 共用稀釋序列與樣品製備流程，以節省重複製備標準品的成本與時間。",
+   "en": "When a CDMO introduces a mycoplasma NAT method to replace the traditional culture method, the 24-test design for LoD validation directly affects the validation timeline and cost (each test involves PCR reagents, reference standards and labor). It is advisable to book enough instrument and staff capacity with the QC laboratory at the validation plan stage, and to consider sharing the dilution series and sample preparation workflow between the LoD study and the comparability study of 5.5.1.3, to save the cost and time of preparing standards twice."
+  },
+  {
+   "zh": "為什麼 Positive Cut-off Point 的定義是「95% 測試批次可偵測到」，而不是「100% 都能偵測到」？這個 5% 的差異在統計上代表什麼？",
+   "en": "Why is the Positive Cut-off Point defined as \"detectable in 95% of test runs\" rather than \"detectable 100% of the time\"? What does that 5% difference represent statistically?"
+  },
+  {
+   "zh": "特異性測試為什麼要挑選「親緣關係接近黴漿菌」的革蘭氏陽性菌，而不是隨機挑選任意菌種？",
+   "en": "Why must the specificity test use Gram-positive bacteria \"closely related to mycoplasma\" rather than randomly chosen species?"
+  },
+  {
+   "zh": "<strong>5.5.1.2 Robustness 穩健性</strong>",
+   "en": "<strong>5.5.1.2 Robustness</strong>"
+  },
+  {
+   "zh": "<strong>Robustness (穩健性):</strong> 方法對「刻意製造的小幅參數變動」保持不受影響的能力，與 Ruggedness（Intermediate Precision，針對自然發生的操作變異，如不同分析員、不同日期）概念相近但著重點略有不同——Robustness 更聚焦於「刻意改變的方法參數」本身是否穩健。",
+   "en": "<strong>Robustness:</strong> The ability of a method to remain unaffected by \"deliberate small variations in parameters\". It is conceptually close to ruggedness (intermediate precision, which addresses naturally occurring operational variation such as different analysts and different days), but the emphasis differs slightly: robustness focuses on whether the method is sound against the \"deliberately varied method parameters\" themselves."
+  },
+  {
+   "zh": "<strong>典型變動因子:</strong> 不同批號的 PCR 試劑、不同型號的熱循環儀（Thermal Cycler）、不同日期/不同分析員操作，這些都是評估 NAT 穩健性時常見的挑戰變因。",
+   "en": "<strong>Typical variation factors:</strong> Different lots of PCR reagents, different models of thermal cycler, and operation on different days or by different analysts. These are all common challenge variables when assessing NAT robustness."
+  },
+  {
+   "zh": "Robustness 測試就像確認一份食譜「換了不同品牌的麵粉、換了不同烤箱、換了不同的廚師」做出來的蛋糕，味道跟品質是否依然一致。如果換個牌子的試劑或換一台熱循環儀就讓 NAT 結果差很多，代表這個方法對細節太敏感，日常大量生產環境下容易出錯。",
+   "en": "A robustness test is like checking whether a recipe produces a cake of the same taste and quality when you \"switch to a different brand of flour, a different oven and a different cook\". If changing the reagent brand or the thermal cycler makes the NAT result differ greatly, the method is too sensitive to details and prone to error in a routine, high-volume production environment."
+  },
+  {
+   "zh": "原文特別提到可透過「Collaborative Studies（協作研究/跨實驗室協同試驗）」評估穩健性，這代表單一實驗室內部的重複測試可能不足以完全支持穩健性宣稱，跨機構、跨儀器的協同驗證能提供更強的科學證據，尤其適用於供應商欲提交法規審查或建立業界共識標準的情境。",
+   "en": "The source text specifically mentions that robustness can be assessed through \"collaborative studies\" (inter-laboratory trials). This implies that repeat testing within a single laboratory may not fully support a robustness claim, and that collaborative validation across institutions and instruments provides stronger scientific evidence, particularly where a supplier wants to submit to regulatory review or establish an industry consensus standard."
+  },
+  {
+   "zh": "Robustness 與 Ruggedness（Intermediate Precision）概念上有何差異？兩者在驗證設計上分別聚焦哪些變因？",
+   "en": "How do robustness and ruggedness (intermediate precision) differ conceptually? Which variables does each focus on in validation design?"
+  },
+  {
+   "zh": "為什麼協作研究（跨實驗室）能提供比單一實驗室內部重複測試更強的穩健性證據？",
+   "en": "Why can a collaborative (inter-laboratory) study provide stronger robustness evidence than repeat testing within a single laboratory?"
+  },
+  {
+   "zh": "<strong>5.5.1.3 Comparability/Equivalency Study 可比較性/等效性研究</strong>",
+   "en": "<strong>5.5.1.3 Comparability/Equivalency Study</strong>"
+  },
+  {
+   "zh": "<strong>三種比較對象:</strong> Culture Method（傳統培養法）、Indicator-Cell Culture Method（指示細胞培養法，用於偵測不易培養的黴漿菌株）、NAT-based Assay（核酸增幅檢測法）——comparability 研究要確認 NAT 至少不劣於它欲取代的那一種或兩種傳統方法。",
+   "en": "<strong>Three comparators:</strong> the culture method, the indicator-cell culture method (used to detect mycoplasma strains that are hard to culture) and the NAT-based assay. The comparability study must confirm that NAT is at least not inferior to the one or two traditional methods it is meant to replace."
+  },
+  {
+   "zh": "<strong>序列稀釋設計:</strong> 以 100 CFU/mL 起始，做十倍序列稀釋至 0.1（甚至 0.01）CFU/mL，三種方法「平行」測試同一批未冷凍樣品，確保比較條件一致，排除凍融造成的活性差異干擾。",
+   "en": "<strong>Serial dilution design:</strong> Starting at 100 CFU/mL, make tenfold serial dilutions down to 0.1 (or even 0.01) CFU/mL, and test the same unfrozen sample batch with the three methods \"in parallel\". This keeps the comparison conditions consistent and rules out interference from differences in viability caused by freezing and thawing."
+  },
+  {
+   "zh": "<strong>GC/mL (Genomic Copies per mL，每毫升基因體拷貝數):</strong> NAT 訊號的定量單位，與 CFU 是不同的計量系統——CFU 只計算「有活性且可培養」的菌，GC 則計算「核酸拷貝數」，兩者之間常存在 GC/CFU 比值差異（詳見 5.5.3）。",
+   "en": "<strong>GC/mL (genomic copies per mL):</strong> The quantitative unit of the NAT signal. It is a different measurement system from CFU: CFU counts only organisms that are \"viable and culturable\", whereas GC counts \"nucleic acid copies\", so there is often a difference in the GC/CFU ratio between the two (see 5.5.3 for details)."
+  },
+  {
+   "zh": "這就像要證明一支新的體溫感應手環（NAT）能取代傳統的水銀溫度計（Culture Method）與電子耳溫槍（Indicator-Cell Culture Method）。你不能只測一次體溫，而是要讓三種工具同時、平行地測量同一群人在不同「發燒程度」（十倍序列稀釋）下的讀數，並且訂出手環至少要能偵測到多低程度的異常，才夠格說它可以取代前面兩種舊工具中的一種或兩種。",
+   "en": "This is like proving that a new temperature-sensing wristband (NAT) can replace a traditional mercury thermometer (culture method) and an electronic ear thermometer (indicator-cell culture method). You cannot take a single reading; you need to have all three tools measure the same group of people at different \"fever levels\" (tenfold serial dilutions) at the same time, in parallel, and set how low a level of abnormality the wristband must at least detect before it qualifies to replace one or both of the older tools."
+  },
+  {
+   "zh": "三條可接受標準的邏輯差異值得注意：取代「培養法」或「同時取代兩者」都要求 NAT 至少偵測到 10 CFU/mL（&lt;100 GC/mL）；但若只是取代「指示細胞培養法」，門檻放寬到 100 CFU/mL（&lt;1000 GC/mL）。這反映了指示細胞培養法本身的靈敏度通常低於傳統培養法，因此 NAT 要取代它時，可接受的最低靈敏度要求也相應較寬鬆——驗證設計必須先明確「NAT 打算取代哪一種既有方法」，才能套用正確的一組標準。",
+   "en": "The logic behind the three acceptance criteria differs and deserves attention: replacing the \"culture method\", or \"both methods\", requires NAT to detect at least 10 CFU/mL (&lt;100 GC/mL); replacing only the \"indicator-cell culture method\" relaxes the threshold to 100 CFU/mL (&lt;1000 GC/mL). This reflects that the indicator-cell culture method itself is usually less sensitive than the traditional culture method, so the minimum sensitivity acceptable for a NAT replacing it is correspondingly looser. The validation design must first make clear \"which existing method the NAT intends to replace\" before the correct set of criteria can be applied."
+  },
+  {
+   "zh": "對細胞治療（Cell Therapy）或 ATMP 產品的 CDMO 而言，黴漿菌 NAT 檢測的最大商業價值在於「大幅縮短放行時間」——傳統培養法需要 28 天，NAT 可在數小時內完成。但若企業目標是同時取代培養法與指示細胞培養法（例如做為單一放行檢測），驗證設計就必須套用最嚴格的「10 CFU/mL / &lt;100 GC/mL」標準，而非誤用較寬鬆的「取代指示細胞培養法」標準，否則會在法規申請或稽核時被要求重新驗證，嚴重延誤產品上市時程。",
+   "en": "For a CDMO working on cell therapy or ATMP products, the greatest commercial value of mycoplasma NAT testing lies in \"substantially shortening release time\": the traditional culture method takes 28 days, while NAT can be completed within hours. However, if the company's goal is to replace both the culture method and the indicator-cell culture method (for example, as the single release test), the validation design must apply the strictest \"10 CFU/mL / &lt;100 GC/mL\" criterion rather than wrongly using the more lenient \"replacing the indicator-cell culture method\" criterion. Otherwise revalidation will be demanded at regulatory filing or audit, seriously delaying time to market."
+  },
+  {
+   "zh": "為什麼「取代指示細胞培養法」的可接受標準（100 CFU/mL）比「取代培養法」（10 CFU/mL）寬鬆十倍？",
+   "en": "Why is the acceptance criterion for \"replacing the indicator-cell culture method\" (100 CFU/mL) ten times more lenient than that for \"replacing the culture method\" (10 CFU/mL)?"
+  },
+  {
+   "zh": "為什麼稀釋序列的樣品在測試前「不能冷凍」？這對實驗排程有何限制？",
+   "en": "Why must the samples of the dilution series \"not be frozen\" before testing? What constraint does this place on experiment scheduling?"
+  },
+  {
+   "zh": "若一家公司打算用 NAT 同時取代培養法與指示細胞培養法作為單一放行方法，應套用三條標準中的哪一條？為什麼？",
+   "en": "If a company plans to use NAT to replace both the culture method and the indicator-cell culture method as a single release method, which of the three criteria should be applied, and why?"
+  },
+  {
+   "zh": "Table 5.5.1.3-1 (整理 Summary): NAT Comparability Acceptance Criteria by Replacement Scope",
+   "en": "Table 5.5.1.3-1 (Summary): NAT Comparability Acceptance Criteria by Replacement Scope"
+  },
+  {
+   "zh": "NAT Intended Replacement Scope 取代範圍",
+   "en": "NAT Intended Replacement Scope"
+  },
+  {
+   "zh": "Minimum Detection (CFU/mL) 最低偵測值",
+   "en": "Minimum Detection (CFU/mL)"
+  },
+  {
+   "zh": "Equivalent Threshold (GC/mL) 對應之 GC 門檻",
+   "en": "Equivalent Threshold (GC/mL)"
+  },
+  {
+   "zh": "Culture Method only（僅取代培養法）",
+   "en": "Culture Method only"
+  },
+  {
+   "zh": "Indicator-Cell Culture Method only（僅取代指示細胞培養法）",
+   "en": "Indicator-Cell Culture Method only"
+  },
+  {
+   "zh": "Both Culture Method and Indicator-Cell Culture Method（同時取代兩者）",
+   "en": "Both Culture Method and Indicator-Cell Culture Method"
+  },
+  {
+   "zh": "<strong>5.5.2 Test for Interfering Substances/Method Suitability Testing 干擾物質測試/方法適用性測試</strong>",
+   "en": "<strong>5.5.2 Test for Interfering Substances/Method Suitability Testing</strong>"
+  },
+  {
+   "zh": "<strong>Test for Interfering Substances (干擾物質測試):</strong> 對應 TR 33 通則中的 Method Suitability（見 5.3.2），確認「特定產品/細胞來源」本身不會抑制或掩蔽 NAT 訊號，是每一個新產品/新細胞來源上市前都必須執行的產品專屬測試，不能用其他產品的驗證數據替代。",
+   "en": "<strong>Test for Interfering Substances:</strong> Corresponds to Method Suitability in the general part of TR 33 (see 5.3.2). It confirms that the specific product/cell source itself does not inhibit or mask the NAT signal. It is a product-specific test that must be performed for every new product/cell source before launch, and data validated for another product cannot be substituted."
+  },
+  {
+   "zh": "<strong>Enrichment Step (增菌步驟):</strong> 部分 NAT 流程在核酸萃取前會先做增菌培養，以提高低濃度黴漿菌的可偵測性；干擾物質測試也必須確認產品基質不影響此步驟。",
+   "en": "<strong>Enrichment Step:</strong> Some NAT workflows include an enrichment culture before nucleic acid extraction to improve detectability of low-level mycoplasma. The interfering-substance test must also confirm that the product matrix does not affect this step."
+  },
+  {
+   "zh": "<strong>驗證設計:</strong> 三個不同批次的產品/細胞收穫液，以最高 10 CFU/mL 或 100 GC/mL 的挑戰濃度接種，要求 NAT 仍能回收至少 95% 的目標核酸訊號。",
+   "en": "<strong>Validation design:</strong> Three different lots of product/cell harvest are spiked at a challenge concentration of up to 10 CFU/mL or 100 GC/mL, and the NAT is required to still recover at least 95% of the target nucleic acid signal."
+  },
+  {
+   "zh": "這就像每次換一種新口味的湯底，都要重新確認金屬探測器（NAT）能不能在湯裡找到藏著的小硬幣（黴漿菌核酸）——濃稠的奶油湯（高蛋白/高黏度產品基質）可能會遮蔽訊號，讓探測器失靈，因此不能只在清水（標準稀釋液）中測過一次就宣稱對所有湯底都適用，每一種新湯底都要重新測試。",
+   "en": "This is like having to re-confirm, every time a new soup base is used, that the metal detector (NAT) can find the small coin (mycoplasma nucleic acid) hidden in the soup. A thick cream soup (a high-protein or high-viscosity product matrix) may mask the signal and make the detector fail, so you cannot test once in clear water (standard diluent) and claim it applies to every soup base; each new soup base must be tested again."
+  },
+  {
+   "zh": "95% 回收率的門檻與 5.3.2 通則中「Quantitative methods should recover at least 50% of the challenge microorganisms」的一般要求相比明顯更嚴格，反映出黴漿菌 NAT 屬於高風險放行檢測（尤其對細胞與基因治療產品），對偽陰性的容忍度極低。此外，「每一個新產品或細胞來源」都必須個別測試，意味著多產品平台型 CDMO 在承接新案時，干擾物質測試會是產品專屬（product-specific）驗證負擔，須提早納入專案時程規劃。",
+   "en": "The 95% recovery threshold is clearly stricter than the general requirement in 5.3.2 that \"Quantitative methods should recover at least 50% of the challenge microorganisms\". This reflects that mycoplasma NAT is a high-risk release test (especially for cell and gene therapy products), with very low tolerance for false negatives. In addition, because \"every new product or cell source\" must be tested individually, a multi-product platform CDMO taking on a new project will face interfering-substance testing as a product-specific validation burden, which must be built into the project timeline early."
+  },
+  {
+   "zh": "對承接多元細胞治療專案的 CDMO 而言，每接一個新客戶/新細胞株，就必須重新執行一次干擾物質測試（三批次、95% 回收率），這是黴漿菌 NAT 快速放行方法在「跨產品可攜性」上的天生限制，與 5.3.2 中「可用風險評估豁免相似基質重複測試」的彈性原則不完全相同——因為黴漿菌測試風險等級高，通常不建議援引「相似基質」豁免干擾物質測試。建議在客戶報價與專案排程階段，就把此項測試列為每個新案必要的固定成本與前置時間，避免驗證進度被低估。",
+   "en": "For a CDMO taking on a variety of cell therapy projects, every new client or new cell line requires the interfering-substance test to be run again (three lots, 95% recovery). This is an inherent limitation of mycoplasma NAT rapid release in terms of \"cross-product portability\", and it is not quite the same as the flexibility principle in 5.3.2 that \"a risk assessment can justify waiving repeat testing for similar matrices\", because mycoplasma testing is high risk and invoking a \"similar matrix\" waiver for interfering-substance testing is generally not recommended. It is advisable to list this test as a fixed cost and lead time for every new project at the client quotation and project scheduling stage, to avoid underestimating the validation schedule."
+  },
+  {
+   "zh": "為什麼干擾物質測試的回收率門檻（95%）遠高於一般 Method Suitability 的 50% 要求？這反映了黴漿菌檢測的哪一種風險考量？",
+   "en": "Why is the recovery threshold for interfering-substance testing (95%) far higher than the 50% requirement for general method suitability? What kind of risk consideration in mycoplasma testing does this reflect?"
+  },
+  {
+   "zh": "若一家 CDMO 同時生產兩種配方非常相似的細胞治療產品，是否可以援引 5.3.2 的「相似基質」豁免邏輯來減少測試批次？請說明你的判斷依據。",
+   "en": "If a CDMO manufactures two cell therapy products with very similar formulations, can it invoke the \"similar matrix\" waiver logic of 5.3.2 to reduce the number of test lots? Explain the basis of your judgment."
+  },
+  {
+   "zh": "<strong>5.5.3 Mycoplasma Stocks and Standards 黴漿菌菌種庫與標準品</strong>",
+   "en": "<strong>5.5.3 Mycoplasma Stocks and Standards</strong>"
+  },
+  {
+   "zh": "<strong>菌株選擇的三大考量:</strong> 製程使用的細胞表現系統（哺乳類、禽類、昆蟲細胞）、培養基是否含哺乳類或植物來源成分、產品類別（生物製劑、ATMP、活病毒疫苗）與其歷史污染紀錄——這些決定了風險評估下應挑戰哪些黴漿菌菌株。",
+   "en": "<strong>Three considerations for strain selection:</strong> the cell expression system used in the process (mammalian, avian, insect cells); whether the culture medium contains mammalian or plant-derived components; and the product category (biologics, ATMP, live virus vaccines) with its history of contamination. These determine which mycoplasma strains should be challenged under the risk assessment."
+  },
+  {
+   "zh": "<strong>菌株形式:</strong> 可為活菌培養物、非活性全菌製劑、核酸標準品（如 WHO International Standard）或檢測用控制質體，須依偵測技術特性選擇適合的形式。",
+   "en": "<strong>Strain forms:</strong> Live cultures, inactivated whole-organism preparations, nucleic acid standards (such as the WHO International Standard) or control plasmids for detection. The form must be chosen to suit the characteristics of the detection technology."
+  },
+  {
+   "zh": "<strong>Passage 限制與 GC/CFU 比值:</strong> 陽性對照培養物須在分離後 15 代以內、於指數生長期採收以確保高活性，並同時定量上清液與細胞部分的基因體拷貝數（GC），計算 GC/CFU 比值；此比值 &lt;10 通常被主管機關接受，超過需額外論證。",
+   "en": "<strong>Passage limit and GC/CFU ratio:</strong> Positive control cultures must be within 15 passages of isolation and harvested in the exponential growth phase to ensure high viability. The genomic copies (GC) of both the supernatant and the cell fraction are quantified at the same time to calculate the GC/CFU ratio; a ratio of &lt;10 is generally accepted by regulators, and anything higher requires additional justification."
+  },
+  {
+   "zh": "GC/CFU 比值就像檢查一批「種子」的發芽率與完整性：如果每一顆活的種子（CFU）對應的 DNA 拷貝數（GC）過高，代表這批種子摻雜了大量已死亡但 DNA 仍完整的殘骸，用它來標定「檢測極限」會失真——因為 NAT 偵測到的是 DNA，若標準品裡「死的比活的多很多」，會讓 LOD 看起來比實際更靈敏，卻無法反映真實產品中活菌污染的偵測能力。這也是為什麼要求比值 &lt;10 並限制培養代數（Passage）與採收時期。",
+   "en": "The GC/CFU ratio is like checking the germination rate and integrity of a batch of seeds. If the number of DNA copies (GC) per viable seed (CFU) is too high, the batch is mixed with a lot of dead debris whose DNA is still intact, and using it to establish the \"limit of detection\" distorts the result. NAT detects DNA, so if \"the dead far outnumber the living\" in the standard, the LOD will look more sensitive than it really is, without reflecting the ability to detect live contamination in a real product. This is also why a ratio of &lt;10 is required and the number of passages and the harvest phase are restricted."
+  },
+  {
+   "zh": "最後一段的原則極為關鍵：標準品的選擇必須反映「完整的分析流程」，包含前處理步驟（過濾、增菌、核酸萃取、裂解、濃縮或去活化）。若驗證方法中包含增菌或萃取步驟，卻選用「已萃取好的純核酸標準品」直接跳過這些前處理步驟做驗證，將無法真正評估整體方法效能，只驗證到偵測步驟本身——這是黴漿菌 NAT 驗證中常見的設計缺陷，稽核時容易被指出「標準品未能代表完整工作流程」。",
+   "en": "The principle in the last paragraph is critical: the choice of standard must reflect the \"complete analytical workflow\", including the pretreatment steps (filtration, enrichment, nucleic acid extraction, lysis, concentration or inactivation). If the validated method includes enrichment or extraction steps but a \"pre-extracted purified nucleic acid standard\" is used, bypassing those steps, the validation cannot truly assess the overall performance of the method and only verifies the detection step itself. This is a common design flaw in mycoplasma NAT validation, and auditors readily point out that \"the standard does not represent the complete workflow\"."
+  },
+  {
+   "zh": "對於使用昆蟲細胞表現系統生產病毒載體的 CDMO，菌株選擇時應特別參考該表現系統歷史上曾發生的黴漿菌污染案例（例如某些節肢動物來源培養基成分風險），而非直接套用哺乳類細胞常見的黴漿菌菌株清單。同時，若驗證流程包含增菌步驟，應堅持採購「活菌培養物」而非「純化核酸標準品」作為驗證用標準品，即使活菌操作在生物安全管理上成本較高，也應優先滿足「反映完整分析流程」的法規期待，避免日後被要求重新驗證。",
+   "en": "For a CDMO using an insect cell expression system to produce viral vectors, strain selection should specifically take into account the historical mycoplasma contamination cases of that expression system (for example, the risk from certain arthropod-derived medium components), rather than directly applying the list of mycoplasma strains common in mammalian cells. Likewise, if the validation workflow includes an enrichment step, the company should insist on procuring \"live cultures\" rather than \"purified nucleic acid standards\" as the validation standard. Even though handling live organisms costs more in biosafety management, meeting the regulatory expectation of \"reflecting the complete analytical workflow\" should take priority, to avoid being asked to revalidate later."
+  },
+  {
+   "zh": "為什麼 GC/CFU 比值過高（≥10）的標準品，可能讓 LOD 驗證結果失真？",
+   "en": "Why might a standard with an excessively high GC/CFU ratio (≥10) distort the LOD validation result?"
+  },
+  {
+   "zh": "若驗證方法包含增菌與核酸萃取兩個前處理步驟，為什麼直接使用純化核酸標準品會被視為驗證缺陷？",
+   "en": "If the validated method includes both an enrichment step and a nucleic acid extraction step, why is directly using a purified nucleic acid standard regarded as a validation deficiency?"
+  },
+  {
+   "zh": "ATMP 產品與傳統生物製劑在黴漿菌菌株選擇上，可能存在哪些風險考量上的差異？",
+   "en": "What differences in risk considerations might there be in mycoplasma strain selection between ATMP products and conventional biologics?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "生長型方法的最短培養時間可用「無條件進位」、「加碼一整天」或「世代時間換算公式 T = t<sub>TTR</sub> + log<sub>2</sub>(10)·G」三種方式設定安全係數，選擇時須權衡科學保守性與放行時效的商業考量。",
+   "en": "The minimum incubation time of a growth-based method can be set with a safety factor in three ways: \"rounding up\", \"adding a full extra day\", or the \"generation-time formula T = t<sub>TTR</sub> + log<sub>2</sub>(10)·G\". The choice must balance scientific conservatism against the commercial need for timely release."
+  },
+  {
+   "zh": "non-CFU 訊號的 AMM/RMM 不應強行套用傳統 CFU 為基礎的警戒/行動水準，而應依 Decision-Equivalence 概念，透過基準值、百分位數法或 OOT 趨勢規則建立科學上可辯護的新可接受標準，並視需要與法規機關溝通。",
+   "en": "AMM/RMM with non-CFU signals should not be forced to use traditional CFU-based alert/action levels. Following the decision-equivalence concept, scientifically defensible new acceptance criteria should be established through baseline values, the percentile method or OOT trend rules, with communication with the regulator as needed."
+  },
+  {
+   "zh": "驗證完成後的持續維護（變更管制、預防性維護、再確效）與週期性審查須形成閉環，回饋至最初的風險評估；除役同樣須遵循變更管制邏輯，確保設備生命週期終點仍具完整文件追溯性。",
+   "en": "Ongoing maintenance after validation (change control, preventive maintenance, requalification) and periodic review must form a closed loop that feeds back into the original risk assessment. Decommissioning must likewise follow change control logic, so that complete documentary traceability is maintained at the end of the equipment lifecycle."
+  },
+  {
+   "zh": "黴漿菌 NAT 方法驗證的三大支柱為 LOD（Positive Cut-off Point，需 3 組獨立十倍稀釋序列共 24 次測試）、Robustness（試劑批號、儀器、分析員/日期變異，可搭配協作研究）、Comparability/Equivalency（依欲取代的方法不同，分別套用 10 CFU/mL 或 100 CFU/mL 的最低偵測門檻）。",
+   "en": "The three pillars of mycoplasma NAT method validation are LOD (Positive Cut-off Point, requiring 3 independent tenfold dilution series with 24 tests in total), robustness (variation in reagent lots, instruments, analysts/days, which can be supported by collaborative studies) and comparability/equivalency (applying a minimum detection threshold of either 10 CFU/mL or 100 CFU/mL depending on which method is to be replaced)."
+  },
+  {
+   "zh": "每個新產品/細胞來源皆須執行干擾物質測試（三批次、95% 核酸回收率），且菌株與標準品的選擇須反映完整分析流程（含前處理步驟），並將 GC/CFU 比值控制在 &lt;10 以確保標準品代表性。",
+   "en": "Interfering-substance testing is required for every new product/cell source (three lots, 95% nucleic acid recovery), and the choice of strains and standards must reflect the complete analytical workflow (including pretreatment steps), with the GC/CFU ratio kept at &lt;10 to ensure the standard is representative."
+  }
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "source": "section-07a-ai-signal-detection.html",
+ "blocks": [
+  {
+   "zh": "AI 於微生物學檢測中的角色與訊號偵測應用",
+   "en": "The Role of AI in Microbiological Testing and Signal Detection Applications"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 <span class=\"key-term\">Artificial Intelligence (AI, 人工智慧)</span> 與 <span class=\"key-term\">Machine Learning (ML, 機器學習)</span> 的定義差異，以及 AI 在微生物檢測中三大應用場景：儀器內訊號判讀、儀器外數據分析、EM（環境監測）程式",
+   "en": "Understand the difference between <span class=\"key-term\">Artificial Intelligence (AI)</span> and <span class=\"key-term\">Machine Learning (ML)</span>, and the three main application scenarios of AI in microbiological testing: in-instrument signal interpretation, out-of-instrument data analysis, and EM (environmental monitoring) programs"
+  },
+  {
+   "zh": "掌握 FDA 與 EMA 對於 AI 於藥品製造應用的最新法規動態，包括 FDA 2023 討論文件、FDA 2025 風險基礎可信度評估草案指引，以及 EMA Annex 22: Artificial Intelligence 草案",
+   "en": "Grasp the latest FDA and EMA regulatory developments on AI in drug manufacturing, including the 2023 FDA discussion paper, the 2025 FDA draft guidance on a risk-based credibility assessment framework, and the draft EMA Annex 22: Artificial Intelligence"
+  },
+  {
+   "zh": "區分 <span class=\"key-term\">Static (locked) AI models（靜態/鎖定式模型）</span> 與 <span class=\"key-term\">Dynamic (adaptive) AI models（動態/自適應模型）</span> 的技術差異、驗證要求，以及各監管機關對兩者的態度分歧",
+   "en": "Distinguish the technical differences and validation requirements of <span class=\"key-term\">Static (locked) AI models</span> and <span class=\"key-term\">Dynamic (adaptive) AI models</span>, and the divergent attitudes of regulators toward them"
+  },
+  {
+   "zh": "熟悉 AI 於訊號偵測中的核心技術（Computer Vision、YOLO 物件偵測、Flow Cytometry、基因體序列比對）與可解釋性工具（SHAP、LIME、ONNX）在 GMP 環境下的角色與重要性",
+   "en": "Become familiar with the core techniques of AI in signal detection (computer vision, YOLO object detection, flow cytometry, genomic sequence matching) and the role and importance of explainability tools (SHAP, LIME, ONNX) in a GMP environment"
+  },
+  {
+   "zh": "<strong>7.0 The Role of Artificial Intelligence in Microbiological Testing AI 於微生物學檢測中的角色</strong>",
+   "en": "<strong>7.0 The Role of Artificial Intelligence in Microbiological Testing</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>AI (人工智慧) vs. ML (機器學習):</strong> 原文特別釐清兩者關係——AI 是一個更大的學門，涵蓋電腦科學、應用數學與工程，目標是讓機器執行「傳統上需要人類智慧」的任務；ML 只是 AI 底下的其中一種實作手法（讓系統從資料中「學習」規律），AI 本身還包含演算法設計、最佳化、邏輯建模等非 ML 的技術路線。換言之，<strong>所有 ML 都是 AI，但不是所有 AI 都是 ML</strong>。",
+   "en": "<strong>AI vs. ML:</strong> The source text specifically clarifies the relationship between the two. AI is a broader discipline covering computer science, applied mathematics and engineering, with the goal of enabling machines to perform tasks that \"traditionally require human intelligence\"; ML is only one implementation approach within AI (letting a system \"learn\" patterns from data), and AI also includes non-ML routes such as algorithm design, optimization and logical modeling. In other words, <strong>all ML is AI, but not all AI is ML</strong>."
+  },
+  {
+   "zh": "<strong>AI 在微生物檢測的三大應用場景：</strong> ① 儀器內（in-instrument）——協助判讀原始訊號（影像、散射圖）以產出 enumeration/detection/identification 結果；② 儀器外（data analysis）——針對已產出的微生物數據做趨勢分析、偏差偵測、污染風險評估；③ EM 專案——處理歷史與即時數據，辨識與微生物異常事件相關的模式，支援數據驅動的污染管控策略。這三層級由「訊號」到「數據」到「策略」，正是 AI 導入微生物 QC 的完整價值鏈。",
+   "en": "<strong>Three main application scenarios of AI in microbiological testing:</strong> (1) In-instrument: helping interpret raw signals (images, scatter plots) to produce enumeration/detection/identification results; (2) Out-of-instrument (data analysis): performing trend analysis, deviation detection and contamination risk assessment on microbiological data that have already been generated; (3) EM programs: processing historical and real-time data to identify patterns associated with microbiological anomalies, supporting data-driven contamination control strategies. These three levels, from \"signal\" to \"data\" to \"strategy\", make up the complete value chain of introducing AI into microbiological QC."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "可以把 AI 在微生物檢測中的角色想像成<strong>一位經驗豐富的資深檢驗員 vs. 剛入職只會照 SOP 的新人</strong>：傳統的 deterministic, rule-based（決定論式、規則式）判讀系統，就像新人嚴格按照檢核表操作——遇到手冊裡寫的情況才能判斷，遇到模糊或未知的樣本容易卡關；而 AI 模型則像看過成千上萬個樣本的資深員工，能從大量歷史資料中歸納出規律，即使遇到手冊沒寫過的「非典型」訊號，也能憑經驗做出合理判斷。但也正因為如此，「這位資深員工是怎麼被訓練出來的、訓練教材夠不夠完整具代表性」，就成為 GMP 驗證必須追問的重點。",
+   "en": "Think of the role of AI in microbiological testing as <strong>an experienced senior inspector vs. a new hire who only follows the SOP</strong>. A traditional deterministic, rule-based interpretation system is like the new hire working strictly from a checklist: it can only decide in situations written in the manual, and easily gets stuck on ambiguous or unknown samples. An AI model is like a senior employee who has seen thousands of samples: it generalizes patterns from large amounts of historical data and can make a reasonable judgment from experience even for an \"atypical\" signal the manual never described. But precisely because of this, \"how was this senior employee trained, and is the training material complete and representative enough?\" becomes the key question that GMP validation must ask."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "本節列出三份關鍵法規文件，CDMO 品質與法規人員應建立追蹤機制：① <strong>FDA (2023) Artificial Intelligence in Drug Manufacturing</strong>（討論文件，徵詢意見階段）；② <strong>FDA (2025) 草案指引</strong>——針對 AI 用於支持法規決策資料，提出 risk-based credibility assessment framework（風險基礎可信度評估框架）；③ <strong>EMA (2025) 草案 Annex 22: Artificial Intelligence</strong>——聚焦 static AI 系統於 GMP 流程的應用，強調 intended use 界定、獨立資料集驗證、explainability（可解釋性）、human oversight（人為監督）與 lifecycle monitoring（生命週期監控）。這些要求與 <strong>21 CFR Part 11</strong> 對電子記錄可稽核性（auditable）、數據完整性（data integrity）的精神高度一致——AI 模型輸出若涉及放行決策，其訓練資料、版本、驗證紀錄都必須可追溯、可稽核。",
+   "en": "This section lists three key regulatory documents, and CDMO quality and regulatory staff should set up a tracking mechanism for them: (1) <strong>FDA (2023) Artificial Intelligence in Drug Manufacturing</strong> (a discussion paper, at the stage of seeking comments); (2) <strong>FDA (2025) draft guidance</strong>, which proposes a risk-based credibility assessment framework for AI used to support regulatory decision-making; (3) <strong>EMA (2025) draft Annex 22: Artificial Intelligence</strong>, which focuses on the use of static AI systems in GMP processes and stresses definition of intended use, validation with independent datasets, explainability, human oversight and lifecycle monitoring. These requirements are highly consistent with the spirit of <strong>21 CFR Part 11</strong> on the auditability of electronic records and data integrity: if an AI model output is involved in a release decision, its training data, version and validation records must be traceable and auditable."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為何原文強調「AI 是獨立且多學門的領域」，而非單純等同於 ML？這對 CDMO 評估供應商的 AMM/RMM 系統時有何實務意義？",
+   "en": "Why does the source text emphasize that \"AI is an independent, multidisciplinary field\" rather than simply equating it with ML? What practical significance does this have when a CDMO evaluates a supplier's AMM/RMM system?"
+  },
+  {
+   "zh": "FDA 與 EMA 目前對 AI 的規範進度並不完全同步（討論文件 vs. 草案指引 vs. 草案 Annex），身為品質主管，應如何在法規尚未定案前，為導入 AI 輔助的微生物檢測系統做好準備？",
+   "en": "The regulatory progress of the FDA and EMA on AI is not fully synchronized (discussion paper vs. draft guidance vs. draft Annex). As a head of quality, how would you prepare for introducing an AI-assisted microbiological testing system before the regulations are finalized?"
+  },
+  {
+   "zh": "若某 AMM/RMM 供應商的儀器內建 AI 訊號判讀功能，你在稽核時會優先索取哪些文件來確認其 explainability 與 human oversight？",
+   "en": "If an AMM/RMM supplier's instrument has built-in AI signal interpretation, which documents would you request first during an audit to confirm its explainability and human oversight?"
+  },
+  {
+   "zh": "<strong>7.1 Use of Artificial Intelligence in Signal Detection AI 於訊號偵測的應用</strong>",
+   "en": "<strong>7.1 Use of Artificial Intelligence in Signal Detection</strong>"
+  },
+  {
+   "zh": "<strong>Reportable Value（可報告值）:</strong> 指最終呈現給操作者、可用於放行決策的結果，例如「菌落數 = 5 CFU」或「Present/Absent」。原文的重點在於：這個數值現在可能是由 AI 直接從<strong>原始訊號</strong>（影像、散射圖）運算產出，而非人工目視判讀——這代表 AI 模型本身就是「檢測方法的一部分」，必須納入方法確效（method validation）的範疇。",
+   "en": "<strong>Reportable Value:</strong> The final result presented to the operator that can be used in a release decision, such as \"colony count = 5 CFU\" or \"Present/Absent\". The point of the source text is that this value may now be produced by AI directly from the <strong>raw signal</strong> (images, scatter plots) rather than by manual visual interpretation. This means the AI model itself is \"part of the test method\" and must fall within the scope of method validation."
+  },
+  {
+   "zh": "<strong>Deterministic Rule-Based（決定論式規則演算法） vs. AI 學習模式:</strong> 傳統演算法是工程師預先寫死判斷邏輯（if-then 規則），AI 模型則是從大量資料中<strong>自行歸納規律</strong>，因此能處理規則沒寫到的「灰色地帶」訊號，但代價是模型的判斷邏輯較不透明，這正是為何 explainability（可解釋性）工具變得重要。",
+   "en": "<strong>Deterministic Rule-Based vs. AI learning mode:</strong> In a traditional algorithm, engineers hard-code the decision logic in advance (if-then rules), whereas an AI model <strong>generalizes patterns on its own</strong> from large amounts of data. It can therefore handle \"gray zone\" signals the rules did not cover, but at the cost of less transparent decision logic, which is exactly why explainability tools have become important."
+  },
+  {
+   "zh": "<strong>Static (locked) AI models（靜態/鎖定式模型） vs. Dynamic (adaptive) AI models（動態/自適應模型）:</strong> 這是本節最核心、也是 GMP 驗證與稽核最關鍵的分類。<strong>Static model</strong>——一次訓練完成後「凍結」參數，除非正式軟體更新否則不再改變，其確效遵循 TR33 既有的實驗設計與數據分析建議；供應商對初始訓練資料的品質、代表性、多樣性負全責。<strong>Dynamic model</strong>——上線後持續用新產生的資料「邊用邊學」，理論上效能可隨時間提升，但也帶來 <strong>Model Drift（模型飄移）</strong> 風險，即模型行為在不知不覺中偏離原始驗證基準，對少見或新興菌種的偵測尤其敏感，因此需要持續監控（ongoing monitoring）確認效能沒有劣化。",
+   "en": "<strong>Static (locked) AI models vs. Dynamic (adaptive) AI models:</strong> This is the most central classification in this section and the most critical for GMP validation and audits. <strong>Static model</strong>: the parameters are \"frozen\" once training is complete and do not change unless there is a formal software update; its validation follows the existing experimental design and data analysis recommendations of TR33, and the supplier bears full responsibility for the quality, representativeness and diversity of the initial training data. <strong>Dynamic model</strong>: continues to \"learn on the job\" from newly generated data after go-live. In theory its performance can improve over time, but it also brings the risk of <strong>Model Drift</strong>, where the model's behavior deviates unnoticed from the original validated baseline, which is especially sensitive for the detection of rare or emerging organisms. Ongoing monitoring is therefore needed to confirm that performance has not degraded."
+  },
+  {
+   "zh": "<strong>可解釋性 AI 工具（Explainable AI, XAI）:</strong> <strong>SHAP (Shapley Additive Explanations)</strong> 與 <strong>LIME (Local Interpretable Model-Agnostic Explanations)</strong> 都是事後解釋工具，用來拆解「這個輸入變數對最終判斷結果貢獻了多少」，讓黑箱模型的決策具備可追溯性；<strong>ONNX (Open Neural Network Exchange)</strong> 則是跨平台的模型交換格式標準，讓模型可攜、可比對，間接支援稽核與驗證。",
+   "en": "<strong>Explainable AI (XAI) tools:</strong> <strong>SHAP (Shapley Additive Explanations)</strong> and <strong>LIME (Local Interpretable Model-Agnostic Explanations)</strong> are both post-hoc explanation tools used to break down \"how much each input variable contributed to the final decision\", making the decisions of a black-box model traceable. <strong>ONNX (Open Neural Network Exchange)</strong> is a cross-platform model exchange format standard that makes models portable and comparable, indirectly supporting audits and validation."
+  },
+  {
+   "zh": "<strong>Static vs. Dynamic AI Model：</strong>就像<strong>「鎖死的食譜」vs.「會自我調整配方的主廚」</strong>——Static model 像是一本經過反覆試驗、最終定案並封存的食譜，只要沒有正式改版，每次做出來的味道都一樣，這種「可預期性」正是 GMP 最重視的特質；Dynamic model 則像一位不斷根據顧客回饋調整調味的主廚，菜色可能因此愈做愈好吃，但也可能在某次「創意發揮」中悄悄變了調（model drift），而顧客（病人/法規機關）未必能立刻察覺。這也是為何 EMA 目前對「會自己調整配方的主廚」（Dynamic model）在 GMP 關鍵應用上採取較保守的態度。",
+   "en": "<strong>Static vs. Dynamic AI Model:</strong> Like <strong>a \"locked recipe\" vs. a \"chef who adjusts the recipe on their own\"</strong>. A static model is like a recipe that has been tested repeatedly, finalized and sealed: unless it is formally revised, the dish tastes the same every time, and this \"predictability\" is exactly the characteristic GMP values most. A dynamic model is like a chef who keeps adjusting the seasoning according to customer feedback: the dish may taste better and better, but it may also quietly change flavor in one \"creative moment\" (model drift), and the customer (the patient/the regulator) may not notice immediately. This is also why the EMA currently takes a more conservative attitude toward the \"chef who adjusts the recipe on their own\" (the dynamic model) in critical GMP applications."
+  },
+  {
+   "zh": "<strong>YOLO 物件偵測：</strong>可比喻為<strong>機場安檢的全景 X 光掃描</strong>——傳統做法是逐格檢查每個行李（逐區掃描比對），YOLO 則像是一次性掃描整個畫面、同時標出所有可疑物件的位置與類別，效率大幅提升，這正是其在顯微影像中快速標記多個微生物群落的優勢所在。",
+   "en": "<strong>YOLO object detection:</strong> Can be compared to <strong>the panoramic X-ray scan at airport security</strong>. The traditional approach checks each bag cell by cell (scanning and comparing region by region), whereas YOLO scans the whole frame at once and marks the positions and classes of all suspicious objects simultaneously, greatly improving efficiency. This is its advantage in rapidly flagging multiple microbial colonies in microscopy images."
+  },
+  {
+   "zh": "<strong>法規對 Dynamic Model 的保守立場：</strong>草案 <strong>EU GMP Annex 22: Artificial Intelligence (EMA, 2025)</strong> 目前僅涵蓋 static, deterministic models，並建議 Dynamic model <strong>不應</strong>用於 GMP 關鍵應用（critical GMP applications）。相對地，FDA 的草案指引與 Total Product Lifecycle（TPLC，全生命週期）方法對 AI/ML-based SaMD 則採取較開放的態度，只要具備適當的驗證、監控與生命週期控制，並不排除 Dynamic model 的使用。CDMO 在跨地區（如同時供應歐盟與美國市場）導入 AI 輔助 AMM/RMM 時，<strong>應以最嚴格的法規要求（EMA 對 Dynamic model 的限制）作為內部政策基準</strong>，避免單一批次因法規轄區不同而產生放行爭議。",
+   "en": "<strong>The conservative regulatory stance on dynamic models:</strong> The draft <strong>EU GMP Annex 22: Artificial Intelligence (EMA, 2025)</strong> currently covers only static, deterministic models, and recommends that dynamic models <strong>should not</strong> be used in critical GMP applications. By contrast, the FDA's draft guidance and Total Product Lifecycle (TPLC) approach for AI/ML-based SaMD is more open, and does not exclude the use of dynamic models provided there is appropriate validation, monitoring and lifecycle control. When a CDMO introduces AI-assisted AMM/RMM across regions (for example, supplying both the EU and US markets), it <strong>should adopt the strictest regulatory requirement (the EMA restriction on dynamic models) as its internal policy baseline</strong>, to avoid release disputes for a single batch arising from different jurisdictions."
+  },
+  {
+   "zh": "<strong>21 CFR Part 11 與模型生命週期治理：</strong>無論 static 或 dynamic model，只要其輸出（reportable value）影響批次放行或品質決策，就必須被視為 GMP 關鍵運算，比照電子記錄要求：訓練資料集版本、模型版本、驗證報告、任何再訓練（retraining）事件都必須有稽核軌跡（audit trail）、可追溯、防止未經授權竄改。Dynamic model 的「持續學習」特性與 Part 11 要求的「記錄不可回溯竄改」存在天然張力——這正是目前 static model 較容易被監管機關接受的根本原因。",
+   "en": "<strong>21 CFR Part 11 and model lifecycle governance:</strong> Whether static or dynamic, as long as the model's output (reportable value) affects batch release or quality decisions, it must be treated as a GMP-critical computation and handled like electronic records: the training dataset version, model version, validation report and any retraining event must have an audit trail, be traceable, and be protected against unauthorized alteration. There is an inherent tension between the \"continuous learning\" nature of a dynamic model and the Part 11 requirement that records cannot be altered retroactively. This is the fundamental reason static models are currently easier for regulators to accept."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "AI Model 驗證決策框架 (簡化邏輯)\n\n  IF 模型上線後參數「不會」隨新資料改變\n      → Static (locked) model\n      → 依 TR33 既有實驗設計/數據分析建議確效\n      → 軟體/模型更新 = 變更控制 (Change Control) → 觸發再驗證評估\n\n  IF 模型上線後參數「會」隨新資料持續更新\n      → Dynamic (adaptive) model\n      → 除初始確效外，需額外建立：\n           1) 持續監控計畫 (ongoing performance monitoring)\n           2) Model Drift 偵測指標與警戒/行動限\n           3) 可解釋性文件 (SHAP/LIME/ONNX 佐證)\n           4) 依轄區法規判斷是否適用於關鍵 GMP 應用\n              (EMA Annex 22 草案：目前不建議用於 critical GMP applications)",
+   "en": "AI Model Validation Decision Framework (simplified logic)\n\n  IF the model parameters do NOT change with new data after go-live\n      → Static (locked) model\n      → Validate per the existing TR33 experimental design/data analysis recommendations\n      → Software/model update = Change Control → triggers revalidation assessment\n\n  IF the model parameters ARE continuously updated with new data after go-live\n      → Dynamic (adaptive) model\n      → In addition to initial validation, the following must be established:\n           1) Ongoing performance monitoring plan\n           2) Model drift detection indicators and alert/action limits\n           3) Explainability documentation (SHAP/LIME/ONNX evidence)\n           4) Determine by jurisdiction whether it is applicable to critical GMP applications\n              (draft EMA Annex 22: currently not recommended for critical GMP applications)"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "假設 Amaran 評估導入一套內建 AI 影像判讀功能的 rapid sterility testing 系統：稽核時應先確認供應商的 AI 模型屬於 <strong>static 或 dynamic</strong>。若為 static model，重點審查其<strong>初始訓練資料集</strong>的代表性（是否涵蓋公司實際生產環境常見的菌種光譜、培養基背景干擾等），並要求供應商提供任何軟體/模型更新的變更歷史與對應再驗證證據；若供應商聲稱系統具備「持續學習」能力（dynamic model），則必須額外要求：模型飄移監控報告、SHAP/LIME 等可解釋性佐證文件、以及該功能在歐盟市場是否符合 EMA Annex 22 草案對 critical GMP applications 的限制——若不符合，應要求供應商提供「可關閉持續學習、鎖定為 static 模式」的選項，以確保跨市場放行的一致性與可稽核性。",
+   "en": "Suppose Amaran is evaluating a rapid sterility testing system with built-in AI image interpretation. During the audit, first confirm whether the supplier's AI model is <strong>static or dynamic</strong>. If it is a static model, focus on the representativeness of the <strong>initial training dataset</strong> (does it cover the organism spectra and culture medium background interference common in the company's actual production environment?) and ask the supplier for the change history of any software/model updates and the corresponding revalidation evidence. If the supplier claims the system has \"continuous learning\" capability (a dynamic model), additionally require: model drift monitoring reports, explainability evidence such as SHAP/LIME, and confirmation of whether this function complies, in the EU market, with the restrictions of draft EMA Annex 22 on critical GMP applications. If it does not, ask the supplier for an option to \"disable continuous learning and lock the system in static mode\", to ensure consistency and auditability of release across markets."
+  },
+  {
+   "zh": "若一套 AMM/RMM 儀器的 AI 模組被供應商更新（例如加入新的訓練資料以提升偵測靈敏度），身為品質主管，你認為這是否構成需要重新驗證的「變更」？依據為何？",
+   "en": "If the AI module of an AMM/RMM instrument is updated by the supplier (for example, new training data is added to improve detection sensitivity), as head of quality, do you consider this a \"change\" requiring revalidation? What is your basis?"
+  },
+  {
+   "zh": "Dynamic AI model 的「Model Drift」風險，與傳統分析方法中的「儀器漂移 (instrument drift)」在管理邏輯上有何異同？可否借用既有的校驗（calibration）思維來管理 model drift？",
+   "en": "How are the management logic of \"model drift\" in dynamic AI models and \"instrument drift\" in traditional analytical methods alike and different? Can the existing calibration mindset be borrowed to manage model drift?"
+  },
+  {
+   "zh": "面對 EMA 與 FDA 對 Dynamic model 態度不一致的現況，若貴公司產品同時銷往歐盟與美國市場，你會如何設計內部的 AI 模型治理政策，以兼顧法規差異與營運效率？",
+   "en": "Given the inconsistent attitudes of the EMA and the FDA toward dynamic models, if your company's products are sold in both the EU and US markets, how would you design an internal AI model governance policy that balances regulatory differences and operating efficiency?"
+  },
+  {
+   "zh": "SHAP、LIME 這類可解釋性工具，對稽核員／法規查廠而言，實際上能解決什麼問題？又有哪些侷限（例如：能否完全還原模型的決策邏輯）？",
+   "en": "What problems can explainability tools such as SHAP and LIME actually solve for auditors and regulatory inspectors? What are their limitations (for example, can they fully reconstruct the model's decision logic)?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "AI 是涵蓋 ML 與統計方法的多學門領域，於微生物檢測中扮演三種角色：儀器內訊號判讀、儀器外數據分析、EM 程式異常偵測；FDA 與 EMA 已分別發布討論文件/草案指引/草案 Annex 22 回應此趨勢。",
+   "en": "AI is a multidisciplinary field encompassing ML and statistical methods, and plays three roles in microbiological testing: in-instrument signal interpretation, out-of-instrument data analysis, and anomaly detection in EM programs. The FDA and EMA have responded to this trend with a discussion paper, draft guidance and a draft Annex 22 respectively."
+  },
+  {
+   "zh": "AI 於訊號偵測的應用已從傳統 deterministic, rule-based 演算法，演進為從大量資料中學習規律的模型，涵蓋 computer-vision（含 YOLO 物件偵測）、flow cytometry 訊號分析與基因體序列比對等技術。",
+   "en": "The application of AI to signal detection has evolved from traditional deterministic, rule-based algorithms to models that learn patterns from large amounts of data, covering techniques such as computer vision (including YOLO object detection), flow cytometry signal analysis and genomic sequence matching."
+  },
+  {
+   "zh": "<strong>Static (locked) AI model</strong> 與 <strong>Dynamic (adaptive) AI model</strong> 的區分，是 AMM/RMM 驗證策略的關鍵分岔點：前者比照既有確效框架處理、變更需觸發再驗證；後者需額外建立持續監控與 model drift 管理機制，且 EMA Annex 22 草案目前不建議用於 critical GMP applications。",
+   "en": "The distinction between <strong>Static (locked) AI models</strong> and <strong>Dynamic (adaptive) AI models</strong> is the key fork in an AMM/RMM validation strategy: the former is handled within the existing validation framework, with changes triggering revalidation; the latter requires additional ongoing monitoring and model drift management mechanisms, and draft EMA Annex 22 currently does not recommend it for critical GMP applications."
+  },
+  {
+   "zh": "SHAP、LIME、ONNX 等可解釋性 (explainability) 工具，是 Dynamic model 能否被監管機關與稽核員信任的關鍵佐證，也呼應 21 CFR Part 11 對 AI 模型生命週期治理與稽核軌跡的要求。",
+   "en": "Explainability tools such as SHAP, LIME and ONNX are key supporting evidence for whether regulators and auditors can trust a dynamic model, and also echo the 21 CFR Part 11 requirements for AI model lifecycle governance and audit trails."
+  }
+ ]
+}

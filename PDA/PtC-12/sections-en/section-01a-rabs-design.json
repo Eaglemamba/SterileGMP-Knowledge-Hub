@@ -1,0 +1,601 @@
+{
+ "source": "section-01a-rabs-design.html",
+ "blocks": [
+  {
+   "zh": "主題 1（上）：限制進出屏障系統設計",
+   "en": "Topic 1 (Part 1): Restricted Access Barrier System Design"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives for This Section"
+  },
+  {
+   "zh": "理解 RABS 三種類型（Passive oRABS、Active oRABS、cRABS）的設計差異與適用場景",
+   "en": "Understand the design differences between the three RABS types (passive oRABS, active oRABS, cRABS) and where each is appropriate"
+  },
+  {
+   "zh": "掌握 RABS 設計準則屬性（屏障、氣流、手套口、RTP、環境控制、壓差、清潔與生物去污）的關鍵比較",
+   "en": "Grasp the key comparisons across the RABS design criteria attributes (barrier, airflow, glove ports, RTP, environmental control, pressure differential, cleaning and bio-decontamination)"
+  },
+  {
+   "zh": "瞭解 cRABS 相較於 oRABS 與 Isolator 的獨特設計考量",
+   "en": "Understand the unique design considerations of a cRABS compared with an oRABS and an isolator"
+  },
+  {
+   "zh": "認識 RABS 手套口定位、手套材質選擇與操作介入管控的設計原則",
+   "en": "Learn the design principles for RABS glove port placement, glove material selection and control of interventions"
+  },
+  {
+   "zh": "理解如何透過設計降低人員介入對無菌保證的風險",
+   "en": "Understand how design can reduce the risk that personnel interventions pose to sterility assurance"
+  },
+  {
+   "zh": "本節快速導覽",
+   "en": "Quick Navigation for This Section"
+  },
+  {
+   "zh": "<a href=\"#q1-1\">Q1.1 RABS 類型</a>\n<a href=\"#q1-2\">Q1.2 設計準則</a>\n<a href=\"#q1-3\">Q1.3 cRABS 設計</a>\n<a href=\"#q1-4\">Q1.4 手套口定位</a>\n<a href=\"#q1-5\">Q1.5 RABS 手套設計</a>\n<a href=\"#q1-6\">Q1.6 介入風險最小化</a>",
+   "en": "<a href=\"#q1-1\">Q1.1 RABS Types</a>\n<a href=\"#q1-2\">Q1.2 Design Criteria</a>\n<a href=\"#q1-3\">Q1.3 cRABS Design</a>\n<a href=\"#q1-4\">Q1.4 Glove Port Placement</a>\n<a href=\"#q1-5\">Q1.5 RABS Glove Design</a>\n<a href=\"#q1-6\">Q1.6 Minimizing Intervention Risk</a>"
+  },
+  {
+   "zh": "<strong>Q 1.1 What are the different types of restricted access barrier systems (RABS)? Q 1.1 限制進出屏障系統（RABS）有哪些不同類型？</strong>",
+   "en": "<strong>Q 1.1 What are the different types of restricted access barrier systems (RABS)?</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>RABS (限制進出屏障系統)：</strong>RABS 是一套由硬質屏障、手套口、HEPA 過濾單向氣流、物料傳遞口等元件組成的系統，目的是在無菌製程區域形成 Grade A 環境，將操作人員與關鍵區域「隔離」，降低微生物污染風險。",
+   "en": "<strong>RABS (Restricted Access Barrier System):</strong> A RABS is a system made up of rigid barriers, glove ports, HEPA-filtered unidirectional airflow, material transfer ports and other components. Its purpose is to create a Grade A environment in the aseptic processing area and to separate operators from the critical zone, reducing the risk of microbial contamination."
+  },
+  {
+   "zh": "<strong>三種 RABS 類型的核心差異在於氣流處理方式：</strong>",
+   "en": "<strong>The core difference between the three RABS types is how the air is handled:</strong>"
+  },
+  {
+   "zh": "<strong>Passive oRABS（被動開放式）：</strong>氣流來自房間天花板 HVAC 系統，經屏障後溢流至周圍空間。保護等級最低。",
+   "en": "<strong>Passive oRABS:</strong> Air comes from the room's ceiling HVAC system and spills out through the barrier into the surrounding space. This gives the lowest level of protection."
+  },
+  {
+   "zh": "<strong>Active oRABS（主動開放式）：</strong>配備專屬 RABS HVAC 系統供氣，但氣流仍溢流至周圍空間。保護等級中等。",
+   "en": "<strong>Active oRABS:</strong> Air is supplied by a dedicated RABS HVAC system, but it still spills out into the surrounding space. This gives a medium level of protection."
+  },
+  {
+   "zh": "<strong>cRABS（封閉式）：</strong>配備專屬 HVAC 系統，氣流在 RABS 內部循環不外溢，可建立正壓差。保護等級最高。",
+   "en": "<strong>cRABS (closed RABS):</strong> A dedicated HVAC system recirculates the air inside the RABS without spillage, and a pressure differential can be established. This gives the highest level of protection."
+  },
+  {
+   "zh": "<strong>First Air (第一氣流)：</strong>指從 HEPA 過濾器出來後尚未接觸任何表面的潔淨氣流，是保護無菌產品的第一道防線。",
+   "en": "<strong>First Air:</strong> The clean air that has left the HEPA filter and has not yet contacted any surface; it is the first line of defense for protecting sterile product."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "想像一間手術室：",
+   "en": "Imagine an operating room:"
+  },
+  {
+   "zh": "<strong>Passive oRABS</strong> 就像手術室只靠走廊的空調吹氣，門是半開的 — 有基本保護但容易受走廊環境影響。",
+   "en": "A <strong>passive oRABS</strong> is like an operating room that relies only on air conditioning from the corridor, with the door half open: it gives basic protection but is easily affected by the corridor environment."
+  },
+  {
+   "zh": "<strong>Active oRABS</strong> 像手術室有自己的獨立空調，但門仍半開 — 空氣品質更好，但走廊的人走過還是有影響。",
+   "en": "An <strong>active oRABS</strong> is like an operating room with its own air conditioning but with the door still half open: the air quality is better, but people walking past in the corridor still have an effect."
+  },
+  {
+   "zh": "<strong>cRABS</strong> 像手術室有獨立空調且門關上 — 內部空氣循環使用，與外界隔離，提供最高保護。",
+   "en": "A <strong>cRABS</strong> is like an operating room with its own air conditioning and the door closed: the air inside is recirculated and separated from the outside, giving the highest protection."
+  },
+  {
+   "zh": "而 Isolator（隔離器）則像太空站 — 完全密封、自成一體，本文件不涵蓋此範圍。",
+   "en": "An isolator is like a space station: completely sealed and self-contained, and outside the scope of this document."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>保護等級遞增順序：</strong>Passive oRABS &lt; Active oRABS &lt; cRABS &lt; Isolator。選擇哪種類型應基於風險評估 (Risk Assessment)，考量產品特性、製程需求、人員安全等因素。",
+   "en": "<strong>Level of protection in ascending order:</strong> passive oRABS &lt; active oRABS &lt; cRABS &lt; isolator. The choice of type should be based on a risk assessment that considers product characteristics, process needs, personnel safety and other factors."
+  },
+  {
+   "zh": "PDA 明確指出，「Non-barrier technology（無屏障技術）」已是過時技術，不符合法規期望。所有新建線體應至少採用 RABS。",
+   "en": "PDA states explicitly that \"non-barrier technology\" is now obsolete and does not meet regulatory expectations. All new lines should use at least a RABS."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "請說明 Passive oRABS 與 Active oRABS 在氣流來源上的根本差異是什麼？",
+   "en": "What is the fundamental difference in air source between a passive oRABS and an active oRABS?"
+  },
+  {
+   "zh": "若您的產品具有毒性，三種 RABS 中哪一種可以使用？為什麼？",
+   "en": "If your product is toxic, which of the three RABS types can be used, and why?"
+  },
+  {
+   "zh": "為什麼 PDA 說「Non-barrier technology 已過時」？從法規趨勢（如 EU GMP Annex 1, 2022）的角度說明。",
+   "en": "Why does PDA say that \"non-barrier technology is obsolete\"? Explain from the perspective of regulatory trends (for example EU GMP Annex 1, 2022)."
+  },
+  {
+   "zh": "<strong>Q 1.2 What are the design criteria considerations for restricted access barrier systems (RABS)? Q 1.2 限制進出屏障系統（RABS）的設計標準考量事項為何？</strong>",
+   "en": "<strong>Q 1.2 What are the design criteria considerations for restricted access barrier systems (RABS)?</strong>"
+  },
+  {
+   "zh": "<strong>Table 1.2-1 是本節的核心。</strong>這張比較表從 9 個設計屬性維度，系統性地比較了四種技術（含已過時的 Non-Barrier）。以下是最關鍵的幾個區別：",
+   "en": "<strong>Table 1.2-1 is the core of this section.</strong> This comparison table systematically compares four technologies (including the obsolete non-barrier option) across 9 design attributes. The most important differences are:"
+  },
+  {
+   "zh": "<strong>Leak Rate Test (洩漏率測試)：</strong>只有 cRABS 因為密封到房間，才能執行此測試來驗證屏障完整性。oRABS 因為底部有開口溢氣，無法執行。",
+   "en": "<strong>Leak Rate Test:</strong> Only a cRABS, because it is sealed to the room, can undergo this test to verify barrier integrity. An oRABS cannot, because it has an opening at the bottom through which air spills."
+  },
+  {
+   "zh": "<strong>Pressure Cascade (壓力梯度)：</strong>只有 cRABS 可以建立壓力梯度 — 這對於控制氣流方向、防止低潔淨等級的空氣倒灌至關重要。",
+   "en": "<strong>Pressure Cascade:</strong> Only a cRABS can establish a pressure cascade, which is essential for controlling airflow direction and preventing ingress of air from lower-grade areas."
+  },
+  {
+   "zh": "<strong>Bio-decontamination (生物去污)：</strong>oRABS 只有連同房間一起去污才可行；cRABS 可獨立去污（但需注意密封墊片的洩漏問題）。",
+   "en": "<strong>Bio-decontamination:</strong> For an oRABS, bio-decontamination is feasible only together with the room; a cRABS can be bio-decontaminated independently (but leakage at the sealing gaskets needs attention)."
+  },
+  {
+   "zh": "<strong>毒性產品：</strong>只有 cRABS 可處理毒性藥品，因其密封特性可同時保護產品與操作人員。",
+   "en": "<strong>Toxic products:</strong> Only a cRABS can handle toxic drug products, because its sealed design protects both the product and the operators."
+  },
+  {
+   "zh": "<strong>材質規範：</strong>",
+   "en": "<strong>Material specifications:</strong>"
+  },
+  {
+   "zh": "一般金屬部件：低碳 304 不鏽鋼或更高等級",
+   "en": "General metal parts: low-carbon 304 stainless steel or a higher grade"
+  },
+  {
+   "zh": "產品接觸及間接接觸部件：低碳 316 不鏽鋼或更高等級",
+   "en": "Product contact and indirect contact parts: low-carbon 316 stainless steel or a higher grade"
+  },
+  {
+   "zh": "非金屬材料（手套、墊片、密封件、屏障壁與門）：須耐受各種清潔與消毒劑",
+   "en": "Non-metallic materials (gloves, gaskets, seals, barrier walls and doors): must withstand the various cleaning agents and disinfectants"
+  },
+  {
+   "zh": "屏障壁材料：聚碳酸酯 (Polycarbonate) 或鋼化/安全玻璃",
+   "en": "Barrier wall material: polycarbonate or tempered/safety glass"
+  },
+  {
+   "zh": "<strong>設計原則：</strong>所有製程（設置/setup 除外）都必須設計為避免開門介入 (Open-door Interventions)。存放在 RABS 內的工具必須經過滅菌。",
+   "en": "<strong>Design principle:</strong> All processes (except set-up) must be designed to avoid open-door interventions. Tools stored inside the RABS must be sterilized."
+  },
+  {
+   "zh": "這張比較表就像選擇汽車的安全等級：",
+   "en": "This comparison table is like choosing the safety level of a car:"
+  },
+  {
+   "zh": "<strong>Non-Barrier</strong> = 沒有安全帶的老車（已被法規淘汰）",
+   "en": "<strong>Non-barrier</strong> = an old car without seat belts (phased out by regulators)"
+  },
+  {
+   "zh": "<strong>Passive oRABS</strong> = 有安全帶但沒有安全氣囊的車",
+   "en": "<strong>Passive oRABS</strong> = a car with seat belts but no airbags"
+  },
+  {
+   "zh": "<strong>Active oRABS</strong> = 有安全帶加安全氣囊的車",
+   "en": "<strong>Active oRABS</strong> = a car with seat belts and airbags"
+  },
+  {
+   "zh": "<strong>cRABS</strong> = 全車主動安全系統（ABS + 氣囊 + 車道偏離警示 + 自動煞車）",
+   "en": "<strong>cRABS</strong> = a car with a full active safety system (ABS + airbags + lane departure warning + automatic braking)"
+  },
+  {
+   "zh": "安全等級越高，成本越高，但保護也越全面。選擇依據是風險評估。",
+   "en": "The higher the safety level, the higher the cost, but the more comprehensive the protection. The choice is based on risk assessment."
+  },
+  {
+   "zh": "重點提示 — 環境監測設計",
+   "en": "Key Notes - Environmental Monitoring Design"
+  },
+  {
+   "zh": "PDA 列出的環境控制設計考量極為實務：",
+   "en": "The environmental control design considerations listed by PDA are highly practical:"
+  },
+  {
+   "zh": "<strong>Light Curtain（光柵）：</strong>偵測操作員手套進入 RABS 的自動感應系統 — 可用於記錄介入事件",
+   "en": "<strong>Light curtain:</strong> an automatic sensing system that detects operator gloves entering the RABS; it can be used to record intervention events"
+  },
+  {
+   "zh": "<strong>環境參數警報：</strong>溫度/濕度/UDAF 風速/門開關狀態 — 任何偏離都需要即時告警",
+   "en": "<strong>Environmental parameter alarms:</strong> temperature/humidity/UDAF air velocity/door open-closed status; any deviation requires an immediate alarm"
+  },
+  {
+   "zh": "<strong>EM 系統：</strong>沉降板與主動空氣採樣位置必須能透過手套口操作 — 這直接影響手套口的定位設計",
+   "en": "<strong>EM system:</strong> settle plate and active air sampling locations must be reachable through the glove ports, which directly affects glove port placement design"
+  },
+  {
+   "zh": "<strong>圓角與光滑材料：</strong>減少手套在操作中被尖銳邊角損壞的風險",
+   "en": "<strong>Rounded corners and smooth materials:</strong> reduce the risk of gloves being damaged by sharp edges and corners during operation"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "<strong>CDMO 場景：</strong>假設您的 CDMO 正在評估一條新建充填線的屏障技術選型。客戶 A 需要充填抗體藥物（非毒性），客戶 B 需要充填 ADC 藥物（毒性原料藥）。",
+   "en": "<strong>CDMO scenario:</strong> Suppose your CDMO is evaluating the barrier technology for a new filling line. Client A needs an antibody drug product filled (non-toxic), and Client B needs an ADC drug product filled (toxic drug substance)."
+  },
+  {
+   "zh": "客戶 A 的產品：oRABS 或 cRABS 皆可，視整體 CCS 與風險評估決定",
+   "en": "Client A's product: either an oRABS or a cRABS is acceptable, depending on the overall CCS and risk assessment"
+  },
+  {
+   "zh": "客戶 B 的產品：<strong>必須使用 cRABS</strong>（或 Isolator），因為只有封閉系統才能同時保護產品無菌性與操作人員安全",
+   "en": "Client B's product: <strong>a cRABS (or isolator) must be used</strong>, because only a closed system can protect both product sterility and operator safety"
+  },
+  {
+   "zh": "若要最大化線體利用率，採用 cRABS 可兼顧兩類客戶需求",
+   "en": "To maximize line utilization, adopting a cRABS can meet the needs of both clients"
+  },
+  {
+   "zh": "為什麼 oRABS 無法進行 Leak Rate Test？從其氣流設計的角度解釋。",
+   "en": "Why can an oRABS not undergo a leak rate test? Explain from the perspective of its airflow design."
+  },
+  {
+   "zh": "cRABS 在沒有 Inflatable Gasket（充氣密封墊）的情況下進行生物去污，會有什麼安全風險？",
+   "en": "What safety risks arise if a cRABS is bio-decontaminated without an inflatable gasket?"
+  },
+  {
+   "zh": "PDA 建議產品接觸部件使用 316 不鏽鋼而非 304 不鏽鋼，原因是什麼？（提示：考慮耐腐蝕性與產品相容性）",
+   "en": "Why does PDA recommend 316 stainless steel rather than 304 for product contact parts? (Hint: consider corrosion resistance and product compatibility.)"
+  },
+  {
+   "zh": "為什麼手套口定位要在設計早期（mock-up 階段）就由有經驗的操作員參與確認？",
+   "en": "Why should experienced operators be involved in confirming glove port placement early in the design (mock-up stage)?"
+  },
+  {
+   "zh": "<strong>Q 1.3 What are the design criteria for closed restricted access barrier systems (cRABS)? Q 1.3 封閉式限制進出屏障系統（cRABS）的設計標準為何？</strong>",
+   "en": "<strong>Q 1.3 What are the design criteria for closed restricted access barrier systems (cRABS)?</strong>"
+  },
+  {
+   "zh": "<strong>cRABS 的定位 — 介於 oRABS 與 Isolator 之間：</strong>",
+   "en": "<strong>The position of a cRABS: between an oRABS and an isolator:</strong>"
+  },
+  {
+   "zh": "相較 oRABS：cRABS 的屏障完全封閉 Grade A 空間、氣流內部循環、可建立壓力梯度",
+   "en": "Compared with an oRABS: the cRABS barrier fully encloses the Grade A space, the air recirculates internally and a pressure cascade can be established"
+  },
+  {
+   "zh": "相較 Isolator：cRABS 缺乏正壓門封 (Positive Door Seal)，因此背景環境須為 Grade B（Isolator 背景可為 Grade C 或 D）",
+   "en": "Compared with an isolator: a cRABS lacks a positive door seal, so the background environment must be Grade B (an isolator background can be Grade C or D)"
+  },
+  {
+   "zh": "<strong>VPHP (汽化過氧化氫)：</strong>一種常用的表面生物去污方法。由於 cRABS 若無充氣密封墊片 (Inflatable Gasket)，VPHP 可能洩漏到周圍環境，對人員造成安全風險，因此須格外謹慎。",
+   "en": "<strong>VPHP (vaporized hydrogen peroxide):</strong> A commonly used surface bio-decontamination method. If a cRABS has no inflatable gasket, VPHP may leak into the surrounding environment and pose a safety risk to personnel, so particular caution is needed."
+  },
+  {
+   "zh": "如果將 Isolator 想成一間完全密封的「太空站」，那 cRABS 就像一間「高級潛水艇」— 雖然有密封門艙，但門封不像太空站那麼嚴密。因此：",
+   "en": "If an isolator is thought of as a fully sealed \"space station\", a cRABS is like a \"high-end submarine\": it has sealed hatches, but the door seals are not as tight as on a space station. Therefore:"
+  },
+  {
+   "zh": "太空站（Isolator）可以在太空（Grade C/D 背景）安全運作",
+   "en": "A space station (isolator) can operate safely in space (a Grade C/D background)"
+  },
+  {
+   "zh": "潛水艇（cRABS）需要在較淺的水域（Grade B 背景）運作，才能在門封不完美時維持安全",
+   "en": "A submarine (cRABS) needs to operate in shallower water (a Grade B background) so that safety is maintained when the door seals are not perfect"
+  },
+  {
+   "zh": "<strong>cRABS 最關鍵的操作原則：</strong>Setup 完成後，門必須保持關閉，直到批次結束。所有合格介入 (Qualified Interventions) 都應能透過手套口完成。若必須開門，應視為極罕見事件，逐案審查，且可能需要開立偏差 (Deviation)。",
+   "en": "<strong>The most critical operating principle for a cRABS:</strong> After set-up is complete, the doors must remain closed until the end of the batch. All qualified interventions should be achievable through the glove ports. If a door must be opened, it should be treated as a very rare event, reviewed case by case, and may require a deviation to be raised."
+  },
+  {
+   "zh": "這個原則直接影響到：",
+   "en": "This principle directly affects:"
+  },
+  {
+   "zh": "手套口的數量與位置必須足以涵蓋所有預期操作",
+   "en": "The number and positions of glove ports must be sufficient to cover all anticipated operations"
+  },
+  {
+   "zh": "設備設計必須讓所有維護操作都能從手套口完成",
+   "en": "Equipment design must allow all maintenance operations to be performed from the glove ports"
+  },
+  {
+   "zh": "人員訓練必須確保熟練使用手套口作業",
+   "en": "Personnel training must ensure proficient work through the glove ports"
+  },
+  {
+   "zh": "為什麼 cRABS 的背景環境必須是 Grade B 而非 Grade C？從門封設計的角度解釋。",
+   "en": "Why must the background environment of a cRABS be Grade B rather than Grade C? Explain from the perspective of door seal design."
+  },
+  {
+   "zh": "如果 cRABS 配備了充氣密封墊片 (Inflatable Gasket)，這會改變哪些設計考量？",
+   "en": "If a cRABS is equipped with an inflatable gasket, which design considerations change?"
+  },
+  {
+   "zh": "<strong>Q 1.4 What are the design considerations for the placement of the restricted access barrier system (RABS) glove ports? Q 1.4 限制進出屏障系統（RABS）手套口位置的設計考量為何？</strong>",
+   "en": "<strong>Q 1.4 What are the design considerations for the placement of the restricted access barrier system (RABS) glove ports?</strong>"
+  },
+  {
+   "zh": "<strong>Glove Port（手套口）vs. Gloves（手套）：</strong>這是兩個不同的元件。Glove Port 是安裝在屏障壁上的固定開口與法蘭結構；Gloves 是安裝在 Port 上的可更換手套。兩者的設計考量不同：",
+   "en": "<strong>Glove ports vs. gloves:</strong> These are two different components. A glove port is the fixed opening and flange structure mounted on the barrier wall; gloves are the replaceable gloves fitted to the port. The two have different design considerations:"
+  },
+  {
+   "zh": "<strong>Port 定位：</strong>決定操作員能觸及的範圍 — 一旦屏障壁製造完成就難以更改",
+   "en": "<strong>Port placement:</strong> determines the range the operator can reach; once the barrier wall has been manufactured it is difficult to change"
+  },
+  {
+   "zh": "<strong>Gloves 選擇：</strong>材質、厚度、尺寸 — 可更換但須匹配 Port 設計",
+   "en": "<strong>Glove selection:</strong> material, thickness and size; gloves can be replaced but must match the port design"
+  },
+  {
+   "zh": "<strong>Mock-up Studies（模型試驗）：</strong>PDA 強調手套口定位必須在設計早期透過模擬或實體模型進行驗證。方法包括 3D 模型、虛擬實境 (VR)、實體 Mock-up 等，且須讓不同身高與臂長的操作員參與測試。",
+   "en": "<strong>Mock-up studies:</strong> PDA stresses that glove port placement must be verified early in the design through simulation or physical models. Methods include 3D models, virtual reality (VR) and physical mock-ups, and operators of different heights and arm lengths should take part in the testing."
+  },
+  {
+   "zh": "手套口的設計就像設計汽車駕駛座：",
+   "en": "Designing glove ports is like designing a car's driver seat:"
+  },
+  {
+   "zh": "方向盤、排檔桿、按鈕的位置必須讓不同身材的駕駛都能舒適操作",
+   "en": "The positions of the steering wheel, gear lever and buttons must allow drivers of different builds to operate comfortably"
+  },
+  {
+   "zh": "如果設計不當，高個子碰不到腳踏板，矮個子看不到儀表板",
+   "en": "If poorly designed, a tall driver cannot reach the pedals and a short driver cannot see the dashboard"
+  },
+  {
+   "zh": "駕駛座一旦出廠就無法大幅更改 — 手套口也是如此",
+   "en": "Once the driver seat leaves the factory it cannot be changed much, and the same is true of glove ports"
+  },
+  {
+   "zh": "因此，在「交車前」（設備出廠前）就要讓各種身材的「試駕員」（操作員）來驗證。",
+   "en": "So \"test drivers\" (operators) of all builds must verify the design \"before delivery\" (before the equipment leaves the factory)."
+  },
+  {
+   "zh": "<strong>關鍵設計原則 — 間距：</strong>手套口與開放容器（開口瓶、注射器等）之間必須有足夠距離，確保操作員手臂進入 RABS 手套時不會干擾 First Air。這是一個經常在設計審查中被忽略但在實際運行中引發問題的關鍵點。",
+   "en": "<strong>Key design principle - spacing:</strong> There must be sufficient distance between the glove ports and open containers (open vials, syringes and so on) to ensure that an operator's arms entering the RABS gloves do not disturb First Air. This is a key point that is often overlooked in design reviews but causes problems in actual operation."
+  },
+  {
+   "zh": "<strong>注意：</strong>PDA 明確指出，操作員不應直接使用 RABS 手套觸碰產品或關鍵表面，而應使用已滅菌的工具或無菌材料作為額外保護層。這是一個常見的操作誤解。",
+   "en": "<strong>Note:</strong> PDA states explicitly that operators should not use RABS gloves to touch product or critical surfaces directly, but should use sterilized tools or sterile materials as an additional protective layer. This is a common operational misunderstanding."
+  },
+  {
+   "zh": "列舉三種可用來驗證手套口定位的模擬方法，並比較其優缺點。",
+   "en": "List three simulation methods that can be used to verify glove port placement and compare their advantages and disadvantages."
+  },
+  {
+   "zh": "為什麼 PDA 建議手套口位置需考慮「接近尖銳物體的距離」？這與哪些風險有關？",
+   "en": "Why does PDA recommend that glove port placement take into account the \"distance to sharp objects\"? Which risks does this relate to?"
+  },
+  {
+   "zh": "在 cRABS 中，手套伸展器 (Glove Stretcher) 的位置為什麼會影響生物去污效果？",
+   "en": "In a cRABS, why does the position of the glove stretcher affect the effectiveness of bio-decontamination?"
+  },
+  {
+   "zh": "<strong>Q 1.5 What are the design considerations for restricted access barrier system (RABS) gloves? Q 1.5 限制進出屏障系統（RABS）手套的設計考量為何？</strong>",
+   "en": "<strong>Q 1.5 What are the design considerations for restricted access barrier system (RABS) gloves?</strong>"
+  },
+  {
+   "zh": "<strong>RABS 手套材質選擇是一個典型的工程折衷 (Trade-off)：</strong>",
+   "en": "<strong>Selecting RABS glove material is a classic engineering trade-off:</strong>"
+  },
+  {
+   "zh": "<strong>EPDM（三元乙丙橡膠）：</strong>耐蒸氣滅菌、耐化學藥品、彈性佳，是常見選擇",
+   "en": "<strong>EPDM (ethylene propylene diene monomer rubber):</strong> resistant to steam sterilization and chemicals, with good elasticity; a common choice"
+  },
+  {
+   "zh": "<strong>CSM（氯磺化聚乙烯合成橡膠）：</strong>化學抗性好、耐臭氧與紫外線",
+   "en": "<strong>CSM (chlorosulfonated polyethylene synthetic rubber):</strong> good chemical resistance, and resistant to ozone and ultraviolet light"
+  },
+  {
+   "zh": "<strong>厚度的取捨：</strong>太薄 → 容易穿刺破損；太厚 → 靈巧度不足，操作員疲勞",
+   "en": "<strong>The thickness trade-off:</strong> too thin: easily punctured and damaged; too thick: insufficient dexterity and operator fatigue"
+  },
+  {
+   "zh": "<strong>手套完整性測試 (Glove Integrity Testing)：</strong>PDA 將此獨立為 Topic 4 討論，強調了其重要性。手套破損意味著 RABS 屏障完整性被破壞，相當於「城牆出現缺口」。",
+   "en": "<strong>Glove integrity testing:</strong> PDA treats this separately as Topic 4, which underlines its importance. A glove breach means the RABS barrier integrity has been compromised, which is equivalent to \"a breach in the city wall\"."
+  },
+  {
+   "zh": "RABS 手套的設計就像外科手術手套的進階版：",
+   "en": "RABS gloves are like an advanced version of surgical gloves:"
+  },
+  {
+   "zh": "外科手套要兼顧觸感（薄）與防護（不破）— RABS 手套也是",
+   "en": "Surgical gloves must balance sense of touch (thin) and protection (no tears), and so must RABS gloves"
+  },
+  {
+   "zh": "外科手套有尺碼選擇 — RABS 手套也需要考慮使用者群體的手型",
+   "en": "Surgical gloves come in sizes, and RABS gloves also need to take the hand shapes of the user group into account"
+  },
+  {
+   "zh": "但 RABS 手套還要能耐受蒸氣滅菌、化學消毒劑、VPHP 等嚴苛條件 — 遠超外科手套的要求",
+   "en": "But RABS gloves must also withstand harsh conditions such as steam sterilization, chemical disinfectants and VPHP, far beyond the requirements for surgical gloves"
+  },
+  {
+   "zh": "而且外科手套用完即丟，RABS 手套則是可重複使用，因此還有有效期限、儲存條件、紫外線降解等額外考量。",
+   "en": "Also, surgical gloves are discarded after use, whereas RABS gloves are reusable, so there are additional considerations such as expiry period, storage conditions and UV degradation."
+  },
+  {
+   "zh": "<strong>操作面的實務考量常被設計者忽略：</strong>",
+   "en": "<strong>Operational considerations that designers often overlook:</strong>"
+  },
+  {
+   "zh": "<strong>備品管理：</strong>每次運行必須備有足夠的備用手套 — 若手套在批次中破損且無備品，可能需要開門更換（最壞情況）",
+   "en": "<strong>Spare management:</strong> sufficient spare gloves must be available for every run; if a glove is breached during a batch and there is no spare, a door may have to be opened for replacement (the worst case)"
+  },
+  {
+   "zh": "<strong>非使用時的手套位置：</strong>手套不能懸垂在 First Air 路徑上阻擋氣流，也不能被 RABS 內的運動部件損壞",
+   "en": "<strong>Glove position when not in use:</strong> gloves must not hang in the First Air path and block the airflow, and must not be damaged by moving parts inside the RABS"
+  },
+  {
+   "zh": "<strong>陽光曝曬：</strong>直射陽光會加速橡膠降解 — 這在有天窗或大面積玻璃窗的潔淨室中是實際問題",
+   "en": "<strong>Sunlight exposure:</strong> direct sunlight accelerates rubber degradation, which is a real problem in cleanrooms with skylights or large glass windows"
+  },
+  {
+   "zh": "PDA 強調手套的使用方式、構造材料與安裝程序至少應記錄在 CCS (污染控制策略) 中。",
+   "en": "PDA stresses that the use, construction materials and installation procedures of gloves should at least be documented in the CCS (contamination control strategy)."
+  },
+  {
+   "zh": "EPDM 與 CSM 兩種手套材質各適用於什麼場景？如果您的 cRABS 需要使用 VPHP 生物去污，會傾向選擇哪種材質？",
+   "en": "For which situations is each of the two glove materials, EPDM and CSM, suited? If your cRABS needs to use VPHP for bio-decontamination, which material would you tend to choose?"
+  },
+  {
+   "zh": "手套厚度如何影響操作員的介入品質？在「精細操作」與「耐久性」之間如何取得平衡？",
+   "en": "How does glove thickness affect the quality of an operator's interventions? How do you balance \"fine manipulation\" against \"durability\"?"
+  },
+  {
+   "zh": "為什麼 PDA 要求手套相關資訊必須記錄在 CCS 中？",
+   "en": "Why does PDA require glove-related information to be documented in the CCS?"
+  },
+  {
+   "zh": "<strong>Q 1.6 How should the restricted access barrier system (RABS) be designed to minimize the risk posed by interventions? Q 1.6 限制進出屏障系統（RABS）應如何設計以降低介入操作所帶來的風険？</strong>",
+   "en": "<strong>Q 1.6 How should the restricted access barrier system (RABS) be designed to minimize the risk posed by interventions?</strong>"
+  },
+  {
+   "zh": "<strong>介入 (Intervention) 的分類與風險層級：</strong>",
+   "en": "<strong>Classification of interventions and risk levels:</strong>"
+  },
+  {
+   "zh": "<strong>Inherent Interventions（固有介入）：</strong>製程設計中預期會發生的操作，如 EM 取樣、零件調整等",
+   "en": "<strong>Inherent interventions:</strong> operations expected to occur by process design, such as EM sampling and part adjustments"
+  },
+  {
+   "zh": "<strong>Corrective Interventions（糾正介入）：</strong>因異常情況而需要的操作，如排除卡瓶、調整偏移等",
+   "en": "<strong>Corrective interventions:</strong> operations needed because of abnormal situations, such as clearing jammed vials or adjusting misalignment"
+  },
+  {
+   "zh": "<strong>Open-door Interventions（開門介入）：</strong>需要打開 RABS 門的操作 — <strong>風險最高</strong>",
+   "en": "<strong>Open-door interventions:</strong> operations that require opening the RABS door; <strong>the highest risk</strong>"
+  },
+  {
+   "zh": "<strong>Closed-door Interventions（關門介入）：</strong>透過手套口完成的操作 — 風險相對較低",
+   "en": "<strong>Closed-door interventions:</strong> operations performed through the glove ports; relatively lower risk"
+  },
+  {
+   "zh": "<strong>PDA 的介入管控哲學（優先順序）：</strong>",
+   "en": "<strong>PDA's philosophy for controlling interventions (in order of priority):</strong>"
+  },
+  {
+   "zh": "<strong>消除 (Eliminate)：</strong>透過設計讓介入不需要發生",
+   "en": "<strong>Eliminate:</strong> use design so that the intervention does not need to occur"
+  },
+  {
+   "zh": "<strong>減少 (Reduce)：</strong>降低介入的頻率",
+   "en": "<strong>Reduce:</strong> lower the frequency of the intervention"
+  },
+  {
+   "zh": "<strong>修改 (Modify)：</strong>改變介入方式以降低風險因素（如用手套口取代開門）",
+   "en": "<strong>Modify:</strong> change how the intervention is performed to reduce risk factors (for example, using a glove port instead of opening a door)"
+  },
+  {
+   "zh": "<strong>機器人與自動化 — 不是萬靈丹：</strong>",
+   "en": "<strong>Robotics and automation are not a cure-all:</strong>"
+  },
+  {
+   "zh": "PDA 對機器人採取審慎態度：「robots should not be used for the sake of using robotics, but rather should bring a benefit for the aseptic filling process.」",
+   "en": "PDA takes a cautious view of robots: \"robots should not be used for the sake of using robotics, but rather should bring a benefit for the aseptic filling process.\""
+  },
+  {
+   "zh": "機器人在無菌環境中的關鍵挑戰：",
+   "en": "Key challenges of robots in an aseptic environment:"
+  },
+  {
+   "zh": "機器人運動會產生紊流 (Turbulence)，破壞 UDAF",
+   "en": "Robot movement generates turbulence, which disrupts the UDAF"
+  },
+  {
+   "zh": "機器人攜帶的工具、軟管連接同樣需要滿足 First Air 要求",
+   "en": "The tools and hose connections carried by the robot must also meet First Air requirements"
+  },
+  {
+   "zh": "需要透過 CFD（計算流體動力學）和 AVS 驗證其對氣流的影響",
+   "en": "Their effect on airflow must be verified through CFD (computational fluid dynamics) and AVS (airflow visualization studies)"
+  },
+  {
+   "zh": "可清洗性、消毒可行性、可及性都是額外的設計挑戰",
+   "en": "Cleanability, feasibility of disinfection and accessibility are additional design challenges"
+  },
+  {
+   "zh": "RABS 的介入管控就像飛機駕駛艙的設計哲學：",
+   "en": "Controlling interventions in a RABS is like the design philosophy of an aircraft cockpit:"
+  },
+  {
+   "zh": "<strong>消除介入</strong> = 自動駕駛（Autopilot）處理所有例行操作",
+   "en": "<strong>Eliminate interventions</strong> = the autopilot handles all routine operations"
+  },
+  {
+   "zh": "<strong>減少介入</strong> = 只在關鍵時刻需要機師手動操作",
+   "en": "<strong>Reduce interventions</strong> = the pilot needs to operate manually only at critical moments"
+  },
+  {
+   "zh": "<strong>修改介入</strong> = 即使需要手動操作，也透過操縱桿而非直接觸碰引擎（手套口 vs 開門）",
+   "en": "<strong>Modify interventions</strong> = even when manual operation is needed, it is done through a control stick rather than by touching the engine directly (glove port vs. opening the door)"
+  },
+  {
+   "zh": "<strong>開門介入</strong> = 機師在飛行中打開引擎艙蓋 — 顯然風險極高，只有在絕對必要時才做",
+   "en": "<strong>Open-door interventions</strong> = a pilot opening the engine cowling in flight: clearly extremely high risk, done only when absolutely necessary"
+  },
+  {
+   "zh": "重點提示 — UDAF 保護區設計",
+   "en": "Key Notes - UDAF Zone of Protection Design"
+  },
+  {
+   "zh": "PDA 提出一個重要設計概念：<strong>Zone of Protection（保護區）</strong>— UDAF 氣流覆蓋範圍至少應涵蓋門的開啟半徑。這意味著即使在開門介入時，關鍵區域仍有正壓 UDAF 氣流保護，降低外部低等級空氣侵入的風險。",
+   "en": "PDA puts forward an important design concept, the <strong>Zone of Protection</strong>: the UDAF coverage should extend at least over the opening radius of the door. This means that even during an open-door intervention the critical zone is still protected by positive-pressure UDAF airflow, reducing the risk of ingress of lower-grade air from outside."
+  },
+  {
+   "zh": "另外，禁止使用 Swing Conveyor（擺動輸送帶）從充填線前方通過後方，因為這會要求操作員跨越暴露的無菌產品上方，違反 First Air 原則。",
+   "en": "In addition, the use of a swing conveyor to carry product from the front of the filling line to the back is prohibited, because it would require operators to reach across exposed sterile product, violating the First Air principle."
+  },
+  {
+   "zh": "<strong>CDMO 新線設計場景：</strong>您正在為一條新的無菌充填線設計 RABS 系統。客戶要求具備「全自動充填路徑建立」能力。",
+   "en": "<strong>CDMO new line design scenario:</strong> You are designing a RABS for a new aseptic filling line. The client requires a \"fully automated filling path set-up\" capability."
+  },
+  {
+   "zh": "<strong>Step 1：</strong>盤點所有介入點 — 列出 Setup、運行中固有介入、可能的糾正介入",
+   "en": "<strong>Step 1:</strong> Inventory all intervention points: list the set-up, the inherent interventions during the run and the possible corrective interventions"
+  },
+  {
+   "zh": "<strong>Step 2：</strong>逐一評估 — 哪些可以透過自動化/機器人消除？哪些可以從開門改為手套口操作？",
+   "en": "<strong>Step 2:</strong> Evaluate them one by one: which can be eliminated through automation/robotics? Which can be changed from open-door to glove port operation?"
+  },
+  {
+   "zh": "<strong>Step 3：</strong>若導入機器人 — 必須進行 CFD 模擬與 AVS 確認氣流影響",
+   "en": "<strong>Step 3:</strong> If a robot is introduced, CFD simulation and AVS confirmation of the effect on airflow are required"
+  },
+  {
+   "zh": "<strong>Step 4：</strong>所有無法消除的介入 — 設計手套口位置、評估 First Air 路徑、制定 SOP",
+   "en": "<strong>Step 4:</strong> For all interventions that cannot be eliminated, design the glove port positions, evaluate the First Air path and develop SOPs"
+  },
+  {
+   "zh": "關鍵：每個決策都要有風險評估支持，並納入 CCS 文件。",
+   "en": "Key point: every decision must be supported by a risk assessment and included in the CCS documentation."
+  },
+  {
+   "zh": "PDA 為什麼不建議以「減少介入次數」作為製程變更的出發點？（提示：思考因果關係 vs. 結果）",
+   "en": "Why does PDA not recommend using \"reducing the number of interventions\" as the starting point for a process change? (Hint: think cause and effect vs. outcome.)"
+  },
+  {
+   "zh": "在機器人導入評估中，CFD 模擬與 AVS 各自驗證的重點是什麼？它們是互補還是可以擇一？",
+   "en": "In evaluating the introduction of a robot, what does each of CFD simulation and AVS verify? Are they complementary, or can one be chosen instead of the other?"
+  },
+  {
+   "zh": "如果一個糾正性介入需要開門操作，PDA 建議在開門前應確認哪些條件？",
+   "en": "If a corrective intervention requires opening a door, which conditions does PDA recommend confirming before the door is opened?"
+  },
+  {
+   "zh": "「Zone of Protection」的 UDAF 覆蓋範圍設計如何影響 RABS 的總體尺寸與成本？",
+   "en": "How does the UDAF coverage design for the \"Zone of Protection\" affect the overall size and cost of a RABS?"
+  }
+ ]
+}

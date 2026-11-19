@@ -1,0 +1,349 @@
+{
+ "source": "section-04a-process-equipment.html",
+ "blocks": [
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "了解生物安全櫃（BSC）各類別的氣流設計差異，以及哪些類型可用於 ATMP 無菌製造。",
+   "en": "Understand the airflow design differences between the BSC classes, and which types can be used for aseptic ATMP manufacturing."
+  },
+  {
+   "zh": "掌握 BSC 操作的優勢與限制，包括 Grade B 背景環境要求與人員污染風險。",
+   "en": "Understand the advantages and limitations of BSC operation, including the Grade B background requirement and the risk of contamination from personnel."
+  },
+  {
+   "zh": "說明封閉式隔離器（Closed Isolator）的核心設計特徵：MAL 物料氣鎖、VHP 自動去污、壓力管理及 Grade D 背景要求。",
+   "en": "Describe the core design features of a closed isolator: MAL (material air lock), automated VHP decontamination, pressure management, and the Grade D background requirement."
+  },
+  {
+   "zh": "分析雙重壓力挑戰（正壓保護產品 vs 負壓保護操作員）在 ATMP 隔離器設計中的矛盾，並理解 CFD 氣流模擬對安全過濾設計的重要性。",
+   "en": "Analyze the conflict between the dual pressure challenges in ATMP isolator design (positive pressure to protect the product vs negative pressure to protect the operator), and understand why CFD airflow simulation matters for safety filtration design."
+  },
+  {
+   "zh": "PDA PtC-14 設計決策優先層級 — 設備選擇時始終依此順序思考",
+   "en": "PDA PtC-14 design decision priority hierarchy: always think through equipment selection in this order"
+  },
+  {
+   "zh": "<span class=\"decision-step d1\">1. 操作員安全 (BSL 圍堵)</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d2\">2. 病患安全 (無菌保障)</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d3\">3. 產品品質</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d4\">4. 法規合規</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d5\">5. 業務彈性</span>",
+   "en": "<span class=\"decision-step d1\">1. Operator safety (BSL containment)</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d2\">2. Patient safety (sterility assurance)</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d3\">3. Product quality</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d4\">4. Regulatory compliance</span>\n<span class=\"decision-arrow\">→</span>\n<span class=\"decision-step d5\">5. Business flexibility</span>"
+  },
+  {
+   "zh": "核心概念解析",
+   "en": "Key Concepts Explained"
+  },
+  {
+   "zh": "BSC 在 ATMP 中的角色",
+   "en": "The Role of the BSC in ATMP Manufacturing"
+  },
+  {
+   "zh": "BSC 是 ATMP 早期開發和小批量生產最常見的設備選擇——安裝快、空間小、操作靈活。但它的代價是：所有無菌控制幾乎完全依賴人員操作，而非設備本身的自動化屏障。",
+   "en": "The BSC is the most common equipment choice for early development and small-batch ATMP production: it installs quickly, takes little space, and is flexible to operate. The trade-off is that sterility control depends almost entirely on personnel technique rather than on automated barriers built into the equipment."
+  },
+  {
+   "zh": "EU GMP Annex 1 明確指出：BSC <strong>不屬於</strong>屏障技術（Barrier Technology）。這意味著在監管眼中，BSC 是一種「高依賴人員」的設備，其無菌保障能力天花板低於隔離器。",
+   "en": "EU GMP Annex 1 states explicitly that a BSC is <strong>not</strong> barrier technology. In regulators' eyes, a BSC is therefore a \"highly operator-dependent\" piece of equipment, and its ceiling for sterility assurance is lower than that of an isolator."
+  },
+  {
+   "zh": "Grade B 環境要求的關鍵邏輯",
+   "en": "The Logic Behind the Grade B Requirement"
+  },
+  {
+   "zh": "BSC 的 Grade A 工作區只靠開放式前窗（open sash）與外界分隔，沒有實體密封屏障。因此，背景環境必須是 Grade B，才能在開窗操作時維持 Grade A 狀態。",
+   "en": "The Grade A work zone of a BSC is separated from the surrounding room only by an open front sash, with no physical sealed barrier. The background environment must therefore be Grade B so that Grade A conditions can be maintained when the sash is open during operations."
+  },
+  {
+   "zh": "對比：封閉式隔離器（Closed Isolator）因有完整物理密封，背景可低至 Grade D。此差異直接影響廠房建設和運營成本。",
+   "en": "By contrast, a closed isolator has a fully sealed physical enclosure, so its background can be as low as Grade D. This difference directly affects facility construction and operating costs."
+  },
+  {
+   "zh": "分類解析與選型邏輯",
+   "en": "Classification and Selection Logic"
+  },
+  {
+   "zh": "比喻：醫院手術室的「排氣邏輯」",
+   "en": "Analogy: the \"exhaust logic\" of a hospital operating room"
+  },
+  {
+   "zh": "想像你在廚房炒辣椒：Type A1 會讓部分油煙在廚房裡循環（保護食物，但煙還在室內）；Type B2 則像強力抽油煙機，把所有煙直接排到室外。",
+   "en": "Imagine stir-frying chilies in your kitchen. A Type A1 cabinet recirculates part of the fumes inside the kitchen (the food is protected, but the smoke stays in the room). A Type B2 cabinet is like a powerful range hood that vents all the fumes straight outdoors."
+  },
+  {
+   "zh": "在 ATMP 廠房：如果產品含有病毒載體（viral vector）或有細胞毒性，必須選 B2 全排氣型——不能讓任何揮發性有機物在室內循環。",
+   "en": "In an ATMP facility, if the product contains a viral vector or is cytotoxic, you must choose the B2 total-exhaust type, because no volatile organic compounds can be allowed to recirculate in the room."
+  },
+  {
+   "zh": "操作要點與風險分析",
+   "en": "Operating Points and Risk Analysis"
+  },
+  {
+   "zh": "比喻：BSC 的氣幕就像門口的空氣簾",
+   "en": "Analogy: the BSC air curtain is like the air curtain at a doorway"
+  },
+  {
+   "zh": "大型超市入口的空氣簾阻止室外灰塵進入——但如果你把手臂伸進去攪動，氣幕就亂了。BSC 的前窗進氣氣幕原理相同：只要操作員的手臂在前窗移動，就會干擾保護氣流。",
+   "en": "The air curtain at a large supermarket entrance keeps outdoor dust out, but if you reach your arm in and stir, the curtain breaks down. The inflow air curtain at the BSC front opening works on the same principle: whenever the operator's arms move at the front opening, they disturb the protective airflow."
+  },
+  {
+   "zh": "這是為什麼「手腕托架（wrist rest）」如此重要——它讓手臂固定在適當位置，避免遮住排氣格柵或破壞氣流模式。",
+   "en": "This is why a wrist rest matters so much. It holds the arms in a proper position and prevents them from blocking the exhaust grille or disrupting the airflow pattern."
+  },
+  {
+   "zh": "關鍵風險：物料轉移是 BSC 的最大弱點",
+   "en": "Key risk: material transfer is the BSC's biggest weakness"
+  },
+  {
+   "zh": "物料進入 BSC 時，必須手動擦拭消毒——這需要兩個人：一人在 BSC 內操作，另一人在外傳遞並消毒物料。如果只有一人，操作者的手必須反覆進出 BSC，每次都可能干擾 Grade A 的氣流完整性。",
+   "en": "Materials entering a BSC must be wiped down with disinfectant by hand. This takes two people: one working inside the BSC and one outside passing in and disinfecting the materials. If there is only one person, the operator's hands must repeatedly go in and out of the BSC, and each pass can disturb the integrity of the Grade A airflow."
+  },
+  {
+   "zh": "對比隔離器：物料透過 RTP（Rapid Transfer Port）或 MAL（Material Air Lock）進入，全程自動化去污，零人工擦拭風險。",
+   "en": "By contrast, in an isolator, materials enter through an RTP (rapid transfer port) or MAL (material air lock) with fully automated decontamination, so there is no risk from manual wiping."
+  },
+  {
+   "zh": "長手套的必要性",
+   "en": "Why Long Gloves Are Necessary"
+  },
+  {
+   "zh": "BSC 操作要求戴長手套（長至手腕以上），因為操作員的袖子/手腕無法在進入 Grade A 前完成認證消毒。這與隔離器的整合手套完全不同——隔離器的手套是設備的一部分，可以做完整性測試；BSC 的個人手套則是消耗品，每次使用前依靠手部衛生和程序控制。",
+   "en": "BSC operation requires long gloves (extending above the wrist) because the operator's sleeves and wrists cannot be disinfected to a qualified level before entering Grade A. This is completely different from the integrated gloves of an isolator, which are part of the equipment and can be integrity tested. Personal gloves for a BSC are consumables that, before each use, rely on hand hygiene and procedural controls."
+  },
+  {
+   "zh": "思考題",
+   "en": "Discussion Questions"
+  },
+  {
+   "zh": "1. 如果你的 ATMP 產品含有腺相關病毒（AAV）載體，你會選擇 BSC Type A1 還是 B2？為什麼？",
+   "en": "1. If your ATMP product contains an adeno-associated virus (AAV) vector, would you choose a BSC Type A1 or B2? Why?"
+  },
+  {
+   "zh": "2. BSC 需要 Grade B 背景環境，而封閉隔離器只需 Grade D——這個差異每年會帶來多少額外運營成本？（提示：Grade B 房間需要更多 EM 次數、更嚴格的人員更衣。）",
+   "en": "2. A BSC needs a Grade B background, while a closed isolator needs only Grade D. How much additional operating cost does this difference add each year? (Hint: a Grade B room requires more EM sampling and stricter personnel gowning.)"
+  },
+  {
+   "zh": "隔離器核心優勢解析",
+   "en": "Core Advantages of Isolators"
+  },
+  {
+   "zh": "隔離器 vs BSC：監控能力的本質差異",
+   "en": "Isolator vs BSC: the Essential Difference in Monitoring Capability"
+  },
+  {
+   "zh": "BSC 依靠人員的肉眼判斷和程序紀律來維持 Grade A；隔離器則透過整合式感測器（粒子計數器、壓差計、風速計）<strong>即時自動</strong>監控 Grade A 狀態。",
+   "en": "A BSC relies on the operator's visual judgment and procedural discipline to maintain Grade A, whereas an isolator monitors Grade A status <strong>automatically in real time</strong> through integrated sensors (particle counter, differential pressure gauge, anemometer)."
+  },
+  {
+   "zh": "任何異常（壓力降低、粒子超標）隔離器立即警報——而在 BSC 中，操作員可能在操作結束、採樣數據回來後才知道已發生污染。",
+   "en": "An isolator alarms immediately on any abnormality (pressure drop, particle excursion). In a BSC, the operator may only learn that contamination has occurred after the operation is over and the sampling results come back."
+  },
+  {
+   "zh": "Grade D 背景的戰略意義",
+   "en": "The Strategic Significance of a Grade D Background"
+  },
+  {
+   "zh": "封閉隔離器最低只需 Grade D 背景，這對 CDMO 來說是顯著的成本優勢：",
+   "en": "A closed isolator needs only a Grade D background at minimum, which is a significant cost advantage for a CDMO:"
+  },
+  {
+   "zh": "Grade D 房間：更衣要求低、EM 頻率低、訓練負擔低",
+   "en": "Grade D room: lower gowning requirements, lower EM frequency, lighter training burden"
+  },
+  {
+   "zh": "Grade B 房間（BSC 需求）：相當於無菌核心區域的環境級別，建設與運營成本大幅增加",
+   "en": "Grade B room (required for a BSC): equivalent to the environmental grade of the core aseptic area, with substantially higher construction and operating costs"
+  },
+  {
+   "zh": "長期來看，隔離器的高 CapEx（設備費用）可被低 OpEx（Grade D 背景、少量更衣、少量 EM）抵消。",
+   "en": "Over the long term, the high CapEx of an isolator (equipment cost) can be offset by low OpEx (Grade D background, less gowning, less EM)."
+  },
+  {
+   "zh": "MAL 設計與 VHP 風險",
+   "en": "MAL Design and VHP Risks"
+  },
+  {
+   "zh": "比喻：潛水艇的氣閘室（Airlock）",
+   "en": "Analogy: the airlock of a submarine"
+  },
+  {
+   "zh": "潛水艇在水下要放人出去時，有一個「氣閘室」：先讓人進去，密封內門，把水灌進來，讓壓力平衡後再開外門。MAL 的邏輯完全相同——只是把「水」換成「VHP 去污劑」：",
+   "en": "When a submarine needs to let someone out underwater, it uses an airlock: the person enters, the inner door is sealed, water is flooded in, and once the pressure is equalized the outer door is opened. The MAL works on exactly the same logic, except that the \"water\" is replaced by the \"VHP decontaminant\":"
+  },
+  {
+   "zh": "物料進入 MAL，關閉外門",
+   "en": "Materials enter the MAL and the outer door is closed"
+  },
+  {
+   "zh": "MAL 內充入 VHP，完成去污循環",
+   "en": "The MAL is filled with VHP and the decontamination cycle is completed"
+  },
+  {
+   "zh": "通風排除 VHP",
+   "en": "The VHP is aerated (purged) out"
+  },
+  {
+   "zh": "開啟內門，物料進入隔離器 Grade A 區",
+   "en": "The inner door is opened and the materials enter the Grade A zone of the isolator"
+  },
+  {
+   "zh": "全程隔離器主腔從未對外開放——Grade A 完整保持。",
+   "en": "Throughout the process the main chamber of the isolator is never opened to the outside, so Grade A integrity is fully maintained."
+  },
+  {
+   "zh": "VHP 對物料的潛在傷害",
+   "en": "Potential Damage from VHP to Materials"
+  },
+  {
+   "zh": "VHP（汽化過氧化氫）是強氧化劑，對以下材料可能有傷害：",
+   "en": "VHP (vaporized hydrogen peroxide) is a strong oxidizer and can damage the following materials:"
+  },
+  {
+   "zh": "含天然橡膠或矽膠的耗材（可能降解）",
+   "en": "Consumables containing natural rubber or silicone (may degrade)"
+  },
+  {
+   "zh": "活細胞或組織（必須評估殘留 VHP 濃度）",
+   "en": "Living cells or tissue (residual VHP concentration must be assessed)"
+  },
+  {
+   "zh": "某些金屬表面（長期暴露可能氧化）",
+   "en": "Some metal surfaces (long-term exposure may cause oxidation)"
+  },
+  {
+   "zh": "實務上需要做相容性研究（compatibility study）和殘留量驗證，確保去污完成後 VHP 已通風至安全水準，才能開啟內門。",
+   "en": "In practice, a compatibility study and residual level validation are needed to confirm that the VHP has been aerated down to a safe level after decontamination before the inner door may be opened."
+  },
+  {
+   "zh": "整合設備的戰略價值",
+   "en": "The Strategic Value of Integrated Equipment"
+  },
+  {
+   "zh": "將離心機、培養箱整合在隔離器內，等於把細胞治療的多個製程步驟（分離、培養、分裝）整合在一個封閉 Grade A 環境中，無需在不同設備間反覆轉移——每次轉移都是污染風險。對 CAR-T 等高價值 ATMP 而言，這種封閉連續工作流程是品質與效率的雙重保障。",
+   "en": "Integrating a centrifuge and incubator inside the isolator brings several cell therapy process steps (separation, culture, filling) into one closed Grade A environment, with no need to transfer repeatedly between pieces of equipment, since every transfer is a contamination risk. For high-value ATMPs such as CAR-T, this closed, continuous workflow secures both quality and efficiency."
+  },
+  {
+   "zh": "洩漏率管理與風險意義",
+   "en": "Leak Rate Management and Risk Implications"
+  },
+  {
+   "zh": "洩漏率計算框架",
+   "en": "Leak Rate Calculation Framework"
+  },
+  {
+   "zh": "最大洩漏率 = 5% v/h（體積/小時）\n典型實際值 = 3–5% v/h\n\n若隔離器體積 = 200 L\n最大允許洩漏量 = 200 L × 5% = 10 L/h\n\n洩漏方向的雙重風險：\n- 外漏（exfiltration）：產品/病毒載體外洩 → 操作員暴露風險\n- 內滲（infiltration）：外部污染物進入 → 無菌保障失效",
+   "en": "Maximum leak rate = 5% v/h (volume/hour)\nTypical actual value = 3–5% v/h\n\nIf isolator volume = 200 L\nMaximum allowable leakage = 200 L × 5% = 10 L/h\n\nDual risk by leak direction:\n- Exfiltration: product/viral vector escapes → operator exposure risk\n- Infiltration: external contaminants enter → loss of sterility assurance"
+  },
+  {
+   "zh": "手套完整性測試：最常被忽略的關鍵點",
+   "en": "Glove Integrity Testing: The Most Often Overlooked Critical Point"
+  },
+  {
+   "zh": "手套是隔離器最薄弱的環節——它們每天被拉扯、摩擦，針孔破損幾乎不可見。如果手套破裂：",
+   "en": "Gloves are the weakest link of an isolator. They are stretched and rubbed every day, and pinhole breaches are almost invisible. If a glove breaks:"
+  },
+  {
+   "zh": "正壓隔離器：產品暴露於外部空氣（污染風險）",
+   "en": "Positive-pressure isolator: the product is exposed to outside air (contamination risk)"
+  },
+  {
+   "zh": "負壓隔離器（含毒性 ATMP）：操作員暴露於產品（安全風險）",
+   "en": "Negative-pressure isolator (containing toxic ATMP): the operator is exposed to the product (safety risk)"
+  },
+  {
+   "zh": "因此 PDA 建議<strong>定期</strong>做手套完整性測試（壓力衰減法或染料滲透法），頻率由 QRM 決定，通常每批次前或每週至少一次。",
+   "en": "PDA therefore recommends <strong>regular</strong> glove integrity testing (pressure decay method or dye penetration method), with the frequency determined by QRM, typically before each batch or at least weekly."
+  },
+  {
+   "zh": "CFD 與安全過濾的重要性",
+   "en": "The Importance of CFD and Safety Filtration"
+  },
+  {
+   "zh": "比喻：CFD 就像在設計排煙系統前先做風洞測試",
+   "en": "Analogy: CFD is like running a wind tunnel test before designing a smoke exhaust system"
+  },
+  {
+   "zh": "建築師設計辦公室通風時，會用電腦模擬氣流，找出哪些角落會有死角（氣流不流動）、哪些地方風速過高會造成不適。CFD 在隔離器設計中做的是同樣的事——只是「空氣」變成「含病毒載體的氣溶膠」，後果從「不舒適」變成「操作員感染」或「產品污染」。",
+   "en": "When an architect designs office ventilation, a computer simulation of airflow is used to find which corners will have dead zones (no airflow) and where air speeds will be high enough to cause discomfort. CFD does the same job in isolator design, except that the \"air\" becomes \"aerosol containing viral vector\" and the consequence changes from \"discomfort\" to \"operator infection\" or \"product contamination\"."
+  },
+  {
+   "zh": "良好的 CFD 設計應確保：所有氣溶膠從產生點到安全過濾器的路徑<strong>最短、最快</strong>，不允許任何迂迴繞過過濾器的路徑存在。",
+   "en": "A good CFD design should ensure that the path of all aerosols from the point of generation to the safety filter is <strong>shortest and fastest</strong>, with no indirect path that bypasses the filter."
+  },
+  {
+   "zh": "雙重 HEPA 的應用場景",
+   "en": "Where Double HEPA Applies"
+  },
+  {
+   "zh": "標準隔離器：單一 HEPA 安全過濾器即可。",
+   "en": "Standard isolator: a single HEPA safety filter is sufficient."
+  },
+  {
+   "zh": "含高效價病毒載體（如 AAV、慢病毒）的 ATMP：考慮雙層 HEPA（double HEPA）設計——第一層捕獲絕大多數粒子，第二層作為最終屏障。這與 BSL-2+ 或 BSL-3 生物安全設施的排氣處理邏輯相同。",
+   "en": "ATMPs containing high-titer viral vectors (such as AAV, lentivirus): consider a double HEPA design, in which the first stage captures the vast majority of particles and the second stage acts as the final barrier. This is the same exhaust treatment logic used in BSL-2+ or BSL-3 biosafety facilities."
+  },
+  {
+   "zh": "關鍵監管觀點：安全過濾器的完整性測試（filter integrity test，如 DOP/PAO test）應納入隔離器定期維護計畫。",
+   "en": "Key regulatory point: integrity testing of the safety filter (filter integrity test, such as the DOP/PAO test) should be included in the isolator's periodic maintenance program."
+  },
+  {
+   "zh": "雙重壓力挑戰與 CDMO 選型思考",
+   "en": "Dual Pressure Challenges and CDMO Equipment Selection"
+  },
+  {
+   "zh": "關鍵矛盾：正壓 vs 負壓的兩難",
+   "en": "The Key Conflict: the Positive vs Negative Pressure Dilemma"
+  },
+  {
+   "zh": "對於 ATMP 隔離器，壓力設計面臨根本性矛盾：",
+   "en": "For an ATMP isolator, pressure design faces a fundamental conflict:"
+  },
+  {
+   "zh": "<strong>正壓（Positive Pressure）：</strong>保護產品，防止外部污染物滲入（傳統無菌製藥的標準做法）",
+   "en": "<strong>Positive pressure:</strong> protects the product by preventing external contaminants from entering (the standard practice in traditional aseptic pharmaceutical manufacturing)"
+  },
+  {
+   "zh": "<strong>負壓（Negative Pressure）：</strong>保護操作員和環境，防止含有病毒載體或細胞毒性物質的氣溶膠外洩（生物安全要求）",
+   "en": "<strong>Negative pressure:</strong> protects the operator and the environment by preventing aerosols containing viral vectors or cytotoxic substances from escaping (a biosafety requirement)"
+  },
+  {
+   "zh": "ATMP 同時需要兩者——這是 BSC 和隔離器設計中最複雜的工程挑戰之一。解決方案通常是<strong>壓力梯度設計</strong>（如核心腔室正壓，廢氣路徑負壓）或雙重 HEPA 安全過濾。",
+   "en": "An ATMP needs both at once, which makes this one of the most complex engineering challenges in BSC and isolator design. The solution is usually a <strong>pressure gradient design</strong> (for example, positive pressure in the core chamber and negative pressure in the exhaust path) or double HEPA safety filtration."
+  },
+  {
+   "zh": "CDMO ATMP 設備選型決策框架",
+   "en": "CDMO Decision Framework for ATMP Equipment Selection"
+  },
+  {
+   "zh": "在評估為新 ATMP 客戶選用 BSC 或隔離器時，依以下順序思考：",
+   "en": "When evaluating whether to use a BSC or an isolator for a new ATMP client, think through the following in order:"
+  },
+  {
+   "zh": "<strong>BSL 等級</strong>：產品的生物安全等級是什麼？是否需要 BSL-2 以上圍堵？→ 決定是否必須使用封閉隔離器",
+   "en": "<strong>BSL level:</strong> What is the biosafety level of the product? Is containment at BSL-2 or higher required? → Determines whether a closed isolator is mandatory"
+  },
+  {
+   "zh": "<strong>批量大小與製程複雜度</strong>：是單次小批量臨床試驗用，還是商業化生產？→ 影響 CapEx vs OpEx 判斷",
+   "en": "<strong>Batch size and process complexity:</strong> Is it for a single small-batch clinical trial, or for commercial production? → Affects the CapEx vs OpEx judgment"
+  },
+  {
+   "zh": "<strong>製程彈性需求</strong>：未來 2–3 年製程是否會顯著變化？→ BSC 更靈活，隔離器需前期精確規劃",
+   "en": "<strong>Process flexibility needs:</strong> Will the process change significantly over the next 2–3 years? → A BSC is more flexible, while an isolator needs precise up-front planning"
+  },
+  {
+   "zh": "<strong>監管市場</strong>：主要服務 EU（EU GMP Annex 1 壓力大）還是 US FDA？→ 影響對 Barrier Technology 的要求",
+   "en": "<strong>Regulatory market:</strong> Is the main market the EU (under strong EU GMP Annex 1 pressure) or the US FDA? → Affects the expectations for barrier technology"
+  },
+  {
+   "zh": "1. 如果客戶要求在同一台隔離器中完成 T 細胞擴增（需要培養箱）和最終分裝，你需要評估哪些設計整合要素？",
+   "en": "1. If a client requires T cell expansion (which needs an incubator) and final filling to be done in the same isolator, which integrated design elements would you need to evaluate?"
+  },
+  {
+   "zh": "2. 隔離器的 Grade D 背景環境要求，如何具體影響 CDMO 的廠房佈局規劃和環境監測計畫？",
+   "en": "2. How specifically does the Grade D background requirement of an isolator affect a CDMO's facility layout planning and environmental monitoring program?"
+  },
+  {
+   "zh": "3. VPHP 去污循環結束後，如何驗證 MAL 內的 VHP 殘留量已降到對活細胞產品安全的水準？",
+   "en": "3. After the VPHP decontamination cycle ends, how can you verify that the residual VHP in the MAL has fallen to a level safe for living cell products?"
+  }
+ ]
+}

@@ -1,0 +1,277 @@
+{
+ "source": "section-11b-appendix3-quantitative-noncfu.html",
+ "blocks": [
+  {
+   "zh": "非CFU訊號的定量微生物方法（準確度分析）",
+   "en": "Quantitative Microbiological Methods with Non-CFU Signals (Accuracy Analysis)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解為何 non-CFU 訊號的 <span class=\"key-term\">AMM/RMM</span>（Alternative/Rapid Microbiological Method）在定量比較時，原則上應採用「優越性檢定」而非非劣性檢定",
+   "en": "Understand why, in quantitative comparisons, an <span class=\"key-term\">AMM/RMM</span> (Alternative/Rapid Microbiological Method) with a non-CFU signal should in principle be assessed with a \"superiority test\" rather than a non-inferiority test"
+  },
+  {
+   "zh": "能解讀 Accuracy（準確度）實驗設計：同一株微生物在多個 spiked concentration levels（接種濃度水準）下，AMM/RMM 與 CMM（Conventional Microbiological Method）分別對不同樣本進行計數",
+   "en": "Be able to interpret the Accuracy experimental design: the same microorganism strain is enumerated by the AMM/RMM and the CMM (Conventional Microbiological Method), each on different samples, at several spiked concentration levels"
+  },
+  {
+   "zh": "掌握以 Poisson 分布計算平均計數比值（回收率）及其下限 95% 信賴區間（LCL）的判讀方式，並理解為何逐濃度比較有時無法證明優越性",
+   "en": "Master how to interpret the mean count ratio (recovery) and its lower 95% confidence limit (LCL) calculated with the Poisson distribution, and understand why a concentration-by-concentration comparison sometimes cannot demonstrate superiority"
+  },
+  {
+   "zh": "理解無母數檢定（sign test、Van Elteren test）如何在不假設分布下，證實 AMM/RMM 計數系統性地高於 CMM",
+   "en": "Understand how nonparametric tests (sign test, Van Elteren test) can confirm, without assuming a distribution, that AMM/RMM counts are systematically higher than CMM counts"
+  },
+  {
+   "zh": "能說明 Poisson 迴歸濃度反應模型（concentration-response model）的截距與斜率意涵，並會用「差異」而非「比值」做優越性判定與其變異數估計",
+   "en": "Be able to explain the meaning of the intercept and slope of the Poisson regression concentration-response model, and use the \"difference\" rather than the \"ratio\" for the superiority decision and its variance estimate"
+  },
+  {
+   "zh": "<strong>11.2 Quantitative Microbiological Methods with Non-CFU Signals 非CFU訊號的定量方法</strong>",
+   "en": "<strong>11.2 Quantitative Microbiological Methods with Non-CFU Signals</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Quantitative vs Qualitative（定量 vs 定性）：</strong>Section 11.1 談的是「有沒有偵測到」（陽性/陰性），Section 11.2 談的是「數量多少」（enumeration，計數）。當 AMM/RMM 的訊號不是純粹 CFU（例如螢光顆粒、NADH 訊號），它理論上會同時計入 <span class=\"key-term\">X<sub>CFU</sub></span>（活的可培養）與 <span class=\"key-term\">X<sub>NCFU</sub></span>（活的不可培養）兩種訊號來源，因此其計數「本來就應該」比只認得 X<sub>CFU</sub> 的 CMM 更多。",
+   "en": "<strong>Quantitative vs Qualitative:</strong> Section 11.1 deals with \"whether something is detected\" (positive/negative), whereas Section 11.2 deals with \"how many\" (enumeration). When the signal of an AMM/RMM is not purely CFU (for example fluorescent particles or an NADH signal), it would in theory count both <span class=\"key-term\">X<sub>CFU</sub></span> (viable and culturable) and <span class=\"key-term\">X<sub>NCFU</sub></span> (viable but non-culturable) as signal sources, so its counts \"should\" naturally be higher than those of a CMM that recognizes only X<sub>CFU</sub>."
+  },
+  {
+   "zh": "<strong>為什麼改用優越性檢定（superiority）而非非劣性檢定（non-inferiority）：</strong>如同 11.1 節對定性方法的討論，如果 AMM/RMM 本質上會多算 X<sub>NCFU</sub>，用「非劣性」去驗證就邏輯上失衡——因為我們預期它應該「更高」，若只證明「不明顯較低」反而是門檻設得太寬鬆，無法反映方法真正的效能與風險。",
+   "en": "<strong>Why a superiority test rather than a non-inferiority test:</strong> As in the discussion of qualitative methods in Section 11.1, if an AMM/RMM inherently counts X<sub>NCFU</sub> in addition, validating it with \"non-inferiority\" is logically unbalanced: we expect it to be \"higher\", so merely proving it is \"not clearly lower\" sets the bar too loosely and fails to reflect the true performance and risk of the method."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "這就像用「體溫計」跟「智慧手環」量體溫：智慧手環除了核心體溫外，還會把皮膚溫度、環境溫度的訊號一起混進去，理論上讀數本來就會比傳統體溫計「系統性偏高」。這時候你不會去問「手環會不會比體溫計低很多」（非劣性），而是該問「手環讀數是否穩定地、有意義地高於體溫計，且高的部分能不能被合理解釋」（優越性）。",
+   "en": "It is like measuring body temperature with a \"clinical thermometer\" and a \"smart band\": besides core temperature, the smart band also mixes in signals of skin temperature and ambient temperature, so in theory its readings will be \"systematically higher\" than the conventional thermometer. You would not ask \"could the band read much lower than the thermometer?\" (non-inferiority); you would ask \"does the band read consistently and meaningfully higher than the thermometer, and can the excess be reasonably explained?\" (superiority)."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "本節的前提與 Section 10.0 (Appendix 2) 是延續關係：若能證明 AMM/RMM 在驗證實驗中「幾乎只計到可培養微生物」，就可以直接沿用 Appendix 2 的定量非劣性/等效分析框架；但一旦訊號會混入 X<sub>NCFU</sub>，就必須改用本節（11.2）所建立的「優越性」分析邏輯，這是判斷該用哪一套統計方法的關鍵決策點。",
+   "en": "The premise of this section is a continuation of Section 10.0 (Appendix 2): if it can be shown that in the validation experiments the AMM/RMM \"counts almost only culturable microorganisms\", the quantitative non-inferiority/equivalence analysis framework of Appendix 2 can be used directly; but once the signal includes X<sub>NCFU</sub>, the \"superiority\" analysis logic established in this section (11.2) must be used instead. This is the key decision point in judging which set of statistical methods to use."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "如果你的公司要驗證一台以生物螢光顆粒計數（BFPC）為原理的環境監測儀器，你會先做什麼實驗來判斷該用 Appendix 2 的非劣性架構，還是 Appendix 3（本節）的優越性架構？",
+   "en": "If your company needs to validate an environmental monitoring instrument based on bioluminescent/biofluorescent particle counting (BFPC), what experiments would you do first to decide whether the non-inferiority framework of Appendix 2 or the superiority framework of Appendix 3 (this section) applies?"
+  },
+  {
+   "zh": "為什麼「AMM/RMM 計數系統性偏高」不能直接當作「方法比較好」的證據？企業內部審查時應該追問哪些問題？",
+   "en": "Why can \"AMM/RMM counts being systematically higher\" not be taken directly as evidence that \"the method is better\"? What questions should be asked in an internal review?"
+  },
+  {
+   "zh": "<strong>11.2.1 Accuracy — Experimental Data and Visualization 準確度—實驗數據與視覺化</strong>",
+   "en": "<strong>11.2.1 Accuracy - Experimental Data and Visualization</strong>"
+  },
+  {
+   "zh": "<strong>Accuracy（準確度）在此的定義：</strong>不是單一數值的誤差，而是「在一整段濃度範圍內（2, 3, 8, 16, 32, 64 CFU），AMM/RMM 的計數是否能持續、正確地反映真實接種濃度」，並且是跟 CMM 的計數做相對比較，而非跟「絕對真值」比較（因為真值本身也難以獨立得知）。",
+   "en": "<strong>Definition of Accuracy here:</strong> It is not the error of a single value, but whether, over a whole concentration range (2, 3, 8, 16, 32, 64 CFU), the AMM/RMM counts continue to reflect the true inoculated concentration correctly. It is assessed relative to the CMM counts rather than to an \"absolute true value\" (because the true value itself is also hard to know independently)."
+  },
+  {
+   "zh": "<strong>6 個 replicate（重複樣本）× 6 個濃度水準：</strong>每個接種濃度下都重複測試 6 次，用平均值（Mean）與變異數（Variance）描述該濃度下計數的集中趨勢與離散程度，這是後續所有統計檢定（回收率、Poisson 迴歸）的原始資料基礎。",
+   "en": "<strong>6 replicates × 6 concentration levels:</strong> Each inoculation concentration is tested 6 times, and the mean and variance describe the central tendency and dispersion of the counts at that concentration. This is the raw data basis for all the subsequent statistical tests (recovery, Poisson regression)."
+  },
+  {
+   "zh": "「兩種方法測試同一鍋高湯裡舀出的不同勺樣本」，就像請兩位品評師分別從同一鍋剛煮好的湯裡各自舀一勺去化驗鹽份——雖然是同一鍋湯（同一 spiked suspension），但每一勺（每個 test sample）舀到的鹽粒分布本來就不會完全相同。這不是誰對誰錯的問題，而是抽樣本身帶來的隨機變異，必須用統計方法去平均掉。",
+   "en": "\"Two methods test different scoops taken from the same pot of broth\" - it is like asking two tasters to each scoop a spoonful from the same freshly cooked pot of soup to test its salt content: although it is the same pot (the same spiked suspension), the distribution of salt grains in each spoonful (each test sample) will never be exactly the same. This is not a question of who is right or wrong, but random variation brought by sampling itself, which must be averaged out with statistical methods."
+  },
+  {
+   "zh": "原文特別強調「both methods tested different samples from the same spiked suspension」——這代表 AMM/RMM 與 CMM 並非對「同一份」樣本做重複測試（non-paired design），而是各自從同一批懸浮液分裝的獨立樣本。這個實驗設計上的差異，是後面選擇 Poisson 分布式的比值/差異分析（而非配對分析）的統計前提，企業在設計自己的方法確效（method validation）實驗時務必先確認樣本分裝方式，才能套用正確的統計模型。",
+   "en": "The source text specifically stresses that \"both methods tested different samples from the same spiked suspension\". This means the AMM/RMM and CMM were not repeatedly tested on the \"same\" sample (a non-paired design) but on independent samples each dispensed from the same batch of suspension. This difference in experimental design is the statistical premise for choosing the Poisson-based ratio/difference analysis (rather than a paired analysis) later on. When designing your own method validation experiments, always confirm first how the samples are dispensed so that the right statistical model can be applied."
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "左圖（CMM）與右圖（AMM/RMM）皆以 Spiked Concentration（X 軸）對 Counts（Y 軸）繪製散佈圖，並疊加「Connected Means」（實際平均值連線）與「Line y = x」（理想的 1:1 完美回收線，虛線）做對照。若某方法的平均值連線緊貼 y = x 虛線，代表該方法在該濃度下的回收率接近 100%；若連線持續高於 y = x，代表計數系統性偏高（回收率 &gt; 100%）。從圖中可觀察到 AMM/RMM（右圖）在低濃度區（2、3 CFU）的散佈點相對分散且部分明顯高於 y = x 線，而在中高濃度區則與 y = x 線較貼近，這與後續 Table 11.2.1-2 呈現「低濃度回收率偏高、高濃度回收率趨近 100%」的模式一致。CMM（左圖）整體而言散佈相對集中，平均值連線大致貼近 y = x，顯示 CMM 本身回收表現較為穩定，可作為比較基準。",
+   "en": "Both the left plot (CMM) and the right plot (AMM/RMM) are scatter plots of Counts (Y-axis) against Spiked Concentration (X-axis), overlaid with \"Connected Means\" (line joining the actual means) and \"Line y = x\" (the ideal 1:1 perfect-recovery line, dashed) for comparison. If the connected-means line of a method hugs the dashed y = x line, the recovery of that method at that concentration is close to 100%; if the line stays above y = x, the counts are systematically high (recovery &gt; 100%). The plot shows that for the AMM/RMM (right) the scatter at low concentrations (2 and 3 CFU) is relatively dispersed and some points are clearly above the y = x line, while at medium and high concentrations it is closer to the y = x line, consistent with the pattern in Table 11.2.1-2 of \"high recovery at low concentrations, recovery approaching 100% at high concentrations\". For the CMM (left) the scatter is overall relatively tight and the connected-means line is roughly close to y = x, showing that the recovery of the CMM itself is fairly stable and can serve as the comparison baseline."
+  },
+  {
+   "zh": "從圖 11.2.1-1 來看，你認為 AMM/RMM 在哪個濃度區間的變異程度看起來最大？這對於低濃度（低生物負荷）樣本的放行決策有何啟示？",
+   "en": "Looking at Figure 11.2.1-1, in which concentration range does the variability of the AMM/RMM seem greatest? What does this imply for release decisions on low-concentration (low bioburden) samples?"
+  },
+  {
+   "zh": "若你是品保主管，看到「Connected Means」持續高於「Line y = x」，你會如何向使用單位解釋這代表的意義，以及是否需要額外調查？",
+   "en": "If you were the QA head and saw the \"Connected Means\" staying above the \"Line y = x\", how would you explain to the user department what this means, and would any additional investigation be needed?"
+  },
+  {
+   "zh": "<strong>11.2.1 Accuracy — Recovery Ratios Using the Poisson Distribution 準確度—以Poisson分布計算回收率</strong>",
+   "en": "<strong>11.2.1 Accuracy - Recovery Ratios Using the Poisson Distribution</strong>"
+  },
+  {
+   "zh": "<strong>回收率（% Recovery）：</strong>定義為某濃度水準下 AMM/RMM 平均計數與 CMM 平均計數之比值，以百分比表示（= ȳ<sub>A</sub> / ȳ<sub>C</sub> × 100%）。因為計數服從 Poisson 分布，其信賴區間並非用常態分布的對稱公式，而是延用 Section 10.2.3 已建立的 Poisson-based 比值下限 95% 信賴區間（LCL）方法。",
+   "en": "<strong>Recovery (% Recovery):</strong> Defined as the ratio of the mean AMM/RMM count to the mean CMM count at a given concentration level, expressed as a percentage (= ȳ<sub>A</sub> / ȳ<sub>C</sub> × 100%). Because counts follow a Poisson distribution, the confidence interval is not calculated with the symmetric formula of the normal distribution but with the Poisson-based lower 95% confidence limit (LCL) method for ratios already established in Section 10.2.3."
+  },
+  {
+   "zh": "<strong>「逐濃度」優越性判定規則：</strong>若某濃度水準的 LCL &gt; 100%，才能說在該濃度下 AMM/RMM 顯著優於 CMM；LCL ≤ 100% 則無法下此結論（不代表劣勢，只是證據不足）。",
+   "en": "<strong>Decision rule for superiority \"concentration by concentration\":</strong> Only if the LCL at a concentration level is &gt; 100% can we say the AMM/RMM is significantly superior to the CMM at that concentration; an LCL ≤ 100% does not allow this conclusion (it does not mean inferiority, only that the evidence is insufficient)."
+  },
+  {
+   "zh": "回收率就像拿體重計去跟已知重量的標準砝碼校正：砝碼是 10 公斤（CMM 平均值），體重計顯示 11.7 公斤，回收率就是 117%。但單一次校正結果可能有誤差，所以我們還要看信賴區間——如果多次校正後，「最保守估計」（LCL）都還大於 100%，才能有信心說這台體重計「系統性地」讀數偏高，而不是單次巧合。",
+   "en": "Recovery is like calibrating a weighing scale against a standard weight of known mass: the weight is 10 kg (the CMM mean), the scale shows 11.7 kg, so the recovery is 117%. But the result of a single calibration may contain error, so we also look at the confidence interval: only if, after repeated calibrations, even the \"most conservative estimate\" (the LCL) is still above 100% can we be confident that the scale reads \"systematically\" high rather than by single-time coincidence."
+  },
+  {
+   "zh": "本節最關鍵的訊息是：<strong>逐濃度分開檢定「無法在全部 6 個濃度水準都證明優越性」</strong>（3 個濃度的 LCL &lt; 100%），但同時「AMM/RMM 的平均值在全部濃度都高於 CMM」。這兩個看似矛盾的觀察，正是下一段（Block D）要用無母數檢定解決的問題——單一濃度水準的檢定力（power）可能不足，但把 6 個濃度水準的「一致性方向」合併起來看，證據力道就完全不同。這是統計方法選擇上非常重要的教學案例：不要只看單一子群組的顯著性，要留意整體趨勢的一致性。",
+   "en": "The key message of this section: <strong>testing each concentration separately \"cannot demonstrate superiority at all 6 concentration levels\"</strong> (the LCL is &lt; 100% at 3 concentrations), yet \"the AMM/RMM mean is higher than the CMM mean at all concentrations\". These two seemingly contradictory observations are exactly the problem that the next part (Block D) solves with nonparametric tests: the power of a test at a single concentration level may be insufficient, but when the \"consistent direction\" over the 6 concentration levels is combined, the weight of evidence is completely different. This is a very important teaching case in the choice of statistical methods: do not look only at the significance of a single subgroup, but pay attention to the consistency of the overall trend."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "Mean % Recovery = ( ȳ_A / ȳ_C ) × 100%\n\nȳ_A = 非CFU AMM/RMM 在該濃度水準的平均計數\nȳ_C = CMM 在該濃度水準的平均計數\nLCL = 以 Poisson 分布為基礎，取 ȳ_A/ȳ_C 比值的\n      下限 95% 信賴區間（詳細推導見 Section 10.0\n      Appendix 2, §10.2.3）\n\n判定規則：LCL &gt; 100% → 該濃度水準優越性成立\n          LCL ≤ 100% → 該濃度水準優越性未證實",
+   "en": "Mean % Recovery = ( ȳ_A / ȳ_C ) × 100%\n\nȳ_A = mean count of the non-CFU AMM/RMM at that concentration level\nȳ_C = mean count of the CMM at that concentration level\nLCL = lower 95% confidence limit of the ratio ȳ_A/ȳ_C,\n      based on the Poisson distribution (see Section 10.0\n      Appendix 2, §10.2.3 for the detailed derivation)\n\nDecision rule: LCL &gt; 100% → superiority established at that concentration level\n               LCL ≤ 100% → superiority not demonstrated at that concentration level"
+  },
+  {
+   "zh": "觀察 Table 11.2.1-2：哪三個 spike 濃度的 LCL 低於 100%？這些濃度落在低、中、高哪個區段？對日常環境監測的判讀有何實務意義？",
+   "en": "Look at Table 11.2.1-2: at which three spike concentrations is the LCL below 100%? Do these concentrations fall in the low, middle or high range? What practical significance does this have for the interpretation of routine environmental monitoring?"
+  },
+  {
+   "zh": "如果你的驗證報告只看單一濃度水準的信賴區間就下結論「方法未通過優越性」，可能遺漏什麼重要資訊？",
+   "en": "If your validation report draws the conclusion \"the method failed the superiority criterion\" by looking only at the confidence interval at single concentration levels, what important information might be missed?"
+  },
+  {
+   "zh": "<strong>11.2.1 Accuracy — Sign Test and Van Elteren Test 準確度—符號檢定與Van Elteren檢定</strong>",
+   "en": "<strong>11.2.1 Accuracy - Sign Test and Van Elteren Test</strong>"
+  },
+  {
+   "zh": "<strong>Sign Test（符號檢定）：</strong>不管每個濃度水準「高多少」，只看 AMM/RMM 平均值是否「高於」CMM 平均值（+ 或 −），再用二項分布計算「6 次全部都同方向」純屬偶然的機率。這裡 6 個濃度水準全部都是 AMM/RMM &gt; CMM，算出單尾 p 值 = 0.016，小於 0.05，代表這種一致性不太可能只是隨機發生。",
+   "en": "<strong>Sign test:</strong> Regardless of \"how much higher\" each concentration level is, it looks only at whether the AMM/RMM mean is \"higher than\" the CMM mean (+ or −), and then uses the binomial distribution to calculate the probability that \"all 6 in the same direction\" occurs purely by chance. Here all 6 concentration levels show AMM/RMM &gt; CMM, giving a one-sided p value = 0.016, below 0.05, which means that this consistency is unlikely to be merely random."
+  },
+  {
+   "zh": "<strong>Van Elteren Test：</strong>是分層版的 Wilcoxon 等級和檢定，把「濃度水準」當作分層變數（stratification variable），在校正組間差異後合併各層級的等級排序資訊，通常比單純的符號檢定更有檢定力（power 更高）。此處檢定統計量 = 21.65，p = 0.002，比 sign test 的結論更明確。",
+   "en": "<strong>Van Elteren test:</strong> This is the stratified version of the Wilcoxon rank-sum test. It treats \"concentration level\" as the stratification variable and, after adjusting for between-group differences, combines the rank information of all strata; it usually has more power than the simple sign test. The test statistic here = 21.65, p = 0.002, a clearer conclusion than that of the sign test."
+  },
+  {
+   "zh": "Sign test 就像棒球系列賽只算「贏了幾場」，不管比分差距——6 戰全勝機率很低，就有理由相信一隊真的比較強。Van Elteren test 則進階一點，除了看誰贏，還把「每場贏多少分的排名」也一併納入計算，讓判斷更精準，是分層版的「戰績＋比分排序」綜合評分。",
+   "en": "The sign test is like counting only \"how many games were won\" in a baseball series, regardless of the score margin - winning all 6 games has a very low probability, so there is reason to believe one team is truly stronger. The Van Elteren test goes one step further: besides who won, it also takes the \"ranking of how many points each win was by\" into account, making the judgment more precise - a stratified combined score of \"win record + score ranking\"."
+  },
+  {
+   "zh": "這是本節教學上非常重要的轉折：<strong>雖然逐濃度分開看，3 個濃度的 LCL 無法證明優越性；但用「不假設分布」的無母數方法，把全部 6 個濃度的「方向一致性」合併分析後，反而能得出穩健的優越性結論。</strong>這說明統計檢定的選擇本身，會直接影響最終的驗證結論——企業在審查方法確效報告時，應注意統計方法是否適配實驗設計（例如是否需要分層合併分析），而非只看單一顯著性檢定的表面結果。此外，Van Elteren test 並非所有統計軟體都內建（此處用 SAS 的 NPAR1WAY），企業若採用一般商用軟體，需先確認是否具備此功能，或委託熟悉此方法的統計人員執行。",
+   "en": "This is a very important turning point in this section: <strong>although, looking at each concentration separately, the LCL at 3 concentrations cannot demonstrate superiority, a nonparametric method that \"assumes no distribution\", by combining the \"directional consistency\" of all 6 concentrations, can instead reach a robust conclusion of superiority.</strong> This shows that the choice of statistical test itself directly affects the final validation conclusion - when reviewing method validation reports, companies should check whether the statistical method fits the experimental design (for example whether a stratified combined analysis is needed) rather than looking only at the surface result of a single significance test. In addition, the Van Elteren test is not built into all statistical software (SAS NPAR1WAY is used here); if a company uses general commercial software, it must first confirm whether this function is available or commission a statistician familiar with the method."
+  },
+  {
+   "zh": "為什麼「不假設計數的分布形式」在微生物計數資料上是個優點？你能想到哪些情境下計數資料明顯不符合常態分布假設？",
+   "en": "Why is \"not assuming a distribution form for the counts\" an advantage for microbial count data? Can you think of situations in which count data clearly do not meet the normal distribution assumption?"
+  },
+  {
+   "zh": "若你的統計軟體沒有 Van Elteren test 功能，你會如何向管理層說明「只用 sign test 也足夠支持結論」，還是建議額外委外分析？",
+   "en": "If your statistical software does not have the Van Elteren test, how would you explain to management that \"the sign test alone is sufficient to support the conclusion\", or would you recommend additional outsourced analysis?"
+  },
+  {
+   "zh": "<strong>11.2.1 Accuracy — Poisson Regression Concentration-Response Model 準確度—Poisson迴歸濃度反應模型</strong>",
+   "en": "<strong>11.2.1 Accuracy - Poisson Regression Concentration-Response Model</strong>"
+  },
+  {
+   "zh": "<strong>Concentration-response curve（濃度反應曲線）：</strong>假設「期望計數」與「真實接種濃度 λ」呈直線關係（identity link，而非常見的 log link），即 E(y) = α + βλ。截距 α 代表濃度趨近 0 時的基準訊號（理論上應接近 0，但實務上可能因背景訊號而略高於 0），斜率 β 則代表濃度每增加 1 個單位，期望計數增加多少——也就是「回收效率」的另一種表示方式。",
+   "en": "<strong>Concentration-response curve:</strong> It is assumed that the \"expected count\" has a linear relationship with the \"true inoculated concentration λ\" (identity link, rather than the common log link), that is E(y) = α + βλ. The intercept α represents the baseline signal as the concentration approaches 0 (in theory close to 0, but in practice possibly slightly above 0 because of background signal), and the slope β represents how much the expected count increases for each unit increase in concentration - another way of expressing \"recovery efficiency\"."
+  },
+  {
+   "zh": "<strong>為什麼 AMM/RMM 的模型可以化簡：</strong>原本 AMM/RMM 對 λ<sub>CFU</sub> 和 λ<sub>NCFU</sub> 各有各的斜率 β̃<sub>A</sub>，但因為兩者被假設維持固定比例 q = λ<sub>NCFU</sub>/λ<sub>CFU</sub>，可以合併成單一斜率 β<sub>A</sub> = β̃<sub>A</sub>(1+q)，讓 AMM/RMM 與 CMM 的模型形式一致（都只用 λ<sub>CFU</sub> 為自變數），才能直接比較兩者的截距與斜率。",
+   "en": "<strong>Why the AMM/RMM model can be simplified:</strong> Originally the AMM/RMM has its own slope β̃<sub>A</sub> for each of λ<sub>CFU</sub> and λ<sub>NCFU</sub>, but because the two are assumed to keep a fixed ratio q = λ<sub>NCFU</sub>/λ<sub>CFU</sub>, they can be merged into a single slope β<sub>A</sub> = β̃<sub>A</sub>(1+q). This makes the AMM/RMM and CMM models identical in form (both use only λ<sub>CFU</sub> as the independent variable), so that their intercepts and slopes can be compared directly."
+  },
+  {
+   "zh": "把接種濃度想成業務員每月拜訪的客戶數，計數想成成交數。截距 α 就像「業績淡季時的基本盤」，斜率 β 就像「每多拜訪一位客戶，平均能多成交幾筆」。如果 AMM/RMM 業務員的基本盤跟每單位努力的轉換率都比 CMM 業務員高，那就代表這位業務員（AMM/RMM 方法）在整個業績區間內都表現得更好，而且客戶越多，兩人的業績差距會越拉越大——這正是原文說「difference in enumeration increases with higher spiked concentration levels」的意思。",
+   "en": "Think of the inoculated concentration as the number of customers a salesperson visits each month and the count as the number of deals closed. The intercept α is like the \"baseline business in the off-season\", and the slope β is like \"how many more deals are closed on average for each additional customer visited\". If the AMM/RMM salesperson has both a higher baseline and a higher conversion rate per unit of effort than the CMM salesperson, then this salesperson (the AMM/RMM method) performs better across the whole range, and the more customers there are, the wider the gap between the two grows - this is exactly what the source text means by \"difference in enumeration increases with higher spiked concentration levels\"."
+  },
+  {
+   "zh": "從 Table 11.2.1-3 可見：AMM/RMM 截距 1.517（95% CI: 0.338–2.696）明顯高於 CMM 的 −0.280（95% CI: −1.176–0.617，含 0），且 AMM/RMM 斜率 0.952（0.863–1.041）也略高於 CMM 的 0.878（0.797–0.960）。CMM 截距的信賴區間跨越 0，代表在零濃度附近 CMM 的基準訊號與 0 無顯著差異，符合其「只認得可培養菌」的預期；AMM/RMM 截距顯著大於 0，則可能反映其對 X<sub>NCFU</sub> 或背景訊號的额外偵測能力。",
+   "en": "From Table 11.2.1-3: the AMM/RMM intercept of 1.517 (95% CI: 0.338–2.696) is clearly higher than the CMM intercept of −0.280 (95% CI: −1.176–0.617, which includes 0), and the AMM/RMM slope of 0.952 (0.863–1.041) is also slightly higher than the CMM slope of 0.878 (0.797–0.960). The confidence interval of the CMM intercept spans 0, meaning that near zero concentration the baseline signal of the CMM is not significantly different from 0, which fits its expected behavior of \"recognizing only culturable organisms\"; the AMM/RMM intercept being significantly greater than 0 may reflect its additional detection of X<sub>NCFU</sub> or of background signal."
+  },
+  {
+   "zh": "AMM/RMM:  E(y|λ_M) = α_A + β̃_A(λ_CFU + λ_NCFU)\n                    = α_A + β̃_A(1+q)λ_CFU\n                    ≡ α_A + β_A·λ_CFU  ≡ m_A(λ_CFU)\n\nCMM:      E(y|λ_M) = α_C + β_C·λ_CFU  ≡ m_C(λ_CFU)\n\n變數定義：\nE(y|λ_M)  = 在真實濃度 λ_M = λ_CFU + λ_NCFU 下，\n            一個定量微生物方法對任意樣本的期望計數\nλ_CFU     = 活的且可培養微生物之真實濃度\nλ_NCFU    = 活的但不可培養微生物之真實濃度\nα_A / α_C = AMM/RMM / CMM 濃度反應直線之截距\nβ_A / β_C = AMM/RMM / CMM 濃度反應直線之斜率\nq         = λ_NCFU / λ_CFU（當 λ_CFU &gt; 0，定義同\n            Section 11.1.1、11.1.2）",
+   "en": "AMM/RMM:  E(y|λ_M) = α_A + β̃_A(λ_CFU + λ_NCFU)\n                    = α_A + β̃_A(1+q)λ_CFU\n                    ≡ α_A + β_A·λ_CFU  ≡ m_A(λ_CFU)\n\nCMM:      E(y|λ_M) = α_C + β_C·λ_CFU  ≡ m_C(λ_CFU)\n\nVariable definitions:\nE(y|λ_M)  = expected count of a quantitative microbiological method\n            for any sample at the true concentration λ_M = λ_CFU + λ_NCFU\nλ_CFU     = true concentration of viable and culturable microorganisms\nλ_NCFU    = true concentration of viable but non-culturable microorganisms\nα_A / α_C = intercept of the concentration-response line of the AMM/RMM / CMM\nβ_A / β_C = slope of the concentration-response line of the AMM/RMM / CMM\nq         = λ_NCFU / λ_CFU (when λ_CFU &gt; 0; defined as in\n            Section 11.1.1 and 11.1.2)"
+  },
+  {
+   "zh": "為什麼 CMM 的截距信賴區間包含 0，而 AMM/RMM 的截距信賴區間不包含 0？這對兩種方法的「背景訊號」或「非活菌干擾」有何啟示？",
+   "en": "Why does the confidence interval of the CMM intercept include 0 while that of the AMM/RMM intercept does not? What does this imply about the \"background signal\" or \"non-viable interference\" of the two methods?"
+  },
+  {
+   "zh": "若某濃度反應模型的斜率 β 明顯小於 1，代表什麼意義？對於高濃度樣本的定量準確度會有什麼影響？",
+   "en": "If the slope β of a concentration-response model is clearly smaller than 1, what does that mean? What effect would it have on quantitative accuracy for high-concentration samples?"
+  },
+  {
+   "zh": "<strong>11.2.1 Accuracy — Difference, Variance and Figure 11.2.1-2 準確度—差異值、變異數與圖11.2.1-2</strong>",
+   "en": "<strong>11.2.1 Accuracy - Difference, Variance and Figure 11.2.1-2</strong>"
+  },
+  {
+   "zh": "<strong>為什麼改用「差異」（difference）而非「比值」（ratio）：</strong>因為這裡的濃度反應模型是「加法型」（α + βλ，identity link），差異 m̂<sub>A</sub>(λ) − m̂<sub>C</sub>(λ) 才能自然對應到這個模型結構；而先前（Table 11.2.1-2）用比值分析，則是因為當時假設的是「乘法型」關係 αλ<sup>β</sup>（log link）。選擇「差異」還是「比值」不是任意決定，而是要跟迴歸模型的連結函數（link function）保持一致。",
+   "en": "<strong>Why the \"difference\" rather than the \"ratio\":</strong> Because the concentration-response model here is \"additive\" (α + βλ, identity link), the difference m̂<sub>A</sub>(λ) − m̂<sub>C</sub>(λ) corresponds naturally to this model structure; the earlier analysis (Table 11.2.1-2) used the ratio because it assumed a \"multiplicative\" relationship αλ<sup>β</sup> (log link). The choice of \"difference\" or \"ratio\" is not arbitrary but must be consistent with the link function of the regression model."
+  },
+  {
+   "zh": "<strong>變異數公式的意義：</strong>τ²(λ) 由三部分組成：截距的變異 VAR(α̂)、斜率變異隨濃度平方放大的部分 λ²VAR(β̂)，以及截距與斜率之間的共變異數 2λ·COV(α̂,β̂)。這正是簡單線性迴歸中「預測值變異數」的標準公式，隨濃度 λ 增加，斜率不確定性的影響會被放大。",
+   "en": "<strong>Meaning of the variance formula:</strong> τ²(λ) consists of three parts: the variance of the intercept VAR(α̂), the part of the slope variance magnified by the square of the concentration λ²VAR(β̂), and the covariance between intercept and slope 2λ·COV(α̂,β̂). This is the standard formula for the \"variance of a predicted value\" in simple linear regression; as the concentration λ increases, the influence of the slope uncertainty is magnified."
+  },
+  {
+   "zh": "「差異 vs 比值」就像考試進步的表達方式：說「多考了 10 分」（差異）跟「進步了 10%」（比值），何者恰當要看情境——如果兩次考試滿分不同、或分數與難度呈線性疊加關係，用「多考幾分」較合理；如果是相乘放大的效應（例如業績成長率），用「百分比」較合理。本節選擇「差異」正是因為濃度與計數之間是線性疊加（α + βλ）的關係。",
+   "en": "\"Difference vs ratio\" is like the ways of expressing improvement in an exam: saying \"10 points more\" (difference) versus \"improved by 10%\" (ratio), which one is appropriate depends on the context - if the two exams have different maximum scores, or the score and the difficulty combine linearly, \"how many points more\" is more reasonable; if the effect is multiplicative (for example sales growth rate), \"percentage\" is more reasonable. This section chooses the \"difference\" precisely because concentration and count are related by linear addition (α + βλ)."
+  },
+  {
+   "zh": "關鍵結論：<strong>下限 95% 信賴區間在 2 至 64 CFU 全部濃度範圍內都維持在「0」以上</strong>，代表 AMM/RMM 在這整段區間內對 CMM 具有統計上顯著的優越性（即使先前逐濃度比值分析在 3 個濃度點無法證明優越性）。這再次呼應 Block D 的教學重點：改用「合併全濃度範圍的模型化分析」（而非逐點檢定），往往能提供更穩健、更具說服力的優越性證據。企業在撰寫方法確效報告時，應同時呈現逐點分析與整體迴歸模型分析兩種角度，讓審查者能全面判斷。",
+   "en": "Key conclusion: <strong>the lower 95% confidence limit stays above \"0\" over the whole concentration range of 2 to 64 CFU</strong>, which means the AMM/RMM is statistically significantly superior to the CMM over this entire range (even though the earlier concentration-by-concentration ratio analysis could not demonstrate superiority at 3 concentration points). This again echoes the teaching point of Block D: a \"modeled analysis combined over the whole concentration range\" (rather than point-by-point testing) often provides more robust and more convincing evidence of superiority. When writing a method validation report, companies should present both the point-by-point analysis and the overall regression model analysis so that reviewers can judge comprehensively."
+  },
+  {
+   "zh": "下限95%信賴區間（差異）：\nLCL = m̂_A(λ) − m̂_C(λ) − 1.645·√( τ̂_A²(λ) + τ̂_C²(λ) )\n\nτ̂_A²(λ), τ̂_C²(λ) = AMM/RMM、CMM 估計平均計數之\n                     估計變異數\n\n估計平均計數的變異數：\nτ²(λ) = VAR(α̂) + λ_CFU²·VAR(β̂) + 2λ_CFU·COV(α̂,β̂)\n\nVAR(α̂)      = 截距估計值之變異數\nVAR(β̂)      = 斜率估計值之變異數\nCOV(α̂,β̂)    = 截距與斜率估計值之共變異數",
+   "en": "Lower 95% confidence limit (difference):\nLCL = m̂_A(λ) − m̂_C(λ) − 1.645·√( τ̂_A²(λ) + τ̂_C²(λ) )\n\nτ̂_A²(λ), τ̂_C²(λ) = estimated variance of the estimated mean count\n                     of the AMM/RMM and CMM\n\nVariance of the estimated mean count:\nτ²(λ) = VAR(α̂) + λ_CFU²·VAR(β̂) + 2λ_CFU·COV(α̂,β̂)\n\nVAR(α̂)      = variance of the intercept estimate\nVAR(β̂)      = variance of the slope estimate\nCOV(α̂,β̂)    = covariance of the intercept and slope estimates"
+  },
+  {
+   "zh": "左圖：X 軸為 Spiked Concentration（CFU），Y 軸為 Difference（AMM/RMM 減 CMM 的期望計數差）。黑色實線（Estimated Difference）隨濃度增加而線性上升，說明兩方法的差距隨濃度放大；紅色虛線（95% Lower Confidence Limit）雖然曲線形狀較平緩且略有下降趨勢，但全程都維持在 0 以上，這正是判定「優越性成立」的依據——只要下限不跌破 0，就代表即使用最保守的估計，AMM/RMM 仍優於 CMM。",
+   "en": "Left plot: the X-axis is Spiked Concentration (CFU) and the Y-axis is Difference (the difference in expected count, AMM/RMM minus CMM). The solid black line (Estimated Difference) rises linearly with concentration, showing that the gap between the two methods widens with concentration; the red dashed line (95% Lower Confidence Limit), although flatter in shape and with a slightly downward trend, stays above 0 throughout, and this is the basis for deciding that \"superiority is established\" - as long as the lower limit does not fall below 0, the AMM/RMM is superior to the CMM even on the most conservative estimate."
+  },
+  {
+   "zh": "右圖：X 軸為 Average Count AMM（AMM/RMM 平均計數），Y 軸為 Count CMM（CMM 觀測計數），呈現以 AMM/RMM 平均值反推預測 CMM 計數的迴歸線（黑色實線）與上下 95% 預測界限（紅色、綠色虛線）。此圖的詳細解讀（如何用 AMM/RMM 訊號回推預測 CMM 的 CFU 值、預測區間如何計算）將於 <strong>Section 11.2.2</strong>（下一小節，不在本節範圍內）詳細說明；此處先理解其定位：它是「已知 AMM/RMM 訊號、反推 CMM 計數範圍」的預測工具雛型。",
+   "en": "Right plot: the X-axis is Average Count AMM (mean AMM/RMM count) and the Y-axis is Count CMM (observed CMM count), showing the regression line (solid black) predicting the CMM count back from the AMM/RMM mean, with upper and lower 95% prediction limits (red and green dashed lines). The detailed interpretation of this plot (how to predict the CMM CFU value from the AMM/RMM signal and how the prediction interval is calculated) is explained in <strong>Section 11.2.2</strong> (the next subsection, outside the scope of this section); for now, just understand its role: it is the prototype of a prediction tool that works \"from a known AMM/RMM signal back to the range of CMM counts\"."
+  },
+  {
+   "zh": "為什麼「差異隨濃度增加而增加」不代表 AMM/RMM 在「相對比例」上也越來越優於 CMM？你會如何同時呈現絕對差異與相對比值兩種角度給決策者參考？",
+   "en": "Why does \"the difference increases with concentration\" not mean that the AMM/RMM is also increasingly superior to the CMM in \"relative proportion\"? How would you present both the absolute difference and the relative ratio to decision makers?"
+  },
+  {
+   "zh": "如果貴公司要用類似的 Poisson 迴歸模型做方法確效，你認為需要哪些前提假設先被驗證（例如計數是否真的服從 Poisson 分布）？",
+   "en": "If your company uses a similar Poisson regression model for method validation, which prerequisite assumptions do you think need to be verified first (for example whether the counts truly follow a Poisson distribution)?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Non-CFU 訊號的 AMM/RMM 在定量比較上，因訊號本質上會涵蓋 X<sub>CFU</sub> 與 X<sub>NCFU</sub> 兩種來源，應以「優越性檢定」而非「非劣性檢定」評估，這與 Section 11.1 定性方法的邏輯一致",
+   "en": "Because the signal of an AMM/RMM with a non-CFU signal inherently covers two sources, X<sub>CFU</sub> and X<sub>NCFU</sub>, its quantitative comparison should be assessed with a \"superiority test\" rather than a \"non-inferiority test\", consistent with the logic of the qualitative methods in Section 11.1"
+  },
+  {
+   "zh": "逐濃度水準以 Poisson 分布計算回收率與 LCL 時，3 個濃度水準的 LCL 低於 100%，無法逐點證明優越性；但改用不假設分布的 sign test（p=0.016）與 Van Elteren test（p=0.002），能證實 AMM/RMM 計數系統性、一致性地高於 CMM",
+   "en": "When recovery and LCL are calculated concentration by concentration with the Poisson distribution, the LCL at 3 concentration levels is below 100%, so superiority cannot be shown point by point; but the distribution-free sign test (p=0.016) and Van Elteren test (p=0.002) confirm that AMM/RMM counts are systematically and consistently higher than CMM counts"
+  },
+  {
+   "zh": "Poisson 迴歸濃度反應模型（identity link）顯示 AMM/RMM 截距（1.517）與斜率（0.952）皆高於 CMM（−0.280、0.878），且用「差異」而非「比值」計算下限 95% 信賴區間，全濃度範圍（2–64 CFU）皆維持在 0 以上，證實整體優越性",
+   "en": "The Poisson regression concentration-response model (identity link) shows that both the AMM/RMM intercept (1.517) and slope (0.952) are higher than those of the CMM (−0.280, 0.878), and the lower 95% confidence limit calculated with the \"difference\" rather than the \"ratio\" stays above 0 over the whole concentration range (2–64 CFU), confirming overall superiority"
+  },
+  {
+   "zh": "方法選擇（逐點 vs. 合併模型分析、比值 vs. 差異）必須與實驗設計及濃度反應的數學關係（乘法或加法模型）保持一致，這是本附錄統計分析的核心教學價值",
+   "en": "The choice of method (point-by-point vs combined model analysis, ratio vs difference) must be consistent with the experimental design and with the mathematical relationship of the concentration response (multiplicative or additive model); this is the core teaching value of the statistical analysis in this appendix"
+  }
+ ]
+}

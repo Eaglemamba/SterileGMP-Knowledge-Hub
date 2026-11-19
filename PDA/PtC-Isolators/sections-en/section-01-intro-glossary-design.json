@@ -1,0 +1,405 @@
+{
+ "source": "section-01-intro-glossary-design.html",
+ "blocks": [
+  {
+   "zh": "學習目標 Learning Objectives",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Isolator 與 RABS 的核心設計差異，以及 Isolator 在無菌製程中提供的優越保護機制。",
+   "en": "Understand the core design differences between an isolator and RABS, and the superior protection an isolator provides in aseptic processing."
+  },
+  {
+   "zh": "掌握隔離器正壓差設計原則（&gt;10 Pa），以及為何壓差是污染防控的物理屏障關鍵。",
+   "en": "Master the isolator positive pressure differential design principle (&gt;10 Pa) and why the pressure differential is the key physical barrier for contamination control."
+  },
+  {
+   "zh": "熟悉本文件核心術語（Closed/Open Isolator、VHP、RTP、Unidirectional Flow），並能區別 Disinfection 與 Decontamination。",
+   "en": "Become familiar with the key terms in this document (closed/open isolator, VHP, RTP, unidirectional flow) and be able to distinguish disinfection from decontamination."
+  },
+  {
+   "zh": "了解隔離器手套設計的風險評估框架，並能應用於實際無菌操作介入作業規劃。",
+   "en": "Understand the risk assessment framework for isolator glove design and apply it to planning real aseptic interventions."
+  },
+  {
+   "zh": "理解科學與風險導向方法在隔離器設計、確效與操作中的核心地位，以及如何降低人員介入帶來的污染風險。",
+   "en": "Understand the central role of a science- and risk-based approach in isolator design, validation and operation, and how it reduces the contamination risk introduced by personnel interventions."
+  },
+  {
+   "zh": "1. Introduction and Scope — 導論與範圍",
+   "en": "1. Introduction and Scope"
+  },
+  {
+   "zh": "中文解說 Commentary",
+   "en": "Commentary"
+  },
+  {
+   "zh": "核心概念：為什麼需要這份文件？",
+   "en": "Core concept: why do we need this document?"
+  },
+  {
+   "zh": "PDA 在 2001 年已出版 TR34 作為隔離器設計的基礎指引。2020 年這份 PtC 是在行業知識累積、法規更新後的精煉版本——強調科學與風險導向，而非硬性規定標準。",
+   "en": "PDA published TR34 in 2001 as the foundational guidance on isolator design. This 2020 PtC is a refined version, reflecting accumulated industry knowledge and updated regulations, and it emphasizes a science- and risk-based approach rather than rigid prescriptive standards."
+  },
+  {
+   "zh": "文件定位：<strong>最佳實踐建議</strong>，而非法規強制要求。這讓製造商有靈活空間，但也要求你的設計決策有科學依據。",
+   "en": "Positioning of the document: <strong>best-practice recommendations</strong>, not mandatory regulatory requirements. This gives manufacturers flexibility, but it also means your design decisions must be backed by scientific rationale."
+  },
+  {
+   "zh": "比喻：Isolator vs. RABS vs. 傳統無菌區",
+   "en": "Analogy: isolator vs. RABS vs. conventional aseptic area"
+  },
+  {
+   "zh": "想像無菌保護是三層防護等級：",
+   "en": "Think of aseptic protection as three levels:"
+  },
+  {
+   "zh": "<strong>傳統 Grade A/B</strong>：在潔淨房間裡小心行事，人員穿無菌衣，但空間是共享的。",
+   "en": "<strong>Conventional grade A/B</strong>: you work carefully in a cleanroom and personnel wear sterile gowns, but the space is shared."
+  },
+  {
+   "zh": "<strong>RABS</strong>：裝了玻璃圍牆和固定手套的工作站，人員從外部介入受限制，但手套仍會接觸外部空氣。",
+   "en": "<strong>RABS</strong>: a workstation with glass walls and fixed gloves. Personnel intervention from the outside is restricted, but the gloves still contact outside air."
+  },
+  {
+   "zh": "<strong>Isolator</strong>：完全密封的太空艙——VHP 消毒後，內部環境與外界完全隔絕，人員只能透過手套操作。",
+   "en": "<strong>Isolator</strong>: a fully sealed capsule. After VHP decontamination the internal environment is completely isolated from the outside, and personnel can work only through the gloves."
+  },
+  {
+   "zh": "Isolator 的優勢：物理隔絕 + 自動化消毒 = 最低污染風險。",
+   "en": "The isolator advantage: physical separation + automated decontamination = lowest contamination risk."
+  },
+  {
+   "zh": "CDMO 實務重點",
+   "en": "CDMO practical point"
+  },
+  {
+   "zh": "在多產品 CDMO 環境中，Isolator 的優勢更加顯著：每個批次間的活性成分交叉污染風險可透過 VHP 循環徹底消除，不需要更換整個潔淨室環境。這對於高活性或高致敏性化合物尤其重要。",
+   "en": "In a multi-product CDMO environment the advantage of an isolator is even greater: the risk of active ingredient cross-contamination between batches can be thoroughly eliminated by a VHP cycle, without changing the entire cleanroom environment. This is especially important for highly potent or highly sensitizing compounds."
+  },
+  {
+   "zh": "思考練習",
+   "en": "Reflection exercise"
+  },
+  {
+   "zh": "你的廠房現在是哪種設計？如果是 RABS，你是否評估過切換到 Isolator 的成本效益——特別是在周圍房間等級降低（Grade D 取代 Grade B）帶來的節省？",
+   "en": "What design does your facility use today? If it is RABS, have you evaluated the cost-benefit of switching to an isolator, especially the savings from lowering the surrounding room grade (grade D instead of grade B)?"
+  },
+  {
+   "zh": "2. Glossary — 術語表",
+   "en": "2. Glossary"
+  },
+  {
+   "zh": "術語架構：理解層次關係",
+   "en": "Terminology framework: understanding the hierarchy"
+  },
+  {
+   "zh": "這份術語表有一個隱含的邏輯層次：",
+   "en": "This glossary follows an implicit logical hierarchy:"
+  },
+  {
+   "zh": "<strong>環境等級</strong>：Critical Work Area = Grade A/ISO 5（最高潔淨等級）",
+   "en": "<strong>Environmental grade</strong>: critical work area = grade A/ISO 5 (the highest cleanliness grade)."
+  },
+  {
+   "zh": "<strong>保護方式</strong>：Isolator（完全密封）&gt; RABS（半封閉）&gt; Conventional（開放）",
+   "en": "<strong>Method of protection</strong>: isolator (fully enclosed) &gt; RABS (semi-enclosed) &gt; conventional (open)."
+  },
+  {
+   "zh": "<strong>消毒強度</strong>：Decontamination（殺孢子，滅菌級）&gt; Disinfection（減少活菌，消毒級）",
+   "en": "<strong>Decontamination intensity</strong>: decontamination (sporicidal, sterilization-level) &gt; disinfection (reduces viable microorganisms, disinfection-level)."
+  },
+  {
+   "zh": "比喻：Decontamination vs. Disinfection",
+   "en": "Analogy: decontamination vs. disinfection"
+  },
+  {
+   "zh": "用餐廚房打比方：",
+   "en": "Think of a kitchen:"
+  },
+  {
+   "zh": "<strong>Disinfection（消毒）</strong>= 用酒精擦桌子——殺死大部分細菌，但孢子可能殘留。日常清潔夠用。",
+   "en": "<strong>Disinfection</strong> = wiping the table with alcohol. It kills most bacteria, but spores may remain. It is enough for everyday cleaning."
+  },
+  {
+   "zh": "<strong>Decontamination（生物除污）</strong>= VHP 燻蒸整個空間——連芽孢都消滅。這是 Isolator 每批次前必做的動作，確保起始狀態為微生物學上的「歸零」。",
+   "en": "<strong>Decontamination</strong> = fumigating the whole space with VHP. It destroys even bacterial spores. This is required before every isolator batch, to ensure the starting state is microbiologically \"zero\"."
+  },
+  {
+   "zh": "無菌充填操作需要的是 Decontamination，而非一般的 Disinfection。",
+   "en": "Aseptic filling operations require decontamination, not ordinary disinfection."
+  },
+  {
+   "zh": "重點：Inherent vs. Corrective Intervention",
+   "en": "Key point: inherent vs. corrective interventions"
+  },
+  {
+   "zh": "這個分類在 Media Fill 和製程風險評估中非常重要：",
+   "en": "This classification is very important in media fills and process risk assessment:"
+  },
+  {
+   "zh": "<strong>Inherent（例行）介入</strong>：在批次記錄中預先規定的動作，如補充容器、環境監測採樣。屬於「計畫內風險」，可透過設計最小化。",
+   "en": "<strong>Inherent interventions</strong>: actions prescribed in advance in the batch record, such as replenishing containers or environmental monitoring sampling. These are \"planned risks\" and can be minimized through design."
+  },
+  {
+   "zh": "<strong>Corrective（矯正）介入</strong>：製程中出現問題才執行，如清除卡料、更換損壞零件。屬於「計畫外風險」，每次都需要評估對產品無菌性的衝擊。",
+   "en": "<strong>Corrective interventions</strong>: actions performed only when a problem occurs in the process, such as clearing a jam or replacing a damaged part. These are \"unplanned risks\", and each one must be assessed for its impact on product sterility."
+  },
+  {
+   "zh": "Open vs. Closed Isolator — CDMO 選型考量",
+   "en": "Open vs. closed isolator: selection considerations for a CDMO"
+  },
+  {
+   "zh": "<strong>Open Isolator</strong>：適合連續或半連續充填線，物料可在操作中持續進出。利用正壓氣流阻擋外部污染進入——適用於大批量產品線。",
+   "en": "<strong>Open isolator</strong>: suited to continuous or semi-continuous filling lines, where materials can move in and out during operation. Positive airflow prevents external contamination from entering. Suitable for large-batch product lines."
+  },
+  {
+   "zh": "<strong>Closed Isolator</strong>：整個操作過程完全密封，物料透過 RTP（如 DPTE 系統）無菌轉移進出。適合高活性化合物、細胞毒素藥物，或特別需要人員保護的場景。",
+   "en": "<strong>Closed isolator</strong>: fully sealed throughout the operation, with materials transferred in and out aseptically through an RTP (such as a DPTE system). Suitable for highly potent compounds, cytotoxic drugs, or situations that especially require operator protection."
+  },
+  {
+   "zh": "CDMO 選型原則：有高效能化合物（HPAPI）的產品線 → 考慮 Closed Isolator；一般無菌小瓶充填 → Open Isolator 即可。",
+   "en": "CDMO selection principle: product lines with highly potent compounds (HPAPI) → consider a closed isolator; general aseptic vial filling → an open isolator is sufficient."
+  },
+  {
+   "zh": "術語自我測試",
+   "en": "Terminology self-test"
+  },
+  {
+   "zh": "不看定義，能否解釋：VHP 為什麼要「validated」？RTP 的「interlocking」設計解決了什麼問題？Unidirectional Flow 在 Grade A 保護中扮演什麼角色？",
+   "en": "Without looking at the definitions, can you explain: why must VHP be \"validated\"? What problem does the \"interlocking\" design of an RTP solve? What role does unidirectional flow play in grade A protection?"
+  },
+  {
+   "zh": "Topic 1: Isolator Design — Q1-1: Pressure Differential（壓差設計）",
+   "en": "Topic 1: Isolator Design - Q1-1: Pressure Differential"
+  },
+  {
+   "zh": "核心概念：壓差是物理屏障的第一道防線",
+   "en": "Core concept: the pressure differential is the first line of defense of the physical barrier"
+  },
+  {
+   "zh": "Isolator 的無菌保護有兩個機制：",
+   "en": "Isolator aseptic protection works through two mechanisms:"
+  },
+  {
+   "zh": "<strong>物理屏障</strong>：不鏽鋼外殼、手套、密封系統",
+   "en": "<strong>Physical barrier</strong>: stainless steel enclosure, gloves, sealing system."
+  },
+  {
+   "zh": "<strong>壓差屏障</strong>：內部高壓 → 外部低壓，空氣只能從內往外流",
+   "en": "<strong>Pressure barrier</strong>: higher pressure inside, lower pressure outside, so air can only flow from the inside out."
+  },
+  {
+   "zh": "<strong>最低要求：&gt;10 Pa 正壓差</strong>。這個數字來自 EU GMP Annex 1 的傳統潔淨室標準，在 Isolator 設計中被沿用為最低門檻。實務上許多設施設定 20–30 Pa 以提供更大的安全裕度。",
+   "en": "<strong>Minimum requirement: &gt;10 Pa positive pressure differential</strong>. This number comes from the traditional cleanroom standard in EU GMP Annex 1 and has been carried over as the minimum threshold in isolator design. In practice, many facilities set 20–30 Pa to provide a larger safety margin."
+  },
+  {
+   "zh": "比喻：壓差就像門縫的風向",
+   "en": "Analogy: the pressure differential is like the airflow at a door gap"
+  },
+  {
+   "zh": "想像你開著有冷氣的車，車窗微開。內部壓力略高於外部，所以車內冷氣往外吹，而不是外面的熱空氣吹進來。",
+   "en": "Imagine driving an air-conditioned car with the window slightly open. The pressure inside is slightly higher than outside, so the cool air blows out of the car rather than hot outside air blowing in."
+  },
+  {
+   "zh": "Isolator 的正壓差原理完全一樣：只要內部壓力持續高於外部，外部的含菌空氣就物理上無法進入 Grade A 空間，即使在 mousehole（物料傳送開口）處也是如此。",
+   "en": "The positive pressure principle of an isolator is exactly the same: as long as the internal pressure stays above the external pressure, contaminated outside air physically cannot enter the grade A space, even at a mousehole (a material transfer opening)."
+  },
+  {
+   "zh": "Mousehole 設計的監控要求",
+   "en": "Monitoring requirements for mousehole design"
+  },
+  {
+   "zh": "連續充填線常需要 mousehole 讓容器或器材通過。這裡是壓差設計的弱點：",
+   "en": "Continuous filling lines often need a mousehole for containers or equipment to pass through. This is the weak point of the pressure differential design:"
+  },
+  {
+   "zh": "必須確保氣流方向是「從 Isolator 內部往外吹」",
+   "en": "You must ensure the airflow direction is \"blowing out from inside the isolator\"."
+  },
+  {
+   "zh": "必須做 <strong>airflow visualization study</strong>（煙霧試驗）證明氣流方向正確",
+   "en": "You must perform an <strong>airflow visualization study</strong> (smoke study) to demonstrate the correct airflow direction."
+  },
+  {
+   "zh": "壓差必須 24/7 持續監控並設報警上下限",
+   "en": "The pressure differential must be monitored continuously 24/7, with alarm upper and lower limits."
+  },
+  {
+   "zh": "確效文件重點：不只是靜態數據，要有動態操作中的壓差穩定性數據。",
+   "en": "Key point for validation documentation: not just static data; you need pressure differential stability data during dynamic operation."
+  },
+  {
+   "zh": "設計審查思考題",
+   "en": "Design review question"
+  },
+  {
+   "zh": "如果 Isolator 壓差在充填操作中瞬間跌落至 0 Pa（例如手套更換、RTP 操作），你的 SOP 如何應對？這個偏差需要 OOT 調查嗎？還是觸發 CAPA？",
+   "en": "If the isolator pressure differential momentarily drops to 0 Pa during filling (for example during a glove change or RTP operation), how does your SOP respond? Does this deviation require an OOT investigation, or does it trigger a CAPA?"
+  },
+  {
+   "zh": "Topic 1: Isolator Design — Q1-2: Glove Design Considerations（手套設計）",
+   "en": "Topic 1: Isolator Design - Q1-2: Glove Design Considerations"
+  },
+  {
+   "zh": "核心概念：手套是 Isolator 的「弱點」",
+   "en": "Core concept: gloves are the \"weak point\" of an isolator"
+  },
+  {
+   "zh": "Isolator 的密封性幾乎完美，但手套是唯一讓人員直接與內部環境互動的介面，因此也是污染風險最集中的地方。",
+   "en": "An isolator's seal is almost perfect, but the gloves are the only interface that lets personnel interact directly with the internal environment, so they are also where contamination risk is most concentrated."
+  },
+  {
+   "zh": "PDA 的建議邏輯很明確：<strong>最好的手套設計，是盡量不需要用手套</strong>——透過自動化、機器人手臂、重新設計物料流向來減少人員介入。",
+   "en": "PDA's recommendation is clear: <strong>the best glove design is one that minimizes the need for gloves</strong>, by reducing personnel intervention through automation, robotic arms, and redesigned material flow."
+  },
+  {
+   "zh": "比喻：手套設計 = 航空駕駛艙人因工程",
+   "en": "Analogy: glove design = human factors engineering of an aircraft cockpit"
+  },
+  {
+   "zh": "飛機駕駛艙的每個開關位置，都是依據人因工程設計——飛行員不需要伸長手臂、不會誤觸相鄰開關。Isolator 手套設計也應該用同樣的思維：",
+   "en": "Every switch position in an aircraft cockpit is designed according to human factors engineering: the pilot does not need to overreach and will not accidentally hit an adjacent switch. Isolator glove design should follow the same thinking:"
+  },
+  {
+   "zh": "操作員身高範圍？（P5 到 P95 的手臂長度差異）",
+   "en": "What is the operators' height range? (the arm length difference between P5 and P95)"
+  },
+  {
+   "zh": "在手套限制下能否完成精細操作（如轉動配件）？",
+   "en": "Can fine manipulations (such as turning a fitting) be done within the limits of the gloves?"
+  },
+  {
+   "zh": "手套的位置是否遮擋 HEPA 氣流，在 Grade A 區製造渦流？",
+   "en": "Does the glove position block the HEPA airflow and create turbulence in the grade A area?"
+  },
+  {
+   "zh": "這些問題要在設計階段用 mock-up 或 3D 模型模擬，不能等到設備到廠後才發現問題。",
+   "en": "These questions must be simulated at the design stage with a mock-up or 3D model, and not discovered only after the equipment arrives on site."
+  },
+  {
+   "zh": "風險評估清單的實務應用",
+   "en": "Practical use of the risk assessment checklist"
+  },
+  {
+   "zh": "Q1-2 的清單（22 項）不是要你逐項打勾，而是提供風險評估的思維框架。在你的廠房設計或設備採購階段，可以用這份清單做：",
+   "en": "The Q1-2 checklist (22 items) is not meant to be ticked off item by item; it provides a way of thinking for risk assessment. During facility design or equipment purchasing, you can use it as:"
+  },
+  {
+   "zh": "<strong>DQ（設計資格）</strong>審查的評估依據",
+   "en": "The basis of assessment for <strong>DQ (design qualification)</strong> review"
+  },
+  {
+   "zh": "<strong>OQ（操作資格）</strong>中人員操作模擬測試的設計基礎",
+   "en": "The design basis for operator simulation tests in <strong>OQ (operational qualification)</strong>"
+  },
+  {
+   "zh": "<strong>年度手套完整性計劃</strong>的風險排序依據",
+   "en": "The risk-ranking basis for the <strong>annual glove integrity program</strong>"
+  },
+  {
+   "zh": "實務場景思考",
+   "en": "Practical scenario to consider"
+  },
+  {
+   "zh": "你的充填線 Isolator 有多少個手套口？哪些介入操作最頻繁？有沒有哪個手套口位置讓操作員反映「很難操作」或「需要過度伸展」？這些反映背後的風險你有記錄嗎？",
+   "en": "How many glove ports does your filling line isolator have? Which interventions are most frequent? Is there any glove port position that operators say is \"hard to work with\" or \"requires overreaching\"? Do you have a record of the risks behind these comments?"
+  },
+  {
+   "zh": "Topic 1: Isolator Design — Q1-3: Minimizing Intervention Risk（降低介入風險）",
+   "en": "Topic 1: Isolator Design - Q1-3: Minimizing Intervention Risk"
+  },
+  {
+   "zh": "核心概念：介入風險的三個控制維度",
+   "en": "Core concept: three control dimensions of intervention risk"
+  },
+  {
+   "zh": "Q1-3 提供了一個思考介入風險的框架，風險來自三個向量：",
+   "en": "Q1-3 provides a framework for thinking about intervention risk, which comes from three vectors:"
+  },
+  {
+   "zh": "<strong>時間（Duration）</strong>：介入持續越久，暴露風險越高 → 優化操作流程縮短時間",
+   "en": "<strong>Time (duration)</strong>: the longer the intervention, the higher the exposure risk → optimize the workflow to shorten the time."
+  },
+  {
+   "zh": "<strong>複雜度（Complexity）</strong>：動作越複雜，失誤機率越高 → 簡化設計或使用工具輔助",
+   "en": "<strong>Complexity</strong>: the more complex the movement, the higher the probability of error → simplify the design or use assisting tools."
+  },
+  {
+   "zh": "<strong>距離（Proximity）</strong>：越靠近暴露無菌表面，後果越嚴重 → 重新布局物料與設備位置",
+   "en": "<strong>Proximity</strong>: the closer to exposed sterile surfaces, the more serious the consequence → re-lay out the position of materials and equipment."
+  },
+  {
+   "zh": "這三個維度都可以在設計階段介入——而不是等到問題發生後靠 SOP 補救。",
+   "en": "All three dimensions can be addressed at the design stage, rather than patched afterwards with SOPs once a problem has occurred."
+  },
+  {
+   "zh": "比喻：外科手術室的設計邏輯",
+   "en": "Analogy: the design logic of a surgical operating room"
+  },
+  {
+   "zh": "優秀的手術室設計，讓外科醫師不需要跨越無菌區域去拿器械，護士遞器械的路徑不會越過手術視野。",
+   "en": "A good operating room design means the surgeon does not need to reach across the sterile field to get instruments, and the path along which the nurse passes instruments does not cross the surgical field."
+  },
+  {
+   "zh": "Isolator 的介入設計也應如此：充填站周圍的物料補充，能否設計成自動補給？環境監測採樣點，能否設計在不干擾充填操作的位置？這些都是 Q1-3 要求你在 DQ 階段就回答的問題。",
+   "en": "Isolator intervention design should be the same: can material replenishment around the filling station be designed as automatic supply? Can environmental monitoring sampling points be located where they do not disturb the filling operation? These are the questions Q1-3 requires you to answer at the DQ stage."
+  },
+  {
+   "zh": "自動化趨勢：機器人在 Isolator 中的應用",
+   "en": "Trend toward automation: robots in isolators"
+  },
+  {
+   "zh": "EU GMP Annex 1 (2022) 明確鼓勵在無菌操作中採用機器人和自動化技術。Q1-3 的建議與這個方向一致：",
+   "en": "EU GMP Annex 1 (2022) explicitly encourages the use of robotics and automation in aseptic operations. The recommendations in Q1-3 are consistent with this direction:"
+  },
+  {
+   "zh": "自動化裝配（如泵管安裝）",
+   "en": "Automated assembly (such as pump tubing installation)"
+  },
+  {
+   "zh": "機器人無菌採樣（EM active air sampling）",
+   "en": "Robotic aseptic sampling (EM active air sampling)"
+  },
+  {
+   "zh": "自動化物料傳送（RTP + 機械手臂）",
+   "en": "Automated material transfer (RTP + robotic arm)"
+  },
+  {
+   "zh": "White Raven（競爭對手）的 SA25 充填機已整合這類技術——這是 CDMO 需要追趕的差距。",
+   "en": "White Raven's (a competitor) SA25 filling machine already integrates this kind of technology. This is a gap the CDMO needs to close."
+  },
+  {
+   "zh": "介入風險評估演練",
+   "en": "Intervention risk assessment exercise"
+  },
+  {
+   "zh": "列出你廠房最常見的前五項 corrective interventions（矯正型介入）。對每一項，思考：它的 Duration / Complexity / Proximity 評分如何？哪一項的設計改進投資報酬率最高？這份分析可以作為下一次 Media Fill 介入清單優化的依據。",
+   "en": "List the five most common corrective interventions in your facility. For each one, consider: what are its duration / complexity / proximity scores? Which design improvement offers the highest return on investment? This analysis can serve as the basis for optimizing the intervention list for the next media fill."
+  },
+  {
+   "zh": "Section 1 總結 — Key Takeaways",
+   "en": "Section 1 Summary - Key Takeaways"
+  },
+  {
+   "zh": "<strong>Isolator 的核心優勢</strong>：物理隔絕 + VHP 自動消毒，提供比 RABS 和傳統無菌室更高的無菌保證水平，同時允許周圍環境降至 Grade D（ISO 8），大幅降低設施成本。",
+   "en": "<strong>The core advantage of the isolator</strong>: physical separation + automated VHP decontamination provide a higher level of sterility assurance than RABS and conventional aseptic rooms, while allowing the surrounding environment to be lowered to grade D (ISO 8), greatly reducing facility cost."
+  },
+  {
+   "zh": "<strong>壓差是第一道防線</strong>：正壓差 &gt;10 Pa 是最低要求，須 24/7 連續監控並設報警。Mousehole 設計必須有 airflow visualization 數據支撐。",
+   "en": "<strong>The pressure differential is the first line of defense</strong>: a positive pressure differential of &gt;10 Pa is the minimum requirement, and it must be monitored continuously 24/7 with alarms. Mousehole design must be supported by airflow visualization data."
+  },
+  {
+   "zh": "<strong>手套設計 = 人因工程問題</strong>：22 項風險因素清單是設計審查與確效的參考框架，核心原則是「盡量減少使用手套的需求」。",
+   "en": "<strong>Glove design = a human factors engineering problem</strong>: the 22-item risk factor checklist is a reference framework for design review and validation, and the core principle is \"minimize the need to use gloves\"."
+  },
+  {
+   "zh": "<strong>介入風險的三維控制</strong>：時間、複雜度、距離——三個向量都可以在設計階段優化，目標是透過自動化和布局設計，讓人員介入的頻率和影響最小化。",
+   "en": "<strong>Three-dimensional control of intervention risk</strong>: time, complexity and proximity. All three vectors can be optimized at the design stage, and the goal is to minimize the frequency and impact of personnel interventions through automation and layout design."
+  },
+  {
+   "zh": "<strong>科學與風險導向方法</strong>貫穿整份文件——所有設計決策都需要有依據，而不是僅僅滿足規定。這是 PDA PtC 文件系列的核心精神。",
+   "en": "<strong>A science- and risk-based approach</strong> runs through the entire document: every design decision needs a rationale, not merely compliance with requirements. This is the core spirit of the PDA PtC document series."
+  }
+ ]
+}

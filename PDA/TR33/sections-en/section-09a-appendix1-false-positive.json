@@ -1,0 +1,289 @@
+{
+ "source": "section-09a-appendix1-false-positive.html",
+ "blocks": [
+  {
+   "zh": "附錄一：替代/快速微生物學方法驗證之統計分析（定性方法）",
+   "en": "Appendix 1: Statistical Analysis for the Validation of Alternative/Rapid Microbiological Methods (Qualitative Methods)"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 Appendix 1（附錄一）的定位——為何 TR 33 需要一份獨立的統計附錄，以及其使用範圍與前提假設",
+   "en": "Understand the role of Appendix 1: why TR 33 needs a separate statistical appendix, and its scope and underlying assumptions"
+  },
+  {
+   "zh": "熟悉 Table 9.0-1 所定義的全套統計符號（λ、p、θ、R、LCL、UCL 等），作為閱讀後續統計章節的共同語言",
+   "en": "Become familiar with the full set of statistical symbols defined in Table 9.0-1 (λ, p, θ, R, LCL, UCL, etc.), which form the common language for the statistical sections that follow"
+  },
+  {
+   "zh": "掌握 false-positive rate（偽陽性率）的定義、估計方法，以及 asymptotic（漸近／Wald）與 exact（精確／Clopper-Pearson）兩種 95% confidence interval（信賴區間，CI）的計算方式與適用時機",
+   "en": "Master the definition and estimation of the false-positive rate, and how to calculate and when to use the two types of 95% confidence interval (CI): asymptotic (Wald) and exact (Clopper-Pearson)"
+  },
+  {
+   "zh": "能夠依據目標偽陽性率上限，運用樣本數公式反推所需的最小測試樣本數，並向客戶/稽核單位說明其統計邏輯",
+   "en": "Be able to use the sample size formula to work back from a target upper limit for the false-positive rate to the minimum number of test samples required, and explain the statistical logic to customers and auditors"
+  },
+  {
+   "zh": "<strong>9.0 Appendix 1: Validation of Alternative and Rapid Microbiological Methods: Statistical Analysis-Qualitative Methods 附錄一：替代/快速微生物學方法驗證之統計分析—定性方法</strong>",
+   "en": "<strong>9.0 Appendix 1: Validation of Alternative and Rapid Microbiological Methods: Statistical Analysis-Qualitative Methods</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Appendix 1（附錄一）的定位:</strong> 這不是選讀章節，而是 TR 33 本文（尤其 Section 5.0-7.0 驗證章節）所引用之統計方法的「數學後盾」。本文用文字描述「需要做非劣性檢定」，附錄則提供實際公式、範例數據與計算過程，讓實驗室人員即使沒有專屬微生物統計軟體，也能用 Excel 或一般統計軟體（Minitab、SPSS、STATA、SAS、R）重現結果。",
+   "en": "<strong>Role of Appendix 1:</strong> This is not an optional section. It is the \"mathematical backbone\" of the statistical methods cited in the main body of TR 33 (especially the validation Sections 5.0-7.0). The main text says in words that a non-inferiority test is needed; the appendix supplies the actual formulas, example data, and calculation steps, so that laboratory staff can reproduce the results in Excel or general statistical software (Minitab, SPSS, STATA, SAS, R) even without dedicated microbiological statistics software."
+  },
+  {
+   "zh": "<strong>ALCOA 原則:</strong> Attributable（可歸屬）、Legible（可讀）、Contemporaneous（即時）、Original（原始）、Accurate（準確）——這是 21 CFR Part 11 電子記錄與資料誠信（data integrity）的核心要求。本節特別提醒：若統計計算以電子系統執行，仍須符合 ALCOA，等同提醒讀者這些統計輸出未來可能是稽核焦點。",
+   "en": "<strong>ALCOA principles:</strong> Attributable, Legible, Contemporaneous, Original, Accurate. These are the core requirements for electronic records under 21 CFR Part 11 and for data integrity. This section is a specific reminder that if statistical calculations are performed in an electronic system, ALCOA still applies, which also signals that these statistical outputs may become an audit focus."
+  },
+  {
+   "zh": "<strong>Test Power（檢定力）與 Pooling（數據合併）:</strong> 附錄預告了貫穿 Section 9.0-11.0 的一個重複主題——驗證研究常受限於可用檢體量，因此需要合併多個菌種實驗的數據以提高總樣本數，但合併會引入額外統計假設，須謹慎評估其限制（詳見 Section 9.2.5）。",
+   "en": "<strong>Test Power and Pooling of Data:</strong> The appendix previews a recurring theme throughout Sections 9.0-11.0: validation studies are often limited by the amount of sample available, so data from experiments with several organisms are pooled to increase the total sample size. However, pooling introduces additional statistical assumptions, and its limitations must be evaluated carefully (see Section 9.2.5)."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把 TR 33 本文比喻成一份「手術同意書」——告訴病人（讀者）要做什麼手術（統計檢定）、為什麼需要做；而 Appendix 1 就像是「手術室裡的詳細術式手冊」——列出每一刀（每一條公式）該怎麼下、用什麼工具（Excel、SAS、R）、預期會看到什麼數字。兩者搭配，才能讓執行者（微生物學家）與監督者（統計師/QA）站在同一個知識基礎上溝通。",
+   "en": "Think of the main body of TR 33 as a \"surgical consent form\": it tells the patient (the reader) what procedure (the statistical test) will be done and why it is needed. Appendix 1 is like the \"detailed operating manual in the operating room\": it sets out how each cut (each formula) should be made, which tools to use (Excel, SAS, R), and what numbers to expect. Only together can the people doing the work (microbiologists) and the people overseeing it (statisticians/QA) communicate from the same knowledge base."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文明確建議：即使本附錄以「微生物學家或同等訓練分析師能理解」的方式撰寫，仍應視情況諮詢統計師（statistician）以確保建議被正確執行。這是一項重要的品質風險提醒——統計方法選錯（如誤用 Wald CI 於小樣本），會直接導致驗證結論錯誤，進而影響產品放行決策的科學正確性。",
+   "en": "The original text explicitly recommends that, even though this appendix is written so that \"a microbiologist or an analyst with equivalent training can understand it\", a statistician should still be consulted where appropriate to make sure the recommendations are applied correctly. This is an important quality risk reminder: choosing the wrong statistical method (for example, misusing the Wald CI on a small sample) leads directly to wrong validation conclusions and undermines the scientific soundness of product release decisions."
+  },
+  {
+   "zh": "本附錄的所有範例數據雖為「artificial（人工模擬）」，但明確聲明「based on real validation experiments（基於作者實際執行過的真實驗證實驗）」——這代表範例中的數字量級（如 20 個空白樣本、5% 偽陽性率）具有實務參考價值，而非隨意虛構。",
+   "en": "All example data in this appendix are \"artificial\", but the text expressly states that they are \"based on real validation experiments\" carried out by the authors. This means the orders of magnitude in the examples (such as 20 blank samples and a 5% false-positive rate) have practical reference value and are not arbitrary inventions."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 TR 33 選擇把統計細節獨立成附錄，而非直接寫入本文的驗證章節？這樣的架構對你所屬單位的 SOP 撰寫有何啟發？",
+   "en": "Why did TR 33 place the statistical detail in a separate appendix rather than write it directly into the validation sections of the main text? What does this structure suggest for how you write SOPs in your own organization?"
+  },
+  {
+   "zh": "若貴公司內部沒有專職統計師，你會如何規劃「必要時諮詢統計專家」的品質管理流程（例如寫入 QMS 的哪一層文件）？",
+   "en": "If your company has no full-time statistician, how would you plan a quality management process for \"consulting a statistical expert when necessary\" (for example, in which tier of QMS documents would you write it)?"
+  },
+  {
+   "zh": "<strong>9.1 False-Positive Rates for Qualitative Alternative/Rapid Microbiological Methods 定性替代/快速微生物學方法之偽陽性率</strong>",
+   "en": "<strong>9.1 False-Positive Rates for Qualitative Alternative/Rapid Microbiological Methods</strong>"
+  },
+  {
+   "zh": "<strong>False-Positive Rate (偽陽性率):</strong> 對已知不含活菌的空白樣本（blank samples）進行測試時，AMM/RMM 錯誤判讀為「陽性」的比例。這是 method suitability（方法適用性）研究的核心指標之一，直接反映方法的特異性（specificity）。",
+   "en": "<strong>False-Positive Rate:</strong> The proportion of blank samples known to contain no viable organisms that the AMM/RMM wrongly reads as \"positive\". It is one of the core metrics of a method suitability study and directly reflects the specificity of the method."
+  },
+  {
+   "zh": "<strong>Blank Samples (空白樣本):</strong> 經確認不含活性微生物的對照樣本，用於評估方法本身的背景干擾訊號（background interference signal），而非用於評估偵測能力。",
+   "en": "<strong>Blank Samples:</strong> Control samples confirmed to contain no viable microorganisms. They are used to assess the background interference signal of the method itself, not its detection capability."
+  },
+  {
+   "zh": "偽陽性率的概念就像機場的金屬探測門——即使沒有攜帶任何違禁品的旅客通過，探測門偶爾仍可能因為皮帶扣、拉鍊而「誤鳴」。這種誤鳴率必須被量化並控制在可接受範圍內，而非要求「零誤鳴」，因為過度追求零誤鳴（極高靈敏度）反而可能犧牲對真正違禁品的偵測能力。",
+   "en": "The false-positive rate is like the metal detector at an airport: even a passenger carrying no prohibited items may occasionally set it off because of a belt buckle or a zipper. This false-alarm rate must be quantified and kept within an acceptable range rather than required to be \"zero\", because chasing zero false alarms (extremely high sensitivity) may actually sacrifice the ability to detect real prohibited items."
+  },
+  {
+   "zh": "原文特別強調：「some level of false positives may be acceptable（一定程度的偽陽性可能是可接受的）」——這與無菌測試中「零容忍偽陽性」的直覺不同。關鍵在於偽陽性率的資訊將如何被使用（例如訂定 baseline 或 signal-to-noise ratio），而非單純以「有沒有偽陽性」作二分判斷。這呼應 Section 5.3.2 對訊號雜訊比的討論，規劃驗證方案時應交叉參照。",
+   "en": "The original text specifically stresses that \"some level of false positives may be acceptable\". This differs from the intuition of \"zero tolerance for false positives\" in sterility testing. What matters is how the false-positive rate information will be used (for example, to set a baseline or a signal-to-noise ratio), rather than a simple yes/no judgment on whether any false positive occurred. This echoes the discussion of signal-to-noise ratio in Section 5.3.2, and the two should be cross-referenced when planning the validation program."
+  },
+  {
+   "zh": "為什麼「偽陽性率為零」不一定是驗證 AMM/RMM 時最理想的目標？過度追求零偽陽性可能付出什麼代價？",
+   "en": "Why is a \"zero false-positive rate\" not necessarily the ideal goal when validating an AMM/RMM? What might it cost to chase zero false positives too hard?"
+  },
+  {
+   "zh": "貴實驗室目前的 AMM/RMM（或既有 EM 快速檢測系統）是否曾記錄過空白樣本的偽陽性數據？這些數據足以支撐後續統計分析嗎？",
+   "en": "Has your laboratory's current AMM/RMM (or any existing rapid EM detection system) ever recorded false-positive data for blank samples? Are those data sufficient to support the subsequent statistical analysis?"
+  },
+  {
+   "zh": "<strong>9.1.1 Estimation and Confidence Intervals 估計值與信賴區間</strong>",
+   "en": "<strong>9.1.1 Estimation and Confidence Intervals</strong>"
+  },
+  {
+   "zh": "<strong>Point Estimate（點估計）vs. Confidence Interval（信賴區間, CI）:</strong> 1/20 = 5% 只是「這一次實驗」觀察到的點估計值；若重複實驗，每次都可能得到不同但同樣有效的偽陽性率。95% CI 的作用，是不必真的重複實驗，就能用統計理論量化「真實偽陽性率」最可能落在的範圍。",
+   "en": "<strong>Point Estimate vs. Confidence Interval (CI):</strong> 1/20 = 5% is only the point estimate observed in \"this one experiment\"; if the experiment were repeated, each run could give a different but equally valid false-positive rate. The role of the 95% CI is to use statistical theory to quantify the range in which the \"true false-positive rate\" most likely lies, without actually having to repeat the experiment."
+  },
+  {
+   "zh": "<strong>Asymptotic / Wald CI（漸近／Wald 信賴區間）:</strong> 以常態分布（normal approximation）近似二項分布所建構的信賴區間，公式簡單、可手算，但在小樣本或極端比例（接近 0 或 1）時準確度不佳。",
+   "en": "<strong>Asymptotic / Wald CI:</strong> A confidence interval built by approximating the binomial distribution with a normal distribution (normal approximation). The formula is simple and can be calculated by hand, but it is not accurate for small samples or extreme proportions (close to 0 or 1)."
+  },
+  {
+   "zh": "<strong>Exact / Clopper-Pearson CI（精確／Clopper-Pearson 信賴區間）:</strong> 直接以二項分布（binomial distribution）為基礎推導，公式複雜但在小樣本情境下更為準確，是 TR 33 推薦的預設方法。",
+   "en": "<strong>Exact / Clopper-Pearson CI:</strong> Derived directly from the binomial distribution. The formula is complex, but it is more accurate in small-sample situations and is the default method recommended by TR 33."
+  },
+  {
+   "zh": "信賴區間就像天氣預報的「降雨機率區間」——氣象局不會說「明天絕對會下雨」，而是說「明天降雨機率的合理範圍是 0%–14.6%（95% 信心）」。實驗次數越少（樣本數越小）或要求的信心程度越高，這個範圍就必須越寬，才能涵蓋各種可能的真實情況；反之，若堅持要 100% 確定真實值，就必須做近乎無限大的實驗，這在現實中不可行。",
+   "en": "A confidence interval is like the \"range of rain probability\" in a weather forecast: the weather bureau does not say \"it will definitely rain tomorrow\", but rather \"the reasonable range for the probability of rain tomorrow is 0%-14.6% (95% confidence)\". The fewer the trials (the smaller the sample size), or the higher the confidence level demanded, the wider the range must be to cover all the possible true situations; conversely, insisting on 100% certainty about the true value would require a practically infinite number of experiments, which is not feasible."
+  },
+  {
+   "zh": "Wald CI 與 Exact CI 的差異，好比用「捲尺目測」與「雷射測距儀」量測一段極短的距離：捲尺（Wald，常態近似）在測量大範圍距離時夠用又快速，但測量極短距離（小樣本、事件數趨近於零）時誤差比例會被放大甚至出現負值（如本例下限低於 0，需要截斷為 0）；雷射測距儀（Exact，二項分布）雖然計算更複雜，但在極短距離下依然準確可靠。",
+   "en": "The difference between the Wald CI and the Exact CI is like measuring a very short distance with a \"tape measure and the naked eye\" versus a \"laser rangefinder\". The tape measure (Wald, normal approximation) is quick and good enough for large distances, but for very short distances (small sample, event count near zero) the proportional error is magnified and may even produce negative values (as in this example, where the lower limit falls below 0 and has to be truncated to 0). The laser rangefinder (Exact, binomial distribution) is more complex to operate, but remains accurate and reliable at very short distances."
+  },
+  {
+   "zh": "Wald CI 出現「下限為負」的現象（本例中下限需截斷為 0），正是其在小樣本、低事件數情境下失效的典型徵兆。TR 33 明確指出：樣本數應大於約 50、且陽性事件數應大於約 5，Wald CI 才算適用；本例僅 20 個樣本、1 個陽性事件，遠低於此門檻，因此 Wald 的 (0, 0.146) 區間不應作為最終驗證依據。",
+   "en": "The Wald CI giving a negative lower limit (here the lower limit must be truncated to 0) is a typical sign that it fails in small-sample, low-event situations. TR 33 states clearly that the Wald CI is only applicable when the sample size is greater than about 50 and the number of positive events is greater than about 5. This example has only 20 samples and 1 positive event, far below the threshold, so the Wald interval of (0, 0.146) should not be used as the final basis for validation."
+  },
+  {
+   "zh": "比較兩種區間：Wald 給出 (0, 0.146)，Exact 給出 (0.001, 0.249)——Exact 區間的上限明顯更寬（24.9% vs 14.6%），代表 Wald 低估了不確定性。若稽核單位或客戶依賴較窄的 Wald 區間做決策，可能對方法的實際偽陽性風險過度樂觀。TR 33 建議：估計偽陽性率時應優先採用 Exact CI，而非 Wald CI。",
+   "en": "Comparing the two intervals: the Wald CI gives (0, 0.146) and the Exact CI gives (0.001, 0.249). The upper limit of the Exact interval is clearly wider (24.9% vs. 14.6%), which means the Wald CI underestimates the uncertainty. If an auditor or customer relies on the narrower Wald interval to make decisions, they may be overly optimistic about the actual false-positive risk of the method. TR 33 recommends using the Exact CI rather than the Wald CI when estimating the false-positive rate."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "變數定義：",
+   "en": "Variable definitions:"
+  },
+  {
+   "zh": "<strong>p_A</strong> = AMM/RMM 的偽陽性率（本例 = 1/20 = 0.05）",
+   "en": "<strong>p_A</strong> = false-positive rate of the AMM/RMM (in this example = 1/20 = 0.05)"
+  },
+  {
+   "zh": "<strong>n</strong> = 測試樣本數（本例 = 20）",
+   "en": "<strong>n</strong> = number of test samples (in this example = 20)"
+  },
+  {
+   "zh": "<strong>1.96</strong> = 標準常態分布對應 95% 信心水準的臨界值",
+   "en": "<strong>1.96</strong> = critical value of the standard normal distribution for the 95% confidence level"
+  },
+  {
+   "zh": "<strong>代入計算：</strong> 0.05 ± 1.96 × sqrt(0.05 × 0.95 / 20) = 0.05 ± 0.0956 → 下限為負，截斷為 0 → 區間 = <strong>(0, 0.146)</strong>",
+   "en": "<strong>Calculation:</strong> 0.05 ± 1.96 × sqrt(0.05 × 0.95 / 20) = 0.05 ± 0.0956 → lower limit is negative, truncated to 0 → interval = <strong>(0, 0.146)</strong>"
+  },
+  {
+   "zh": "<strong>Exact (Clopper-Pearson) 95% Confidence Interval：</strong>基於二項分布之精確反函數推導，公式複雜、不建議手算，須以統計軟體（Minitab、R、SAS 等）計算。本例結果為 <strong>(0.001, 0.249)</strong>。",
+   "en": "<strong>Exact (Clopper-Pearson) 95% Confidence Interval:</strong> Derived from the exact inverse of the binomial distribution. The formula is complex and not recommended for hand calculation; statistical software (Minitab, R, SAS, etc.) should be used. The result for this example is <strong>(0.001, 0.249)</strong>."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "假設 Amaran 為某客戶執行一款 AMM/RMM 快速無菌測試平台的方法適用性研究，測試 20 個空白樣本，其中 1 個呈陽性。若僅以 Wald CI 計算並向客戶回報「偽陽性率上限為 14.6%」，此數字可能低估真實風險；正確做法應改用 Exact CI 回報「上限為 24.9%」，並在驗證報告中明確說明選擇 Exact CI 而非 Wald CI 的統計理由（樣本數與事件數皆低於 Wald 適用門檻），以避免稽核時被要求重新分析。",
+   "en": "Suppose Amaran is carrying out a method suitability study for a customer on an AMM/RMM rapid sterility test platform, testing 20 blank samples, of which 1 is positive. If only the Wald CI is calculated and \"an upper limit of 14.6% for the false-positive rate\" is reported to the customer, this figure may underestimate the true risk. The correct approach is to use the Exact CI and report \"an upper limit of 24.9%\", and to state clearly in the validation report the statistical reason for choosing the Exact CI over the Wald CI (both the sample size and the number of events are below the threshold for applying the Wald CI), so as to avoid being asked to reanalyze the data during an audit."
+  },
+  {
+   "zh": "為什麼樣本數與陽性事件數偏低時，Wald CI 會系統性低估真實的不確定性範圍？",
+   "en": "Why does the Wald CI systematically underestimate the true range of uncertainty when the sample size and the number of positive events are low?"
+  },
+  {
+   "zh": "如果驗證報告中只呈現點估計值（5%）而未附上信賴區間，可能造成什麼樣的誤導或稽核缺失？",
+   "en": "If a validation report presents only the point estimate (5%) without a confidence interval, what misleading impressions or audit deficiencies might result?"
+  },
+  {
+   "zh": "你會如何向不熟悉統計的內部稽核員，用一句話解釋「Exact CI 比 Wald CI 更保守、也更適合小樣本」？",
+   "en": "How would you explain to an internal auditor unfamiliar with statistics, in one sentence, that \"the Exact CI is more conservative than the Wald CI and better suited to small samples\"?"
+  },
+  {
+   "zh": "<strong>9.1.2 Sample Size Considerations When Estimating False-Positive Rates 估計偽陽性率時之樣本數考量</strong>",
+   "en": "<strong>9.1.2 Sample Size Considerations When Estimating False-Positive Rates</strong>"
+  },
+  {
+   "zh": "<strong>樣本數與信賴區間寬度的關係:</strong> 若需要更窄（更精確）的信賴區間，唯一的解法是增加測試樣本數。Table 9.1.2-1 提供了「當實驗中完全沒有出現陽性結果時」，不同樣本數所對應的偽陽性率 95% 上限（UCL）。",
+   "en": "<strong>Relationship between sample size and confidence interval width:</strong> If a narrower (more precise) confidence interval is needed, the only solution is to increase the number of test samples. Table 9.1.2-1 gives the 95% upper limit (UCL) of the false-positive rate for different sample sizes \"when the experiment contains no positive results at all\"."
+  },
+  {
+   "zh": "這就像民調機構要縮小「誤差範圍（margin of error）」，唯一辦法就是訪問更多受訪者——訪問 5 人得到的誤差範圍必然遠大於訪問 300 人。Table 9.1.2-1 正是微生物版本的「樣本數 vs. 誤差範圍」對照表：測試樣本數從 5 增加到 300，在全部呈陰性的前提下，偽陽性率的 95% 上限則從 45.1% 一路收斂到 0.99%。",
+   "en": "This is like a polling organization trying to reduce its \"margin of error\": the only way is to interview more respondents, since interviewing 5 people will inevitably give a far larger margin of error than interviewing 300. Table 9.1.2-1 is the microbiological version of a \"sample size vs. margin of error\" table: as the number of test samples increases from 5 to 300, provided all are negative, the 95% upper limit of the false-positive rate narrows from 45.1% down to 0.99%."
+  },
+  {
+   "zh": "Table 9.1.2-1 有一個關鍵前提：「when the experiment does not contain any positive results（假設實驗全數呈陰性）」。一旦出現任何一個陽性結果，UCL 就會顯著上升（如 Section 9.1.1 中 20 個樣本、1 個陽性的 Exact CI 上限是 24.9%，遠高於全陰性時 20 個樣本對應的 13.9%）。規劃驗證方案樣本數時，務必以「最壞情境（可能出現 1 次陽性）」預留緩衝，而非僅套用全陰性情境的樣本數。",
+   "en": "Table 9.1.2-1 rests on one key premise: \"when the experiment does not contain any positive results\" (all results are negative). As soon as any positive result appears, the UCL rises significantly (for example, in Section 9.1.1 the Exact CI upper limit for 20 samples with 1 positive is 24.9%, far higher than the 13.9% for 20 samples that are all negative). When planning the sample size for a validation program, always build in a buffer for the \"worst case (one positive may occur)\" rather than simply applying the sample size for the all-negative scenario."
+  },
+  {
+   "zh": "原文提供的實例極具參考價值：若要證明偽陽性率低於 1%（95% 信心），需測試 300 個空白樣本且全數陰性；若僅測試 30 個樣本且全陰性，則偽陽性率上限僅能宣稱不高於 9.5%。這對規劃驗證資源（檢體量、時程、成本）有直接的商業影響——越嚴格的偽陽性率宣稱，需要指數級增加的樣本投入。",
+   "en": "The example given in the original text is very instructive: to demonstrate a false-positive rate below 1% (95% confidence), 300 blank samples must be tested and all must be negative; if only 30 samples are tested and all are negative, the upper limit can only be claimed as no higher than 9.5%. This has a direct commercial impact on planning validation resources (sample quantity, schedule, cost): the stricter the false-positive rate claim, the more the required sample input rises, and not in a linear way."
+  },
+  {
+   "zh": "<strong>給定目標偽陽性率上限 p，反推所需最小樣本數 n（假設全部樣本皆為陰性）：</strong>",
+   "en": "<strong>Given a target upper limit p for the false-positive rate, work back to the minimum sample size n required (assuming all samples are negative):</strong>"
+  },
+  {
+   "zh": "<strong>p</strong> = 可接受的最大偽陽性率（例如欲宣稱 &lt;1% 則 p = 0.01）",
+   "en": "<strong>p</strong> = maximum acceptable false-positive rate (for example, to claim &lt;1%, p = 0.01)"
+  },
+  {
+   "zh": "<strong>n</strong> = 需測試且全數為陰性的最小樣本數",
+   "en": "<strong>n</strong> = minimum number of samples that must be tested and all be negative"
+  },
+  {
+   "zh": "<strong>log</strong> = 自然對數（如 Table 9.0-1 所定義）",
+   "en": "<strong>log</strong> = natural logarithm (as defined in Table 9.0-1)"
+  },
+  {
+   "zh": "此公式的信心水準固定為 95%（對應 log(0.05) 中的 0.05 = 1 − 0.95）",
+   "en": "The confidence level in this formula is fixed at 95% (the 0.05 in log(0.05) = 1 − 0.95)"
+  },
+  {
+   "zh": "<strong>反向公式——已知樣本數 n，回推可宣稱的最大偽陽性率上限：</strong>",
+   "en": "<strong>Reverse formula: given the sample size n, work back to the maximum upper limit of the false-positive rate that can be claimed:</strong>"
+  },
+  {
+   "zh": "<strong>範例驗算：</strong>若欲證明偽陽性率 &lt;1%（p = 0.01），代入 n ≥ log(0.05)/log(0.99) ≈ 298.1 → 取整數並依 Table 9.1.2-1 對照，需 <strong>n = 300</strong> 個樣本且全數陰性。反向驗證：n = 30 時，1 − (0.05)^(1/30) ≈ <strong>9.5%</strong>，與表列數值一致。",
+   "en": "<strong>Worked check:</strong> To demonstrate a false-positive rate &lt;1% (p = 0.01), substituting gives n ≥ log(0.05)/log(0.99) ≈ 298.1 → rounded to an integer and checked against Table 9.1.2-1, <strong>n = 300</strong> samples are needed, all negative. Reverse check: for n = 30, 1 − (0.05)^(1/30) ≈ <strong>9.5%</strong>, consistent with the tabulated value."
+  },
+  {
+   "zh": "假設某客戶要求 Amaran 的 AMM/RMM 平台必須證明偽陽性率低於 2%（95% 信心）。以公式反推：n ≥ log(0.05)/log(0.98) ≈ 148.3，故需準備至少 149 個空白樣本並確保全數陰性。若實驗室僅有 30 個空白檢體可用，只能宣稱偽陽性率不高於 9.5%——此時應提前與客戶溝通樣本數與可宣稱指標之間的統計限制，避免驗證計畫書送審後才發現無法達成原訂目標。",
+   "en": "Suppose a customer requires Amaran's AMM/RMM platform to demonstrate a false-positive rate below 2% (95% confidence). Working back with the formula: n ≥ log(0.05)/log(0.98) ≈ 148.3, so at least 149 blank samples must be prepared and all must be confirmed negative. If the laboratory has only 30 blank samples available, it can only claim a false-positive rate no higher than 9.5%. In that case, the statistical limits linking sample size and the claim that can be made should be discussed with the customer early, to avoid discovering only after the validation protocol has been submitted for review that the original target cannot be met."
+  },
+  {
+   "zh": "若客戶要求偽陽性率上限為 0.5%（95% 信心），估算所需的最小空白樣本數，並思考這在實務上是否可行。",
+   "en": "If a customer requires an upper limit of 0.5% for the false-positive rate (95% confidence), estimate the minimum number of blank samples required and consider whether this is practically feasible."
+  },
+  {
+   "zh": "Table 9.1.2-1 的所有數值都假設「實驗全數陰性」，如果測試 50 個樣本中出現 1 個陽性，你會如何調整原本的樣本數規劃或改用哪一種信賴區間方法（提示：回顧 Section 9.1.1 的 Exact CI）？",
+   "en": "All values in Table 9.1.2-1 assume that \"the experiment is entirely negative\". If 1 positive appears among 50 samples tested, how would you adjust the original sample size plan, or which confidence interval method would you switch to (hint: review the Exact CI in Section 9.1.1)?"
+  },
+  {
+   "zh": "從商業角度思考：若客戶要求的偽陽性率宣稱越嚴格，對驗證所需的檢體量、人力與時程會造成什麼樣的非線性成本增加？",
+   "en": "From a business perspective: the stricter the false-positive rate claim required by the customer, what kind of non-linear cost increase will it cause in the sample quantity, manpower, and schedule needed for validation?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Appendix 1（Section 9.0-11.0）是 TR 33 本文統計建議的數學後盾，提供公式、範例數據與軟體對照，讓微生物學家在必要時可諮詢統計師以正確執行分析",
+   "en": "Appendix 1 (Sections 9.0-11.0) is the mathematical backbone of the statistical recommendations in the main body of TR 33. It provides formulas, example data, and software cross-references so that microbiologists can consult a statistician where necessary to carry out the analysis correctly"
+  },
+  {
+   "zh": "Table 9.0-1 建立了貫穿整份附錄的統一符號系統（λ、p、θ、R、LCL/UCL、n、m 等），是閱讀 Section 9.1-11.0 各項統計方法的必備基礎",
+   "en": "Table 9.0-1 establishes the unified symbol system used throughout the appendix (λ, p, θ, R, LCL/UCL, n, m, etc.), which is essential groundwork for reading the statistical methods in Sections 9.1-11.0"
+  },
+  {
+   "zh": "False-positive rate（偽陽性率）以獨立空白樣本的陽性事件比例估計，並非追求「零偽陽性」，而是量化並控制在可接受範圍內",
+   "en": "The false-positive rate is estimated as the proportion of positive events among independent blank samples. The aim is not \"zero false positives\" but to quantify the rate and keep it within an acceptable range"
+  },
+  {
+   "zh": "估計偽陽性率的 95% 信賴區間有兩種主要方法：Asymptotic (Wald) CI 公式簡單但在小樣本/低事件數時失準；Exact (Clopper-Pearson) CI 較準確、為 TR 33 建議的預設做法",
+   "en": "There are two main methods for estimating the 95% confidence interval of the false-positive rate: the asymptotic (Wald) CI has a simple formula but becomes inaccurate with small samples/low event counts; the exact (Clopper-Pearson) CI is more accurate and is the default approach recommended by TR 33"
+  },
+  {
+   "zh": "信賴區間寬度與樣本數呈反向關係——欲宣稱更低的偽陽性率上限，需要以 n ≥ log(0.05)/log(1−p) 計算出遠更大的樣本數（如 &lt;1% 需 300 個全陰性樣本）",
+   "en": "Confidence interval width is inversely related to sample size. To claim a lower upper limit for the false-positive rate, a much larger sample size must be calculated with n ≥ log(0.05)/log(1−p) (for example, &lt;1% requires 300 all-negative samples)"
+  },
+  {
+   "zh": "樣本數規劃應以「可能出現陽性事件」的情境預留緩衝，而非僅套用 Table 9.1.2-1 假設「全數陰性」的最小樣本數",
+   "en": "Sample size planning should build in a buffer for the scenario in which positive events may occur, rather than simply applying the minimum sample size in Table 9.1.2-1, which assumes \"all negative\""
+  }
+ ]
+}

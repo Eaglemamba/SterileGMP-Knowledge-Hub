@@ -1,0 +1,649 @@
+{
+ "source": "section-06-risk-remediation-conclusion.html",
+ "blocks": [
+  {
+   "zh": "風險管理、矯正措施與結論",
+   "en": "Risk Management, Corrective Actions and Conclusion"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "運用 ICH Q9 風險管理原則建立資料完整性（DI）風險矩陣，依資料關鍵性與系統成熟度確立管控優先順序",
+   "en": "Apply ICH Q9 risk management principles to build a data integrity (DI) risk matrix and set control priorities according to data criticality and system maturity"
+  },
+  {
+   "zh": "辨識資料完整性問題的各種發現途徑，並說明初步應對行動的三大關鍵：封鎖（contain）、蒐集（gather）、確認範圍（determine scope）",
+   "en": "Identify the various ways DI issues are discovered, and explain the three key initial actions: contain, gather and determine scope"
+  },
+  {
+   "zh": "描述 DI 違規調查的完整架構，包括：獨立性原則、員工訪談、調查文件保密要求",
+   "en": "Describe the full structure of a DI breach investigation, including the independence principle, employee interviews and confidentiality requirements for investigation documents"
+  },
+  {
+   "zh": "設計全面性評估（Comprehensive Assessment, CA）的範疇，區分系統性違規與個別事件，並規劃適當的回顧性審查",
+   "en": "Design the scope of a Comprehensive Assessment (CA), distinguish systemic breaches from isolated events, and plan an appropriate retrospective review"
+  },
+  {
+   "zh": "制定符合法規審查標準的 CAPA 計畫，涵蓋產品影響評估、SOP 修訂、人員管理、系統升級及持續培訓等要素",
+   "en": "Develop a CAPA plan that meets regulatory review standards, covering product impact assessment, SOP revision, personnel management, system upgrades and ongoing training"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：DI 風險管理的法規基礎",
+   "en": "Key Concept: The Regulatory Basis of DI Risk Management"
+  },
+  {
+   "zh": "本節直接援引 <strong>ICH Q9 品質風險管理</strong>原則，確立一個重要邏輯：<em>管控力度必須與資料對病人安全的關鍵程度相稱</em>。這意味著並非所有資料都需要相同等級的管控，而是應根據風險高低分配資源。",
+   "en": "This section draws directly on the principles of <strong>ICH Q9 Quality Risk Management</strong> and establishes an important logic: <em>the strength of controls must be commensurate with how critical the data are to patient safety</em>. This means not all data need the same level of control; resources should be allocated according to the level of risk."
+  },
+  {
+   "zh": "三個核心風險維度：",
+   "en": "Three core risk dimensions:"
+  },
+  {
+   "zh": "資料對病人安全的<strong>關鍵性</strong>（Criticality）",
+   "en": "The <strong>criticality</strong> of the data to patient safety (Criticality)"
+  },
+  {
+   "zh": "資料正確性受損的<strong>風險</strong>（Accuracy risk）",
+   "en": "The <strong>risk</strong> that data accuracy is compromised (Accuracy risk)"
+  },
+  {
+   "zh": "資料被<strong>偽造或竄改</strong>的可能性（Fabrication / Falsification）",
+   "en": "The likelihood that data are <strong>fabricated or falsified</strong> (Fabrication / Falsification)"
+  },
+  {
+   "zh": "比喻說明：機場安檢的比例原則",
+   "en": "Analogy: The Proportionality Principle of Airport Security"
+  },
+  {
+   "zh": "ICH Q9 在 DI 的應用就像機場安檢分級：頭等艙不一定比經濟艙安全要求更嚴，<em>但攜帶危險物品的乘客</em>才是篩查重點。同理，無菌測試（CQA）失誤直接影響病人安全，理應受到最嚴格的雙人驗證；而非無菌產品的一般環境監測則可接受較輕量的管控。",
+   "en": "Applying ICH Q9 to DI is like tiered airport security: first-class passengers are not necessarily screened less strictly than economy passengers, <em>but passengers carrying dangerous items</em> are the screening focus. Likewise, an error in sterility testing (a CQA) directly affects patient safety and rightly warrants the strictest second-person verification, whereas routine environmental monitoring of non-sterile products can accept lighter controls."
+  },
+  {
+   "zh": "重點提示：紙本資料同樣需要風險評估",
+   "en": "Key Note: Paper Data Also Need Risk Assessment"
+  },
+  {
+   "zh": "TR80 特別強調，<strong>紙本資料</strong>的風險評估不可忽略。評估重點：",
+   "en": "TR80 specifically stresses that risk assessment of <strong>paper data</strong> must not be overlooked. Assessment focus:"
+  },
+  {
+   "zh": "追溯性（Traceability）：是否可追蹤記錄的建立過程？",
+   "en": "Traceability: can the creation of the record be traced?"
+  },
+  {
+   "zh": "核對（Reconciliation）：記錄是否可與原始來源對帳？",
+   "en": "Reconciliation: can the record be reconciled with the original source?"
+  },
+  {
+   "zh": "原始性驗證（Authentication）：是否有機制確認原始記錄未被置換？",
+   "en": "Authentication: is there a mechanism to confirm that the original record has not been replaced?"
+  },
+  {
+   "zh": "思考練習",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "您的實驗室剛完成 HPLC 系統的 21 CFR Part 11 稽核，發現審計追蹤功能可被系統管理員停用。這屬於哪一層風險？您會建議進行什麼樣的風險評估？",
+   "en": "Your laboratory has just completed a 21 CFR Part 11 audit of the HPLC system and found that the audit trail function can be disabled by the system administrator. What level of risk is this? What kind of risk assessment would you recommend?"
+  },
+  {
+   "zh": "風險矩陣架構：DI 管控優先序",
+   "en": "Risk Matrix Structure: DI Control Priorities"
+  },
+  {
+   "zh": "TR80 Figure 7.2-1 提供一個雙軸風險矩陣：",
+   "en": "TR80 Figure 7.2-1 provides a two-axis risk matrix:"
+  },
+  {
+   "zh": "縱軸（資料蒐集方式）：\n  高風險 → 人工觀察記錄（Conventional / Manual）\n  中風險 → 快速無菌測試（Rapid Sterility）\n  低風險 → 自動化 / 電子記錄（Automated / Electronic）\n\n橫軸（資料關鍵性）：\n  左 → IPC / Other（製程管控 / 其他）\n  中 → CPC（關鍵製程管控）\n  右 → CQA（關鍵品質屬性）\n\n調節因子：\n  強 QMS → 整體風險下降（向左下移動）\n  弱 QMS → 整體風險上升（向右上移動）",
+   "en": "Vertical axis (data collection method):\n  High risk → manually observed records (Conventional / Manual)\n  Medium risk → rapid sterility testing (Rapid Sterility)\n  Low risk → automated / electronic records (Automated / Electronic)\n\nHorizontal axis (data criticality):\n  Left → IPC / Other (in-process control / other)\n  Middle → CPC (critical process control)\n  Right → CQA (critical quality attribute)\n\nModifying factor:\n  Strong QMS → overall risk decreases (moves toward lower left)\n  Weak QMS → overall risk increases (moves toward upper right)"
+  },
+  {
+   "zh": "矩陣交叉點決定是否需要<strong>第二人驗證（Second-person verification）</strong>：高資料關鍵性 + 人工記錄 → 必須強制雙人確認。",
+   "en": "The intersection point in the matrix determines whether <strong>second-person verification</strong> is needed: high data criticality + manual records → two-person confirmation is mandatory."
+  },
+  {
+   "zh": "核心概念：降低微生物實驗室 DI 風險的四種策略",
+   "en": "Key Concept: Four Strategies to Reduce DI Risk in the Microbiology Laboratory"
+  },
+  {
+   "zh": "<strong>自動化讀板器（Automated plate readers）</strong>：產生可稽查的電子記錄，消除人工抄錄誤差",
+   "en": "<strong>Automated plate readers:</strong> generate auditable electronic records and eliminate manual transcription errors"
+  },
+  {
+   "zh": "<strong>快速檢測方法（Rapid methods）</strong>：如 ATP 生物冷光，具備時間戳記與稽核追蹤",
+   "en": "<strong>Rapid methods:</strong> such as ATP bioluminescence, with time stamps and audit trails"
+  },
+  {
+   "zh": "<strong>數位時間戳攝影（Timestamped photography）</strong>：作為人工計數的佐證",
+   "en": "<strong>Timestamped photography:</strong> serves as supporting evidence for manual counts"
+  },
+  {
+   "zh": "<strong>強健的 PQS</strong>：包含有效的內部稽核、QU 的實驗室存在感、定期文件審查",
+   "en": "<strong>A robust PQS:</strong> including effective internal audits, QU presence in the laboratory and periodic document review"
+  },
+  {
+   "zh": "比喻說明：菌落計數的可驗證性困境",
+   "en": "Analogy: The Verifiability Dilemma of Colony Counting"
+  },
+  {
+   "zh": "微生物菌落計數就像快艇比賽的計時——如果裁判只有一人且沒有照片，結果容易被質疑。引入自動化讀板器就像裝設感應計時系統：數據自動產生、時間戳記不可竄改，DI 風險從根本消除。這正是 TR80 鼓勵<em>以技術降低風險</em>的核心邏輯。",
+   "en": "Microbial colony counting is like timing a speedboat race: if there is only one referee and no photographs, the result is easily challenged. Introducing an automated plate reader is like installing an electronic timing system: data are generated automatically, time stamps cannot be tampered with, and the DI risk is eliminated at its root. This is the core logic of TR80's encouragement to <em>reduce risk through technology</em>."
+  },
+  {
+   "zh": "重點提示：PQS 強弱是 DI 風險的乘數",
+   "en": "Key Note: PQS Strength Is a Multiplier of DI Risk"
+  },
+  {
+   "zh": "技術工具固然重要，但 TR80 明確指出：<strong>薄弱的藥品品質系統（PQS）會放大一切 DI 風險</strong>。即使擁有最先進的 LIMS，若缺乏有效的稽核程序與 QU 監督，DI 漏洞仍會被放大。相對地，強健的 PQS 可以在技術解決方案不可得的情況下，通過管理手段有效降低風險。",
+   "en": "Technical tools matter, but TR80 states clearly: <strong>a weak pharmaceutical quality system (PQS) magnifies every DI risk</strong>. Even with the most advanced LIMS, DI gaps will be amplified if there are no effective audit procedures and QU oversight. Conversely, a robust PQS can effectively reduce risk through administrative means where technical solutions are not available."
+  },
+  {
+   "zh": "思考練習：建立您自己的 DI 風險矩陣",
+   "en": "Practice: Build Your Own DI Risk Matrix"
+  },
+  {
+   "zh": "請為以下三個測試項目，在 Figure 7.2-1 的矩陣中定位並決定是否需要第二人驗證：",
+   "en": "For the following three tests, place each in the Figure 7.2-1 matrix and decide whether second-person verification is needed:"
+  },
+  {
+   "zh": "無菌檢測（人工觀察，強 QMS）",
+   "en": "Sterility test (manual observation, strong QMS)"
+  },
+  {
+   "zh": "環境監測（自動化空氣採樣器，強 QMS）",
+   "en": "Environmental monitoring (automated air sampler, strong QMS)"
+  },
+  {
+   "zh": "非無菌產品環境監測（人工計數，弱 QMS）",
+   "en": "Environmental monitoring of a non-sterile product (manual counting, weak QMS)"
+  },
+  {
+   "zh": "核心概念：DI 問題的四種發現途徑",
+   "en": "Key Concept: Four Ways DI Issues Are Discovered"
+  },
+  {
+   "zh": "<strong>自我揭露（Self-reporting）</strong>：通常源自誠信文化良好的組織；員工主動揭報可疑情況",
+   "en": "<strong>Self-reporting:</strong> usually arises in organizations with a good culture of integrity; employees proactively report suspicious situations"
+  },
+  {
+   "zh": "<strong>資料審查（Data review）</strong>：QU 例行性資料審查發現異常",
+   "en": "<strong>Data review:</strong> routine QU data review finds an anomaly"
+  },
+  {
+   "zh": "<strong>內部稽核（Internal audit）</strong>：計畫性稽核中發現系統性問題",
+   "en": "<strong>Internal audit:</strong> a planned audit finds a systemic problem"
+  },
+  {
+   "zh": "<strong>法規查驗（Regulatory inspection）</strong>：FDA / EMA 查廠時發現——此時已是最壞的情況",
+   "en": "<strong>Regulatory inspection:</strong> found by FDA / EMA during an inspection - by then it is already the worst case"
+  },
+  {
+   "zh": "最理想的狀況是問題在<em>自我揭露階段</em>就被發現；最糟的情況是由法規機關在查廠中首先發現。",
+   "en": "The ideal situation is for the problem to be found at the <em>self-reporting stage</em>; the worst is for it to be found first by a regulatory authority during an inspection."
+  },
+  {
+   "zh": "核心概念：發現後的初步三步驟",
+   "en": "Key Concept: The Three Initial Steps After Discovery"
+  },
+  {
+   "zh": "TR80 明確指出三個比例性初步行動：",
+   "en": "TR80 identifies three proportionate initial actions:"
+  },
+  {
+   "zh": "<strong>封鎖（Contain）</strong>：防止問題擴散或資料被進一步竄改",
+   "en": "<strong>Contain:</strong> prevent the problem from spreading or the data from being further manipulated"
+  },
+  {
+   "zh": "<strong>蒐集（Gather）</strong>：收集確認事件細節所需的所有資料",
+   "en": "<strong>Gather:</strong> collect all the information needed to confirm the details of the event"
+  },
+  {
+   "zh": "<strong>確認範圍（Determine scope）</strong>：釐清影響的時間範圍、人員、產品批號",
+   "en": "<strong>Determine scope:</strong> clarify the affected time period, personnel and product batches"
+  },
+  {
+   "zh": "重點提示：調查獨立性與保密性的雙重要求",
+   "en": "Key Note: The Dual Requirement of Investigation Independence and Confidentiality"
+  },
+  {
+   "zh": "<strong>獨立性（Independence）</strong>：訪談者必須來自被調查單位以外，避免利益衝突。",
+   "en": "<strong>Independence:</strong> the interviewer must come from outside the unit under investigation to avoid conflicts of interest."
+  },
+  {
+   "zh": "<strong>保密性（Confidentiality）</strong>：調查進行中，涉及人員身份的部分應在 QMS 內保密。原因有三：",
+   "en": "<strong>Confidentiality:</strong> while the investigation is under way, the identities of the people involved should be kept confidential within the QMS. There are three reasons:"
+  },
+  {
+   "zh": "防止打擊報復（Retaliation）",
+   "en": "Prevent retaliation (Retaliation)"
+  },
+  {
+   "zh": "促進開放溝通（Open communication）",
+   "en": "Promote open communication (Open communication)"
+  },
+  {
+   "zh": "避免調查阻礙（Investigation roadblocks）",
+   "en": "Avoid investigation roadblocks (Investigation roadblocks)"
+  },
+  {
+   "zh": "注意：保密性並不代表調查結果不需文件化，最終仍須完整記錄於品質系統中。",
+   "en": "Note: confidentiality does not mean the investigation outcome need not be documented; it must ultimately be fully recorded in the quality system."
+  },
+  {
+   "zh": "比喻說明：領導文化是 DI 違規的溫床",
+   "en": "Analogy: Leadership Culture Is a Breeding Ground for DI Breaches"
+  },
+  {
+   "zh": "TR80 用了相當直接的語言指出：<em>管理層可能（有意或無意地）創造一種「業績壓力超越合規要求」的環境</em>。這就像一個公司文化中，「趕上市時程」比「確保測試正確」更受獎勵時，個別員工被迫在合規與求生存之間做選擇。承認這種文化風險，才能設計出真正有效的資料治理系統。",
+   "en": "TR80 states quite directly that <em>management may (intentionally or unintentionally) create an environment in which \"performance pressure outweighs compliance requirements\"</em>. It is like a company culture in which \"meeting the launch schedule\" is rewarded more than \"making sure the testing is correct\", so that individual employees are forced to choose between compliance and survival. Only by acknowledging this cultural risk can a truly effective data governance system be designed."
+  },
+  {
+   "zh": "您的品保部門在例行資料審查中發現，某分析師在過去六個月內有 12 次 OOS 結果從 LIMS 系統中被刪除。這屬於哪種發現途徑？初步三步驟各應如何執行？",
+   "en": "During routine data review, your QA department finds that an analyst had 12 OOS results deleted from the LIMS over the past six months. Which discovery route is this? How would each of the three initial steps be carried out?"
+  },
+  {
+   "zh": "重點提示：無法達到 100% 確定性時的正確做法",
+   "en": "Key Note: The Right Approach When 100% Certainty Cannot Be Reached"
+  },
+  {
+   "zh": "TR80 承認一個務實現實：當審計追蹤功能從未啟用時，你<em>永遠無法 100% 確認</em>資料是否在該期間被竄改。此時的正確行動邏輯是：",
+   "en": "TR80 acknowledges a practical reality: when the audit trail has never been enabled, you can <em>never be 100% sure</em> whether data were manipulated during that period. The correct logic for action is then:"
+  },
+  {
+   "zh": "立即修補漏洞（防止未來被利用）",
+   "en": "Fix the vulnerability immediately (to prevent future exploitation)"
+  },
+  {
+   "zh": "執行可能範圍內的回顧性審查",
+   "en": "Carry out a retrospective review to the extent possible"
+  },
+  {
+   "zh": "訪談相關人員蒐集佐證",
+   "en": "Interview relevant personnel to gather corroborating evidence"
+  },
+  {
+   "zh": "文件化所有行動與風險評估決策",
+   "en": "Document all actions and risk assessment decisions"
+  },
+  {
+   "zh": "這個「採取最大合理努力」的態度，在法規查廠中具有重要的可信度價值。",
+   "en": "This \"best reasonable effort\" attitude carries significant credibility value during a regulatory inspection."
+  },
+  {
+   "zh": "比喻說明：無人警衛的保全攝影機",
+   "en": "Analogy: The Security Camera Nobody Watches"
+  },
+  {
+   "zh": "啟用後從未被審查的審計追蹤，就像保全室裡沒有人看的攝影機——技術上有記錄，但沒有偵測功能。若攝影機還被管理員關閉過，那就連記錄都沒有。此時即使翻遍所有現存的影像，也無法確認空白期間發生了什麼。TR80 的建議是：<em>承認不確定性，但立即採取行動確保未來的安全</em>。",
+   "en": "An audit trail that is enabled but never reviewed is like a camera in a security room that nobody watches: technically there is a record, but no detection function. If the camera has also been switched off by an administrator, there is not even a record. Even if you go through all the footage that exists, you cannot confirm what happened during the blank period. TR80's advice is: <em>acknowledge the uncertainty, but act immediately to secure the future</em>."
+  },
+  {
+   "zh": "您發現一台 HPLC 的審計追蹤功能在 18 個月前被停用，且在近期系統升級後才重新啟用。這 18 個月期間共釋出 47 批次產品。請問：是否需要回顧性審查？需要考慮哪些因素？",
+   "en": "You find that the audit trail of an HPLC was disabled 18 months ago and was only re-enabled after a recent system upgrade. During those 18 months, 47 batches of product were released. Is a retrospective review needed? What factors should be considered?"
+  },
+  {
+   "zh": "核心概念：全面性評估（CA）的六大範疇要素",
+   "en": "Key Concept: The Six Scope Elements of a Comprehensive Assessment (CA)"
+  },
+  {
+   "zh": "<strong>時間範圍</strong>：違規行為涵蓋的起訖日期",
+   "en": "<strong>Time period:</strong> the start and end dates covered by the breach"
+  },
+  {
+   "zh": "<strong>產品範圍</strong>：哪些產品批號可能受影響",
+   "en": "<strong>Products:</strong> which product batches may be affected"
+  },
+  {
+   "zh": "<strong>資料類型</strong>：HPLC 注射序列數、微生物鑑定記錄數等具體規格",
+   "en": "<strong>Data types:</strong> specifics such as the number of HPLC injection sequences and the number of microbial identification records"
+  },
+  {
+   "zh": "<strong>設備範圍</strong>：HPLC、GC、NIR、FTIR、微生物空氣採樣器等",
+   "en": "<strong>Equipment:</strong> HPLC, GC, NIR, FTIR, microbial air samplers, etc."
+  },
+  {
+   "zh": "<strong>部門範圍</strong>：R&amp;D、穩定性、微生物實驗室，必要時延伸至製造、品管",
+   "en": "<strong>Departments:</strong> R&amp;D, stability, the microbiology laboratory and, where necessary, extending to manufacturing and quality control"
+  },
+  {
+   "zh": "<strong>排除事項的正當性</strong>：任何不納入評估的操作，均需書面說明理由",
+   "en": "<strong>Justification for exclusions:</strong> any operation not included in the assessment requires a written rationale"
+  },
+  {
+   "zh": "重點提示：CA 為何需要獨立第三方？",
+   "en": "Key Note: Why Does a CA Need an Independent Third Party?"
+  },
+  {
+   "zh": "TR80 建議在複雜或嚴重案例中使用<strong>獨立的有能力第三方</strong>執行 CA，原因包括：",
+   "en": "TR80 recommends using an <strong>independent, competent third party</strong> to perform the CA in complex or serious cases, for these reasons:"
+  },
+  {
+   "zh": "消除利益衝突（Conflict of interest）",
+   "en": "Eliminate conflicts of interest (Conflict of interest)"
+  },
+  {
+   "zh": "提供客觀的技術評估能力",
+   "en": "Provide objective technical assessment capability"
+  },
+  {
+   "zh": "增強法規機關的可信度（Credibility to regulators）",
+   "en": "Strengthen credibility with regulators (Credibility to regulators)"
+  },
+  {
+   "zh": "避免「自我調查」的固有限制",
+   "en": "Avoid the inherent limitations of \"self-investigation\""
+  },
+  {
+   "zh": "特別是當管理層可能知情或共謀時，內部調查的公信力嚴重不足。",
+   "en": "In particular, when management may have been aware of or complicit in the breach, the credibility of an internal investigation is severely lacking."
+  },
+  {
+   "zh": "比喻說明：系統性漏洞 vs. 個人行為",
+   "en": "Analogy: Systemic Gaps vs. Individual Behavior"
+  },
+  {
+   "zh": "CA 的關鍵問題不是「誰做了壞事」，而是「什麼樣的系統讓壞事得以發生且未被察覺」。就像飛機失事調查不只是追究飛行員責任，更要找出整個航管系統、設計缺陷、維護程序的漏洞。TR80 的 CA 邏輯同樣如此：<em>找到讓違規「滑溜通過」的制度性缺口</em>，才是矯正的核心。",
+   "en": "The key question of a CA is not \"who did wrong\" but \"what kind of system allowed the wrongdoing to happen and go unnoticed\". Just as an air crash investigation does not stop at the pilot's responsibility but also looks for gaps in the whole air traffic control system, design flaws and maintenance procedures, the TR80 CA logic is the same: <em>finding the systemic gaps that let the breach \"slip through\"</em> is the core of correction."
+  },
+  {
+   "zh": "應用情境：CDMO 場景——分析師偽造 OOS 結果",
+   "en": "Application Scenario: CDMO - An Analyst Falsifies OOS Results"
+  },
+  {
+   "zh": "<strong>情境</strong>：您是一家 CDMO 的 QA 總監。稽核中發現，某分析師在過去一年內多次在 HPLC 軟體中刪除 OOS 序列，並重新執行分析至獲得合格結果，但未按照 OOS 程序進行調查。",
+   "en": "<strong>Scenario:</strong> You are the QA Director of a CDMO. An audit finds that, over the past year, an analyst repeatedly deleted OOS sequences in the HPLC software and re-ran the analysis until a passing result was obtained, without investigating under the OOS procedure."
+  },
+  {
+   "zh": "<strong>CA 設計要點</strong>：",
+   "en": "<strong>CA design points:</strong>"
+  },
+  {
+   "zh": "<strong>時間範圍</strong>：確認該分析師的任職起始日期，CA 應涵蓋其整個任期",
+   "en": "<strong>Time period:</strong> confirm the analyst's employment start date; the CA should cover the whole period of employment"
+  },
+  {
+   "zh": "<strong>資料類型</strong>：所有 HPLC 原始序列檔案（.raw），比對注射記錄與放行記錄",
+   "en": "<strong>Data types:</strong> all raw HPLC sequence files (.raw); compare injection records with release records"
+  },
+  {
+   "zh": "<strong>設備</strong>：該分析師有權操作的所有 HPLC 系統",
+   "en": "<strong>Equipment:</strong> all HPLC systems the analyst was authorized to operate"
+  },
+  {
+   "zh": "<strong>人員</strong>：評估是否有其他分析師或主管知情或共謀",
+   "en": "<strong>Personnel:</strong> assess whether other analysts or supervisors knew of or colluded in the behavior"
+  },
+  {
+   "zh": "<strong>產品影響</strong>：所有受影響批號的重新測試或市場行動評估",
+   "en": "<strong>Product impact:</strong> retesting or market action assessment for all affected batches"
+  },
+  {
+   "zh": "<strong>客戶通知</strong>：CDMO 需評估是否需通知受影響客戶及法規機關（尤其是核准申請中引用的資料）",
+   "en": "<strong>Customer notification:</strong> the CDMO must assess whether the affected customers and regulators need to be notified (especially for data cited in approved applications)"
+  },
+  {
+   "zh": "在上述 CDMO 場景中，若實驗室主管被證實知道該分析師的行為但選擇不上報，CA 的範疇應如何調整？這對矯正計畫（CAPA）的設計有什麼影響？",
+   "en": "In the CDMO scenario above, if the laboratory supervisor is proven to have known of the analyst's behavior but chose not to report it, how should the CA scope be adjusted? What effect does this have on the design of the CAPA?"
+  },
+  {
+   "zh": "重點提示：讓 CAPA 在法規查廠中具有可信度的五個條件",
+   "en": "Key Note: Five Conditions That Make a CAPA Credible in a Regulatory Inspection"
+  },
+  {
+   "zh": "<strong>根本原因驅動</strong>：每項 CAPA 措施都能直接對應到確認的根本原因",
+   "en": "<strong>Root cause driven:</strong> each CAPA measure maps directly to a confirmed root cause"
+  },
+  {
+   "zh": "<strong>可驗證性</strong>：措施的完成狀態可被客觀驗證（如：軟體更新版本、培訓簽到記錄）",
+   "en": "<strong>Verifiability:</strong> the completion status of the measure can be objectively verified (e.g., software update version, training attendance records)"
+  },
+  {
+   "zh": "<strong>時間表承諾</strong>：具體的完成日期，而非模糊的「儘快完成」",
+   "en": "<strong>Timeline commitment:</strong> specific completion dates, rather than a vague \"as soon as possible\""
+  },
+  {
+   "zh": "<strong>全球視角</strong>：評估問題是否僅限於單一廠址，或存在於整個企業體系",
+   "en": "<strong>Global perspective:</strong> assess whether the problem is confined to a single site or exists across the whole enterprise"
+  },
+  {
+   "zh": "<strong>法規機關溝通</strong>：若申請案資料受影響，需主動通知相關法規機關，建立更新通報機制",
+   "en": "<strong>Communication with regulators:</strong> if application data are affected, notify the relevant regulators proactively and establish an update reporting mechanism"
+  },
+  {
+   "zh": "比喻說明：CAPA 不是罰單，是系統重設",
+   "en": "Analogy: A CAPA Is Not a Penalty Ticket, It Is a System Reset"
+  },
+  {
+   "zh": "法規機關審查 CAPA 時，他們真正想看到的不是「我們已處分了那個員工」，而是「我們找到了系統讓一個人能夠輕易犯錯的原因，並從根本上改變了那個系統」。一張將責任推到個人身上的 CAPA，等同於說「我們的系統是好的，只是這個人是壞蘋果」——這對 FDA 審查員而言是最沒有說服力的答案。",
+   "en": "When regulators review a CAPA, what they really want to see is not \"we have disciplined that employee\" but \"we found why our system let one person make mistakes so easily, and we changed that system at its root\". A CAPA that puts the responsibility on an individual is the same as saying \"our system is fine, this person is just a bad apple\", which is the least convincing answer to an FDA investigator."
+  },
+  {
+   "zh": "應用情境：查廠現場如何呈現矯正計畫",
+   "en": "Application Scenario: How to Present the Corrective Plan During an Inspection"
+  },
+  {
+   "zh": "<strong>情境</strong>：FDA 查廠進行中，查廠員要求說明針對資料刪除事件的矯正措施。",
+   "en": "<strong>Scenario:</strong> During an FDA inspection, the investigator asks you to explain the corrective actions for the data deletion event."
+  },
+  {
+   "zh": "<strong>有效呈現策略</strong>：",
+   "en": "<strong>Effective presentation strategy:</strong>"
+  },
+  {
+   "zh": "準備一份<strong>時間軸文件</strong>：發現日期 → 封鎖行動 → CA 完成 → CAPA 實施 → 驗證結果",
+   "en": "Prepare a <strong>timeline document</strong>: discovery date → containment actions → CA completed → CAPA implemented → verification results"
+  },
+  {
+   "zh": "展示<strong>軟體設定變更記錄</strong>：如審計追蹤不可停用的技術鎖定截圖",
+   "en": "Show <strong>software configuration change records</strong>: e.g., screenshots of the technical lock that prevents the audit trail from being disabled"
+  },
+  {
+   "zh": "提供<strong>培訓完成率報告</strong>：包含培訓有效性評估（筆試或行為觀察）",
+   "en": "Provide a <strong>training completion rate report</strong>: including an assessment of training effectiveness (written test or behavioral observation)"
+  },
+  {
+   "zh": "呈現<strong>後期審計追蹤審查結果</strong>：CAPA 實施後無新增異常記錄",
+   "en": "Present <strong>subsequent audit trail review results</strong>: no new anomalous records after CAPA implementation"
+  },
+  {
+   "zh": "說明<strong>全球化評估結論</strong>：問題是否限於此廠址，其他廠址的預防性措施",
+   "en": "Explain the <strong>global assessment conclusion</strong>: whether the problem is confined to this site, and the preventive measures at other sites"
+  },
+  {
+   "zh": "思考練習：評估 CAPA 的完整性",
+   "en": "Practice: Evaluating CAPA Completeness"
+  },
+  {
+   "zh": "一家藥廠在 FDA 警告信後提交了以下 CAPA 回應：「已對相關分析師進行再培訓，並要求其簽署誠信承諾書。」",
+   "en": "After an FDA Warning Letter, a pharmaceutical company submitted the following CAPA response: \"The analyst concerned has been retrained and required to sign an integrity pledge.\""
+  },
+  {
+   "zh": "請從 TR80 的角度分析：這個 CAPA 缺少哪些關鍵要素？若您是 FDA 審查員，您會要求補充什麼？",
+   "en": "From the perspective of TR80, analyze which key elements this CAPA lacks. If you were an FDA investigator, what would you ask to be added?"
+  },
+  {
+   "zh": "核心概念：DI CAPA 的四大維度",
+   "en": "Key Concept: The Four Dimensions of DI CAPA"
+  },
+  {
+   "zh": "TR80 列出的 19 項 CAPA 措施可歸類為四個維度：",
+   "en": "The 19 CAPA measures listed in TR80 can be grouped into four dimensions:"
+  },
+  {
+   "zh": "核心概念：TR80 的三大結論主軸",
+   "en": "Key Concept: The Three Main Themes of the TR80 Conclusion"
+  },
+  {
+   "zh": "<strong>持續警覺（Continuous vigilance）</strong>：資料完整性法規持續演進，企業必須保持對法規動態的敏感度並主動調整內部策略。",
+   "en": "<strong>Continuous vigilance:</strong> data integrity regulations keep evolving, and companies must stay alert to regulatory developments and proactively adjust their internal strategy."
+  },
+  {
+   "zh": "三項基礎要素",
+   "en": "Three Foundational Elements"
+  },
+  {
+   "zh": "頻繁的<strong>內部稽核</strong>",
+   "en": "Frequent <strong>internal audits</strong>"
+  },
+  {
+   "zh": "持續的<strong>分析師培訓</strong>（聚焦法規期望）",
+   "en": "Ongoing <strong>analyst training</strong> (focused on regulatory expectations)"
+  },
+  {
+   "zh": "對<strong>各類系統資料</strong>（簡單 / 混合 / 複雜）的系統性評估",
+   "en": "Systematic assessment of <strong>data from all types of systems</strong> (simple / hybrid / complex)"
+  },
+  {
+   "zh": "<strong>技術進步的雙面性</strong>：自動化改善了電子資料生成與儲存，但微生物實驗室仍大量依賴人工——這是 DI 風險的持續熱點，需要特別關注。",
+   "en": "<strong>The two-sided nature of technological progress:</strong> automation has improved the generation and storage of electronic data, but microbiology laboratories still rely heavily on manual work - this remains a persistent hotspot for DI risk and needs special attention."
+  },
+  {
+   "zh": "重點提示：電腦化系統的四項 DI 關鍵要素",
+   "en": "Key Note: Four Key DI Elements of Computerized Systems"
+  },
+  {
+   "zh": "TR80 在結論中明確點出四個關鍵：",
+   "en": "The TR80 conclusion explicitly names four key elements:"
+  },
+  {
+   "zh": "<strong>伺服器資格確認（Computer server qualification）</strong>",
+   "en": "<strong>Computer server qualification</strong>"
+  },
+  {
+   "zh": "<strong>軟體驗證（Software validation）</strong>",
+   "en": "<strong>Software validation</strong>"
+  },
+  {
+   "zh": "<strong>實驗室設備資格確認（Laboratory equipment qualification）</strong>",
+   "en": "<strong>Laboratory equipment qualification</strong>"
+  },
+  {
+   "zh": "<strong>資料可檢索性（Data retrieval for inspection/review）</strong>",
+   "en": "<strong>Data retrieval for inspection/review</strong>"
+  },
+  {
+   "zh": "這四項涵蓋了硬體、軟體、設備、流程四個層面的系統完整性。",
+   "en": "These four cover system integrity at four levels: hardware, software, equipment and process."
+  },
+  {
+   "zh": "比喻說明：資料完整性的 DI「預防代價」vs. 「違規代價」",
+   "en": "Analogy: The \"Cost of Prevention\" vs. the \"Cost of Breach\" for Data Integrity"
+  },
+  {
+   "zh": "TR80 結尾提到：風險評估的目的是「避免執法行動——警告信、進口警示、拒絕核准申請」。這些後果的代價遠高於建立資料治理系統的投資。就像工廠的安全設備——平時看起來是成本，但一次重大事故的損失（聲譽、罰款、市場準入）可能是預防性投資的百倍。",
+   "en": "TR80 closes by noting that the purpose of risk assessment is \"to avoid enforcement action - Warning Letters, import alerts and refusal to approve applications\". The cost of these consequences far exceeds the investment in a data governance system. It is like safety equipment in a factory: it looks like a cost in normal times, but the loss from one major accident (reputation, fines, market access) can be a hundred times the preventive investment."
+  },
+  {
+   "zh": "思考練習：TR80 的整體學習回顧",
+   "en": "Practice: Overall Learning Review of TR80"
+  },
+  {
+   "zh": "回顧 TR80 全文，從 Section 1–9，請嘗試回答：",
+   "en": "Looking back over the whole of TR80, Sections 1-9, try to answer:"
+  },
+  {
+   "zh": "ALCOA+ 原則在微生物實驗室的最大挑戰是什麼？",
+   "en": "What is the biggest challenge of applying the ALCOA+ principles in the microbiology laboratory?"
+  },
+  {
+   "zh": "電腦化系統的哪三個設定最常出現在 FDA 警告信中？",
+   "en": "Which three computerized system settings most often appear in FDA Warning Letters?"
+  },
+  {
+   "zh": "若您要為您的組織建立一個「資料完整性成熟度路徑圖」，最優先改善的三個領域是什麼？",
+   "en": "If you were to build a \"data integrity maturity roadmap\" for your organization, which three areas would you improve first?"
+  },
+  {
+   "zh": "重點提示：最重要的五個 DI 參考文件",
+   "en": "Key Note: The Five Most Important DI Reference Documents"
+  },
+  {
+   "zh": "若只能精讀五份文件，建議優先順序：",
+   "en": "If you can study only five documents closely, the recommended order of priority is:"
+  },
+  {
+   "zh": "<strong>MHRA GXP DI Guide (2018)</strong>：最完整的 ALCOA+ 定義與實作指引",
+   "en": "<strong>MHRA GXP DI Guide (2018):</strong> the most complete definition and implementation guidance for ALCOA+"
+  },
+  {
+   "zh": "<strong>FDA DI Draft Guidance (2016)</strong>：美國市場合規的直接依據",
+   "en": "<strong>FDA DI Draft Guidance (2016):</strong> the direct basis for compliance in the US market"
+  },
+  {
+   "zh": "<strong>EU GMP Annex 11</strong>：歐盟電腦化系統的法規基礎",
+   "en": "<strong>EU GMP Annex 11:</strong> the regulatory foundation for computerized systems in the EU"
+  },
+  {
+   "zh": "<strong>WHO TRS 996 Annex 5</strong>：全球新興市場的通用標準",
+   "en": "<strong>WHO TRS 996 Annex 5:</strong> a common standard for emerging markets worldwide"
+  },
+  {
+   "zh": "<strong>ICH Q9</strong>：風險管理方法論的基礎，支撐整個第 7 章的邏輯",
+   "en": "<strong>ICH Q9:</strong> the foundation of the risk management methodology, underpinning the logic of the whole of Chapter 7"
+  },
+  {
+   "zh": "比喻說明：法規層級如同交通法規",
+   "en": "Analogy: The Regulatory Hierarchy Is Like Traffic Rules"
+  },
+  {
+   "zh": "21 CFR Part 11 是「法律」——必須遵守，違反即構成違規。FDA Draft Guidance 是「執法說明」——解釋法律如何被解讀執行。GAMP 5 則像「駕駛手冊」——提供最佳實踐的操作建議，不遵守不一定違法，但有助於展示「以業界標準為基礎的合理實踐」。",
+   "en": "21 CFR Part 11 is the \"law\": it must be obeyed, and violating it is a breach. The FDA Draft Guidance is the \"enforcement explanation\": it explains how the law is interpreted and enforced. GAMP 5 is like a \"driver's handbook\": it offers best-practice operating advice, and not following it is not necessarily illegal, but it helps demonstrate \"reasonable practice based on industry standards\"."
+  },
+  {
+   "zh": "思考練習：法規引用策略",
+   "en": "Practice: Regulatory Citation Strategy"
+  },
+  {
+   "zh": "您正在為一家同時向 FDA（美國）和 EMA（歐盟）申請新藥上市的 CDMO 撰寫資料完整性政策文件。在引用參考文獻時，您應如何確保文件能同時滿足兩個法規機關的期望？哪些文獻是「雙邊適用」的？",
+   "en": "You are writing a data integrity policy document for a CDMO that is applying for new drug marketing approval from both FDA (US) and EMA (EU). When citing references, how can you make sure the document meets the expectations of both regulators? Which references apply to both?"
+  },
+  {
+   "zh": "核心概念：TR80 引用文獻的法規層級地圖",
+   "en": "Key Concept: Regulatory Hierarchy Map of the References Cited in TR80"
+  },
+  {
+   "zh": "TR80 的 55 項參考文獻可按法規強制性分級：",
+   "en": "The 55 references in TR80 can be graded by regulatory enforceability:"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>7.0 風險管理</strong>：DI 管控力度應與資料對病人安全的關鍵性相稱（ICH Q9 原則）；風險矩陣以資料關鍵性（CQA/CPC/IPC）為橫軸、資料蒐集方式（人工/快速/自動化）為縱軸，QMS 強弱為調節因子，決定是否需要第二人驗證。",
+   "en": "<strong>7.0 Risk management:</strong> The strength of DI controls should be commensurate with how critical the data are to patient safety (ICH Q9 principle); the risk matrix uses data criticality (CQA/CPC/IPC) as the horizontal axis and data collection method (manual/rapid/automated) as the vertical axis, with QMS strength as the modifying factor, to decide whether second-person verification is needed."
+  },
+  {
+   "zh": "<strong>8.1 發現與初步應對</strong>：DI 問題可由自我揭露、資料審查、內部稽核或法規查廠發現；初步行動三步驟為：封鎖（Contain）→ 蒐集（Gather）→ 確認範圍（Determine scope）。員工訪談應儘早、獨立、保密進行。",
+   "en": "<strong>8.1 Discovery and initial response:</strong> DI issues can be found through self-reporting, data review, internal audit or regulatory inspection; the three initial steps are Contain → Gather → Determine scope. Employee interviews should be conducted early, independently and confidentially."
+  },
+  {
+   "zh": "<strong>8.2 調查考量</strong>：已確認違規需全面調查並評估對已生成資料及決策的影響；識別的「風險」（尚未確認違規）可採比例性調查。無法達到 100% 確定性時，應立即採取行動防止風險被利用並修補系統。",
+   "en": "<strong>8.2 Investigation considerations:</strong> A confirmed breach requires a full investigation and assessment of the impact on data already generated and on decisions made; an identified \"risk\" (a breach not yet confirmed) can be investigated proportionately. When 100% certainty cannot be reached, act immediately to prevent the risk from being exploited and to fix the system."
+  },
+  {
+   "zh": "<strong>8.3 全面性評估（CA）</strong>：CA 需包含時間範圍、產品、資料類型、設備、部門的完整範疇定義，並明確排除事項的理由。重點是識別「讓違規得以發生且未被察覺的流程缺口」，必要時委託獨立第三方執行。",
+   "en": "<strong>8.3 Comprehensive Assessment (CA):</strong> A CA must include a complete scope definition covering time period, products, data types, equipment and departments, and must state the rationale for exclusions. The focus is to identify \"the process gaps that allowed the breach to occur undetected\", using an independent third party where necessary."
+  },
+  {
+   "zh": "<strong>8.4 CAPA 計畫</strong>：CAPA 應基於根本原因，涵蓋產品安全、技術管控、流程管控、文化管控四個維度。有效 CAPA 的五個條件：根本原因驅動、可驗證性、時間表承諾、全球視角、主動與法規機關溝通。",
+   "en": "<strong>8.4 CAPA plan:</strong> A CAPA should be based on root cause and cover four dimensions: product safety, technical controls, process controls and cultural controls. The five conditions of an effective CAPA are: root cause driven, verifiability, timeline commitment, global perspective and proactive communication with regulators."
+  },
+  {
+   "zh": "<strong>9.0 結論</strong>：資料完整性=完整性+一致性+準確性。三大持續要務：頻繁內部稽核、持續分析師培訓、各類系統資料的系統性評估。電腦化系統的四項 DI 關鍵：伺服器資格確認、軟體驗證、設備資格確認、資料可檢索性。",
+   "en": "<strong>9.0 Conclusion:</strong> Data integrity = completeness + consistency + accuracy. The three ongoing priorities are frequent internal audits, ongoing analyst training and systematic assessment of data from all types of systems. The four DI keys for computerized systems are server qualification, software validation, equipment qualification and data retrievability."
+  },
+  {
+   "zh": "<strong>法規引用</strong>：TR80 引用 55 項參考，最重要的五個包含 MHRA GXP DI Guide、FDA DI Draft Guidance、EU GMP Annex 11、WHO TRS 996 Annex 5、ICH Q9。",
+   "en": "<strong>Regulatory references:</strong> TR80 cites 55 references; the five most important are the MHRA GXP DI Guide, FDA DI Draft Guidance, EU GMP Annex 11, WHO TRS 996 Annex 5 and ICH Q9."
+  }
+ ]
+}

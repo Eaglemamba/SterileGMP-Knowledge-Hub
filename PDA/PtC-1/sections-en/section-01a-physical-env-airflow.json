@@ -1,0 +1,665 @@
+{
+ "source": "section-01a-physical-env-airflow.html",
+ "blocks": [
+  {
+   "zh": "物理環境專題 A–H：氣流、HEPA 過濾器、差壓與取樣管路",
+   "en": "Physical Environment Topics A–H: Airflow, HEPA Filters, Differential Pressure, and Sampling Tubing"
+  },
+  {
+   "zh": "本節涵蓋主題 Topics Covered",
+   "en": "Topics Covered"
+  },
+  {
+   "zh": "<a href=\"#topic-a1\">A.1 氣流速度</a>\n<a href=\"#topic-a2\">A.2 速度量測</a>\n<a href=\"#topic-a3\">A.3 量測頻率</a>\n<a href=\"#topic-b1\">B.1 氣流可視化</a>\n<a href=\"#topic-b2\">B.2 錄影記錄</a>\n<a href=\"#topic-c\">C 軋蓋環境</a>\n<a href=\"#topic-d\">D 差壓</a>\n<a href=\"#topic-e\">E HEPA 測試</a>\n<a href=\"#topic-f\">F HEPA 修補</a>\n<a href=\"#topic-g\">G 層流 vs 單向流</a>\n<a href=\"#topic-h\">H 取樣管路</a>",
+   "en": "<a href=\"#topic-a1\">A.1 Airflow Velocity</a>\n<a href=\"#topic-a2\">A.2 Velocity Measurement</a>\n<a href=\"#topic-a3\">A.3 Measurement Frequency</a>\n<a href=\"#topic-b1\">B.1 Airflow Visualization</a>\n<a href=\"#topic-b2\">B.2 Video Recording</a>\n<a href=\"#topic-c\">C Capping Environment</a>\n<a href=\"#topic-d\">D Differential Pressure</a>\n<a href=\"#topic-e\">E HEPA Testing</a>\n<a href=\"#topic-f\">F HEPA Patching</a>\n<a href=\"#topic-g\">G Laminar vs Unidirectional Flow</a>\n<a href=\"#topic-h\">H Sampling Tubing</a>"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives for This Section"
+  },
+  {
+   "zh": "理解 Grade A 區域氣流速度建議值（0.45 m/s ±20%）的物理意義與量測位置，以及 EU Annex 1 (2022) 的指引範圍（0.36–0.54 m/s）。",
+   "en": "Understand the physical meaning and measurement locations of the recommended Grade A airflow velocity (0.45 m/s ±20%), and the guidance range in the EU Annex 1 (2022) (0.36–0.54 m/s)."
+  },
+  {
+   "zh": "說明氣流可視化（煙霧試驗）的執行時機、動態條件要求、影像記錄義務與保存規範。",
+   "en": "Explain when airflow visualization (smoke studies) should be performed, the requirement for dynamic conditions, and the obligations for video recording and retention."
+  },
+  {
+   "zh": "掌握差壓梯度（不低於 10 Pa）的目的、連續監測要求、警報策略及氣流反轉的矯正措施。",
+   "en": "Master the purpose of the differential pressure gradient (not less than 10 Pa), the continuous monitoring requirement, alarm strategy, and corrective actions for airflow reversal."
+  },
+  {
+   "zh": "判斷 HEPA 過濾器的完整性測試頻率（Grade A/B 每 6 個月、Grade C/D 每 12 個月）及修補的法規立場。",
+   "en": "Determine the HEPA filter integrity test frequency (every 6 months for Grade A/B, every 12 months for Grade C/D) and the regulatory position on patching."
+  },
+  {
+   "zh": "區分「層流（laminar flow）」與「單向流（unidirectional airflow）」的術語差異，並連結 EU Annex 1 的對齊立場。",
+   "en": "Distinguish the terms \"laminar flow\" and \"unidirectional airflow\", and connect this to the alignment position of the EU Annex 1."
+  },
+  {
+   "zh": "說明顆粒計數取樣管路長度與彎曲半徑的最佳化原則（EU Annex 1 建議 ≤1 m）。",
+   "en": "Explain the principles for optimizing particle counter sampling tubing length and bend radius (the EU Annex 1 recommends ≤1 m)."
+  },
+  {
+   "zh": "Topic A.1: Airflow Velocity — 氣流速度量測位置",
+   "en": "Topic A.1: Airflow Velocity — Measurement Locations"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>First Air（第一道空氣）：</strong>指直接來自 HEPA 過濾器、尚未經過任何設備或人員的潔淨空氣。暴露中的藥液、容器及產品接觸表面必須始終沐浴在「第一道空氣」之中，確保沒有任何上游污染源的二次風流。",
+   "en": "<strong>First Air:</strong> Clean air coming directly from the HEPA filter that has not yet passed over any equipment or personnel. Exposed product solution, containers, and product contact surfaces must always be bathed in First Air, ensuring there is no secondary airflow from any upstream contamination source."
+  },
+  {
+   "zh": "<strong>量測位置邏輯：</strong>距濾網面 15–30 cm 是「足夠靠近以偵測濾網性能變化、又不受設備干擾」的最佳平衡點。工作高度量測則驗證產品實際暴露位置的保護效果。兩者目的不同，通常需要同時執行。",
+   "en": "<strong>Logic of the measurement location:</strong> 15–30 cm from the filter face is the best balance: \"close enough to detect changes in filter performance, yet not disturbed by equipment\". Measurement at working height verifies the protection actually provided at the location where product is exposed. The two serve different purposes and usually need to be performed together."
+  },
+  {
+   "zh": "<strong>CCS（Contamination Control Strategy，污染控制策略）：</strong>若設備外形干擾氣流，必須在 CCS 中合理化並記錄修改後的量測位置——這是 2022 EU Annex 1 的明確要求。",
+   "en": "<strong>CCS (Contamination Control Strategy):</strong> If the shape of the equipment interferes with airflow, the modified measurement location must be justified and documented in the CCS. This is an explicit requirement of the 2022 EU Annex 1."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "<strong>手術室通風標準：</strong>想像手術室的無菌罩頂（surgical canopy）從天花板向下吹送過濾後的空氣，確保手術切口上方永遠是「從天花板直達傷口」的乾淨風流，不被手術人員的動作打亂。氣流速度量測就好比護理師定期用風速計確認罩頂風速符合規格——太慢則保護不足，太快則造成渦流反而引入污染。無菌充填（Aseptic Filling）的 Grade A 保護邏輯與此完全相同。",
+   "en": "<strong>Operating room ventilation standards:</strong> Imagine the surgical canopy of an operating room blowing filtered air down from the ceiling, so that the air above the surgical incision is always clean air flowing \"straight from the ceiling to the wound\", undisturbed by the movements of the surgical staff. Airflow velocity measurement is like a nurse periodically checking the canopy air speed against specification with an anemometer: too slow gives insufficient protection, while too fast creates eddies that actually introduce contamination. The Grade A protection logic for Aseptic Filling is exactly the same."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "<strong>速度量測必須與煙霧試驗配對：</strong>速度數值本身不能單獨作為「環境足夠保護」的證明。PDA PtC-1 明確指出，必須將速度數據與氣流可視化研究（smoke study）結合，才能提供完整的無菌保護證據。許多公司只有速度記錄而缺乏同期的可視化驗證，這是查廠常見的缺失。",
+   "en": "<strong>Velocity measurement must be paired with a smoke study:</strong> A velocity value alone cannot prove that \"the environment is adequately protective\". PDA PtC-1 states clearly that velocity data must be combined with an airflow visualization study (smoke study) to provide complete evidence of aseptic protection. Many companies have velocity records but no contemporaneous visualization verification, which is a common inspection finding."
+  },
+  {
+   "zh": "<strong>量測位置一致性：</strong>例行監測必須使用與初始資格驗證（OQ/PQ）完全相同的量測點，才能偵測出濾網性能的長期退化趨勢。",
+   "en": "<strong>Consistency of measurement locations:</strong> Routine monitoring must use exactly the same measurement points as the initial qualification (OQ/PQ), so that long-term degradation trends in filter performance can be detected."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "為什麼 PDA 要求量測位置須距濾網面 15–30 cm，而不是直接在產品暴露的工作高度量測？兩者有何不同用途？",
+   "en": "Why does PDA require the measurement location to be 15–30 cm from the filter face rather than measuring directly at the working height where product is exposed? How do the two differ in purpose?"
+  },
+  {
+   "zh": "若充填機設備外形（如注射針頭載台）干擾了 Grade A 罩頂的氣流量測，依據 PtC-1 應如何處理？需要記錄在哪份文件中？",
+   "en": "If the shape of the filling machine (e.g., the needle carrier) interferes with airflow measurement under the Grade A canopy, how should this be handled according to PtC-1? In which document must it be recorded?"
+  },
+  {
+   "zh": "Topic A.2: Airflow Velocity Measurements — 0.45 m/s 是否為強制要求？",
+   "en": "Topic A.2: Airflow Velocity Measurements — Is 0.45 m/s a Mandatory Requirement?"
+  },
+  {
+   "zh": "<strong>0.45 m/s ±20% 的由來：</strong>這個數值源自 1960–70 年代美國航太工業潔淨室規範（美國 Federal Standard 209），後被製藥業沿用。它的意義是「足以維持單向流動性的經驗值」，而非嚴格的物理必要條件。",
+   "en": "<strong>Origin of 0.45 m/s ±20%:</strong> This value comes from 1960s–70s cleanroom specifications of the US aerospace industry (US Federal Standard 209) and was later adopted by the pharmaceutical industry. It is an \"empirical value sufficient to maintain unidirectional flow\", not a strict physical necessity."
+  },
+  {
+   "zh": "<strong>PDA vs EU Annex 1 立場比較：</strong>",
+   "en": "<strong>PDA vs EU Annex 1 positions compared:</strong>"
+  },
+  {
+   "zh": "<strong>PDA PtC-1：</strong>0.45 m/s ±20%「不應視為工作高度的強制要求」，應由 CCS 建立並論證。",
+   "en": "<strong>PDA PtC-1:</strong> 0.45 m/s ±20% \"should not be regarded as a mandatory requirement at working height\"; it should be established and justified in the CCS."
+  },
+  {
+   "zh": "<strong>EU Annex 1 (2022)：</strong>提供 0.36–0.54 m/s 作為指引值（guidance value），並要求與氣流可視化研究相關聯。",
+   "en": "<strong>EU Annex 1 (2022):</strong> Provides 0.36–0.54 m/s as a guidance value and requires it to be linked to the airflow visualization study."
+  },
+  {
+   "zh": "<strong>共同底線：</strong>兩者均強調「目標是保護產品的單向流動性」，而非死守一個數字。",
+   "en": "<strong>Common bottom line:</strong> Both stress that \"the goal is to protect the unidirectional flow over the product\", not to cling rigidly to one number."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula and Calculation"
+  },
+  {
+   "zh": "EU Annex 1 (2022) 指引範圍（工作位置）：\n  下限：0.36 m/s（= 0.45 × 0.80）\n  建議：0.45 m/s\n  上限：0.54 m/s（= 0.45 × 1.20）\n\nPDA 建議（距濾網面 15–30 cm）：\n  0.45 m/s ± 20% → 0.36 – 0.54 m/s\n\n注意：工作高度速度通常低於濾網面速度\n因為設備障礙物會分散氣流。\nCCS 須分別建立兩個位置的驗收標準。",
+   "en": "EU Annex 1 (2022) guidance range (working position):\n  Lower limit: 0.36 m/s (= 0.45 × 0.80)\n  Recommended: 0.45 m/s\n  Upper limit: 0.54 m/s (= 0.45 × 1.20)\n\nPDA recommendation (15–30 cm from the filter face):\n  0.45 m/s ± 20% → 0.36 – 0.54 m/s\n\nNote: velocity at working height is usually lower than\nat the filter face, because equipment obstructions\ndisperse the airflow.\nThe CCS must establish acceptance criteria for\nthe two locations separately."
+  },
+  {
+   "zh": "<strong>馬路限速標誌 vs 實際行車安全：</strong>0.45 m/s 就像高速公路的「建議速度 90 km/h」標誌，並非硬性限速。在山路彎道（充填機設備密集的 Grade A 區）可能需要降速（更低氣流速度），在筆直寬敞路段（開放式罩頂）可能需要稍快才能維持穩定的單向流動性。重點不是速度計上的數字，而是「氣流是否真的保護了產品」——這需要煙霧試驗來確認。",
+   "en": "<strong>Road speed signs vs actual driving safety:</strong> 0.45 m/s is like a highway \"advisory speed 90 km/h\" sign, not a hard speed limit. On a winding mountain road (a Grade A zone crowded with filling machine equipment) you may need to slow down (lower airflow velocity), while on a straight, wide stretch (an open canopy) you may need to go slightly faster to maintain stable unidirectional flow. What matters is not the number on the speedometer but \"whether the airflow actually protects the product\", and that has to be confirmed by a smoke study."
+  },
+  {
+   "zh": "重點提示 Key Notes — FDA vs EU 差異",
+   "en": "Key Notes — FDA vs EU Differences"
+  },
+  {
+   "zh": "<strong>FDA 2004 Aseptic Processing Guidance</strong> 仍常被引用 0.45 m/s，但措辭為「推薦」而非「要求」。<br/>\n<strong>EU Annex 1 (2022)</strong> 明確標注 0.36–0.54 m/s 為「guidance value」，允許科學論證偏離。<br/>\n<strong>實務上</strong>：若您的設施速度在 0.3 m/s 但煙霧試驗顯示完美的單向保護，並有充分的科學論據記錄於 CCS，FDA/EMA 查廠均可接受。關鍵是「論據」與「文件」，而非硬套數字。",
+   "en": "The <strong>FDA 2004 Aseptic Processing Guidance</strong> is still often cited for 0.45 m/s, but the wording is \"recommended\" rather than \"required\".<br/>\nThe <strong>EU Annex 1 (2022)</strong> expressly labels 0.36–0.54 m/s as a \"guidance value\" and allows deviation with scientific justification.<br/>\n<strong>In practice</strong>: if your facility's velocity is 0.3 m/s but the smoke study shows perfect unidirectional protection, and there is sufficient scientific justification documented in the CCS, both FDA and EMA inspectors can accept it. The key is \"justification\" and \"documentation\", not mechanically applying a number."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "CDMO 情境：您的客戶要求在標書（RFP）中保證 Grade A 氣流速度為 0.45 m/s ±20%。但您的充填機因設備外形限制，工作高度實際速度為 0.38 m/s，但煙霧試驗顯示完美保護。<br/><br/>\n<strong>建議做法：</strong>在 CCS 中記錄工作高度的驗收標準（如 0.35–0.55 m/s），附上煙霧試驗報告作為科學論據，並向客戶解釋 PDA 與 EU Annex 1 均不要求死守 0.45 m/s。這樣既符合法規，也能讓客戶理解。",
+   "en": "CDMO scenario: Your customer requires, in the tender (RFP), a guarantee of Grade A airflow velocity of 0.45 m/s ±20%. But because of the shape of your filling machine, the actual velocity at working height is 0.38 m/s, although the smoke study shows perfect protection.<br/><br/>\n<strong>Recommended approach:</strong> Record the acceptance criterion for working height in the CCS (e.g., 0.35–0.55 m/s), attach the smoke study report as scientific justification, and explain to the customer that neither PDA nor EU Annex 1 requires rigid adherence to 0.45 m/s. This complies with the regulations and also helps the customer understand."
+  },
+  {
+   "zh": "EU Annex 1 (2022) 與 PDA PtC-1 在 0.45 m/s 的立場是否一致？各自的措辭關鍵字是什麼？",
+   "en": "Are the EU Annex 1 (2022) and PDA PtC-1 consistent in their positions on 0.45 m/s? What key words does each use?"
+  },
+  {
+   "zh": "若工作高度速度低於 0.36 m/s，但煙霧試驗結果良好，法規上可以接受嗎？需要哪些文件支撐？",
+   "en": "If the working-height velocity is below 0.36 m/s but the smoke study results are good, is this acceptable from a regulatory standpoint? What documents are needed to support it?"
+  },
+  {
+   "zh": "Topic A.3: Airflow Velocity Measurement Frequency — 量測頻率",
+   "en": "Topic A.3: Airflow Velocity Measurement Frequency"
+  },
+  {
+   "zh": "<strong>頻率要求一覽：</strong>",
+   "en": "<strong>Frequency requirements at a glance:</strong>"
+  },
+  {
+   "zh": "<strong>OQ/PQ 期間：</strong>必須執行（建立基準值）",
+   "en": "<strong>During OQ/PQ:</strong> Must be performed (to establish the baseline)"
+  },
+  {
+   "zh": "<strong>Grade A + 周邊 Grade B：</strong>每 6 個月（半年一次）",
+   "en": "<strong>Grade A + surrounding Grade B:</strong> Every 6 months (twice a year)"
+  },
+  {
+   "zh": "<strong>其他區域（Grade C、D）：</strong>至少每 12 個月（每年一次）",
+   "en": "<strong>Other areas (Grade C, D):</strong> At least every 12 months (once a year)"
+  },
+  {
+   "zh": "<strong>例外觸發（ad-hoc）：</strong>顆粒數異常升高、HVAC 系統重大變更、查廠前",
+   "en": "<strong>Ad-hoc triggers:</strong> abnormal rise in particle counts, major HVAC system changes, before an inspection"
+  },
+  {
+   "zh": "值得注意：「氣流速度量測頻率」與「HEPA 完整性測試頻率」在 PtC-1 中是同步的（見 Topic E），二者通常一起執行。",
+   "en": "Note: In PtC-1, the \"airflow velocity measurement frequency\" and the \"HEPA integrity test frequency\" are synchronized (see Topic E), and the two are usually performed together."
+  },
+  {
+   "zh": "公式與計算 Formula — 年度測試行事曆",
+   "en": "Formula and Calculation — Annual Testing Calendar"
+  },
+  {
+   "zh": "Grade A / Grade B 測試週期：\n  1月 → 7月 → 1月 → ...（每6個月）\n\nGrade C / Grade D 測試週期：\n  1月 → 1月（每12個月）\n\n若有顆粒數 OOS 事件：\n  → 立即執行氣流可視化研究\n  → 評估速度是否偏離驗收標準\n  → 啟動變更管理程序",
+   "en": "Grade A / Grade B test cycle:\n  Jan → Jul → Jan → ... (every 6 months)\n\nGrade C / Grade D test cycle:\n  Jan → Jan (every 12 months)\n\nIf a particle count OOS event occurs:\n  → Perform an airflow visualization study immediately\n  → Evaluate whether velocity deviates from the acceptance criteria\n  → Initiate the change management procedure"
+  },
+  {
+   "zh": "<strong>汽車定期保養：</strong>Grade A 每 6 個月測一次氣流速度，就像賽車每場比賽前必須檢查煞車性能，因為風險最高；Grade C/D 就像一般家用車每年一次年度保養。重點是：「風險越高，保養頻率越高」。HVAC 異常就是「行駛中警示燈亮起」，需要立即停下檢查，不能等到下一個排程保養。",
+   "en": "<strong>Routine vehicle servicing:</strong> Testing Grade A airflow velocity every 6 months is like a race car needing its brakes checked before every race, because the risk is highest; Grade C/D is like a family car getting an annual service once a year. The point is: \"the higher the risk, the higher the maintenance frequency\". An HVAC abnormality is like a warning light coming on while driving: you must stop and check immediately, not wait for the next scheduled service."
+  },
+  {
+   "zh": "<strong>速度超出驗收標準時的處理邏輯：</strong>不能僅記錄偏差並調整設定值就了事。PDA PtC-1 明確要求必須以「氣流可視化研究」評估影響，並作為適用的「變更管理程序（change-management procedures）」的一部分。這意味著速度 OOS 事件必須觸發一次完整的煙霧試驗重新評估。",
+   "en": "<strong>How to handle velocity outside the acceptance criteria:</strong> It is not enough merely to record a deviation and adjust the set point. PDA PtC-1 states clearly that the impact must be evaluated with an \"airflow visualization study\" as part of the applicable \"change-management procedures\". This means a velocity OOS event must trigger a complete smoke study reassessment."
+  },
+  {
+   "zh": "如果 Grade A 區域半年度氣流速度量測發現偏低，但環境監測（EM）數據均在標準內，是否需要立即停產調查？",
+   "en": "If the semi-annual airflow velocity measurement in a Grade A area finds the velocity low, but environmental monitoring (EM) data are all within limits, is an immediate production stop and investigation required?"
+  },
+  {
+   "zh": "HEPA 過濾器在 10 月完成了 PQ 驗證，下一次半年度測試應安排在何時？",
+   "en": "A HEPA filter completed PQ in October. When should the next semi-annual test be scheduled?"
+  },
+  {
+   "zh": "Topic B.1: Airflow Visualization — 氣流可視化研究",
+   "en": "Topic B.1: Airflow Visualization — Airflow Visualization Study"
+  },
+  {
+   "zh": "<strong>氣流可視化研究（Airflow Visualization Study / Smoke Study）：</strong>使用乾冰煙霧、油質煙霧或液態氮等煙霧介質，在潔淨室動態（in-operation）條件下，拍攝氣流流動型態，確認：",
+   "en": "<strong>Airflow Visualization Study (Smoke Study):</strong> Using a smoke medium such as dry ice fog, oil-based smoke, or liquid nitrogen, the airflow patterns are filmed under in-operation conditions in the cleanroom to confirm that:"
+  },
+  {
+   "zh": "產品暴露區始終在「第一道空氣」保護下",
+   "en": "The product exposure zone is always protected by \"First Air\""
+  },
+  {
+   "zh": "操作人員介入不破壞 Grade A 保護",
+   "en": "Operator interventions do not disrupt Grade A protection"
+  },
+  {
+   "zh": "氣流從較潔淨區域向較不潔淨區域流動（無反轉）",
+   "en": "Air flows from cleaner areas to less clean areas (no reversal)"
+  },
+  {
+   "zh": "RABS 門開關不造成外部污染入侵",
+   "en": "Opening and closing RABS doors does not cause external contamination to enter"
+  },
+  {
+   "zh": "<strong>觸發時機（必須執行）：</strong>新廠建立、重大設備變更、HEPA 更換、RABS/隔離器門設計變更、APS 前評估。",
+   "en": "<strong>Triggers (must be performed):</strong> new facility establishment, major equipment changes, HEPA replacement, changes to RABS/isolator door design, pre-APS assessment."
+  },
+  {
+   "zh": "<strong>游泳池排水試驗：</strong>想像在游泳池中滴入彩色染料，觀察水流走向——哪裡形成死角、哪裡水流回流。氣流可視化就是同樣的概念：煙霧是「染料」，HEPA 罩頂是「注水口」，充填機設備是「障礙物」。死角（渦流）等於微生物污染的高風險點，設計師必須重新調整設備布局或氣流方向來消除死角。",
+   "en": "<strong>Swimming pool dye test:</strong> Imagine dripping colored dye into a swimming pool and watching where the water flows: where dead spots form and where the water circulates back. Airflow visualization is the same concept: the smoke is the \"dye\", the HEPA canopy is the \"inlet\", and the filling machine equipment is the \"obstruction\". Dead spots (eddies) are high-risk points for microbial contamination, and designers must adjust the equipment layout or airflow direction to eliminate them."
+  },
+  {
+   "zh": "重點提示 Key Notes — 超過 5 年未重做需額外論證",
+   "en": "Key Notes — Additional Justification Needed If Not Repeated in Over 5 Years"
+  },
+  {
+   "zh": "PDA PtC-1 明確指出：若距上次氣流可視化研究超過 5 年，需要「額外的時間論證」。這在查廠中是高頻缺失點——許多設施在 PQ 驗證時執行一次煙霧試驗後，即使設備多次小幅調整也未重新執行。<br/><br/>\n<strong>EU Annex 1 (2022) Section 4.15</strong> 則要求在較不重要區域也需驗證氣流從潔淨到不潔淨方向的流動，這比舊版要求更嚴格。",
+   "en": "PDA PtC-1 states clearly that if more than 5 years have passed since the last airflow visualization study, \"additional justification for the time interval\" is needed. This is a frequent inspection finding: many facilities perform a smoke study once at PQ and never repeat it, even after multiple minor equipment adjustments.<br/><br/>\n<strong>EU Annex 1 (2022) Section 4.15</strong> requires that airflow from clean to less clean directions also be demonstrated in less critical areas, which is stricter than the previous version."
+  },
+  {
+   "zh": "<strong>授權介入清單（Authorized Interventions List）的建立流程：</strong><br/>\n            1. 首先在動態條件下執行煙霧試驗，確認各介入動作（如更換充填針、取樣）不破壞 Grade A 氣流。<br/>\n            2. 將通過的介入動作納入 APS（無菌製程模擬）中驗證，確認實際操作不引入污染。<br/>\n            3. 最後將完成驗證的介入列入「授權介入清單」，每次作業只允許執行清單內的動作。<br/>\n            這是 EU Annex 1 (2022) 對介入管理的完整閉環要求。",
+   "en": "<strong>Process for establishing the Authorized Interventions List:</strong><br/>\n            1. First perform a smoke study under dynamic conditions to confirm that each intervention (e.g., changing a filling needle, sampling) does not disrupt Grade A airflow.<br/>\n            2. Include the interventions that pass in the APS (aseptic process simulation) to verify that the actual operation does not introduce contamination.<br/>\n            3. Finally, add the validated interventions to the \"Authorized Interventions List\"; only actions on the list may be performed during each operation.<br/>\n            This is the complete closed-loop requirement of the EU Annex 1 (2022) for intervention management."
+  },
+  {
+   "zh": "為什麼氣流可視化研究必須在「動態（in-operation）」條件下執行？靜態（at-rest）條件的結果有何侷限性？",
+   "en": "Why must the airflow visualization study be performed under \"in-operation\" (dynamic) conditions? What are the limitations of results obtained at-rest?"
+  },
+  {
+   "zh": "某 CDMO 客戶更換了充填機型號，但 Grade A 罩頂 HEPA 系統沒有改變，是否需要重新執行煙霧試驗？依據是什麼？",
+   "en": "A CDMO customer has changed the filling machine model, but the Grade A canopy HEPA system has not changed. Does the smoke study need to be repeated? On what basis?"
+  },
+  {
+   "zh": "煙霧試驗結果顯示某操作員的介入動作造成輕微渦流，但沒有直接打到開口容器，應如何處理？",
+   "en": "The smoke study shows that one operator's intervention causes slight eddies, but they do not directly hit the open containers. How should this be handled?"
+  },
+  {
+   "zh": "Topic B.2: Airflow Visualization Recording — 影像記錄要求",
+   "en": "Topic B.2: Airflow Visualization Recording — Video Recording Requirements"
+  },
+  {
+   "zh": "<strong>影像記錄的法規屬性：</strong>PDA PtC-1 明確指出影像（video）屬於「電子數據（electronic data）」，必須依照電子數據管理規範（GDocP/Annex 11/21 CFR Part 11）進行保存。這意味著：",
+   "en": "<strong>Regulatory status of the video recording:</strong> PDA PtC-1 states clearly that video is \"electronic data\" and must be retained in accordance with electronic data management requirements (GDocP/Annex 11/21 CFR Part 11). This means:"
+  },
+  {
+   "zh": "原始影像不得刪除或篡改",
+   "en": "Original video must not be deleted or altered"
+  },
+  {
+   "zh": "需建立審閱與批准的電子簽名記錄",
+   "en": "A record of electronic signatures for review and approval must be established"
+  },
+  {
+   "zh": "保存期限依批次記錄規範（通常產品上市後至少 1 年或產品有效期 +1 年）",
+   "en": "Retention follows batch record requirements (usually at least 1 year after the product is marketed, or the product shelf life + 1 year)"
+  },
+  {
+   "zh": "影像必須清晰到可以辨識氣流型態——模糊或低解析度的記錄不可接受",
+   "en": "The video must be clear enough to identify the airflow patterns; blurry or low-resolution recordings are not acceptable"
+  },
+  {
+   "zh": "重點提示 Key Notes — 多角度拍攝",
+   "en": "Key Notes — Multiple Camera Angles"
+  },
+  {
+   "zh": "<strong>三維空間問題：</strong>Grade A 罩頂的氣流是三維的（X、Y、Z 軸），但單一攝影機只能捕捉二維平面。若只從正面拍攝，可能遺漏側面渦流；只從上方拍攝，可能看不到底部回流。<br/><br/>\n            實務建議：至少從前方、側面各至少 2 個角度拍攝，關鍵操作動作（如開 RABS 門、換充填針）需要近距離特寫。所有角度的影像均需包含在最終報告中。",
+   "en": "<strong>The three-dimensional problem:</strong> Airflow under a Grade A canopy is three-dimensional (X, Y, Z axes), but a single camera captures only a two-dimensional plane. Filming only from the front may miss side eddies; filming only from above may miss return flow at the bottom.<br/><br/>\n            Practical recommendation: film from at least 2 angles each at the front and the side, with close-ups of critical operations (e.g., opening a RABS door, changing a filling needle). Video from all angles must be included in the final report."
+  },
+  {
+   "zh": "<strong>法庭監視器規範：</strong>銀行保險庫的監視錄影有嚴格的保存與防篡改規定，因為它是犯罪調查的關鍵證據。氣流可視化影像的地位完全類似——它是「無菌製程保護有效性」的電子證據。FDA 或 EMA 查廠人員有權要求調閱原始影像，確認與報告結論一致。若影像遺失或品質不佳，等同於「監視器壞掉了」，是嚴重的 GMP 缺失。",
+   "en": "<strong>Courtroom surveillance standards:</strong> Surveillance video from a bank vault has strict retention and anti-tampering rules because it is key evidence in a criminal investigation. The status of airflow visualization video is exactly analogous: it is the electronic evidence of \"the effectiveness of aseptic process protection\". FDA or EMA inspectors have the right to request the original video to confirm that it is consistent with the report conclusions. If the video is lost or of poor quality, it is equivalent to \"the surveillance camera was broken\", which is a serious GMP deficiency."
+  },
+  {
+   "zh": "<strong>煙霧試驗的清潔程序：</strong>PtC-1 提醒使用的煙霧介質應「盡量少污染潔淨室」。實務上，油質煙霧會殘留在 HEPA 濾網和設備表面，試驗後需要依照已驗證的清潔 SOP（包含表面清潔、EM 採樣確認）恢復到潔淨室規格。這個清潔驗證本身也需要記錄並列入試驗方案。",
+   "en": "<strong>Cleaning procedure after smoke studies:</strong> PtC-1 reminds users that the smoke medium used should \"contaminate the cleanroom as little as possible\". In practice, oil-based smoke leaves residue on HEPA filters and equipment surfaces, and after the study the cleanroom must be restored to specification following a validated cleaning SOP (including surface cleaning and EM sampling confirmation). This cleaning verification itself must also be documented and included in the study protocol."
+  },
+  {
+   "zh": "氣流可視化影像為何被歸類為「電子數據」？這對影像的管理方式有何具體影響？",
+   "en": "Why is airflow visualization video classified as \"electronic data\"? What specific effect does this have on how the video is managed?"
+  },
+  {
+   "zh": "您在進行煙霧試驗時，影像顯示某角度有輕微渦流，但另一角度正常。是否可以只提交正常角度的影像？理由為何？",
+   "en": "During a smoke study, the video shows slight eddies at one angle but normal flow at another. Can you submit only the normal-angle video? Why or why not?"
+  },
+  {
+   "zh": "Topic C: Grade A Environment Over Cappers — 軋蓋區域的環境要求",
+   "en": "Topic C: Grade A Environment Over Cappers — Environmental Requirements for the Capping Area"
+  },
+  {
+   "zh": "<strong>軋蓋（Capping/Crimping）的位置選擇：</strong>軋蓋在工業上通常有兩種配置：",
+   "en": "<strong>Choosing the capping (crimping) location:</strong> There are usually two industrial configurations for capping:"
+  },
+  {
+   "zh": "<strong>配置 1：</strong>在 Grade A 區域內軋蓋（最高保護）",
+   "en": "<strong>Configuration 1:</strong> Capping inside the Grade A area (highest protection)"
+  },
+  {
+   "zh": "<strong>配置 2：</strong>在 Grade A 氣流供應下、但位於 Grade A 區域外（本 Topic 討論的情境）",
+   "en": "<strong>Configuration 2:</strong> Under a Grade A air supply but outside the Grade A area (the scenario discussed in this Topic)"
+  },
+  {
+   "zh": "配置 2 的核心前提是：「正確就座的瓶塞本身即是微生物屏障」。因此，只要確保瓶塞完整（透過自動檢測剔除），在乾淨的 Grade A 氣流供應下軋蓋即可接受。",
+   "en": "The core premise of Configuration 2 is that \"a correctly seated stopper is itself a microbial barrier\". Therefore, as long as stopper integrity is assured (through automated detection and rejection), capping under a clean Grade A air supply is acceptable."
+  },
+  {
+   "zh": "<strong>關鍵控制點：</strong>軋蓋前必須有已驗證的自動化瓶塞偵測系統（missing/raised stopper detector），且需定期挑戰（challenge testing）。",
+   "en": "<strong>Critical control point:</strong> A validated automated stopper detection system (missing/raised stopper detector) must be in place before capping, and it must be challenged periodically (challenge testing)."
+  },
+  {
+   "zh": "重點提示 Key Notes — PDA vs EU Annex 1 差異",
+   "en": "Key Notes — PDA vs EU Annex 1 Differences"
+  },
+  {
+   "zh": "<strong>PDA PtC-1：</strong>軋蓋機上方有 Grade A 氣流供應即足夠，監測要求由公司依風險評估定義。<br/>\n<strong>EU Annex 1 (2022)：</strong>要求在整個軋蓋完成前，瓶子必須持續受到 Grade A 氣流供應的保護（not just at the machine, but until the cap has been crimped），並建議考慮 RABS 或隔離器（Isolator）以確保條件。<br/>\n<strong>結論：</strong>EU 標準比 PDA 要求更嚴格，CDMO 若以歐洲市場為目標，應遵循 EU Annex 1 的解讀。",
+   "en": "<strong>PDA PtC-1:</strong> A Grade A air supply above the capping machine is sufficient, and monitoring requirements are defined by the company based on risk assessment.<br/>\n<strong>EU Annex 1 (2022):</strong> Requires vials to remain protected by a Grade A air supply until capping is complete (not just at the machine, but until the cap has been crimped), and recommends considering RABS or an isolator to ensure the conditions.<br/>\n<strong>Conclusion:</strong> The EU standard is stricter than the PDA requirement. A CDMO targeting the European market should follow the EU Annex 1 interpretation."
+  },
+  {
+   "zh": "<strong>快遞包裝密封檢查：</strong>想像一件精密儀器，在包裝車間（相當於無菌充填區）放入泡棉保護後，送到另一個房間（相當於軋蓋區）進行外盒封裝。如果外盒封裝前確認泡棉沒有脫落（相當於瓶塞自動偵測），並在乾淨的環境下完成封裝，整體保護效果是可接受的。但如果泡棉可能鬆動，就必須在與包裝車間相同等級的環境中完成封裝（在 Grade A 區內軋蓋）。",
+   "en": "<strong>Courier package sealing check:</strong> Imagine a precision instrument that is packed with foam protection in the packing workshop (equivalent to the aseptic filling area) and then sent to another room (equivalent to the capping area) to have its outer box sealed. If you confirm before sealing that the foam has not come loose (equivalent to automated stopper detection) and complete the sealing in a clean environment, the overall protection is acceptable. But if the foam might loosen, the sealing must be done in an environment of the same grade as the packing workshop (capping inside the Grade A area)."
+  },
+  {
+   "zh": "一家 CDMO 的軋蓋站位於 Grade B 區域，上方有 Grade A 層流罩，且有自動化瓶塞偵測系統。依據 PDA PtC-1 和 EU Annex 1，這樣的配置是否合規？有何差異？",
+   "en": "A CDMO's capping station is located in a Grade B area with a Grade A unidirectional airflow hood above it and an automated stopper detection system. Is this configuration compliant according to PDA PtC-1 and the EU Annex 1? What are the differences?"
+  },
+  {
+   "zh": "瓶塞偵測系統需要多久挑戰一次？挑戰方式為何？若挑戰失敗，已生產的批次如何處理？",
+   "en": "How often should the stopper detection system be challenged, and how? If a challenge fails, how should the batches already produced be handled?"
+  },
+  {
+   "zh": "Topic D: Differential Pressure — 差壓管理",
+   "en": "Topic D: Differential Pressure — Differential Pressure Management"
+  },
+  {
+   "zh": "<strong>差壓（Differential Pressure, dP）的物理目的：</strong>確保空氣永遠從「較潔淨（更高等級）」的區域流向「較不潔淨（較低等級）」的區域，阻止微生物、顆粒從外部環境侵入潔淨核心。",
+   "en": "<strong>Physical purpose of Differential Pressure (dP):</strong> To ensure that air always flows from the \"cleaner (higher grade)\" area to the \"less clean (lower grade)\" area, preventing microorganisms and particles from the external environment from entering the clean core."
+  },
+  {
+   "zh": "<strong>基本要求：</strong>",
+   "en": "<strong>Basic requirements:</strong>"
+  },
+  {
+   "zh": "最低差壓：10 Pa（關門狀態）——這是業界通行的期望值",
+   "en": "Minimum differential pressure: 10 Pa (doors closed). This is the commonly accepted industry expectation"
+  },
+  {
+   "zh": "必須連續監測（非間歇式）",
+   "en": "Must be monitored continuously (not intermittently)"
+  },
+  {
+   "zh": "必須有警報系統（帶有適當的延遲設定，避免開門時的短暫低壓觸發誤報）",
+   "en": "Must have an alarm system (with an appropriate delay setting, to avoid false alarms from the brief pressure drop when a door is opened)"
+  },
+  {
+   "zh": "警報策略必須有 QRM（品質風險管理）支撐",
+   "en": "The alarm strategy must be supported by QRM (Quality Risk Management)"
+  },
+  {
+   "zh": "<strong>注意：</strong>10 Pa 是「通常期望值（commonly expected）」，非硬性法規數值。設施可依複雜度設定不同值，但必須有論據。",
+   "en": "<strong>Note:</strong> 10 Pa is a \"commonly expected\" value, not a hard regulatory figure. A facility may set a different value depending on its complexity, but it must have a justification."
+  },
+  {
+   "zh": "<strong>差壓如同水壩：</strong>想像一個水壩系統——Grade A 是最高水位水庫，Grade B 次之，Grade C、D 依序遞減。水（相當於空氣）永遠從高處流向低處，不會逆流。差壓就是這個「高度落差」的量度。若某段水位差歸零（差壓為零），代表兩個水庫水位相同，一旦有擾動（開門、設備震動），就可能發生雙向流動（逆流），骯髒的水就會流入潔淨的水庫。10 Pa 的差壓就是確保有「足夠高度落差」的最低安全閾值。",
+   "en": "<strong>Differential pressure is like a dam:</strong> Imagine a dam system in which Grade A is the highest-level reservoir, Grade B is next, and Grade C and D follow in descending order. Water (equivalent to air) always flows from high to low and never flows backward. Differential pressure is the measure of this \"height difference\". If the water level difference between two stages drops to zero (zero differential pressure), the two reservoirs are at the same level, and with any disturbance (a door opening, equipment vibration), bidirectional flow (backflow) can occur and dirty water flows into the clean reservoir. A differential pressure of 10 Pa is the minimum safe threshold that ensures a \"sufficient height difference\"."
+  },
+  {
+   "zh": "公式與計算 Formula — 典型差壓梯度設計",
+   "en": "Formula and Calculation — Typical Differential Pressure Gradient Design"
+  },
+  {
+   "zh": "典型梯度設計（由內而外）：\n  Grade A（核心）：最高壓力（如 +60 Pa 相對大氣）\n  Grade B          ：次高（如 +50 Pa）  ΔP = 10 Pa\n  Grade C          ：中等（如 +40 Pa）  ΔP = 10 Pa\n  Grade D          ：較低（如 +30 Pa）  ΔP = 10 Pa\n  一般環境          ：大氣壓（0 Pa 基準）\n\n注意：含致敏性或高毒性物質的設施\n可能需要負壓（negative pressure）\n以防物質外洩，此時梯度設計相反。",
+   "en": "Typical gradient design (from the inside out):\n  Grade A (core)    : highest pressure (e.g., +60 Pa relative to atmosphere)\n  Grade B           : next highest (e.g., +50 Pa)  ΔP = 10 Pa\n  Grade C           : medium (e.g., +40 Pa)  ΔP = 10 Pa\n  Grade D           : lower (e.g., +30 Pa)  ΔP = 10 Pa\n  General environment: atmospheric pressure (0 Pa reference)\n\nNote: Facilities handling sensitizing or highly\ntoxic materials may need negative pressure\nto prevent release of the materials; in that case\nthe gradient design is reversed."
+  },
+  {
+   "zh": "重點提示 Key Notes — 警報策略設計",
+   "en": "Key Notes — Alarm Strategy Design"
+  },
+  {
+   "zh": "<strong>延遲警報（Alarm Delay）的必要性：</strong>門開啟時差壓必然短暫下降，若沒有適當的延遲設定（如 5–30 秒），HVAC 系統的警報將不斷誤觸發，增加操作員的「警報疲勞（alarm fatigue）」，反而掩蓋了真正的危險信號。<br/><br/>\n<strong>EU Annex 1 (2022)</strong> 要求差壓系統必須記錄並報告，且異常必須被評估。美國 FDA 對持續低差壓事件通常會追問根本原因及批次影響評估。",
+   "en": "<strong>The need for an alarm delay:</strong> Differential pressure inevitably drops briefly when a door is opened. Without an appropriate delay setting (e.g., 5–30 seconds), the HVAC system alarms will trigger falsely and constantly, increasing operator \"alarm fatigue\" and masking real danger signals.<br/><br/>\n<strong>EU Annex 1 (2022)</strong> requires the differential pressure system to be recorded and reported, and excursions must be evaluated. The US FDA usually asks about the root cause and the batch impact assessment for persistent low differential pressure events."
+  },
+  {
+   "zh": "生產過程中差壓警報觸發，顯示 Grade B 相對 Grade C 差壓降至 5 Pa 持續 2 分鐘，但門並未開啟。應啟動哪些調查步驟？是否影響此期間生產的批次？",
+   "en": "During production, a differential pressure alarm is triggered: the Grade B to Grade C differential pressure has dropped to 5 Pa for 2 minutes, but no door was opened. What investigation steps should be initiated? Are batches produced during this period affected?"
+  },
+  {
+   "zh": "為什麼含有高毒性 API 的設施可能需要「負壓」而非「正壓」設計？差壓梯度如何設計？",
+   "en": "Why might a facility handling highly toxic API need a \"negative pressure\" rather than \"positive pressure\" design? How should the differential pressure gradient be designed?"
+  },
+  {
+   "zh": "差壓警報延遲時間（alarm delay）應如何確定？依據是什麼？",
+   "en": "How should the differential pressure alarm delay time be determined? What is the basis?"
+  },
+  {
+   "zh": "Topic E: Testing of HEPA Filters — HEPA 過濾器測試",
+   "en": "Topic E: Testing of HEPA Filters — HEPA Filter Testing"
+  },
+  {
+   "zh": "<strong>HEPA（High-Efficiency Particulate Air）過濾器測試的三要素：</strong>",
+   "en": "<strong>Three elements of HEPA (High-Efficiency Particulate Air) filter testing:</strong>"
+  },
+  {
+   "zh": "<strong>完整性測試（Integrity Test）：</strong>即 DOP/PAO 測試（Dispersed Oil Particulate / Poly-alpha Olefin），以氣溶膠挑戰 HEPA 濾網，確認無針孔或密封缺陷。測試儀器需定期校正。",
+   "en": "<strong>Integrity Test:</strong> The DOP/PAO test (Dispersed Oil Particulate / Poly-alpha Olefin), in which the HEPA filter is challenged with an aerosol to confirm there are no pinholes or seal defects. The test instruments must be calibrated regularly."
+  },
+  {
+   "zh": "<strong>氣流量測（Airflow Volume Measurement）：</strong>確認通過濾網的總風量符合設計規格。",
+   "en": "<strong>Airflow Volume Measurement:</strong> Confirms that the total air volume through the filter meets the design specification."
+  },
+  {
+   "zh": "<strong>氣流速度測試（Airflow Velocity Testing）：</strong>與 Topic A.3 的要求一致（Grade A/B 每 6 個月）。",
+   "en": "<strong>Airflow Velocity Testing:</strong> Consistent with the requirements of Topic A.3 (every 6 months for Grade A/B)."
+  },
+  {
+   "zh": "<strong>恢復測試（Recovery Testing）：</strong>在低等級區域（Grade C/D），可以用「潔淨室恢復時間測試」替代氣流速度測試，量測潔淨室在人工污染後恢復到規格內顆粒數的時間，間接確認 HVAC 系統效能。",
+   "en": "<strong>Recovery Testing:</strong> In lower grade areas (Grade C/D), a \"cleanroom recovery time test\" can replace airflow velocity testing; it measures the time for the cleanroom to recover to the specified particle count after artificial contamination, indirectly confirming HVAC system performance."
+  },
+  {
+   "zh": "公式與計算 Formula — 測試頻率矩陣",
+   "en": "Formula and Calculation — Test Frequency Matrix"
+  },
+  {
+   "zh": "┌─────────────┬──────────────┬──────────────┐\n│ 區域分級     │ 最大測試間隔  │ 觸發條件      │\n├─────────────┼──────────────┼──────────────┤\n│ Grade A      │ 6 個月       │ 安裝、更換、  │\n│ Grade B      │ 6 個月       │ 顆粒數 OOS、  │\n│ (UDAF 供應) │              │ HVAC 異常     │\n├─────────────┼──────────────┼──────────────┤\n│ Grade C      │ 12 個月      │ 安裝、更換、  │\n│ Grade D      │ 12 個月      │ 重大變更      │\n│ Grade B      │ 12 個月      │               │\n│ (非 UDAF)  │              │               │\n└─────────────┴──────────────┴──────────────┘\n\n失效時處理：\n  修補（見 Topic F）或更換 → 完整性 + 速度重測\n  → 評估產品影響 → 批次處置決策",
+   "en": "┌─────────────┬──────────────┬──────────────┐\n│ Area grade  │ Max. test    │ Triggers     │\n│             │ interval     │              │\n├─────────────┼──────────────┼──────────────┤\n│ Grade A     │ 6 months     │ Installation,│\n│ Grade B     │ 6 months     │ replacement, │\n│ (UDAF supply)│             │ particle OOS,│\n│             │              │ HVAC anomaly │\n├─────────────┼──────────────┼──────────────┤\n│ Grade C     │ 12 months    │ Installation,│\n│ Grade D     │ 12 months    │ replacement, │\n│ Grade B     │ 12 months    │ major change │\n│ (non-UDAF)  │              │              │\n└─────────────┴──────────────┴──────────────┘\n\nOn failure:\n  Patch (see Topic F) or replace → retest integrity + velocity\n  → assess product impact → batch disposition decision"
+  },
+  {
+   "zh": "<strong>排程延誤的處理：</strong>PtC-1 提醒，若因生產排程延誤了例行資格重驗（requalification），應盡快補測，並評估延誤期間對產品品質的風險。這是一個重要的 CAPA 觸發點——不能僅以「生產繁忙」作為理由而無正式評估記錄。<br/><br/>\n<strong>HEPA 失效的批次評估：</strong>若測試發現 HEPA 有針孔或完整性失效，必須回溯評估哪些批次可能受到影響（worst-case 方向：從上次通過測試之後生產的所有批次）。這可能導致批次保留或拒絕放行。",
+   "en": "<strong>Handling schedule delays:</strong> PtC-1 reminds us that if routine requalification is delayed by the production schedule, the test should be made up as soon as possible, and the risk to product quality during the delay must be assessed. This is an important CAPA trigger: \"production was busy\" cannot be used as a reason without a formal assessment record.<br/><br/>\n<strong>Batch assessment for HEPA failure:</strong> If testing finds a pinhole or integrity failure in a HEPA filter, a retrospective assessment must be made of which batches may have been affected (worst-case direction: all batches produced since the last passing test). This may lead to batch hold or rejection."
+  },
+  {
+   "zh": "<strong>CDMO 資格維護行事曆設計：</strong>建議將 HEPA 測試與氣流速度量測整合進同一次「半年度設施再資格驗證（semi-annual facility requalification）」，與 APS（無菌製程模擬）的排程協調，避免出現連續停產。一般而言，設施再資格占滿 3–5 個工作日（視設施規模），應提前 2–3 個月向客戶告知停產計畫。",
+   "en": "<strong>Designing the CDMO qualification maintenance calendar:</strong> It is recommended to integrate HEPA testing and airflow velocity measurement into the same \"semi-annual facility requalification\", coordinated with the APS (aseptic process simulation) schedule to avoid consecutive production stoppages. Generally, facility requalification takes a full 3–5 working days (depending on facility size), and the shutdown plan should be communicated to customers 2–3 months in advance."
+  },
+  {
+   "zh": "HEPA 完整性測試（PAO test）的原理是什麼？「通過」的判斷標準（acceptance criteria）通常是什麼？",
+   "en": "What is the principle of the HEPA integrity test (PAO test)? What are the usual acceptance criteria for a \"pass\"?"
+  },
+  {
+   "zh": "若 Grade A HEPA 在 6 個月測試時發現一個小針孔（pinhole），但環境監測數據在整個期間均正常，是否需要拒絕放行所有在此期間生產的批次？如何評估？",
+   "en": "If a small pinhole is found in a Grade A HEPA filter at the 6-month test, but environmental monitoring data were normal throughout the period, must all batches produced in that period be rejected? How should this be assessed?"
+  },
+  {
+   "zh": "Topic F: HEPA Filter Patching — HEPA 過濾器修補",
+   "en": "Topic F: HEPA Filter Patching"
+  },
+  {
+   "zh": "<strong>Grade A 的立場：不建議修補（avoid）</strong><br/>\n            Grade A 是最高風險區域，其 HEPA 過濾器任何修補的結果均難以與新濾網的完整性相比擬。PDA 的立場是「避免（avoid）」，而不是「禁止（prohibit）」——雖然有此區別，但實務上查廠人員對 Grade A 修補持極嚴格態度。<br/><br/>\n<strong>Grade B–D 的立場：可修補，但有條件</strong><br/>\n            必須要有：(1) 風險評估論據、(2) 行業標準支撐的修補規格、(3) 修補後的完整性與速度再測試通過。不同標準（IEST、ISO、EN ISO）對「最大修補面積」的規定略有差異，公司需選定一個並記錄在 SOP 中。",
+   "en": "<strong>Grade A position: patching is not recommended (avoid)</strong><br/>\n            Grade A is the highest-risk area, and the integrity of any patch on its HEPA filter is hard to compare with that of a new filter. PDA's position is \"avoid\", not \"prohibit\". Despite this distinction, in practice inspectors take a very strict view of Grade A patching.<br/><br/>\n<strong>Grade B–D position: patching is allowed, but with conditions</strong><br/>\n            The following must be in place: (1) a risk assessment rationale, (2) a patch specification supported by an industry standard, and (3) passing integrity and velocity retests after patching. Different standards (IEST, ISO, EN ISO) differ slightly in their limits on \"maximum patch area\", so the company must select one and document it in an SOP."
+  },
+  {
+   "zh": "<strong>安全帽破損是否繼續戴：</strong>假設你的安全帽（相當於 HEPA 過濾器）在意外中出現小裂縫，你有幾個選擇：(A) 直接扔掉換新的（Grade A 建議做法）；(B) 用特殊膠帶補好，然後請專業機構重新測試強度（Grade B–D 修補流程）；(C) 不管裂縫繼續戴（絕對不可接受）。關鍵在於：你用來騎摩托車（Grade B）還是賽車頭盔（Grade A）——後者的標準更高，裂縫寧可換新，不冒任何風險。",
+   "en": "<strong>Whether to keep wearing a damaged helmet:</strong> Suppose your helmet (equivalent to a HEPA filter) develops a small crack in an accident. You have several choices: (A) throw it away and replace it with a new one (the recommended practice for Grade A); (B) repair it with special tape and have a professional organization retest its strength (the patching process for Grade B–D); (C) ignore the crack and keep wearing it (absolutely unacceptable). The key is whether you are using it for riding a motorcycle (Grade B) or as a racing helmet (Grade A). The standard for the latter is higher, and you would rather replace it than take any risk."
+  },
+  {
+   "zh": "<strong>修補 SOP 建立要點（Grade B–D）：</strong><br/>\n            1. 風險評估：評估破損位置（中央 vs 邊緣）、大小、可能受影響的製程。<br/>\n            2. 修補規格：選定適用的行業標準（通常採 EN ISO 29463-4 因歐洲市場），明確最大修補面積與長度。<br/>\n            3. 修補材料：記錄使用的材料（如室溫硫化矽膠，RTV silicone）及批號。<br/>\n            4. 修補後測試：完整性測試（PAO）+ 速度測試，兩者均需通過才可恢復生產。<br/>\n            5. EU Annex 1 要求：修補作業區隔離 + 事後清潔消毒 + EM 採樣。",
+   "en": "<strong>Key points for establishing a patching SOP (Grade B–D):</strong><br/>\n            1. Risk assessment: evaluate the location of the damage (center vs edge), its size, and the processes that may be affected.<br/>\n            2. Patch specification: select the applicable industry standard (EN ISO 29463-4 is usually adopted because of the European market), and define the maximum patch area and length.<br/>\n            3. Patch material: record the material used (e.g., room-temperature-vulcanizing silicone, RTV silicone) and its lot number.<br/>\n            4. Post-patch testing: integrity test (PAO) + velocity test; both must pass before production resumes.<br/>\n            5. EU Annex 1 requires: isolation of the patching work area + post-work cleaning and disinfection + EM sampling."
+  },
+  {
+   "zh": "Grade A 的 HEPA 如果需要修補，PDA 的立場是「避免」而非「禁止」，在什麼極端情況下可能考慮修補而非直接更換？需要哪些額外條件？",
+   "en": "PDA's position on patching a Grade A HEPA filter is \"avoid\" rather than \"prohibit\". Under what extreme circumstances might patching be considered rather than direct replacement? What additional conditions are needed?"
+  },
+  {
+   "zh": "EN ISO 29463-4 和 IEST-RP-CC001.5 對修補面積的規定不同，公司應如何選擇適用的標準？選定後需要做什麼？",
+   "en": "EN ISO 29463-4 and IEST-RP-CC001.5 differ in their limits on patch area. How should the company choose the applicable standard? What must be done after selecting it?"
+  },
+  {
+   "zh": "重點提示 Key Notes — 不同標準的修補規格差異",
+   "en": "Key Notes — Differences in Patch Specifications Between Standards"
+  },
+  {
+   "zh": "<strong>EU Annex 1</strong> 額外要求修補作業必須有隔離管制（限制人員進入）、明確的作業規程，以及事後的清潔、消毒和環境監測。這些步驟必須記錄在書面程序中。",
+   "en": "<strong>EU Annex 1</strong> additionally requires that patching work be isolation-controlled (restricted personnel access), carried out under a clear work procedure, and followed by cleaning, disinfection, and environmental monitoring. These steps must be documented in a written procedure."
+  },
+  {
+   "zh": "Topic G: Laminar vs Unidirectional Airflow — 術語澄清",
+   "en": "Topic G: Laminar vs Unidirectional Airflow — Terminology Clarification"
+  },
+  {
+   "zh": "<strong>術語演變的歷史背景：</strong>",
+   "en": "<strong>Historical background of the terminology:</strong>"
+  },
+  {
+   "zh": "<strong>Laminar Flow（層流）：</strong>物理學術語，指雷諾數（Reynolds number）極低時流體中每個粒子完全平行流動，不發生任何混合。在真實潔淨室環境中（有設備、人員、溫度差），這幾乎不可能實現。",
+   "en": "<strong>Laminar Flow:</strong> A physics term meaning that at a very low Reynolds number every particle in the fluid flows completely in parallel with no mixing. In a real cleanroom (with equipment, people, and temperature differences) this is almost impossible to achieve."
+  },
+  {
+   "zh": "<strong>Unidirectional Airflow（單向流）：</strong>業界改用的實用術語（ISO 14644-3 定義），重點在「穩定速度」和「大致平行的流線」，允許小程度的渦流，但總體方向一致。",
+   "en": "<strong>Unidirectional Airflow:</strong> The practical term the industry switched to (defined in ISO 14644-3), focusing on \"steady velocity\" and \"roughly parallel streamlines\". It tolerates minor eddies as long as the overall direction is consistent."
+  },
+  {
+   "zh": "<strong>EU Annex 1 (2022) 的對齊：</strong>EU Annex 1 全文改用「unidirectional airflow（單向氣流）」取代舊版的「laminar flow（層流）」，與 ISO 14644 和本 PDA PtC-1 的建議完全對齊。",
+   "en": "<strong>Alignment of the EU Annex 1 (2022):</strong> The EU Annex 1 uses \"unidirectional airflow\" throughout in place of the older \"laminar flow\", fully aligned with ISO 14644 and the recommendations of this PDA PtC-1."
+  },
+  {
+   "zh": "<strong>河流 vs 水道：</strong>「層流」就像理想狀態下靜止水槽中的完全平行流動，現實中幾乎不存在。「單向流」就像設計良好的人工水道——雖然水流過障礙物時會有小渦流，但整體上從上游流向下游，不會倒流。充填線 Grade A 區域就是這樣的「人工水道」：設備是障礙物，但只要主體氣流方向是從 HEPA 向下（或向前），就達到了保護產品的目的。",
+   "en": "<strong>River vs canal:</strong> \"Laminar flow\" is like perfectly parallel flow in an ideal still water tank, which hardly exists in reality. \"Unidirectional flow\" is like a well-designed artificial canal: although small eddies form where the water passes obstacles, overall it flows from upstream to downstream and never backward. The Grade A area of a filling line is such an \"artificial canal\": the equipment is an obstacle, but as long as the main airflow direction is downward (or forward) from the HEPA filter, the goal of protecting the product is achieved."
+  },
+  {
+   "zh": "重點提示 Key Notes — 隔離器的例外",
+   "en": "Key Notes — The Isolator Exception"
+  },
+  {
+   "zh": "PDA PtC-1 提出一個重要例外：<strong>密閉隔離器（Closed Isolators）</strong>中，湍流（turbulent flow）在 Grade A 區域可以被接受——前提是 OQ 必須證明能維持可接受的顆粒水平。<br/><br/>\n            這個例外的邏輯是：密閉隔離器本身提供了極高的物理屏障保護，即使氣流非單向，外部污染也無法進入。因此，保護機制是「密封屏障」而非「氣流方向」。這與開放式或半開放式 RABS 系統完全不同。",
+   "en": "PDA PtC-1 gives an important exception: in <strong>Closed Isolators</strong>, turbulent flow can be accepted in the Grade A area, provided that OQ demonstrates that acceptable particle levels can be maintained.<br/><br/>\n            The logic of this exception is that a closed isolator itself provides very high physical barrier protection, so even if the airflow is not unidirectional, external contamination cannot enter. The protection mechanism is therefore the \"sealed barrier\" rather than the \"airflow direction\". This is completely different from open or partially open RABS systems."
+  },
+  {
+   "zh": "<strong>文件中的術語一致性：</strong>許多舊版 SOP、驗證方案和批次記錄仍使用「laminar flow」。建議在下一次文件審閱周期中統一更換為「unidirectional airflow（單向氣流）」，以與 EU Annex 1 (2022)、ISO 14644 及 PDA PtC-1 保持一致，避免查廠時引發監管質疑。",
+   "en": "<strong>Terminology consistency in documents:</strong> Many older SOPs, validation protocols, and batch records still use \"laminar flow\". It is recommended to replace it uniformly with \"unidirectional airflow\" in the next document review cycle, to stay consistent with the EU Annex 1 (2022), ISO 14644, and PDA PtC-1 and avoid regulatory questions during inspections."
+  },
+  {
+   "zh": "為什麼「真正的層流（true laminar flow）」在製藥潔淨室中幾乎不可能實現？哪些物理因素使其難以達成？",
+   "en": "Why is \"true laminar flow\" almost impossible to achieve in pharmaceutical cleanrooms? Which physical factors make it difficult?"
+  },
+  {
+   "zh": "密閉隔離器（Closed Isolator）中允許湍流的理由是什麼？這與開放式 RABS 系統有何根本差異？",
+   "en": "What is the rationale for allowing turbulent flow in a Closed Isolator? How does this fundamentally differ from open RABS systems?"
+  },
+  {
+   "zh": "如果公司的 URS（用戶需求規格）中要求「laminar flow for Grade A」，是否需要更新？為什麼？",
+   "en": "If the company's URS (User Requirements Specification) requires \"laminar flow for Grade A\", does it need to be updated? Why?"
+  },
+  {
+   "zh": "Topic H: Length and Radii of Airborne Sampling Tubing — 取樣管路設計",
+   "en": "Topic H: Length and Radii of Airborne Sampling Tubing — Sampling Tubing Design"
+  },
+  {
+   "zh": "<strong>為什麼管路長度和彎曲半徑很重要？</strong>",
+   "en": "<strong>Why do tubing length and bend radius matter?</strong>"
+  },
+  {
+   "zh": "顆粒計數器是通過管路將潔淨室中的空氣樣品吸引到感測器。管路過長或彎曲過多，會造成顆粒在管壁上的靜電沉積（electrostatic deposition）或慣性損失（inertial loss），使到達感測器的顆粒數少於實際環境中的顆粒數，導致監測數據失真（低估污染）。",
+   "en": "A particle counter draws air samples from the cleanroom to the sensor through tubing. Tubing that is too long or has too many bends causes electrostatic deposition or inertial loss of particles on the tube wall, so fewer particles reach the sensor than are actually in the environment, distorting the monitoring data (underestimating contamination)."
+  },
+  {
+   "zh": "<strong>關鍵設計原則：</strong>",
+   "en": "<strong>Key design principles:</strong>"
+  },
+  {
+   "zh": "<strong>管路長度：</strong>盡量短，EU Annex 1 和 ISO 14644-1 均建議不超過 1 m",
+   "en": "<strong>Tubing length:</strong> As short as possible; both EU Annex 1 and ISO 14644-1 recommend no more than 1 m"
+  },
+  {
+   "zh": "<strong>彎曲次數：</strong>盡量少（每個彎曲都造成顆粒損失）",
+   "en": "<strong>Number of bends:</strong> As few as possible (every bend causes particle loss)"
+  },
+  {
+   "zh": "<strong>彎曲半徑：</strong>盡量大（半徑越小，慣性衝擊越嚴重）",
+   "en": "<strong>Bend radius:</strong> As large as possible (the smaller the radius, the more severe the inertial impaction)"
+  },
+  {
+   "zh": "<strong>等速取樣（Isokinetic sampling）：</strong>取樣入口速度應與環境氣流速度匹配，避免過採或漏採",
+   "en": "<strong>Isokinetic sampling:</strong> The sampling inlet velocity should match the ambient airflow velocity, avoiding over-sampling or under-sampling"
+  },
+  {
+   "zh": "公式與計算 Formula — 顆粒損失機制",
+   "en": "Formula and Calculation — Particle Loss Mechanisms"
+  },
+  {
+   "zh": "主要顆粒損失機制：\n1. 慣性撞擊（Inertial Impaction）\n   → 顆粒在彎曲處無法跟隨氣流轉向\n   → 解決：最大化彎曲半徑 R/D ≥ 5\n\n2. 重力沉降（Gravitational Settling）\n   → 大顆粒（&gt;5 μm）在水平管段沉降\n   → 解決：最小化水平管路長度\n\n3. 靜電沉積（Electrostatic Deposition）\n   → 帶電顆粒吸附管壁\n   → 解決：使用靜電消散材料（ESD tubing）\n\nEU Annex 1 / ISO 14644-1 要求：\n   管路總長度 ≤ 1 m",
+   "en": "Main particle loss mechanisms:\n1. Inertial Impaction\n   → Particles cannot follow the airflow around a bend\n   → Solution: maximize bend radius, R/D ≥ 5\n\n2. Gravitational Settling\n   → Large particles (&gt;5 μm) settle in horizontal sections\n   → Solution: minimize horizontal tubing length\n\n3. Electrostatic Deposition\n   → Charged particles adhere to the tube wall\n   → Solution: use static-dissipative material (ESD tubing)\n\nEU Annex 1 / ISO 14644-1 requirement:\n   Total tubing length ≤ 1 m"
+  },
+  {
+   "zh": "<strong>吸管喝珍珠奶茶：</strong>想像用一根很長、彎曲很多的細吸管喝珍珠奶茶——很多珍珠（相當於顆粒）會被卡在彎曲處或沉在管底，真正吸到嘴裡的比杯子裡的少很多。顆粒計數器的取樣管路面臨完全一樣的問題。如果吸管短而直（管路短、少彎曲），幾乎每個珍珠都能順利通過；如果吸管長且彎曲複雜，監測結果就會嚴重低估環境中的實際顆粒數。",
+   "en": "<strong>Drinking bubble tea through a straw:</strong> Imagine drinking bubble tea through a very long, thin, heavily bent straw: many tapioca pearls (equivalent to particles) get stuck at the bends or settle at the bottom of the straw, and far fewer reach your mouth than are in the cup. A particle counter's sampling tubing faces exactly the same problem. With a short, straight straw (short tubing, few bends), almost every pearl gets through; with a long, complexly bent straw, the monitoring results will seriously underestimate the actual particle count in the environment."
+  },
+  {
+   "zh": "<strong>PDA PtC-1：</strong>管路長度和彎曲應「最小化」，但沒有規定具體的長度數值——強調依據廠商建議和技術論證。<br/>\n<strong>EU Annex 1 (2022) 和 ISO 14644-1：</strong>明確建議管路長度「通常不超過 1 m」。<br/>\n<strong>實務影響：</strong>若 Grade A 遠端監測（如 RABS 內部取樣點）因設備配置必須使用較長管路，必須有技術論證（例如：廠商提供的顆粒回收率 (particle recovery efficiency) 測試報告），並在 CCS 中記錄。",
+   "en": "<strong>PDA PtC-1:</strong> Tubing length and bends should be \"minimized\", but no specific length is given; the emphasis is on the manufacturer's recommendations and technical justification.<br/>\n<strong>EU Annex 1 (2022) and ISO 14644-1:</strong> Explicitly recommend tubing length \"generally not exceeding 1 m\".<br/>\n<strong>Practical impact:</strong> If Grade A remote monitoring (e.g., a sampling point inside a RABS) must use longer tubing because of equipment configuration, there must be technical justification (for example, a particle recovery efficiency test report provided by the manufacturer), documented in the CCS."
+  },
+  {
+   "zh": "EU Annex 1 建議取樣管路不超過 1 m，但您的 RABS 設計中，取樣頭距儀器主機需要 1.5 m 的管路。應如何論證這個偏離是可接受的？",
+   "en": "The EU Annex 1 recommends sampling tubing of no more than 1 m, but in your RABS design the sampling head is 1.5 m of tubing from the instrument. How should you justify that this deviation is acceptable?"
+  },
+  {
+   "zh": "取樣管路的「等速取樣（isokinetic sampling）」是什麼意思？為什麼取樣入口速度需要與環境氣流速度匹配？",
+   "en": "What does \"isokinetic sampling\" of the sampling tubing mean? Why does the sampling inlet velocity need to match the ambient airflow velocity?"
+  },
+  {
+   "zh": "顆粒計數器的儀器校正（instrument calibration）中，PDA PtC-1 提到應「address sampling configuration（涵蓋取樣配置）」，這具體意味著什麼？",
+   "en": "In the instrument calibration of particle counters, PDA PtC-1 mentions that it should \"address sampling configuration\". What does this specifically mean?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary — Topics A–H",
+   "en": "Section Summary — Topics A–H"
+  },
+  {
+   "zh": "<strong>A.1 量測位置：</strong>氣流速度量測應在產品暴露的關鍵表面附近進行，距濾網面 15–30 cm 或工作高度，並需與煙霧試驗數據配對使用。量測位置的任何修改均需在 CCS 中論證。",
+   "en": "<strong>A.1 Measurement location:</strong> Airflow velocity should be measured near the critical surfaces where product is exposed, at 15–30 cm from the filter face or at working height, and used in combination with smoke study data. Any change to the measurement location must be justified in the CCS."
+  },
+  {
+   "zh": "<strong>A.2 速度數值：</strong>0.45 m/s ±20%（PDA）或 0.36–0.54 m/s（EU Annex 1 指引值）均為「建議範圍」而非硬性要求。目標是在科學論據支撐下，達到保護產品的單向流動性。",
+   "en": "<strong>A.2 Velocity values:</strong> 0.45 m/s ±20% (PDA) or 0.36–0.54 m/s (EU Annex 1 guidance value) are both \"recommended ranges\" rather than hard requirements. The goal is to achieve product-protecting unidirectional flow supported by scientific justification."
+  },
+  {
+   "zh": "<strong>A.3 量測頻率：</strong>Grade A/B 每 6 個月，其他區域至少每年一次；出現顆粒數異常或 HVAC 系統變更時需追加量測。",
+   "en": "<strong>A.3 Measurement frequency:</strong> Every 6 months for Grade A/B, and at least once a year for other areas; additional measurement is needed when particle count anomalies occur or the HVAC system changes."
+  },
+  {
+   "zh": "<strong>B.1 煙霧試驗：</strong>必須在動態（in-operation）條件下執行，驗證操作介入與設備運作對氣流的影響；超過 5 年未重做需提供額外論證；結果應連結 APS 設計和 EM 計畫。",
+   "en": "<strong>B.1 Smoke study:</strong> Must be performed under in-operation (dynamic) conditions to verify the effect of operator interventions and equipment operation on airflow; additional justification is needed if not repeated in more than 5 years; results should be linked to the APS design and the EM program."
+  },
+  {
+   "zh": "<strong>B.2 影像記錄：</strong>影像屬電子數據，須依 GDocP 保存；需多角度拍攝以完整呈現三維氣流；可作為人員訓練素材。",
+   "en": "<strong>B.2 Video recording:</strong> Video is electronic data and must be retained under GDocP; multiple camera angles are needed to fully show the three-dimensional airflow; it can also serve as personnel training material."
+  },
+  {
+   "zh": "<strong>C 軋蓋環境：</strong>Grade A 氣流供應 + 已驗證的自動瓶塞偵測系統 = 可接受的配置（PDA）。EU Annex 1 更進一步要求在整個軋蓋完成前持續提供 Grade A 保護。",
+   "en": "<strong>C Capping environment:</strong> Grade A air supply + validated automated stopper detection system = acceptable configuration (PDA). The EU Annex 1 goes further and requires continued Grade A protection until capping is complete."
+  },
+  {
+   "zh": "<strong>D 差壓：</strong>不同等級間需維持 ≥10 Pa（通行期望值），需連續監測並設置帶 QRM 支撐的警報策略；差壓反轉必須即時調查並評估產品影響。",
+   "en": "<strong>D Differential pressure:</strong> ≥10 Pa (commonly expected value) must be maintained between different grades, with continuous monitoring and a QRM-supported alarm strategy; differential pressure reversal must be investigated immediately and the product impact assessed."
+  },
+  {
+   "zh": "<strong>E HEPA 測試：</strong>Grade A/B 每 6 個月、Grade C/D 每 12 個月完整性+速度測試；失效必須評估批次影響並啟動修補或更換程序。",
+   "en": "<strong>E HEPA testing:</strong> Integrity + velocity testing every 6 months for Grade A/B and every 12 months for Grade C/D; a failure requires assessing batch impact and initiating a patching or replacement procedure."
+  },
+  {
+   "zh": "<strong>F HEPA 修補：</strong>Grade A 避免修補（首選更換）；Grade B–D 可修補，但需風險評估 + 符合業界標準規格 + 修補後再測試通過。EU Annex 1 要求修補作業有隔離管制與事後環境監測。",
+   "en": "<strong>F HEPA patching:</strong> Avoid patching for Grade A (replacement preferred); Grade B–D may be patched, but this requires a risk assessment + a patch specification conforming to industry standards + passing retests after patching. The EU Annex 1 requires isolation control and post-work environmental monitoring for patching work."
+  },
+  {
+   "zh": "<strong>G 術語：</strong>應使用「單向流（unidirectional airflow）」而非「層流（laminar flow）」，與 EU Annex 1 (2022) 和 ISO 14644 對齊。密閉隔離器中湍流可被接受（需 OQ 支撐）。",
+   "en": "<strong>G Terminology:</strong> Use \"unidirectional airflow\" rather than \"laminar flow\", aligned with the EU Annex 1 (2022) and ISO 14644. Turbulent flow is acceptable in closed isolators (supported by OQ)."
+  },
+  {
+   "zh": "<strong>H 取樣管路：</strong>管路長度最小化（EU Annex 1 / ISO 14644-1 建議 ≤1 m）、彎曲最少且半徑最大化；偏離需技術論證，並在儀器校正中涵蓋取樣配置。",
+   "en": "<strong>H Sampling tubing:</strong> Minimize tubing length (EU Annex 1 / ISO 14644-1 recommend ≤1 m), use the fewest bends and the largest radius; deviations need technical justification, and the instrument calibration should cover the sampling configuration."
+  }
+ ]
+}

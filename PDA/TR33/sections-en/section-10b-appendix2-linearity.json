@@ -1,0 +1,333 @@
+{
+ "source": "section-10b-appendix2-linearity.html",
+ "blocks": [
+  {
+   "zh": "線性與準確度",
+   "en": "Linearity and Accuracy"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解為何「線性 Linearity」在微生物學方法驗證中的意義不同於分析化學方法——它是用來把 Section 10.1 在特定濃度點得到的準確度（accuracy）結論，延伸到未測試濃度範圍的橋樑，而非單點校正的必要條件",
+   "en": "Understand why \"linearity\" means something different in microbiological method validation than in analytical chemistry: it is the bridge that extends the accuracy conclusions reached at specific concentration points in Section 10.1 to the untested concentration range, rather than a prerequisite for single-point calibration"
+  },
+  {
+   "zh": "掌握加權線性迴歸（Weighted Linear Regression, WLR）與 Poisson 迴歸兩種對計數（counts）建立濃度反應曲線（concentration-response curve）的方法，理解兩者對變異數異質性（heteroscedasticity）的不同處理方式，以及如何用截距、斜率、R² 與二次項檢定判斷線性/比例性（proportionality）",
+   "en": "Master the two ways of building a concentration-response curve for counts, weighted linear regression (WLR) and Poisson regression; understand how each handles heteroscedasticity; and know how to use the intercept, slope, R² and a quadratic-term test to judge linearity and proportionality"
+  },
+  {
+   "zh": "理解 Mitscherlich 函數如何將非線性濃度反應關係一般化，並能辨識何時簡化為 log-linear、linear 或 proportional 模型；比較非線性 Poisson 迴歸與加權非線性迴歸兩種配適方法（以 AICC 判斷優劣）",
+   "en": "Understand how the Mitscherlich function generalizes non-linear concentration-response relationships and be able to recognize when it reduces to a log-linear, linear or proportional model; compare the two fitting methods, non-linear Poisson regression and weighted non-linear regression (judged by AICC)"
+  },
+  {
+   "zh": "能夠說明「以模型為本（model-based）」的濃度反應曲線比較法，相較於逐濃度（per-concentration）分類變數比較法，如何能以更少的樣本數把非劣性（non-inferiority）結論延伸到更廣的濃度範圍，並理解其在 CDMO 方法驗證與放行策略上的實務效益",
+   "en": "Be able to explain how a model-based comparison of concentration-response curves, compared with a per-concentration comparison that treats concentration as a categorical variable, can extend a non-inferiority conclusion to a wider concentration range with fewer samples, and understand its practical benefits for CDMO method validation and release strategy"
+  },
+  {
+   "zh": "<strong>10.2 Linearity and Accuracy 線性與準確度</strong>",
+   "en": "<strong>10.2 Linearity and Accuracy</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>Linearity（線性，此處指濃度反應/濃度回收曲線的線性或單調性):</strong> 在分析化學儀器（如 HPLC）裡，線性是「單點校正」能否成立的先決條件——沒有線性就無法用一個參考品的訊號去回推未知樣品的濃度。但在微生物學方法（AMM/RMM）裡，線性扮演的角色完全不同：它是把 Section 10.1 在少數幾個 spiked concentration（如 5、25、50、100、150、250 CFU）上已證明的準確度（accuracy），「安全地延伸」到這些濃度之間、實驗中沒有實際測試過的濃度值的橋樑。",
+   "en": "<strong>Linearity (here meaning the linearity or monotonicity of the concentration-response / concentration-recovery curve):</strong> In an analytical chemistry instrument (such as an HPLC), linearity is the precondition for single-point calibration: without linearity you cannot use the signal of one reference standard to back-calculate the concentration of an unknown sample. In microbiological methods (AMM/RMM), linearity plays a completely different role: it is the bridge that \"safely extends\" the accuracy already demonstrated in Section 10.1 at a few spiked concentrations (such as 5, 25, 50, 100, 150 and 250 CFU) to concentration values lying between them that were not actually tested in the experiment."
+  },
+  {
+   "zh": "<strong>Monotonic concentration-recovery curve（單調濃度回收曲線):</strong> Recovery 定義為「平均計數 ÷ 真實濃度」。曲線只要是單調不增或不減（不一定要是直線），就能保證：只要曲線兩端（最低與最高濃度）的回收率都通過非劣性瑪margin，中間所有未測試濃度的回收率也一定落在兩端之間——這就是 Figure 10.2-2 中綠色曲線（線性）為何比藍色曲線（非線性、U 形）更值得信賴的原因：藍色曲線在中段會「凹」到 70% 門檻以下，即使兩端和多數測試點都合格。",
+   "en": "<strong>Monotonic concentration-recovery curve:</strong> Recovery is defined as \"mean count ÷ true concentration\". As long as the curve is monotonic, non-increasing or non-decreasing (it need not be a straight line), it is guaranteed that if the recovery at both ends of the curve (the lowest and highest concentrations) passes the non-inferiority margin, the recovery at every untested concentration in between must also lie between the two end values. This is why the green curve (linear) in Figure 10.2-2 is more trustworthy than the blue curve (non-linear, U-shaped): the blue curve dips below the 70% threshold in the middle even though both ends and most of the tested points pass."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "把準確度實驗想像成「量體溫的溫度計只在 3 個刻度上做過校正（36°C、38°C、40°C），而且每個刻度都準」。如果溫度計的誤差曲線是「單調」的（誤差隨溫度穩定變化，沒有忽大忽小），你可以放心推論 37°C、39°C 也準確。但如果溫度計的誤差曲線像雲霄飛車一樣忽高忽低（非單調），即使 3 個校正點都準，中間的 37°C 完全有可能誤差爆表——這正是 Figure 10.2-2 藍色曲線在第四、五個濃度點之間掉到 70% 門檻以下的情境：兩端測試點合格，不代表中間安全。",
+   "en": "Imagine a thermometer that has been calibrated at only 3 marks (36°C, 38°C and 40°C), and each of them is accurate. If the thermometer's error curve is \"monotonic\" (the error changes steadily with temperature without jumping up and down), you can confidently infer that 37°C and 39°C are accurate too. But if the error curve goes up and down like a roller coaster (non-monotonic), then even with all 3 calibration points accurate, the error at 37°C in between could be far off the scale. This is exactly the situation of the blue curve in Figure 10.2-2, which falls below the 70% threshold between the fourth and fifth concentration points: passing at both end points does not mean the middle is safe."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "原文特別提醒：若能證明濃度反應曲線是 <strong>linear</strong>（E(y|λ)=α+β<sub>0</sub>λ）或 <strong>log-linear</strong>（log(E(y|λ))=α+β<sub>0</sub>log(λ)），則濃度回收曲線「自動」保持單調，不需要另外再去驗證回收曲線本身——因為線性/log-linear 濃度反應曲線在數學上必然導出單調的回收函數。但要小心：<strong>linear concentration-response curve（E(y|λ)=α+β<sub>0</sub>λ, α≠0）並不等於 linear concentration-recovery curve</strong>；回收曲線會變成 E(y|λ)/λ=β<sub>0</sub>+α/λ，這是一條非線性但單調的曲線。這個區分正是 Section 10.2.1 與 10.2.2 為什麼要分別對「計數」本身建模，而不是直接對「回收率」建模的原因。",
+   "en": "The original text points out that if the concentration-response curve can be shown to be <strong>linear</strong> (E(y|λ)=α+β<sub>0</sub>λ) or <strong>log-linear</strong> (log(E(y|λ))=α+β<sub>0</sub>log(λ)), then the concentration-recovery curve is \"automatically\" monotonic and the recovery curve itself need not be verified separately, because a linear or log-linear concentration-response curve mathematically implies a monotonic recovery function. Be careful, however: <strong>a linear concentration-response curve (E(y|λ)=α+β<sub>0</sub>λ, α≠0) is not the same as a linear concentration-recovery curve</strong>; the recovery curve becomes E(y|λ)/λ=β<sub>0</sub>+α/λ, which is non-linear but monotonic. This distinction is why Sections 10.2.1 and 10.2.2 model the \"counts\" themselves rather than modeling \"recovery\" directly."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "<strong>濃度回收曲線（Concentration-Recovery Curve）:</strong>",
+   "en": "<strong>Concentration-recovery curve:</strong>"
+  },
+  {
+   "zh": "E(y|λ) / λ = β0 + β1·λ\n\nE(y|λ) = 在真實濃度 λ 下，AMM/RMM 任一測試樣品的期望計數\nλ      = 真實濃度水準（spiked concentration）\nE(y|λ)/λ = 回收率（recovery，未乘以 100%）\nβ0     = 濃度回收曲線的截距\nβ1     = 濃度回收曲線的斜率（若 β1=0，回收曲線為水平線 = 比例性 proportionality 成立）",
+   "en": "E(y|λ) / λ = β0 + β1·λ\n\nE(y|λ) = expected count of any AMM/RMM test sample at the true concentration λ\nλ      = true concentration level (spiked concentration)\nE(y|λ)/λ = recovery (not multiplied by 100%)\nβ0     = intercept of the concentration-recovery curve\nβ1     = slope of the concentration-recovery curve (if β1=0, the recovery curve is a horizontal line = proportionality holds)"
+  },
+  {
+   "zh": "<strong>Log-linear 濃度反應曲線導出的回收曲線:</strong>",
+   "en": "<strong>Recovery curve derived from a log-linear concentration-response curve:</strong>"
+  },
+  {
+   "zh": "log(E(y|λ)) = α + β0·log(λ)\n        ⇒  E(y|λ)/λ = exp{α} · λ^(β0 − 1)   （對 λ 單調）",
+   "en": "log(E(y|λ)) = α + β0·log(λ)\n        ⇒  E(y|λ)/λ = exp{α} · λ^(β0 − 1)   (monotonic in λ)"
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 10.2-1</strong> 呈現的是分析化學儀器的單點校正邏輯：以已知濃度 x<sub>R</sub> 的參考品訊號 y<sub>R</sub> 建立通過原點的校正線，再用未知樣品訊號 y<sub>U</sub> 反推其濃度 x<sub>U</sub>。這個邏輯的前提是曲線「必須」通過原點且為直線——這正是本節開頭用來對比微生物學方法的參照系統。",
+   "en": "<strong>Figure 10.2-1</strong> shows the single-point calibration logic of an analytical chemistry instrument: a calibration line through the origin is built from the signal y<sub>R</sub> of a reference standard of known concentration x<sub>R</sub>, and the signal y<sub>U</sub> of an unknown sample is then used to back-calculate its concentration x<sub>U</sub>. This logic requires the curve to pass through the origin and be a straight line; it is the reference system the section uses at the outset as a contrast to microbiological methods."
+  },
+  {
+   "zh": "<strong>Figure 10.2-2</strong> 是本節最關鍵的教學圖：綠色（線性/單調）與藍色（非線性、U 形）兩條回收曲線都在多數測試點合格，但藍色曲線在中段（第 4～5 個濃度點之間）跌破 70% 非劣性門檻，證明「逐點合格」不能保證「連續濃度範圍內都合格」，這正是線性驗證存在的意義。",
+   "en": "<strong>Figure 10.2-2</strong> is the key teaching figure of this section: the green (linear/monotonic) and blue (non-linear, U-shaped) recovery curves both pass at most of the tested points, but the blue curve falls below the 70% non-inferiority threshold in the middle (between the 4th and 5th concentration points). This shows that \"passing at each point\" does not guarantee \"passing across the continuous concentration range\", which is the reason linearity validation exists."
+  },
+  {
+   "zh": "<strong>Figure 10.2-3A/3B</strong> 用 Table 10.1-1 的實際資料呈現：3A 為濃度反應（計數 vs. 濃度，兩方法皆呈現近似直線但有異質變異），3B 則是回收率（%）vs. 濃度，可觀察到最低濃度點（5 CFU）的回收率偏高且變異很大，這也是後續 10.2.1／10.2.2 節要用迴歸模型正式檢定線性、而非僅憑肉眼判讀圖形的原因。",
+   "en": "<strong>Figure 10.2-3A/3B</strong> use the actual data in Table 10.1-1: 3A shows the concentration-response (count vs. concentration; both methods are approximately straight lines but with heterogeneous variance) and 3B shows recovery (%) vs. concentration, where recovery at the lowest concentration point (5 CFU) is high with large variability. This is why Sections 10.2.1 and 10.2.2 use regression models to test linearity formally instead of judging by eye from the plots."
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對 CDMO 而言，客戶送驗的 AMM/RMM 通常只在 3～6 個 spiked concentration 做過驗證實驗，但放行測試時樣品的實際微生物濃度幾乎不可能剛好落在這幾個驗證點上。若方法驗證報告只呈現「各濃度點都合格」而未證明線性或單調性，等於留下一個法規與科學上的缺口：無法保證兩個驗證點之間的濃度也準確。因此在審查客戶或內部 AMM/RMM 驗證報告時，應主動要求提供 Section 10.2.1／10.2.2 的迴歸分析結果，而不只是 Section 10.1 的逐濃度回收率表。",
+   "en": "For a CDMO, a customer's AMM/RMM has usually been validated at only 3-6 spiked concentrations, yet the actual microbial concentration of a sample at release testing is very unlikely to fall exactly on one of these validation points. If the validation report presents only \"every concentration point passes\" without demonstrating linearity or monotonicity, it leaves a regulatory and scientific gap: there is no assurance that concentrations between two validation points are also accurate. When reviewing a customer's or an internal AMM/RMM validation report, therefore, proactively ask for the regression results of Sections 10.2.1 and 10.2.2, not just the per-concentration recovery table of Section 10.1."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "如果某 AMM/RMM 的濃度反應曲線被證明是 log-linear（log(E(y|λ))=α+β0·log(λ)），為什麼可以不用另外再檢驗濃度回收曲線的單調性？",
+   "en": "If an AMM/RMM's concentration-response curve is shown to be log-linear (log(E(y|λ))=α+β0·log(λ)), why does the monotonicity of the concentration-recovery curve not need to be tested separately?"
+  },
+  {
+   "zh": "Figure 10.2-2 中藍色曲線在多數測試點都通過 70% 門檻，為什麼仍然不能宣稱該方法在整個濃度區間都符合非劣性？",
+   "en": "In Figure 10.2-2, the blue curve passes the 70% threshold at most tested points. Why still can it not be claimed that the method meets non-inferiority across the whole concentration range?"
+  },
+  {
+   "zh": "<strong>10.2.1 Weighted Linear Regression Analysis on the Counts 對計數進行加權線性迴歸分析</strong>",
+   "en": "<strong>10.2.1 Weighted Linear Regression Analysis on the Counts</strong>"
+  },
+  {
+   "zh": "<strong>Weighted Linear Regression（WLR，加權線性迴歸):</strong> 標準線性迴歸假設每個資料點的殘差變異數相同（同質變異，homoscedastic）。但微生物計數資料存在<span class=\"key-term\">異質變異（heteroscedasticity）</span>——濃度越高，計數的變異數通常也越大（可回想 Table 10.1-1 的 variance 欄：5 CFU 時 variance≈4.7，250 CFU 時 variance≈388）。WLR 用「反變異數」作為權重，讓變異小（較可信）的濃度點在迴歸配適時佔更大話語權，避免高濃度的大變異「拖垮」整條迴歸線的精確度。",
+   "en": "<strong>Weighted linear regression (WLR):</strong> Standard linear regression assumes that the residual variance is the same at every data point (homoscedastic). Microbial count data, however, show <span class=\"key-term\">heteroscedasticity</span>: the higher the concentration, the larger the variance of the counts (recall the variance column of Table 10.1-1: variance ≈ 4.7 at 5 CFU and ≈ 388 at 250 CFU). WLR uses the inverse variance as the weight, so that concentration points with small variance (more reliable) have a greater say in the fit, and the large variance at high concentrations does not \"drag down\" the precision of the whole regression line."
+  },
+  {
+   "zh": "<strong>Proportionality via Intercept Test（用截距檢定比例性):</strong> 截距 α 的 95% CI 是否包含 0，是判斷「是否存在系統性背景訊號（假陽性）」的關鍵：AMM/RMM 的 95% CI (-0.975, 2.634) 包含 0 → 沒有證據顯示背景訊號 → 支持比例性；CMM 的 95% CI (0.721, 3.122) 不包含 0 → 統計上顯著非零 → 暗示 CMM 本身就有約 1.922 CFU 的背景計數（可能來自試劑或培養基本身的微生物負荷）。",
+   "en": "<strong>Testing proportionality via the intercept:</strong> Whether the 95% CI of the intercept α contains 0 is the key to judging whether there is a systematic background signal (false positives). The 95% CI for the AMM/RMM, (-0.975, 2.634), contains 0, so there is no evidence of a background signal, which supports proportionality. The 95% CI for the CMM, (0.721, 3.122), does not contain 0, so the intercept is statistically significantly non-zero, suggesting that the CMM itself carries a background count of about 1.922 CFU (possibly from the bioburden of the reagents or media themselves)."
+  },
+  {
+   "zh": "加權迴歸就像做民意調查時「依樣本可信度分配權重」：一份訪問了 10,000 人、抽樣誤差很小的調查，理應比一份只訪問 30 人、誤差很大的調查更有話語權。同理，WLR 讓變異小的濃度點（通常是低濃度）主導迴歸線的精確度，而不是被高濃度的大波動牽著走。至於截距是否為零，可以想像成檢查一台體重計「沒有人站上去時，指針是否歸零」——CMM 的截距顯著不為零，就像體重計空秤時仍顯示 1.9 公斤，代表儀器本身有系統性偏移。",
+   "en": "Weighted regression is like \"weighting by reliability\" in an opinion poll: a survey of 10,000 people with a small sampling error should carry more weight than a survey of only 30 people with a large error. Likewise, WLR lets the concentration points with small variance (usually the low concentrations) dominate the precision of the regression line instead of being pushed around by the large fluctuations at high concentrations. As for whether the intercept is zero, think of checking whether a bathroom scale \"returns to zero when nobody stands on it\": a CMM intercept that is significantly non-zero is like a scale that still reads 1.9 kg when empty, meaning the instrument itself has a systematic offset."
+  },
+  {
+   "zh": "原文特別提醒：<strong>高 R² 不等於線性成立</strong>。R²=98.4%（AMM/RMM）、99.6%（CMM）看似非常漂亮，但當濃度範圍拉得很寬（本例橫跨 5～250 CFU，達 50 倍），即使真實關係是非線性的，R² 仍可能因為整體趨勢一致而顯得很高。因此原文採用更嚴謹的<strong>二次項顯著性檢定</strong>（在模型中加入 γλ² 並檢定 γ=0）作為線性的正式證據，而非僅憑 R² 判讀——這是撰寫或審查方法驗證報告時容易忽略、但法規查廠時常被提問的重點。",
+   "en": "The original text specifically warns that <strong>a high R² does not mean linearity holds</strong>. R² values of 98.4% (AMM/RMM) and 99.6% (CMM) look excellent, but when the concentration range is very wide (here 5-250 CFU, a 50-fold span), R² can still look high because the overall trend is consistent, even if the true relationship is non-linear. The original text therefore uses the more rigorous <strong>significance test of a quadratic term</strong> (adding γλ² to the model and testing γ=0) as the formal evidence of linearity rather than reading R² alone. This is easy to overlook when writing or reviewing a method validation report, yet it is often asked about during regulatory inspections."
+  },
+  {
+   "zh": "加權線性迴歸模型：\ny = α + β·λ + ε,   ε ~ N(0, σ²(λ))\n\ny  = 在濃度 λ 下觀察到的計數\nα  = 迴歸線截距（濃度為 0 時的期望計數 → 背景/假陽性訊號）\nβ  = 迴歸線斜率（× 100 = 回收率 %，若截距=0）\nλ  = spiked concentration\nσ²(λ) = 隨濃度而變的殘差變異數 → 以反變異數加權\n\n線性正式檢定（二次項法）：\ny = α + β·λ + γ·λ² + ε\nH0: γ = 0  (線性成立)\nAMM/RMM: p = 0.821 → 不拒絕 H0 → 線性成立\nCMM:      p = 0.189 → 不拒絕 H0 → 線性成立",
+   "en": "Weighted linear regression model:\ny = α + β·λ + ε,   ε ~ N(0, σ²(λ))\n\ny  = count observed at concentration λ\nα  = intercept of the regression line (expected count at zero concentration → background/false-positive signal)\nβ  = slope of the regression line (× 100 = recovery %, if the intercept = 0)\nλ  = spiked concentration\nσ²(λ) = residual variance that changes with concentration → weighted by the inverse variance\n\nFormal test of linearity (quadratic-term method):\ny = α + β·λ + γ·λ² + ε\nH0: γ = 0  (linearity holds)\nAMM/RMM: p = 0.821 → H0 not rejected → linearity holds\nCMM:      p = 0.189 → H0 not rejected → linearity holds"
+  },
+  {
+   "zh": "當一套 CMM（例如平板計數法）被發現截距顯著不為零，代表該方法本身在「零濃度」的參考基準上就存在偏移。對 CDMO 而言，這個訊息在跨方法比對（AMM/RMM vs. CMM）時極為關鍵：如果只單純比較兩方法的回收率而不校正 CMM 本身的系統性偏移，可能會錯誤高估或低估 AMM/RMM 的真實準確度。這也是為什麼 Section 10.1.2 特別針對 CMM 本身也做了對 spiked concentration 的準確度分析。",
+   "en": "When a CMM (for example, the plate count method) is found to have a significantly non-zero intercept, the method itself is offset at the \"zero concentration\" reference baseline. For a CDMO this finding is critical in cross-method comparison (AMM/RMM vs. CMM): simply comparing the recovery of the two methods without correcting for the CMM's own systematic offset may wrongly over- or under-estimate the true accuracy of the AMM/RMM. This is also why Section 10.1.2 specifically analyzes the accuracy of the CMM itself against the spiked concentrations."
+  },
+  {
+   "zh": "為什麼不能只看 R² 值高（如 98.4%）就直接宣稱濃度反應曲線是線性的？應該補做哪一個統計檢定？",
+   "en": "Why can you not simply declare the concentration-response curve linear because R² is high (such as 98.4%)? Which statistical test should be added?"
+  },
+  {
+   "zh": "若 CMM 的截距 95% CI 不包含 0，這對後續用 CMM 作為「真實濃度」估計值（如 Section 10.2 開頭腳註所提）會有什麼影響？",
+   "en": "If the 95% CI of the CMM intercept does not contain 0, what effect does this have on using the CMM as the estimate of the \"true concentration\" later on (as mentioned in the footnote at the start of Section 10.2)?"
+  },
+  {
+   "zh": "<strong>10.2.2 Poisson Regression Analysis on the Counts 對計數進行 Poisson 迴歸分析</strong>",
+   "en": "<strong>10.2.2 Poisson Regression Analysis on the Counts</strong>"
+  },
+  {
+   "zh": "<strong>Poisson Regression（Poisson 迴歸):</strong> 不假設常態分布，而是直接假設計數服從 Poisson 分布——這在生物學上更貼近真實：微生物在懸浮液中隨機均勻分布時，取樣得到的計數本質上就是 Poisson 隨機變數。Poisson 分布有一個特性「均值=變異數」，因此模型「自動」處理了異質變異問題，不需要像 WLR 那樣額外估計權重。",
+   "en": "<strong>Poisson regression:</strong> This does not assume a normal distribution but assumes directly that counts follow a Poisson distribution, which is biologically closer to reality: when microorganisms are randomly and uniformly distributed in a suspension, the count obtained on sampling is essentially a Poisson random variable. A Poisson distribution has the property \"mean = variance\", so the model \"automatically\" deals with heteroscedasticity and, unlike WLR, does not need weights to be estimated separately."
+  },
+  {
+   "zh": "<strong>Log-link Function 與斜率 β 的三種情境:</strong> 使用對數連結函數 log(E(y|λ))=α+β·ψ(λ) 時：β≈1 代表比例性成立（回收率=100%·exp{α}，對所有濃度皆適用）；β&gt;1 代表低濃度偵測較弱、高濃度轉強（常見於訊號需要「累積」才被偵測到的技術）；β&lt;1 代表高濃度出現飽和效應（訊號在高濃度時不再線性成長，常見於光學/螢光類方法的偵測器飽和）。",
+   "en": "<strong>Log-link function and the three scenarios for the slope β:</strong> With the log link function log(E(y|λ))=α+β·ψ(λ): β≈1 means proportionality holds (recovery = 100%·exp{α}, applicable at all concentrations); β&gt;1 means weaker detection at low concentrations that strengthens at high concentrations (common in techniques where the signal must \"accumulate\" before it is detected); β&lt;1 means a saturation effect at high concentrations (the signal no longer grows linearly at high concentrations, common with detector saturation in optical/fluorescence methods)."
+  },
+  {
+   "zh": "可以把 β&gt;1 想像成「新手司機」：起步（低濃度）時反應遲鈍、容易漏抓訊號，但速度（濃度）拉高後抓得越來越準；β&lt;1 則像「相機在強光下過曝」：光線（濃度）越強，感光元件（偵測器）越容易飽和，多出來的濃度已經無法再被完整記錄成比例增加的訊號——這正是高濃度計數常見的「封頂」現象。",
+   "en": "Think of β&gt;1 as a \"novice driver\": slow to react at the start (low concentration) and likely to miss signals, but increasingly accurate as speed (concentration) rises. β&lt;1 is like a \"camera overexposed in bright light\": the stronger the light (concentration), the more easily the sensor (detector) saturates, and the extra concentration can no longer be recorded as a proportionally larger signal. This is the familiar \"ceiling\" phenomenon in high-concentration counts."
+  },
+  {
+   "zh": "WLR（10.2.1）與 Poisson 迴歸（10.2.2）用同一組資料（Table 10.1-1）卻得到「不同角度」的線性結論：WLR 判斷 AMM/RMM「截距不顯著異於 0」支持比例性；Poisson 迴歸判斷 AMM/RMM「斜率 β 的 95% CI 包含 1」也支持比例性——兩者殊途同歸，但檢定的參數與模型假設完全不同（常態 vs. Poisson、線性尺度 vs. 對數尺度）。實務上建議兩種方法都執行，並在 10.1.1.3 節「Lack-of-Fit Analyses」（overdispersion 檢定、AICC 比較）輔助判斷哪一種分布假設更貼近實際資料，而非任選一種。",
+   "en": "WLR (10.2.1) and Poisson regression (10.2.2) use the same data set (Table 10.1-1) but reach their linearity conclusions from \"different angles\": WLR judges that the AMM/RMM \"intercept is not significantly different from 0\", supporting proportionality, while Poisson regression judges that the \"95% CI of the AMM/RMM slope β contains 1\", which also supports proportionality. The two arrive at the same place, but the parameters tested and the model assumptions are completely different (normal vs. Poisson, linear scale vs. log scale). In practice, run both methods, and use the lack-of-fit analyses in Section 10.1.1.3 (overdispersion test, AICC comparison) to help judge which distribution assumption is closer to the real data, rather than picking one arbitrarily."
+  },
+  {
+   "zh": "Poisson 迴歸濃度反應曲線（log-link）：\nE(y|λ) = exp{ α + β·ψ(λ) }\n\nψ(λ) = log(λ)  → 曲線強制通過原點（無背景訊號），\n                 β≈1 時回收率 = 100%·exp{α}\nψ(λ) = λ       → exp{α} = 空白樣品的期望計數（背景訊號）\n\nAMM/RMM（假設比例性成立）：\n回收率 ≈ 100 × exp(−0.0999) = 90.5%   (5–250 CFU 全區間適用)",
+   "en": "Poisson regression concentration-response curve (log link):\nE(y|λ) = exp{ α + β·ψ(λ) }\n\nψ(λ) = log(λ)  → the curve is forced through the origin (no background signal),\n                 when β≈1, recovery = 100%·exp{α}\nψ(λ) = λ       → exp{α} = expected count of a blank sample (background signal)\n\nAMM/RMM (assuming proportionality holds):\nrecovery ≈ 100 × exp(−0.0999) = 90.5%   (applies across the whole 5–250 CFU range)"
+  },
+  {
+   "zh": "若某 AMM/RMM 平台的 Poisson 迴歸結果顯示斜率 β 顯著小於 1（高濃度飽和），CDMO 在導入該技術做「早期汙染監測」時應特別留意：高濃度污染事件（大量微生物入侵）反而可能因偵測器飽和而被低估其嚴重程度。這類技術限制應納入方法適用範圍（method scope）與偏差調查 SOP 的判讀邏輯中，避免高濃度異常事件被系統性低估。",
+   "en": "If the Poisson regression result for an AMM/RMM platform shows a slope β significantly below 1 (saturation at high concentrations), a CDMO introducing the technology for \"early contamination monitoring\" should take particular care: a high-concentration contamination event (a large microbial ingress) may have its severity underestimated because of detector saturation. Such technical limitations should be built into the method scope and into the interpretation logic of the deviation investigation SOP, so that high-concentration abnormal events are not systematically underestimated."
+  },
+  {
+   "zh": "若 Poisson 迴歸估得某方法斜率 β 的 95% CI 為 (1.05, 1.42)，這代表該方法在低濃度與高濃度的偵測能力分別呈現什麼型態？",
+   "en": "If Poisson regression estimates the 95% CI of the slope β of a method as (1.05, 1.42), what pattern does this indicate for the method's detection capability at low and at high concentrations?"
+  },
+  {
+   "zh": "為什麼 Poisson 迴歸「不需要」像加權線性迴歸那樣額外指定權重來處理異質變異？",
+   "en": "Why does Poisson regression not need weights to be specified for heteroscedasticity, as weighted linear regression does?"
+  },
+  {
+   "zh": "<strong>10.2.3 Comparability on Accuracy of Alternative/Rapid Microbiological Methods Against Conventional Methods Using Concentration-Response Curves 以濃度反應曲線比較 AMM/RMM 與 CMM 之準確度可比性</strong>",
+   "en": "<strong>10.2.3 Comparability on Accuracy of Alternative/Rapid Microbiological Methods Against Conventional Methods Using Concentration-Response Curves</strong>"
+  },
+  {
+   "zh": "<strong>Categorical vs. Continuous 濃度處理方式:</strong> Section 10.1 把每個 spiked concentration 當作獨立的「類別」分別檢定準確度（例如 5 CFU、25 CFU 各自算一次回收率與信賴區間），完全不假設濃度之間有函數關係；Section 10.2.1／10.2.2 則把濃度當作「連續變數」，用一條迴歸曲線同時描述所有濃度。10.2.3 更進一步：直接用「曲線本身」來計算 AMM/RMM 對 CMM 的非劣性，而不是先分別做線性檢定再做逐點準確度檢定兩件事。",
+   "en": "<strong>Categorical vs. continuous treatment of concentration:</strong> Section 10.1 treats each spiked concentration as an independent \"category\" and tests accuracy separately (for example, 5 CFU and 25 CFU each get their own recovery and confidence interval), assuming no functional relationship between concentrations. Sections 10.2.1 and 10.2.2 treat concentration as a \"continuous variable\" and describe all concentrations with a single regression curve. Section 10.2.3 goes a step further: it uses the \"curve itself\" to calculate the non-inferiority of the AMM/RMM against the CMM, instead of doing two separate things, first a linearity test and then a point-by-point accuracy test."
+  },
+  {
+   "zh": "<strong>Mitscherlich Function（米契利希函數):</strong> 一個彈性極高的非線性函數 m(λ)=β1+β2·λ^β3，透過三個參數（截距 β1、斜率 β2、冪次 β3）可以涵蓋從「比例關係」到「飽和曲線」的各種濃度反應型態，是農業科學中歷史悠久（作物產量對施肥量的反應曲線）、被本文借用到微生物計數建模的經典非線性模型。",
+   "en": "<strong>Mitscherlich function:</strong> A highly flexible non-linear function, m(λ)=β1+β2·λ^β3. Its three parameters (intercept β1, slope β2, power β3) can cover every concentration-response pattern from a \"proportional relationship\" to a \"saturation curve\". It is a classic non-linear model with a long history in agricultural science (the response of crop yield to fertilizer dose), borrowed here for modeling microbial counts."
+  },
+  {
+   "zh": "Mitscherlich 函數就像一台「可調式」的萬用曲線產生器：轉動 β3（冪次）這個旋鈕，曲線可以從一直線（β3=1）調整成往上彎（β3&gt;1，訊號加速成長）或往下彎（β3&lt;1，訊號逐漸飽和）；再把 β1（截距）歸零，曲線就會強制通過原點。這種「一個模型、多種形狀」的設計，讓分析人員不需要一開始就猜對曲線形狀，而是讓資料本身「投票」決定最終形狀為何。",
+   "en": "The Mitscherlich function is like an \"adjustable\" universal curve generator: turn the dial of β3 (the power) and the curve can be adjusted from a straight line (β3=1) to bending upward (β3&gt;1, signal growing faster) or downward (β3&lt;1, signal gradually saturating); set β1 (the intercept) to zero and the curve is forced through the origin. This \"one model, many shapes\" design means the analyst does not have to guess the right curve shape at the outset, but lets the data themselves \"vote\" on the final shape."
+  },
+  {
+   "zh": "本節強調兩種配適 Mitscherlich 函數的路徑各有優劣：<strong>非線性 Poisson 迴歸</strong>（10.2.3.1）的變異數結構由 Poisson 分布本身決定（均值=變異數），不需要另外建模；<strong>加權非線性迴歸</strong>（10.2.3.2）則需要額外對「變異數如何隨濃度變化」建立模型，計算過程更複雜。原文也坦承此類分析屬於「相當技術性」的統計工作，實務上多半需要統計師協助，並提及專用軟體 <span class=\"key-term\">TriMSA</span> 已內建此類分析——這對評估外部方法驗證報告是否具備足夠統計嚴謹度，是一個重要的查核點。",
+   "en": "This section stresses that the two ways of fitting the Mitscherlich function each have pros and cons: in <strong>non-linear Poisson regression</strong> (10.2.3.1) the variance structure is determined by the Poisson distribution itself (mean = variance) and need not be modeled separately, whereas <strong>weighted non-linear regression</strong> (10.2.3.2) requires an extra model of how variance changes with concentration, and the calculation is more complex. The original text also admits that this kind of analysis is \"fairly technical\" statistical work that in practice usually needs a statistician's help, and mentions that the dedicated software <span class=\"key-term\">TriMSA</span> already has this analysis built in. This is an important check point when assessing whether an external method validation report has sufficient statistical rigor."
+  },
+  {
+   "zh": "Mitscherlich 函數（一般型）：\nm(λ) ≡ E(y|λ) = β1 + β2·exp{β3·log(λ)} = β1 + β2·λ^β3\n\nβ1 = 0            →  Log-linear: log(E(y|λ)) = log(β2) + β3·log(λ)\nβ3 = 1            →  Linear:     E(y|λ) = β1 + β2·λ\nβ1 = 0 且 β3 = 1  →  Proportional（比例關係）\n\nβ1 = 截距（濃度為 0 時的期望計數）\nβ2 = 斜率（尺度參數）\nβ3 = 冪次參數（曲線彎曲方向與程度）",
+   "en": "Mitscherlich function (general form):\nm(λ) ≡ E(y|λ) = β1 + β2·exp{β3·log(λ)} = β1 + β2·λ^β3\n\nβ1 = 0            →  Log-linear: log(E(y|λ)) = log(β2) + β3·log(λ)\nβ3 = 1            →  Linear:     E(y|λ) = β1 + β2·λ\nβ1 = 0 and β3 = 1 →  Proportional\n\nβ1 = intercept (expected count at zero concentration)\nβ2 = slope (scale parameter)\nβ3 = power parameter (direction and degree of curvature)"
+  },
+  {
+   "zh": "<strong>Figure 10.2.3-1</strong> 使用 Table 10.2.3-1 的新範例資料（與 Table 10.1-1 不同的另一組實驗數據），將各濃度的平均計數以直線連接。可觀察到連接線並非一條完美直線，尤其在低濃度區段的曲度較明顯，這正是原文所說「濃度反應曲線在 spiked concentration 上呈非線性」的視覺證據，也是後續必須引入 Mitscherlich 函數（而非簡單線性迴歸）的原因。",
+   "en": "<strong>Figure 10.2.3-1</strong> uses the new example data in Table 10.2.3-1 (a different set of experimental data from Table 10.1-1) and connects the mean counts at each concentration with straight lines. The connecting line is not a perfect straight line, and the curvature is more obvious in the low concentration range. This is the visual evidence for the original text's statement that \"the concentration-response curve is non-linear at the spiked concentrations\", and the reason the Mitscherlich function (rather than simple linear regression) must be introduced next."
+  },
+  {
+   "zh": "Section 10.1 的「逐濃度類別比較」與 Section 10.2.3 的「濃度反應曲線比較」，兩者在樣本使用效率（power）上有何本質差異？",
+   "en": "What is the essential difference in sample use efficiency (power) between the \"per-concentration categorical comparison\" of Section 10.1 and the \"concentration-response curve comparison\" of Section 10.2.3?"
+  },
+  {
+   "zh": "當 Mitscherlich 函數配適出 β1 接近 0 且 β3 接近 1 時，代表該方法的濃度反應關係可以簡化成什麼型態的模型？",
+   "en": "When a Mitscherlich function is fitted with β1 close to 0 and β3 close to 1, what simpler form of model can the method's concentration-response relationship be reduced to?"
+  },
+  {
+   "zh": "<strong>10.2.3.1 Using Nonlinear Poisson Regression Analysis 使用非線性 Poisson 迴歸分析</strong>",
+   "en": "<strong>10.2.3.1 Using Nonlinear Poisson Regression Analysis</strong>"
+  },
+  {
+   "zh": "<strong>AICC（Akaike's corrected Information Criterion）:</strong> 用來在「配適度」與「模型複雜度」之間權衡的指標，數值越小代表模型越適合。本例中 log-linear（鎖定截距=0，只用 2 個參數 β2、β3）反而比完整 Mitscherlich（3 個參數）AICC 更低（AMM/RMM: 222.4 vs 224.8；CMM: 206.8 vs 208.9），代表「更簡單的模型」在此資料上表現更好——這呼應了統計學的簡約原則（parsimony）：不要為了配適資料而過度複雜化模型。",
+   "en": "<strong>AICC (Akaike's corrected information criterion):</strong> An index used to balance \"goodness of fit\" against \"model complexity\"; the smaller the value, the better the model suits the data. In this example the log-linear model (intercept fixed at 0, using only 2 parameters β2 and β3) actually has a lower AICC than the full Mitscherlich model (3 parameters): AMM/RMM 222.4 vs. 224.8; CMM 206.8 vs. 208.9. This means the \"simpler model\" performs better on these data, echoing the statistical principle of parsimony: do not overcomplicate the model just to fit the data."
+  },
+  {
+   "zh": "<strong>Ratio-of-Curves Non-inferiority（曲線比值非劣性法）:</strong> 不再逐濃度分別檢定，而是直接計算兩條配適曲線在「任一濃度 λ」下的比值 m̂A(λ)/m̂C(λ) 作為回收率估計，並在對數尺度上計算其信賴下限——這讓非劣性結論可以連續地涵蓋整個實驗濃度區間 [5, 250]，而不只是幾個離散的測試點。",
+   "en": "<strong>Ratio-of-curves non-inferiority:</strong> Instead of testing concentration by concentration, the ratio of the two fitted curves, m̂A(λ)/m̂C(λ), at \"any concentration λ\" is calculated directly as the recovery estimate, and its lower confidence limit is calculated on the log scale. The non-inferiority conclusion can then cover the whole experimental concentration range [5, 250] continuously, not just a few discrete tested points."
+  },
+  {
+   "zh": "把「逐濃度類別比較」想像成只在路上設 6 個測速照相點，車速在這 6 點合法，但中間路段完全沒有監控；「曲線比值法」則像是全程雷達測速，畫出一條連續的速度曲線並直接證明整條路都沒超速。後者需要更精細的建模工具（雷達技術／非線性迴歸），但換來的是對「全程」而非「六個點」的保證——這正是為何本例能把非劣性下限從 25 CFU 一路延伸到 8.4 CFU。",
+   "en": "Think of the \"per-concentration categorical comparison\" as putting up speed cameras at only 6 spots on a road: speeds are legal at those 6 points, but the stretches in between are not monitored at all. The \"ratio-of-curves method\" is like radar speed measurement along the whole route: it draws a continuous speed curve and directly proves that the entire road is free of speeding. The latter needs more refined modeling tools (radar technology / non-linear regression) but gives assurance for the \"whole route\" rather than \"six points\". This is why in this example the non-inferiority lower limit could be extended all the way from 25 CFU down to 8.4 CFU."
+  },
+  {
+   "zh": "本節結尾特別點出模型比較法的商業價值：在 Section 10.1.2／10.1.3（逐濃度類別比較）中，AMM/RMM 對 CMM 的非劣性最低只能證明到 25 CFU；但若能證明兩方法的濃度反應曲線都符合 log-linear（或更嚴格的比例性），用「以模型為本」的方法可以把非劣性下限延伸到 8.4 CFU——足足降低了近 3 倍的可宣稱下限濃度。但原文也提醒但書：<strong>如果任一方法的比例性不成立，就不能把非劣性延伸到 25 CFU 以下</strong>，代表這個效益完全仰賴線性/比例性假設是否成立，不能想當然爾套用。",
+   "en": "The section closes by pointing out the commercial value of the model-based approach. In the per-concentration categorical comparisons of Sections 10.1.2 and 10.1.3, the non-inferiority of the AMM/RMM against the CMM could only be shown down to 25 CFU. If both methods' concentration-response curves can be shown to be log-linear (or, more strictly, proportional), the model-based approach can extend the non-inferiority lower limit down to 8.4 CFU, lowering the claimable lower concentration limit by nearly 3 times. The original text adds a proviso, however: <strong>if proportionality does not hold for either method, non-inferiority cannot be extended below 25 CFU</strong>. The benefit depends entirely on whether the linearity/proportionality assumption holds and must not be applied as a matter of course."
+  },
+  {
+   "zh": "回收率之對數尺度信賴下限（Lower 95% CL）：\n\n[ m̂A(λ) / m̂C(λ) ] · exp{ −1.645·√(τ̂A²(λ) + τ̂C²(λ)) }\n\nm̂A(λ), m̂C(λ) = AMM/RMM、CMM 配適曲線在濃度 λ 的期望值\nτA²(λ), τC²(λ) = log(m̂A(λ))、log(m̂C(λ)) 的變異數\n\nLog-linear 模型的變異數（較簡化版本）：\nτ²(λ) = VAR(log(β̂2)) + [log(λ)]²·VAR(β̂3)\n        + 2·log(λ)·COV(log(β̂2), β̂3)\n\n結果：250 CFU 處回收率信賴下限 = 82.7%\n      → 即使非劣性 margin 提高到 80%，結論依然不變",
+   "en": "Lower confidence limit of recovery on the log scale (Lower 95% CL):\n\n[ m̂A(λ) / m̂C(λ) ] · exp{ −1.645·√(τ̂A²(λ) + τ̂C²(λ)) }\n\nm̂A(λ), m̂C(λ) = expected values of the fitted AMM/RMM and CMM curves at concentration λ\nτA²(λ), τC²(λ) = variances of log(m̂A(λ)) and log(m̂C(λ))\n\nVariance for the log-linear model (simplified version):\nτ²(λ) = VAR(log(β̂2)) + [log(λ)]²·VAR(β̂3)\n        + 2·log(λ)·COV(log(β̂2), β̂3)\n\nResult: lower confidence limit of recovery at 250 CFU = 82.7%\n      → the conclusion is unchanged even if the non-inferiority margin is raised to 80%"
+  },
+  {
+   "zh": "<strong>Figure 10.2.3.1-1</strong> 顯示 Mitscherlich 函數配適曲線與觀察計數的關係：CMM（左圖）曲線在低濃度處略微上凸（低濃度偵測不足、隨濃度增加逐漸追上），AMM/RMM（右圖）則相反，低濃度時已相對貼近實際、高濃度處出現輕微飽和（曲線略低於資料點延伸趨勢）——這與斜率、冪次參數的估計結果（Table 10.2.3.1-1）完全吻合。",
+   "en": "<strong>Figure 10.2.3.1-1</strong> shows the relationship between the fitted Mitscherlich curves and the observed counts. The CMM curve (left) is slightly convex upward at low concentrations (insufficient detection at low concentrations, gradually catching up as concentration rises). The AMM/RMM (right) is the opposite: it is already relatively close to the actual values at low concentrations and shows slight saturation at high concentrations (the curve lies slightly below the extended trend of the data points). This agrees fully with the estimated slope and power parameters (Table 10.2.3.1-1)."
+  },
+  {
+   "zh": "<strong>Figure 10.2.3.1-2</strong> 是本節的核心產出：左圖為 CMM 估計回收率（實線）與 95% 信賴下限（虛線），右圖為 AMM/RMM。可觀察到 AMM/RMM 的回收率曲線在低濃度時甚至超過 100%，隨濃度增加而略降，但信賴下限全程維持在 70% 非劣性門檻之上（甚至在 250 CFU 處達 82.7%，滿足 80% 更嚴格的門檻）——這正是「以模型為本」分析法能提供連續、全區間非劣性宣稱的視覺證據。",
+   "en": "<strong>Figure 10.2.3.1-2</strong> is the core output of this section: the left plot shows the CMM's estimated recovery (solid line) and 95% lower confidence limit (dashed line), and the right plot shows the AMM/RMM. The AMM/RMM recovery curve even exceeds 100% at low concentrations and falls slightly as concentration increases, but the lower confidence limit stays above the 70% non-inferiority threshold throughout (reaching 82.7% at 250 CFU, which meets even the stricter 80% threshold). This is the visual evidence that the model-based analysis can support a continuous, full-range non-inferiority claim."
+  },
+  {
+   "zh": "對於欲擴大放行測試靈敏度下限（例如把 AMM/RMM 的可宣稱下限從 25 CFU 降到接近 LoD/LoQ 附近）的 CDMO 專案，若能在方法驗證階段額外執行非線性 Poisson 迴歸並證明 log-linear 曲線成立，即可用同一批實驗數據「免費」把非劣性宣稱範圍向下延伸，而不需要再多做低濃度的驗證批次——這是顯著節省驗證成本與時程的統計策略，但必須配合統計師執行嚴謹的模型選擇（AICC）與診斷（見 Section 10.1.1.3 的 lack-of-fit 概念延伸）。",
+   "en": "For a CDMO project that wants to lower the sensitivity limit of release testing (for example, reducing the claimable lower limit of an AMM/RMM from 25 CFU to near the LoD/LoQ), running an additional non-linear Poisson regression at the validation stage and showing that a log-linear curve holds allows the non-inferiority claim to be extended downward \"for free\" from the same experimental data, with no need for further low-concentration validation batches. This is a statistical strategy that saves significant validation cost and time, but it must be paired with rigorous model selection (AICC) and diagnostics carried out with a statistician (see the extension of the lack-of-fit concept in Section 10.1.1.3)."
+  },
+  {
+   "zh": "為什麼本例最終選擇「鎖定截距=0 的 log-linear 模型」而非完整的三參數 Mitscherlich 函數？判斷依據是什麼統計指標？",
+   "en": "Why does this example finally choose the \"log-linear model with the intercept fixed at 0\" rather than the full three-parameter Mitscherlich function? Which statistical index is the basis for the decision?"
+  },
+  {
+   "zh": "若某一濃度反應曲線的比例性（proportionality）無法被證明成立，「以模型為本」的非劣性延伸法還能否套用到 25 CFU 以下的濃度？",
+   "en": "If the proportionality of a concentration-response curve cannot be shown to hold, can the \"model-based\" non-inferiority extension still be applied to concentrations below 25 CFU?"
+  },
+  {
+   "zh": "<strong>10.2.3.2 Using Weighted Nonlinear Regression Analysis 使用加權非線性迴歸分析</strong>",
+   "en": "<strong>10.2.3.2 Using Weighted Nonlinear Regression Analysis</strong>"
+  },
+  {
+   "zh": "<strong>加權非線性迴歸（Weighted Nonlinear Regression）:</strong> 與 10.2.1 節的加權線性迴歸邏輯一致——以「各濃度計數變異數的倒數」作為權重，但這裡配適的是非線性 Mitscherlich 函數而非直線。與 10.2.3.1 節的非線性 Poisson 迴歸相比，兩者都能配適同一個 Mitscherlich 函數形式，但變異數結構的來源不同：Poisson 迴歸的變異數由分布假設「內建」決定，加權非線性迴歸則需要分析人員「外部」提供一組權重（本例沿用各濃度樣本變異數的倒數）。",
+   "en": "<strong>Weighted non-linear regression:</strong> The logic is the same as the weighted linear regression of Section 10.2.1, using the \"inverse of the count variance at each concentration\" as the weight, but here a non-linear Mitscherlich function is fitted instead of a straight line. Compared with the non-linear Poisson regression of Section 10.2.3.1, both can fit the same Mitscherlich function form, but the source of the variance structure differs: in Poisson regression the variance is \"built in\" by the distribution assumption, whereas weighted non-linear regression needs the analyst to supply a set of weights \"externally\" (in this example, the inverse of the sample variance at each concentration is used)."
+  },
+  {
+   "zh": "可以把非線性 Poisson 迴歸與加權非線性迴歸想像成兩位廚師用同一份食譜（Mitscherlich 函數）做同一道菜，但一位遵循「食譜內建比例」（Poisson 分布自動決定變異數結構），另一位則「自行秤重調整」各項食材比例（外部指定權重）。兩人做出來的菜（配適曲線）外觀相似、口味結論一致（CMM 低濃度弱、AMM/RMM 高濃度弱），但精確的調味比例（係數估計值）略有不同。",
+   "en": "Think of non-linear Poisson regression and weighted non-linear regression as two chefs making the same dish from the same recipe (the Mitscherlich function). One follows the \"proportions built into the recipe\" (the Poisson distribution automatically determines the variance structure), while the other \"weighs and adjusts\" the proportions of the ingredients personally (externally specified weights). The two dishes (fitted curves) look alike and lead to the same verdict (CMM weak at low concentrations, AMM/RMM weak at high concentrations), but the exact seasoning proportions (coefficient estimates) differ slightly."
+  },
+  {
+   "zh": "本節的結論具有重要的「穩健性驗證」意義：即使改用完全不同的統計方法（加權非線性迴歸 vs. 非線性 Poisson 迴歸），關於兩方法「濃度反應型態」的科學結論（CMM 低濃度弱、AMM/RMM 高濃度弱，截距≈0，冪次≠1）完全一致。這種「用不同方法得到相同結論」的交叉驗證，是提升方法驗證報告可信度的重要證據；原文最終仍建議優先採用非線性 Poisson 迴歸，因其配適度在視覺上略優，且變異數結構有分布理論支持，不需額外假設權重來源。",
+   "en": "The conclusion of this section is important as a \"robustness check\": even when a completely different statistical method is used (weighted non-linear regression vs. non-linear Poisson regression), the scientific conclusions about the two methods' \"concentration-response patterns\" (CMM weak at low concentrations, AMM/RMM weak at high concentrations, intercept ≈ 0, power ≠ 1) are fully consistent. Such cross-validation, \"reaching the same conclusion by different methods\", is important evidence for raising the credibility of a method validation report. The original text still recommends giving priority to non-linear Poisson regression, because its fit looks slightly better and its variance structure is supported by distribution theory, so no extra assumption about the source of the weights is needed."
+  },
+  {
+   "zh": "加權非線性迴歸權重設定（與 10.2.1 節加權線性迴歸相同邏輯）：\n\n權重 wᵢ = 1 / Var(y | λᵢ)\n        （各 spiked concentration 之計數樣本變異數的倒數）\n\n配適目標：Mitscherlich 函數\nm(λ) = β1 + β2·λ^β3\n在加權平方和準則下求解 β1, β2, β3",
+   "en": "Weight setting for weighted non-linear regression (same logic as the weighted linear regression of Section 10.2.1):\n\nweight wᵢ = 1 / Var(y | λᵢ)\n        (inverse of the sample variance of the counts at each spiked concentration)\n\nFitting target: Mitscherlich function\nm(λ) = β1 + β2·λ^β3\nsolve for β1, β2, β3 under the weighted sum-of-squares criterion"
+  },
+  {
+   "zh": "<strong>Figure 10.2.3-4</strong> 呈現加權非線性迴歸配適的 Mitscherlich 曲線（CMM 左圖、AMM/RMM 右圖），與 Figure 10.2.3.1-1（非線性 Poisson 迴歸）視覺上高度相似——曲線走勢、資料點分布幾乎一致，僅在細節配適上略有差異。這正是原文所說「預測曲線相去不遠，但視覺上非線性 Poisson 迴歸配適略佳」的圖像證據，讀者可將兩圖並排比較以驗證此一結論。",
+   "en": "<strong>Figure 10.2.3-4</strong> shows the Mitscherlich curves fitted by weighted non-linear regression (CMM on the left, AMM/RMM on the right), which look very similar to Figure 10.2.3.1-1 (non-linear Poisson regression): the curve trends and data point distributions are almost identical, differing only slightly in the details of the fit. This is the graphical evidence for the original text's statement that \"the predicted curves are not far apart, but visually the non-linear Poisson regression fits slightly better\", and readers can compare the two figures side by side to verify it."
+  },
+  {
+   "zh": "當內部或客戶的統計軟體平台不支援非線性 Poisson 迴歸（例如僅有 Minitab 而無 SAS®/R 授權)，加權非線性迴歸提供了一條可行的替代路徑，讓 CDMO 仍能在既有軟體工具下配適 Mitscherlich 函數並得到方向一致的科學結論。但應在方法驗證報告中明確記載「本分析未採用 Poisson 分布假設之變異數結構，而是採用外部估計權重」，以利未來稽核追溯分析選擇的合理性。",
+   "en": "When an in-house or customer statistical software platform does not support non-linear Poisson regression (for example, only Minitab is available, with no SAS®/R license), weighted non-linear regression offers a workable alternative, allowing a CDMO to fit the Mitscherlich function with existing software tools and obtain scientifically consistent conclusions. The method validation report should, however, state explicitly that \"this analysis did not use the variance structure of the Poisson distribution assumption but externally estimated weights\", so that future audits can trace the rationale for the analysis choice."
+  },
+  {
+   "zh": "加權非線性迴歸與非線性 Poisson 迴歸兩者對「變異數結構」的處理方式有何本質差異？",
+   "en": "What is the essential difference in how weighted non-linear regression and non-linear Poisson regression treat the \"variance structure\"?"
+  },
+  {
+   "zh": "若兩種迴歸方法得到的科學結論一致但係數估計值不同，這對方法驗證報告的可信度分別代表什麼意義？",
+   "en": "If the two regression methods reach consistent scientific conclusions but different coefficient estimates, what does each of these mean for the credibility of the method validation report?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "線性驗證在微生物學方法中的意義，是把 Section 10.1 少數濃度點上證明的準確度，透過單調（monotonic）或線性/log-linear 的濃度反應曲線，安全延伸到未測試的濃度範圍——這與分析化學儀器單點校正所要求的「線性」意義並不相同。",
+   "en": "The meaning of linearity validation in microbiological methods is to extend, safely, the accuracy demonstrated at a few concentration points in Section 10.1 to the untested concentration range through a monotonic or linear/log-linear concentration-response curve. This is not the same as the \"linearity\" required for single-point calibration of an analytical chemistry instrument."
+  },
+  {
+   "zh": "加權線性迴歸（10.2.1）用截距、R²、二次項檢定判斷線性與比例性；Poisson 迴歸（10.2.2）則用對數連結函數的斜率判斷比例性與飽和效應，兩者殊途同歸但假設與檢定邏輯不同，實務上建議搭配 lack-of-fit 分析交叉驗證。",
+   "en": "Weighted linear regression (10.2.1) judges linearity and proportionality with the intercept, R² and the quadratic-term test; Poisson regression (10.2.2) judges proportionality and saturation effects with the slope of the log link function. The two arrive at the same place but differ in assumptions and test logic, and in practice they should be cross-checked with lack-of-fit analysis."
+  },
+  {
+   "zh": "Mitscherlich 函數（β1+β2·λ^β3）提供了涵蓋比例、線性、log-linear、飽和曲線的統一非線性框架；透過 AICC 比較可判斷是否能簡化為 log-linear 模型，並用非線性 Poisson 迴歸或加權非線性迴歸兩種途徑配適。",
+   "en": "The Mitscherlich function (β1+β2·λ^β3) provides a unified non-linear framework covering proportional, linear, log-linear and saturation curves; an AICC comparison shows whether it can be simplified to a log-linear model, and it can be fitted by either non-linear Poisson regression or weighted non-linear regression."
+  },
+  {
+   "zh": "「以模型為本」的濃度反應曲線比值法（m̂A(λ)/m̂C(λ)）能在整個實驗濃度區間連續建立非劣性信賴下限，相較逐濃度類別比較法能大幅延伸可宣稱的非劣性濃度下限（本例從 25 CFU 延伸至 8.4 CFU），但此效益完全仰賴比例性/線性假設成立，需審慎以統計檢定驗證後才能宣稱。",
+   "en": "The model-based concentration-response curve ratio (m̂A(λ)/m̂C(λ)) can establish a non-inferiority lower confidence limit continuously across the whole experimental concentration range, and, compared with the per-concentration categorical comparison, can greatly extend the lower concentration limit at which non-inferiority can be claimed (in this example from 25 CFU down to 8.4 CFU). This benefit depends entirely on the proportionality/linearity assumption holding, and it must be verified carefully by statistical tests before any claim is made."
+  }
+ ]
+}

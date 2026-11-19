@@ -1,0 +1,829 @@
+{
+ "source": "section-02a-package-design-pfs.html",
+ "blocks": [
+  {
+   "zh": "包裝設計挑戰：預充填注射器",
+   "en": "Package Design Challenges: Prefilled Syringes"
+  },
+  {
+   "zh": "Section Contents 本節目錄",
+   "en": "Section Contents"
+  },
+  {
+   "zh": "<a href=\"#sec-4-0\">4.0 Overview 概述</a>\n<a href=\"#sec-4-1\">4.1 Prefilled Syringes 預充填注射器</a>\n<a href=\"#sec-4-1-1\">4.1.1 Design 設計</a>\n<a href=\"#sec-4-1-2\">4.1.2 Challenges 挑戰</a>\n<a href=\"#sec-4-1-3\">4.1.3 Test Method Considerations 測試方法考量</a>\n<a href=\"#sec-4-1-4\">4.1.4 Secondary Packaging 二次包裝</a>\n<a href=\"#anatomy-table\">PFS Anatomy Table 解剖表</a>",
+   "en": "<a href=\"#sec-4-0\">4.0 Overview</a>\n<a href=\"#sec-4-1\">4.1 Prefilled Syringes</a>\n<a href=\"#sec-4-1-1\">4.1.1 Design</a>\n<a href=\"#sec-4-1-2\">4.1.2 Challenges</a>\n<a href=\"#sec-4-1-3\">4.1.3 Test Method Considerations</a>\n<a href=\"#sec-4-1-4\">4.1.4 Secondary Packaging</a>\n<a href=\"#anatomy-table\">PFS Anatomy Table</a>"
+  },
+  {
+   "zh": "Learning Objectives 學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "完成本節學習後，你將能夠：",
+   "en": "After completing this section, you will be able to:"
+  },
+  {
+   "zh": "解釋為何新型密封系統（預充填注射器、一次性使用系統、靜脈袋）比傳統玻璃瓶和安瓿帶來更大的 CCI 挑戰",
+   "en": "Explain why newer closure systems (prefilled syringes, single-use systems, IV bags) pose greater CCI challenges than traditional glass vials and ampoules"
+  },
+  {
+   "zh": "識別預充填注射器的三個主要密封界面，並解釋每個界面的 CCI 意義",
+   "en": "Identify the three main sealing interfaces of a prefilled syringe and explain the CCI significance of each"
+  },
+  {
+   "zh": "描述固定針、魯爾鎖和魯爾錐（滑動）注射器的設計差異",
+   "en": "Describe the design differences between staked-needle, Luer lock and Luer cone (slip) syringes"
+  },
+  {
+   "zh": "解釋矽油潤滑在 PFS 完整性中的雙重角色——既能啟用功能，也會引入風險",
+   "en": "Explain the dual role of silicone oil lubrication in PFS integrity: it enables function but also introduces risk"
+  },
+  {
+   "zh": "為 PFS 選擇適當的確定性 CCIT 方法，並識別組裝後自動注射器所需的方法調整",
+   "en": "Select an appropriate deterministic CCIT method for a PFS, and identify the method adjustments needed for assembled auto-injectors"
+  },
+  {
+   "zh": "評估二次包裝作業（插入活塞桿、手指翼緣、托盤放置）對 CCI 的影響",
+   "en": "Evaluate the impact of secondary packaging operations (plunger rod insertion, finger flange, tray placement) on CCI"
+  },
+  {
+   "zh": "解釋真空式 CCIT 期間活塞運動的動態，並描述緩解策略",
+   "en": "Explain the dynamics of plunger movement during vacuum-based CCIT, and describe mitigation strategies"
+  },
+  {
+   "zh": "包裝設計挑戰 — 概述 • Pages p10",
+   "en": "Package Design Challenges - Overview • Pages p10"
+  },
+  {
+   "zh": "中文解說 &amp; 實務觀點",
+   "en": "Commentary & Practical Perspectives"
+  },
+  {
+   "zh": "核心概念：CCI 的根本目的",
+   "en": "Core Concept: The Fundamental Purpose of CCI"
+  },
+  {
+   "zh": "CCI 測試的目的是<strong>提供證據</strong>，證明使用了相互匹配的元件，且密封過程充分。密封保證的基礎在於設計參數的一致性。",
+   "en": "The purpose of CCI testing is to <strong>provide evidence</strong> that matched components were used and that the sealing process was adequate. The basis of seal assurance is consistency of design parameters."
+  },
+  {
+   "zh": "簡單說：CCI 不只是「測漏」，更是驗證整個密封系統設計和製程是否合理。",
+   "en": "In short: CCI is not just \"leak testing\"; it verifies that the design and process of the entire closure system are sound."
+  },
+  {
+   "zh": "比喻說明：傳統 vs. 新型包裝",
+   "en": "Analogy: Traditional vs. Newer Packaging"
+  },
+  {
+   "zh": "<strong>傳統 CCS（玻璃瓶 + 膠塞）</strong>就像標準門鎖——業界用了幾十年，密封原理清晰、驗證方法成熟。",
+   "en": "<strong>Traditional CCS (glass vial + rubber stopper)</strong> is like a standard door lock: used by the industry for decades, with clear sealing principles and mature verification methods."
+  },
+  {
+   "zh": "<strong>新型包裝（PFS、SUS、IV 袋）</strong>就像智能鎖——功能更強，但結構更複雜，需要重新建立「怎麼測它是否真的密封好了」的方法論。",
+   "en": "<strong>Newer packaging (PFS, SUS, IV bags)</strong> is like a smart lock: more capable, but more complex in structure, so the methodology for \"how do we test whether it is really sealed\" has to be built anew."
+  },
+  {
+   "zh": "重點提示：新型包裝帶來的三大挑戰",
+   "en": "Key Point: Three Major Challenges of Newer Packaging"
+  },
+  {
+   "zh": "<strong>更多密封界面</strong>：每個界面都是潛在失效點",
+   "en": "<strong>More sealing interfaces</strong>: each interface is a potential failure point"
+  },
+  {
+   "zh": "<strong>新材料風險</strong>：聚合物、彈性體對環境應力敏感",
+   "en": "<strong>New material risks</strong>: polymers and elastomers are sensitive to environmental stress"
+  },
+  {
+   "zh": "<strong>方法適用性問題</strong>：傳統 CCIT 方法未必適用於新型容器",
+   "en": "<strong>Method suitability</strong>: traditional CCIT methods may not be applicable to newer containers"
+  },
+  {
+   "zh": "思考練習 4.0",
+   "en": "Thinking Exercise 4.0"
+  },
+  {
+   "zh": "為什麼傳統玻璃瓶（vial）的 CCI 測試開發比預充填注射器相對容易？請從密封界面數量和幾何形狀角度分析。",
+   "en": "Why is CCI test development for a traditional glass vial relatively easier than for a prefilled syringe? Analyze from the perspective of the number of sealing interfaces and their geometry."
+  },
+  {
+   "zh": "「設計參數的一致性」（consistency of design parameters）在實務上如何轉化為製程控制要求？",
+   "en": "How does \"consistency of design parameters\" translate into process control requirements in practice?"
+  },
+  {
+   "zh": "在 CDMO 環境下，當客戶從傳統玻璃瓶產品轉移到 PFS 平台時，CCI 策略需要做哪些主要調整？",
+   "en": "In a CDMO setting, when a client moves from a traditional glass vial product to a PFS platform, what major adjustments to the CCI strategy are needed?"
+  },
+  {
+   "zh": "預充填注射器 — 概述 • Pages p10–p11",
+   "en": "Prefilled Syringes - Overview • Pages p10-p11"
+  },
+  {
+   "zh": "PFS 發展歷程與複雜度遞增",
+   "en": "PFS Development History and Increasing Complexity"
+  },
+  {
+   "zh": "預充填注射器（PFS）已成為注射劑的常見劑型，其發展脈絡：",
+   "en": "The prefilled syringe (PFS) has become a common dosage form for injectables. Its development path:"
+  },
+  {
+   "zh": "<strong>第一代</strong>：標準玻璃 PFS（硼矽酸玻璃筒）",
+   "en": "<strong>First generation</strong>: standard glass PFS (borosilicate glass barrel)"
+  },
+  {
+   "zh": "<strong>第二代</strong>：COP/COC 聚合物 PFS（更輕、更抗碎）",
+   "en": "<strong>Second generation</strong>: COP/COC polymer PFS (lighter, more break-resistant)"
+  },
+  {
+   "zh": "<strong>第三代</strong>：組裝式自動注射系統（auto-injectors、pen-injectors）",
+   "en": "<strong>Third generation</strong>: assembled auto-injection systems (auto-injectors, pen-injectors)"
+  },
+  {
+   "zh": "每一代都增加了新的密封界面，使 CCI 驗證策略必須隨之演進。",
+   "en": "Each generation adds new sealing interfaces, so the CCI verification strategy must evolve accordingly."
+  },
+  {
+   "zh": "生命週期評估觀點",
+   "en": "Lifecycle Assessment Perspective"
+  },
+  {
+   "zh": "TR86 強調 CCI 必須納入<strong>生命週期評估</strong>（lifecycle assessment），這意味著：",
+   "en": "TR86 stresses that CCI must be included in a <strong>lifecycle assessment</strong>, which means:"
+  },
+  {
+   "zh": "開發階段：建立 MALL（最大允許洩漏量），選擇方法",
+   "en": "Development stage: establish the MALL (maximum allowable leakage limit) and select the method"
+  },
+  {
+   "zh": "驗證階段：確認方法性能，建立接受標準",
+   "en": "Validation stage: confirm method performance and establish acceptance criteria"
+  },
+  {
+   "zh": "常規生產：持續監控，確認製程穩定",
+   "en": "Routine production: continuous monitoring to confirm process stability"
+  },
+  {
+   "zh": "穩定性研究：確認整個貨架期內 CCI 維持",
+   "en": "Stability studies: confirm that CCI is maintained throughout the shelf life"
+  },
+  {
+   "zh": "思考練習 4.1",
+   "en": "Thinking Exercise 4.1"
+  },
+  {
+   "zh": "從 CDMO 的角度，客戶要求將產品從標準玻璃瓶改為 COP 聚合物 PFS，你需要重新評估哪些 CCI 要素？",
+   "en": "From a CDMO perspective, if a client asks to change a product from a standard glass vial to a COP polymer PFS, which CCI elements do you need to re-evaluate?"
+  },
+  {
+   "zh": "「生命週期評估」（lifecycle assessment）在 PFS 的 CCI 策略中具體指哪些階段？每個階段的 CCI 目標是什麼？",
+   "en": "What specific stages does \"lifecycle assessment\" cover in the CCI strategy for a PFS? What is the CCI objective at each stage?"
+  },
+  {
+   "zh": "PFS 的 auto-injector 組裝為何使 CCIT 更困難？請列舉至少兩個具體原因。",
+   "en": "Why does auto-injector assembly make CCIT of a PFS more difficult? List at least two specific reasons."
+  },
+  {
+   "zh": "預充填注射器設計 • Pages p11–p13",
+   "en": "Prefilled Syringe Design • Pages p11-p13"
+  },
+  {
+   "zh": "PFS Component Anatomy 元件解剖圖（文字版）",
+   "en": "PFS Component Anatomy (text version)"
+  },
+  {
+   "zh": "THUMB PAD (拇指墊)\n      |\n  PLUNGER ROD (活塞桿)\n      |\n  ====|====|====|====|====|====|====|====  &lt;-- FINGER FLANGE (手指翼緣)\n  |                                       |\n  |         BARREL (筒身)                  |  &lt;-- [Interface 3] Barrel geometry affects\n  |     [Drug Solution / 藥液]             |      stopper seal\n  |                                       |\n  |  [RIB 1 - Primary Seal 主要密封肋]    |\n  |====================================|  &lt;-- PLUNGER STOPPER (活塞塞)\n  |  [RIB 2 - Secondary Seal 次要密封肋]  |      [Interface 1] STOPPER-BARREL\n  |====================================|      *** PRIMARY BARRIER ***\n  |  [RIB 3 - Tertiary Seal 第三密封肋]  |\n  |====================================|\n  |                                       |\n  |         SHOULDER (肩部)               |\n  |                                       |\n  +-------+               +---------------+\n          |               |\n          +---[CONE]------+  &lt;-- TIP / SYRINGE CONE (注射器錐頭)\n                  |\n           [NEEDLE]  &lt;---- STAKED NEEDLE (固定針)\n                  |            [Interface 2] Needle-Needle Shield\n           [NEEDLE SHIELD]  &lt;-- [Interface 3] Barrel-Needle Shield\n           (針頭護蓋)",
+   "en": "THUMB PAD\n      |\n  PLUNGER ROD\n      |\n  ====|====|====|====|====|====|====|====  &lt;-- FINGER FLANGE\n  |                                       |\n  |         BARREL                        |  &lt;-- [Interface 3] Barrel geometry affects\n  |     [Drug Solution]                   |      stopper seal\n  |                                       |\n  |  [RIB 1 - Primary Seal]               |\n  |====================================|  &lt;-- PLUNGER STOPPER\n  |  [RIB 2 - Secondary Seal]             |      [Interface 1] STOPPER-BARREL\n  |====================================|      *** PRIMARY BARRIER ***\n  |  [RIB 3 - Tertiary Seal]              |\n  |====================================|\n  |                                       |\n  |         SHOULDER                      |\n  |                                       |\n  +-------+               +---------------+\n          |               |\n          +---[CONE]------+  &lt;-- TIP / SYRINGE CONE\n                  |\n           [NEEDLE]  &lt;---- STAKED NEEDLE\n                  |            [Interface 2] Needle-Needle Shield\n           [NEEDLE SHIELD]  &lt;-- [Interface 3] Barrel-Needle Shield"
+  },
+  {
+   "zh": "<em>Text-based anatomical diagram. Interfaces are numbered by CCI criticality. Interface 1 (stopper-barrel) = primary barrier. / 文字解剖圖。界面按 CCI 關鍵性編號。界面 1（活塞-筒身）= 主要屏障。</em>",
+   "en": "<em>Text-based anatomical diagram. Interfaces are numbered by CCI criticality. Interface 1 (stopper-barrel) = primary barrier.</em>"
+  },
+  {
+   "zh": "三個密封界面的 CCI 重要性",
+   "en": "CCI Significance of the Three Sealing Interfaces"
+  },
+  {
+   "zh": "PFS 的三個密封界面各有不同的 CCI 挑戰：",
+   "en": "Each of the three PFS sealing interfaces presents different CCI challenges:"
+  },
+  {
+   "zh": "<span class=\"interface-badge\">界面 1</span> <strong>活塞塞－筒身界面</strong>（Plunger Stopper-Barrel）：最關鍵的主要屏障，存在於所有注射器；活塞壓縮配合形成密封",
+   "en": "<span class=\"interface-badge\">Interface 1</span> <strong>Plunger stopper-barrel interface</strong>: the most critical primary barrier, present in all syringes; the stopper forms the seal through a compression fit"
+  },
+  {
+   "zh": "<span class=\"interface-badge secondary\">界面 2</span> <strong>針頭－針頭護蓋界面</strong>（Needle-Needle Shield）：固定針專有；針尖嵌入彈性體中形成密封；護蓋必須完全包覆針尖但不刺穿",
+   "en": "<span class=\"interface-badge secondary\">Interface 2</span> <strong>Needle-needle shield interface</strong>: specific to staked-needle syringes; the needle tip is embedded in the elastomer to form the seal; the shield must fully cover the needle tip without piercing through"
+  },
+  {
+   "zh": "<span class=\"interface-badge tertiary\">界面 3</span> <strong>筒身－針頭護蓋界面</strong>（Barrel-Needle Shield）：確保整體針頭區域封閉性",
+   "en": "<span class=\"interface-badge tertiary\">Interface 3</span> <strong>Barrel-needle shield interface</strong>: ensures closure of the overall needle area"
+  },
+  {
+   "zh": "CDMO 實務注意：矽油風險",
+   "en": "CDMO Practical Note: Silicone Oil Risk"
+  },
+  {
+   "zh": "TR86 明確指出，在魯爾鎖系統中，<strong>矽油污染魯爾鎖適配器</strong>可能影響密封完整性。這在實際生產中意味著：",
+   "en": "TR86 explicitly states that in Luer lock systems, <strong>silicone oil contamination of the Luer lock adapter</strong> can affect seal integrity. In actual production this means:"
+  },
+  {
+   "zh": "需要額外的產線清潔程序（line clearance）",
+   "en": "Additional line cleaning procedures (line clearance) are needed"
+  },
+  {
+   "zh": "確保殘留矽油不在魯爾鎖適配器上聚集",
+   "en": "Ensure that residual silicone oil does not accumulate on the Luer lock adapter"
+  },
+  {
+   "zh": "同樣適用於魯爾錐系統的尖頭蓋",
+   "en": "The same applies to the tip cap of Luer cone systems"
+  },
+  {
+   "zh": "思考練習 4.1.1（界面與設計）",
+   "en": "Thinking Exercise 4.1.1 (Interfaces and Design)"
+  },
+  {
+   "zh": "為什麼「活塞塞－筒身界面」被稱為「最關鍵的」密封界面？它在功能上與其他界面有何不同？",
+   "en": "Why is the \"plunger stopper-barrel interface\" called the \"most critical\" sealing interface? How does it differ functionally from the other interfaces?"
+  },
+  {
+   "zh": "對於固定針 PFS，針頭護蓋的定位驗證有什麼具體要求？「完全嵌入但不刺穿」這個標準如何在製程控制中落實？",
+   "en": "For a staked-needle PFS, what are the specific requirements for verifying needle shield positioning? How is the criterion \"fully embedded but not pierced through\" implemented in process control?"
+  },
+  {
+   "zh": "在你的 CDMO 環境中，如果需要在固定針與魯爾鎖設計之間選擇，你會考慮哪些 CCI 相關因素？",
+   "en": "In your CDMO environment, if you had to choose between a staked-needle and a Luer lock design, which CCI-related factors would you consider?"
+  },
+  {
+   "zh": "中文解說 &amp; 活塞設計重點",
+   "en": "Commentary & Plunger Design Key Points"
+  },
+  {
+   "zh": "活塞塞設計：三肋原理",
+   "en": "Plunger Stopper Design: The Three-Rib Principle"
+  },
+  {
+   "zh": "活塞塞（Plunger Stopper）的密封原理基於<strong>壓縮配合</strong>（compression fit）：",
+   "en": "The sealing principle of the plunger stopper is based on a <strong>compression fit</strong>:"
+  },
+  {
+   "zh": "活塞外徑 &gt; 筒身內徑 → 形成壓縮密封",
+   "en": "Stopper outer diameter > barrel inner diameter → compression seal formed"
+  },
+  {
+   "zh": "<strong>第一肋（最靠近藥液）</strong>：主要密封肋 — 主要 CCI 屏障",
+   "en": "<strong>First rib (closest to the drug solution)</strong>: primary sealing rib, the main CCI barrier"
+  },
+  {
+   "zh": "<strong>第二肋</strong>：穩定密封，提供次要 CCI 保證",
+   "en": "<strong>Second rib</strong>: stabilizes the seal and provides secondary CCI assurance"
+  },
+  {
+   "zh": "<strong>第三肋</strong>：第三 CCI 保證層，通常也連接活塞桿",
+   "en": "<strong>Third rib</strong>: third layer of CCI assurance, usually also connected to the plunger rod"
+  },
+  {
+   "zh": "ISO 11040-5:2012 規定應利用所有三個肋來最大化密封效果。",
+   "en": "ISO 11040-5:2012 specifies that all three ribs should be used to maximize sealing effectiveness."
+  },
+  {
+   "zh": "比喻說明：矽油的雙面角色",
+   "en": "Analogy: The Two Faces of Silicone Oil"
+  },
+  {
+   "zh": "矽油（Silicone oil）就像汽車引擎中的機油——它讓活動部件順暢運作，但用量必須精確控制：",
+   "en": "Silicone oil is like engine oil in a car: it lets moving parts run smoothly, but the quantity must be tightly controlled:"
+  },
+  {
+   "zh": "<strong>矽油太少</strong>：活塞起始力（break-loose force）過大 → 難以注射，功能不佳",
+   "en": "<strong>Too little silicone oil</strong>: break-loose force of the plunger is too high → difficult to inject, poor function"
+  },
+  {
+   "zh": "<strong>矽油適量</strong>：功能正常，活塞壓緊筒身壁維持 CCI",
+   "en": "<strong>Right amount of silicone oil</strong>: normal function, and the stopper presses tightly against the barrel wall to maintain CCI"
+  },
+  {
+   "zh": "<strong>矽油太多</strong>：活塞在運輸中可能自由滑動 → 藥液外洩，CCI 失效",
+   "en": "<strong>Too much silicone oil</strong>: the stopper may slide freely during transport → drug solution leaks out, CCI failure"
+  },
+  {
+   "zh": "此外，未經熱固定的矽油在活塞推出時，壓力會將矽油推離界面——這反而<strong>有利於 CCI</strong>（活塞被「鎖住」），但代價是起始推力增大。",
+   "en": "In addition, when the stopper is pushed out, pressure drives silicone oil that has not been heat-fixed away from the interface; this actually <strong>benefits CCI</strong> (the stopper is \"locked\"), but at the cost of a higher initial push force."
+  },
+  {
+   "zh": "氟聚合物塗層的額外考量",
+   "en": "Additional Considerations for Fluoropolymer Coatings"
+  },
+  {
+   "zh": "部分活塞塞表面有<strong>氟聚合物積層薄膜</strong>（fluoropolymer laminate film），可改善藥物相容性。但需注意：",
+   "en": "Some plunger stopper surfaces carry a <strong>fluoropolymer laminate film</strong> to improve drug compatibility. Note, however:"
+  },
+  {
+   "zh": "機械安裝（推管法）時，壓縮和推送可能在薄膜上產生<strong>皺褶</strong>",
+   "en": "With mechanical placement (rod insertion method), compression and pushing may create <strong>wrinkles</strong> in the film"
+  },
+  {
+   "zh": "皺褶可能影響 CCI 性能，需評估",
+   "en": "Wrinkles may affect CCI performance and need to be evaluated"
+  },
+  {
+   "zh": "真空塞封法較不易產生皺褶，但真空設定不正確可能導致藥液沸騰",
+   "en": "Vacuum stoppering is less prone to wrinkling, but incorrect vacuum settings may cause the drug solution to boil"
+  },
+  {
+   "zh": "思考練習 4.1.1（活塞與潤滑）",
+   "en": "Thinking Exercise 4.1.1 (Stoppers and Lubrication)"
+  },
+  {
+   "zh": "活塞塞的三個肋在 CCI 中各扮演什麼角色？如果第一肋發生輕微缺陷，第二、三肋能否提供足夠的補救？",
+   "en": "What role does each of the three ribs of the plunger stopper play in CCI? If the first rib has a slight defect, can the second and third ribs provide adequate compensation?"
+  },
+  {
+   "zh": "矽油用量過多和過少分別會導致什麼 CCI 問題？製程中如何控制矽油用量的一致性？",
+   "en": "What CCI problems result from too much and too little silicone oil, respectively? How can consistency of silicone oil quantity be controlled in the process?"
+  },
+  {
+   "zh": "真空塞封（vacuum stoppering）與機械推管法（mechanical rod insertion）在 CCI 風險上各有什麼優缺點？",
+   "en": "What are the respective advantages and disadvantages, in terms of CCI risk, of vacuum stoppering and mechanical rod insertion?"
+  },
+  {
+   "zh": "「熱固定矽油」（heat-treated silicone oil）對 CCI 和注射功能各有什麼影響？這種技術在實際生產中如何選擇？",
+   "en": "What effect does \"heat-treated silicone oil\" have on CCI and on injection function? How is this technology selected in actual production?"
+  },
+  {
+   "zh": "中文解說 &amp; 卡匣系統",
+   "en": "Commentary & Cartridge Systems"
+  },
+  {
+   "zh": "多劑型卡匣的特殊 CCI 挑戰",
+   "en": "Special CCI Challenges of Multidose Cartridges"
+  },
+  {
+   "zh": "多劑型卡匣（multidose cartridge）面臨特殊的 CCI 挑戰：組合封需要在<strong>每次穿刺後重新自封</strong>（resealing）。因此：",
+   "en": "A multidose cartridge faces special CCI challenges: the closure assembly must <strong>reseal after each puncture</strong>. Therefore:"
+  },
+  {
+   "zh": "需選用<strong>雙層彈性體</strong>（bilayer elastomer），具有強韌的重封性能",
+   "en": "A <strong>bilayer elastomer</strong> with robust resealing performance should be selected"
+  },
+  {
+   "zh": "CCI 測試必須包括<strong>最大穿刺次數</strong>的情境",
+   "en": "CCI testing must include the scenario of the <strong>maximum number of punctures</strong>"
+  },
+  {
+   "zh": "ISO 13926-3 中的重封性測試與 CCI 測試是不同的概念，不可混淆",
+   "en": "The resealability test in ISO 13926-3 and CCI testing are different concepts and must not be confused"
+  },
+  {
+   "zh": "思考練習 4.1.1（卡匣系統）",
+   "en": "Thinking Exercise 4.1.1 (Cartridge Systems)"
+  },
+  {
+   "zh": "雙腔卡匣（dual-chamber cartridge）中「旁通功能」（bypass feature）的設計如何影響 CCI 測試策略？",
+   "en": "How does the design of the \"bypass feature\" in a dual-chamber cartridge affect the CCI testing strategy?"
+  },
+  {
+   "zh": "多劑型卡匣的「重封性」（resealing）測試與 CCI 測試有何本質差異？為什麼 ISO 13926-3 的重封測試不構成 CCI 測試？",
+   "en": "What is the essential difference between a multidose cartridge \"resealing\" test and CCI testing? Why does the ISO 13926-3 resealing test not constitute a CCI test?"
+  },
+  {
+   "zh": "卡匣（Cartridge）系統的 CCI 架構",
+   "en": "CCI Architecture of Cartridge Systems"
+  },
+  {
+   "zh": "卡匣系統常用於<strong>筆型注射器</strong>（pen-injectors），其密封設計與 PFS 不同：",
+   "en": "Cartridge systems are commonly used in <strong>pen-injectors</strong>, and their sealing design differs from that of a PFS:"
+  },
+  {
+   "zh": "PFS 元件解剖表 — CCI 參考 • Cross-section summary",
+   "en": "PFS Component Anatomy Table - CCI Reference • Cross-section summary"
+  },
+  {
+   "zh": "下表整合 4.1.1 節的所有主要 PFS 元件，包括功能、CCI 相關性及測試挑戰，供快速複習使用。",
+   "en": "The table below consolidates all the main PFS components covered in section 4.1.1, including function, CCI relevance and testing challenges, for quick review."
+  },
+  {
+   "zh": "預充填注射器挑戰 • Pages p14–p16",
+   "en": "Prefilled Syringe Challenges • Pages p14-p16"
+  },
+  {
+   "zh": "中文解說 &amp; 聚合物 PFS 挑戰",
+   "en": "Commentary & Polymer PFS Challenges"
+  },
+  {
+   "zh": "責任分工：供應商 vs. MAH",
+   "en": "Division of Responsibility: Supplier vs. MAH"
+  },
+  {
+   "zh": "TR86 明確了聚合物 PFS 的責任分工：",
+   "en": "TR86 clarifies the division of responsibility for polymer PFS:"
+  },
+  {
+   "zh": "<strong>塑膠注射器元件供應商</strong>：負責建立和驗證設計要求及 CPPs",
+   "en": "<strong>Plastic syringe component supplier</strong>: responsible for establishing and validating design requirements and CPPs"
+  },
+  {
+   "zh": "<strong>上市許可持有人（MAH）</strong>：負責定義產品特定的 CCI 要求（如 MALL），並確保塑膠筒身和彈性體活塞形成一個符合要求的整合系統",
+   "en": "<strong>Marketing authorization holder (MAH)</strong>: responsible for defining product-specific CCI requirements (such as the MALL) and ensuring that the plastic barrel and elastomeric stopper form an integrated system that meets requirements"
+  },
+  {
+   "zh": "在 CDMO 環境中，這意味著需要明確合約規範，確定每方的 CCI 相關責任。",
+   "en": "In a CDMO setting, this means contract specifications must clearly define each party's CCI-related responsibilities."
+  },
+  {
+   "zh": "比喻說明：聚合物的「壓力疲勞」",
+   "en": "Analogy: \"Stress Fatigue\" of Polymers"
+  },
+  {
+   "zh": "聚合物 PFS 就像塑膠水瓶——新的時候很牢固，但長期暴露在高溫、UV、機械應力下，材料會逐漸劣化（老化、變脆）。對 PFS 來說，這意味著：",
+   "en": "A polymer PFS is like a plastic water bottle: sturdy when new, but with long-term exposure to heat, UV and mechanical stress the material gradually degrades (ages, becomes brittle). For a PFS this means:"
+  },
+  {
+   "zh": "滅菌條件（熱、輻照）→ 材料理化變化 → 密封性能下降",
+   "en": "Sterilization conditions (heat, irradiation) → physicochemical changes in the material → reduced sealing performance"
+  },
+  {
+   "zh": "長期儲存 → 尺寸蠕變（creep）→ 活塞壓縮力降低",
+   "en": "Long-term storage → dimensional creep → reduced stopper compression force"
+  },
+  {
+   "zh": "這些都必須在穩定性研究中追蹤和驗證",
+   "en": "All of these must be tracked and verified in stability studies"
+  },
+  {
+   "zh": "思考練習 4.1.2（聚合物 PFS）",
+   "en": "Thinking Exercise 4.1.2 (Polymer PFS)"
+  },
+  {
+   "zh": "為什麼聚合物 PFS 的氣體滲透率（gas permeation rate）在 CCI 評估中需要單獨考慮？它與傳統意義上的「洩漏」有何不同？",
+   "en": "Why does the gas permeation rate of a polymer PFS need to be considered separately in CCI assessment? How does it differ from \"leakage\" in the traditional sense?"
+  },
+  {
+   "zh": "在聚合物 PFS 的 CCIT 方法選擇中，為什麼真空衰減法（vacuum decay）和染液滲入法（dye ingress）可能存在特殊的干擾問題？如何解決？",
+   "en": "In selecting a CCIT method for a polymer PFS, why might vacuum decay and dye ingress have particular interference problems? How can they be resolved?"
+  },
+  {
+   "zh": "聚合物 PFS 的穩定性研究設計應包含哪些 CCI 相關測試點？請結合 ICH 指南要求思考。",
+   "en": "Which CCI-related test points should a stability study design for a polymer PFS include? Consider this in light of ICH guideline requirements."
+  },
+  {
+   "zh": "中文解說 &amp; 灌裝塞封影響",
+   "en": "Commentary & Impact of Filling and Stoppering"
+  },
+  {
+   "zh": "半成品與成品注射器的 CCI 策略",
+   "en": "CCI Strategy for Semi-finished and Finished Syringes"
+  },
+  {
+   "zh": "TR86 明確區分兩個關鍵狀態：",
+   "en": "TR86 clearly distinguishes two key states:"
+  },
+  {
+   "zh": "<strong>半成品注射器（Semi-finished Syringe）</strong>：已灌裝密封，但尚未添加活塞桿、背封、標籤、防針刺裝置等",
+   "en": "<strong>Semi-finished syringe</strong>: filled and sealed, but without the plunger rod, back stop, label, needle-stick prevention device, etc. yet added"
+  },
+  {
+   "zh": "<strong>成品注射器（Finished Syringe）</strong>：所有元件均已安裝",
+   "en": "<strong>Finished syringe</strong>: all components installed"
+  },
+  {
+   "zh": "由於二次包裝步驟可能影響密封界面，<strong>成品注射器的 CCI 必須單獨評估</strong>，不能僅依賴半成品的測試結果。",
+   "en": "Because secondary packaging steps may affect the sealing interfaces, <strong>the CCI of the finished syringe must be evaluated separately</strong> and cannot rely solely on test results from the semi-finished syringe."
+  },
+  {
+   "zh": "CDMO 實務：灌裝塞封工藝選擇對 CCI 的影響",
+   "en": "CDMO Practice: Impact of the Filling and Stoppering Process Choice on CCI"
+  },
+  {
+   "zh": "在 CDMO 的 Fill-Finish 操作中，塞封工藝選擇影響 CCI：",
+   "en": "In CDMO fill-finish operations, the choice of stoppering process affects CCI:"
+  },
+  {
+   "zh": "<strong>機械推管法</strong>：活塞先壓縮進導管，再推入筒身膨脹密封。FPT 積層活塞容易產生皺褶，需在工藝開發中評估",
+   "en": "<strong>Mechanical rod insertion</strong>: the stopper is first compressed into a guide tube, then pushed into the barrel where it expands to seal. FPT laminated stoppers are prone to wrinkling, which must be evaluated during process development"
+  },
+  {
+   "zh": "<strong>真空塞封法</strong>：較溫和，不易產生皺褶，但真空設定必須精確。真空不足 → 活塞無法正確定位；真空過強 → 藥液沸騰",
+   "en": "<strong>Vacuum stoppering</strong>: gentler and less prone to wrinkling, but the vacuum setting must be precise. Insufficient vacuum → stopper cannot be positioned correctly; excessive vacuum → drug solution boils"
+  },
+  {
+   "zh": "工藝驗證（PV）應包括 CCI 測試，確認塞封工藝的 CPPs 範圍",
+   "en": "Process validation (PV) should include CCI testing to confirm the CPP ranges of the stoppering process"
+  },
+  {
+   "zh": "思考練習 4.1.2（灌裝與填充體積）",
+   "en": "Thinking Exercise 4.1.2 (Filling and Fill Volume)"
+  },
+  {
+   "zh": "在你的設施中，如果需要為一個低填充體積的 PFS（如 0.5 mL）選擇 CCIT 方法，哪些方法可能因填充體積限制而不適用？如何解決？",
+   "en": "In your facility, if you had to select a CCIT method for a low-fill-volume PFS (e.g., 0.5 mL), which methods might be unsuitable because of the fill volume limitation? How would you resolve this?"
+  },
+  {
+   "zh": "真空塞封的「真空設定不正確導致藥液沸騰」在實際操作中如何預防？需要建立哪些製程控制點？",
+   "en": "How can \"incorrect vacuum settings causing the drug solution to boil\" during vacuum stoppering be prevented in actual operation? Which process control points need to be established?"
+  },
+  {
+   "zh": "從 CCI 角度，為什麼「半成品 CCI 合格」不等於「成品 CCI 合格」？請舉一個具體的二次包裝步驟來說明。",
+   "en": "From a CCI perspective, why does \"semi-finished CCI acceptable\" not equal \"finished CCI acceptable\"? Illustrate with a specific secondary packaging step."
+  },
+  {
+   "zh": "預充填注射器的測試方法考量 • Pages p16–p17",
+   "en": "Test Method Considerations for Prefilled Syringes • Pages p16-p17"
+  },
+  {
+   "zh": "中文解說 &amp; 測試方法選擇",
+   "en": "Commentary & Test Method Selection"
+  },
+  {
+   "zh": "活塞移動問題：CCI 測試的特有難題",
+   "en": "Plunger Movement: A CCI Testing Challenge Specific to PFS"
+  },
+  {
+   "zh": "這是 PFS 有別於其他容器（如瓶子）的最大 CCIT 挑戰。當真空衰減或質量萃取法施加壓差時：",
+   "en": "This is the biggest CCIT challenge that distinguishes a PFS from other containers (such as vials). When vacuum decay or mass extraction methods apply a pressure differential:"
+  },
+  {
+   "zh": "外部真空 → 筒內相對正壓 → 活塞向外（朝針頭端）移動",
+   "en": "External vacuum → relative positive pressure inside the barrel → plunger moves outward (toward the needle end)"
+  },
+  {
+   "zh": "活塞移動 → 頭空間體積增大 → 壓差降低 → 方法靈敏度下降",
+   "en": "Plunger movement → headspace volume increases → pressure differential decreases → method sensitivity drops"
+  },
+  {
+   "zh": "更危險的是：活塞移動可能引入異物或微生物污染",
+   "en": "More dangerous still: plunger movement may introduce foreign matter or microbial contamination"
+  },
+  {
+   "zh": "壓差移除後，活塞可能移回，<strong>掩蓋污染事件</strong>",
+   "en": "After the pressure differential is removed, the plunger may move back, <strong>masking the contamination event</strong>"
+  },
+  {
+   "zh": "對位針（Contrast Pin）：緩解活塞移動的工程解決方案",
+   "en": "Contrast Pin: An Engineering Solution to Mitigate Plunger Movement"
+  },
+  {
+   "zh": "在真空衰減測試系統中，可以使用<strong>對位針</strong>（contrast pin）來抵抗活塞移動：",
+   "en": "In a vacuum decay test system, a <strong>contrast pin</strong> can be used to resist plunger movement:"
+  },
+  {
+   "zh": "對位針施加一個<strong>等大反向</strong>的力，抵消真空造成的活塞外移趨勢",
+   "en": "The contrast pin applies a force <strong>equal and opposite</strong> to the outward movement of the plunger caused by the vacuum"
+  },
+  {
+   "zh": "這樣既可施加足夠的測試壓差，又能保持活塞位置穩定",
+   "en": "This allows a sufficient test pressure differential to be applied while keeping the plunger position stable"
+  },
+  {
+   "zh": "這是 PFS 真空衰減 CCIT 的重要設備設計考量",
+   "en": "This is an important equipment design consideration for vacuum decay CCIT of a PFS"
+  },
+  {
+   "zh": "在 CDMO 評估 CCIT 設備時，應詢問供應商是否有針對 PFS 的對位針設計。",
+   "en": "When a CDMO evaluates CCIT equipment, it should ask the supplier whether a contrast pin design for PFS is available."
+  },
+  {
+   "zh": "比喻說明：蛋白質「堵塞缺陷」問題",
+   "en": "Analogy: The Protein \"Plugging Defect\" Problem"
+  },
+  {
+   "zh": "蛋白質藥物（如抗體）就像蛋液——缺陷越小，蛋白質越容易在缺陷開口處乾燥形成「膜」，把缺陷堵住。",
+   "en": "A protein drug (such as an antibody) is like egg white: the smaller the defect, the more easily the protein dries at the defect opening into a \"film\" that plugs it."
+  },
+  {
+   "zh": "這就是為什麼即使靈敏的確定性方法（如真空衰減）也可能在蛋白質藥物中漏檢真實缺陷。解決方案：使用<strong>注射用水（WFI）作為代用液</strong>進行方法性能驗證，再結合真實產品的橋接研究。",
+   "en": "This is why even a sensitive deterministic method (such as vacuum decay) may miss a real defect in a protein drug. Solution: use <strong>water for injection (WFI) as a surrogate</strong> for method performance validation, then combine it with a bridging study using real product."
+  },
+  {
+   "zh": "思考練習 4.1.3",
+   "en": "Thinking Exercise 4.1.3"
+  },
+  {
+   "zh": "對於一個高濃度單抗（mAb）PFS 產品，為什麼直接使用真實產品進行 CCIT 可能出現假陰性？如何設計一個既符合法規要求又能真實反映 CCI 狀態的方法驗證方案？",
+   "en": "For a high-concentration monoclonal antibody (mAb) PFS product, why might CCIT directly on real product give false negatives? How would you design a method validation plan that both meets regulatory requirements and truly reflects CCI status?"
+  },
+  {
+   "zh": "解釋「活塞移動降低真空衰減靈敏度」的物理原理。對位針（contrast pin）是如何在物理上解決這個問題的？",
+   "en": "Explain the physical principle behind \"plunger movement reduces vacuum decay sensitivity\". How does a contrast pin physically solve this problem?"
+  },
+  {
+   "zh": "如果你的 CDMO 接到一個 auto-injector 產品的 CCI 測試委託，你會建議採用「拆解後測試」還是「完整裝置測試」策略？請說明你的決策依據和風險評估框架。",
+   "en": "If your CDMO receives a CCI testing request for an auto-injector product, would you recommend a \"test after disassembly\" or a \"complete device test\" strategy? Explain your decision basis and risk assessment framework."
+  },
+  {
+   "zh": "HVLD 在 PFS 測試中有哪些優勢和限制？對於蛋白質製劑和低電導率製劑各有什麼考量？",
+   "en": "What are the advantages and limitations of HVLD in PFS testing? What are the considerations for protein formulations and for low-conductivity formulations?"
+  },
+  {
+   "zh": "PFS 的 CCIT 方法選擇框架",
+   "en": "CCIT Method Selection Framework for PFS"
+  },
+  {
+   "zh": "TR86 強調 PFS 的 CCIT 方法選擇應基於<strong>產品物理性質</strong>：",
+   "en": "TR86 stresses that CCIT method selection for a PFS should be based on <strong>the physical properties of the product</strong>:"
+  },
+  {
+   "zh": "Auto-injector 組裝後的 CCIT 選項",
+   "en": "CCIT Options After Auto-injector Assembly"
+  },
+  {
+   "zh": "PFS 組裝進 auto-injector 或筆型注射器後，CCIT 面臨兩種策略：",
+   "en": "Once a PFS is assembled into an auto-injector or pen-injector, CCIT faces two strategies:"
+  },
+  {
+   "zh": "風險評估必須涵蓋裝置組裝、儲存和使用過程中對主要容器密封系統施加的所有力。",
+   "en": "The risk assessment must cover all forces applied to the primary container closure system during device assembly, storage and use."
+  },
+  {
+   "zh": "二次包裝的額外考量 • Pages p17",
+   "en": "Additional Considerations for Secondary Packaging • Pages p17"
+  },
+  {
+   "zh": "中文解說 &amp; 二次包裝 CCI 管理",
+   "en": "Commentary & Secondary Packaging CCI Management"
+  },
+  {
+   "zh": "二次包裝的標準流程順序",
+   "en": "Standard Process Sequence for Secondary Packaging"
+  },
+  {
+   "zh": "TR86 明確了自我注射 PFS 的典型二次包裝作業順序：",
+   "en": "TR86 describes the typical secondary packaging operation sequence for a self-injection PFS:"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-1\">主要包裝完成（灌裝 + 塞封）</span>",
+   "en": "<span class=\"hierarchy-box level-1\">Primary packaging complete (filling + stoppering)</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">1. 活塞桿安裝（Plunger Rod Placement）</span>",
+   "en": "<span class=\"hierarchy-box level-2\">1. Plunger Rod Placement</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">2. 手指翼緣安裝（Finger Flange Placement）</span>",
+   "en": "<span class=\"hierarchy-box level-2\">2. Finger Flange Placement</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">3. 標籤貼附（Labeling）</span>",
+   "en": "<span class=\"hierarchy-box level-2\">3. Labeling</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-2\">4. 托盤放置（Tray Placement）</span>",
+   "en": "<span class=\"hierarchy-box level-2\">4. Tray Placement</span>"
+  },
+  {
+   "zh": "<span class=\"hierarchy-box level-3\">5. 裝盒（Carton Insertion）→ 完成品</span>",
+   "en": "<span class=\"hierarchy-box level-3\">5. Carton Insertion → finished product</span>"
+  },
+  {
+   "zh": "風險評估驅動的 CCIT 決策原則",
+   "en": "Risk-Assessment-Driven CCIT Decision Principles"
+  },
+  {
+   "zh": "TR86 的核心訊息是：並非每個二次包裝步驟都需要 CCIT，但<strong>每個步驟都必須經過風險評估</strong>。評估框架：",
+   "en": "The core message of TR86: not every secondary packaging step requires CCIT, but <strong>every step must undergo risk assessment</strong>. The assessment framework:"
+  },
+  {
+   "zh": "該作業是否對主要密封界面施加力或應力？",
+   "en": "Does the operation apply force or stress to the primary sealing interfaces?"
+  },
+  {
+   "zh": "如果施加了力，力的大小和方向是否足以擾動密封？",
+   "en": "If force is applied, are its magnitude and direction sufficient to disturb the seal?"
+  },
+  {
+   "zh": "如果風險存在，是否有其他控制措施（如 100% 目檢）足以緩解，還是需要額外的 CCIT？",
+   "en": "If a risk exists, are other control measures (such as 100% visual inspection) sufficient to mitigate it, or is additional CCIT needed?"
+  },
+  {
+   "zh": "如果確定需要 CCIT，應在最差情況樣本上執行，以確認作業不影響容器完整性。",
+   "en": "If CCIT is determined to be needed, it should be performed on worst-case samples to confirm that the operation does not affect container integrity."
+  },
+  {
+   "zh": "比喻說明：二次包裝的「最後一里路」風險",
+   "en": "Analogy: The \"Last Mile\" Risk of Secondary Packaging"
+  },
+  {
+   "zh": "想像你精心包裝了一個易碎的玻璃藝術品（= 灌裝密封的 PFS）。主要包裝（填充物和外盒）已經做好，但最後的「二次包裝」——在上面貼標籤、裝進展示架、放入快遞箱——每個步驟都可能在不注意中讓它破裂或移位。",
+   "en": "Imagine you have carefully packed a fragile glass artwork (= the filled and sealed PFS). The primary packaging (cushioning and inner box) is done, but the final \"secondary packaging\" (labeling it, fitting it into a display stand, placing it in a shipping box) could, at each step, crack or displace it without anyone noticing."
+  },
+  {
+   "zh": "PFS 的情況更複雜：它的「破裂」可能不可見（微裂縫）、或密封界面的移位不影響外觀，但已經損害了 CCI。這就是為什麼每個二次包裝步驟都需要系統性的 CCI 風險評估。",
+   "en": "The PFS situation is more complex: its \"breakage\" may be invisible (microcracks), or a displacement of the sealing interface may not change its appearance yet already compromise CCI. This is why every secondary packaging step needs a systematic CCI risk assessment."
+  },
+  {
+   "zh": "自動化 vs. 人工二次包裝的 CCI 考量",
+   "en": "CCI Considerations: Automated vs. Manual Secondary Packaging"
+  },
+  {
+   "zh": "二次包裝可以是全自動、全人工或混合模式，各有不同的 CCI 風險特徵：",
+   "en": "Secondary packaging can be fully automated, fully manual or a hybrid, each with a different CCI risk profile:"
+  },
+  {
+   "zh": "<strong>全自動產線</strong>：力量和速度可精確控制 → 一致性高，但設備調試和驗證要求嚴格；需進行設備性能確認（OQ/PQ）",
+   "en": "<strong>Fully automated line</strong>: force and speed can be precisely controlled → high consistency, but equipment setup and validation requirements are strict; equipment performance qualification (OQ/PQ) is required"
+  },
+  {
+   "zh": "<strong>人工操作</strong>：力量變異性大 → 需要詳細的 SOP 和操作人員培訓；「最差情況」難以精確定義",
+   "en": "<strong>Manual operation</strong>: large variability in force → detailed SOPs and operator training are needed; the \"worst case\" is hard to define precisely"
+  },
+  {
+   "zh": "<strong>混合模式</strong>：需識別人工操作步驟作為 CCI 風險的關鍵控制點",
+   "en": "<strong>Hybrid mode</strong>: manual operation steps must be identified as critical control points for CCI risk"
+  },
+  {
+   "zh": "思考練習 4.1.4",
+   "en": "Thinking Exercise 4.1.4"
+  },
+  {
+   "zh": "在活塞桿安裝步驟中，「螺旋轉入對活塞塞的扭矩作用」為什麼可能擾動活塞-筒身界面的 CCI？如何在工藝驗證中評估這個風險？",
+   "en": "In the plunger rod placement step, why might \"the torque of screwing in on the stopper\" disturb the CCI of the stopper-barrel interface? How can this risk be evaluated in process validation?"
+  },
+  {
+   "zh": "手指翼緣安裝後需要 100% 目檢，但 TR86 仍然建議評估是否需要額外的 CCIT。在什麼情況下目檢不足以確保 CCI？",
+   "en": "After finger flange placement, 100% visual inspection is required, yet TR86 still recommends evaluating whether additional CCIT is needed. Under what circumstances is visual inspection insufficient to ensure CCI?"
+  },
+  {
+   "zh": "設計一個針對「活塞桿安裝」這一二次包裝步驟的 CCI 風險評估框架，包括：風險識別、嚴重性評估、控制措施選擇和 CCIT 決策標準。",
+   "en": "Design a CCI risk assessment framework for the secondary packaging step of \"plunger rod placement\", including risk identification, severity assessment, selection of control measures and CCIT decision criteria."
+  },
+  {
+   "zh": "對於一個使用自動化包裝線的 CDMO，當產線參數（如夾持力）超出驗證範圍時，你應該如何處理 CCI 的放行決策？",
+   "en": "For a CDMO using an automated packaging line, how should you handle the CCI release decision when line parameters (such as clamping force) go outside the validated range?"
+  },
+  {
+   "zh": "本節關鍵訊息總結 • For rapid review",
+   "en": "Key Messages Summary of This Section • For rapid review"
+  },
+  {
+   "zh": "關鍵訊息（中文）",
+   "en": "Key Messages (Commentary)"
+  },
+  {
+   "zh": "KM-1：活塞塞是主要屏障",
+   "en": "KM-1: The Plunger Stopper Is the Primary Barrier"
+  },
+  {
+   "zh": "活塞塞－筒身界面是任何預充填注射器設計中最主要、最關鍵的 CCI 屏障。三肋壓縮結構提供分層密封保障。任何可能擾動此界面的工藝步驟——灌裝、塞封、活塞桿安裝、運輸——都必須評估對 CCI 的影響。",
+   "en": "The stopper-barrel interface is the most important and most critical CCI barrier in any prefilled syringe design. The three-rib compression structure provides layered seal assurance. Any process step that may disturb this interface (filling, stoppering, plunger rod placement, transport) must be evaluated for its impact on CCI."
+  },
+  {
+   "zh": "KM-2：多個界面 = 多種失效模式",
+   "en": "KM-2: Multiple Interfaces = Multiple Failure Modes"
+  },
+  {
+   "zh": "與簡單的玻璃瓶（一個主要密封）不同，PFS 有多達三個活躍的密封界面（活塞-筒身、針頭-護蓋、筒身-護蓋）。每個界面都是潛在失效點。CCI 策略必須在整個產品生命週期中覆蓋所有界面。",
+   "en": "Unlike a simple glass vial (one primary seal), a PFS has up to three active sealing interfaces (stopper-barrel, needle-shield, barrel-shield). Each interface is a potential failure point. The CCI strategy must cover all interfaces throughout the product lifecycle."
+  },
+  {
+   "zh": "KM-3：矽油的雙重角色與堵塞風險",
+   "en": "KM-3: The Dual Role of Silicone Oil and the Plugging Risk"
+  },
+  {
+   "zh": "矽油對 PFS 功能至關重要，但帶來兩個 CCI 風險：(1) 過量矽油使活塞在運輸中自由移動，破壞 CCI；(2) 矽油可能物理性堵塞微小缺陷，導致染液滲入法等概率性方法出現假陰性。確定性方法（真空衰減、HVLD）是 PFS 的首選 CCIT 方法。",
+   "en": "Silicone oil is essential to PFS function but brings two CCI risks: (1) excess silicone oil lets the stopper move freely during transport, undermining CCI; (2) silicone oil may physically plug tiny defects, causing false negatives in probabilistic methods such as dye ingress. Deterministic methods (vacuum decay, HVLD) are the preferred CCIT methods for a PFS."
+  },
+  {
+   "zh": "KM-4：真空式 CCIT 中的活塞移動問題",
+   "en": "KM-4: Plunger Movement in Vacuum-Based CCIT"
+  },
+  {
+   "zh": "真空衰減測試對 PFS 施加壓差時，活塞會向外移動，這會 (a) 降低測試靈敏度，(b) 可能引入異物或微生物污染。測試腔中的對位針是一種經驗證的工程解決方案，可抵消活塞移動。",
+   "en": "When vacuum decay testing applies a pressure differential to a PFS, the plunger moves outward, which (a) reduces test sensitivity and (b) may introduce foreign matter or microbial contamination. A contrast pin in the test chamber is a proven engineering solution that counteracts plunger movement."
+  },
+  {
+   "zh": "KM-5：二次包裝 CCIT 的風險評估方法",
+   "en": "KM-5: Risk Assessment Approach for Secondary Packaging CCIT"
+  },
+  {
+   "zh": "並非每個二次包裝作業都需要 CCIT，但每個作業都必須評估 CCI 風險。一旦識別到風險，必須對最差情況樣本進行 CCI 研究。半成品注射器的 CCI 數據不能替代成品注射器的 CCI 評估。",
+   "en": "Not every secondary packaging operation requires CCIT, but every operation must be assessed for CCI risk. Once a risk is identified, a CCI study must be performed on worst-case samples. CCI data from semi-finished syringes cannot replace the CCI assessment of finished syringes."
+  },
+  {
+   "zh": "Comprehensive Review Questions 綜合複習題",
+   "en": "Comprehensive Review Questions"
+  },
+  {
+   "zh": "中文問題：",
+   "en": "Questions:"
+  },
+  {
+   "zh": "比較玻璃小瓶和固定針 PFS 的 CCI 複雜度差異。列出所有密封界面並解釋為什麼每個界面都需要單獨的 CCI 考量。",
+   "en": "Compare the CCI complexity of a glass vial and a staked-needle PFS. List all sealing interfaces and explain why each requires separate CCI consideration."
+  },
+  {
+   "zh": "某 CDMO 正在為含高濃度單抗的 1 mL PFS 開發 CCIT 方法，產品裝入 auto-injector。請描述涵蓋以下方面的逐步 CCI 策略：(a) 方法選擇，(b) 活塞移動緩解，(c) 組裝裝置測試方法，(d) 二次包裝評估。",
+   "en": "A CDMO is developing a CCIT method for a 1 mL PFS containing a high-concentration mAb, with the product loaded into an auto-injector. Describe a step-by-step CCI strategy covering: (a) method selection, (b) plunger movement mitigation, (c) test approach for the assembled device, (d) secondary packaging assessment."
+  },
+  {
+   "zh": "解釋為什麼矽油對概率性 CCIT 方法（如染液滲入法）會造成假陰性風險，但對確定性方法（如真空衰減法）不會造成相同的風險。",
+   "en": "Explain why silicone oil poses a false-negative risk for probabilistic CCIT methods (such as dye ingress) but does not pose the same risk for deterministic methods (such as vacuum decay)."
+  },
+  {
+   "zh": "區分半成品和成品注射器 CCI 測試的法規意義是什麼？這與 USP &lt;1207&gt; 生命週期評估方法有何關聯？",
+   "en": "What is the regulatory significance of distinguishing CCI testing of semi-finished and finished syringes? How does this relate to the USP &lt;1207&gt; lifecycle assessment approach?"
+  },
+  {
+   "zh": "描述真空衰減測試期間活塞移動降低方法靈敏度的物理機制。對位針如何恢復測試有效性？",
+   "en": "Describe the physical mechanism by which plunger movement reduces method sensitivity during vacuum decay testing. How does a contrast pin restore test validity?"
+  }
+ ]
+}

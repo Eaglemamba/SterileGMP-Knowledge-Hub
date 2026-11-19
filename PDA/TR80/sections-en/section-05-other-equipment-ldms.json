@@ -1,0 +1,685 @@
+{
+ "source": "section-05-other-equipment-ldms.html",
+ "blocks": [
+  {
+   "zh": "其他設備、LDMS 與電子數據治理",
+   "en": "Other Equipment, LDMS and Electronic Data Governance"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解非 HPLC/GC 儀器（UV、FTIR、天平、pH 計等）在數據完整性框架中的法規地位，以及忽視這些設備的常見風險",
+   "en": "Understand the regulatory standing of non-HPLC/GC instruments (UV, FTIR, balances, pH meters, etc.) within the data integrity framework, and the common risks of overlooking this equipment"
+  },
+  {
+   "zh": "掌握 LDMS（實驗室數據管理軟體）驗證的關鍵步驟、最低控制要求，及常見缺陷類型",
+   "en": "Master the key steps, minimum controls and common deficiency types for validating a laboratory data management software (LDMS) system"
+  },
+  {
+   "zh": "了解試算表（Spreadsheet）驗證的必要性、最低控制要求，以及未受保護試算表所導致的數據竄改場景",
+   "en": "Understand why spreadsheet validation is necessary, the minimum controls required, and the data manipulation scenarios that unprotected spreadsheets allow"
+  },
+  {
+   "zh": "建立電子數據治理（Electronic Data Governance）的整體框架：備份策略、例行對帳、廠商溝通、稽查電子數據提交",
+   "en": "Build an overall framework for electronic data governance: backup strategy, routine reconciliation, vendor communication and presenting electronic data during audits"
+  },
+  {
+   "zh": "能在 CDMO 情境中識別可能導致數據洩漏的系統設計缺口，並提出對應的預防控制措施",
+   "en": "Be able to identify system design gaps that can lead to data compromise in a CDMO setting, and propose appropriate preventive controls"
+  },
+  {
+   "zh": "6.4 Other Laboratory Equipment（其他實驗室設備）",
+   "en": "6.4 Other Laboratory Equipment"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念：非 HPLC 儀器同樣受 21 CFR Part 11 規範",
+   "en": "Key Concept: Non-HPLC Instruments Are Also Covered by 21 CFR Part 11"
+  },
+  {
+   "zh": "許多實驗室犯了「只重視 HPLC/GC 合規，忽略 UV、FTIR、滴定儀」的錯誤。這種盲點往往來自以下兩個誤解：",
+   "en": "Many laboratories make the mistake of focusing on HPLC/GC compliance while overlooking UV, FTIR and titrators. This blind spot usually stems from two misconceptions:"
+  },
+  {
+   "zh": "<strong>誤解一：UV/FTIR 不屬於「電腦操作系統」，不需符合 Part 11。</strong>\n                — 事實上，只要設備產生電子記錄並使用電子簽名，不論儀器類型，均受 21 CFR Part 11 規範。",
+   "en": "<strong>Misconception 1: UV/FTIR are not \"computer operating systems\" and do not need to comply with Part 11.</strong> - In fact, any instrument that generates electronic records and uses electronic signatures is covered by 21 CFR Part 11, regardless of instrument type."
+  },
+  {
+   "zh": "<strong>誤解二：UV/FTIR 沒有被 Warning Letter 引用，風險較低。</strong>\n                — FDA 的引用數量反映稽查重點，而非風險高低。TR80 Ref (55) 明確列出 UV/FTIR 的缺陷類型，與 HPLC 幾乎相同。",
+   "en": "<strong>Misconception 2: UV/FTIR have not been cited in Warning Letters, so the risk is lower.</strong> - The number of FDA citations reflects inspection focus, not the level of risk. TR80 Ref (55) explicitly lists deficiency types for UV/FTIR that are almost identical to those for HPLC."
+  },
+  {
+   "zh": "<strong>Scientific Data Management System (SDMS)：</strong> 當實驗室有多台孤立（stand-alone）儀器時，可採用 SDMS 集中收集 RS-232 或 LAN 埠的訊號數據。一旦啟用，SDMS 本身必須作為 LDMS 進行驗證並符合 Part 11。",
+   "en": "<strong>Scientific Data Management System (SDMS):</strong> When a laboratory has several isolated (stand-alone) instruments, an SDMS can be used to collect signal data centrally from RS-232 or LAN ports. Once implemented, the SDMS itself must be validated as an LDMS and comply with Part 11."
+  },
+  {
+   "zh": "概念比喻：「監控死角」",
+   "en": "Analogy: The \"Blind Spot\" in Surveillance"
+  },
+  {
+   "zh": "想像一棟有安全管理的大樓：前門（HPLC/GC）安裝了門禁刷卡和攝影機，但側門（UV/FTIR）卻沒有任何管控——任何人都可以進出、偷東西、不留紀錄。",
+   "en": "Imagine a building with security management: the front door (HPLC/GC) has badge access and cameras, but the side door (UV/FTIR) has no controls at all - anyone can walk in and out, take things and leave no trace."
+  },
+  {
+   "zh": "Stand-alone UV 電腦上的數據若可以隨時刪除，就等同這扇開著的側門。稽查人員在執行全面性數據完整性稽查時，UV/FTIR 常常是突破口。",
+   "en": "If data on a stand-alone UV computer can be deleted at any time, it is exactly like that open side door. During a comprehensive data integrity inspection, UV/FTIR stations are often where inspectors break through."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "★ <strong>「Save As」風險：</strong> 允許用「另存新檔」功能將數據另存為新檔案，意味著原始文件可能被取代或掩蓋。Part 11 要求原始數據必須被保存且不可被覆蓋。",
+   "en": "★ <strong>\"Save As\" risk:</strong> Allowing data to be saved as a new file with \"Save As\" means the original file may be replaced or masked. Part 11 requires that original data be preserved and not overwritten."
+  },
+  {
+   "zh": "★ <strong>共用管理員帳號：</strong> Stand-alone 系統最常見的缺陷是所有使用者共用一個「admin」帳號，導致無法追蹤是誰做了什麼操作——這直接違反 ALCOA 原則中的 Attributable（可歸責）要求。",
+   "en": "★ <strong>Shared administrator account:</strong> The most common deficiency on stand-alone systems is that all users share a single \"admin\" account, so it is impossible to trace who did what. This directly violates the Attributable requirement of the ALCOA principles."
+  },
+  {
+   "zh": "★ <strong>Malvern 粒徑分析儀 (PSD)：</strong> FDA Warning Letter 中曾明確點名此類儀器。PSD 數據關係到注射劑的粒徑分佈，屬於放行關鍵數據，不能因「不是 HPLC」就忽視。",
+   "en": "★ <strong>Malvern particle size analyzer (PSD):</strong> This type of instrument has been named explicitly in FDA Warning Letters. PSD data describe the particle size distribution of injectable products and are critical release data; the instrument cannot be ignored just because it is \"not an HPLC\"."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "您的實驗室有一台 UV 分光光度計，連接到一台 Windows XP 的老舊電腦，無法設定使用者帳號。請說明您會採取哪些 compensating controls（補償性控制）？",
+   "en": "Your laboratory has a UV spectrophotometer connected to an old Windows XP computer on which user accounts cannot be configured. What compensating controls would you put in place?"
+  },
+  {
+   "zh": "如果實驗室引入 SDMS 系統，哪些驗證活動是最低限度必須執行的？",
+   "en": "If the laboratory introduces an SDMS, which validation activities are the minimum that must be performed?"
+  },
+  {
+   "zh": "試列出三種稽查員可能在 UV/FTIR 站發現的數據完整性缺陷，並說明其法規依據。",
+   "en": "List three data integrity deficiencies an inspector might find at a UV/FTIR station, and state the regulatory basis for each."
+  },
+  {
+   "zh": "6.5 Laboratory Data Management Software (LDMS)（實驗室數據管理軟體）",
+   "en": "6.5 Laboratory Data Management Software (LDMS)"
+  },
+  {
+   "zh": "核心概念：LDMS 驗證責任在使用者",
+   "en": "Key Concept: The User Is Responsible for LDMS Validation"
+  },
+  {
+   "zh": "即使軟體供應商已提供「已驗證」的 LIMS 或 SDMS，最終符合法規的責任仍在製藥廠（使用者）身上。這是因為：",
+   "en": "Even if the software vendor supplies a \"validated\" LIMS or SDMS, final responsibility for regulatory compliance remains with the pharmaceutical company (the user). This is because:"
+  },
+  {
+   "zh": "供應商驗證是在「標準環境」下完成的，無法涵蓋您的特定設定、網路架構和使用場景",
+   "en": "Vendor validation is performed in a \"standard environment\" and cannot cover your specific configuration, network architecture and usage scenarios"
+  },
+  {
+   "zh": "21 CFR Part 211.68 明確要求，用於藥品測試的所有自動化設備（含電腦）都必須符合 GMP",
+   "en": "21 CFR Part 211.68 explicitly requires that all automated equipment (including computers) used for drug testing comply with GMP"
+  },
+  {
+   "zh": "ICH Q7（API 製造）進一步要求電腦化系統的驗證",
+   "en": "ICH Q7 (API manufacturing) further requires validation of computerized systems"
+  },
+  {
+   "zh": "<strong>法規依據雙軌制：</strong>",
+   "en": "<strong>Dual regulatory basis:</strong>"
+  },
+  {
+   "zh": "成品（Drug Product）→ 21 CFR Part 211.68 + Part 11",
+   "en": "Finished product (Drug Product) → 21 CFR Part 211.68 + Part 11"
+  },
+  {
+   "zh": "原料藥（API）→ ICH Q7 + Part 11",
+   "en": "Active pharmaceutical ingredient (API) → ICH Q7 + Part 11"
+  },
+  {
+   "zh": "概念比喻：雲端數據的「實體地址」問題",
+   "en": "Analogy: The \"Physical Address\" Problem of Cloud Data"
+  },
+  {
+   "zh": "採用雲端 LIMS 時，「伺服器實際在哪裡」是一個真實的法規問題。FDA 在境外服務器存儲 GXP 數據時，可能要求查看數據。若您不知道伺服器在哪個國家，當局有權拒絕承認這些數據的合法性。",
+   "en": "When a cloud LIMS is used, \"where the server physically sits\" is a real regulatory question. FDA may ask to see GXP data stored on overseas servers. If you do not know which country the server is in, the authority may refuse to accept the data as legitimate."
+  },
+  {
+   "zh": "要求雲端供應商提供：(1) 伺服器實體位置、(2) GXP 合規聲明、(3) 品質服務協議（Quality Service Agreement）和緊急應變計畫（Contingency Plan）——這是 TR80 的明確建議。",
+   "en": "Require the cloud vendor to provide: (1) the physical location of the servers, (2) a GXP compliance statement, and (3) a Quality Service Agreement and a Contingency Plan - this is an explicit TR80 recommendation."
+  },
+  {
+   "zh": "★ <strong>瀏覽器登入的安全風險：</strong> 基於瀏覽器的 LIMS 登入允許任何電腦存取，攻擊面大。TR80 建議實施 IP 白名單（IP address filter login）作為第二層安全控制。",
+   "en": "★ <strong>Security risk of browser-based login:</strong> Browser-based LIMS login allows access from any computer, which gives a large attack surface. TR80 recommends an IP address filter login as a second layer of security control."
+  },
+  {
+   "zh": "★ <strong>手動計算驗證：</strong> 軟體用於統計計算（如均值、標準差、%RSD、F2 相似因子、含量均勻度 CV）時，必須手動計算一組數據並與軟體結果對比——這是驗證的必要步驟，不是選項。",
+   "en": "★ <strong>Manual calculation verification:</strong> When software is used for statistical calculations (e.g., mean, standard deviation, %RSD, F2 similarity factor, content uniformity CV), one set of data must be calculated manually and compared with the software result. This is a required validation step, not an option."
+  },
+  {
+   "zh": "★ <strong>PDF 輸出的可編輯性：</strong> 由系統輸出的 PDF 報告，必須確認為不可編輯，並帶有日期時間戳記。可編輯的 PDF 報告無法作為可靠的電子記錄。",
+   "en": "★ <strong>Editability of PDF output:</strong> PDF reports generated by the system must be confirmed to be non-editable and carry a date and time stamp. An editable PDF report cannot serve as a reliable electronic record."
+  },
+  {
+   "zh": "供應商已提供 LIMS 的「驗證套件」（IQ/OQ/PQ 文件），作為使用者還需要執行哪些額外的驗證活動？",
+   "en": "The vendor has supplied a \"validation package\" (IQ/OQ/PQ documents) for the LIMS. What additional validation activities must the user still perform?"
+  },
+  {
+   "zh": "如果 LIMS 供應商不公開其雲端伺服器的實體位置，您應如何處理？",
+   "en": "If the LIMS vendor will not disclose the physical location of its cloud servers, how should you handle this?"
+  },
+  {
+   "zh": "為什麼 TR80 特別要求手動計算 F2 相似因子並與軟體比較？這在哪些測試項目中最關鍵？",
+   "en": "Why does TR80 specifically require the F2 similarity factor to be calculated manually and compared with the software? For which tests is this most critical?"
+  },
+  {
+   "zh": "6.5.1 Controls（最低控制要求）",
+   "en": "6.5.1 Controls (Minimum Control Requirements)"
+  },
+  {
+   "zh": "★ <strong>舊版本軟體保留：</strong> 更新軟體版本後，必須保留舊版本的副本，並確認舊版備份數據在新環境下仍可讀取。這解決了「數據可存取性（accessibility）」問題——五年後還能打開 2019 年的數據嗎？",
+   "en": "★ <strong>Retention of old software versions:</strong> After a software version update, a copy of the old version must be retained, and it must be confirmed that data backed up under the old version can still be read in the new environment. This addresses the data accessibility issue: can you still open 2019 data five years from now?"
+  },
+  {
+   "zh": "★ <strong>刪除權限最小化原則（Principle of Least Privilege）：</strong> 只有管理員或 IT 人員才能刪除數據。一般分析師不應具備此權限。這是 ALCOA 中「Enduring（持久性）」原則的系統實現。",
+   "en": "★ <strong>Principle of Least Privilege for deletion:</strong> Only administrators or IT personnel may delete data. Ordinary analysts should not have this permission. This is the system-level implementation of the \"Enduring\" principle of ALCOA."
+  },
+  {
+   "zh": "★ <strong>定期完整性檢查：</strong> 軟體完整性應定期核查——確認沒有未授權的配置更改、安全漏洞或非計畫的版本變動。",
+   "en": "★ <strong>Periodic integrity checks:</strong> Software integrity should be checked periodically to confirm there are no unauthorized configuration changes, security vulnerabilities or unplanned version changes."
+  },
+  {
+   "zh": "如果 LIMS 進行版本升級（如 v3.1 → v4.0），需要執行哪些再驗證（revalidation）活動？",
+   "en": "If the LIMS undergoes a version upgrade (e.g., v3.1 → v4.0), what revalidation activities are required?"
+  },
+  {
+   "zh": "「舊版本數據仍可存取」這個要求在實務上如何驗證？",
+   "en": "How is the requirement that \"data from old versions remain accessible\" verified in practice?"
+  },
+  {
+   "zh": "核心概念：LDMS 的七大最低控制",
+   "en": "Key Concept: The Seven Minimum Controls for an LDMS"
+  },
+  {
+   "zh": "TR80 列出的七項控制，可歸納為三個管理維度：",
+   "en": "The seven controls listed in TR80 can be grouped into three management dimensions:"
+  },
+  {
+   "zh": "6.5.2 Common Deficiencies that May Lead to Data Compromise（常見缺陷）",
+   "en": "6.5.2 Common Deficiencies that May Lead to Data Compromise"
+  },
+  {
+   "zh": "五大缺陷的根本原因分析",
+   "en": "Root Cause Analysis of the Five Major Deficiencies"
+  },
+  {
+   "zh": "TR80 列出的五種 LDMS 常見缺陷，可從「技術」和「管理」兩個層面理解：",
+   "en": "The five common LDMS deficiencies listed in TR80 can be understood from both a technical and a management perspective:"
+  },
+  {
+   "zh": "<strong>同帳號並行登入：</strong> 技術設計缺陷。允許同一 ID 同時在多台電腦登入，意味著無法確定「是誰」在哪台電腦做了操作，破壞 ALCOA 的 Attributable 要求。",
+   "en": "<strong>Concurrent logins with the same account:</strong> A technical design deficiency. Allowing the same ID to be logged in on several computers at once makes it impossible to determine who performed an action on which computer, undermining the Attributable requirement of ALCOA."
+  },
+  {
+   "zh": "<strong>未按不符合程序調查驗證錯誤：</strong> 管理缺陷。驗證期間發現的缺失若未正式記錄和調查，可能被隱藏，導致系統帶著已知問題上線。",
+   "en": "<strong>Validation errors not investigated per the nonconformance procedure:</strong> A management deficiency. If problems found during validation are not formally recorded and investigated, they can be hidden, and the system goes live with known issues."
+  },
+  {
+   "zh": "<strong>未啟用/審查/發佈稽核軌跡：</strong> 最常見的法規引用項目。TR80 第 6.4 節也提到此問題。啟用 ≠ 審查 ≠ 發佈——三者都必須做。",
+   "en": "<strong>Audit trail not enabled, reviewed or issued:</strong> The most frequently cited regulatory item. TR80 Section 6.4 also mentions this problem. Enabled ≠ reviewed ≠ issued - all three must be done."
+  },
+  {
+   "zh": "<strong>功能安裝前未充分理解：</strong> 新功能啟用（如自動整合、批次計算）可能改變數據流，若未先評估影響就上線，可能引入未知風險。",
+   "en": "<strong>Functions not adequately understood before installation:</strong> Enabling new functions (e.g., automatic integration, batch calculations) can change the data flow. Going live without first assessing the impact can introduce unknown risks."
+  },
+  {
+   "zh": "<strong>訓練缺失：</strong> 根本原因之一。即使系統設計良好，操作者不理解為何不能共用密碼、如何正確使用系統，仍會造成數據洩漏。",
+   "en": "<strong>Lack of training:</strong> One of the root causes. Even when the system is well designed, operators who do not understand why passwords must not be shared, or how to use the system correctly, will still cause data compromise."
+  },
+  {
+   "zh": "概念比喻：「辦公室監視器開著但沒人看」",
+   "en": "Analogy: \"The Office Cameras Are On but Nobody Watches\""
+  },
+  {
+   "zh": "啟用稽核軌跡但從未審查，就像安裝了監視器但從來不看錄像。問題早就發生了，但沒有人知道。",
+   "en": "Enabling the audit trail but never reviewing it is like installing surveillance cameras and never watching the footage. The problem happened long ago, but nobody knows."
+  },
+  {
+   "zh": "稽查員不只會問「稽核軌跡是否啟用」，更會要求查看最近 6 個月的審查紀錄。若沒有記錄顯示審查已執行，等同於未執行。",
+   "en": "Inspectors will not only ask whether the audit trail is enabled; they will also ask to see the review records for the last 6 months. If no record shows that a review was performed, it is the same as not having performed it."
+  },
+  {
+   "zh": "如何設計一個 SOP 來確保稽核軌跡的定期審查確實被執行並記錄？",
+   "en": "How would you design an SOP to ensure that periodic audit trail review is actually performed and documented?"
+  },
+  {
+   "zh": "一個驗證工程師在 LIMS 驗證期間發現「搜尋功能偶爾顯示錯誤結果」，但急於上線而未記錄。這在法規上的潛在後果是什麼？",
+   "en": "During LIMS validation, a validation engineer finds that \"the search function occasionally shows wrong results\" but, in a hurry to go live, does not record it. What are the potential regulatory consequences?"
+  },
+  {
+   "zh": "6.5.3 Spreadsheet Validation（試算表驗證）",
+   "en": "6.5.3 Spreadsheet Validation"
+  },
+  {
+   "zh": "核心概念：Excel 試算表為何是高風險區域",
+   "en": "Key Concept: Why Excel Spreadsheets Are a High-Risk Area"
+  },
+  {
+   "zh": "Excel 試算表是製藥實驗室中數據完整性最脆弱的環節之一，原因在於：",
+   "en": "Excel spreadsheets are one of the most fragile points of data integrity in pharmaceutical laboratories, because:"
+  },
+  {
+   "zh": "<strong>可輕易修改公式：</strong> 任何人只要有存取權限，可以悄悄更改計算公式，而不留明顯痕跡",
+   "en": "<strong>Formulas can be changed easily:</strong> Anyone with access can quietly change a calculation formula without leaving an obvious trace"
+  },
+  {
+   "zh": "<strong>沒有原生稽核軌跡：</strong> 標準 Excel 不記錄「誰在何時修改了哪個儲存格」",
+   "en": "<strong>No native audit trail:</strong> Standard Excel does not record who changed which cell and when"
+  },
+  {
+   "zh": "<strong>數據輸入區未鎖定：</strong> 未受保護的試算表允許直接在結果儲存格輸入手動數值，覆蓋公式計算結果",
+   "en": "<strong>Data entry areas are not locked:</strong> An unprotected spreadsheet allows manual values to be typed directly into result cells, overwriting the formula-calculated results"
+  },
+  {
+   "zh": "<strong>檔案可任意複製：</strong> 試算表可被另存為新檔案，製造多個「版本」，無法確認哪個是原始版本",
+   "en": "<strong>Files can be copied freely:</strong> A spreadsheet can be saved as a new file, creating multiple \"versions\" so that it cannot be confirmed which is the original"
+  },
+  {
+   "zh": "<strong>驗證方法三步驟：</strong>",
+   "en": "<strong>Three-step validation method:</strong>"
+  },
+  {
+   "zh": "按照 USP 或其他有效來源的標準公式建立試算表模板",
+   "en": "Build the spreadsheet template using the standard formulas from the USP or another valid source"
+  },
+  {
+   "zh": "手動計算一組代表性數據，與試算表結果對比",
+   "en": "Calculate one representative data set manually and compare it with the spreadsheet result"
+  },
+  {
+   "zh": "測試邊界值（如最大/最小輸入值）和特殊功能（如條件格式）",
+   "en": "Test boundary values (e.g., maximum/minimum input values) and special functions (e.g., conditional formatting)"
+  },
+  {
+   "zh": "概念比喻：「可以亂填的考試答案卷」",
+   "en": "Analogy: \"An Exam Answer Sheet Anyone Can Fill In\""
+  },
+  {
+   "zh": "未受保護的試算表就像一張考試答案卷，老師批改完後發回給學生，學生可以拿白色修正液把 60 分改成 90 分再拿回去說「老師您算錯了」。",
+   "en": "An unprotected spreadsheet is like an exam paper that the teacher marks and hands back to the student, who then uses correction fluid to change 60 points to 90 and returns it, saying \"Teacher, you added it up wrong.\""
+  },
+  {
+   "zh": "正確的做法是：結果欄位由公式自動計算並鎖定，不允許手動輸入——就像考卷批改後立刻收走，學生無法觸碰。",
+   "en": "The right approach is for the result fields to be calculated automatically by formulas and locked, with no manual entry allowed - like collecting the exam paper as soon as it is marked, so the student cannot touch it."
+  },
+  {
+   "zh": "★ <strong>試算表存放位置：</strong> 必須存放在伺服器的指定位置，而非分析師的本機桌面或 USB 隨身碟。位置資訊應顯示在試算表本身（如頁腳），以便稽查時快速核對。",
+   "en": "★ <strong>Spreadsheet storage location:</strong> The spreadsheet must be stored in a designated location on the server, not on an analyst's local desktop or a USB drive. The location should be shown on the spreadsheet itself (e.g., in the footer) so it can be checked quickly during an audit."
+  },
+  {
+   "zh": "★ <strong>「唯讀」設定的意義：</strong> 將試算表設為唯讀，確保前一次的輸入數據不會殘留在模板中，避免新分析師因使用含舊數據的模板而產生記錄混淆。",
+   "en": "★ <strong>Purpose of the \"read-only\" setting:</strong> Setting the spreadsheet to read-only ensures that data entered previously does not remain in the template, avoiding record confusion when a new analyst uses a template that still contains old data."
+  },
+  {
+   "zh": "★ <strong>定期重新驗證：</strong> 試算表密碼更換後，等同於變更控制，需要進行再驗證（revalidation），確認保護功能仍然有效。",
+   "en": "★ <strong>Periodic revalidation:</strong> Changing the spreadsheet password is equivalent to a change control and requires revalidation to confirm that the protection is still effective."
+  },
+  {
+   "zh": "一個用於溶解度計算（含 F2 相似因子）的 Excel 試算表，請列出完整的驗證測試項目。",
+   "en": "For an Excel spreadsheet used for dissolution calculations (including the F2 similarity factor), list the complete set of validation test items."
+  },
+  {
+   "zh": "稽查員要求查看所有曾使用過的溶解度試算表的歷史版本。若試算表存於本機且無版本管理，可能面臨什麼樣的合規問題？",
+   "en": "An inspector asks to see the historical versions of every dissolution spreadsheet ever used. If the spreadsheets are stored locally with no version control, what compliance problems might arise?"
+  },
+  {
+   "zh": "如何在不使用昂貴的電子試算表管理系統（如 Veeva）的前提下，僅用 Excel 內建功能實現最低限度的試算表控制？",
+   "en": "Without using an expensive electronic spreadsheet management system (such as Veeva), how can you achieve minimum spreadsheet control using only Excel's built-in functions?"
+  },
+  {
+   "zh": "實務應用：CDMO 試算表控制情境",
+   "en": "Practical Application: Spreadsheet Control Scenarios in a CDMO"
+  },
+  {
+   "zh": "以下是 CDMO 環境中試算表控制的常見場景與對應措施：",
+   "en": "The following are common spreadsheet control scenarios in a CDMO environment, with the corresponding measures:"
+  },
+  {
+   "zh": "6.6 Electronic Data Governance（電子數據治理）",
+   "en": "6.6 Electronic Data Governance"
+  },
+  {
+   "zh": "核心概念：電子數據治理是「全面性」的",
+   "en": "Key Concept: Electronic Data Governance Must Be Comprehensive"
+  },
+  {
+   "zh": "Section 6.6 的核心思想是：數據治理不能只針對部分設備，而必須涵蓋實驗室中所有產生電子數據的設備和系統。",
+   "en": "The core idea of Section 6.6 is that data governance cannot target only some equipment; it must cover all equipment and systems in the laboratory that generate electronic data."
+  },
+  {
+   "zh": "<strong>Firmware 控制設備的特殊挑戰：</strong> 某些設備（如老式天平、滴定儀）由韌體（firmware）控制，無法輸出稽核軌跡。在這種情況下，質量部門應建立一個替代程序（如每日日誌核對）來偵測潛在的數據洩漏。",
+   "en": "<strong>Special challenge of firmware-controlled equipment:</strong> Some equipment (such as older balances and titrators) is controlled by firmware and cannot output an audit trail. In this case, the quality unit should establish an alternative procedure (such as daily logbook reconciliation) to detect potential data compromise."
+  },
+  {
+   "zh": "<strong>電子數據治理手冊（Data Governance Manual）：</strong> TR80 建議實驗室建立並維護一本治理手冊，整合所有設備和數據流程的最新資訊。這份手冊能大幅提高稽查效率。",
+   "en": "<strong>Data Governance Manual:</strong> TR80 recommends that the laboratory establish and maintain a governance manual that consolidates up-to-date information on all equipment and data processes. This manual greatly improves inspection efficiency."
+  },
+  {
+   "zh": "★ <strong>備份與刪除日誌：</strong> 對數據備份和刪除操作維護一本日誌（logbook）——這意味著每次備份和刪除都應有書面記錄，包括時間、操作人員、數據範圍。",
+   "en": "★ <strong>Backup and deletion log:</strong> Maintain a logbook for data backup and deletion operations. This means every backup and deletion should have a written record, including the time, the operator and the scope of data."
+  },
+  {
+   "zh": "★ <strong>一致性原則：</strong> 所有設備的控制標準應一致。不能因為某台儀器「較少被稽查到」就降低控制要求。",
+   "en": "★ <strong>Principle of consistency:</strong> Control standards should be consistent across all equipment. Controls must not be lowered for an instrument just because it is \"less often inspected\"."
+  },
+  {
+   "zh": "6.6.1 Data Backup and Storage（數據備份與儲存）",
+   "en": "6.6.1 Data Backup and Storage"
+  },
+  {
+   "zh": "核心概念：3-2-1 備份原則",
+   "en": "Key Concept: The 3-2-1 Backup Rule"
+  },
+  {
+   "zh": "TR80 建議維護「兩份數據拷貝，存放於不同地點」，這與業界普遍採用的 <strong>3-2-1 備份策略</strong>相呼應：",
+   "en": "TR80 recommends maintaining \"two copies of the data, stored in different locations\", which echoes the <strong>3-2-1 backup strategy</strong> widely used in industry:"
+  },
+  {
+   "zh": "<strong>3</strong> 份數據副本（原始 + 2 份備份）",
+   "en": "<strong>3</strong> copies of the data (the original plus 2 backups)"
+  },
+  {
+   "zh": "<strong>2</strong> 種不同的儲存媒體（如伺服器 + 光碟/磁帶）",
+   "en": "<strong>2</strong> different storage media (e.g., server + optical disc/tape)"
+  },
+  {
+   "zh": "<strong>1</strong> 份異地儲存（off-site）",
+   "en": "<strong>1</strong> copy stored off-site"
+  },
+  {
+   "zh": "TR80 具體強調：伺服器或雲端可能失效，將數據複製到光碟是重要的保護層。複製到光碟後，還必須核查完整性和準確性。",
+   "en": "TR80 specifically stresses that servers or the cloud may fail, so copying data to optical disc is an important layer of protection. After copying to disc, the integrity and accuracy of the copy must also be checked."
+  },
+  {
+   "zh": "<strong>Cold Backup（冷備份）的優勢：</strong> 已排程、無需人工介入的備份——避免「忘記備份」或「有人跳過備份」的人為失誤，也避免稽查時發現備份記錄不規律的監管問題。",
+   "en": "<strong>Advantage of cold backup:</strong> A scheduled backup that needs no manual intervention avoids human errors such as \"forgetting to back up\" or \"someone skipping the backup\", and also avoids the regulatory problem of irregular backup records being found during an inspection."
+  },
+  {
+   "zh": "混合系統 (Hybrid System) 的特殊規則",
+   "en": "Special Rules for Hybrid Systems"
+  },
+  {
+   "zh": "pH 計的校正曲線等暫時性電子儲存，會被下一次操作覆蓋（overwritten）。對於這類混合系統：",
+   "en": "Temporary electronic storage, such as the calibration curve of a pH meter, is overwritten by the next operation. For such hybrid systems:"
+  },
+  {
+   "zh": "<strong>列印/發布的記錄</strong>是主要數據來源（Primary Record）",
+   "en": "The <strong>printed/issued record</strong> is the primary data source (Primary Record)"
+  },
+  {
+   "zh": "這些暫時性的電子資訊<strong>不需要備份或長期保留</strong>",
+   "en": "This temporary electronic information <strong>does not need to be backed up or retained long term</strong>"
+  },
+  {
+   "zh": "但紙本或 PDF 記錄必須按照 GMP 記錄保存規定妥善保存",
+   "en": "But the paper or PDF record must be properly retained in accordance with GMP record retention requirements"
+  },
+  {
+   "zh": "概念比喻：數據治理手冊是「實驗室地圖」",
+   "en": "Analogy: The Data Governance Manual Is a \"Laboratory Map\""
+  },
+  {
+   "zh": "想像稽查員進入實驗室，詢問：「您的 HPLC 數據備份頻率是多少？稽核軌跡多久審查一次？使用什麼版本的軟體？誰負責維護？」",
+   "en": "Imagine an inspector walking into the laboratory and asking: \"How often is your HPLC data backed up? How often is the audit trail reviewed? What software version is in use? Who is responsible for maintenance?\""
+  },
+  {
+   "zh": "若有一本完整的數據治理手冊，這些問題的答案都在一份文件中。若沒有，稽查員必須分別查找 SOP、維修記錄、IT 文件——這既耗時又容易產生疏漏。",
+   "en": "If there is a complete data governance manual, the answers to all of these questions are in one document. If not, the inspector must look separately through SOPs, maintenance records and IT documents, which is time-consuming and easy to get wrong."
+  },
+  {
+   "zh": "TR80 指出：「準備和維護這份手冊是好做法，能使實驗室稽查更有效率」——這等於是說，有無此手冊會直接影響稽查觀感。",
+   "en": "TR80 states: \"Preparing and maintaining this manual is good practice and makes laboratory inspections more efficient\" - in other words, whether or not you have the manual directly affects the inspector's impression."
+  },
+  {
+   "zh": "★ <strong>GXP 合規的雲端服務：</strong> 雲端備份服務必須是 GXP-compliant。消費級雲端服務（如個人 Google Drive、Dropbox）不可接受。",
+   "en": "★ <strong>GXP-compliant cloud services:</strong> Cloud backup services must be GXP-compliant. Consumer-grade cloud services (such as a personal Google Drive or Dropbox) are not acceptable."
+  },
+  {
+   "zh": "★ <strong>電子簽名的日期時間戳：</strong> 強烈建議的要求。電子簽名若無法追溯到具體的時間點，其法律效力存疑——而時間戳是 Part 11 的核心要求之一。",
+   "en": "★ <strong>Date and time stamp on electronic signatures:</strong> A strongly recommended requirement. If an electronic signature cannot be traced to a specific point in time, its legal validity is questionable, and the time stamp is one of the core requirements of Part 11."
+  },
+  {
+   "zh": "★ <strong>Table 6.6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的模型意義：</strong> 這張表格的 N/A（天平）行非常重要——它承認天平這類儀器沒有 Part 11 稽核軌跡，但仍然在清單中，說明已「有意識地評估過」其合規狀態，這本身就是良好的 DI 管理實踐。",
+   "en": "★ <strong>Model significance of Table 6.6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>:</strong> The N/A (balance) row in this table is important. It acknowledges that instruments such as balances have no Part 11 audit trail but still keeps them on the list, showing that their compliance status has been \"consciously assessed\", which is itself good DI management practice."
+  },
+  {
+   "zh": "若伺服器備份每三個月進行一次，但其中一次因為 IT 人員休假而延誤了三週，這是否構成 CAPA 事件？為什麼？",
+   "en": "If a server backup is performed every three months but one backup is delayed by three weeks because the IT person was on leave, does this constitute a CAPA event? Why?"
+  },
+  {
+   "zh": "請依 Table 6.6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a> 的格式，為您實驗室中的 UV 分光光度計填寫一行記錄。",
+   "en": "Following the format of Table 6.6.1-1<a class=\"gallery-link\" href=\"../../../figures-gallery.html?doc=TR80&amp;file=tbl-p52-1.png\" target=\"_blank\" title=\"View in Gallery\">🔍</a>, fill in one row of the record for the UV spectrophotometer in your laboratory."
+  },
+  {
+   "zh": "「Cold Backup」和手動備份的主要合規差異是什麼？在稽查中各自的風險是什麼？",
+   "en": "What are the main compliance differences between cold backup and manual backup? What is the audit risk of each?"
+  },
+  {
+   "zh": "6.6.2 Routine Checks of Data and Multiple Equipment in the Laboratory（例行數據對帳）",
+   "en": "6.6.2 Routine Checks of Data and Multiple Equipment in the Laboratory"
+  },
+  {
+   "zh": "概念比喻：「對帳就像查銀行帳單」",
+   "en": "Analogy: \"Reconciliation Is Like Checking a Bank Statement\""
+  },
+  {
+   "zh": "您每個月對帳銀行帳單，不是因為您不信任銀行，而是要確認沒有異常交易。同樣地，定期對帳儀器數據不是「不信任分析師」，而是系統性的品質保證機制。",
+   "en": "You reconcile your bank statement every month, not because you distrust the bank, but to confirm there are no unusual transactions. In the same way, periodic reconciliation of instrument data is not about \"distrusting analysts\"; it is a systematic quality assurance mechanism."
+  },
+  {
+   "zh": "重要的是：對帳記錄本身也必須保存。稽查員可能要求查看最近 12 個月的對帳記錄，以確認這個程序確實在執行。",
+   "en": "Importantly, the reconciliation records themselves must also be retained. An inspector may ask to see the reconciliation records for the last 12 months to confirm that the procedure is really being carried out."
+  },
+  {
+   "zh": "★ <strong>時間同步的重要性：</strong> HPLC 進樣時間戳 vs 天平稱重時間戳的對比，是偵測「先做分析，事後補稱樣記錄」的有效方法。若稱樣時間晚於進樣時間，明顯不合理。",
+   "en": "★ <strong>Importance of time synchronization:</strong> Comparing HPLC injection time stamps with balance weighing time stamps is an effective way to detect \"running the analysis first and back-filling the sample weighing record afterwards\". If the weighing time is later than the injection time, this is clearly implausible."
+  },
+  {
+   "zh": "★ <strong>隨機抽查（Random Checks）：</strong> 對帳不需要 100% 全面核查，隨機抽查即可有效嚇阻有意圖的竄改行為，同時偵測意外的操作錯誤。",
+   "en": "★ <strong>Random checks:</strong> Reconciliation does not need to be 100% comprehensive. Random checks are enough to deter deliberate manipulation while also detecting accidental operating errors."
+  },
+  {
+   "zh": "★ <strong>班別/時間日誌核查：</strong> 將員工班別記錄與儀器使用記錄對比——若一台 HPLC 在某夜班無人登記使用，但卻有進樣記錄，即為異常。",
+   "en": "★ <strong>Shift/time log checks:</strong> Compare staff shift records with instrument usage records. If an HPLC has injection records during a night shift when nobody logged using it, that is an anomaly."
+  },
+  {
+   "zh": "您的 HPLC 系統顯示某批次測試共有 18 個進樣記錄，但實驗室日誌只記錄了 15 個進樣。您應如何調查這個差異？",
+   "en": "Your HPLC system shows 18 injection records for a batch test, but the laboratory logbook records only 15 injections. How would you investigate this discrepancy?"
+  },
+  {
+   "zh": "滴定儀的內部記憶體記錄了 25 筆滴定數據，但日誌中只有 20 筆記錄。請列出可能的解釋（包括良性和惡意的），以及各自對應的調查步驟。",
+   "en": "A titrator's internal memory holds 25 titration records, but the logbook has only 20 entries. List the possible explanations (both benign and malicious) and the corresponding investigation steps for each."
+  },
+  {
+   "zh": "設計一個「月度數據對帳」程序，涵蓋實驗室中 HPLC、天平和 UV 三種儀器的對帳項目和執行方式。",
+   "en": "Design a \"monthly data reconciliation\" procedure covering the reconciliation items and execution method for three instrument types in the laboratory: HPLC, balance and UV."
+  },
+  {
+   "zh": "核心概念：跨系統對帳是揭露數據竄改的關鍵工具",
+   "en": "Key Concept: Cross-System Reconciliation Is a Key Tool for Revealing Data Manipulation"
+  },
+  {
+   "zh": "數據竄改通常發生在「系統的邊界」——例如，分析師在 HPLC 電腦端刪除了一個進樣（injection），但忘記同步修改實驗室日誌（logbook）和 LIMS 的記錄條目。跨系統對帳就是利用這種「痕跡不一致」來偵測問題。",
+   "en": "Data manipulation usually happens at the \"boundaries between systems\". For example, an analyst deletes an injection on the HPLC computer but forgets to make the matching change to the laboratory logbook and the LIMS entry. Cross-system reconciliation uses exactly this kind of \"inconsistent trace\" to detect problems."
+  },
+  {
+   "zh": "<strong>核心邏輯：「數字必須吻合」</strong>",
+   "en": "<strong>Core logic: \"The numbers must match\"</strong>"
+  },
+  {
+   "zh": "6.6.3 Communications with Chromatographic Software Vendors（與色譜軟體廠商的溝通）",
+   "en": "6.6.3 Communications with Chromatographic Software Vendors"
+  },
+  {
+   "zh": "核心概念：廠商溝通必須書面化",
+   "en": "Key Concept: Vendor Communication Must Be Documented"
+  },
+  {
+   "zh": "色譜軟體（如 Empower、Chromeleon、OpenLAB）是複雜的程式，可能存在已知的 bugs、特殊行為或版本限制。TR80 要求：所有與廠商的技術溝通必須記錄，原因有三：",
+   "en": "Chromatography software (such as Empower, Chromeleon and OpenLAB) is complex and may have known bugs, special behaviors or version limitations. TR80 requires that all technical communication with the vendor be recorded, for three reasons:"
+  },
+  {
+   "zh": "<strong>建立因果鏈（Causality Chain）：</strong> 若稽查員在稽核軌跡中發現奇怪的錯誤訊息，而您能提供「廠商工單 #12345 確認這是軟體已知問題，已在 v3.2 修復」的文件，問題的性質就從「可疑缺陷」轉變為「已知並受控的問題」。",
+   "en": "<strong>Establishing a causality chain:</strong> If an inspector finds an odd error message in the audit trail and you can provide a document stating \"vendor ticket #12345 confirms this is a known software issue, fixed in v3.2\", the nature of the problem changes from a \"suspicious deficiency\" to a \"known and controlled issue\"."
+  },
+  {
+   "zh": "<strong>觸發程序變更：</strong> 廠商的澄清意見或修復方案，可能需要更新 SOP 或啟動新的控制措施。",
+   "en": "<strong>Triggering procedure changes:</strong> A vendor's clarification or fix may require an SOP update or the introduction of new controls."
+  },
+  {
+   "zh": "<strong>廠商通知的評估：</strong> 廠商主動發出的安全公告或版本更新通知，需要評估其對 GMP 操作的影響，並留下評估記錄。",
+   "en": "<strong>Assessing vendor notifications:</strong> Security bulletins or version update notices that the vendor issues proactively must be assessed for their impact on GMP operations, and the assessment recorded."
+  },
+  {
+   "zh": "概念比喻：「工單號碼是您的護身符」",
+   "en": "Analogy: \"The Ticket Number Is Your Talisman\""
+  },
+  {
+   "zh": "當 HPLC 軟體出現一個奇怪的錯誤訊息，您打電話給廠商技術支援，廠商說「這是已知問題，不影響數據，下個版本修復」。這個電話內容必須書面記錄——包括廠商工單號碼、通話日期、對方的名字、確認內容。",
+   "en": "When the HPLC software shows an odd error message, you call the vendor's technical support, and the vendor says \"this is a known issue, it does not affect data, and it will be fixed in the next version\". The content of that call must be documented, including the vendor ticket number, the date of the call, the name of the person and what was confirmed."
+  },
+  {
+   "zh": "若未記錄，稽查員看到稽核軌跡中的錯誤訊息，而您說「廠商說不影響數據」但拿不出任何佐證，這在稽查中幾乎必然成為一個缺陷（Observation）。",
+   "en": "If it is not documented, when the inspector sees the error message in the audit trail and you say \"the vendor said it does not affect data\" but cannot produce any supporting evidence, this will almost certainly become an observation in the inspection."
+  },
+  {
+   "zh": "★ <strong>廠商工單號碼（Ticket Number）：</strong> 保留廠商技術支援的工單號碼，作為溝通記錄的索引。這讓您在稽查時能快速找到對應文件。",
+   "en": "★ <strong>Vendor ticket number:</strong> Keep the ticket number from the vendor's technical support as an index to the communication record. This lets you find the relevant document quickly during an audit."
+  },
+  {
+   "zh": "★ <strong>廠商主動通知的處理程序：</strong> 應建立 SOP 說明「當收到廠商軟體通知時，由誰來評估 GMP 影響、記錄評估結果、決定是否需要緊急行動」。",
+   "en": "★ <strong>Procedure for vendor-initiated notifications:</strong> Establish an SOP that describes who assesses the GMP impact when a vendor software notification is received, who records the assessment result, and who decides whether urgent action is needed."
+  },
+  {
+   "zh": "★ <strong>定期核查稽核軌跡的雙重目的：</strong> 不僅偵測人員數據操作，也偵測軟體異常行為（如時間戳錯誤、系統崩潰記錄）。",
+   "en": "★ <strong>Dual purpose of periodic audit trail review:</strong> It detects not only personnel manipulation of data but also abnormal software behavior (such as time stamp errors and system crash records)."
+  },
+  {
+   "zh": "您的 HPLC 軟體稽核軌跡中，持續出現「System Suitability Failed — Auto-corrected」的警告訊息，但報告中均顯示通過。您應如何處理？",
+   "en": "The audit trail of your HPLC software repeatedly shows the warning message \"System Suitability Failed - Auto-corrected\", but the reports all show a pass. How would you handle this?"
+  },
+  {
+   "zh": "廠商發出 email 通知，說明「v4.1 版本在特定條件下可能導致積分參數不正確保存」。請描述您的 GMP 影響評估流程，以及需要留存的文件。",
+   "en": "The vendor sends an email notice stating that \"version 4.1 may, under certain conditions, fail to save integration parameters correctly\". Describe your GMP impact assessment process and the documents that need to be retained."
+  },
+  {
+   "zh": "6.6.4 Presenting Data on Request in Electronic Format for Audits and Inspections（稽查時提供電子格式數據）",
+   "en": "6.6.4 Presenting Data on Request in Electronic Format for Audits and Inspections"
+  },
+  {
+   "zh": "核心概念：電子數據提交的合規挑戰",
+   "en": "Key Concept: Compliance Challenges of Submitting Electronic Data"
+  },
+  {
+   "zh": "當 FDA 稽查員要求「把所有 HPLC 數據複製到這個 USB 隨身碟」時，這看似簡單的要求，實際上充滿法規風險：",
+   "en": "When an FDA inspector asks you to \"copy all the HPLC data onto this USB drive\", the request looks simple but is actually full of regulatory risk:"
+  },
+  {
+   "zh": "<strong>Metadata 丟失：</strong> 將 .raw 檔案複製到 USB 後，原始的 metadata（如審核者、電子簽名、修改歷史）可能無法在目標環境中讀取",
+   "en": "<strong>Loss of metadata:</strong> After copying .raw files to a USB drive, the original metadata (such as reviewer, electronic signatures and modification history) may not be readable in the target environment"
+  },
+  {
+   "zh": "<strong>「真實副本」認定（True Copy）：</strong> 複製後的數據必須通過驗證，確認與原始數據完全一致——這需要正式的程序，不能依賴口頭確認",
+   "en": "<strong>Recognition as a \"true copy\":</strong> The copied data must be verified to be completely identical to the original data. This requires a formal procedure and cannot rely on verbal confirmation"
+  },
+  {
+   "zh": "<strong>Copy-and-paste 風險：</strong> 手動 C/P 操作容易出錯，且外觀上與「刻意篡改」難以區分",
+   "en": "<strong>Copy-and-paste risk:</strong> Manual copy and paste (C/P) is error-prone and is hard to distinguish from deliberate manipulation by appearance alone"
+  },
+  {
+   "zh": "<strong>舊版軟體相容性：</strong> 部分色譜軟體無法輕易匯出包含進樣時間和樣品名稱的完整注射日誌，需要預先知道如何做到這一點",
+   "en": "<strong>Compatibility with older software:</strong> Some chromatography software cannot easily export a complete injection log containing injection times and sample names, so you need to know in advance how to do it"
+  },
+  {
+   "zh": "稽查準備行動清單：電子數據請求預案",
+   "en": "Audit Preparation Checklist: Plan for Electronic Data Requests"
+  },
+  {
+   "zh": "建議在平時就準備好以下工作，而不是等到稽查員進門再臨時處理：",
+   "en": "It is recommended to have the following prepared in advance, rather than scrambling to deal with it once the inspector is at the door:"
+  },
+  {
+   "zh": "概念比喻：「電子數據轉交就像公證文件」",
+   "en": "Analogy: \"Handing Over Electronic Data Is Like a Notarized Document\""
+  },
+  {
+   "zh": "當您向銀行申請「往來帳戶對帳單」作為申辦貸款的證明文件時，銀行必須在官方格式上蓋章，確認「此為真實副本」。",
+   "en": "When you ask a bank for an \"account statement\" as proof for a loan application, the bank must stamp it on an official form to confirm \"this is a true copy\"."
+  },
+  {
+   "zh": "電子數據提供給稽查員時，同樣的邏輯適用：您需要有程序確認「這份 USB 中的數據是我們系統中數據的真實副本，metadata 完整，未被修改」。這不是口頭保證，而是有文件記錄的正式確認。",
+   "en": "The same logic applies when electronic data is given to an inspector: you need a procedure to confirm that \"the data on this USB drive is a true copy of the data in our system, with complete metadata and unmodified\". This is not a verbal assurance but a formal, documented confirmation."
+  },
+  {
+   "zh": "★ <strong>21 CFR Part 11 vs EU GMP Annex 11：</strong> 本節明確點名兩個主要監管框架。為美國 FDA 和歐洲 EMA 同時生產的工廠（例如 CDMO），需要確保電子數據管理程序同時滿足兩者要求。",
+   "en": "★ <strong>21 CFR Part 11 vs EU GMP Annex 11:</strong> This section names the two major regulatory frameworks explicitly. A site that manufactures for both the US FDA and the European EMA (for example, a CDMO) must ensure that its electronic data management procedures meet both sets of requirements."
+  },
+  {
+   "zh": "★ <strong>Copy-paste 的法律風險：</strong> 即使是無意的複製錯誤，在外觀上也可能被誤認為「數據竄改」。使用 SOP 定義的官方匯出流程，能保護企業免於不必要的質疑。",
+   "en": "★ <strong>Legal risk of copy-paste:</strong> Even an unintentional copying error may be mistaken for \"data manipulation\" by appearance. Using an official export procedure defined in an SOP protects the company from unnecessary challenge."
+  },
+  {
+   "zh": "★ <strong>進樣日誌匯出的實務挑戰：</strong> TR80 特別提到某些色譜軟體無法輕易匯出包含進樣時間和樣品名稱的完整進樣日誌——這需要提前探索和記錄如何操作，而不是等到稽查當天。",
+   "en": "★ <strong>Practical challenge of exporting injection logs:</strong> TR80 specifically mentions that some chromatography software cannot easily export a complete injection log containing injection times and sample names. How to do this must be explored and documented in advance, not on the day of the inspection."
+  },
+  {
+   "zh": "FDA 稽查員要求查看過去一年所有 HPLC 失敗進樣（Aborted Injections）的完整記錄。請描述您將如何從 Empower（或您使用的軟體）中提取這些數據，以及如何確認為真實副本。",
+   "en": "An FDA inspector asks to see complete records of all aborted HPLC injections from the past year. Describe how you would extract these data from Empower (or the software you use) and how you would confirm they are true copies."
+  },
+  {
+   "zh": "稽查員要求將三批產品的 HPLC 原始數據複製到 USB。您的公司沒有 SOP 規定此程序。請描述您會如何即時處理此請求，以及事後應建立的 SOP 應包含哪些元素。",
+   "en": "An inspector asks you to copy the HPLC raw data for three batches of product to a USB drive. Your company has no SOP covering this procedure. Describe how you would handle the request on the spot, and what elements the SOP you establish afterwards should contain."
+  },
+  {
+   "zh": "如果必須將數據轉換為 PDF 格式提供給稽查員，需要進行哪些「True Copy 驗證」步驟？",
+   "en": "If data must be converted to PDF format to give to an inspector, what \"true copy verification\" steps are required?"
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "<strong>6.4 其他實驗室設備：</strong> UV、FTIR、PSD 等非 HPLC/GC 儀器同樣受 21 CFR Part 11 規範。Stand-alone 系統最常見缺陷包括共用管理員帳號、可隨時刪除數據、缺乏稽核軌跡。最低控制要求：啟用稽核軌跡、個人帳號、數據保護與軟體驗證。",
+   "en": "<strong>6.4 Other laboratory equipment:</strong> Non-HPLC/GC instruments such as UV, FTIR and PSD are also covered by 21 CFR Part 11. The most common deficiencies on stand-alone systems include shared administrator accounts, data that can be deleted at any time, and lack of an audit trail. Minimum controls: enabled audit trail, individual accounts, data protection and software validation."
+  },
+  {
+   "zh": "<strong>6.5 LDMS：</strong> 無論由廠商或使用者驗證，合規責任在使用者。驗證步驟涵蓋文件記錄、電子簽名、傳輸測試、手動計算比對、PDF 不可編輯確認等 16 項關鍵活動。最低控制包含：唯一 ID、定期更換密碼、刪除權限限制、舊版本保留、定期完整性檢查、角色清單維護。常見缺陷五項：並行登入、不調查驗證缺失、不啟用審查稽核軌跡、功能安裝前未充分理解、訓練不足。",
+   "en": "<strong>6.5 LDMS:</strong> Whether validated by the vendor or the user, compliance responsibility rests with the user. The validation steps cover 16 key activities, including documentation, electronic signatures, transfer testing, manual calculation comparison and confirmation that PDFs are non-editable. Minimum controls include: unique IDs, periodic password changes, restricted deletion rights, retention of old versions, periodic integrity checks and maintenance of a role list. The five common deficiencies are: concurrent logins, failure to investigate validation errors, failure to enable and review the audit trail, functions not adequately understood before installation, and inadequate training."
+  },
+  {
+   "zh": "<strong>6.5.3 試算表驗證：</strong> Excel 試算表是高風險區域，必須驗證、密碼保護、唯讀設定、存於伺服器指定位置，並定期更換密碼和重新驗證。未受保護試算表的典型攻擊手法是手動在結果欄輸入合格數值（如把 96.30 改為 98.23）覆蓋公式計算結果。",
+   "en": "<strong>6.5.3 Spreadsheet validation:</strong> Excel spreadsheets are a high-risk area and must be validated, password protected, set to read-only and stored in a designated server location, with periodic password changes and revalidation. The typical attack on an unprotected spreadsheet is to manually type a passing value into the result field (e.g., changing 96.30 to 98.23), overwriting the formula-calculated result."
+  },
+  {
+   "zh": "<strong>6.6.1 數據備份：</strong> 應制定備份程序和頻率；建議維護兩份不同地點的備份（3-2-1 原則）；雲端服務必須 GXP 合規並知悉伺服器實體位置；建議採用 cold backup（排程自動）避免人為遺漏；維護數據治理手冊整合所有相關資訊。",
+   "en": "<strong>6.6.1 Data backup:</strong> Establish a backup procedure and frequency; maintaining two backups in different locations is recommended (3-2-1 rule); cloud services must be GXP-compliant and the physical server location known; cold backup (scheduled and automatic) is recommended to avoid human omission; maintain a data governance manual that consolidates all relevant information."
+  },
+  {
+   "zh": "<strong>6.6.2 例行數據對帳：</strong> 定期對帳儀器數據以早期偵測問題；對帳邏輯為跨系統數字吻合（進樣次數 vs 日誌記錄 vs 結果數）；進樣時間 vs 稱樣時間的時序對比可揭露回溯偽造記錄。",
+   "en": "<strong>6.6.2 Routine data reconciliation:</strong> Reconcile instrument data periodically to detect problems early; the reconciliation logic is that numbers must match across systems (number of injections vs logbook entries vs number of results); comparing injection times with sample weighing times can reveal backdated records."
+  },
+  {
+   "zh": "<strong>6.6.3 廠商溝通：</strong> 所有技術溝通（電話/email）必須書面記錄，保留廠商工單號碼；廠商主動通知需評估 GMP 影響並記錄；定期核查稽核軌跡兼顧人員行為和軟體異常偵測。",
+   "en": "<strong>6.6.3 Vendor communication:</strong> All technical communication (phone/email) must be documented and the vendor ticket number retained; vendor-initiated notifications must be assessed for GMP impact and the assessment recorded; periodic audit trail review serves both to detect personnel behavior and to detect software anomalies."
+  },
+  {
+   "zh": "<strong>6.6.4 稽查電子數據提交：</strong> 避免將數據轉換為失去 metadata 的格式；必須轉換時需驗證為真實副本；建立 SOP 規範數據複製流程和標準報告格式；提前探索各軟體的完整進樣日誌匯出方法。",
+   "en": "<strong>6.6.4 Presenting electronic data for audits:</strong> Avoid converting data to formats that lose metadata; where conversion is unavoidable, verify that the result is a true copy; establish an SOP governing the data copying process and standard report formats; explore in advance how to export a complete injection log from each software."
+  }
+ ]
+}

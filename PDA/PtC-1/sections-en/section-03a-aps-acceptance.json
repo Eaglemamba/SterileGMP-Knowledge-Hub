@@ -1,0 +1,805 @@
+{
+ "source": "section-03a-aps-acceptance.html",
+ "blocks": [
+  {
+   "zh": "第三章：驗證 — 無菌製程模擬主題 A 至 H",
+   "en": "Chapter 3: Validation — Aseptic Process Simulation Topics A to H"
+  },
+  {
+   "zh": "<span class=\"topic-badge\">A: Acceptance Criteria 驗收標準</span>\n<span class=\"topic-badge\">B: Duration 時程長度</span>\n<span class=\"topic-badge\">C: Incubation Temperatures 培養溫度</span>\n<span class=\"topic-badge\">D: Nonintegral &amp; Rejected Units 非完整容器</span>\n<span class=\"topic-badge\">E: Reconciliation 核對計算</span>\n<span class=\"topic-badge\">F: Inversion 倒置操作</span>\n<span class=\"topic-badge\">G: Aerobic vs Anaerobic 好氧 vs 厭氧</span>\n<span class=\"topic-badge\">H: APS Boundaries 範圍界定</span>",
+   "en": "<span class=\"topic-badge\">A: Acceptance Criteria</span>\n<span class=\"topic-badge\">B: Duration</span>\n<span class=\"topic-badge\">C: Incubation Temperatures</span>\n<span class=\"topic-badge\">D: Nonintegral &amp; Rejected Units</span>\n<span class=\"topic-badge\">E: Reconciliation</span>\n<span class=\"topic-badge\">F: Inversion</span>\n<span class=\"topic-badge\">G: Aerobic vs Anaerobic</span>\n<span class=\"topic-badge\">H: APS Boundaries</span>"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解 APS（Aseptic Process Simulation，無菌製程模擬）驗收標準的統計學基礎，以及「零汙染」目標背後的監管邏輯",
+   "en": "Understand the statistical basis of APS (aseptic process simulation) acceptance criteria and the regulatory logic behind the \"zero contamination\" target"
+  },
+  {
+   "zh": "能夠設計符合生產最差狀況的 APS 執行時間，理解「事件驅動」而非「時間驅動」的原則",
+   "en": "Be able to design an APS duration that reflects worst-case production, and understand the principle that it is event-driven rather than time-driven"
+  },
+  {
+   "zh": "解釋雙溫培養（20–25°C + 30–35°C）的科學理由，並能判斷何時採用單一溫度",
+   "en": "Explain the scientific rationale for dual-temperature incubation (20–25°C + 30–35°C) and judge when a single temperature may be used"
+  },
+  {
+   "zh": "辨別哪些容器應納入培養（含宇宙組、cosmetic 缺陷組），哪些可合理排除（破損/非完整），並掌握核對（Reconciliation）計算",
+   "en": "Distinguish which units should be incubated (including those from interventions and units with cosmetic defects) and which may reasonably be excluded (broken/nonintegral), and master the reconciliation calculation"
+  },
+  {
+   "zh": "理解 APS 範圍的起訖點：從滅菌後組件到最終容器密封；PUPSIT 須納入 APS",
+   "en": "Understand the start and end points of the APS boundary: from sterilized components to closure of the final container; PUPSIT must be included in the APS"
+  },
+  {
+   "zh": "說明為何好氧培養基（如 SCDA）足以應對大多數製程，以及採用厭氧培養的罕見例外",
+   "en": "Explain why aerobic media (such as SCDA) are sufficient for most processes, and the rare exceptions where anaerobic incubation is used"
+  },
+  {
+   "zh": "Topic A: Acceptance Criteria — 驗收標準",
+   "en": "Topic A: Acceptance Criteria"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 — 零汙染的本質",
+   "en": "Core Concept — The Nature of Zero Contamination"
+  },
+  {
+   "zh": "<strong>Acceptance Criteria（驗收標準）</strong>在 APS 中等同於：<strong>每次執行，汙染單位數 = 0</strong>。",
+   "en": "In an APS, <strong>Acceptance Criteria</strong> means: <strong>zero contaminated units in every run</strong>."
+  },
+  {
+   "zh": "但這並不代表製程是「100% 完美無缺」。PDA PtC-1 明確指出，APS 提供的是「additional, but <em>not absolute</em>, assurance」。換言之，APS 通過只表示在那次模擬情境下製程受控，並不能保證真實生產中每支都無菌。",
+   "en": "This does not mean the process is \"100% perfect\". PDA PtC-1 states clearly that an APS provides \"additional, but <em>not absolute</em>, assurance\". In other words, a passing APS only shows that the process was under control in that simulated scenario; it does not guarantee that every single unit in real production is sterile."
+  },
+  {
+   "zh": "正確的認知框架是：APS 是「周期性佐證」，而非「絕對保證」。無菌保證（Sterility Assurance）的真正基礎是整個系統的設計與管控——設備滅菌、人員訓練、環境監控、設施設計——而 APS 只是其中一個檢核工具。",
+   "en": "The correct framework is that the APS is \"periodic supporting evidence\", not an \"absolute guarantee\". The real foundation of sterility assurance is the design and control of the whole system (equipment sterilization, personnel training, environmental monitoring and facility design); the APS is just one of the checking tools."
+  },
+  {
+   "zh": "比喻說明 — 汙染就像劇場後台的失火警報",
+   "en": "Analogy — Contamination Is Like a Fire Alarm Backstage at a Theater"
+  },
+  {
+   "zh": "想像一場外科手術演練（模擬 APS）：整個流程中只要有任何一個步驟發生汙染（哪怕只是一個培養基瓶陽性），就等同於手術演練中有人在無菌區域沒戴手套。",
+   "en": "Imagine a surgical drill (the simulated APS): if contamination occurs at any step in the whole procedure (even just one positive media vial), it is equivalent to someone in the drill working in the sterile field without gloves."
+  },
+  {
+   "zh": "這不一定代表真正手術會失敗，但一定代表有某個環節出了問題——可能是人員行為、可能是設備設計、可能是環境控制。不追根究柢、不提出 CAPA，就直接重跑一次「希望這次過」，是完全不被接受的做法。",
+   "en": "This does not necessarily mean a real operation would fail, but it certainly means something has gone wrong, whether personnel behavior, equipment design or environmental control. Simply re-running the APS and \"hoping it passes this time\", without root cause investigation and CAPA, is completely unacceptable."
+  },
+  {
+   "zh": "這正是 PtC-1 說的：「沒有調查就直接補做 APS = 不可接受。」",
+   "en": "This is exactly what PtC-1 says: \"Repeating the APS without an investigation = not acceptable.\""
+  },
+  {
+   "zh": "公式與思維 — Poisson 統計視角",
+   "en": "Formula and Thinking — A Poisson Statistics View"
+  },
+  {
+   "zh": "Poisson 公式：\nP(0 個陽性 | N 單位，每單位汙染率 p)\n  = e^(−N × p)\n\n範例：\n  N = 3,000 單位，p = 0.001（0.1%汙染率）\n  P(0 正) = e^(−3,000 × 0.001) = e^(−3) ≈ 0.05 (5%)\n\n意涵：\n  若汙染率高達 0.1%，即使填了 3000 支，\n  「全部陰性」的機率只有 5% → 跑出 0 正的\n  可能性本就極低。\n  因此，若真的能跑出 0 正，代表製程汙染率\n  遠低於 0.1%，才是有意義的結果。\n\nFDA 立場：\n  傾向以 0 positive = pass 作為絕對標準。\n  1 positive = 需調查，通常須重新執行。\n\nEU Annex 1 立場（2022版）：\n  與 FDA 相近，但允許深入調查後\n  基於科學判斷認定「未必代表製程失敗」；\n  不過仍須進行完整 CAPA 並重新確認。",
+   "en": "Poisson formula:\nP(0 positives | N units, contamination rate p per unit)\n  = e^(−N × p)\n\nExample:\n  N = 3,000 units, p = 0.001 (0.1% contamination rate)\n  P(0 positives) = e^(−3,000 × 0.001) = e^(−3) ≈ 0.05 (5%)\n\nImplication:\n  If the contamination rate were as high as 0.1%, even with 3,000\n  units filled the probability that \"all are negative\" is only 5%,\n  so getting 0 positives would be very unlikely.\n  Therefore, if 0 positives is really achieved, it indicates the\n  process contamination rate is far below 0.1%, which is the\n  meaningful result.\n\nFDA position:\n  Tends to treat 0 positive = pass as an absolute standard.\n  1 positive = requires investigation, usually a repeat run.\n\nEU Annex 1 position (2022 version):\n  Similar to the FDA, but allows that after an in-depth investigation\n  a science-based judgment may conclude that it \"does not\n  necessarily represent a process failure\";\n  however, full CAPA and re-confirmation are still required."
+  },
+  {
+   "zh": "重點提示 — 「1 支陽性」的後果",
+   "en": "Key Point — The Consequences of \"1 Positive Unit\""
+  },
+  {
+   "zh": "根據 FDA 2004 年無菌製程指引，1 支陽性 = 重大事件，需要：",
+   "en": "Under the FDA's 2004 aseptic processing guidance, 1 positive unit = a major event, requiring:"
+  },
+  {
+   "zh": "全面根本原因調查（含 QRM 工具）",
+   "en": "A full root cause investigation (including QRM tools)"
+  },
+  {
+   "zh": "制定並執行 CAPA",
+   "en": "Establishment and execution of CAPA"
+  },
+  {
+   "zh": "視情況重新執行多次 APS 以驗證 CAPA 有效性",
+   "en": "Where appropriate, repeating the APS several times to verify CAPA effectiveness"
+  },
+  {
+   "zh": "EU Annex 1 (2022) 語氣相似，但增加一個重要補充：若根本原因無法確立，仍須對所有可能的成因採取行動，不能以「找不到原因」為由放棄改善。",
+   "en": "EU Annex 1 (2022) is similar in tone but adds one important point: if the root cause cannot be established, action must still be taken on all possible causes, and \"no cause found\" cannot be used as a reason to abandon improvement."
+  },
+  {
+   "zh": "CDMO 業者注意：若客戶的 APS 出現 1 支陽性，影響遠不止於「重跑一次」，整批商業製造批次的上市時程可能延誤數週到數月。",
+   "en": "CDMO note: if a client's APS has 1 positive unit, the impact goes far beyond \"re-running once\"; the release schedule of the commercial manufacturing batches may be delayed by weeks to months."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "APS 驗收標準是「零汙染」，但 PtC-1 又說 1 支陽性「可能不代表製程失敗」——這兩個說法矛盾嗎？請解釋其中邏輯。",
+   "en": "The APS acceptance criterion is \"zero contamination\", yet PtC-1 also says 1 positive unit \"may not mean process failure\". Are these two statements contradictory? Explain the logic."
+  },
+  {
+   "zh": "若某次 APS 執行 3,000 支，出現 1 支陽性，根本原因調查顯示是某位操作員的手部動作不規範。請問至少需要哪些 CAPA，以及後續應補做幾次 APS？",
+   "en": "In an APS of 3,000 units, 1 positive unit is found, and the root cause investigation shows it was due to improper hand movements by one operator. What CAPA is needed at minimum, and how many APS runs should be repeated afterwards?"
+  },
+  {
+   "zh": "為何「連續多次 APS 都各有 1 支陽性但各自未超標」仍屬嚴重問題？",
+   "en": "Why is it still a serious problem if several consecutive APS runs each have 1 positive unit but none of them exceeds the limit?"
+  },
+  {
+   "zh": "Topic B: Duration of Process Simulations versus Production — APS 時程長度",
+   "en": "Topic B: Duration of Process Simulations versus Production"
+  },
+  {
+   "zh": "核心概念解析 — 事件驅動 vs 時間驅動",
+   "en": "Core Concept — Event-Driven vs Time-Driven"
+  },
+  {
+   "zh": "這是 Topic B 最關鍵的一句話：<strong>「Contamination is primarily a function of events, not time.」</strong>",
+   "en": "This is the most important sentence in Topic B: <strong>\"Contamination is primarily a function of events, not time.\"</strong>"
+  },
+  {
+   "zh": "汙染的根本風險來自「干預事件」（interventions）——例如人員進出、設備調整、管路重新連接——而不是單純「跑了多少小時」。因此，APS 的長度不是要「等於或超過最長生產時間」，而是要「涵蓋所有高風險事件」。",
+   "en": "The fundamental contamination risk comes from \"intervention events\" (interventions), such as personnel entering and leaving, equipment adjustments and tubing reconnections, not simply from \"how many hours were run\". The APS duration therefore does not need to \"equal or exceed the longest production time\"; it needs to \"cover all high-risk events\"."
+  },
+  {
+   "zh": "重要推論：",
+   "en": "Important corollaries:"
+  },
+  {
+   "zh": "高度自動化製程（Isolator）：干預少 → APS 可能比生產短，只要事件都被涵蓋",
+   "en": "Highly automated processes (isolator): fewer interventions, so the APS may be shorter than production as long as all events are covered"
+  },
+  {
+   "zh": "手動充填製程（Manual Filling）：操作員就是最大風險源 → 必須跑全時長（full-duration）",
+   "en": "Manual filling processes: the operator is the largest risk source, so the full duration must be run"
+  },
+  {
+   "zh": "多班次（Multiple Shifts）：不同操作員有不同行為變異 → 都需要被模擬",
+   "en": "Multiple shifts: different operators show different behavioral variation, so all need to be simulated"
+  },
+  {
+   "zh": "比喻說明 — 如果演練比演出短，如何驗證真實表演？",
+   "en": "Analogy — If the Rehearsal Is Shorter Than the Performance, How Do You Verify the Real Show?"
+  },
+  {
+   "zh": "想像一部音樂劇的技術彩排（Technical Rehearsal）：目的是確保舞台效果萬無一失。彩排不一定要跑完全劇，但一定要跑到每個「高風險場景」——煙霧機啟動、演員從高處降落、燈光快速切換。",
+   "en": "Imagine the technical rehearsal of a musical: its purpose is to make sure the stage effects are flawless. The rehearsal does not have to run the whole show, but it must reach every \"high-risk scene\": the smoke machine starting, an actor descending from height, rapid lighting changes."
+  },
+  {
+   "zh": "APS 的邏輯相同：不是比賽誰的 Media Fill 跑最久，而是確保每一個「有可能讓汙染溜進去的場景」都被真實挑戰過。如果你的生產有 campaign 製造（連續多天不中途滅菌），那彩排也要跑多天——因為那個「第三天疲勞的操作員」就是風險。",
+   "en": "The APS follows the same logic: it is not a contest to see whose media fill runs longest, but a way to make sure that every \"scenario in which contamination could slip in\" has been genuinely challenged. If your production is a campaign (several consecutive days without intermediate sterilization), the rehearsal must also run for several days, because that \"tired operator on day three\" is a risk."
+  },
+  {
+   "zh": "重點提示 — 冷凍乾燥（Lyophilization）的特殊考量",
+   "en": "Key Point — Special Considerations for Lyophilization"
+  },
+  {
+   "zh": "凍乾製程的 APS 有額外挑戰：需要評估「代表性的凍乾艙停留時間（chamber dwell time）」以及容器在艙外的搬運過程。這意味著凍乾的 APS 不只是充填這一步，還包含：",
+   "en": "The APS for a lyophilization process has additional challenges: it must assess a \"representative chamber dwell time\" and the handling of containers outside the chamber. This means a lyophilization APS covers more than the filling step; it also includes:"
+  },
+  {
+   "zh": "從充填到推入凍乾艙的搬運",
+   "en": "Transfer from filling to loading into the lyophilizer chamber"
+  },
+  {
+   "zh": "凍乾艙內停留（代表性時間）",
+   "en": "Residence in the chamber (representative time)"
+  },
+  {
+   "zh": "出艙後加蓋密封",
+   "en": "Capping and sealing after unloading from the chamber"
+  },
+  {
+   "zh": "CDMO 在承接凍乾品項時，APS 設計複雜度顯著高於一般液態充填，Protocol 設計需特別謹慎。",
+   "en": "When a CDMO takes on lyophilized products, the APS design is considerably more complex than for ordinary liquid filling, and the protocol design needs particular care."
+  },
+  {
+   "zh": "實務應用 — CDMO 的 APS 時程設計決策",
+   "en": "Practical Application — CDMO APS Duration Design Decisions"
+  },
+  {
+   "zh": "當客戶帶著一個新品項來詢問「你們的 Media Fill 需要跑多久？」時，正確答案不是一個固定數字，而是：",
+   "en": "When a client brings a new product and asks \"how long does your media fill need to run?\", the right answer is not a fixed number but this:"
+  },
+  {
+   "zh": "先做風險評估：列出所有生產中的干預事件與頻率",
+   "en": "First perform a risk assessment: list all interventions in production and their frequency"
+  },
+  {
+   "zh": "確認填充平台：Isolator / RABS / 傳統潔淨室 / 手動",
+   "en": "Confirm the filling platform: isolator / RABS / conventional cleanroom / manual"
+  },
+  {
+   "zh": "確認是否涉及 campaign 製造、多班次、多操作員",
+   "en": "Confirm whether campaign manufacturing, multiple shifts or multiple operators are involved"
+  },
+  {
+   "zh": "設計 APS 確保涵蓋所有高風險事件（不一定等於最長生產時間）",
+   "en": "Design the APS to ensure all high-risk events are covered (not necessarily equal to the longest production time)"
+  },
+  {
+   "zh": "有科學文件支撐時程設計的合理性",
+   "en": "Have scientific documentation supporting the rationale for the duration design"
+  },
+  {
+   "zh": "這一整套文件就是「Process Simulation Design（製程模擬設計）」，是 CDMO 自行準備的文件，不是監管機構提供的。",
+   "en": "This whole set of documents is the \"Process Simulation Design\", which the CDMO prepares itself; it is not provided by the regulatory authority."
+  },
+  {
+   "zh": "某 CDMO 的液態充填製程使用 Isolator，生產批次通常需要 8 小時。他們的 APS 設計為 4 小時，但涵蓋了所有預定干預項目。這樣可以接受嗎？為什麼？",
+   "en": "A CDMO's liquid filling process uses an isolator, and a production batch normally takes 8 hours. Their APS is designed as 4 hours but covers all planned interventions. Is this acceptable? Why?"
+  },
+  {
+   "zh": "若改為傳統潔淨室（Conventional Cleanroom）手動充填，同樣 8 小時生產，APS 設計為 4 小時是否合適？請說明理由。",
+   "en": "If the process were instead manual filling in a conventional cleanroom, with the same 8-hour production, would a 4-hour APS design be appropriate? Explain your reasoning."
+  },
+  {
+   "zh": "什麼是「worst-case conditions」在 APS 時程設計中的實際意義？請舉兩個具體例子。",
+   "en": "What is the practical meaning of \"worst-case conditions\" in APS duration design? Give two specific examples."
+  },
+  {
+   "zh": "Topic C: Incubation Temperatures — 培養溫度",
+   "en": "Topic C: Incubation Temperatures"
+  },
+  {
+   "zh": "核心概念解析 — 為什麼需要兩個溫度？",
+   "en": "Core Concept — Why Are Two Temperatures Needed?"
+  },
+  {
+   "zh": "潔淨室環境中的微生物汙染物大多屬於「中溫菌（Mesophilic Organisms）」，但其最適生長溫度各有不同：",
+   "en": "Most microbial contaminants in a cleanroom environment are \"mesophilic organisms\", but their optimal growth temperatures differ:"
+  },
+  {
+   "zh": "<strong>20–25°C（低溫段）：</strong>偏好溫度較低的環境菌，例如某些黴菌（Molds）、酵母菌（Yeasts）及皮膚表面的常見菌株",
+   "en": "<strong>20–25°C (lower range):</strong> favors environmental organisms that prefer cooler conditions, such as certain molds, yeasts and common skin-surface strains"
+  },
+  {
+   "zh": "<strong>30–35°C（高溫段）：</strong>偏好接近人體體溫的腸道菌、葡萄球菌等，這些是人員污染最常見的來源",
+   "en": "<strong>30–35°C (higher range):</strong> favors organisms that prefer temperatures close to human body temperature, such as enteric bacteria and staphylococci, which are the most common sources of personnel contamination"
+  },
+  {
+   "zh": "若只用單一溫度培養，可能無法偵測到在該溫度生長緩慢的物種，造成假陰性。因此，雙溫培養（至少各 7 天）是目前的業界最佳實踐。",
+   "en": "If only a single temperature is used, species that grow slowly at that temperature may go undetected, giving false negatives. Dual-temperature incubation (at least 7 days at each) is therefore current industry best practice."
+  },
+  {
+   "zh": "比喻說明 — 用兩種培養基「釣魚」",
+   "en": "Analogy — \"Fishing\" with Two Kinds of Media"
+  },
+  {
+   "zh": "想像你在一個湖裡釣魚，但不知道湖裡有什麼魚。如果你只帶一種魚餌，可能只釣到某些魚種。如果你帶兩種不同的魚餌（一個適合底棲魚，一個適合表層魚），釣到的魚種就更全面。",
+   "en": "Imagine fishing in a lake without knowing what fish are in it. With only one kind of bait you may catch only certain species. With two different baits (one suited to bottom feeders, one to surface fish) you catch a more complete range."
+  },
+  {
+   "zh": "雙溫培養的邏輯就是如此：用兩種不同的「溫度環境」，讓各類型的微生物汙染物都有機會生長並被偵測到。",
+   "en": "Dual-temperature incubation works the same way: two different \"temperature environments\" give every type of microbial contaminant a chance to grow and be detected."
+  },
+  {
+   "zh": "培養條件設計規則",
+   "en": "Incubation Condition Design Rules"
+  },
+  {
+   "zh": "標準雙溫培養設計：\n  總培養天數 ≥ 14 天\n  溫度範圍：20°C – 35°C\n\n  選項 1（建議方案）：\n    第 1 段：20–25°C × 7 天\n    第 2 段：30–35°C × 7 天\n    （順序可調換，需文件支撐）\n\n  選項 2（單一溫度方案）：\n    20–35°C 範圍內的任一溫度 × ≥ 14 天\n    需附科學文獻或環境菌株生長促進試驗\n    作為科學理由\n\n驗證要求：\n  Growth Promotion Test（生長促進試驗）\n  必須使用以下試驗菌株確認培養基有效性：\n  - Staphylococcus aureus（ATCC 6538）\n  - Bacillus subtilis（ATCC 6633）\n  - Candida albicans（ATCC 10231）\n  等 BP/EP/USP 指定菌株",
+   "en": "Standard dual-temperature incubation design:\n  Total incubation time ≥ 14 days\n  Temperature range: 20°C – 35°C\n\n  Option 1 (recommended):\n    Stage 1: 20–25°C × 7 days\n    Stage 2: 30–35°C × 7 days\n    (the order may be reversed, with documented support)\n\n  Option 2 (single-temperature approach):\n    Any one temperature within 20–35°C × ≥ 14 days\n    Requires scientific literature or a growth promotion study\n    with environmental isolates as the scientific rationale\n\nValidation requirement:\n  Growth Promotion Test\n  The media must be confirmed as effective using the following\n  test organisms:\n  - Staphylococcus aureus (ATCC 6538)\n  - Bacillus subtilis (ATCC 6633)\n  - Candida albicans (ATCC 10231)\n  and other organisms specified by BP/EP/USP"
+  },
+  {
+   "zh": "重點提示 — 培養基選擇與生長促進試驗",
+   "en": "Key Point — Media Selection and Growth Promotion Testing"
+  },
+  {
+   "zh": "培養溫度不是唯一要驗證的，培養基本身的「生長促進能力（Growth Promotion）」也需要在每批 APS 使用的培養基批次上驗證。這是確認：",
+   "en": "The incubation temperature is not the only thing to validate; the \"growth promotion\" capability of the medium itself must also be verified on every media lot used for an APS. This confirms that:"
+  },
+  {
+   "zh": "培養基在儲存、配製、充填過程中沒有失去其促進微生物生長的能力",
+   "en": "The medium has not lost its ability to promote microbial growth during storage, preparation and filling"
+  },
+  {
+   "zh": "充填完成後的培養基仍具有足夠的營養成分支持生長",
+   "en": "After filling, the medium still has sufficient nutrients to support growth"
+  },
+  {
+   "zh": "常用培養基：<strong>SCDA（Soybean Casein Digest Agar/Broth，大豆酪蛋白消化培養液）</strong>，俗稱 TSB（Tryptic Soy Broth）。適合大多數好氧環境菌的生長。",
+   "en": "A commonly used medium is <strong>SCDA (Soybean Casein Digest Agar/Broth)</strong>, commonly known as TSB (Tryptic Soy Broth). It is suitable for the growth of most aerobic environmental organisms."
+  },
+  {
+   "zh": "某 CDMO 的環境監控（EM）歷史記錄顯示，分離到的菌株全部都是 30–35°C 最適生長，是否可以改為只用 30–35°C 培養 14 天？需要哪些文件支撐？",
+   "en": "A CDMO's environmental monitoring (EM) history shows that all isolates grow optimally at 30–35°C. Can it switch to incubating at 30–35°C only, for 14 days? What documentation would be needed to support this?"
+  },
+  {
+   "zh": "雙溫培養的「順序」（先低後高 vs 先高後低）有差別嗎？若要調換順序，需要做哪些事？",
+   "en": "Does the \"order\" of dual-temperature incubation (low then high vs high then low) make a difference? What must be done if the order is to be reversed?"
+  },
+  {
+   "zh": "為什麼 Growth Promotion Test 必須對每一批次培養基進行，而不是在開發階段一次性驗證就夠？",
+   "en": "Why must the Growth Promotion Test be performed on every media lot, rather than being validated once at the development stage?"
+  },
+  {
+   "zh": "Topic D: Incubation of Nonintegral and Rejected Units — 非完整容器與剔退容器的培養",
+   "en": "Topic D: Incubation of Nonintegral and Rejected Units"
+  },
+  {
+   "zh": "核心概念解析 — 什麼是「Integral（完整的）」？",
+   "en": "Core Concept — What Does \"Integral\" Mean?"
+  },
+  {
+   "zh": "在 APS 語境中，<strong>Integral（完整容器）</strong>= 已充填且容器密封完整（filled and sealed, no physical breach of container-closure system）。",
+   "en": "In the APS context, <strong>Integral</strong> = filled and sealed with no physical breach of the container-closure system."
+  },
+  {
+   "zh": "分類決策樹：",
+   "en": "Classification decision tree:"
+  },
+  {
+   "zh": "破裂、未封口的瓶 → <strong>Nonintegral → 不需培養</strong>（培養結果無意義）",
+   "en": "Broken or unsealed vials → <strong>Nonintegral → not incubated</strong> (the incubation result would be meaningless)"
+  },
+  {
+   "zh": "外觀缺陷（顆粒、fill volume 偏差、cosmetic）→ 容器仍封口完整 → <strong>Integral → 需培養</strong>",
+   "en": "Appearance defects (particles, fill volume deviation, cosmetic) → container still sealed and intact → <strong>Integral → must be incubated</strong>"
+  },
+  {
+   "zh": "干預前後「第一支/最後一支」 → 高風險，<strong>原則上需培養</strong>（除非自動化排除可重現且有文件）",
+   "en": "First/last unit before and after an intervention → high risk, <strong>in principle incubated</strong> (unless automated rejection is reproducible and documented)"
+  },
+  {
+   "zh": "比喻說明 — 餐廳的破盤 vs 賣相不好的菜",
+   "en": "Analogy — A Broken Plate vs a Dish That Looks Unappealing"
+  },
+  {
+   "zh": "想像餐廳的食安衛生稽查：",
+   "en": "Imagine a restaurant food safety inspection:"
+  },
+  {
+   "zh": "破掉的盤子裡的食物 → 廢棄，不需要做食安檢驗（相當於 Nonintegral，培養無意義）",
+   "en": "Food on a broken plate → discarded, no food safety test needed (equivalent to nonintegral: incubation is meaningless)"
+  },
+  {
+   "zh": "賣相不好但盤子完整的菜 → 仍需檢驗食安是否合格（相當於 cosmetic defect，仍需培養）",
+   "en": "A dish that looks unappealing but is on an intact plate → still tested for food safety (equivalent to a cosmetic defect: still incubated)"
+  },
+  {
+   "zh": "APS 要測的是「製程是否能防止汙染進入產品」，破掉的容器本身就已不是密閉系統，培養到的陽性說明不了任何製程問題；但賣相差的容器雖然外觀不好，其密封完整性仍代表真實製程狀態，必須納入評估。",
+   "en": "The APS tests \"whether the process can prevent contamination from entering the product\". A broken container is already not a closed system, so a positive result from it says nothing about the process; a container that merely looks poor, however, still has seal integrity that represents the true state of the process, and must be included in the evaluation."
+  },
+  {
+   "zh": "重點提示 — 「人工加難」的紅線",
+   "en": "Key Point — The Red Line of \"Artificial Stringency\""
+  },
+  {
+   "zh": "PtC-1 特別提到「artificially stringent challenge（人工加難的挑戰）」是不允許的。",
+   "en": "PtC-1 specifically says that an \"artificially stringent challenge\" is not permitted."
+  },
+  {
+   "zh": "什麼是人工加難？例如：",
+   "en": "What is artificial stringency? For example:"
+  },
+  {
+   "zh": "APS 中故意多清掉比生產多 3 倍的容器（擴大干預範圍）",
+   "en": "Deliberately clearing three times as many containers in the APS as in production (enlarging the scope of an intervention)"
+  },
+  {
+   "zh": "故意讓干預事件發生得更頻繁（超過真實生產頻率）",
+   "en": "Deliberately making interventions occur more frequently than in real production"
+  },
+  {
+   "zh": "為什麼不可以？因為 APS 的目的是「模擬真實生產」，如果 APS 做到比真實生產更嚴苛，通過了也沒有代表性；如果做比真實生產更寬鬆，則無法保護患者安全。目標是：<strong>最壞情況（worst-case），但不超過真實生產可能的範圍。</strong>",
+   "en": "Why is this not allowed? Because the purpose of an APS is to \"simulate real production\". If the APS is made more severe than real production, a pass is not representative; if it is made more lenient than real production, patient safety is not protected. The goal is: <strong>worst case, but not beyond what is possible in real production.</strong>"
+  },
+  {
+   "zh": "APS 執行中，第 15 支（充填開始後的干預後第一支）因 fill volume 偏低被自動系統剔除。這支容器是否需要培養？判斷邏輯為何？",
+   "en": "During an APS run, unit 15 (the first unit after an intervention following the start of filling) was automatically rejected by the system for low fill volume. Does this container need to be incubated? What is the decision logic?"
+  },
+  {
+   "zh": "若某批 APS 中有 5 支未封口的容器（nonintegral）在培養前被發現並移除，這需要如何記錄？若這 5 支未被發現而進入培養箱，後來 2 支陽性，該怎麼處理？",
+   "en": "If 5 unsealed containers (nonintegral) in an APS batch were found and removed before incubation, how should this be documented? If these 5 had not been found and went into the incubator, and 2 later turned positive, how should this be handled?"
+  },
+  {
+   "zh": "「人工加難」（artificially stringent challenge）對 APS 有效性有什麼影響？請從監管角度和品質保證角度分別說明。",
+   "en": "What effect does \"artificially stringent challenge\" have on the validity of an APS? Explain from the regulatory perspective and the quality assurance perspective separately."
+  },
+  {
+   "zh": "Topic E: Aseptic Process Simulation Reconciliation — 核對計算",
+   "en": "Topic E: Aseptic Process Simulation Reconciliation"
+  },
+  {
+   "zh": "核心概念解析 — Reconciliation（核對）的目的",
+   "en": "Core Concept — The Purpose of Reconciliation"
+  },
+  {
+   "zh": "<strong>APS Reconciliation（APS 核對）</strong>是確保「每一支充填的培養基容器，我們都知道它在哪裡」的過程。",
+   "en": "<strong>APS Reconciliation</strong> is the process that ensures we know where every filled media container is."
+  },
+  {
+   "zh": "為什麼 100% 核對如此重要？",
+   "en": "Why is 100% reconciliation so important?"
+  },
+  {
+   "zh": "因為 APS 的驗收標準是「零陽性」。如果有容器無法追蹤（lost accountability），就無法確認這些容器是否為陽性。若它們是陽性的，就可能讓 APS 錯誤地「通過」——這是對患者安全的威脅。",
+   "en": "Because the APS acceptance criterion is \"zero positives\". If a container cannot be traced (lost accountability), it is impossible to confirm whether it was positive. If it was positive, the APS could wrongly \"pass\", which is a threat to patient safety."
+  },
+  {
+   "zh": "公式與計算 — APS Reconciliation 計算",
+   "en": "Formula and Calculation — APS Reconciliation"
+  },
+  {
+   "zh": "核對公式：\n  充填總數 = 剔退數 + 培養數\n  培養數 = 培養後檢驗數\n  培養後檢驗數 = 陰性數 + 陽性數\n\n計算範例：\n  充填：3,150 支\n  剔退（破損/非完整）：30 支\n  剔退（fill volume 偏差，仍需培養）：20 支\n  ─────────────────────────────\n  應培養數 = 3,150 − 30 = 3,120 支\n  （含 fill volume 偏差的 20 支）\n\n  培養後檢驗：3,120 支\n  陰性：3,120 支\n  陽性：0 支\n\n  核對結果：\n  3,150（充填）= 30（不培養）+ 3,120（培養）\n  ✔ 100% 核對通過\n\n  若培養後只找到 3,118 支（少 2 支）：\n  ✘ 偏差！需調查那 2 支去哪裡了。\n  （它們可能是陽性——無法排除，\n   因此整個 APS 結果存疑）",
+   "en": "Reconciliation formula:\n  Total filled = rejected units + incubated units\n  Incubated units = units inspected after incubation\n  Units inspected after incubation = negatives + positives\n\nWorked example:\n  Filled: 3,150 units\n  Rejected (broken/nonintegral): 30 units\n  Rejected (fill volume deviation, still to be incubated): 20 units\n  ─────────────────────────────\n  Units to incubate = 3,150 − 30 = 3,120 units\n  (including the 20 units with fill volume deviation)\n\n  Inspected after incubation: 3,120 units\n  Negative: 3,120 units\n  Positive: 0 units\n\n  Reconciliation result:\n  3,150 (filled) = 30 (not incubated) + 3,120 (incubated)\n  ✔ 100% reconciliation passed\n\n  If only 3,118 units were found after incubation (2 fewer):\n  ✘ Deviation! An investigation is needed to find where\n  those 2 units went.\n  (They might have been positive and this cannot be ruled out,\n   so the result of the whole APS is in doubt)"
+  },
+  {
+   "zh": "重點提示 — 「正常生產容差」的解讀",
+   "en": "Key Point — Interpreting \"Normal Production Tolerances\""
+  },
+  {
+   "zh": "PtC-1 提到充填總數的核對可以有「normal production tolerances（正常生產容差）」，但培養後的 incubated units 核對則是 <strong>100% 無容差</strong>。",
+   "en": "PtC-1 mentions that the reconciliation of total units filled may allow for \"normal production tolerances\", but the reconciliation of incubated units is <strong>100% with no tolerance</strong>."
+  },
+  {
+   "zh": "實際意義：",
+   "en": "Practical meaning:"
+  },
+  {
+   "zh": "充填計數器可能有 ±0.X% 的機械誤差 → 對「充填數」有一定寬容度",
+   "en": "The fill counter may have a mechanical error of ±0.X%, so there is some latitude on the \"number filled\""
+  },
+  {
+   "zh": "但進入培養箱的每一支都必須有記錄，出培養箱的每一支也必須有記錄 → <strong>進出數量必須 100% 吻合</strong>",
+   "en": "But every unit going into the incubator must be recorded, and every unit leaving the incubator must be recorded, so <strong>the number in and the number out must match 100%</strong>"
+  },
+  {
+   "zh": "任何短少都是偏差，必須調查",
+   "en": "Any shortfall is a deviation and must be investigated"
+  },
+  {
+   "zh": "實務應用 — CDMO 的核對文件設計",
+   "en": "Practical Application — CDMO Reconciliation Documentation Design"
+  },
+  {
+   "zh": "建議 APS 批次記錄（Batch Record）中包含一張「APS Reconciliation 表格」，欄位包含：",
+   "en": "It is recommended that the APS batch record include an \"APS Reconciliation table\" with the following fields:"
+  },
+  {
+   "zh": "充填開始 / 結束時間",
+   "en": "Filling start / end time"
+  },
+  {
+   "zh": "充填計數器顯示數（含誤差說明）",
+   "en": "Count displayed by the fill counter (with an explanation of the error)"
+  },
+  {
+   "zh": "各原因剔退數（每筆有理由記錄）",
+   "en": "Number rejected for each reason (with a documented reason for each entry)"
+  },
+  {
+   "zh": "送入培養箱的容器批號 / 數量清單",
+   "en": "List of lot numbers / quantities of containers sent to the incubator"
+  },
+  {
+   "zh": "培養箱位置/貨架號",
+   "en": "Incubator location / shelf number"
+  },
+  {
+   "zh": "培養結束取出的容器數量清單",
+   "en": "List of quantities of containers removed at the end of incubation"
+  },
+  {
+   "zh": "陽性 / 陰性判定數",
+   "en": "Number of units judged positive / negative"
+  },
+  {
+   "zh": "最終核對計算（以公式形式呈現）",
+   "en": "Final reconciliation calculation (shown in formula form)"
+  },
+  {
+   "zh": "這份文件在 FDA 或 EU Annex 1 查廠時是第一個被要求看的 APS 記錄之一。",
+   "en": "This is one of the first APS records requested during an FDA or EU Annex 1 inspection."
+  },
+  {
+   "zh": "某次 APS 充填 5,000 支，剔退 75 支（含 10 支破損、65 支 cosmetic），培養箱放入 4,990 支，培養後取出 4,988 支（短少 2 支）。請判斷此次 APS 的核對狀態，並說明需要採取哪些行動。",
+   "en": "An APS filled 5,000 units and rejected 75 (10 broken and 65 cosmetic); 4,990 units were placed in the incubator and 4,988 were removed after incubation (2 missing). Determine the reconciliation status of this APS and explain what actions are needed."
+  },
+  {
+   "zh": "為什麼「incubated units 的核對」比「filled units 的核對」要求更嚴格？",
+   "en": "Why is the reconciliation of incubated units held to a stricter requirement than the reconciliation of filled units?"
+  },
+  {
+   "zh": "若充填計數器的機械誤差已知為 ±0.5%，且充填了 4,000 支，充填計數誤差範圍是多少？這是否影響核對結論？",
+   "en": "If the mechanical error of the fill counter is known to be ±0.5% and 4,000 units were filled, what is the error range of the fill count? Does this affect the reconciliation conclusion?"
+  },
+  {
+   "zh": "Topic F: Inverting Units Prior to or During Incubation — 培養前後倒置操作",
+   "en": "Topic F: Inverting Units Prior to or During Incubation"
+  },
+  {
+   "zh": "核心概念解析 — 為什麼需要倒置？",
+   "en": "Core Concept — Why Is Inversion Needed?"
+  },
+  {
+   "zh": "APS 充填的是液態培養基（Liquid Culture Media，如 SCDA/TSB）。充填並密封後，培養基液體主要在容器底部，<strong>而瓶蓋（stopper）的內側、上部玻璃內壁</strong>等位置不一定有液體接觸。",
+   "en": "An APS is filled with liquid culture media (such as SCDA/TSB). After filling and sealing, the medium sits mainly at the bottom of the container, while locations such as <strong>the inner side of the stopper and the upper glass wall</strong> may not be in contact with liquid."
+  },
+  {
+   "zh": "問題是：如果充填過程中有微生物汙染落在 stopper 內側或上部容器壁，但培養基從未接觸這個位置，微生物就無法生長，陽性就無法被偵測 → <strong>假陰性（False Negative）</strong>。",
+   "en": "The problem: if microbial contamination during filling lands on the inside of the stopper or the upper container wall, but the medium never touches that location, the organisms cannot grow and the positive cannot be detected → <strong>false negative</strong>."
+  },
+  {
+   "zh": "解決方案：充填後、培養前進行至少一次「180° 倒置（inversion）」，讓培養基接觸容器所有內部表面，確保任何微生物都有機會生長並被偵測。",
+   "en": "Solution: after filling and before incubation, perform at least one \"180° inversion\", so the medium contacts all internal surfaces and any organism has a chance to grow and be detected."
+  },
+  {
+   "zh": "比喻說明 — 油漆刷每個角落",
+   "en": "Analogy — Painting Every Corner"
+  },
+  {
+   "zh": "想像用液體清潔劑清洗一個有複雜內部結構的容器（例如有角落、溝槽的瓶子）：如果清潔劑只流到底部，角落和頂端的汙垢就洗不到。",
+   "en": "Imagine washing a container with a complex interior (for example, a bottle with corners and grooves) using liquid detergent: if the detergent only reaches the bottom, the dirt in the corners and at the top is not cleaned."
+  },
+  {
+   "zh": "倒置操作就是「讓清潔劑（培養基）流到每個角落」。對於形狀複雜的容器（如預填充注射器、雙腔袋），單純倒置可能還不夠，需要設計特殊的旋轉或搖動方式來確保全面接觸。",
+   "en": "Inversion is \"letting the detergent (the medium) reach every corner\". For containers with complex shapes (such as prefilled syringes and dual-chamber bags), simple inversion may not be enough, and a special rotation or shaking method must be designed to ensure full contact."
+  },
+  {
+   "zh": "重點提示 — 「倒置培養」不是強制要求",
+   "en": "Key Point — \"Inverted Incubation\" Is Not Mandatory"
+  },
+  {
+   "zh": "PtC-1 明確說：「Requiring inverted incubation should not be mandatory（倒置培養不應作為強制要求）」。",
+   "en": "PtC-1 states clearly: \"Requiring inverted incubation should not be mandatory.\""
+  },
+  {
+   "zh": "也就是說，倒置的目的是「確保培養基接觸所有內部表面」，達到這個目的即可。如果其他方式（搖動、旋轉）能達到同等效果，且有文件證明，就可以使用其他方式。",
+   "en": "In other words, the purpose of inversion is \"to ensure the medium contacts all internal surfaces\", and it is enough to achieve this. If other methods (shaking, rotation) achieve the same effect and this is documented, they may be used instead."
+  },
+  {
+   "zh": "對複雜容器（如：有 luer lock 的預填充注射器、雙倉瓶 dual-chamber vial、lyophilization 半封口狀態的特殊容器），需要特別設計媒體接觸方式並進行驗證。",
+   "en": "For complex containers (such as prefilled syringes with a luer lock, dual-chamber vials, and special containers in the partially stoppered state used in lyophilization), the method of media contact needs to be specially designed and validated."
+  },
+  {
+   "zh": "為什麼「培養基接觸所有內部表面」對 APS 偵測能力如此重要？請解釋其與「假陰性（False Negative）」的關係。",
+   "en": "Why is it so important to the detection capability of an APS that the \"medium contacts all internal surfaces\"? Explain its relationship to \"false negatives\"."
+  },
+  {
+   "zh": "若某廠的 APS 採用預填充注射器（Pre-filled Syringe），單次倒置是否足夠？應如何設計操作程序並驗證培養基接觸的完整性？",
+   "en": "If a site's APS uses prefilled syringes, is a single inversion sufficient? How should the operating procedure be designed, and how should the completeness of media contact be validated?"
+  },
+  {
+   "zh": "容器密封完整性測試（Container-Closure Integrity Test, CCIT）與 APS 的倒置操作是否相關？兩者分別在驗證什麼？",
+   "en": "Is container-closure integrity testing (CCIT) related to the inversion step in an APS? What does each of them verify?"
+  },
+  {
+   "zh": "Topic G: Aerobic versus Anaerobic — 好氧與厭氧",
+   "en": "Topic G: Aerobic versus Anaerobic"
+  },
+  {
+   "zh": "核心概念解析 — 為何好氧培養就夠了？",
+   "en": "Core Concept — Why Is Aerobic Incubation Enough?"
+  },
+  {
+   "zh": "大多數藥廠的無菌充填製程是在<strong>有氧環境（Aerobic Environment）</strong>中進行的——潔淨室的空氣含有大量氧氣，人員皮膚、設備表面的微生物也主要是好氧菌（Aerobes）或微好氧菌（Microaerophiles）。",
+   "en": "Most pharmaceutical aseptic filling processes are carried out in an <strong>aerobic environment</strong>: cleanroom air contains plenty of oxygen, and the microorganisms on personnel skin and equipment surfaces are mainly aerobes or microaerophiles."
+  },
+  {
+   "zh": "真正的厭氧菌（Obligate Anaerobes）在有氧環境中無法存活，因此在典型無菌充填設施中幾乎不會出現。若使用厭氧培養基（如 Fluid Thioglycolate）進行 APS，對多數製程而言提供不了更多科學資訊。",
+   "en": "True obligate anaerobes cannot survive in an aerobic environment, so they are almost never found in a typical aseptic filling facility. Using anaerobic media (such as Fluid Thioglycolate) for an APS provides no additional scientific information for most processes."
+  },
+  {
+   "zh": "比喻說明 — 用正確的工具做正確的事",
+   "en": "Analogy — Using the Right Tool for the Job"
+  },
+  {
+   "zh": "想像你的廚房（無菌充填室）主要存在的害蟲是蟑螂（好氧菌）。用蟑螂藥（好氧培養基）就能有效偵測和殺滅蟑螂。",
+   "en": "Imagine the main pest in your kitchen (the aseptic filling room) is the cockroach (aerobes). Cockroach bait (aerobic media) is enough to detect and kill them effectively."
+  },
+  {
+   "zh": "但如果你的廚房並沒有深埋地底的厭氧環境，使用針對土壤厭氧菌（Obligate Anaerobes）的特殊捕蟲器，只是多此一舉，既浪費資源又提供不了實質資訊。",
+   "en": "But if your kitchen has no deep underground anaerobic environment, using a special trap aimed at soil-dwelling obligate anaerobes is pointless, wasting resources and giving no useful information."
+  },
+  {
+   "zh": "唯一需要用厭氧方法的情況是：你確定廚房裡有厭氧蟲——例如真的有厭氧生產製程，或無菌測試真的分離出專性厭氧菌。",
+   "en": "The only case in which an anaerobic method is needed is when you are sure there are anaerobic pests in the kitchen, for example a genuinely anaerobic manufacturing process, or a sterility test that actually isolated obligate anaerobes."
+  },
+  {
+   "zh": "重點提示 — 氮氣覆蓋（Nitrogen Overlay）≠ 厭氧條件",
+   "en": "Key Point — Nitrogen Overlay ≠ Anaerobic Conditions"
+  },
+  {
+   "zh": "許多注射劑產品使用氮氣覆蓋（Nitrogen Overlay）來保護對氧化敏感的藥品。PtC-1 明確指出：<strong>氮氣覆蓋不等於厭氧製程。</strong>",
+   "en": "Many injectable products use a nitrogen overlay to protect oxidation-sensitive drugs. PtC-1 states clearly: <strong>a nitrogen overlay is not an anaerobic process.</strong>"
+  },
+  {
+   "zh": "關鍵點：",
+   "en": "Key points:"
+  },
+  {
+   "zh": "在 APS 中，若生產使用氮氣覆蓋，在媒體充填時應改用<strong>無菌空氣（Sterile Air）</strong>取代氮氣",
+   "en": "If production uses a nitrogen overlay, then during media filling in the APS it should be replaced with <strong>sterile air</strong>"
+  },
+  {
+   "zh": "若硬要保留氮氣覆蓋進行 APS，需要用 Growth Promotion Study 確認氮氣覆蓋不會抑制好氧菌的生長",
+   "en": "If the nitrogen overlay is retained for the APS, a growth promotion study is needed to confirm that the nitrogen overlay does not inhibit the growth of aerobes"
+  },
+  {
+   "zh": "理由：SCDA（TSB）需要氧氣才能有效支持好氧菌生長；氮氣會抑制這個過程，造成假陰性",
+   "en": "Reason: SCDA (TSB) needs oxygen to support aerobic growth effectively; nitrogen inhibits this and causes false negatives"
+  },
+  {
+   "zh": "某客戶的製程是在氮氣覆蓋下充填（保護氧化敏感的蛋白質藥品）。在設計 APS 時，應如何處理這個氮氣覆蓋的問題？至少提出兩個選項並比較其優缺點。",
+   "en": "A client's process is filled under a nitrogen overlay (to protect an oxidation-sensitive protein drug). How should the nitrogen overlay be handled when designing the APS? Propose at least two options and compare their advantages and disadvantages."
+  },
+  {
+   "zh": "若某次無菌試驗（Sterility Test）中分離出疑似厭氧菌，這對 APS 設計有什麼影響？需要採取哪些額外行動？",
+   "en": "If a suspected anaerobe is isolated in a sterility test, what effect does this have on the APS design? What additional actions are needed?"
+  },
+  {
+   "zh": "SCDA（Soybean Casein Digest Agar/Broth）在好氧和微好氧條件下均能生長，為什麼它是 APS 的首選培養基？",
+   "en": "SCDA (Soybean Casein Digest Agar/Broth) grows under both aerobic and microaerophilic conditions. Why is it the medium of choice for APS?"
+  },
+  {
+   "zh": "Topic H: Aseptic Process Simulation Boundaries — APS 範圍界定",
+   "en": "Topic H: Aseptic Process Simulation Boundaries"
+  },
+  {
+   "zh": "核心概念解析 — APS 的起點與終點",
+   "en": "Core Concept — The Start and End Points of an APS"
+  },
+  {
+   "zh": "APS 的界定非常清楚：",
+   "en": "The boundaries of an APS are very clear:"
+  },
+  {
+   "zh": "<strong>起點：</strong>滅菌後的組件（材料）開始接觸無菌環境的那一刻（即滅菌步驟完成後、進入無菌區域開始操作）",
+   "en": "<strong>Start point:</strong> the moment sterilized components (materials) begin to contact the aseptic environment (that is, after the sterilization step is complete, when they enter the aseptic area and handling begins)"
+  },
+  {
+   "zh": "<strong>終點：</strong>最終容器密封完成（Closure of Final Container）",
+   "en": "<strong>End point:</strong> completion of closure of the final container"
+  },
+  {
+   "zh": "注意：除菌過濾器（Sterilizing Filter）本身<strong>不</strong>是 APS 的一部分——過濾器的滅菌效力是獨立驗證的。但 PUPSIT（使用前滅菌後完整性測試）因為發生在過濾器下游（即無菌區域），屬於干預行為，<strong>必須</strong>納入 APS。",
+   "en": "Note: the sterilizing filter itself is <strong>not</strong> part of the APS, because the sterilizing efficacy of the filter is validated independently. However, PUPSIT (post-use pre-sterilization integrity testing) takes place downstream of the filter (that is, in the aseptic area) and is an intervention, so it <strong>must</strong> be included in the APS."
+  },
+  {
+   "zh": "比喻說明 — APS 是「無菌區域的演習」",
+   "en": "Analogy — The APS Is a \"Drill of the Aseptic Area\""
+  },
+  {
+   "zh": "把整個無菌生產流程想像成一場火災逃生演習：演習的範圍是從「人員進入逃生區域」到「安全撤離建築物」，不包括「訓練消防員的課程」（那是獨立的）。",
+   "en": "Imagine the whole aseptic production process as a fire evacuation drill: the scope of the drill runs from \"people entering the evacuation area\" to \"reaching safety outside the building\", and does not include \"the course that trains the firefighters\" (which is independent)."
+  },
+  {
+   "zh": "APS 的範圍類似：從「無菌組件進入無菌區」到「容器密封」，是「在無菌環境中的所有操作步驟」。之前的滅菌步驟（用高壓蒸汽滅菌組件、過濾器滅菌）是獨立的驗證活動，不是 APS 演習的一部分。",
+   "en": "The APS scope is similar: from \"sterile components entering the aseptic area\" to \"container closure\", covering \"all operating steps within the aseptic environment\". The earlier sterilization steps (autoclaving components, filter sterilization) are independent validation activities and are not part of the APS drill."
+  },
+  {
+   "zh": "但如果消防演習中有一個步驟是「打開緊急逃生門檢查是否正常」（相當於 PUPSIT），這個動作發生在演習區域內，必須納入演習考核——這正是 PUPSIT 必須在 APS 中模擬的原因。",
+   "en": "But if one step in the fire drill is \"opening the emergency exit door to check that it works\" (equivalent to PUPSIT), this action takes place within the drill area and must be included in the drill assessment. This is exactly why PUPSIT must be simulated in the APS."
+  },
+  {
+   "zh": "重點提示 — 分段 APS（Segmented APS）的條件",
+   "en": "Key Point — Conditions for a Segmented APS"
+  },
+  {
+   "zh": "分段執行 APS 是允許的，但有嚴格條件：",
+   "en": "Performing the APS in segments is permitted, but under strict conditions:"
+  },
+  {
+   "zh": "<strong>必要性：</strong>只有在完整連續模擬不可行時才考慮分段（如設備限制、廠房設計）",
+   "en": "<strong>Necessity:</strong> consider segmentation only when a full continuous simulation is not feasible (for example, due to equipment limitations or facility design)"
+  },
+  {
+   "zh": "<strong>重疊原則：</strong>每個分段必須與前一段和後一段有重疊（Overlap）——確保培養基流過所有連續的無菌步驟，沒有「空白區間」",
+   "en": "<strong>Overlap principle:</strong> each segment must overlap with the preceding and following segments, ensuring the media passes through all consecutive aseptic steps with no \"gaps\""
+  },
+  {
+   "zh": "<strong>文件要求：</strong>分段的理由、每段的範圍、重疊設計，必須在 Protocol 中事先明確",
+   "en": "<strong>Documentation requirements:</strong> the rationale for segmentation, the scope of each segment and the overlap design must be clearly defined in the protocol in advance"
+  },
+  {
+   "zh": "<strong>驗收標準：</strong>每段各自有驗收標準，且事先定義",
+   "en": "<strong>Acceptance criteria:</strong> each segment has its own acceptance criteria, defined in advance"
+  },
+  {
+   "zh": "CDMO 實務上最常見的分段情況：無菌保留研究（Aseptic Holding Study）與充填操作分開執行，但兩者的重疊部分確保整個無菌流程都被涵蓋。",
+   "en": "The most common segmentation case for CDMOs: the aseptic holding study is performed separately from the filling operation, with the overlap between the two ensuring the whole aseptic process is covered."
+  },
+  {
+   "zh": "APS 邊界與 PUPSIT 的關係",
+   "en": "The Relationship Between the APS Boundary and PUPSIT"
+  },
+  {
+   "zh": "無菌製程時間軸：\n\n[滅菌] ──── [APS 起點] ────────────────── [APS 終點]\n  ↑             ↑                               ↑\n除菌過濾       PUPSIT（必須在 APS 內模擬）    容器密封\n(獨立驗證)\n             無菌連接（Aseptic Connection）\n             也必須在 APS 範圍內\n\n完整 APS 涵蓋範圍：\n ┌─────────────────────────────────────────────┐\n │  • 無菌接管（Aseptic Connection）           │\n │  • PUPSIT 操作                              │\n │  • 所有人員干預（Interventions）            │\n │  • 充填（Filling）                          │\n │  • 加蓋（Stoppering）                       │\n │  • 軋蓋（Capping）                          │\n │  → 最終容器密封完成                         │\n └─────────────────────────────────────────────┘\n不含：\n × 除菌過濾器的滅菌驗證\n × 組件滅菌（蒸汽、輻射等）",
+   "en": "Aseptic process timeline:\n\n[Sterilization] ──── [APS start] ────────────────── [APS end]\n  ↑                    ↑                               ↑\nSterilizing         PUPSIT (must be simulated        Container\nfiltration          within the APS)                  closure\n(independently\nvalidated)\n                    Aseptic connection\n                    must also be within the APS scope\n\nFull APS coverage:\n ┌─────────────────────────────────────────────┐\n │  • Aseptic connection                       │\n │  • PUPSIT operation                         │\n │  • All personnel interventions              │\n │  • Filling                                  │\n │  • Stoppering                               │\n │  • Capping                                  │\n │  → Final container closure completed        │\n └─────────────────────────────────────────────┘\nNot included:\n × Sterilization validation of the sterilizing filter\n × Component sterilization (steam, irradiation, etc.)"
+  },
+  {
+   "zh": "實務應用 — CDMO 的 APS Boundary 文件",
+   "en": "Practical Application — CDMO APS Boundary Documentation"
+  },
+  {
+   "zh": "CDMO 在提交 APS Protocol 時，應明確標示：",
+   "en": "When submitting an APS protocol, a CDMO should clearly state:"
+  },
+  {
+   "zh": "APS 開始事件（Start Event）的定義——通常是「滅菌後容器進入充填線的時刻」或「除菌過濾後培養基開始流向充填頭」",
+   "en": "The definition of the APS start event, usually \"the moment sterilized containers enter the filling line\" or \"the moment the medium begins to flow to the filling needles after sterilizing filtration\""
+  },
+  {
+   "zh": "APS 結束事件（End Event）——「最後一支容器軋蓋完成」",
+   "en": "The APS end event: \"completion of capping of the last container\""
+  },
+  {
+   "zh": "是否有 PUPSIT 及其在 APS 中的模擬方式",
+   "en": "Whether PUPSIT is performed and how it is simulated in the APS"
+  },
+  {
+   "zh": "若採分段方式，各段重疊設計的說明",
+   "en": "If a segmented approach is used, a description of the overlap design of each segment"
+  },
+  {
+   "zh": "哪些活動不在 APS 範圍內（需另列其獨立驗證活動）",
+   "en": "Which activities are outside the APS scope (with their independent validation activities listed separately)"
+  },
+  {
+   "zh": "這份文件是監管機構 APS 審查的核心文件，定義不清楚是最常見的缺陷觀察項目（Observation）。",
+   "en": "This document is the core document in the regulators' review of an APS, and unclear definitions are among the most common deficiencies cited as observations."
+  },
+  {
+   "zh": "某廠的 APS Protocol 將「除菌過濾」納入 APS 的起始步驟，監管機構對此提出觀察。請解釋為何過濾步驟不應包含在 APS 範圍內，及應如何修正 Protocol。",
+   "en": "A site's APS protocol includes \"sterilizing filtration\" as the first step of the APS, and the regulator raised an observation on it. Explain why the filtration step should not be within the APS scope and how the protocol should be corrected."
+  },
+  {
+   "zh": "PUPSIT 是在除菌過濾器滅菌後、正式生產前執行的完整性測試。為什麼它必須包含在 APS 中，而過濾器滅菌本身不需要包含？",
+   "en": "PUPSIT is the integrity test performed after the sterilizing filter has been sterilized and before the actual production. Why must it be included in the APS while the filter sterilization itself need not be?"
+  },
+  {
+   "zh": "某工廠由於設備限制，必須將 APS 分為「無菌保留研究（Aseptic Holding）」和「充填操作（Filling）」兩段執行。請設計這兩段的重疊（Overlap）方式，並說明如何確保整個無菌流程沒有未被評估的空白。",
+   "en": "Due to equipment limitations, a plant must split its APS into two segments, \"aseptic holding\" and \"filling operation\". Design the overlap between the two segments and explain how to ensure there is no unassessed gap in the whole aseptic process."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary — Topics A–H",
+   "en": "Section Summary — Topics A–H"
+  },
+  {
+   "zh": "<strong>Topic A（驗收標準）：</strong>APS 目標是零汙染，但並非「絕對保證」。1 支陽性 = 重大事件，必須調查 + CAPA；不可在未調查的情況下直接重跑。FDA 與 EU Annex 1 立場相近，調查結論可以是「未必代表製程失敗」，但改善行動不可省略。",
+   "en": "<strong>Topic A (Acceptance Criteria):</strong> The APS target is zero contamination, but it is not an \"absolute guarantee\". 1 positive unit = a major event and must be investigated + CAPA; the APS must not be re-run without an investigation. The FDA and EU Annex 1 positions are similar; the investigation may conclude that it \"does not necessarily represent a process failure\", but corrective actions must not be omitted."
+  },
+  {
+   "zh": "<strong>Topic B（時程長度）：</strong>「汙染是事件的函數，不是時間的函數。」APS 長度要涵蓋所有高風險干預事件，而非一律等於最長生產時間。手動充填必須跑全時長；高度自動化製程只要事件都被涵蓋，可以比生產短。",
+   "en": "<strong>Topic B (Duration):</strong> \"Contamination is a function of events, not of time.\" The APS length must cover all high-risk interventions, rather than always equaling the longest production time. Manual filling must run the full duration; a highly automated process may be shorter than production as long as all events are covered."
+  },
+  {
+   "zh": "<strong>Topic C（培養溫度）：</strong>14 天，20–35°C。雙溫培養（各至少 7 天）是業界最佳實踐，確保偵測到不同最適溫度的環境菌。使用前需用 Growth Promotion Test 驗證培養基有效性。",
+   "en": "<strong>Topic C (Incubation Temperatures):</strong> 14 days, 20–35°C. Dual-temperature incubation (at least 7 days each) is industry best practice, ensuring detection of environmental organisms with different optimal temperatures. The effectiveness of the medium must be verified by a Growth Promotion Test before use."
+  },
+  {
+   "zh": "<strong>Topic D（非完整容器）：</strong>密封破損（Nonintegral）→ 不培養。容器完整但外觀缺陷（cosmetic、fill volume）→ 仍需培養，因其密封完整性未受影響。所有排除均需文件理由，且排除範圍不得超過真實生產。",
+   "en": "<strong>Topic D (Nonintegral Units):</strong> Seal breached (nonintegral) → not incubated. Container intact but with an appearance defect (cosmetic, fill volume) → still incubated, because its seal integrity is unaffected. Every exclusion requires a documented rationale, and the scope of exclusion must not exceed that of real production."
+  },
+  {
+   "zh": "<strong>Topic E（核對計算）：</strong>充填 = 剔退（不培養）+ 培養數，培養後必須 100% 核對。任何短少均為偏差，需調查。這是確保「不會因未追蹤的陽性容器而讓 APS 錯誤通過」的保護機制。",
+   "en": "<strong>Topic E (Reconciliation):</strong> Filled = rejected (not incubated) + incubated, and the post-incubation count must reconcile 100%. Any shortfall is a deviation and must be investigated. This is the safeguard that ensures an APS cannot wrongly pass because of untracked positive containers."
+  },
+  {
+   "zh": "<strong>Topic F（倒置操作）：</strong>培養基需接觸容器所有內部表面以避免假陰性。一次倒置通常足夠，但不是唯一方法；複雜容器需特殊設計。倒置培養（全程倒置放置）不是強制要求。",
+   "en": "<strong>Topic F (Inversion):</strong> The medium must contact all internal surfaces of the container to avoid false negatives. One inversion is usually sufficient but is not the only method; complex containers need a special design. Inverted incubation (keeping the units inverted throughout) is not mandatory."
+  },
+  {
+   "zh": "<strong>Topic G（好氧 vs 厭氧）：</strong>絕大多數製程用 SCDA 好氧培養即可，因環境菌以好氧菌和微好氧菌為主。氮氣覆蓋 ≠ 厭氧環境；APS 時應將生產用氮氣改為無菌空氣，否則需驗證氮氣不抑制培養基生長。",
+   "en": "<strong>Topic G (Aerobic vs Anaerobic):</strong> For the vast majority of processes, aerobic incubation with SCDA is enough, because environmental organisms are mainly aerobes and microaerophiles. Nitrogen overlay ≠ anaerobic environment; in the APS the nitrogen used in production should be replaced with sterile air, otherwise it must be verified that nitrogen does not inhibit growth of the medium."
+  },
+  {
+   "zh": "<strong>Topic H（範圍界定）：</strong>APS 起點 = 滅菌後組件開始接觸無菌區域；終點 = 最終容器密封完成。PUPSIT 屬干預行為，必須納入 APS；除菌過濾器滅菌是獨立活動，不在 APS 範圍內。分段 APS 必須確保各段重疊，且事先以風險評估文件支撐。",
+   "en": "<strong>Topic H (Boundaries):</strong> APS start = sterilized components begin to contact the aseptic area; end = closure of the final container. PUPSIT is an intervention and must be included in the APS; sterilization of the sterilizing filter is an independent activity and is outside the APS scope. A segmented APS must ensure overlap between segments and be supported in advance by a documented risk assessment."
+  },
+  {
+   "zh": "Topics A–H 監管參考文件對照",
+   "en": "Comparison of Regulatory References for Topics A–H"
+  }
+ ]
+}

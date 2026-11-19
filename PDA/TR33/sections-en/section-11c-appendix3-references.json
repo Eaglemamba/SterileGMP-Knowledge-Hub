@@ -1,0 +1,189 @@
+{
+ "source": "section-11c-appendix3-references.html",
+ "blocks": [
+  {
+   "zh": "以非CFU訊號預測傳統方法計數、CFU上限轉換為非CFU上限，以及附錄參考文獻",
+   "en": "Predicting Conventional Method Counts from Non-CFU Signals, Converting a CFU Upper Limit to a Non-CFU Upper Limit, and Appendix References"
+  },
+  {
+   "zh": "本章學習目標",
+   "en": "Learning Objectives"
+  },
+  {
+   "zh": "理解如何利用兩條 Poisson 迴歸「濃度—反應曲線」（AMM/RMM 與 CMM 各一條）互相校準，推導出以 <span class=\"key-term\">non-CFU AMM/RMM</span> 平均計數反推 CMM 平均計數的預測方程式，並掌握 95% 預測區間（prediction interval）的計算與 Poisson 離散分布造成的「階梯狀」特性。",
+   "en": "Understand how the two Poisson regression \"concentration-response curves\" (one each for the AMM/RMM and the CMM) are used to calibrate against each other, deriving a prediction equation that predicts the mean CMM count from the mean count of a <span class=\"key-term\">non-CFU AMM/RMM</span>; master the calculation of the 95% prediction interval and the \"stepwise\" character caused by the discrete Poisson distribution."
+  },
+  {
+   "zh": "掌握 Section 11.2.3 討論的核心實務問題：當 CMM 已有一個既定的 CFU 放行上限（<span class=\"key-term\">upper limit, U<sub>C</sub></span>）時，如何用校準方程式將其轉換為 non-CFU AMM/RMM 對應的上限（U<sub>A</sub>），以及為何「單一樣本決策」比「多樣本平均決策」更難達成決策一致性（decision equivalence）。",
+   "en": "Master the core practical question discussed in Section 11.2.3: when the CMM already has an established CFU release limit (<span class=\"key-term\">upper limit, U<sub>C</sub></span>), how to use the calibration equation to convert it into the corresponding upper limit for the non-CFU AMM/RMM (U<sub>A</sub>), and why decision equivalence is harder to achieve for a \"single-sample decision\" than for a \"multi-sample mean decision\"."
+  },
+  {
+   "zh": "能解讀 Figure 11.2.3-1A/1B 機率曲線圖，理解不同 U<sub>C</sub> 水準（1、5、10、100）下，四捨五入方向（U<sub>A</sub> 或 U<sub>A</sub>+1）對兩方法決策一致性的影響，並能判斷何時決策一致性佳、何時不佳。",
+   "en": "Be able to interpret the probability curves of Figure 11.2.3-1A/1B, understand how the rounding direction (U<sub>A</sub> or U<sub>A</sub>+1) affects decision equivalence between the two methods at different U<sub>C</sub> levels (1, 5, 10, 100), and judge when decision equivalence is good and when it is poor."
+  },
+  {
+   "zh": "熟悉 12.0 節完整的附錄參考文獻清單，理解這些文獻如何支撐 Section 9.0（Appendix 1）、10.0（Appendix 2）與 11.0（Appendix 3）中所有統計方法（Newcombe 信賴區間、gMPN、Van Elteren test 等）的理論基礎，以利日後查證與內部驗證報告引用。",
+   "en": "Become familiar with the complete list of appendix references in Section 12.0 and understand how these references support the theoretical basis of all statistical methods in Section 9.0 (Appendix 1), 10.0 (Appendix 2) and 11.0 (Appendix 3) (Newcombe confidence intervals, gMPN, Van Elteren test, etc.), to facilitate later verification and citation in internal validation reports."
+  },
+  {
+   "zh": "<strong>11.2.2 Predicting the Counts of the Conventional Method Based on the Non-CFU Alternative/Rapid Microbiological Method Signal 依非CFU AMM/RMM訊號預測傳統方法（CMM）計數</strong>",
+   "en": "<strong>11.2.2 Predicting the Counts of the Conventional Method Based on the Non-CFU Alternative/Rapid Microbiological Method Signal</strong>"
+  },
+  {
+   "zh": "原文內容 Original Text",
+   "en": "Original Text"
+  },
+  {
+   "zh": "導師解析 Tutorial Commentary",
+   "en": "Tutorial Commentary"
+  },
+  {
+   "zh": "核心概念解析 Key Concepts",
+   "en": "Key Concepts"
+  },
+  {
+   "zh": "<strong>校準方程式 (Calibration Equation):</strong> Section 11.2.1 已分別對 AMM/RMM 與 CMM 各自配適一條「濃度—反應」的 Poisson 迴歸直線（m<sub>A</sub>(λ) 與 m<sub>C</sub>(λ)）。11.2.2 的核心操作，是把這兩條直線「串接」起來：從 AMM/RMM 的平均讀數反推出隱含的濃度 λ，再代入 CMM 的迴歸式，得到「給定 AMM/RMM 讀數時，CMM 大概會讀到多少」的預測值。",
+   "en": "<strong>Calibration equation:</strong> Section 11.2.1 fitted a \"concentration-response\" Poisson regression line to each of the AMM/RMM and the CMM (m<sub>A</sub>(λ) and m<sub>C</sub>(λ)). The core operation of 11.2.2 is to \"chain\" these two lines together: from the mean AMM/RMM reading, back-calculate the implied concentration λ, then substitute it into the CMM regression to obtain a predicted value of \"roughly what the CMM would read, given this AMM/RMM reading\"."
+  },
+  {
+   "zh": "<strong>Prediction Interval（預測區間）vs. Confidence Interval（信賴區間）:</strong> 兩者常被混淆。信賴區間描述「平均值」的不確定性；預測區間描述「單一新觀測值」落在哪個範圍的不確定性，因此預測區間永遠比信賴區間寬。這裡因為 CMM 計數服從 Poisson 分布（離散型），使得預測區間呈現「階梯狀」而非平滑曲線。",
+   "en": "<strong>Prediction interval vs. confidence interval:</strong> The two are often confused. A confidence interval describes the uncertainty of a \"mean\"; a prediction interval describes the uncertainty of the range in which a \"single new observation\" will fall, so the prediction interval is always wider than the confidence interval. Here, because CMM counts follow a Poisson distribution (discrete), the prediction interval is \"stepwise\" rather than a smooth curve."
+  },
+  {
+   "zh": "比喻說明 Analogy",
+   "en": "Analogy"
+  },
+  {
+   "zh": "可以把這個校準方程式想像成「兩種溫度計的換算表」：一支華氏溫度計（AMM/RMM）、一支攝氏溫度計（CMM），兩支溫度計量的是同一件事（濃度 λ），只是刻度不同。只要事先建立兩支溫度計的線性換算關係，之後只要讀到華氏溫度，就能立刻推算攝氏溫度大概是多少——但因為兩支溫度計本身都有量測誤差，換算出來的攝氏讀數其實是一個「範圍」而不是精確值，這就是預測區間的意義。",
+   "en": "Think of this calibration equation as a \"conversion table between two thermometers\": one Fahrenheit thermometer (AMM/RMM) and one Celsius thermometer (CMM). Both measure the same thing (concentration λ), only with different scales. Once the linear conversion between the two thermometers has been established in advance, as soon as you read the Fahrenheit temperature you can immediately work out roughly what the Celsius temperature is - but since both thermometers have measurement error, the converted Celsius reading is really a \"range\" rather than an exact value, and this is the meaning of the prediction interval."
+  },
+  {
+   "zh": "重點提示 Key Notes",
+   "en": "Key Notes"
+  },
+  {
+   "zh": "此校準關係有一個關鍵前提：<strong>「非培養性與培養性微生物的比例，在常規生產環境中與驗證實驗中一致」</strong>。這是一個無法完全驗證的假設——若日常生產環境中 X<sub>NCFU</sub>／X<sub>CFU</sub> 的比例與驗證實驗時不同（例如不同的環境壓力、消毒程序造成菌體受損狀態不同），這條校準曲線的預測力就會失真。因此校準方程式只能作為「參考換算」，不能取代對放行決策的整體風險評估。",
+   "en": "This calibration relationship has a key premise: <strong>\"the ratio of non-culturable to culturable microorganisms is the same in the routine production environment as in the validation experiments\"</strong>. This is an assumption that cannot be fully verified - if the X<sub>NCFU</sub>/X<sub>CFU</sub> ratio in the day-to-day production environment differs from that in the validation experiments (for example, different environmental stresses or disinfection procedures causing different states of cell injury), the predictive power of this calibration curve is distorted. The calibration equation can therefore serve only as a \"reference conversion\" and cannot replace an overall risk assessment of the release decision."
+  },
+  {
+   "zh": "公式與計算 Formula",
+   "en": "Formula"
+  },
+  {
+   "zh": "校準方程式（以 AMM/RMM 平均讀數預測 CMM 平均讀數）：\n\nα̂_C − (β̂_C / β̂_A) α̂_A + (β̂_C / β̂_A) ȳ_A\n　　　　　　　　＝ −1.679 + 0.923 ȳ_A\n\n（代入 Table 11.2.1-3 之估計值：\n　α̂_A=1.517, β̂_A=0.952, α̂_C=−0.280, β̂_C=0.878）\n\n95% 預測區間近似公式：\n−1.679 + 0.923 ȳ_A ± 2√(−1.679 + 0.923 ȳ_A)\n\n工作實例：\n　當 ȳ_A = 6 時\n　　點預測值 = −1.679 + 0.923×6 = 3.86 CFU\n　　97.5% 下限 = 1 CFU\n　　97.5% 上限 = 8 CFU",
+   "en": "Calibration equation (predicting the mean CMM reading from the mean AMM/RMM reading):\n\nα̂_C − (β̂_C / β̂_A) α̂_A + (β̂_C / β̂_A) ȳ_A\n                = −1.679 + 0.923 ȳ_A\n\n(Using the estimates from Table 11.2.1-3:\n  α̂_A=1.517, β̂_A=0.952, α̂_C=−0.280, β̂_C=0.878)\n\nApproximate formula for the 95% prediction interval:\n−1.679 + 0.923 ȳ_A ± 2√(−1.679 + 0.923 ȳ_A)\n\nWorked example:\n  When ȳ_A = 6\n    Point prediction = −1.679 + 0.923×6 = 3.86 CFU\n    97.5% lower limit = 1 CFU\n    97.5% upper limit = 8 CFU"
+  },
+  {
+   "zh": "實務應用 Practical Application",
+   "en": "Practical Application"
+  },
+  {
+   "zh": "對 CDMO 的品保／品管部門而言，這個校準方程式的實務價值在於：當客戶要求「用新導入的 non-CFU AMM/RMM 平台，但放行規格仍以藥典 CFU 為基礎」時，這條方程式提供了一個統計上可辯護的轉換橋樑，而不必每次都同時執行兩種方法。但由於預測區間偏寬（例如平均讀數 6 對應 1–8 CFU 的區間），在撰寫方法確效報告與客戶溝通時，必須清楚說明這個區間的不確定性來源，避免客戶誤以為轉換後的數字是精確等價值。",
+   "en": "For QA/QC at a CDMO, the practical value of this calibration equation is as follows: when a client asks to \"use the newly introduced non-CFU AMM/RMM platform but keep the release specification based on pharmacopoeial CFU\", this equation provides a statistically defensible conversion bridge, without having to run both methods every time. However, because the prediction interval is wide (for example, a mean reading of 6 corresponds to an interval of 1-8 CFU), the source of uncertainty in this interval must be clearly explained when writing the method validation report and communicating with the client, so that the client does not mistake the converted number for an exact equivalent value."
+  },
+  {
+   "zh": "練習思考 Practice Questions",
+   "en": "Practice Questions"
+  },
+  {
+   "zh": "若貴公司的 AMM/RMM 平均讀數為 10，依本節公式估算對應的 CMM 點預測值大約是多少？此預測值的實務意義為何？",
+   "en": "If the mean AMM/RMM reading at your company is 10, what is the corresponding CMM point prediction according to the formula in this section? What is the practical meaning of this predicted value?"
+  },
+  {
+   "zh": "為什麼校準方程式的成立前提（X<sub>NCFU</sub>/X<sub>CFU</sub> 比例在驗證實驗與日常生產中一致）在真實場域中很難完全滿足？這對方法確效策略有何啟示？",
+   "en": "Why is the premise of the calibration equation (that the X<sub>NCFU</sub>/X<sub>CFU</sub> ratio is the same in validation experiments and in routine production) hard to fully satisfy in a real setting? What does this imply for the method validation strategy?"
+  },
+  {
+   "zh": "預測區間在低平均值時（例如平均讀數接近 0）為何近似公式較不準確，應改用 Poisson 分布的分位數？",
+   "en": "Why is the approximate formula less accurate for the prediction interval at low mean values (for example, a mean reading close to 0), so that Poisson quantiles should be used instead?"
+  },
+  {
+   "zh": "<strong>11.2.3 Translating a CFU Upper Limit to an Upper Limit for the Non-CFU Alternative/Rapid Microbiological Method 將CFU上限轉換為非CFU AMM/RMM對應之上限</strong>",
+   "en": "<strong>11.2.3 Translating a CFU Upper Limit to an Upper Limit for the Non-CFU Alternative/Rapid Microbiological Method</strong>"
+  },
+  {
+   "zh": "<strong>Decision Equivalence（決策一致性）:</strong> 指兩種微生物方法（CMM 與 non-CFU AMM/RMM）在面對同一批樣本時，做出「合格／不合格」相同判斷的機率。這是本節最核心的評估指標——即使兩方法的平均計數校準得再精準，只要單一樣本層級的決策一致性不佳，實務上仍可能發生「同一批樣本，兩方法給出不同放行結論」的窘境。",
+   "en": "<strong>Decision equivalence:</strong> The probability that two microbiological methods (the CMM and the non-CFU AMM/RMM), when facing the same batch of samples, reach the same \"pass/fail\" judgment. This is the core evaluation metric of this section - no matter how precisely the mean counts of the two methods are calibrated, if decision equivalence at the level of a single sample is poor, the awkward situation may still arise in practice that \"for the same batch of samples, the two methods give different release conclusions\"."
+  },
+  {
+   "zh": "<strong>條件機率的不可行性:</strong> 原文開宗明義說明「理想情況」（給定 CMM 讀數，推算 AMM/RMM 可能讀數的條件分布）在實務上幾乎不可行，因為必須對同一份樣本複本同時進行兩種測試（而非分裝複本各測一次），且須先掌握 X<sub>CFU</sub> 與 X<sub>NCFU</sub> 之間的關聯結構——這在絕大多數確效研究中都無法達成。因此退而求其次，改用「多樣本平均值」層級的校準方程式作為替代方案。",
+   "en": "<strong>Infeasibility of the conditional probability:</strong> The source text begins by explaining that the \"ideal situation\" (given the CMM reading, derive the conditional distribution of the likely AMM/RMM reading) is practically infeasible, because it would require testing the same sample replicate with both methods at once (rather than testing separately dispensed replicates once each) and would first require knowing the association structure between X<sub>CFU</sub> and X<sub>NCFU</sub> - which cannot be achieved in the great majority of validation studies. As the next best option, a calibration equation at the level of the \"multi-sample mean\" is used as the alternative."
+  },
+  {
+   "zh": "把 CFU 上限轉換想像成「貨幣換匯」：假設官方匯率是 1 美元 = 30 元台幣，若你要求供應商付款「不超過 100 美元」，換算成台幣上限就是「不超過 3000 元」。但問題是，若供應商只能用整數張的台幣鈔票支付（例如只有千元大鈔），你必須決定：3000 元剛好用 3 張千元鈔（3000）還是要求對方多留一點緩衝到 4 張（4000）？多留緩衝（類似本節建議「無條件進位」如 U<sub>C</sub>=5 時選 7 而非 6）比較保守、較不容易誤放行不合格品，但也可能讓合格品被誤判為不合格。",
+   "en": "Think of converting a CFU limit as \"currency exchange\": suppose the official rate is 1 US dollar = 30 NT dollars; if you require the supplier to be paid \"no more than 100 US dollars\", the upper limit in NT dollars is \"no more than 3000\". But the problem is that if the supplier can pay only in whole banknotes (for example only 1000-dollar notes), you must decide: is 3000 exactly 3 notes (3000), or do you require the other party to keep a little more buffer, up to 4 notes (4000)? Keeping more buffer (similar to this section's suggestion to \"round up\", such as choosing 7 rather than 6 when U<sub>C</sub>=5) is more conservative and less likely to release a non-conforming product by mistake, but it may also cause a conforming product to be wrongly judged non-conforming."
+  },
+  {
+   "zh": "本節揭示一個極重要卻常被忽略的實務陷阱：<strong>校準方程式在「平均值」層級運作良好，但在「單一樣本放行決策」層級卻可能完全失靈</strong>。以 U<sub>C</sub>=1 為例，無論選 U<sub>A</sub>=2 或 3，機率曲線都明顯偏離 CMM 的曲線，代表低污染水準（低上限）時的決策一致性最差；反之在 U<sub>C</sub>=100 這種高上限情境下，決策一致性反而最好。這意味著：<span class=\"key-term\">上限轉換方法在放行規格寬鬆（大 CFU 數）時可靠，在規格嚴格（如「不得檢出」等低 CFU 數）時最不可靠</span>——而後者恰恰是無菌產品最常見、最關鍵的放行情境。",
+   "en": "This section reveals a very important but often overlooked practical trap: <strong>the calibration equation works well at the level of the \"mean\", but may fail completely at the level of the \"single-sample release decision\"</strong>. Taking U<sub>C</sub>=1 as an example, whether U<sub>A</sub>=2 or 3 is chosen, the probability curve clearly deviates from the CMM curve, meaning that decision equivalence is worst at low contamination levels (low limits); conversely, in a high-limit scenario such as U<sub>C</sub>=100, decision equivalence is the best. This means that <span class=\"key-term\">the limit-conversion method is reliable when the release specification is loose (large CFU numbers) and least reliable when the specification is strict (low CFU numbers such as \"not detected\")</span> - and the latter is precisely the most common and most critical release situation for sterile products."
+  },
+  {
+   "zh": "校準方程式（以 CMM 平均讀數預測 AMM/RMM 平均讀數）：\n\nα̂_A − (β̂_A / β̂_C) α̂_C + (β̂_A / β̂_C) ȳ_C\n　　　　　　　　＝ 1.213 + 1.084 ȳ_C\n\n一般化上限轉換公式：\n　U_A（或 U_A+1）＝ 1.213 + 1.084 × U_C\n\n工作實例（多樣本平均值層級）：\n　U_C = 1  →  1.213 + 1.084×1 = 2.297\n　U_C = 5  →  1.213 + 1.084×5 = 6.633\n\n單一樣本決策層級之最終建議上限：\n　U_C = 1   → U_A = 2 或 3（兩者皆與 CMM 曲線偏離，決策一致性差）\n　U_C = 5   → U_A = 7（無條件進位，保守選擇）\n　U_C = 10  → U_A = 12（無條件捨去，較接近校準值 12.053）\n　U_C = 100 → U_A = 110（略優於 109，決策一致性佳）",
+   "en": "Calibration equation (predicting the mean AMM/RMM reading from the mean CMM reading):\n\nα̂_A − (β̂_A / β̂_C) α̂_C + (β̂_A / β̂_C) ȳ_C\n                = 1.213 + 1.084 ȳ_C\n\nGeneralized limit-conversion formula:\n  U_A (or U_A+1) = 1.213 + 1.084 × U_C\n\nWorked example (multi-sample mean level):\n  U_C = 1  →  1.213 + 1.084×1 = 2.297\n  U_C = 5  →  1.213 + 1.084×5 = 6.633\n\nFinal recommended limits at the single-sample decision level:\n  U_C = 1   → U_A = 2 or 3 (both deviate from the CMM curve; poor decision equivalence)\n  U_C = 5   → U_A = 7 (rounded up, conservative choice)\n  U_C = 10  → U_A = 12 (rounded down, closer to the calibrated value of 12.053)\n  U_C = 100 → U_A = 110 (slightly better than 109; good decision equivalence)"
+  },
+  {
+   "zh": "圖表解讀 Figure Analysis",
+   "en": "Figure Analysis"
+  },
+  {
+   "zh": "<strong>Figure 11.2.3-1A/1B 說明：</strong>橫軸為「CMM 讀數低於上限 U<sub>C</sub> 之機率」，縱軸為「對應方法讀數低於某上限之機率」；黑色虛線＝CMM 本身（45° 對角線，代表基準線），紅線＝AMM/RMM 使用上限 U<sub>A</sub>（無條件捨去），金線＝AMM/RMM 使用上限 U<sub>A</sub>+1（無條件進位）。",
+   "en": "<strong>Explanation of Figure 11.2.3-1A/1B:</strong> The horizontal axis is the \"probability that the CMM reading is below the limit U<sub>C</sub>\" and the vertical axis is the \"probability that the corresponding method's reading is below a given limit\". The black dashed line = the CMM itself (the 45° diagonal, representing the reference line), the red line = the AMM/RMM using limit U<sub>A</sub> (rounded down), and the gold line = the AMM/RMM using limit U<sub>A</sub>+1 (rounded up)."
+  },
+  {
+   "zh": "四張子圖分別對應 U<sub>C</sub> = 1、5、10、100。可觀察到明顯趨勢：<strong>U<sub>C</sub> 越大（規格越寬鬆），紅線與金線越貼近對角虛線</strong>（決策一致性越佳，如 U<sub>C</sub>=100 時兩條曲線幾乎重合於對角線）；<strong>U<sub>C</sub> 越小（規格越嚴格），兩條曲線與對角線的落差越大</strong>（如 U<sub>C</sub>=1 時，紅線遠低於對角線、金線遠高於對角線，兩者都無法真正貼合 CMM 的決策行為）。這正是本節「上限轉換在嚴格放行規格下最不可靠」結論的圖像化證據。",
+   "en": "The four sub-plots correspond to U<sub>C</sub> = 1, 5, 10 and 100. A clear trend can be observed: <strong>the larger U<sub>C</sub> is (the looser the specification), the closer the red and gold lines are to the dashed diagonal</strong> (the better the decision equivalence; for example at U<sub>C</sub>=100 the two curves almost coincide with the diagonal); <strong>the smaller U<sub>C</sub> is (the stricter the specification), the greater the gap between the two curves and the diagonal</strong> (for example at U<sub>C</sub>=1 the red line is far below the diagonal and the gold line far above it, so neither can truly match the decision behavior of the CMM). This is the graphical evidence for this section's conclusion that \"limit conversion is least reliable under strict release specifications\"."
+  },
+  {
+   "zh": "對實務工作者而言，判讀重點是：先找到貴公司 CMM 目前的放行上限 U<sub>C</sub>，對照圖中最接近的曲線組合，評估在該規格水準下，轉換後的 AMM/RMM 上限是否真的能達成可接受的決策一致性，而非僅套用公式數字就直接採用。",
+   "en": "For practitioners, the key to interpretation is: first find your company's current CMM release limit U<sub>C</sub>, compare it with the closest curve combination in the plots, and assess whether the converted AMM/RMM limit can really achieve acceptable decision equivalence at that specification level, rather than simply applying the numbers from the formula directly."
+  },
+  {
+   "zh": "對於無菌充填 CDMO 而言，最常見的放行規格恰好是最嚴格的一類——例如「不得檢出」或「U<sub>C</sub>=1」等低 CFU 上限的環境監測或無菌測試情境。本節的結論提醒品質團隊：<strong>在導入 non-CFU AMM/RMM 取代傳統無菌試驗或環境監測方法時，若放行規格屬於低 CFU 上限類型，不能單純套用校準公式算出的上限數字，必須額外評估決策一致性圖形，並在確效報告中誠實揭露此局限性</strong>，必要時搭配保守的商業決策（例如提高覆核頻率、設定調查觸發值而非單純的合格／不合格二分）來補強統計上的落差。",
+   "en": "For a sterile filling CDMO, the most common release specifications happen to be the strictest type - for example environmental monitoring or sterility testing situations with low CFU limits such as \"not detected\" or \"U<sub>C</sub>=1\". The conclusion of this section reminds the quality team: <strong>when introducing a non-CFU AMM/RMM to replace a conventional sterility test or environmental monitoring method, if the release specification is of the low-CFU-limit type, the limit calculated with the calibration formula must not be applied as it stands; the decision equivalence plots must be assessed additionally, and this limitation must be honestly disclosed in the validation report</strong>, and where necessary conservative business decisions (for example a higher review frequency, or setting an investigation trigger value rather than a simple pass/fail dichotomy) should be added to make up for the statistical gap."
+  },
+  {
+   "zh": "若貴公司 CMM 目前的放行上限為 U<sub>C</sub>=1（例如無菌試驗「不得檢出」），依本節結論，導入 non-CFU AMM/RMM 時應該如何應對決策一致性不佳的風險？",
+   "en": "If your company's current CMM release limit is U<sub>C</sub>=1 (for example \"not detected\" in the sterility test), according to the conclusion of this section, how should you deal with the risk of poor decision equivalence when introducing a non-CFU AMM/RMM?"
+  },
+  {
+   "zh": "為什麼「多樣本平均值層級」的校準方程式相對容易求得，但「單一樣本層級」的決策一致性卻難以完全達成？兩者的差異在統計本質上是什麼？",
+   "en": "Why is the calibration equation at the level of the \"multi-sample mean\" relatively easy to obtain, while decision equivalence at the \"single-sample level\" is hard to fully achieve? What is the statistical difference between the two in essence?"
+  },
+  {
+   "zh": "選擇 U<sub>A</sub>（無條件捨去）或 U<sub>A</sub>+1（無條件進位）時，何種情境下應優先採用較保守的進位方式？這與 Decision Hierarchy 中「無菌保證優先」的原則有何呼應？",
+   "en": "When choosing U<sub>A</sub> (rounded down) or U<sub>A</sub>+1 (rounded up), in which situations should the more conservative rounding up be preferred? How does this echo the principle of \"sterility assurance first\" in the Decision Hierarchy?"
+  },
+  {
+   "zh": "<strong>12.0 Appendix References 附錄參考文獻</strong>",
+   "en": "<strong>12.0 Appendix References</strong>"
+  },
+  {
+   "zh": "使用說明 How to Use This List",
+   "en": "How to Use This List"
+  },
+  {
+   "zh": "本清單為 TR33 Appendix 3（Section 11.0）全篇引用之完整參考文獻（共 22 筆），涵蓋 Section 9.0（Appendix 1，定性方法非劣性檢定）、Section 10.0（Appendix 2，定量方法統計分析）與 Section 11.0（Appendix 3，非CFU訊號統計分析）三章節所引用之統計方法論文獻。引用格式維持原文，未逐條加註中文解析——內部驗證報告或方法確效文件如需引用特定統計方法（例如 Newcombe 信賴區間 [1, 5]、gMPN 方法 [8, 9]、Van Elteren test [21, 22]、Kappa 一致性統計 [19, 20]），可直接依編號回查本清單。",
+   "en": "This list is the complete set of references cited throughout TR33 Appendix 3 (Section 11.0) (22 entries in total), covering the statistical methodology literature cited in the three sections 9.0 (Appendix 1, non-inferiority testing of qualitative methods), 10.0 (Appendix 2, statistical analysis of quantitative methods) and 11.0 (Appendix 3, statistical analysis of non-CFU signals). The citation format of the original text is retained, and no Chinese commentary has been added to individual entries. If an internal validation report or method validation document needs to cite a specific statistical method (for example the Newcombe confidence interval [1, 5], the gMPN method [8, 9], the Van Elteren test [21, 22] or the Kappa agreement statistic [19, 20]), you can look it up in this list directly by reference number."
+  },
+  {
+   "zh": "本節重點回顧 Section Summary",
+   "en": "Section Summary"
+  },
+  {
+   "zh": "Section 11.2.2 建立了「以 non-CFU AMM/RMM 平均讀數預測 CMM 平均讀數」的 Poisson 迴歸校準方程式（−1.679 + 0.923Ŷ<sub>A</sub>），並提供了對應的 95% 預測區間計算方式，說明因 Poisson 離散分布造成的階梯狀區間特性。",
+   "en": "Section 11.2.2 establishes the Poisson regression calibration equation for \"predicting the mean CMM reading from the mean non-CFU AMM/RMM reading\" (−1.679 + 0.923Ŷ<sub>A</sub>) and gives the corresponding calculation of the 95% prediction interval, explaining the stepwise interval character caused by the discrete Poisson distribution."
+  },
+  {
+   "zh": "Section 11.2.3 反向操作，建立「以 CMM 平均讀數預測 AMM/RMM 平均讀數」的校準方程式（1.213 + 1.084Ŷ<sub>C</sub>），並將其應用在 CFU 放行上限的轉換上，示範 U<sub>C</sub>=1、5、10、100 四種情境下的轉換結果與四捨五入決策。",
+   "en": "Section 11.2.3 works in the opposite direction, establishing the calibration equation for \"predicting the mean AMM/RMM reading from the mean CMM reading\" (1.213 + 1.084Ŷ<sub>C</sub>) and applying it to the conversion of CFU release limits, demonstrating the conversion results and rounding decisions for four scenarios, U<sub>C</sub>=1, 5, 10 and 100."
+  },
+  {
+   "zh": "核心結論：上限轉換方法在多樣本平均值層級運作良好，但在單一樣本放行決策層級的決策一致性，會隨 CFU 上限降低（規格趨嚴）而顯著惡化——這對無菌產品常見的低 CFU 上限規格（如「不得檢出」）是重要警訊。",
+   "en": "Core conclusion: the limit-conversion method works well at the level of the multi-sample mean, but decision equivalence at the single-sample release decision level deteriorates markedly as the CFU limit decreases (the specification becomes stricter) - an important warning for the low-CFU-limit specifications common for sterile products (such as \"not detected\")."
+  },
+  {
+   "zh": "12.0 節完整列出 TR33 Appendix 1–3（Section 9.0–11.0）所有統計方法的參考文獻，共 22 筆，為方法確效文件的理論依據與內部查證來源。",
+   "en": "Section 12.0 lists in full the references for all statistical methods in TR33 Appendix 1-3 (Section 9.0-11.0), 22 entries in total, serving as the theoretical basis and internal verification source for method validation documents."
+  }
+ ]
+}
