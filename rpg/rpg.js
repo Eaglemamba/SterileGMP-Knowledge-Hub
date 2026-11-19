@@ -42,7 +42,9 @@
   function setLang(l) { lsSet(LANG_KEY, l === 'en' ? 'en' : 'zh'); }
   var LIST = T('、', ', '), SEP = T('　', ' · ');
   function langSwitch() {
-    if (document.getElementById('rpg-lang') || document.getElementById('langToggle')) return;   // index.html has its own switch in the header
+    if (document.getElementById('rpg-lang') || !document.body) return;
+    var alt = document.getElementById('langSwitch');   // document pages with another-language edition: go there instead of reloading
+    if (alt) alt.style.display = 'none';
     var b = document.createElement('button');
     b.id = 'rpg-lang'; b.type = 'button';
     b.textContent = EN ? '中文' : 'EN';
@@ -50,7 +52,7 @@
     b.setAttribute('aria-label', b.title);
     b.style.cssText = 'position:fixed;top:12px;right:12px;z-index:980;min-width:44px;padding:6px 12px;border-radius:999px;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.92);color:#0f172a;font:700 13px/1.2 system-ui,-apple-system,"Noto Sans TC",sans-serif;box-shadow:0 2px 8px rgba(15,23,42,.12);cursor:pointer;backdrop-filter:blur(6px)';
     if (window.innerWidth < 640) b.style.cssText += ';position:absolute;top:4px;right:8px;min-width:0;padding:3px 10px;font-size:12px';
-    b.onclick = function () { setLang(EN ? 'zh' : 'en'); location.reload(); };
+    b.onclick = function () { setLang(EN ? 'zh' : 'en'); if (alt) location.href = alt.getAttribute('href') + location.hash; else location.reload(); };
     document.body.appendChild(b);
   }
   function L(o) { return o ? (EN && o.en ? o.en : o.zh) : ''; }                // {zh, en} records: RANKS, ZONES, ...
@@ -86,9 +88,9 @@
       btn.onclick = function () { lsSet(FLAG_KEY, '1'); location.reload(); };
       box.appendChild(txt); box.appendChild(btn); mount.appendChild(box);
       mount.style.cssText = 'max-width:72rem;margin:20px auto 0;padding:0 ' + (innerWidth < 640 ? 16 : 24) + 'px';   // same frame as the quest card (rpg.css is not loaded here)
-      langSwitch();
     };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', invite); else invite();
+    var offBoot = function () { langSwitch(); invite(); };   // the language switch shows on every page, adventure mode or not
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', offBoot); else offBoot();
     return;
   }
 

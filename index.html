@@ -99,8 +99,6 @@ body.search-active .site-header { padding-bottom: 20px !important; }
                     <a href="mindmap.html" style="color:#0071e3;text-decoration:none;font-weight:500">🗺 Mind Map</a>
                     <span style="color:#aeaeb2;margin:0 6px">·</span>
                     <a href="quiz.html" style="color:#0071e3;text-decoration:none;font-weight:500">🎯 Quiz Tracker</a>
-                    <span style="color:#aeaeb2;margin:0 6px">·</span>
-                    <button id="langToggle" type="button" onclick="switchLang()" style="font:inherit;color:#0071e3;font-weight:500;background:none;border:1px solid #c7d7ea;border-radius:980px;padding:2px 10px;cursor:pointer">English</button>
                 </p>
             </div>
             <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-8" id="statsRow"></div>
@@ -162,18 +160,12 @@ body.search-active .site-header { padding-bottom: 20px !important; }
 // ============================================================
 // DATA — loaded dynamically from reports.json
 // ============================================================
-// Site language. Shared with the RPG layer (rpg/rpg.js reads the same key); switching reloads the page.
+// Site language. Shared with the RPG layer (rpg/rpg.js reads the same key); the switch is the top-right button from rpg/rpg.js; switching reloads the page.
 const LANG_KEY = 'sgk_rpg_lang';
 const EN = (() => { try { return localStorage.getItem(LANG_KEY) === 'en'; } catch (e) { return false; } })();
 const T = (zh, en) => EN ? en : zh;
-function switchLang() {
-    try { localStorage.setItem(LANG_KEY, EN ? 'zh' : 'en'); } catch (e) { return; }
-    location.reload();
-}
 (function applyLang() {
     document.documentElement.lang = EN ? 'en' : 'zh-TW';
-    const b = document.getElementById('langToggle');
-    if (b) b.textContent = EN ? '中文' : 'English';
     if (EN) document.querySelectorAll('[data-en]').forEach(e => { e.textContent = e.dataset.en; });
 })();
 let documents = [], sourceColors = {}, tagCls = {};
