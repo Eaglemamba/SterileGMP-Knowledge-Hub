@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S GMP Annex 15 (2023) - Qualification and Validation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box,
+.application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p,
+.application-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol,
+.application-box ul, .application-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li,
+.application-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.practice-box ul, .practice-box ol {
+    margin: 0.5rem 0 0.5rem 0 !important;
+    padding-left: 1.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box li {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES =====
+   padding-left matches .left-column padding (1.5rem) so the
+   section title text aligns with the start of "原文 Original Text".
+   Border-bottom stays full-width as a visual separator. */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 700;
+}
+
+.section-title strong,
+.section-divider strong {
+    font-weight: 700;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>PIC/S GMP Annex 15 (2023)</h1>
+            <p class="subtitle">Qualification and Validation</p>
+        </div>
+        <a href="PICS-Annex15-Complete.html" id="langSwitch" lang="zh-TW" onclick="try{localStorage.setItem('sgk_rpg_lang','zh')}catch(e){}" style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">中文</a>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec1" class="nav-item" data-section="sec1">
+                <span class="nav-num">1</span>
+                <span class="nav-label">Principle, Planning & Qualification Stages</span>
+            </a>
+            <a href="#sec2" class="nav-item" data-section="sec2">
+                <span class="nav-num">2</span>
+                <span class="nav-label">Re-qualification & Process Validation</span>
+            </a>
+            <a href="#sec3" class="nav-item" data-section="sec3">
+                <span class="nav-num">3</span>
+                <span class="nav-label">Utilities, Cleaning Validation, Change Control & Glossary</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 1: Principle, Planning & Qualification Stages ========== -->
+    <section class="chapter-section" id="sec1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1</div>
+            <div class="chapter-info">
+                <h2>Section 1: Principle, Planning & Qualification Stages</h2>
+                <p>p211-p215</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- SECTION HEADER -->
+<div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p211–p215</div>
+</div>
+<div class="main-content">
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the scope of PIC/S Annex 15 and the central role of quality risk management in the validation lifecycle</li>
+<li>Understand the elements of the Validation Master Plan (VMP) and its organizational function</li>
+<li>Become familiar with the documentation requirements: the process for approving protocols, deviations and reports</li>
+<li>Understand the logical sequence of the qualification stages (URS → DQ → FAT/SAT → IQ → OQ → PQ) and the key tests at each stage</li>
+<li>Understand when conditional approval applies and the risk assessment documentation it requires</li>
+</ul>
+</div>
+<!-- ═══════════════════════════════════════════════
+     PRINCIPLE & GENERAL
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="section-01-intro-planning-qualification-principle">
+<div class="chapter-divider">
+<div class="chapter-badge">P</div>
+<div class="chapter-info">
+<h2>Principle &amp; General</h2>
+<p>Principles and General Requirements — Lifecycle approach &amp; risk-based qualification</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>Principle</h3>
+<p>This Annex describes the principles of qualification and validation which are applicable to the facilities, equipment, utilities and processes used for the manufacture of medicinal products and may also be used as supplementary optional guidance for active substances without introduction of additional requirements to Part II.</p>
+<p>It is a GMP requirement that manufacturers control the critical aspects of their particular operations through qualification and validation over the life cycle of the product and process. Any planned changes to the facilities, equipment, utilities and processes, which may affect the quality of the product, should be formally documented and the impact on the validated status or control strategy assessed.</p>
+<p>Computerised systems used for the manufacture of medicinal products should also be validated according to the requirements of Annex 11. The relevant concepts and guidance presented in ICH Q8, Q9, Q10 and Q11 should also be taken into account.</p>
+<h3>General</h3>
+<p>A quality risk management approach should be applied throughout the lifecycle of a medicinal product. As part of a quality risk management system, decisions on the scope and extent of qualification and validation should be based on a justified and documented risk assessment of the facilities, equipment, utilities and processes. <strong>Retrospective validation is no longer considered an acceptable approach.</strong></p>
+<p>Data supporting qualification and/or validation studies which were obtained from sources outside of the manufacturers own programmes may be used provided that this approach has been justified and that there is adequate assurance that controls were in place throughout the acquisition of such data.</p>
+</div>
+<div class="right-column">
+<h3>Principles and Scope Explained</h3>
+<div class="term-box">
+<h4>Who it applies to</h4>
+<p>This Annex applies to all facilities, equipment, utility systems (water, steam, air, etc.) and processes used in the manufacture of medicinal products. It may also serve as supplementary guidance for active substances (Part II), but it does not add further requirements.</p>
+</div>
+<div class="note-box">
+<h4>Retrospective validation is no longer accepted</h4>
+<p>The 2023 version explicitly removes retrospective validation. All processes must use a prospective or continuous validation approach. This is a key difference from the earlier version.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy: the logic of a building blueprint</h4>
+<p>Validation is like building a house: draw the design first (URS/DQ) → check the materials and installation (IQ) → test that all systems operate (OQ) → confirm that everything works once people live in it (PQ). Every step is documented, so quality is built in from the design stage rather than inspected in at the end.</p>
+</div>
+<p><strong>Computerized systems</strong> must likewise be validated in accordance with Annex 11, with reference to ICH Q8 (Pharmaceutical Development), Q9 (Quality Risk Management), Q10 (Pharmaceutical Quality System) and Q11 (Development and Manufacture of Drug Substances).</p>
+<p>If validation data from an external organization (such as a supplier or CRO) is used, there must be sufficient documentation showing that data integrity and control measures were effectively in place throughout the period in which the data was obtained.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 — ORGANISING AND PLANNING
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="section-01-intro-planning-qualification-sec1">
+<div class="chapter-divider">
+<div class="chapter-badge">1</div>
+<div class="chapter-info">
+<h2>1. Organising and Planning for Qualification and Validation</h2>
+<p>Organizing and Planning — Validation Master Plan (VMP)</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>1.1 – 1.8 Planning Requirements</h3>
+<p><strong>1.1</strong> All qualification and validation activities should be planned and take the life cycle of facilities, equipment, utilities, process and product into consideration.</p>
+<p><strong>1.2</strong> Qualification and validation activities should only be performed by suitably trained personnel who follow approved procedures.</p>
+<p><strong>1.3</strong> Qualification/validation personnel should report as defined in the pharmaceutical quality system although this may not necessarily be to a quality management or a quality assurance function. However, there should be appropriate quality oversight over the whole validation life cycle.</p>
+<p><strong>1.4</strong> The key elements of the site qualification and validation programme should be clearly defined and documented in a <strong>validation master plan (VMP)</strong> or equivalent document.</p>
+<p><strong>1.5</strong> The VMP or equivalent document should define the qualification/validation system and include or reference information on at least the following:</p>
+<ol>
+<li>Qualification and Validation policy;</li>
+<li>The organisational structure including roles and responsibilities;</li>
+<li>Summary of facilities, equipment, systems, processes and their Q&amp;V status;</li>
+<li>Change control and deviation management for qualification and validation;</li>
+<li>Guidance on developing acceptance criteria;</li>
+<li>References to existing documents;</li>
+<li>The qualification and validation strategy, including requalification, where applicable.</li>
+</ol>
+<p><strong>1.6</strong> For large and complex projects, planning takes on added importance and separate validation plans may enhance clarity.</p>
+<p><strong>1.7</strong> A quality risk management approach should be used for qualification and validation activities. Risk assessments should be repeated, as required, in light of increased knowledge and understanding from any changes.</p>
+<p><strong>1.8</strong> Appropriate checks should be incorporated into qualification and validation work to ensure the integrity of all data obtained.</p>
+</div>
+<div class="right-column">
+<h3>Key Points of VMP Planning</h3>
+<div class="term-box">
+<h4>Function of the Validation Master Plan (VMP)</h4>
+<p>The VMP is the "master document" of the site's entire validation system, comparable to a constitution for validation. It does not need to describe each piece of equipment individually; instead it defines the framework of systems, policies, responsibilities and strategy. The specific validation details are developed in individual validation plans (VPs).</p>
+</div>
+<div class="note-box">
+<h4>Personnel Qualifications and Quality Oversight</h4>
+<p>Validation personnel do not have to belong to the QA department (for example, Engineering may lead equipment IQ/OQ), but there must be appropriate quality oversight throughout the validation lifecycle. This allows flexibility in organizational design while still meeting GMP requirements.</p>
+</div>
+<div class="analogy-box">
+<h4>Relationship between the VMP and VPs</h4>
+<p>VMP = a city master plan (defining the road network and zoning principles); VP (individual validation plan) = the construction drawings for an individual building. The VMP lets an auditor quickly understand the overall validation status of the site, while the VP provides the technical details for each piece of equipment or process.</p>
+</div>
+<p><strong>Data integrity (§1.8)</strong>: all data acquisition during validation must have appropriate controls to ensure that ALCOA+ principles (attributable, legible, contemporaneous, original, accurate) are applied.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 — DOCUMENTATION
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="section-01-intro-planning-qualification-sec2">
+<div class="chapter-divider">
+<div class="chapter-badge">2</div>
+<div class="chapter-info">
+<h2>2. Documentation, Including VMP</h2>
+<p>Documentation, including the VMP — Protocols, deviations &amp; reports</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>2.1 – 2.10 Documentation Requirements</h3>
+<p><strong>2.1</strong> Good documentation practices are important to support knowledge management throughout the product lifecycle.</p>
+<p><strong>2.2</strong> All documents generated during qualification and validation should be approved and authorised by appropriate personnel as defined in the pharmaceutical quality system.</p>
+<p><strong>2.3</strong> The inter-relationship between documents in complex validation projects should be clearly defined.</p>
+<p><strong>2.4</strong> Validation protocols should be prepared which defines the critical systems, attributes and parameters and the associated acceptance criteria.</p>
+<p><strong>2.5</strong> Qualification documents may be combined together, where appropriate, e.g. installation qualification (IQ) and operational qualification (OQ).</p>
+<p><strong>2.6</strong> Where validation protocols and other documentation are supplied by a third party providing validation services, appropriate personnel at the manufacturing site should confirm suitability and compliance with internal procedures before approval. Vendor protocols may be supplemented by additional documentation/test protocols before use.</p>
+<p><strong>2.7</strong> Any significant changes to the approved protocol during execution, e.g. acceptance criteria, operating parameters etc., should be documented as a deviation and be scientifically justified.</p>
+<p><strong>2.8</strong> Results which fail to meet the pre-defined acceptance criteria should be recorded as a deviation, and be fully investigated according to local procedures. Any implications for the validation should be discussed in the report.</p>
+<p><strong>2.9</strong> The review and conclusions of the validation should be reported and the results obtained summarised against the acceptance criteria. Any subsequent changes to acceptance criteria should be scientifically justified and a final recommendation made as to the outcome of the validation.</p>
+<p><strong>2.10</strong> A formal release for the next stage in the qualification and validation process should be authorised by the relevant responsible personnel either as part of the validation report approval or as a separate summary document. Conditional approval to proceed to the next qualification stage can be given where certain acceptance criteria or deviations have not been fully addressed and there is a documented assessment that there is no significant impact on the next activity.</p>
+</div>
+<div class="right-column">
+<h3>Validation Documentation Explained</h3>
+<div class="term-box">
+<h4>Three-tier Structure of Validation Documents</h4>
+<ul>
+<li><strong>Protocol</strong>: prepared before validation; defines CPPs, CQAs, acceptance criteria and test procedures</li>
+<li><strong>Execution records</strong>: the raw data and observations recorded during testing</li>
+<li><strong>Report</strong>: summarizes all results, draws conclusions against the acceptance criteria (AC) and includes analysis of any anomalies</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Points to Note on Supplier Protocols (§2.6)</h4>
+<p>A validation protocol supplied by a vendor may be used, but the manufacturer must first review its suitability and confirm that it complies with internal procedures. It must not be signed and executed without reviewing its content. Additional test protocols may be added where necessary.</p>
+</div>
+<div class="highlight-box">
+<h4>Conditional Approval (§2.10)</h4>
+<p>This is an important flexibility provision. Where some AC have not been fully met or deviations have not yet been fully closed, it is possible to proceed conditionally to the next validation stage, provided that:</p>
+<ul>
+<li>there is a documented risk assessment showing that the outstanding items have no significant impact on the next stage</li>
+<li>the conditions are clearly recorded in the report or in a separate summary document</li>
+<li>the responsible person formally authorizes it</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Deviation vs. Protocol Change</h4>
+<p><strong>Deviation</strong> (§2.7-2.8): an unexpected event found during execution (a failed test, AC not met) or a significant change to an approved protocol. The root cause must be investigated and the impact on the validation conclusions assessed.</p>
+<p><strong>Protocol change</strong>: a revision made before the protocol is approved, handled through the normal document review process; no deviation needs to be raised.</p>
+</div>
+<p><strong>Combined IQ+OQ (§2.5)</strong>: for simple equipment, IQ and OQ may be combined into a single document (IOQ) to reduce the documentation burden, while still covering all the test requirements of both stages.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 — QUALIFICATION STAGES
+     ═══════════════════════════════════════════════ -->
+<div class="chapter-section" id="section-01-intro-planning-qualification-sec3">
+<div class="chapter-divider">
+<div class="chapter-badge">3</div>
+<div class="chapter-info">
+<h2>3. Qualification Stages for Equipment, Facilities, Utilities and Systems</h2>
+<p>Qualification Stages: URS → DQ → FAT/SAT → IQ → OQ → PQ</p>
+</div>
+</div>
+<div class="chapter-body">
+<!-- Overview flow -->
+<div class="note-box" style="margin-bottom:1.5rem;">
+<h4>Overview of the Qualification Stages</h4>
+<p>§3.1 states that validation activities should consider all stages from the user requirements specification (URS) to the end of the equipment's life. The subsections below describe the main content and recommended tests for each stage (the actual stages may be adjusted for individual projects).</p>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h3>3.2 User Requirements Specification (URS)</h3>
+<p>The specification for equipment, facilities, utilities or systems should be defined in a URS and/or a functional specification. The essential elements of quality need to be built in at this stage and any GMP risks mitigated to an acceptable level. The URS should be a point of reference throughout the validation life cycle.</p>
+<h3>3.3 Design Qualification (DQ)</h3>
+<p>The next element in the qualification of equipment, facilities, utilities, or systems is DQ where the compliance of the design with GMP should be demonstrated and documented. The requirements of the user requirements specification should be verified during the design qualification.</p>
+<h3>3.4 – 3.7 Factory Acceptance Testing (FAT) / Site Acceptance Testing (SAT)</h3>
+<p><strong>3.4</strong> Equipment, especially if incorporating novel or complex technology, may be evaluated, if applicable, at the vendor prior to delivery.</p>
+<p><strong>3.5</strong> Prior to installation, equipment should be confirmed to comply with the URS/functional specification at the vendor site, if applicable.</p>
+<p><strong>3.6</strong> Where appropriate and justified, documentation review and some tests could be performed at the FAT or other stages without the need to repeat on site at IQ/OQ if it can be shown that the functionality is not affected by the transport and installation.</p>
+<p><strong>3.7</strong> FAT may be supplemented by the execution of a SAT following the receipt of equipment at the manufacturing site.</p>
+</div>
+<div class="right-column">
+<h3>URS, DQ and FAT/SAT Explained</h3>
+<div class="term-box">
+<h4>URS — the Source of Quality</h4>
+<p>The URS is one of the most important documents in the validation lifecycle. It defines what the equipment/system must do, not how it does it. The URS should be completed before purchase and serve as the point of reference for all subsequent validation activities.</p>
+<ul>
+<li>Functional requirements (capability, throughput, accuracy)</li>
+<li>GMP compliance requirements (materials, cleanability, GAMP software category)</li>
+<li>Safety requirements</li>
+<li>Environmental requirements (temperature and humidity, cleanliness grade)</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Differences between FAT and SAT</h4>
+<p><strong>FAT (Factory Acceptance Test)</strong>: performed at the supplier's site to confirm that the equipment meets the design specifications in the URS. The equipment has not yet been installed in the production environment.</p>
+<p><strong>SAT (Site Acceptance Test)</strong>: performed after the equipment arrives at the manufacturing site to confirm that it was not damaged in transit and is properly integrated on site.</p>
+<p>§3.6 allows tests completed during FAT not to be repeated in IQ/OQ, provided it can be shown that functionality is not affected by transport and installation. This is an important efficiency provision.</p>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h3>3.8 – 3.9 Installation Qualification (IQ)</h3>
+<p><strong>3.8</strong> IQ should be performed on equipment, facilities, utilities, or systems.</p>
+<p><strong>3.9</strong> IQ should include, but is not limited to the following:</p>
+<ol>
+<li>Verification of the correct installation of components, instrumentation, equipment, pipe work and services against the engineering drawings and specifications;</li>
+<li>Verification of the correct installation against pre-defined criteria;</li>
+<li>Collection and collation of supplier operating and working instructions and maintenance requirements;</li>
+<li>Calibration of instrumentation;</li>
+<li>Verification of the materials of construction.</li>
+</ol>
+<h3>3.10 – 3.12 Operational Qualification (OQ)</h3>
+<p><strong>3.10</strong> OQ normally follows IQ but depending on the complexity of the equipment, it may be performed as a combined Installation/Operation Qualification (IOQ).</p>
+<p><strong>3.11</strong> OQ should include but is not limited to the following:</p>
+<ol>
+<li>Tests that have been developed from the knowledge of processes, systems and equipment to ensure the system is operating as designed;</li>
+<li>Tests to confirm upper and lower operating limits, and/or "worst case" conditions.</li>
+</ol>
+<p><strong>3.12</strong> The completion of a successful OQ should allow the finalisation of standard operating and cleaning procedures, operator training and preventative maintenance requirements.</p>
+<h3>3.13 – 3.14 Performance Qualification (PQ)</h3>
+<p><strong>3.13</strong> PQ should normally follow the successful completion of IQ and OQ. However, it may in some cases be appropriate to perform it in conjunction with OQ or Process Validation.</p>
+<p><strong>3.14</strong> PQ should include, but is not limited to the following:</p>
+<ol>
+<li>Tests, using production materials, qualified substitutes or simulated product proven to have equivalent behaviour under normal operating conditions with worst case batch sizes. The frequency of sampling used to confirm process control should be justified;</li>
+<li>Tests should cover the operating range of the intended process, unless documented evidence from the development phases confirming the operational ranges is available.</li>
+</ol>
+</div>
+<div class="right-column">
+<h3>IQ / OQ / PQ in Detail</h3>
+<div class="term-box">
+<h4>IQ Focus: Calibration and Materials Verification</h4>
+<p>IQ does not merely confirm that the equipment is "installed"; it also requires collecting all supplier operation/maintenance documentation and completing instrument calibration. Verification of materials of construction is particularly important for sterile manufacturing, because product-contact surfaces must meet specifications such as 316L stainless steel.</p>
+</div>
+<div class="note-box">
+<h4>OQ Focus: Worst-Case Testing</h4>
+<p>OQ must test the upper and lower limits of the operating range (worst case conditions), not just a normal mid-point value. For example, a sterilizer OQ must be tested under both minimum load (hardest for condensate removal) and maximum load (hardest for steam penetration).</p>
+</div>
+<div class="highlight-box">
+<h4>What Is Unlocked After PQ</h4>
+<p>Only after successful completion of OQ can SOPs, cleaning procedures and operator training programs be formally finalized (§3.12). PQ is performed using actual production material or a scientifically justified substitute, to confirm equipment performance under real conditions of use.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy: delivering a car</h4>
+<p><strong>IQ</strong> = before delivery, confirm that all parts are correctly fitted and the odometer has been reset to zero; <strong>OQ</strong> = test various speeds, turns and braking limits on a closed track; <strong>PQ</strong> = drive a set distance on real roads with passengers, confirming that comfort, fuel consumption and stability all meet the promised specifications.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- end main-content -->
+        </div>
+    </section>
+
+    <!-- ========== Section 2: Re-qualification & Process Validation ========== -->
+    <section class="chapter-section" id="sec2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2</div>
+            <div class="chapter-info">
+                <h2>Section 2: Re-qualification & Process Validation</h2>
+                <p>p215-p220</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p215–p220</div>
+</div>
+<div class="main-content">
+<div class="learning-objectives">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the triggers for requalification and how to evaluate the requalification interval</li>
+<li>Understand when to use each of the three process validation approaches: traditional, continuous and hybrid</li>
+<li>Understand the special-case requirements and limitations of concurrent validation</li>
+<li>Understand the role of ongoing process verification (OPV) in the lifecycle</li>
+<li>Become familiar with the core requirements for transport verification and packaging validation</li>
+</ul>
+</div>
+<!-- SECTION 4 — RE-QUALIFICATION -->
+<div class="chapter-section" id="section-02-process-validation-sec4">
+<div class="chapter-divider">
+<div class="chapter-badge">4</div>
+<div class="chapter-info">
+<h2>4. Re-qualification</h2>
+<p>Requalification — Periodic evaluation to maintain state of control</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>4.1 – 4.2 Re-qualification Requirements</h3>
+<p><strong>4.1</strong> Equipment, facilities, utilities and systems should be evaluated at an appropriate frequency to confirm that they remain in a state of control.</p>
+<p><strong>4.2</strong> Where re-qualification is necessary and performed at a specific time period, the period should be justified and the criteria for evaluation defined. Furthermore, the possibility of small changes over time should be assessed.</p>
+</div>
+<div class="right-column">
+<h3>Requalification Explained</h3>
+<div class="term-box">
+<h4>What Triggers Requalification</h4>
+<p>Requalification may be triggered by the following:</p>
+<ul>
+<li><strong>Periodic evaluation</strong>: a fixed interval defined through risk assessment (e.g. every year or every 3 years)</li>
+<li><strong>Event-driven</strong>: after maintenance, modification, a major deviation or equipment relocation</li>
+<li><strong>Continuous monitoring data</strong>: triggered by adverse trends</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>§4.2 Key Point: Evaluating Gradual Change</h4>
+<p>Equipment in long-term use may undergo subtle cumulative changes due to wear, ageing and similar factors. The requalification interval must take such "small changes over time" into account, and the interval set must be supported by a risk assessment.</p>
+</div>
+<p>The scope of requalification may be a full repeat of IQ/OQ/PQ or a simplified evaluation of specific critical parameters, depending on the outcome of the risk assessment.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 5 — PROCESS VALIDATION -->
+<div class="chapter-section" id="section-02-process-validation-sec5">
+<div class="chapter-divider">
+<div class="chapter-badge">5</div>
+<div class="chapter-info">
+<h2>5. Process Validation</h2>
+<p>Process Validation — Traditional, Continuous, Hybrid approaches &amp; Ongoing Verification</p>
+</div>
+</div>
+<div class="chapter-body">
+<!-- General -->
+<div class="two-column">
+<div class="left-column">
+<h3>5.1 – 5.15 General Principles</h3>
+<p><strong>5.1</strong> The requirements and principles outlined in this section are applicable to the manufacture of all pharmaceutical dosage forms. They cover the initial validation of new processes, subsequent validation of modified processes, site transfers and ongoing process verification.</p>
+<p><strong>5.3</strong> Manufacturing processes may be developed using a traditional approach or a continuous verification approach. However, irrespective of the approach used, <strong>processes must be shown to be robust and ensure consistent product quality before any product is released to the market.</strong> Retrospective validation is no longer an acceptable approach.</p>
+<p><strong>5.4</strong> Process validation of new products should cover all intended marketed strengths and sites of manufacture. Bracketing could be justified for new products based on extensive process knowledge.</p>
+<p><strong>5.5</strong> For process validation of products transferred between sites, the number of validation batches could be reduced by the use of a bracketing approach. Existing product knowledge, including the content of the previous validation, should be available.</p>
+<p><strong>5.7</strong> Process validation should establish whether all quality attributes and process parameters, which are considered important for ensuring the validated state and acceptable product quality, can be consistently met by the process.</p>
+<p><strong>5.8</strong> Normally batches manufactured for process validation should be the same size as the intended commercial scale batches.</p>
+<p><strong>5.9</strong> Equipment, facilities, utilities and systems used for process validation should be qualified. Test methods should be validated for their intended use.</p>
+<p><strong>5.11</strong> Production personnel are expected to be involved in the manufacture of validation batches to facilitate product understanding.</p>
+<p><strong>5.12</strong> The suppliers of critical starting and packaging materials should be qualified prior to the manufacture of validation batches.</p>
+<p><strong>5.14</strong> Where validation batches are released to the market this should be pre-defined. The conditions under which they are produced should fully comply with GMP, with the validation acceptance criteria.</p>
+</div>
+<div class="right-column">
+<h3>General Principles of Process Validation Explained</h3>
+<div class="term-box">
+<h4>Broad Scope</h4>
+<p>§5.1 expressly covers initial validation of new processes, revalidation of modified processes, validation of site transfers, and ongoing process verification. This touches almost every stage of the product lifecycle.</p>
+</div>
+<div class="highlight-box">
+<h4>Batch Size Requirements (§5.8)</h4>
+<p>Validation batches should normally be the same size as commercial-scale batches. Using batches that are not of commercial scale requires additional scientific justification. This ensures that the validation results truly represent commercial production conditions.</p>
+</div>
+<div class="analogy-box">
+<h4>Applying Bracketing</h4>
+<p>Bracketing is a scientific strategy for reducing the number of batches: only the extremes (highest/lowest strengths) are validated, and intermediate strengths are considered covered. For example, if 100 mg and 500 mg tablets are validated, the intermediate 200 mg and 300 mg strengths are considered validated. Sufficient scientific justification and a sound knowledge base are required.</p>
+</div>
+<div class="note-box">
+<h4>Prerequisites for Validation Batches</h4>
+<p>Before executing process validation batches, confirm that:</p>
+<ul>
+<li>equipment/systems have completed IQ/OQ/PQ (§5.9)</li>
+<li>analytical methods have been validated (§5.9)</li>
+<li>suppliers of critical starting materials and packaging materials have been qualified (§5.12)</li>
+<li>production personnel have completed training (§5.11)</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Concurrent Validation -->
+<div class="two-column">
+<div class="left-column">
+<h3>5.16 – 5.17 Concurrent Validation</h3>
+<p><strong>5.16</strong> In exceptional circumstances, where there is a strong benefit-risk ratio for the patient, it may be acceptable not to complete a validation programme before routine production starts and concurrent validation could be used. However, the decision to carry out concurrent validation must be justified, documented in the VMP for visibility and approved by authorised personnel.</p>
+<p><strong>5.17</strong> Where a concurrent validation approach has been adopted, there should be sufficient data to support a conclusion that any given batch of product is uniform and meets the defined acceptance criteria. The results and conclusion should be formally documented and available to the Authorised Person prior to certification of the batch.</p>
+</div>
+<div class="right-column">
+<h3>Concurrent Validation Explained</h3>
+<div class="note-box">
+<h4>Strict Limits on Concurrent Validation</h4>
+<p>Concurrent validation is the exception, not the routine. The conditions that justify it are:</p>
+<ul>
+<li>a <strong>strong benefit-risk ratio</strong> for the patient (e.g. orphan drugs, urgent drug shortages)</li>
+<li>it must be documented in the VMP, so that it is transparent and traceable</li>
+<li>it must be approved by the authorized person</li>
+</ul>
+<p>Before each batch is released, the Authorised Person (AP) must have sufficient data to confirm that the batch is homogeneous and meets the AC.</p>
+</div>
+</div>
+</div>
+<!-- Traditional Process Validation -->
+<div class="two-column">
+<div class="left-column">
+<h3>5.18 – 5.22 Traditional Process Validation</h3>
+<p><strong>5.18</strong> In the traditional approach, a number of batches of the finished product are manufactured under routine conditions to confirm reproducibility.</p>
+<p><strong>5.19</strong> The number of batches manufactured and the number of samples taken should be based on quality risk management principles, allow the normal range of variation and trends to be established and provide sufficient data for evaluation.</p>
+<p><strong>5.20</strong> Without prejudice to 5.19, it is generally considered acceptable that a minimum of three consecutive batches manufactured under routine conditions could constitute a validation of the process. An alternative number of batches may be justified.</p>
+<p><strong>5.21</strong> A process validation protocol should be prepared which defines the critical process parameters (CPP), critical quality attributes (CQA) and the associated acceptance criteria which should be based on development data or documented process knowledge.</p>
+<p><strong>5.22</strong> Process validation protocols should include, but are not limited to the following:</p>
+<ol>
+<li>A short description of the process and a reference to the Master Batch Record;</li>
+<li>Functions and responsibilities;</li>
+<li>Summary of the CQAs to be investigated;</li>
+<li>Summary of CPPs and their associated limits;</li>
+<li>Summary of other (non-critical) attributes and parameters to be monitored;</li>
+<li>List of equipment/facilities and calibration status;</li>
+<li>List of analytical methods and method validation;</li>
+<li>Proposed in-process controls with acceptance criteria;</li>
+<li>Additional testing with acceptance criteria;</li>
+<li>Sampling plan and rationale;</li>
+<li>Methods for recording and evaluating results;</li>
+<li>Process for release and certification of batches (if applicable).</li>
+</ol>
+</div>
+<div class="right-column">
+<h3>Traditional Process Validation Explained</h3>
+<div class="term-box">
+<h4>Understanding "Minimum of 3 Batches" Correctly</h4>
+<p>§5.20 states that "a minimum of three consecutive batches" is generally acceptable, but this is a <strong>minimum threshold, not the final answer</strong>. Each manufacturer must decide and justify, based on quality risk management, how many batches are needed to give sufficient assurance. Where the process is complex or understanding of it is limited, 3 batches may not be enough.</p>
+</div>
+<div class="highlight-box">
+<h4>The 12 Required Elements of a Process Validation Protocol (§5.22)</h4>
+<p>This is a common audit checkpoint. The protocol must be approved <strong>before</strong> the validation batches are executed. Pay particular attention to the following:</p>
+<ul>
+<li>CQAs and CPPs must be supported by development data or documented process knowledge</li>
+<li>The sampling plan needs <strong>scientific justification</strong> (sampling plan with rationale)</li>
+<li>Non-critical parameters also need a monitoring plan</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>CPP vs. CQA</h4>
+<p><strong>CQA (critical quality attribute)</strong>: an output characteristic of the product, such as content uniformity, dissolution or sterility (the criteria that define a "good product")</p>
+<p><strong>CPP (critical process parameter)</strong>: an input variable of the process, such as mixing time, temperature or compression force (the switches that affect the CQAs)</p>
+<p>Process validation demonstrates that operating within the defined CPP ranges consistently produces product that meets all CQAs.</p>
+</div>
+</div>
+</div>
+<!-- Continuous & Hybrid & OPV -->
+<div class="two-column">
+<div class="left-column">
+<h3>5.23 – 5.27 Continuous Process Verification &amp; Hybrid Approach</h3>
+<p><strong>5.23</strong> For products developed by a quality by design approach, where it has been scientifically established during development that the established control strategy provides a high degree of assurance of product quality, then continuous process verification can be used as an alternative to traditional process validation.</p>
+<p><strong>5.24</strong> The method by which the process will be verified should be defined. There should be a science based control strategy for the required attributes for incoming materials, CQAs and CPPs to confirm product realisation. Process Analytical Technology and multivariate statistical process control may be used as tools.</p>
+<p><strong>5.25</strong> The general principles laid down in 5.1 – 5.14 above still apply.</p>
+<p><strong>5.26</strong> A hybrid of the traditional approach and continuous process verification could be used where there is a substantial amount of product and process knowledge and understanding gained from manufacturing experience and historical batch data.</p>
+<p><strong>5.27</strong> This approach may also be used for any validation activities after changes or during ongoing process verification even though the product was initially validated using a traditional approach.</p>
+<h3>5.28 – 5.32 Ongoing Process Verification during Lifecycle</h3>
+<p><strong>5.28</strong> Paragraphs 5.28-5.32 are applicable to all three approaches to process validation mentioned above.</p>
+<p><strong>5.29</strong> Manufacturers should monitor product quality to ensure that a state of control is maintained throughout the product lifecycle with the relevant process trends evaluated.</p>
+<p><strong>5.30</strong> The extent and frequency of ongoing process verification should be reviewed periodically. At any point throughout the product lifecycle, it may be appropriate to modify the requirements.</p>
+<p><strong>5.31</strong> Ongoing process verification should be conducted under an approved protocol or equivalent documents and a corresponding report should be prepared. Statistical tools should be used, where appropriate, to support conclusions with regard to the variability and capability of a given process.</p>
+<p><strong>5.32</strong> Ongoing process verification should be used throughout the product lifecycle to support the validated status of the product as documented in the Product Quality Review. Incremental changes over time should also be considered.</p>
+</div>
+<div class="right-column">
+<h3>Continuous Validation, Hybrid Approach and OPV Explained</h3>
+<div class="highlight-box">
+<h4>Ongoing Process Verification (OPV) — Validation Is Not the End Point</h4>
+<p>OPV (§5.28-5.32) is the <strong>lifecycle maintenance mechanism</strong> of process validation. It applies to all three validation approaches. Key requirements:</p>
+<ul>
+<li>an approved protocol and report</li>
+<li>use of statistical tools (process capability index Cpk, SPC control charts)</li>
+<li>integration with the product quality review (PQR)</li>
+<li>consideration of cumulative gradual change (incremental changes over time)</li>
+</ul>
+</div>
+<div class="analogy-box">
+<h4>Analogy: OPV is like an annual health check</h4>
+<p>Process validation (initial) = the full quality inspection of a new car before it leaves the factory (confirming it meets specifications); OPV = the routine annual service check (confirming it is still in good condition). Neither can be omitted: the former establishes the baseline and the latter maintains the state.</p>
+</div>
+<div class="note-box">
+<h4>The Role of PAT in Continuous Validation</h4>
+<p>Process analytical technology (PAT) allows real-time monitoring of CQAs in place of end-point testing. For example, NIR (near-infrared spectroscopy) can monitor blend uniformity in real time and can replace traditional sampling and analysis. PAT is a key enabling technology for the CPV approach.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 6 — TRANSPORT VERIFICATION -->
+<div class="chapter-section" id="section-02-process-validation-sec6">
+<div class="chapter-divider">
+<div class="chapter-badge">6</div>
+<div class="chapter-info">
+<h2>6. Verification of Transportation</h2>
+<p>Transport Verification — Route definition, risk assessment &amp; environmental monitoring</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>6.1 – 6.4 Transportation Verification Requirements</h3>
+<p><strong>6.1</strong> Finished medicinal products, investigational medicinal products, bulk product and samples should be transported from manufacturing sites in accordance with the conditions defined in the marketing authorisation, the approved label, product specification file or as justified by the manufacturer.</p>
+<p><strong>6.2</strong> It is recognised that verification of transportation may be challenging due to the variable factors involved however, <strong>transportation routes should be clearly defined.</strong> Seasonal and other variations should also be considered during verification of transport.</p>
+<p><strong>6.3</strong> A risk assessment should be performed to consider the impact of variables in the transportation process other than those conditions which are continuously controlled or monitored, e.g. delays during transportation, failure of monitoring devices, topping up liquid nitrogen, product susceptibility and any other relevant factors.</p>
+<p><strong>6.4</strong> Due to the variable conditions expected during transportation, <strong>continuous monitoring and recording of any critical environmental conditions</strong> to which the product may be subjected should be performed, unless otherwise justified.</p>
+</div>
+<div class="right-column">
+<h3>Transport Verification Explained</h3>
+<div class="term-box">
+<h4>The Challenge of Transport Verification</h4>
+<p>Transport verification is more complex than ordinary equipment validation because it involves many uncontrollable factors: weather, traffic delays, different carriers and seasonal variation. §6.2 expressly acknowledges this challenge but requires that the route be clearly defined.</p>
+</div>
+<div class="note-box">
+<h4>Required Elements of the Risk Assessment (§6.3)</h4>
+<p>The transport risk assessment should consider:</p>
+<ul>
+<li>the temperature impact of transport delays</li>
+<li>failure of temperature monitoring devices</li>
+<li>liquid nitrogen replenishment (for cryogenic products)</li>
+<li>product sensitivity to temperature/vibration/light</li>
+<li>seasonal temperature variation (summer/winter worst cases)</li>
+</ul>
+</div>
+<p><strong>§6.4 Continuous monitoring</strong>: unless there is sufficient scientific justification, critical environmental conditions (temperature, humidity, etc.) must be continuously monitored and recorded throughout transport. Data loggers are the standard tool.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 7 — PACKAGING VALIDATION -->
+<div class="chapter-section" id="section-02-process-validation-sec7">
+<div class="chapter-divider">
+<div class="chapter-badge">7</div>
+<div class="chapter-info">
+<h2>7. Validation of Packaging</h2>
+<p>Packaging Validation — Primary &amp; secondary packaging equipment qualification</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>7.1 – 7.2 Packaging Validation Requirements</h3>
+<p><strong>7.1</strong> Variation in equipment processing parameters especially during primary packaging may have a significant impact on the integrity and correct functioning of the pack, e.g. blister strips, sachets and sterile components; therefore primary and secondary packaging equipment for finished and bulk products should be qualified.</p>
+<p><strong>7.2</strong> Qualification of the equipment used for primary packing should be carried out at the <strong>minimum and maximum operating ranges</strong> defined for the critical process parameters such as temperature, machine speed and sealing pressure or for any other factors.</p>
+</div>
+<div class="right-column">
+<h3>Packaging Validation Explained</h3>
+<div class="term-box">
+<h4>The Importance of Primary Packaging Validation</h4>
+<p>The integrity of primary packaging (in direct contact with the product) directly affects product quality and patient safety. This includes the seal strength of aluminium-plastic blisters, the integrity of sachets and the integrity of sterile packaging; any seal failure may lead to contamination or degradation.</p>
+</div>
+<div class="note-box">
+<h4>Minimum-Maximum Operating Range Testing (§7.2)</h4>
+<p>Consistent with the "worst case" concept in OQ, packaging validation must be performed at the lowest and highest settings of the critical process parameters (temperature, machine speed, sealing pressure), to confirm that packaging integrity meets requirements across the entire operating range.</p>
+</div>
+<p>Secondary packaging (such as outer cartons) must also be validated, but with a different emphasis: mainly confirming label correctness, barcode identification and the product protection function.</p>
+</div>
+</div>
+</div>
+</div>
+</div><!-- end main-content -->
+        </div>
+    </section>
+
+    <!-- ========== Section 3: Utilities, Cleaning Validation, Change Control & Glossary ========== -->
+    <section class="chapter-section" id="sec3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Section 3: Utilities, Cleaning Validation, Change Control & Glossary</h2>
+                <p>p220-p226</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="page-info">PIC/S GMP Annex 15 (2023) — Qualification and Validation | p220–p226</div>
+</div>
+<div class="main-content">
+<div class="learning-objectives">
+<h3>Learning Objectives</h3>
+<ul>
+<li>Understand the phased approach to utility qualification (§8) and the consideration of seasonal variation</li>
+<li>Understand the special requirements of test method validation (§9) for analytical recovery and microbiological methods</li>
+<li>Gain an in-depth understanding of the complete cleaning validation framework (§10): residue limit calculation, sampling methods and worst case selection</li>
+<li>Become familiar with how change control (§11) integrates with the validated status under Annex 15</li>
+<li>Master the formal definitions of all key terms in this Annex, to ensure precise regulatory communication</li>
+</ul>
+</div>
+<!-- SECTION 8 — UTILITIES -->
+<div class="chapter-section" id="section-03-utilities-cleaning-glossary-sec8">
+<div class="chapter-divider">
+<div class="chapter-badge">8</div>
+<div class="chapter-info">
+<h2>8. Qualification of Utilities</h2>
+<p>Utilities Qualification — Steam, water, air, gases</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>8.1 – 8.3 Utilities Qualification Requirements</h3>
+<p><strong>8.1</strong> The quality of steam, water, air, other gases etc. should be confirmed following installation using the qualification steps described in section 3 above.</p>
+<p><strong>8.2</strong> The period and extent of qualification should reflect any seasonal variations, if applicable, and the intended use of the utility.</p>
+<p><strong>8.3</strong> A risk assessment should be carried out where there may be direct contact with the product, e.g. heating, ventilation and air-conditioning (HVAC) systems, or indirect contact such as through heat exchangers to mitigate any risks of failure.</p>
+</div>
+<div class="right-column">
+<h3>Utilities Qualification Explained</h3>
+<div class="term-box">
+<h4>Applying IQ/OQ/PQ to Utilities</h4>
+<p>§8.1 states that utilities are qualified using the same framework described in Section 3 (URS → DQ → IQ → OQ → PQ). Common utility systems:</p>
+<ul>
+<li><strong>PW/WFI</strong>: purified water / water for injections (the most stringent)</li>
+<li><strong>Pure Steam</strong>: pure steam (in direct contact with product)</li>
+<li><strong>Compressed Air</strong>: compressed air (oil / particles / microorganisms)</li>
+<li><strong>HVAC</strong>: heating, ventilation and air conditioning (environmental control)</li>
+<li><strong>Nitrogen/CO₂</strong>: inert gases (protective filling)</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Seasonal Variation (§8.2)</h4>
+<p>The performance of some utilities is affected by the season: higher cooling water temperature in summer affects the WFI system; outdoor air conditions in winter affect the dehumidification capacity of HVAC. The qualification plan must cover the most demanding seasonal conditions, or explain that testing has been carried out throughout the year.</p>
+</div>
+<div class="highlight-box">
+<h4>Risk Assessment of Direct/Indirect Contact (§8.3)</h4>
+<p><strong>Direct contact</strong>: HVAC (air in direct contact with open product) → highest risk; particles and microorganisms must be confirmed to meet the cleanliness grade requirements</p>
+<p><strong>Indirect contact</strong>: heat exchangers (cooling water heating/cooling product through a metal wall) → the risk of leakage must be ruled out</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 9 — TEST METHOD VALIDATION -->
+<div class="chapter-section" id="section-03-utilities-cleaning-glossary-sec9">
+<div class="chapter-divider">
+<div class="chapter-badge">9</div>
+<div class="chapter-info">
+<h2>9. Validation of Test Methods</h2>
+<p>Test Method Validation — Detection limits, microbial methods &amp; recovery</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>9.1 – 9.3 Test Method Validation Requirements</h3>
+<p><strong>9.1</strong> All analytical test methods used in qualification, validation or cleaning exercises should be validated with an appropriate detection and quantification limit, where necessary, as defined in Chapter 6 of the PIC/S GMP guide Part I.</p>
+<p><strong>9.2</strong> Where microbial testing of product is carried out, the method should be validated to confirm that the product does not influence the recovery of microorganisms.</p>
+<p><strong>9.3</strong> Where microbial testing of surfaces in clean rooms is carried out, validation should be performed on the test method to confirm that sanitising agents do not influence the recovery of microorganisms.</p>
+</div>
+<div class="right-column">
+<h3>Test Method Validation Explained</h3>
+<div class="term-box">
+<h4>Basis for Method Validation: PIC/S GMP Part I Chapter 6</h4>
+<p>All analytical methods used for validation/cleaning validation must be validated in accordance with Part I Chapter 6 (Quality Control), establishing:</p>
+<ul>
+<li><strong>Limit of detection (LOD)</strong>: the smallest amount that can be detected</li>
+<li><strong>Limit of quantification (LOQ)</strong>: the smallest amount that can be accurately quantified</li>
+<li>linearity, specificity, accuracy, precision and robustness</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Special Requirements for Microbiological Methods (§9.2-9.3)</h4>
+<p><strong>Product inhibition testing (§9.2)</strong>: some product ingredients (preservatives, antimicrobial components) may inhibit microbial growth and cause false negatives in sterility tests. A suitability test is needed to confirm that the product matrix does not affect recovery.</p>
+<p><strong>Disinfectant interference (§9.3)</strong>: in environmental monitoring, disinfectant residues on surfaces may inhibit microbial growth on contact plates. It must be confirmed that the sampling method effectively neutralizes residual disinfectant (using neutralizers such as lecithin + polysorbate 80).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 10 — CLEANING VALIDATION -->
+<div class="chapter-section" id="section-03-utilities-cleaning-glossary-sec10">
+<div class="chapter-divider">
+<div class="chapter-badge">10</div>
+<div class="chapter-info">
+<h2>10. Cleaning Validation</h2>
+<p>Cleaning Validation — Residue limits, sampling, worst case &amp; hold times</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>10.1 – 10.8 Core Requirements</h3>
+<p><strong>10.1</strong> Cleaning validation should be performed in order to confirm the effectiveness of any cleaning procedure for all product contact equipment. Simulating agents may be used with appropriate scientific justification. Where similar types of equipment are grouped together, a justification of the specific equipment selected for cleaning validation is expected.</p>
+<p><strong>10.2</strong> A visual check for cleanliness is an important part of the acceptance criteria for cleaning validation. It is not generally acceptable for this criterion alone to be used. Repeated cleaning and retesting until acceptable residue results are obtained is not considered an acceptable approach.</p>
+<p><strong>10.3</strong> It is recognised that a cleaning validation programme may take some time to complete and validation with verification after each batch may be required for some products e.g. investigational medicinal products.</p>
+<p><strong>10.4</strong> Validation should consider the level of automation in the cleaning process. Where an automatic process is used, the specified normal operating range of the utilities and equipment should be validated.</p>
+<p><strong>10.5</strong> For all cleaning processes an assessment should be performed to determine the variable factors which influence cleaning effectiveness and performance, e.g. operators, the level of detail in procedures such as rinsing times etc. If variable factors have been identified, the worst case situations should be used as the basis for cleaning validation studies.</p>
+<p><strong>10.6</strong> Limits for the carryover of product residues should be based on a <strong>toxicological evaluation</strong>. The justification for the selected limits should be documented in a risk assessment which includes all the supporting references. Limits should be established for the removal of any cleaning agents used. Acceptance criteria should consider the potential cumulative effect of multiple items of equipment in the process equipment train.</p>
+<p><strong>10.6.1</strong> Therapeutic macromolecules and peptides are known to degrade and denature when exposed to pH extremes and/or heat, and may become pharmacologically inactive. A toxicological evaluation may therefore not be applicable in these circumstances.</p>
+<p><strong>10.6.2</strong> If it is not feasible to test for specific product residues, other representative parameters may be selected, e.g. total organic carbon (TOC) and conductivity.</p>
+<p><strong>10.7</strong> The risk presented by microbial and endotoxin contamination should be considered during the development of cleaning validation protocols.</p>
+<p><strong>10.8</strong> The influence of the time between manufacture and cleaning and the time between cleaning and use should be taken into account to define dirty and clean hold times for the cleaning process.</p>
+</div>
+<div class="right-column">
+<h3>Core Requirements of Cleaning Validation Explained</h3>
+<div class="term-box">
+<h4>HBEL/ADE as the Basis for Setting Residue Limits (§10.6)</h4>
+<p>Product residue limits (carryover limits) must be based on a toxicological evaluation, i.e.:</p>
+<ul>
+<li><strong>ADE (Acceptable Daily Exposure)</strong>: the acceptable daily exposure</li>
+<li><strong>HBEL (Health-Based Exposure Limit)</strong>: a health-based exposure limit (the term used in the EU EMA guideline)</li>
+<li><strong>PDE (Permitted Daily Exposure)</strong>: the term used in ICH Q3C; the same concept</li>
+</ul>
+<p>The traditional 1/1000 dose criterion no longer meets current requirements; HBEL/ADE must be used.</p>
+</div>
+<div class="highlight-box">
+<h4>§10.6.1 Special Case: Large Molecules/Peptides</h4>
+<p>Therapeutic proteins and peptides (such as monoclonal antibodies and insulin) degrade and lose activity at extreme pH or high temperature, so traditional toxicological calculations (based on pharmacological activity) may not be applicable. In such cases, alternative assessment approaches may be used, such as an allergenicity assessment or a more conservative general protein residue limit.</p>
+</div>
+<div class="note-box">
+<h4>Visual Inspection Is Not Enough (§10.2)</h4>
+<p>Although visual cleanliness inspection is part of the AC, it cannot be the sole acceptance criterion for cleaning validation. It must be combined with chemical residue analysis (HPLC/UV/TOC) and/or microbial limit testing.</p>
+<p><strong>Important prohibition</strong>: the practice of "repeated cleaning and retesting until an acceptable residue result is achieved" is <strong>not acceptable</strong>. Cleaning validation must be based on a predefined cleaning procedure, not on repeated attempts until the limit is met.</p>
+</div>
+<div class="analogy-box">
+<h4>Analogy: TOC as a Surrogate Indicator</h4>
+<p>When product residue is difficult to measure directly (such as complex natural products or mixtures), TOC (total organic carbon) is a commonly used surrogate: all organic residues contain carbon, so TOC gives a non-specific indicator of total organic contamination. However, the sensitivity of the TOC method for the target residue must be confirmed.</p>
+</div>
+</div>
+</div>
+<div class="two-column">
+<div class="left-column">
+<h3>10.9 – 10.15 Advanced Cleaning Validation Topics</h3>
+<p><strong>10.9</strong> Where campaign manufacture is carried out, the impact on the ease of cleaning at the end of the campaign should be considered and the maximum length of a campaign (in time and/or number of batches) should be the basis for cleaning validation exercises.</p>
+<p><strong>10.10</strong> Where a worst case product approach is used as a cleaning validation model, a scientific rationale should be provided for the selection of the worst case product and the impact of new products to the site assessed. Criteria for determining the worst case may include solubility, cleanability, toxicity, and potency.</p>
+<p><strong>10.11</strong> Cleaning validation protocols should specify or reference the locations to be sampled, the rationale for the selection of these locations and define the acceptance criteria.</p>
+<p><strong>10.12</strong> Sampling should be carried out by swabbing and/or rinsing or by other means depending on the production equipment. The sampling materials and method should not influence the result. Recovery should be shown to be possible from all product contact materials sampled in the equipment with all the sampling methods used.</p>
+<p><strong>10.13</strong> The cleaning procedure should be performed an appropriate number of times based on a risk assessment and meet the acceptance criteria in order to prove that the cleaning method is validated.</p>
+<p><strong>10.14</strong> Where a cleaning process is ineffective or is not appropriate for some equipment, dedicated equipment or other appropriate measures should be used for each product as indicated in chapters 3 and 5 of the PIC/S GMP Guide.</p>
+<p><strong>10.15</strong> Where manual cleaning of equipment is performed, it is especially important that the effectiveness of the manual process should be confirmed at a justified frequency.</p>
+</div>
+<div class="right-column">
+<h3>Advanced Cleaning Validation Topics Explained</h3>
+<div class="term-box">
+<h4>Worst Case Product Selection (§10.10)</h4>
+<p>The worst case product strategy allows the cleaning validation of one (or a few) representative products to cover multiple similar pieces of equipment or processes. The criteria for selecting the worst case product are:</p>
+<ul>
+<li><strong>Low solubility</strong> (difficult to rinse away)</li>
+<li><strong>Poor cleanability</strong> (e.g. greasy substances)</li>
+<li><strong>High toxicity/high potency</strong> (very low permitted residue)</li>
+<li><strong>High dose</strong> (a large denominator, so the limit is relatively low)</li>
+</ul>
+</div>
+<div class="highlight-box">
+<h4>Dirty Hold Time and Clean Hold Time (§10.8)</h4>
+<p><strong>Dirty Hold Time (DHT)</strong>: the maximum permitted time from the end of the last batch of production until cleaning begins. It must be confirmed that product residues do not become harder to clean during this period (e.g. through drying and encrustation).</p>
+<p><strong>Clean Hold Time (CHT)</strong>: the maximum permitted storage time from completion of cleaning until the equipment is used. It must be confirmed that cleaned equipment is not contaminated by microorganisms during storage.</p>
+</div>
+<div class="note-box">
+<h4>Confirming Sampling Recovery (§10.12)</h4>
+<p>Whether swab sampling or rinse sampling is used, the recovery of the sampling method must be confirmed, i.e. what proportion of the residue can be recovered from the equipment surface material. The residue limit calculation must be corrected for recovery; for example, with 70% recovery, the analytical result must be divided by 0.7 to obtain the true residue amount.</p>
+</div>
+<div class="analogy-box">
+<h4>The Challenge of Campaign Cleaning (§10.9)</h4>
+<p>After consecutive production of the same product over multiple batches (campaign manufacture), residues may be harder to clean (long contact time, build-up through drying). Cleaning validation should be based on the <strong>maximum length</strong> of the campaign (the maximum number of batches or the longest duration), to ensure that the cleaning standard can still be met in the most difficult-to-clean situation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 11 — CHANGE CONTROL -->
+<div class="chapter-section" id="section-03-utilities-cleaning-glossary-sec11">
+<div class="chapter-divider">
+<div class="chapter-badge">11</div>
+<div class="chapter-info">
+<h2>11. Change Control</h2>
+<p>Change Control — Knowledge management &amp; validation impact assessment</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="two-column">
+<div class="left-column">
+<h3>11.1 – 11.7 Change Control Requirements</h3>
+<p><strong>11.1</strong> The control of change is an important part of knowledge management and should be handled within the pharmaceutical quality system.</p>
+<p><strong>11.2</strong> Written procedures should be in place to describe the actions to be taken if a planned change is proposed to a starting material, product component, process, equipment, premises, product range, method of production or testing, batch size, design space or any other change during the lifecycle that may affect product quality or reproducibility.</p>
+<p><strong>11.3</strong> Where design space is used, the impact on changes to the design space should be considered against the registered design space within the marketing authorisation and the need for any regulatory actions assessed.</p>
+<p><strong>11.4</strong> Quality risk management should be used to evaluate planned changes to determine the potential impact on product quality, pharmaceutical quality systems, documentation, validation, regulatory status, calibration, maintenance and on any other system to avoid unintended consequences and to plan for any necessary process validation, verification or requalification efforts.</p>
+<p><strong>11.5</strong> Changes should be authorised and approved by the responsible persons or relevant functional personnel in accordance with the pharmaceutical quality system.</p>
+<p><strong>11.6</strong> Supporting data, e.g. copies of documents, should be reviewed to confirm that the impact of the change has been demonstrated prior to final approval.</p>
+<p><strong>11.7</strong> Following implementation, and where appropriate, an evaluation of the effectiveness of change should be carried out to confirm that the change has been successful.</p>
+</div>
+<div class="right-column">
+<h3>Integrating Change Control and Validation</h3>
+<div class="term-box">
+<h4>Broad Range of Change Control Triggers (§11.2)</h4>
+<p>Any of the following changes may trigger a validation impact assessment:</p>
+<ul>
+<li>starting materials or packaging materials (supplier, specification)</li>
+<li>the process (parameters, equipment, facility)</li>
+<li>batch size</li>
+<li>the design space</li>
+<li>production or test methods</li>
+<li>any change affecting product quality or reproducibility</li>
+</ul>
+</div>
+<div class="note-box">
+<h4>Two-track Assessment of Design Space Changes (§11.3)</h4>
+<p>If a design space (ICH Q8) is used, changes require assessment at two levels:</p>
+<ol>
+<li><strong>Scientific assessment</strong>: does the change go outside the established design space?</li>
+<li><strong>Regulatory assessment</strong>: does it go outside the design space registered/approved with the regulatory authority?</li>
+</ol>
+<p>Moving within the approved design space is not a change from the regulatory standpoint, but moving outside it requires a regulatory submission.</p>
+</div>
+<div class="highlight-box">
+<h4>Assessing the Effectiveness of Changes (§11.7)</h4>
+<p>After a change is implemented, it must be assessed whether the change achieved the intended effect. For example, if an equipment upgrade was intended to improve cleaning, it must be confirmed that actual cleaning residue data have improved. This forms a closed-loop PDCA (plan-do-check-act) management cycle.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 12 — GLOSSARY -->
+<div class="chapter-section" id="section-03-utilities-cleaning-glossary-sec12">
+<div class="chapter-divider">
+<div class="chapter-badge">12</div>
+<div class="chapter-info">
+<h2>12. Glossary</h2>
+<p>Glossary — Official definitions for key qualification &amp; validation terms</p>
+</div>
+</div>
+<div class="chapter-body">
+<div class="note-box" style="margin-bottom:1.5rem;">
+<h4>Notes on Using the Glossary</h4>
+<p>This section defines terms used in Annex 15 that are not defined elsewhere in the PIC/S GMP Guide. Definitions marked <em>(ICH Q8)</em>, <em>(ICH Q9)</em> or <em>(ICH Q10)</em> are taken directly from the corresponding ICH guideline, to ensure consistency with international regulatory standards.</p>
+</div>
+<div class="glossary-grid">
+<div class="glossary-item">
+<h4>Bracketing Approach</h4>
+<p>A science and risk based validation approach such that only batches on the extremes of certain predetermined design factors (e.g. strength, batch size and/or pack size) are tested, on the assumption that validation of any intermediate level is represented by validation of the extremes.</p>
+</div>
+<div class="glossary-item">
+<h4>Change Control</h4>
+<p>A formal system by which qualified representatives of appropriate disciplines review proposed or actual changes that might affect the validated status of facilities, systems, equipment or processes. The intent is to determine the need for action that would ensure the system is maintained in a validated state, and to document it.</p>
+</div>
+<div class="glossary-item">
+<h4>Cleaning Validation</h4>
+<p>Documented evidence that an approved cleaning procedure will reproducibly reduce residues of the previous product or cleaning agents in equipment to below the scientifically set maximum allowable carryover.</p>
+</div>
+<div class="glossary-item">
+<h4>Cleaning Verification</h4>
+<p>The gathering of evidence through chemical analysis after each batch/campaign to show that the residues of the previous product or cleaning agents have been reduced below the scientifically set maximum allowable carryover. (Note: this differs from cleaning "validation".)</p>
+</div>
+<div class="glossary-item">
+<h4>Concurrent Validation</h4>
+<p>Validation carried out in exceptional circumstances, justified on the basis of significant patient benefit, where the validation protocol is executed concurrently with commercialization of the validation batches.</p>
+</div>
+<div class="glossary-item">
+<h4>Continuous Process Verification</h4>
+<p>An alternative approach to traditional process validation in which manufacturing process performance is continuously monitored and evaluated. (ICH Q8)</p>
+</div>
+<div class="glossary-item">
+<h4>Control Strategy</h4>
+<p>A planned set of controls, derived from current product and process understanding, that assures process performance and product quality. The controls can include parameters and attributes related to drug substance and drug product materials and components, facility and equipment operating conditions, in-process controls, finished product specifications, and the associated methods and frequency of monitoring and control. (ICH Q10)</p>
+</div>
+<div class="glossary-item">
+<h4>Critical Process Parameter — CPP</h4>
+<p>A process parameter whose variability has an impact on a critical quality attribute and therefore should be monitored or controlled to ensure the process produces the desired quality. (ICH Q8)</p>
+</div>
+<div class="glossary-item">
+<h4>Critical Quality Attribute — CQA</h4>
+<p>A physical, chemical, biological or microbiological property or characteristic that should be within an appropriate limit, range or distribution to ensure the desired product quality. (ICH Q8)</p>
+</div>
+<div class="glossary-item">
+<h4>Design Qualification — DQ</h4>
+<p>The documented verification that the proposed design of the facilities, systems and equipment is suitable for the intended purpose.</p>
+</div>
+<div class="glossary-item">
+<h4>Design Space</h4>
+<p>The multidimensional combination and interaction of input variables (e.g. material attributes) and process parameters that have been demonstrated to provide assurance of quality. Working within the design space is not considered to be a change. Movement out of the design space is considered to be a change and would normally initiate a regulatory post-approval change process. (ICH Q8)</p>
+</div>
+<div class="glossary-item">
+<h4>Installation Qualification — IQ</h4>
+<p>The documented verification that the facilities, systems and equipment, as installed or modified, comply with the approved design and the manufacturer's recommendations.</p>
+</div>
+<div class="glossary-item">
+<h4>Knowledge Management</h4>
+<p>A systematic approach to acquiring, analysing, storing and disseminating information. (ICH Q10)</p>
+</div>
+<div class="glossary-item">
+<h4>Lifecycle</h4>
+<p>All phases in the life of a product, equipment or facility from initial development or use through to discontinuation of use.</p>
+</div>
+<div class="glossary-item">
+<h4>Ongoing Process Verification — OPV</h4>
+<p>Documented evidence that the process remains in a state of control during commercial manufacture (also called continued process verification).</p>
+</div>
+<div class="glossary-item">
+<h4>Operational Qualification — OQ</h4>
+<p>The documented verification that the facilities, systems and equipment, as installed or modified, perform as intended throughout the anticipated operating ranges.</p>
+</div>
+<div class="glossary-item">
+<h4>Performance Qualification — PQ</h4>
+<p>The documented verification that systems and equipment can perform effectively and reproducibly based on the approved process method and product specification.</p>
+</div>
+<div class="glossary-item">
+<h4>Process Validation</h4>
+<p>The documented evidence that the process, operated within established parameters, can perform effectively and reproducibly to produce a medicinal product meeting its predetermined specifications and quality attributes.</p>
+</div>
+<div class="glossary-item">
+<h4>Quality by Design — QbD</h4>
+<p>A systematic approach to development that begins with predefined objectives and emphasizes product and process understanding and process control, based on sound science and quality risk management.</p>
+</div>
+<div class="glossary-item">
+<h4>Quality Risk Management</h4>
+<p>A systematic process for the assessment, control, communication and review of risks to quality across the lifecycle. (ICH Q9)</p>
+</div>
+<div class="glossary-item">
+<h4>State of Control</h4>
+<p>A condition in which the set of controls consistently provides assurance of continued process performance and product quality.</p>
+</div>
+<div class="glossary-item">
+<h4>User Requirements Specification — URS</h4>
+<p>The set of owner, user and engineering requirements necessary and sufficient to create a feasible design meeting the intended purpose of the system.</p>
+</div>
+<div class="glossary-item">
+<h4>Worst Case</h4>
+<p>A condition or set of conditions encompassing upper and lower processing limits and circumstances, within standard operating procedures, which pose the greatest chance of product or process failure when compared to ideal conditions. Such conditions do not necessarily induce product or process failure.</p>
+</div>
+</div>
+</div>
+</div>
+</div><!-- end main-content -->
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>SterileGMP Knowledge Hub — For study reference only</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace(/(\.en)?\.html$/,'');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+    <script src="../../../rpg/rpg.js" defer></script>
+
+</body>
+</html>
