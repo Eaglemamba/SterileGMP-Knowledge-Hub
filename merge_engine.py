@@ -27,6 +27,78 @@ from urllib.parse import unquote
 
 
 # ============================================================
+# ENGLISH OVERLAY (i18n)
+# ============================================================
+# The Chinese section files stay the single source. An optional
+# <report>/sections-en/<section-stem>.json holds {"blocks": [{"zh": ..., "en": ...}]}
+# where "zh" is the inner HTML of a block that contains Chinese and "en" its
+# translation. Blocks without a translation stay Chinese.
+
+_CJK_RE = re.compile(r'[\u3400-\u9fff\uf900-\ufaff]')
+_I18N_INLINE = {'strong', 'b', 'em', 'i', 'span', 'code', 'a', 'br', 'sub', 'sup', 'u', 'small', 'mark'}
+
+
+def _i18n_units(soup):
+    """Yield (kind, node, key) for every translatable unit in document order.
+    kind 'html': a tag whose Chinese sits only in inline children (key = inner HTML).
+    kind 'text': a bare text node with Chinese inside a tag that also has
+    block children carrying Chinese (key = stripped text)."""
+    from bs4 import NavigableString, Tag, Comment
+    root = soup.body or soup
+    def walk(tag):
+        if tag.name in ('script', 'style'):
+            return
+        kids = [c for c in tag.children if isinstance(c, Tag)]
+        deep = [c for c in kids if _CJK_RE.search(c.get_text()) and
+                (c.name not in _I18N_INLINE or any(d.name not in _I18N_INLINE for d in c.find_all(True)))]
+        if not deep:
+            if tag is not root and _CJK_RE.search(tag.get_text()):
+                yield ('html', tag, tag.decode_contents().strip())
+            return
+        for c in list(tag.children):
+            if isinstance(c, Tag):
+                if c in deep:
+                    yield from walk(c)
+                elif _CJK_RE.search(c.get_text()):
+                    yield ('html', c, c.decode_contents().strip())
+            elif isinstance(c, NavigableString) and not isinstance(c, Comment) and _CJK_RE.search(str(c)):
+                yield ('text', c, str(c).strip())
+    yield from walk(root)
+
+
+def extract_i18n_blocks(html_content: str) -> list:
+    """Return the ordered, de-duplicated list of Chinese block keys in a section file."""
+    from bs4 import BeautifulSoup
+    seen, out = set(), []
+    for _, _, key in _i18n_units(BeautifulSoup(html_content, 'html.parser')):
+        if key not in seen:
+            seen.add(key); out.append(key)
+    return out
+
+
+def apply_i18n_overlay(html_content: str, overlay: dict):
+    """Replace translated blocks. Returns (html, n_translated, n_left_in_chinese)."""
+    from bs4 import BeautifulSoup, NavigableString
+    tr = {b['zh']: b['en'] for b in overlay.get('blocks', []) if b.get('en')}
+    soup = BeautifulSoup(html_content, 'html.parser')
+    done = left = 0
+    for kind, node, key in list(_i18n_units(soup)):
+        en = tr.get(key)
+        if en is None:
+            left += 1
+            continue
+        done += 1
+        if kind == 'html':
+            node.clear()
+            node.append(BeautifulSoup(en, 'html.parser'))
+        else:
+            raw = str(node)
+            lead = raw[:len(raw) - len(raw.lstrip())]; tail = raw[len(raw.rstrip()):]
+            node.replace_with(NavigableString(lead + en + tail))
+    return str(soup), done, left
+
+
+# ============================================================
 # BODY CONTENT EXTRACTOR
 # ============================================================
 
@@ -158,7 +230,7 @@ STANDARD_JS = """    <script>
         const btnRight = document.getElementById('navScrollRight');
 
         // Reading progress — high-water mark (furthest section reached, never goes back)
-        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace(/(\\.en)?\\.html$/,'');
         let _saveTimer = null;
         let _current = '';
         let _maxIdx = -1;
@@ -612,9 +684,15 @@ def run_merge(
     footer_text: str,
     chapter_label: str = "Section",
     base_dir: str = None,
+    lang: str = 'zh',
+    alt_filename: str = '',
 ):
     """
     Run the full merge pipeline.
+
+    lang='en' builds the English edition: section files are read from sections/
+    and translated through sections-en/<stem>.json (see ENGLISH OVERLAY above).
+    alt_filename is the other-language edition this page links to ('' = no link).
 
     Args:
         section_map: List of tuples (files, nav_id, nav_num, label_en, label_zh, pages)
@@ -631,6 +709,9 @@ def run_merge(
         raise ValueError("base_dir must be provided. Pass os.path.dirname(os.path.abspath(__file__))")
 
     sections_dir = os.path.join(base_dir, 'sections')
+    en = (lang == 'en')
+    overlay_dir = os.path.join(base_dir, 'sections-en')
+    i18n_done = i18n_left = 0
     # template.css lives at repo root. base_dir may be 1 or 2 levels deep
     # (e.g. PDA/TR26 → ../template.css works; ISPE/ISPE-Vol5 → ../../template.css needed).
     # Walk up the tree until template.css is found (max 3 levels).
@@ -670,6 +751,15 @@ def run_merge(
             if os.path.exists(filepath):
                 with open(filepath, 'r', encoding='utf-8') as f:
                     html = f.read()
+                if en:
+                    import json as _json
+                    ov_path = os.path.join(overlay_dir, os.path.splitext(filename)[0] + '.json')
+                    overlay = {}
+                    if os.path.exists(ov_path):
+                        with open(ov_path, 'r', encoding='utf-8') as f:
+                            overlay = _json.load(f)
+                    html, _d, _l = apply_i18n_overlay(html, overlay)
+                    i18n_done += _d; i18n_left += _l
                 body = extract_body_content(html)
                 # Namespace all ids to this file's stem so generic ids like
                 # "summary", "intro", "topic-c" don't collide across sections.
@@ -688,6 +778,7 @@ def run_merge(
 
         available_nav_ids.add(nav_id)
         page_info = f" | {pages}" if pages else ""
+        chapter_sub = (pages or '') if en else f"{label_zh}{page_info}"
 
         chapter_html = f'''
     <!-- ========== {chapter_label} {nav_num}: {label_en} ========== -->
@@ -696,7 +787,7 @@ def run_merge(
             <div class="chapter-badge">{nav_num}</div>
             <div class="chapter-info">
                 <h2>{chapter_label} {nav_num}: {label_en}</h2>
-                <p>{label_zh}{page_info}</p>
+                <p>{chapter_sub}</p>
             </div>
         </div>
         <div class="chapter-body">
@@ -708,8 +799,17 @@ def run_merge(
 
     nav_html = build_nav_html(section_map, available_nav_ids)
 
+    subtitle = report_subtitle_en if en else f"{report_subtitle_en} | {report_subtitle_zh}"
+    footer_note = "For study reference only" if en else "僅供學習參考"
+    lang_link = ''
+    if alt_filename:
+        lang_link = (f'\n        <a href="{alt_filename}" id="langSwitch" lang="{"zh-TW" if en else "en"}" '
+                     f'style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;'
+                     f'border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">'
+                     f'{"中文" if en else "English"}</a>')
+
     final_html = f'''<!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="{"en" if en else "zh-TW"}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -723,8 +823,8 @@ def run_merge(
     <header class="top-header">
         <div class="header-brand">
             <h1>{report_title_en}</h1>
-            <p class="subtitle">{report_subtitle_en} | {report_subtitle_zh}</p>
-        </div>
+            <p class="subtitle">{subtitle}</p>
+        </div>{lang_link}
     </header>
 
     <nav class="top-nav" id="topNav">
@@ -740,7 +840,7 @@ def run_merge(
 </main>
 
     <footer class="main-footer">
-        <p>SterileGMP Knowledge Hub — 僅供學習參考</p>
+        <p>SterileGMP Knowledge Hub — {footer_note}</p>
     </footer>
 
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">&#8679;</button>
@@ -766,6 +866,10 @@ def run_merge(
         for s in missing_files:
             print(f"    - {s}")
 
+    if en:
+        print(f"  English blocks: {i18n_done} translated, {i18n_left} left in Chinese")
+        print("=" * 60)
+        return
     # Auto-generate Markdown for chatbot use
     generate_markdown(
         section_map=section_map,

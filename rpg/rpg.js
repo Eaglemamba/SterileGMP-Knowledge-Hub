@@ -1521,7 +1521,7 @@
 
   /* ---------- document pages: reading end + section challenges ---------- */
   function initDocPage() {
-    var stem = location.pathname.split('/').pop().replace('.html', '');
+    var stem = location.pathname.split('/').pop().replace(/(\.en)?\.html$/, '');   // English edition shares the document key
     Object.keys(M.docs).forEach(function (k) { if (M.docs[k].stem === stem) pageDocKey = k; });
     if (!pageDocKey) return;
     var d = M.docs[pageDocKey];

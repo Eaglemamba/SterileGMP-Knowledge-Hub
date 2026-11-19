@@ -184,6 +184,11 @@ async function loadData() {
                 figures_count: r.figures_count || 0,
                 file: `${r.folder || key}/output/${r.output_filename}`
             }));
+        // English editions (built by `gmp_engine.py merge <KEY> --lang en`); opened when the site language is English
+        Object.entries(reportsData.reports).forEach(([key, r]) => {
+            if (r.output_filename && r.output_filename_en)
+                EN_FILES[`${r.folder || key}/output/${r.output_filename}`] = `${r.folder || key}/output/${r.output_filename_en}`;
+        });
 
         sourceColors = {};
         Object.values(data.reports).forEach(r => {
@@ -690,11 +695,19 @@ function getProgress(file) {
     try { return JSON.parse(localStorage.getItem('sgk_progress_' + stem) || 'null'); } catch(e) { return null; }
 }
 
+const EN_FILES = {};
+function langFile(file) {
+    let en = false;
+    try { en = localStorage.getItem('sgk_rpg_lang') === 'en'; } catch (e) {}
+    return en && EN_FILES[file] ? EN_FILES[file] : file;
+}
+
 function getOpenHref(file) {
     const p = getProgress(file);
+    const target = langFile(file);   // progress and history stay keyed by the Chinese file
     // Scroll-tracked docs (scrollY present) restore position via page JS — no hash needed
-    if (p && p.scrollY !== undefined) return file;
-    return p && p.id ? file + '#' + p.id : file;
+    if (p && p.scrollY !== undefined) return target;
+    return p && p.id ? target + '#' + p.id : target;
 }
 
 function markComplete(file) {

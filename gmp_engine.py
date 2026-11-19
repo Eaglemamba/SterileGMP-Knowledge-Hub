@@ -922,10 +922,33 @@ def cmd_md(args):
 # MERGE COMMAND
 # ============================================================
 
-def _merge_one(report_id: str, config: dict):
+def _en_filename(config: dict) -> str:
+    return config.get("output_filename_en") or config["output_filename"][:-5] + ".en.html"
+
+
+def _merge_one(report_id: str, config: dict, lang: str = "zh"):
     """Merge HTML for one report, then regenerate MD from source text if available."""
     section_map = config_to_section_map(config)
+    has_en = (_report_dir(report_id, config) / "sections-en").is_dir()
+    if lang == "en":
+        if not has_en:
+            print(f"[SKIP] {report_id}: no sections-en/ folder")
+            return
+        run_merge(
+            section_map=section_map,
+            report_title_en=config["report_title_en"],
+            report_subtitle_en=config["report_subtitle_en"],
+            report_subtitle_zh="",
+            output_filename=_en_filename(config),
+            footer_text=config.get("footer_text", ""),
+            chapter_label=config.get("chapter_label", "Section"),
+            base_dir=str(_report_dir(report_id, config)),
+            lang="en",
+            alt_filename=config["output_filename"],
+        )
+        return
     run_merge(
+        alt_filename=_en_filename(config) if has_en else "",
         section_map=section_map,
         report_title_en=config["report_title_en"],
         report_subtitle_en=config["report_subtitle_en"],
@@ -950,13 +973,13 @@ def cmd_merge(args):
             print(f"\n{'='*60}")
             print(f"Merging: {rid}")
             config = load_config(rid)
-            _merge_one(rid, config)
+            _merge_one(rid, config, args.lang)
     else:
         if not args.report_id:
             print("[ERROR] Specify a report ID or use --all")
             sys.exit(1)
         config = load_config(args.report_id)
-        _merge_one(args.report_id, config)
+        _merge_one(args.report_id, config, args.lang)
 
 
 # ============================================================
@@ -2187,6 +2210,8 @@ def main():
     p_merge = sub.add_parser("merge", help="Merge HTML sections into Complete.html + MD")
     p_merge.add_argument("report_id", nargs="?", help="Report folder name")
     p_merge.add_argument("--all", action="store_true", help="Merge all reports")
+    p_merge.add_argument("--lang", choices=["zh", "en"], default="zh",
+                         help="en = build the English edition from sections-en/ overlays")
 
     # index
     p_index = sub.add_parser("index", help="Audit INDEX-router.md coverage, show missing reports")
