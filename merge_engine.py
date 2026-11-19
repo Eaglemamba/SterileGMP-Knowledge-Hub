@@ -804,6 +804,7 @@ def run_merge(
     lang_link = ''
     if alt_filename:
         lang_link = (f'\n        <a href="{alt_filename}" id="langSwitch" lang="{"zh-TW" if en else "en"}" '
+                     f'onclick="try{{localStorage.setItem(\'sgk_rpg_lang\',\'{"zh" if en else "en"}\')}}catch(e){{}}" '
                      f'style="display:inline-block;margin-top:.45rem;padding:.2rem .8rem;border:1px solid currentColor;'
                      f'border-radius:6px;color:inherit;text-decoration:none;font-size:.85rem;white-space:nowrap;">'
                      f'{"中文" if en else "English"}</a>')

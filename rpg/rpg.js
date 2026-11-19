@@ -42,7 +42,7 @@
   function setLang(l) { lsSet(LANG_KEY, l === 'en' ? 'en' : 'zh'); }
   var LIST = T('、', ', '), SEP = T('　', ' · ');
   function langSwitch() {
-    if (document.getElementById('rpg-lang')) return;
+    if (document.getElementById('rpg-lang') || document.getElementById('langToggle')) return;   // index.html has its own switch in the header
     var b = document.createElement('button');
     b.id = 'rpg-lang'; b.type = 'button';
     b.textContent = EN ? '中文' : 'EN';

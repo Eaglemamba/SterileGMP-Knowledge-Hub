@@ -122,6 +122,16 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
 }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<script>
+// Site language (same key as index.html and rpg/rpg.js)
+var SGK_EN = (function () { try { return localStorage.getItem('sgk_rpg_lang') === 'en'; } catch (e) { return false; } })();
+if (SGK_EN) document.addEventListener('DOMContentLoaded', function () {
+  document.documentElement.lang = 'en';
+  document.title = document.title.split(' — ')[0];
+  document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.getAttribute('data-en'); });
+  document.querySelectorAll('[data-zh-only]').forEach(function (el) { el.remove(); });
+});
+</script>
 </head>
 <body>
 
@@ -135,7 +145,7 @@ body { margin: 0; padding: 0; font-family: 'Noto Sans TC', -apple-system, sans-s
   <span class="nav-separator">|</span>
   <a class="nav-link nav-link-secondary" href="learning-path.html">📚 Learning Path</a>
   <span class="nav-separator">|</span>
-  <a class="nav-link nav-link-secondary" href="mindmap-mobile.html">📱 手機版</a>
+  <a class="nav-link nav-link-secondary" href="mindmap-mobile.html" data-en="📱 Mobile">📱 手機版</a>
   <div class="view-toggle">
     <button class="view-btn active" onclick="switchView('dept')" id="btn-dept">By Department</button>
     <button class="view-btn" onclick="switchView('topic')" id="btn-topic">By Topic</button>
@@ -316,7 +326,7 @@ function renderDeptNetwork(reports) {
     const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
     cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
       .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(c.name);
-    if (c.nameZh) {
+    if (c.nameZh && !SGK_EN) {
       cg.append('text').attr('x', c.x).attr('y', labelY + 14).attr('text-anchor', 'middle')
         .attr('font-size', '9px').attr('fill', '#64748b').text(c.nameZh);
     }
@@ -436,7 +446,7 @@ function renderDeptNetwork(reports) {
     const container = document.getElementById('ttDocs');
     container.innerHTML = '';
     // Chinese name
-    if (s.nameZh) {
+    if (s.nameZh && !SGK_EN) {
       const zh = document.createElement('div');
       zh.style.cssText = 'font-size:11px;color:#64748b;margin-bottom:6px;';
       zh.textContent = s.nameZh;
@@ -617,7 +627,7 @@ function renderTopicNetwork(reports) {
     const labelY = c.y > cy + 10 ? c.y + 44 : (c.y < cy - 10 ? c.y - 38 : c.y + 44);
     cg.append('text').attr('x', c.x).attr('y', labelY).attr('text-anchor', 'middle')
       .attr('font-size', '11px').attr('font-weight', '700').attr('fill', '#1e293b').text(c.name);
-    if (c.nameZh) {
+    if (c.nameZh && !SGK_EN) {
       cg.append('text').attr('x', c.x).attr('y', labelY + 14).attr('text-anchor', 'middle')
         .attr('font-size', '9px').attr('fill', '#64748b').text(c.nameZh);
     }
@@ -754,7 +764,7 @@ function showClusterTooltip(cluster, event) {
   const tt = document.getElementById('networkTooltip');
   const allDocs = new Map();
   cluster.subtopics.forEach(s => s.docs.forEach(d => allDocs.set(d.key, d)));
-  populateTooltip(cluster.name + ' ' + (cluster.nameZh || ''), allDocs.size, Array.from(allDocs.values()), event);
+  populateTooltip(cluster.name + (SGK_EN ? '' : ' ' + (cluster.nameZh || '')), allDocs.size, Array.from(allDocs.values()), event);
 }
 
 function showSubtopicTooltip(subtopic, event) {
@@ -780,7 +790,7 @@ function populateTooltip(title, count, docs, event, primaryDoc) {
     const titleEl = link
       ? `<a href="${link}" target="_blank" class="tt-doc-link">${d.title}</a>`
       : `<span class="tt-doc-title">${d.title}</span>`;
-    const badge = isPrimary ? `<span class="tt-primary-badge">★ 必讀</span>` : '';
+    const badge = isPrimary ? `<span class="tt-primary-badge">★ ${SGK_EN ? 'Required' : '必讀'}</span>` : '';
     div.innerHTML = `<span class="tt-src">${d.source}</span>${badge}${titleEl}`;
     container.appendChild(div);
   });

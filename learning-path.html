@@ -68,6 +68,16 @@ body { font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(-
 @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .fade-up { animation: fadeUp 0.3s var(--ease) forwards; opacity: 0; }
 </style>
+<script>
+// Site language (same key as index.html and rpg/rpg.js)
+var SGK_EN = (function () { try { return localStorage.getItem('sgk_rpg_lang') === 'en'; } catch (e) { return false; } })();
+if (SGK_EN) document.addEventListener('DOMContentLoaded', function () {
+  document.documentElement.lang = 'en';
+  document.title = document.title.split(' — ')[0];
+  document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.getAttribute('data-en'); });
+  document.querySelectorAll('[data-zh-only]').forEach(function (el) { el.remove(); });
+});
+</script>
 </head>
 <body class="min-h-screen">
 
@@ -75,7 +85,7 @@ body { font-family: 'Noto Sans TC', -apple-system, sans-serif; background: var(-
 <div style="background:var(--c-surface);border-bottom:1px solid var(--c-border)" class="px-6 py-8">
   <div class="max-w-5xl mx-auto text-center">
     <h1 style="font-size:30px;font-weight:700;letter-spacing:-0.02em;color:var(--c-primary)">SterileGMP Learning Path</h1>
-    <p style="font-size:15px;color:var(--c-secondary);margin-top:6px">Department-Based Curriculum — 部門學習路徑</p>
+    <p style="font-size:15px;color:var(--c-secondary);margin-top:6px">Department-Based Curriculum<span data-zh-only> — 部門學習路徑</span></p>
     <p style="font-size:12px;color:var(--c-tertiary);margin-top:8px">
       <a href="index.html" style="color:var(--c-blue);text-decoration:none;font-weight:500">Dashboard</a>
       <span style="color:var(--c-tertiary);margin:0 6px">·</span>
@@ -153,7 +163,7 @@ function toggleDoc(deptId, key) {
 }
 
 function resetProgress() {
-  if (confirm('Reset all reading progress? 確定要重置所有閱讀進度嗎？')) {
+  if (confirm(SGK_EN ? 'Reset all reading progress?' : '確定要重置所有閱讀進度嗎？')) {
     localStorage.removeItem(STORAGE_KEY);
     render();
   }
@@ -209,7 +219,7 @@ function render() {
     <div class="overview-card ${isActive ? 'active' : ''}" style="--dept-color:${dept.color}" onclick="selectDept('${dept.id}')">
       <div style="font-size:24px">${dept.icon}</div>
       <div style="font-size:11px;font-weight:600;color:${isActive ? dept.color : 'var(--c-primary)'};margin-top:4px;line-height:1.3">${dept.name}</div>
-      <div style="font-size:10px;color:var(--c-secondary);margin-top:2px">${dept.nameZh}</div>
+      <div style="font-size:10px;color:var(--c-secondary);margin-top:2px">${SGK_EN ? '' : dept.nameZh}</div>
       <div style="margin-top:8px;background:#e5e5ea;border-radius:3px;height:4px;overflow:hidden">
         <div class="progress-bar" style="width:${dPct}%;background:${dept.color}"></div>
       </div>
@@ -235,7 +245,7 @@ function render() {
         <div style="font-size:36px">${dept.icon}</div>
         <div class="flex-1">
           <h2 style="font-size:22px;font-weight:700">${dept.name}</h2>
-          <p style="font-size:13px;color:var(--c-secondary)">${dept.nameZh}</p>
+          <p style="font-size:13px;color:var(--c-secondary)">${SGK_EN ? '' : dept.nameZh}</p>
         </div>
         <div class="text-right">
           <div class="mono" style="font-size:20px;font-weight:700;color:${dept.color}">${deptPct}%</div>
@@ -269,7 +279,7 @@ function render() {
               <div class="flex-1">
                 <div class="flex items-center gap-2">
                   <span style="font-size:15px;font-weight:700">${tier.label}</span>
-                  <span style="font-size:13px;color:var(--c-secondary)">${tier.labelZh}</span>
+                  <span style="font-size:13px;color:var(--c-secondary)">${SGK_EN ? '' : tier.labelZh}</span>
                   ${allReqDone ? '<span style="font-size:10px;padding:2px 8px;border-radius:980px;background:#d1fae5;color:#065f46;font-weight:600">✓ Required complete</span>' : ''}
                 </div>
               </div>
@@ -282,7 +292,7 @@ function render() {
                 const r = reportsData[doc.key];
                 const done = progress[`${dept.id}::${doc.key}`];
                 const title = r ? (r.title || doc.key) : doc.key;
-                const titleZh = r ? (r.titleZh || '') : '';
+                const titleZh = r && !SGK_EN ? (r.titleZh || '') : '';
                 const src = r ? (r.source || '').split(' ')[0] : '';
                 const srcColor = sourceOrgs[src] ? sourceOrgs[src].color : '#6e6e73';
                 const folder = r ? r.folder : null;
